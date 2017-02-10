@@ -87,6 +87,7 @@ color: #555;
 .reveal p {
   margin: 20px 0;
   line-height: 1.3;
+  font-weight: 400;
   }
 
 /* Ensure certain elements are never larger than the slide itself */
@@ -117,10 +118,15 @@ color: #555;
   margin: 0 0 0 1em; }
 
 .reveal ol {
-  list-style-type: decimal; }
+  list-style-type: decimal;
+   font-weight: 400;
+   font-size: 1em;
+  }
 
 .reveal ul {
-  list-style-type: disc; }
+  list-style-type: disc;
+   font-weight: 400;
+  }
 
 .reveal ul ul {
   list-style-type: square; }
@@ -133,7 +139,10 @@ color: #555;
 .reveal ol ol,
 .reveal ol ul {
   display: block;
-  margin-left: 40px; }
+  margin-left: 40px;
+   font-size: 0.8em;
+   line-height: 1.1;
+  }
 
 .reveal dt {
   font-weight: bold; }
@@ -205,6 +214,8 @@ color: #555;
 }
 
 .reveal table td {
+
+vertical-align: top;
   text-align: left;
   padding: 0.2em 0.5em 0.2em 0.5em;
 }
@@ -229,7 +240,7 @@ color: #555;
 
 .reveal small {
   display: inline-block;
-  font-size: 1em;
+  font-size: 0.8em;
   line-height: 1.2em;
   vertical-align: top; }
 
@@ -323,3 +334,18 @@ color: #555;
   -moz-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
   transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985); }
 
+/* see https://github.com/hakimel/reveal.js/issues/841 */
+.two-floating-elements {
+  > ul ~ p,
+  > p ~ ul {
+    max-width: 50%;
+    float:left;
+    font-size: 0.7em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  > p ~ ul {
+    margin-left: 0;
+  }
+}
