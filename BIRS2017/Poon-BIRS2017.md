@@ -116,24 +116,39 @@ LTT and coalescent have closed form solutions on node heights.
 
 ## Approximate Bayesian computation
 
+
 * Fit a model by adjusting its parameters until it yields simulations that resemble the data
-
 * Tree shape kernel provides a similarity measure for evaluating simulations
-
 * ABC with Sequential Monte Carlo:  each particle is a parameter vector
 
 ---
 
-## Used ABC-SMC to fit BA model to tree
+## Simulating trees from networks
 
-* Sequential Monte Carlo with 1000 particles
-
+![](/img/rosemary-abc.svg)
+* Gillespie algorithm
 * Simulated $n=5$ networks and trees per particle
-
-* Used tree shape kernel as similarity measure
+* Ran 1000 particles
 
 ---
+
 
 ![](/img/netabc-posteriors.svg)
 
 <small>McCloskey, Liang and Poon (2016) Virus Evolution, vew031</small>
+
+---
+
+# Within-host phylodynamics
+
+![](/img/HIVvsIAV.svg)
+
+Hey, why not?
+
+---
+
+
+## Bringing labels back to the kernel
+
+![](/img/NLP.svg)
+

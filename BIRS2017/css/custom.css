@@ -214,10 +214,10 @@ color: #555;
 }
 
 .reveal table td {
-
-vertical-align: top;
+  vertical-align: top;
   text-align: left;
   padding: 0.2em 0.5em 0.2em 0.5em;
+  font-size: 1.2em;
 }
 
 .reveal table th[align="center"],
