@@ -147,8 +147,112 @@ Hey, why not?
 
 ---
 
+# Compartmentalization
+
+<table>
+<tr>
+<td width=50%>
+    <ul>
+    <li>Distinct genetic clusters within host associated with cellular, tissue compartments</li>
+    <li>Different statistics can give conflicting results on the same data (Z&aacute;rate *et al.* 2007 JVI)</li>
+    </ul>
+
+</td>
+<td>
+    <img src="/img/heath-fig1.png">
+    <small>Figure 1 from Heath *et al.* 2009 PLOS ONE</small>
+</td>
+</tr>
+</table>
+
+---
+
+## Model
+
+`$$\frac{dV_i}{dt} = N \delta T_i - k V_i U_i + m_{ji} V_j  - (m_{ij} + c) V_i$$`
+`$$\frac{dT_i}{dt} = k V_i U_i - \delta T_i$$`
+
+![](/img/model.svg)
+
+---
+
+<table>
+<tr><td>$m=10^{-4}$</td><td>$m=0.01$</td></tr>
+<tr>
+<td> <img src="/img/trees-1e-04.nwk.svg"></td>
+<td> <img src="/img/trees-0.01.nwk.svg"></td>
+</tr>
+</table>
+
+---
 
 ## Bringing labels back to the kernel
 
 ![](/img/NLP.svg)
 
+<small>Figure from Collins and Duffy 2001, Proceedings of the 14th International Conference on Neural Information Processing Systems</small>
+
+---
+
+### Separation of trees by migration rate in kernel space
+
+![](/img/kPCA.svg)
+
+---
+
+## Simplified Rong-Perelson model of within-host dynamics
+
+<table>
+<tr>
+<td>
+`$$ \frac{dV}{dt} = N \delta T_s - (c+k T) V $$`<br/>
+
+`$$ \frac{dL}{dt} = \eta k T V - (d_0+a_L) L $$`<br/>
+
+`$$ \frac{dT_s}{dt} = (1-\eta) k T V + a_L L - \delta T_s $$`
+</td>
+<td>
+    <img src="/img/model2.svg">
+</td>
+</tr>
+</table>
+
+---
+
+### Shankarappa tree (HIV RNA and DNA)
+![](/img/patient_13889.rtt.nwk.svg)
+
+---
+
+## Simulating trees from R-P model
+
+* Coalescent simulation with modified version of Erik Volz's *rcolgem*
+
+* Simulated trees scaled in time
+
+* Evolutionary stasis of cell-free virus and integrated HIV DNA in latently infected cells
+
+* Reconstruct state transitions on simulated trees by modified rejection sampling
+
+---
+
+### Posterior distribution
+
+![](/img/delta-lambda.png)
+
+---
+
+# Current work
+
+* Implementing methods as R module (Kaphi)
+
+
+---
+
+# Acknowledgements
+
+* Bradley Jones (BC Centre for Excellence in HIV/AIDS)
+
+* Cornelius Nesen (Western University, Medical Health Informatics)
+
+* Genome Canada
