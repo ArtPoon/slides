@@ -1,6 +1,7 @@
 # Likelihood-free inference on tree shapes with kernel methods
 ## Art Poon
 ### Western University, London, Canada
+![](/img/WesternLogo.svg)
 
 ---
 
@@ -244,8 +245,11 @@ Hey, why not?
 
 # Current work
 
-* Implementing methods as R module (Kaphi)
+* Implementing kernel and ABC-SMC methods as R module (Kaphi)
 
+* Improving on implementation of labelled kernel
+
+* Collaborations to sequence HIV from different cell types
 
 ---
 
@@ -256,3 +260,4 @@ Hey, why not?
 * Cornelius Nesen (Western University, Medical Health Informatics)
 
 * Genome Canada
+![](/img/GenomeCanadaLogo.png)
