@@ -107,7 +107,7 @@ color: #555;
 
 .reveal li {
   margin: 24px 0;
-  font-size: 1.1em;
+  font-size: 1.0em;
 }
 
 .reveal ol,
@@ -241,6 +241,7 @@ color: #555;
 .reveal small {
   display: inline-block;
   font-size: 0.8em;
+  font-weight: 400;
   line-height: 1.2em;
   vertical-align: top; }
 
