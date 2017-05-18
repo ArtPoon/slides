@@ -93,16 +93,30 @@ From Poon (2016) Virus Evol 2(2): vew031
 
 ---
 
-## Focusing on transmission
+## Model-based clustering
 
-* We assume the phylogeny approximates the transmission tree (no different from clustering)
-* Let branching rate $\lambda$ switch between $K$ values along the tree as a Markov-modulate Poisson process (MMPP)
-  ![](/cahr2017/MMPP.png)
-* Solve for maximum likelihood assignment of rates to branches
+* Let branching rate $\lambda$ switch between $K$ values along the tree as a Markov-modulated Poisson process (MMPP)
+
+<img src="/cahr2017/MMPP.png" width="75%">
+
+* Solve for maximum likelihood assignment of rates to branches with pruning algorithm
+
+`$$ L_i(v) = \sum_j \Lambda_{ij}\exp((Q_{ij}-\Lambda_{ij})t_v) L_j(w) L_j(z)$$`
+
+---
+
+## Assumptions
+
+* We assume the phylogeny approximates the transmission tree (same as other methods)
+* Tips are missing data (unknown waiting time to branching event)
+* Our model is uninformative about sampling rates.
+
 
 ---
 
 ![](ROC.png)
+* <small>100 replicate simulations per scenario</small>
+* <small>for MMPP, some replicates had high FPR because the fast rate class was assigned to the root.</small>
 
 ---
 
@@ -111,24 +125,78 @@ From Poon (2016) Virus Evol 2(2): vew031
 
 ---
 
+## Computing time
+
+* How many seconds to process a tree with 1000 tips?
+
+| Method | Tree? | MP? | T1 | T2 | T3 | T4 | T5 | Average |
+|--------|-------|-----|----|----|----|----|----|---------|
+| MMPP | yes | no | 27.3 | 31.6 | 32.5 | 33.4 | 27.4 | 30.4 |
+| TN93 | no | yes | 1.46 | 1.24 | 1.21 | 1.21 | 1.17 | 1.26 |
+| Cluster Picker | yes | yes | 1.45 | 3.97 | 2.87 | 6.20 | 4.42 | 3.78 |
+| PhyloPart | yes | yes | 2.78 | 3.11  | 4.64  | 7.20  | 6.01 | 4.75 |
+| Subtree clustering | yes | no | 2.73 | 2.69 | 2.74 | 2.78 | 2.83 | 2.76 |
+| Patristic* | yes | no | 82.5 | 67.6 | 95.8 | 71.7 | 71.2 | 77.8 |
+
+* Not including time to reconstruct trees.
+
+<small>* Patristic method includes nonparametric bootstrap (100 samples)</small>
+
+---
+## Real data
+
+* Obtained *n*=3102 published HIV-1 *pol* sequences from a cohort study of MSM in Seattle (Wolf *et al.*, in press)
+* Reduced to one sequence per patient, non-recombinant subtype B (*n*=1653)
+* Reconstructed an ML tree and applied different clustering methods.
+
+---
+
+<img src="realtree.png" width="75%">
+
+---
+
+## Caveats
+
+* *Model misspecification*: Variation in transmission rates among lineages can be confounded with population-level dynamics.
+* Causes MMPP to assign fastest rate class to root of tree, leading to high FPR.
+* For real data set, we used 3 rate classes - branches with highest rate class were assigned to clusters.
+
+---
+
 ## Concluding remarks
 
-* Some clusters are unambiguous (*e.g.,* Indiana, Saskatchewan)
-* We need to be more skeptical about clustering methods
-* Focusing on internal branch lengths may provide more informative clusters
+* A promising new approach to genetic clustering?  (*See also* T. Stadler.)
+* Several directions for further work (*e.g.*, model selection, optimization).
 * Source code available at
 ```html
 http://github.com/rmcclosk/netabc
 ```
+* User-friendly version if we get funding &#x1f607;.
 
 ---
 
 ## Acknowledgements
 
+<table>
+ <tr>
+  <td width="60%">
+   This work was supported in part by the Government of Canada through Genome Canada and the Ontario Genomics Institute (OGI-131); and by a Project Grant from the Canadian Institutes for Health Research (CIHR).
+   <br/><br/>
+    I'm supported by a CIHR New Investigator Award.
+   <br/><br/>
+   **Rosemary McCloskey** implemented the model in C and performed the initial model validation.
+   <img src="/cahr2017/rosemary_844-367.jpg" width="30%">
+  </td>
+  <td>
+   <img src="/cahr2017/GenomeCanadaLogo.png" width="50%"> 
+   <img src="/img/OGI_Logo2015.png" width="50%"> 
+   <img src="/img/cihr.png" width="55%"> 
+  </td>
+ </tr>
+</table>
 
-<small>This work was supported in part by the Government of Canada through Genome Canada and the Ontario Genomics Institute (OGI-131)</small>
-![](GenomeCanadaLogo.png)
 
-<small>Rosemary McCloskey implemented the model in C and performed the initial model validation.</small>
-![](rosemary_844-367.jpg)
+
+
+
 
