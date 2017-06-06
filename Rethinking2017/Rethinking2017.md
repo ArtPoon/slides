@@ -87,25 +87,41 @@
 * Consensus position has been that one cannot conclude that *A* transmitted to *B* on the basis of genetic similarity/phylogeny of infections
 * Recent advances in the field have been challenging this position
   1. Within-host diversity and paraphyly
-  2. Data augmentation
-  3. Bayesian "who infected whom" methods
+  2. Bayesian inference
+  3. Data augmentation
+  
 
 ---
 
 ## Within-host diversity
 
 <table><tr>
-  <td width="60%"><ul>
+  <td width="65%"><ul>
     <li>The virus population within a person becomes very diverse over time</li>
     <li>If one of those variants becomes transmitted to the next person, then the next population may be nested within the first.</li>
-    <li>Sequences from the first person are said to be *paraphyletic*</li> 
+    <li>Sequences from the first person are said to be *paraphyletic*</li>
+    <li>Already applied to HIV transmission cases</li>
   </td>
   <td>
-    <img src="/img/Romero.png" width="30%">
+    <img src="/img/Romero.png" width="35%">
   </td>
 </tr></table>
 
 <small>Metzker *et al.* (2002) PNAS 99: 14292; Romero-Severson *et al.* (2016) PNAS 113: 2690.</small>
+
+---
+
+## Bayesian inference
+
+
+---
+
+## Data augmentation
+
+* Incorporating epidemiological observations into the reconstruction of transmission events
+* Distribution of time interval between transmission events (SARS, Jombart *et al.* 2014 PLCB 10)
+* 
+
 
 ---
 
