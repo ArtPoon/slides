@@ -49,9 +49,8 @@ Department of Pathology & Laboratory Medicine; Microbiology & Immunology; Applie
 
 * (+)ss-RNA virus causing liver cancer
 * over 71 million people with chronic infection, killing about 400,000 every year
+* ancient origin
 * clustered into six major clades
-* ancient origin 
-
 
 ---
 
@@ -67,7 +66,66 @@ Department of Pathology & Laboratory Medicine; Microbiology & Immunology; Applie
 
 # HCV and Simeprevir
 
+* Treatment with ribavirin, pegylated interferon was ineffective, bad side effects
+* Direct acting antivirals (DAAs) are capable of clearing HCV infection in over 90% of cases
+* Simeprevir was the first DAA to receive FDA approval ($66,000 per 3 months treatment!)
 <img src="/img/Simeprevir.svg" width="200">
+
+---
+
+# Q80K
+
+* DAAs are more effective for some HCV genotypes (clades) than others
+* HCV 1a is the most prevalent in North America
+* Q80K mutation in HCV NS3 protease makes Simeprevir less effective
+* BC started to develop a genotype test for Q80K
+* Q80K was more frequent in North American than European 1a's - *why?*
+
+---
+
+# A phylogeny of Q80K
+
+![](/img/q80k.png)
+
+---
+
+# Locking a mutation with epistasis
+
+* Q80K is almost never seen any other HCV genotypes
+* Distribution in phylogeny suggests a peak shift
+
+---
+
+<img src="/img/q80k-150dpi.png" height="500"></img>
+<small>Q80K and S174N in a structural model of NS3</small>
+
+---
+
+<img src="/img/jeff-joy.jpg" height="400"></img>
+<small><small>Jeff Joy on Mont Blanc</small></small>
+
+---
+
+<img src="/img/nature11631-f2.2.jpg" height="600"></img>
+<small><small>Jetz, Thomas, Joy et al. 2012. Nature 491</small></small>
+
+---
+
+# Diversification rates for HCV
+
+<img src="/img/HCV.ForArt.jpg" height="250"></img>
+
+---
+
+# The coalescent
+<section data-state="coalescent-slide">
+    <div id="coalescent" class="fig-container"
+         data-fig-id="fig-coalescent"
+         data-file="coaltrace.html"
+         style="height:400px">
+    </div>
+    <small><small><a href="http://bedford.io/projects/coaltrace/">coaltrace</a> by Trevor Bedford</small></small>
+</section>
 
 ---
 
