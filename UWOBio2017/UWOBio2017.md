@@ -6,7 +6,7 @@ Department of Pathology & Laboratory Medicine; Microbiology & Immunology; Applie
 
 ---
 
-![](/img/zoology-huts.jpg)
+![](/img/zoology-huts.png)
 
 ---
 
@@ -49,6 +49,15 @@ Department of Pathology & Laboratory Medicine; Microbiology & Immunology; Applie
 
 * (+)ss-RNA virus causing liver cancer
 * over 71 million people with chronic infection, killing about 400,000 every year
+* clustered into six major clades
+
+---
+
+<section class="fig-container"
+        data-fig-id="fig-phylo"
+        data-file="phylo.html">
+</section>
+
 
 ---
 
