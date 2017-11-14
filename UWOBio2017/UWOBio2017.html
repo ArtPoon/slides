@@ -35,6 +35,7 @@
 
         <script src="/reveal.js/lib/js/head.min.js"></script>
         <script src="/reveal.js/js/reveal.js"></script>
+        <script src="js/jquery.min.js"></script>
 
         <script>
             // More info https://github.com/hakimel/reveal.js#configuration
@@ -51,12 +52,20 @@
                     { src: '/reveal.js/plugin/notes/notes.js', async: true },
                     { src: '/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
                     { src: '/reveal.js/plugin/math/math.js', async: true },
-                    { src: 'https://d3js.org/d3.v4.min.js' },
+                    { src: 'js/d3.v4.min.js' },
+                    { src: '/reveal.js/plugin/d3/d3.v3.min.js' },
                     { src: 'js/d3js.js' }
                 ]
             });
         </script>
-       
+        <script>
+            Reveal.addEventListener( 'tree', function() {    
+                // reload frame when we reach this slide
+                if (document.getElementById('fig-phylo') != null) {
+                    document.getElementById('fig-phylo').src = document.getElementById('fig-phylo').src;
+                }
+            });
+        </script>
     </body>
 </html>
 

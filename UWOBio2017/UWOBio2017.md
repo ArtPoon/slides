@@ -1,4 +1,4 @@
-# The Phylogeneticist<br/> On Call:
+# The Phylogeneticist On Call:
 ## How trees shaped health policy and stopped an outbreak
 ### Art Poon
 Department of Pathology & Laboratory Medicine; Microbiology & Immunology; Applied Mathematics
@@ -50,23 +50,24 @@ Department of Pathology & Laboratory Medicine; Microbiology & Immunology; Applie
 * (+)ss-RNA virus causing liver cancer
 * over 71 million people with chronic infection, killing about 400,000 every year
 * clustered into six major clades
+* ancient origin 
 
 
 ---
 
-
-  <div class="fig-container"
+<section data-state="tree">
+  <div id="tree" class="fig-container"
        data-fig-id="fig-phylo"
        data-file="phylo.html"
        style="height:700px"></div>
-
+</section>
 
 ---
 
 
 # HCV and Simeprevir
 
-
+<img src="/img/Simeprevir.svg" width="200">
 
 ---
 
