@@ -51,12 +51,14 @@ Department of Pathology & Laboratory Medicine; Microbiology & Immunology; Applie
 * over 71 million people with chronic infection, killing about 400,000 every year
 * clustered into six major clades
 
+
 ---
 
-<section class="fig-container"
-        data-fig-id="fig-phylo"
-        data-file="phylo.html">
-</section>
+
+  <div class="fig-container"
+       data-fig-id="fig-phylo"
+       data-file="phylo.html"
+       style="height:700px"></div>
 
 
 ---
