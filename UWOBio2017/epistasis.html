@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<body>
+<!-- <script src="js/d3.v4.min.js"></script> -->
+<script src="js/d3.v3.min.js"></script>
+
+<script>
+    var w = 960,  // width
+        h = 700;  // height
+    var svg = d3.select("body").append("div").append("svg")
+        // Scalable svg 
+        .attr('viewBox','0 0 ' + w + ' ' + h)
+        .attr('preserveAspectRatio','xMidYMid meet')
+        .style("width", '98%')
+        .style("height", '98%')
+        .style("display", "block")
+        .style("position", "absolute");
+    
+    var data = {
+        "nodes": [
+            {},
+            {}
+        ],
+        "lines": [
+        ]};
+      
+    
+    svg.append("circle")
+       .style("stroke", "black")
+       .attr("r", 40)
+       .attr("cx", 50)
+       .attr("cy", 50);
+</script>
+
