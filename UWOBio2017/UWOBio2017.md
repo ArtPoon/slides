@@ -67,6 +67,7 @@ Department of Pathology & Laboratory Medicine; Microbiology & Immunology; Applie
 
 * (+)ss-RNA virus causing liver cancer
 * over 71 million people with chronic infection, killing about 400,000 every year
+* the leading reason for liver transplantation
 * ancient origin
 * clustered into six major clades
 
@@ -112,11 +113,11 @@ Department of Pathology & Laboratory Medicine; Microbiology & Immunology; Applie
 ---
 
 # An evolutionary history of drug resistance
-## A phylogeny of Q80K (n=724)
+## A phylogeny of Q80K
 
 ![](/img/q80k.png)
 
-<small>Adapted from McCloskey <i>et al.</i> 2014, J Virol</small>
+<small>Adapted from McCloskey <i>et al.</i> 2014, J Virol; <i>n</i>=724 sequences</small>
 
 ---
 
@@ -204,13 +205,14 @@ Department of Pathology & Laboratory Medicine; Microbiology & Immunology; Applie
 ---
 
 # Baby boomers and HCV
-## Reconstructing population dynamics
+## Reconstructing epidemic histories
 
 ![](/img/coalescent-exponential.svg)
 
 ---
 
-<img src="/img/HCV-Joy.png" height="600">
+# Baby boomers and HCV
+<img src="/img/HCV-Joy.png" height="550">
 
 ---
 
@@ -250,7 +252,7 @@ Department of Pathology & Laboratory Medicine; Microbiology & Immunology; Applie
 # Detecting outbreaks
 ## Saskatchewan, Canada
 
-![](/img/saskatchewan.jpg)
+<img src="/img/saskatchewan.jpg" width="600"/>
 <small>CBC News, June 2015</small>
 
 ---
@@ -258,7 +260,7 @@ Department of Pathology & Laboratory Medicine; Microbiology & Immunology; Applie
 # Detecting outbreaks
 ## London, Ontario
 
-<img src="/img/london-outbreak.jpeg" width="600"/>
+<img src="/img/london-outbreak-no-ad.jpg" width="600"/>
 
 ---
 
@@ -266,13 +268,26 @@ Department of Pathology & Laboratory Medicine; Microbiology & Immunology; Applie
 ## What is an outbreak?
 
 * A group of infections that are clustered in space and/or time 
-* Implies a common source
-* May represent the most effective targets for public health intervention
+* Clustering implies a common source
+* Clusters may represent the most effective targets for public health intervention
 
 ---
 
+# Detecting outbreaks
+## Defining genetic clusters
 
-<img src="/img/lancet-fig4.png" height="600">
+* A genetic cluster is a group of sequences that are more similar to each other than the rest of the sample population
+* We can measure similarity with a genetic distance function, or within a phylogeny
+* Clusters are often visualized with network diagrams - *not the same as a contact network!*
+
+---
+
+<section data-state="cluster">
+  <div id="cluster" class="fig-container"
+       data-fig-id="fig-cluster"
+       data-file="cluster55.html"
+       style="height:700px"></div>
+</section>
 
 ---
 
