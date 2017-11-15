@@ -122,16 +122,31 @@ Department of Pathology & Laboratory Medicine; Microbiology & Immunology; Applie
     <div id="coalescent" class="fig-container"
          data-fig-id="fig-coalescent"
          data-file="coaltrace.html"
-         style="height:400px">
+         style="height:450px">
     </div>
     <small><small><a href="http://bedford.io/projects/coaltrace/">coaltrace</a> by Trevor Bedford</small></small>
 </section>
 
 ---
 
+# Reconstructing population dynamics
+
+![](/img/coalescent-exponential.svg)
+
+---
+
 <img src="/img/HCV-Joy.png" height="600">
 
 ---
+
+<img src="/img/cbc-1060.jpg" height="600">
+
+---
+
+# Genetic clustering
+
+---
+
 
 <img src="/img/lancet-fig4.png" height="650">
 
