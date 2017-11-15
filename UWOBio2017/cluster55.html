@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<body>
+<!-- <script src="js/d3.v4.min.js"></script> -->
+<script src="js/d3.v3.min.js"></script>
+
+<script>
+    var w = 960,  // width
+        h = 700;  // height
+    
+    var _transitions = [],
+        _inverse_transitions = [];
+    
+    var data = {
+        "nodes": [
+            {"id":"0", "group":"0", "geno":"R", "r":0.134208},
+            {"id":"1", "group":"0", "geno":"R", "r":0.190607},
+            {"id":"2", "group":"0", "geno":"S", "r":0.05},
+            {"id":"3", "group":"1", "geno":"S", "r":0.30825},
+            {"id":"4", "group":"1", "geno":"R", "r":0.243747},
+            {"id":"5", "group":"0", "geno":"S", "r":0.05},
+            {"id":"6", "group":"1", "geno":"R", "r":0.150859},
+            {"id":"7", "group":"0", "geno":"R", "r":0.05},
+            {"id":"8", "group":"0", "geno":"S", "r":0.05},
+            {"id":"9", "group":"0", "geno":"S", "r":0.05},
+            {"id":"10", "group":"1", "geno":"R", "r":0.226749},
+            {"id":"11", "group":"0", "geno":"S", "r":0.05},
+            {"id":"12", "group":"0", "geno":"R", "r":0.05},
+            {"id":"13", "group":"0", "geno":"R", "r":0.05},
+            {"id":"14", "group":"0", "geno":"S", "r":0.199302},
+            {"id":"15", "group":"0", "geno":"S", "r":0.05},
+            {"id":"16", "group":"0", "geno":"S", "r":0.05},
+            {"id":"17", "group":"0", "geno":"S", "r":0.05},
+            {"id":"18", "group":"1", "geno":"R", "r":0.241204},
+            {"id":"19", "group":"1", "geno":"S", "r":0.187664},
+            {"id":"20", "group":"0", "geno":"S", "r":0.05},
+            {"id":"21", "group":"0", "geno":"S", "r":0.05},
+            {"id":"22", "group":"1", "geno":"R", "r":0.259214},
+            {"id":"23", "group":"0", "geno":"R", "r":0.05},
+            {"id":"24", "group":"0", "geno":"R", "r":0.265557},
+            {"id":"25", "group":"1", "geno":"R", "r":0.211895},
+            {"id":"26", "group":"0", "geno":"S", "r":0.05},
+            {"id":"27", "group":"1", "geno":"S", "r":0.331881},
+            {"id":"28", "group":"0", "geno":"S", "r":0.05},
+            {"id":"29", "group":"0", "geno":"R", "r":0.05},
+            {"id":"30", "group":"0", "geno":"S", "r":0.05},
+            {"id":"31", "group":"1", "geno":"R", "r":0.281104},
+            {"id":"32", "group":"0", "geno":"R", "r":0.05},
+            {"id":"33", "group":"0", "geno":"R", "r":0.05},
+            {"id":"34", "group":"0", "geno":"S", "r":0.261599},
+            {"id":"35", "group":"1", "geno":"R", "r":0.176038}
+        ],
+        "links":[
+            {"source":14, "target":30, "dist":0.237}, {"source":1, "target":2, "dist":0.703}, {"source":20, "target":33, "dist":0.6175}, {"source":31, "target":35, "dist":0.398}, {"source":22, "target":25, "dist":0.442}, {"source":4, "target":10, "dist":0.3815}, {"source":33, "target":25, "dist":0.7025}, {"source":24, "target":0, "dist":0.5245}, {"source":1, "target":29, "dist":0.467}, {"source":32, "target":13, "dist":0.4885}, {"source":17, "target":27, "dist":0.9705}, {"source":24, "target":33, "dist":0.7125}, {"source":33, "target":0, "dist":0.343}, {"source":1, "target":4, "dist":0.6695}, {"source":7, "target":22, "dist":1.048}, {"source":3, "target":6, "dist":0.8165}, {"source":20, "target":0, "dist":0.5395}, {"source":20, "target":22, "dist":0.849}, {"source":25, "target":23, "dist":0.4885}, {"source":9, "target":35, "dist":0.431}, {"source":29, "target":10, "dist":0.703}, {"source":7, "target":23, "dist":0.7645}, {"source":13, "target":6, "dist":0.4925}, {"source":29, "target":5, "dist":1.0725}, {"source":0, "target":31, "dist":0.249}, {"source":0, "target":11, "dist":0.944}, {"source":4, "target":2, "dist":0.5015}, {"source":33, "target":6, "dist":0.7515}, {"source":31, "target":5, "dist":0.9785}, {"source":7, "target":9, "dist":0.972}, {"source":1, "target":31, "dist":0.373}, {"source":1, "target":11, "dist":1.068}, {"source":7, "target":35, "dist":0.8875}, {"source":32, "target":23, "dist":0.41}, {"source":23, "target":28, "dist":0.3945}, {"source":24, "target":9, "dist":0.6515}, {"source":7, "target":12, "dist":0.711}, {"source":0, "target":6, "dist":0.5635}, {"source":2, "target":35, "dist":0.452}, {"source":1, "target":6, "dist":0.8295}, {"source":24, "target":35, "dist":0.3755}, {"source":18, "target":10, "dist":0.66}, {"source":22, "target":2, "dist":0.5625}, {"source":22, "target":9, "dist":0.5415}, {"source":7, "target":13, "dist":0.8995}, {"source":7, "target":25, "dist":1.098}, {"source":4, "target":13, "dist":0.4305}, {"source":3, "target":32, "dist":0.7025}, {"source":33, "target":13, "dist":0.516}, {"source":23, "target":5, "dist":1.0205}, {"source":0, "target":28, "dist":0.3}, {"source":25, "target":28, "dist":0.6595}, {"source":11, "target":5, "dist":0.4385}, {"source":18, "target":22, "dist":0.6095}, {"source":17, "target":12, "dist":1.067}, {"source":1, "target":21, "dist":1.0035}, {"source":29, "target":3, "dist":0.73}, {"source":18, "target":28, "dist":0.335}, {"source":23, "target":35, "dist":0.278}, {"source":10, "target":2, "dist":0.613}, {"source":4, "target":6, "dist":0.678}, {"source":9, "target":31, "dist":0.51}, {"source":8, "target":5, "dist":0.7355}, {"source":22, "target":32, "dist":0.625}, {"source":2, "target":25, "dist":0.6125}, {"source":3, "target":28, "dist":0.687}, {"source":30, "target":27, "dist":0.5365}, {"source":31, "target":11, "dist":0.928}, {"source":8, "target":30, "dist":0.2095}, {"source":2, "target":31, "dist":0.531}, {"source":26, "target":20, "dist":0.9295}, {"source":25, "target":6, "dist":0.789}, {"source":31, "target":25, "dist":0.6085}, {"source":1, "target":33, "dist":0.467}, {"source":33, "target":35, "dist":0.492}, {"source":29, "target":35, "dist":0.4645}, {"source":1, "target":35, "dist":0.57}, {"source":17, "target":5, "dist":0.364}, {"source":33, "target":12, "dist":0.3155}, {"source":24, "target":10, "dist":0.7505}, {"source":18, "target":31, "dist":0.206}, {"source":12, "target":35, "dist":0.3315}, {"source":18, "target":23, "dist":0.326}, {"source":29, "target":28, "dist":0.378}, {"source":10, "target":31, "dist":0.609}, {"source":12, "target":31, "dist":0.2215}, {"source":0, "target":25, "dist":0.5145}, {"source":8, "target":20, "dist":1.0395}, {"source":9, "target":6, "dist":0.663}, {"source":27, "target":5, "dist":0.8705}, {"source":20, "target":5, "dist":0.793}, {"source":7, "target":5, "dist":0.727}, {"source":12, "target":25, "dist":0.542}, {"source":22, "target":6, "dist":0.739}, {"source":25, "target":13, "dist":0.5535}, {"source":26, "target":11, "dist":0.342}, {"source":1, "target":9, "dist":0.6545}, {"source":32, "target":35, "dist":0.4645}, {"source":1, "target":18, "dist":0.424}, {"source":11, "target":35, "dist":1.093}, {"source":18, "target":2, "dist":0.582}, {"source":7, "target":26, "dist":0.8635}, {"source":1, "target":12, "dist":0.3065}, {"source":29, "target":0, "dist":0.343}, {"source":29, "target":9, "dist":0.604}, {"source":8, "target":11, "dist":0.452}, {"source":29, "target":23, "dist":0.4375}, {"source":24, "target":29, "dist":0.7125}, {"source":16, "target":21, "dist":0.5765}, {"source":12, "target":2, "dist":0.4645}, {"source":1, "target":24, "dist":0.7905}, {"source":10, "target":35, "dist":0.53}, {"source":31, "target":28, "dist":0.284}, {"source":7, "target":30, "dist":0.836}, {"source":1, "target":20, "dist":0.6635}, {"source":3, "target":9, "dist":0.3085}, {"source":32, "target":5, "dist":1.045}, {"source":20, "target":10, "dist":0.8995}, {"source":0, "target":2, "dist":0.437}, {"source":12, "target":6, "dist":0.591}, {"source":7, "target":18, "dist":0.7735}, {"source":31, "target":23, "dist":0.3435}, {"source":8, "target":17, "dist":0.7525}, {"source":2, "target":13, "dist":0.464}, {"source":14, "target":23, "dist":1.0475}, {"source":24, "target":31, "dist":0.6185}, {"source":20, "target":3, "dist":0.9265}, {"source":7, "target":1, "dist":0.8625}, {"source":14, "target":5, "dist":0.516}, {"source":18, "target":9, "dist":0.561}, {"source":0, "target":14, "dist":1.0215}, {"source":3, "target":31, "dist":0.636}, {"source":30, "target":11, "dist":0.3145}, {"source":31, "target":6, "dist":0.6575}, {"source":24, "target":13, "dist":0.4535}, {"source":4, "target":9, "dist":0.453}, {"source":9, "target":13, "dist":0.443}, {"source":19, "target":21, "dist":1.027}, {"source":0, "target":9, "dist":0.3885}, {"source":7, "target":33, "dist":0.8165}, {"source":33, "target":4, "dist":0.5915}, {"source":1, "target":8, "dist":0.975}, {"source":3, "target":2, "dist":0.505}, {"source":22, "target":13, "dist":0.5035}, {"source":20, "target":4, "dist":0.788}, {"source":1, "target":30, "dist":0.8375}, {"source":1, "target":3, "dist":0.808}, {"source":7, "target":4, "dist":0.987}, {"source":31, "target":13, "dist":0.422}, {"source":14, "target":11, "dist":0.2325}, {"source":33, "target":11, "dist":1.022}, {"source":29, "target":18, "dist":0.222}, {"source":20, "target":30, "dist":0.902}, {"source":4, "target":25, "dist":0.381}, {"source":9, "target":32, "dist":0.5765}, {"source":7, "target":11, "dist":0.6765}, {"source":24, "target":28, "dist":0.6695}, {"source":12, "target":11, "dist":0.9165}, {"source":10, "target":6, "dist":0.7895}, {"source":28, "target":13, "dist":0.473}, {"source":28, "target":5, "dist":0.8725}, {"source":33, "target":5, "dist":1.0725}, {"source":0, "target":13, "dist":0.316}, {"source":14, "target":27, "dist":0.5095}, {"source":32, "target":11, "dist":0.9945}, {"source":29, "target":6, "dist":0.7515}, {"source":20, "target":2, "dist":0.8215}, {"source":2, "target":32, "dist":0.5975}, {"source":20, "target":11, "dist":0.7425}, {"source":10, "target":23, "dist":0.489}, {"source":18, "target":14, "dist":1.0565}, {"source":20, "target":9, "dist":0.8005}, {"source":7, "target":32, "dist":0.789}, {"source":9, "target":23, "dist":0.3625}, {"source":29, "target":11, "dist":1.022}, {"source":29, "target":14, "dist":1.0995}, {"source":1, "target":14, "dist":0.7555}, {"source":30, "target":28, "dist":0.9815}, {"source":10, "target":13, "dist":0.542}, {"source":22, "target":23, "dist":0.4385}, {"source":0, "target":22, "dist":0.4645}, {"source":1, "target":25, "dist":0.7805}, {"source":26, "target":27, "dist":0.564}, {"source":12, "target":23, "dist":0.2085}, {"source":9, "target":28, "dist":0.561}, {"source":24, "target":12, "dist":0.552}, {"source":17, "target":31, "dist":1.0785}, {"source":20, "target":13, "dist":0.7125}, {"source":17, "target":11, "dist":0.5385}, {"source":20, "target":35, "dist":0.6885}, {"source":22, "target":28, "dist":0.6095}, {"source":10, "target":9, "dist":0.592}, {"source":24, "target":4, "dist":0.639}, {"source":18, "target":25, "dist":0.6595}, {"source":2, "target":6, "dist":0.7115}, {"source":23, "target":11, "dist":0.97}, {"source":12, "target":0, "dist":0.1825}, {"source":26, "target":8, "dist":0.182}, {"source":1, "target":32, "dist":0.4395}, {"source":24, "target":18, "dist":0.6695}, {"source":7, "target":28, "dist":0.6165}, {"source":25, "target":35, "dist":0.5295}, {"source":18, "target":0, "dist":0.3}, {"source":34, "target":21, "dist":0.408}, {"source":33, "target":2, "dist":0.625}, {"source":11, "target":28, "dist":0.822}, {"source":3, "target":25, "dist":0.7175}, {"source":10, "target":28, "dist":0.66}, {"source":17, "target":28, "dist":0.9725}, {"source":34, "target":15, "dist":1.0215}, {"source":32, "target":28, "dist":0.3505}, {"source":3, "target":12, "dist":0.5695}, {"source":28, "target":6, "dist":0.7085}, {"source":18, "target":6, "dist":0.7085}, {"source":18, "target":32, "dist":0.1945}, {"source":23, "target":6, "dist":0.5375}, {"source":1, "target":5, "dist":0.7285}, {"source":3, "target":13, "dist":0.569}, {"source":30, "target":5, "dist":0.598}, {"source":28, "target":35, "dist":0.449}, {"source":7, "target":2, "dist":1.0205}, {"source":18, "target":3, "dist":0.687}, {"source":12, "target":9, "dist":0.416}, {"source":14, "target":31, "dist":1.0055}, {"source":31, "target":30, "dist":1.06}, {"source":33, "target":10, "dist":0.703}, {"source":18, "target":5, "dist":1.0295}, {"source":10, "target":32, "dist":0.6755}, {"source":24, "target":32, "dist":0.685}, {"source":18, "target":13, "dist":0.473}, {"source":20, "target":23, "dist":0.5655}, {"source":32, "target":6, "dist":0.724}, {"source":26, "target":28, "dist":1.009}, {"source":12, "target":4, "dist":0.431}, {"source":31, "target":32, "dist":0.2215}, {"source":33, "target":22, "dist":0.6525}, {"source":29, "target":25, "dist":0.7025}, {"source":1, "target":26, "dist":0.865}, {"source":0, "target":10, "dist":0.515}, {"source":0, "target":5, "dist":0.9945}, {"source":1, "target":34, "dist":1.0755}, {"source":33, "target":28, "dist":0.378}, {"source":7, "target":29, "dist":0.8165}, {"source":7, "target":0, "dist":0.7385}, {"source":29, "target":12, "dist":0.3155}, {"source":10, "target":25, "dist":0.1545}, {"source":8, "target":14, "dist":0.3745}, {"source":26, "target":30, "dist":0.1825}, {"source":1, "target":17, "dist":0.8285}, {"source":18, "target":20, "dist":0.5745}, {"source":2, "target":23, "dist":0.411}, {"source":24, "target":20, "dist":0.909}, {"source":0, "target":23, "dist":0.181}, {"source":4, "target":23, "dist":0.3775}, {"source":4, "target":31, "dist":0.4975}, {"source":7, "target":10, "dist":1.0985}, {"source":18, "target":35, "dist":0.449}, {"source":7, "target":31, "dist":0.7225}, {"source":20, "target":12, "dist":0.512}, {"source":18, "target":33, "dist":0.222}, {"source":20, "target":31, "dist":0.5235}, {"source":18, "target":12, "dist":0.2725}, {"source":33, "target":31, "dist":0.249}, {"source":33, "target":23, "dist":0.4375}, {"source":20, "target":25, "dist":0.899}, {"source":17, "target":20, "dist":0.893}, {"source":15, "target":21, "dist":0.9495}, {"source":10, "target":22, "dist":0.4425}, {"source":3, "target":4, "dist":0.6065}, {"source":1, "target":13, "dist":0.582}, {"source":3, "target":35, "dist":0.557}, {"source":24, "target":25, "dist":0.75}, {"source":7, "target":8, "dist":0.9735}, {"source":3, "target":23, "dist":0.516}, {"source":26, "target":5, "dist":0.6255}, {"source":24, "target":22, "dist":0.7}, {"source":2, "target":28, "dist":0.582}, {"source":4, "target":28, "dist":0.5485}, {"source":19, "target":34, "dist":1.099}, {"source":3, "target":22, "dist":0.6675}, {"source":4, "target":22, "dist":0.277}, {"source":29, "target":20, "dist":0.6175}, {"source":29, "target":13, "dist":0.516}, {"source":17, "target":14, "dist":0.616}, {"source":22, "target":35, "dist":0.4795}, {"source":0, "target":32, "dist":0.3155}, {"source":0, "target":35, "dist":0.304}, {"source":24, "target":2, "dist":0.6725}, {"source":20, "target":32, "dist":0.59}, {"source":4, "target":32, "dist":0.564}, {"source":3, "target":33, "dist":0.73}, {"source":35, "target":6, "dist":0.4145}, {"source":0, "target":4, "dist":0.4035}, {"source":20, "target":14, "dist":0.82}, {"source":12, "target":30, "dist":1.076}, {"source":7, "target":14, "dist":0.754}, {"source":1, "target":0, "dist":0.279}, {"source":2, "target":9, "dist":0.3515}, {"source":25, "target":32, "dist":0.675}, {"source":4, "target":35, "dist":0.4185}, {"source":12, "target":10, "dist":0.5425}, {"source":9, "target":25, "dist":0.5915}, {"source":7, "target":17, "dist":0.827}, {"source":20, "target":6, "dist":0.948}, {"source":14, "target":32, "dist":1.072}, {"source":1, "target":22, "dist":0.7305}, {"source":33, "target":9, "dist":0.604}, {"source":12, "target":5, "dist":0.967}, {"source":17, "target":0, "dist":1.0945}, {"source":29, "target":22, "dist":0.6525}, {"source":17, "target":30, "dist":0.698}, {"source":12, "target":13, "dist":0.3435}, {"source":1, "target":10, "dist":0.781}, {"source":18, "target":4, "dist":0.5485}, {"source":1, "target":28, "dist":0.424}, {"source":16, "target":34, "dist":0.4585}, {"source":29, "target":4, "dist":0.5915}, {"source":20, "target":28, "dist":0.4175}, {"source":29, "target":32, "dist":0.1825}, {"source":12, "target":22, "dist":0.492}, {"source":18, "target":11, "dist":0.979}, {"source":29, "target":33, "dist":0.1825}, {"source":12, "target":28, "dist":0.2725}, {"source":14, "target":28, "dist":0.8995}, {"source":29, "target":2, "dist":0.625}, {"source":22, "target":31, "dist":0.5585}, {"source":23, "target":13, "dist":0.29}, {"source":26, "target":17, "dist":0.7255}, {"source":8, "target":27, "dist":0.674}, {"source":29, "target":31, "dist":0.249}, {"source":26, "target":14, "dist":0.2645}, {"source":24, "target":3, "dist":0.7775}, {"source":3, "target":10, "dist":0.718}, {"source":33, "target":14, "dist":1.0995}, {"source":1, "target":23, "dist":0.447}, {"source":12, "target":14, "dist":0.994}, {"source":35, "target":13, "dist":0.221}, {"source":33, "target":32, "dist":0.1825}, {"source":27, "target":11, "dist":0.587}, {"source":24, "target":6, "dist":0.297}, {"source":12, "target":32, "dist":0.288}, {"source":24, "target":23, "dist":0.4985}, {"source":3, "target":0, "dist":0.542}
+        ]
+    };
+    
+    
+
+    var vis = d3.select("body").append("div").append("svg")
+        // Scalable svg 
+        .attr('viewBox','0 0 ' + w + ' ' + h)
+        .attr('preserveAspectRatio','xMidYMid meet')
+        .style("width", '98%')
+        .style("height", '98%')
+        .style("display", "block")
+        .style("position", "absolute");
+    
+    // position linked nodes using physical simulation
+    var force = d3.layout.force()
+        .charge(-500)
+        .nodes(data.nodes)
+        .linkDistance(function(d) { return 200*d.dist; })
+        .links(data.links)
+        .size([w, h])
+        .start();  // starts the simulation
+
+    var link = vis.selectAll(".link")
+        .data(data.links)
+        .enter().append("line")
+        .attr("class", "link")
+        .attr("stroke-width", 2)
+        .attr("stroke", "#aaa")
+        /*.attr("visibility", function(d) { 
+            return (d.source.group==="0" & d.target.group==="0") ? "visible" : "hidden";
+        })*/
+        .attr("x1", function(d) { return d.source.x; })
+        .attr("y1", function(d) { return d.source.y; })
+        .attr("x2", function(d) { return d.target.x; })
+        .attr("y2", function(d) { return d.target.y; });
+    
+    
+    var drag = force.drag()
+        .on("dragstart", dragstart);
+        
+    var color = d3.scale.ordinal()
+        .domain(["S", "I", "R"])
+        .range(["#266A2E", "#FFA500", "#B22222"]);
+
+    var node = vis.selectAll("circle.node")
+        .data(data.nodes)
+        .enter().append("svg:circle")
+        .attr("class", "node")
+        .attr("title", function(d) { return d.id; })
+        .attr("cx", function(d) { return d.x; })
+        .attr("cy", function(d) { return d.y; })
+        .attr("r", function(d) { return 100*d.r; })
+        .style("stroke", "#fff")
+        .style("stroke-width", 1.5)
+        .style("fill", function(d) { return color(d.geno); })
+        //.style("visibility", function(d) { return d.group==="1" ? "hidden": "visible"; })
+        .call(drag);
+
+    var labels = vis.selectAll("text.label")
+        .data(data.nodes)
+        .enter().append("text")
+        .attr("class", "label")
+        .attr("fill", "black")
+        
+    
+    vis.style("opacity", 1e-6)
+       .transition()
+       .duration(1000)  // how long to animate cluster rendering
+       .style("opacity", 1);
+
+    // listen to updates in the computed layout positions
+    force.on("tick", function() {  // events dispatched for each tick of simulation
+        // update displayed positions of nodes and links
+        link.attr("x1", function(d) { return d.source.x; })
+            .attr("y1", function(d) { return d.source.y; })
+            .attr("x2", function(d) { return d.target.x; })
+            .attr("y2", function(d) { return d.target.y; });
+
+        node.attr("cx", function(d) { return d.x; })
+            .attr("cy", function(d) { return d.y; });
+    });
+    
+    function dragstart(d) {
+        console.log(d.id);
+        console.log(d.index);
+        //console.log('started');
+    }
+
+    _transitions.push(
+        () =>  {
+            data.nodes.push({"id":"3", "group":"0", "geno":"S", "r":0.30825});
+            force.restart();
+            console.log('transition');
+        }
+    );
+</script>
+
+</body>
+
+</html>
