@@ -10,21 +10,36 @@ Department of Pathology & Laboratory Medicine; Microbiology & Immunology; Applie
 
 ---
 
+
+
+<table><tr>
+  <td><img src="/img/128px-HyPhyLogo.png"/></td>
+  <td><img src="/img/logo.svg" width="250"/></td>
+</tr></table>
+<table><tr>
+  <td><img src="/img/400px-Datapanel.png" width="350"/></td>
+  <td><img src="/img/datamonkey.png" width="300"/></td>
+</tr></table>
+
+---
+
 ![](/img/st-paul-s-hub.jpg)
 <small>Photo credit: Rafferty Baker/CBC</small>
 
 ---
 
-# Viruses evolve rapidly
+# Background
+## Viruses evolve rapidly
 
-![](/img/virus-rates.png)
+<img src="/img/virus-rates.png" width="400"></img>
 <small>Data from Duchene et al. 2014, Proc Roy Soc 281.</small>
 
 ---
 
-# Phylogenetic trees
+# Background
+## Phylogenetic trees
 
-![](/img/phylogeny.png)
+<img src="/img/phylogeny.png" width="450"></img>
 
 ---
 
@@ -33,19 +48,22 @@ Department of Pathology & Laboratory Medicine; Microbiology & Immunology; Applie
 
 ---
 
-# Scaling trees in time
+# Background
+## Scaling trees in time
 
-![](/img/timetree.png)
-
----
-
-# Dating with tips
-
-![](/img/timetree-scaled.png)
+<img src="/img/timetree.png" width="700"></img>
 
 ---
 
-# Hepatitis C virus
+# Background
+## Dating with tips
+
+<img src="/img/timetree-scaled.png" width="500"></img>
+
+---
+
+# Background
+## Hepatitis C virus
 
 * (+)ss-RNA virus causing liver cancer
 * over 71 million people with chronic infection, killing about 400,000 every year
@@ -63,8 +81,8 @@ Department of Pathology & Laboratory Medicine; Microbiology & Immunology; Applie
 
 ---
 
-
-# HCV and Simeprevir
+# An evolutionary history of drug resistance
+## HCV and Simeprevir
 
 * Treatment with ribavirin, pegylated interferon was ineffective, bad side effects
 * Direct acting antivirals (DAAs) are capable of clearing HCV infection in over 90% of cases
@@ -73,31 +91,47 @@ Department of Pathology & Laboratory Medicine; Microbiology & Immunology; Applie
 
 ---
 
-# Q80K
+# An evolutionary history of drug resistance
+## Testing for Q80K
 
 * DAAs are more effective for some HCV genotypes (clades) than others
 * HCV 1a is the most prevalent in North America
 * Q80K mutation in HCV NS3 protease makes Simeprevir less effective
 * BC started to develop a genotype test for Q80K
-* Q80K was more frequent in North American than European 1a's - *why?*
 
 ---
 
-# A phylogeny of Q80K
+# An evolutionary history of drug resistance
+## Q80K in Europe
+
+* Clinical trials of Simeprevir were carried out in Europe
+* Growing suspicion that Q80K is far more common in North American than European 1a's - *why?*
+<img width="450" src="/img/1-s2.0-S0166354215000042-gr1.jpg"></img>
+<small><small>Figure from Sarazin <i>et al.</i> (2015) Antivir Res 116</small></small>
+
+---
+
+# An evolutionary history of drug resistance
+## A phylogeny of Q80K (n=724)
 
 ![](/img/q80k.png)
 
+<small>Adapted from McCloskey <i>et al.</i> 2014, J Virol</small>
+
 ---
 
-# Locking a mutation with epistasis
+# An evolutionary history of drug resistance
+## Locking a mutation with epistasis
 
 * Q80K is almost never seen any other HCV genotypes
 * Distribution in phylogeny suggests a peak shift
 
 ---
 
+# An evolutionary history of drug resistance
+## Q80K and S174N in a structural model of NS3
 <img src="/img/q80k-150dpi.png" height="500"></img>
-<small>Q80K and S174N in a structural model of NS3</small>
+
 
 ---
 
@@ -106,18 +140,58 @@ Department of Pathology & Laboratory Medicine; Microbiology & Immunology; Applie
 
 ---
 
-<img src="/img/nature11631-f2.2.jpg" height="600"></img>
+<!--<img src="/img/nature11631-f2.2.jpg" height="550"></img>-->
+<img src="/img/birds-LTT.png" width="500"></img>
 <small><small>Jetz, Thomas, Joy et al. 2012. Nature 491</small></small>
 
 ---
 
-# Diversification rates for HCV
-
-<img src="/img/HCV.ForArt.jpg" height="250"></img>
+  <img src="/img/HCV.LineagesBy.Geno.png" height="500"></img>
+  <!--<img src="/img/HCV.ForArt.jpg" height="250"></img>-->
 
 ---
 
-# The coalescent
+# Baby boomers and HCV
+## Context
+
+<img src="/img/GenHep.png" width="500"/>
+<img src="/img/poster-chalkboard8.5x11.jpg" width="500"/>
+
+---
+
+# Baby boomers and HCV
+## Costly treatments
+
+<table><tr>
+  <td><img src="/img/hep-side.jpg" width="200"/></td>
+  <td><img src="/img/MW-EJ779_prescr_20160407124302_NS.jpg" width="400"/></td>
+</tr></table>
+
+---
+
+# Baby boomers and HCV
+## Why is HCV so prevalent in baby boomers?
+
+* HCV infection can be asymptomatic for decades - most are unaware of their infection.
+* Experimenting with drugs, multiple sexual partners?
+* Who will pay for the cost of treatment?
+* When did they get infected?
+
+---
+
+# Baby boomers and HCV
+## Snail fever treatment campaign in Egypt
+
+* Egypt has the highest rate of HCV in the world (~30% of adults)
+* Nearly all infections by a single clade (genotype 4a)
+
+<img src="/img/egypt.svg">
+<small><small>Figure adapted from Stadler <i>et al.</i> (2013) Proc Natl Acad Sci USA 110</small></small>
+
+---
+
+# Baby boomers and HCV
+## The coalescent
 <section data-state="coalescent-slide">
     <div id="coalescent" class="fig-container"
          data-fig-id="fig-coalescent"
@@ -129,7 +203,8 @@ Department of Pathology & Laboratory Medicine; Microbiology & Immunology; Applie
 
 ---
 
-# Reconstructing population dynamics
+# Baby boomers and HCV
+## Reconstructing population dynamics
 
 ![](/img/coalescent-exponential.svg)
 
@@ -139,16 +214,65 @@ Department of Pathology & Laboratory Medicine; Microbiology & Immunology; Applie
 
 ---
 
-<img src="/img/cbc-1060.jpg" height="600">
+<img src="/img/media.jpg" height="600">
 
 ---
 
-# Genetic clustering
+# Detecting outbreaks
+<img src="/img/7521467_G.jpg"/>
+<small><small>Photo credit: WDRB News</small></small>
+
+---
+
+# Detecting outbreaks
+## HIV-1
+
+* HIV-1 crossed over multiple times from non-human primates
+* About 36.7 million people now living with HIV-1
+* Modern drug treatment can restore a normal life expentancy
+* Only about half of those living with HIV-1 receiving treatment
+* <b>Treatment is a life-long burden</b>
+<img src="/img/NAT_Stigma.jpg" width="300"/>
+
+---
+
+# Detecting outbreaks
+## Scott County, Indiana
+
+* From 2014-2015, there were <b>181 new cases</b> of HIV-1 infection in Scott County (population 24,181*)
+* Eventually linked to a network of injection drug users
+<img src="/img/nejmoa1515195_f3.jpeg" width="400"/>
+
+<small>* About the student population of Western</small>
+
+---
+
+# Detecting outbreaks
+## Saskatchewan, Canada
+
+![](/img/saskatchewan.jpg)
+<small>CBC News, June 2015</small>
+
+---
+
+# Detecting outbreaks
+## London, Ontario
+
+<img src="/img/london-outbreak.jpeg" width="600"/>
+
+---
+
+# Detecting outbreaks
+## What is an outbreak?
+
+* A group of infections that are clustered in space and/or time 
+* Implies a common source
+* May represent the most effective targets for public health intervention
 
 ---
 
 
-<img src="/img/lancet-fig4.png" height="650">
+<img src="/img/lancet-fig4.png" height="600">
 
 ---
 

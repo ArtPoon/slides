@@ -62,12 +62,15 @@ body {
   word-wrap: break-word; }
 
 .reveal h1 {
-  font-size: 1.8em;
-  font-weight: 900;}
+  font-size: 1.2em;
+  font-weight: 900;
+  line-height: 0.0;
+  }
 
 .reveal h2 {
-  font-size: 1.2em;
-color: #555;
+  font-size: 1.8em;
+  line-height: 1.1;
+  color: #555;
   }
 
 .reveal h3 {
