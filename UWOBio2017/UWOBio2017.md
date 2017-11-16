@@ -282,14 +282,42 @@ Department of Pathology & Laboratory Medicine; Microbiology & Immunology; Applie
 
 ---
 
+# Detecting outbreaks
 <section data-state="cluster">
   <div id="cluster" class="fig-container"
        data-fig-id="fig-cluster"
        data-file="cluster55.html"
-       style="height:700px"></div>
+       style="height:600px"></div>
+  <div id="c55label">Cluster 55</div>
 </section>
 
 ---
 
+# Detecting outbreaks
+## Follow-up on cluster 55
 
+<img src="/img/LancetFigure4a.png" width="800"/>
+<img src="/img/LancetFigure4b.png" width="300"/>
+
+---
+
+# Detecting outbreaks
+## Impact
+
+<table><tr>
+	<td width="500"><ul>
+		<li>NIH announces three funding opportunities to build "real-time HIV monitoring systems" in the United States.</li>
+		<li>Efforts to build similar systems in Australia, Uganda, Malaysia and others.</li>
+		<li>Controversy: data privacy and ethics</li>
+	</ul></td>
+	<td><img src="/img/lancet-hiv.jpg" width="350"></td>
+</tr></table>
+
+---
+
+# Why clustering doesn't work
+## Clustering is now a popular method in HIV
+
+![](/img/papers.png)
+<small>Google Scholar, search terms "HIV" and "transmission cluster"</small>
 
