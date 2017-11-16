@@ -124,15 +124,23 @@ Department of Pathology & Laboratory Medicine; Microbiology & Immunology; Applie
 # An evolutionary history of drug resistance
 ## Locking a mutation with epistasis
 
-* Q80K is almost never seen any other HCV genotypes
-* Distribution in phylogeny suggests a peak shift
+* Distribution of Q80K suggests a fitness peak shift:
+
+<table><tr>
+  <td><img src="/img/peakshift.jpg" width="300"/></td>
+  <td><img src="/img/q80k-s174n.png" height="300"/></td>
+  <td><img src="/img/q80k-150dpi.png" height="300"></img></td>
+</tr></table>
+
 
 ---
 
 # An evolutionary history of drug resistance
-## Q80K and S174N in a structural model of NS3
-<img src="/img/q80k-150dpi.png" height="500"></img>
+## What does this mean?
 
+* Q80K/S174N has been stably transmitted in North America for decades.
+* With rollout of Simeprevir, we should expect these mutations to sweep to fixation.
+* Drug companies now recommend prescribing Simeprevir in combination with a second drug (Sofosbuvir), about $150,000 per treatment
 
 ---
 
@@ -315,9 +323,81 @@ Department of Pathology & Laboratory Medicine; Microbiology & Immunology; Applie
 
 ---
 
-# Why clustering doesn't work
-## Clustering is now a popular method in HIV
+# Genetic clustering
+## Growing popularity in HIV
 
 ![](/img/papers.png)
 <small>Google Scholar, search terms "HIV" and "transmission cluster"</small>
+
+---
+
+# Genetic clustering
+## Do these methods actually work?
+
+* Methods for genetic clustering in HIV are *nonparametric*
+* How well does clustering work?  There are two reasons for genetic similarity:
+  1. A high transmission rate: less time between transmission events
+  2. A high sampling rate: less time until a new infection is sequenced
+  
+<img src="/img/clustering-clip.png" width="300"/>
+
+---
+
+# Genetic clustering
+## Evaluating methods on simulated epidemics
+
+<table><tr>
+<td><img src="/img/clustered-tree.svg" width="150"/></td>
+<td>![](/img/ROC.svg)</td>
+</tr></table>
+
+<small>Modified from McCloskey and Poon (2017) PLOS Comput Biol</small>
+
+---
+
+# Genetic clustering
+## Model changes in transmission rates
+* We created a new clustering method based on speciation/extinction models
+![](/img/model.svg)
+
+<small>Figure from McCloskey and Poon (2017) PLOS Comput Biol</small>
+
+---
+
+# Genetic clustering
+## Model-based clustering focuses on transmission 
+
+![](/img/ROC2.svg)
+
+<small>Figure from McCloskey and Poon (2017) PLOS Comput Biol</small>
+
+---
+
+# Conclusions
+
+* Moving between academic and medical worlds is challenging but also rewarding
+* Concepts and methods in evolutionary biology can have far-reaching impacts in healthcare
+
+
+
+---
+
+<center><b><big>Join us!</big></b></center>
+<img src="/img/poonlab.jpg" width="500"/>
+<table><tr>
+  <td><img src="/img/github-mark.svg" width="100"/></td>
+  <td style="vertical-align:middle"><span style="font-size: 300%; font-weight: 900">PoonLab</span></td>
+</tr></table>
+
+---
+
+# Funding
+
+<img src="/img/OGI_Logo2015.png" height="100"/>
+<img src="/img/GenomeCanadaLogo.png" height="100"/>
+<img src="/img/cihr.png"  height="150"/>
+
+</tr>
+</table>
+
 

@@ -315,7 +315,7 @@
                 }
             }
             keepNodesOnTop();
-            $("#c55label").text("2014 April - 2014 June");
+            //$("#c55label").text("2014 April - 2014 June");
         }
     );
     
@@ -346,7 +346,7 @@
                 }
             }
             keepNodesOnTop();
-            $("#c55label").text("2014 March");
+            //$("#c55label").text("2014 March");
         }
     );
     
@@ -375,14 +375,15 @@
             	graph.addLink("HLWHGTWTTA", targets[i], dists[i]);
             }
             keepNodesOnTop();
-            $("#c55label").text("2014 July - 2015 January");
+            //$("#c55label").text("2014 July - 2015 January");
         }
     )
     
     _inverse_transitions.push(
     	() => {
     		graph.removeNode("HLWHGTWTTA");  // should take care of the links too
-    		$("#c55label").text("2014 April - 2014 June");
+    		//$("#c55label").text("2014 April - 2014 June");
+    		keepNodesOnTop();
     	}
     );
     
