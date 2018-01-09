@@ -49,20 +49,6 @@ Department of Pathology & Laboratory Medicine; Microbiology & Immunology; Applie
 ---
 
 # Background
-## Scaling trees in time
-
-<img src="/img/timetree.png" width="700"></img>
-
----
-
-# Background
-## Dating with tips
-
-<img src="/img/timetree-scaled.png" width="500"></img>
-
----
-
-# Background
 ## Hepatitis C virus
 
 * (+)ss-RNA virus causing liver cancer
@@ -109,6 +95,20 @@ Department of Pathology & Laboratory Medicine; Microbiology & Immunology; Applie
 * Growing suspicion that Q80K is far more common in North American than European 1a's - *why?*
 <img width="450" src="/img/1-s2.0-S0166354215000042-gr1.jpg"></img>
 <small><small>Figure from Sarazin <i>et al.</i> (2015) Antivir Res 116</small></small>
+
+---
+
+# An evolutionary history of drug resistance
+## Scaling trees in time
+
+<img src="/img/timetree.png" width="700"></img>
+
+---
+
+# An evolutionary history of drug resistance
+## Dating with tips
+
+<img src="/img/timetree-scaled.png" width="500"></img>
 
 ---
 
