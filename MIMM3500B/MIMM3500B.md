@@ -25,12 +25,12 @@ Image by <a href="https://what-if.xkcd.com/80/">Randall Munroe</a>.
 # Why are some microbes pathogenic?
 
 <table><tr>
-  <td width="55%"><ul>
+  <td width="50%"><ul>
   <li>Pathogenicity: the capacity of a microbe to cause disease.</li>
   <li>Virulence* may be a evolutionary adaptation (horizontal vs. vertical transmission)</li>
   <li>Or is pathogenicity a maladaptation; a side-effect of spill-over from natural host species?</li>
   </ul></td>
-  <td><img src="/img/virulence.png" width="500px"/></td>
+  <td><img src="/img/virulence.png" width="600px"/></td>
 </tr></table>
 
 <small>* Degree of pathogenicity<br/>
@@ -60,6 +60,19 @@ Figure based on [infographic](https://informationisbeautiful.net/visualizations/
 
 ---
 
+# What drove this Ebola outbreak?
+
+* Past outbreaks associated with unusually dry conditions following the rainy season*
+* Close contact with potential host species (fruit bats), bushmeat; environmental disruption from development.
+* Dramatic population growth, urbanization in affected regions.
+* Sustained armed conflict from 1989 to 2004; massive numbers of displaced refugees<sup>&dagger;</sup>
+
+<small>
+\* Pinzon <i>et al.</i> (2004) Am J Trop Med Hyg 71: 664-674.<br/>
+&dagger; Alexander *et al.* (2015) PLOS Neglect Trop Dis 9(6): e0003652
+</small>
+
+---
 
 # Ebola virus outbreak in West Africa
 
@@ -68,32 +81,34 @@ Figure based on [infographic](https://informationisbeautiful.net/visualizations/
 
 ---
 
-# What drove this Ebola outbreak?
-
-* There have been several smaller outbreaks of Ebola virus in the past
-* Past outbreaks associated with unusually dry conditions following the rainy season*
-* 
-
-<small>* Pinzon <i>et al.</i> (2004) Am J Trop Med Hyg 71: 664-674.</small>
-
----
-
 # Reconstructing the past
-* We usually don't have samples from the start of an outbreak
 
+* Addressing these questions in a data-driven, quantitative framework.
+* We usually don't have samples from the start of an outbreak.
+* Use evolutionary methods to extrapolate from current genetic samples back in time.
 
 ---
 
 # Phylogenies
 
 * A phylogeny is a tree-based model of how populations are related by their common ancestors
+<img src="/img/phylogeny.png" width="500px"/>
 
 ---
 
-# Building trees
-
-* Models of evolution
-* Maximum likelihood
+<section data-state="markov-slide">
+    <h2>Modeling evolution</h2>
+    <ul>
+      <li>Change between nucleotide states at constant rates over time.</li>
+      <li>Enables us to calculate the likelihood of a tree from observed sequences.</li>
+    </ul>
+    <div id="markovchain" class="fig-container"
+         data-fig-id="fig-markov"
+         data-file="markov-chain.html"
+         style="height:300px">
+    </div>
+    <small><small>Animation adapted from <a href="http://setosa.io/blog/2014/07/26/markov-chains/index.html">Setosa blog</a> JavaScript</small></small>
+</section>
 
 ---
 
@@ -129,9 +144,9 @@ Figure based on [infographic](https://informationisbeautiful.net/visualizations/
 
 # Scaling trees in time
 
----
-
-# Root-to-tip regression
+<img src="/img/timetree.png" width=600px/>
+<hr>
+<img src="/img/timetree-scaled.png" width=400px/>
 
 ---
 
@@ -189,8 +204,8 @@ Figure based on [infographic](https://informationisbeautiful.net/visualizations/
 
 ---
 
-# The coalescent
 <section data-state="coalescent-slide">
+    <h1>The coalescent</h1>
     <div id="coalescent" class="fig-container"
          data-fig-id="fig-coalescent"
          data-file="coaltrace.html"
@@ -203,12 +218,39 @@ Figure based on [infographic](https://informationisbeautiful.net/visualizations/
 
 # Reconstructing epidemic growth
 
-* An exponentially-growing epidemic results in a different tree:
+* We can estimate how population size (number of infections) has changed over time.
+* *e.g.,* An exponentially-growing epidemic results in a different tree:
 
-<img src="/img/coalescent.png" width="600px"/>
+
+<img src="/img/coalescent.png" width="500px"/>
 
 ---
 
-# 
+# Hepatitis C virus in Egypt
+
+* About 15% of adult population infected by HCV genotype 4
+* Coalescent reconstructed found epidemic growth associated with massive public health campaign against snail fever.
+
+<img src="/img/egypt.svg"/>
+
+---
+
+# Hepatitis C virus in North America
+
+* HCV is highly prevalent in the "baby boomer" generation
+* Why?  Unsafe sex practices, experimenting with drugs?
+* Who will pay for new treatments that cost $10,000's of dollars?
+
+<img src="/img/poster-chalkboard8.5x11.jpg" width="300px"/>
+
+---
+
+<img src="/img/HCV-Joy.png" width="600px"/>
+
+<small>Figure from Joy *et al.* Lancet Inf Dis 16(6): 698-702.</small>
+
+---
+
+
 
 
