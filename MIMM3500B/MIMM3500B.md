@@ -30,13 +30,32 @@ Department of Pathology & Laboratory Medicine; Microbiology & Immunology; Applie
 # New (emerging) pathogens
 
 * HIV-1
-* Ebola virus
 * Zika virus
+* Ebola virus
+
+---
+
+
+# Ebola virus outbreak in West Africa
+
+<video data-autoplay data-src="/img/nature22040-sv1.mp4" type="video/mp4"></video>
+<small><small>Supplementary video, Dudas <i>et al.</i> 2017, Nature 544.</small></small>
+
+---
+
+# What drove this Ebola outbreak?
+
+* There have been several smaller outbreaks of Ebola virus in the past
+* Past outbreaks associated with unusually dry conditions following the rainy season*
+* 
+
+<small>* Pinzon <i>et al.</i> (2004) Am J Trop Med Hyg 71: 664-674.</small>
 
 ---
 
 # Reconstructing the past
-* We don't have samples 
+* We usually don't have samples from the start of an outbreak
+
 
 ---
 
@@ -127,20 +146,6 @@ Department of Pathology & Laboratory Medicine; Microbiology & Immunology; Applie
 
 ---
 
-# Ebola virus outbreak in West Africa
-
-<video data-autoplay data-src="/img/nature22040-sv1.mp4" type="video/mp4"></video>
-<small><small>Supplementary video, Dudas <i>et al.</i> 2017, Nature 544.</small></small>
-
----
-
-# What drove this Ebola outbreak?
-
-* There have been several smaller outbreaks of Ebola virus in the past
-* Past outbreaks associated with 
-
----
-
 # The coalescent
 
 <table>
@@ -178,5 +183,7 @@ Department of Pathology & Laboratory Medicine; Microbiology & Immunology; Applie
 <img src="/img/coalescent.png" width="600px"/>
 
 ---
+
+# 
 
 
