@@ -7,31 +7,56 @@ Department of Pathology & Laboratory Medicine; Microbiology & Immunology; Applie
 ---
 
 # Microbes are everywhere
-* Total biomass
-* Torque teno virus
+* Roughly half of the cells in your body are bacteria*
+* Probably about<sup>&dagger;</sup> as many viruses as cells (including bacteriophages)
+* Little known about single-celled eukaryotes
+* Herpes simplex virus infects about two-thirds of all people
+* New human viruses are constantly being discovered: *e.g.,* Torque teno virus, described in 1997, infects about 90% of all people
+
+![](/img/xkcd-viruses.png)
+
+<small>* Sender, Fuchs and Milo (2016) PLOS Biology 14: e1002533<br/>
+<sup>&dagger;</sup> give or take a few orders of magnitude<br/>
+Image by <a href="https://what-if.xkcd.com/80/">Randall Munroe</a>.
+</small>
 
 ---
 
 # Why are some microbes pathogenic?
-* Virulence
-* Zoonosis
-* Is pathogenesis a side-effect of spill-over from natural host species?
+
+<table><tr>
+  <td width="55%"><ul>
+  <li>Pathogenicity: the capacity of a microbe to cause disease.</li>
+  <li>Virulence* may be a evolutionary adaptation (horizontal vs. vertical transmission)</li>
+  <li>Or is pathogenicity a maladaptation; a side-effect of spill-over from natural host species?</li>
+  </ul></td>
+  <td><img src="/img/virulence.png" width="500px"/></td>
+</tr></table>
+
+<small>* Degree of pathogenicity<br/>
+Figure based on [infographic](https://informationisbeautiful.net/visualizations/the-microbescope-infectious-diseases-in-context/) by </small>
 
 ---
 
 # Old pathogens
 
-* Measles
-* Endogenous retroviruses
-* Origin of placentas
+* *Helicobacter pylori* in humans dates to roughly 100,000 years ago*
+* Endogenous retroviruses make up ~8% of human genome (exceeds protein-coding gene content!)
+* Origin of the placenta: capture of retrovirus envelope gene to induce formation of giant syncytia<sup>&dagger;</sup>
+
+<small>* Moodley *et al.* (2012) PLOS Pathog 8(5): e1002693<br/>
+&dagger; Mi *et al.* (2000) Nature 403: 785-789.</small>
+
 
 ---
 
 # New (emerging) pathogens
 
-* HIV-1
-* Zika virus
-* Ebola virus
+* HIV-1: origin about 1920 in central Africa
+* Zika virus: first isolated 1947 in east Africa
+* Ebola virus: first isolated in 1976, multiple introductions into human population
+<img src="/img/emergingID-world.png" width=700px/>
+<small>Image from [Understanding Emerging and Re-emerging Infectious Diseases](https://www.ncbi.nlm.nih.gov/books/NBK20370/), National Institutes of Health.</small>
 
 ---
 

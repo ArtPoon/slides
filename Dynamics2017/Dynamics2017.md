@@ -21,7 +21,7 @@
 * Variation in transmission rates 
 * Variation in rates of sampling
 
-<img src="villandre.PNG" width="50%">
+<img src="villandre.png" width="50%">
 
 <small>Figure from Villandre *et al* (2016) PLOS ONE 11(2): e0148459.</small>
 
@@ -30,7 +30,7 @@
 ## Simulation methods
 
 * Simulated trees (*MASTER* v5.0) under a SIR model with 2 subpopulations (*N*=9000 and 1000)
-  <img src="/cahr2017/model75.png" width="50%">
+  <img src="/CAHR2017/model75.png" width="50%">
 * Varied transmission and sampling rate of minority subpopulation
 * Simulated sequences with *INDELIBLE*, tuned to HIV-1 *pol* data
 
@@ -42,9 +42,9 @@
     <td width="50%"><ul>
     <li>4 scenarios (faster sampling and/or transmission)</li>
     <li>Faster sampling should shorten terminal branches</li>
-    ![](/cahr2017/short-tips.png)
+    ![](/CAHR2017/short-tips.png)
     <li>Faster transmission should shorten internal branches</li>
-    ![](/cahr2017/short-internals.png)
+    ![](/CAHR2017/short-internals.png)
     </ul>
     </td>
     <td>
@@ -56,7 +56,7 @@
 
 ## Example tree
 
-![](/cahr2017/color-tree-90.png)
+![](/CAHR2017/color-tree-90.png)
 
 Both transmission and sampling rates elevated in minority subpopulation (cyan).
 1000 tips.
@@ -77,7 +77,7 @@ Both transmission and sampling rates elevated in minority subpopulation (cyan).
 
 ---
 
-![](/cahr2017/ROC.png)
+![](/CAHR2017/ROC.png)
 
 <small>
 From Poon (2016) Virus Evol 2(2): vew031
@@ -97,7 +97,7 @@ From Poon (2016) Virus Evol 2(2): vew031
 
 * Let branching rate $\lambda$ switch between $K$ values along the tree as a Markov-modulated Poisson process (MMPP)
 
-<img src="/cahr2017/MMPP.png" width="75%">
+<img src="/CAHR2017/MMPP.png" width="75%">
 
 * Solve for maximum likelihood assignment of rates to branches with pruning algorithm
 
@@ -185,10 +185,10 @@ http://github.com/rmcclosk/netabc
     I'm supported by a CIHR New Investigator Award.
    <br/><br/>
    **Rosemary McCloskey** implemented the model in C and performed the initial model validation.
-   <img src="/cahr2017/rosemary_844-367.jpg" width="30%">
+   <img src="/CAHR2017/rosemary_844-367.jpg" width="30%">
   </td>
   <td>
-   <img src="/cahr2017/GenomeCanadaLogo.png" width="50%"> 
+   <img src="/CAHR2017/GenomeCanadaLogo.png" width="50%">
    <img src="/img/OGI_Logo2015.png" width="50%"> 
    <img src="/img/cihr.png" width="55%"> 
   </td>
