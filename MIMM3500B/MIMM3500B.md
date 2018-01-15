@@ -30,11 +30,19 @@ Image by <a href="https://what-if.xkcd.com/80/">Randall Munroe</a>.
   <li>Virulence* may be a evolutionary adaptation (horizontal vs. vertical transmission)</li>
   <li>Or is pathogenicity a maladaptation; a side-effect of spill-over from natural host species?</li>
   </ul></td>
-  <td><img src="/img/virulence.png" width="600px"/></td>
+  <td><img src="/img/virulence.png" width="650px"/></td>
 </tr></table>
 
 <small>* Degree of pathogenicity<br/>
-Figure based on [infographic](https://informationisbeautiful.net/visualizations/the-microbescope-infectious-diseases-in-context/) by </small>
+Figure based on [infographic](https://informationisbeautiful.net/visualizations/the-microbescope-infectious-diseases-in-context/) by David McCandless</small>
+
+---
+
+# Scenarios
+
+* Microbe becomes pathogenic as adaptive strategy
+* Microbe and host at stand-off until host becomes compromised (*S. aureus*)
+
 
 ---
 
@@ -60,7 +68,7 @@ Figure based on [infographic](https://informationisbeautiful.net/visualizations/
 
 ---
 
-# What drove this Ebola outbreak?
+# What drove the 2014 Ebola outbreak?
 
 * Past outbreaks associated with unusually dry conditions following the rainy season*
 * Close contact with potential host species (fruit bats), bushmeat; environmental disruption from development.
@@ -162,7 +170,7 @@ Figure based on [infographic](https://informationisbeautiful.net/visualizations/
 
 ---
 
-<img src="/img/worobey.png" width=600px></img>
+<img src="/img/worobey.png" width=700px></img>
 
 ---
 
@@ -196,7 +204,7 @@ Figure based on [infographic](https://informationisbeautiful.net/visualizations/
     <li>The coalescent model describes how far back in time we have to go until we reach the common ancestor of sampled lineages.</li>
   </ul></td>
   
-  <td><img src="/img/strengths_and_weaknesses.png"/></td>
+  <td><img src="/img/strengths_and_weaknesses.png" width="auto"/></td>
 </tr>
 </table>
 
@@ -233,6 +241,7 @@ Figure based on [infographic](https://informationisbeautiful.net/visualizations/
 
 <img src="/img/egypt.svg"/>
 
+
 ---
 
 # Hepatitis C virus in North America
@@ -241,11 +250,14 @@ Figure based on [infographic](https://informationisbeautiful.net/visualizations/
 * Why?  Unsafe sex practices, experimenting with drugs?
 * Who will pay for new treatments that cost $10,000's of dollars?
 
-<img src="/img/poster-chalkboard8.5x11.jpg" width="300px"/>
+<table><tr>
+  <td><img src="/img/poster-chalkboard8.5x11.jpg" width="300px"/></td>
+  <td><img src="/img/GenHep.png"/></td>
+</tr></table>
 
 ---
 
-<img src="/img/HCV-Joy.png" width="600px"/>
+<img src="/img/HCV-Joy.png" width="700px"/>
 
 <small>Figure from Joy *et al.* Lancet Inf Dis 16(6): 698-702.</small>
 
