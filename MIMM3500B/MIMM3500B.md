@@ -38,10 +38,12 @@ Figure based on [infographic](https://informationisbeautiful.net/visualizations/
 
 ---
 
-# Scenarios
+# Origin scenarios
 
-* Microbe becomes pathogenic as adaptive strategy
-* Microbe and host at stand-off until host becomes compromised (*S. aureus*)
+* Endemic microbe becomes pathogenic due to novel mutation(s).
+* Exposure to microbes from another host (*e.g.*, soil, bats).
+* Human modification of the environment, novel interactions between human and other species. Domestication of animals.
+<img src="/img/land_mammals.png" width="420px"/>
 
 
 ---
@@ -120,6 +122,15 @@ Figure based on [infographic](https://informationisbeautiful.net/visualizations/
 
 ---
 
+# Maximum likelihood
+
+* There are an enormous number of possible trees relating even a small number of species!
+* $3.35\times 10^{184}$ trees relating 100 tips.
+* Attempt to find the tree that maximizes the likelihood of the evolutionary model.
+* Many software programs for doing this: *e.g.,* RAxML, PhyML.
+
+---
+
 # Origins of HIV-1
 
 <img src="/img/HIV-tree.png" width=500px/>
@@ -149,6 +160,13 @@ Figure based on [infographic](https://informationisbeautiful.net/visualizations/
 
 ---
 
+# Timing origins
+
+* Learn about the origin of pathogens by determining *when* they originated, expanded.
+* Not much of a fossil record for viruses or bacteria.
+* Microbes evolve quickly - we can extrapolate to the past if we have samples from different points in time.
+
+---
 
 # Scaling trees in time
 
@@ -190,7 +208,17 @@ Figure based on [infographic](https://informationisbeautiful.net/visualizations/
 </tr>
 </table>
 
-<small><small>Figure from Faria *et al.* The early spread and epidemic ignition of HIV-1 in human populations</small></small>
+<small><small>Figure from Faria *et al.* The early spread and epidemic ignition of HIV-1 in human populations. Science 346: 56-51.</small></small>
+
+---
+
+# Origin of pathogens - increasing prevalence
+
+* An emerging infectious disease can be:
+  1. a disease that has not occurred in humans before, or;
+  2. a disease that had previously occurred only in small numbers, and in isolated sites.
+* How can we reconstruct the prevalence of a disease in recent human history?
+* Case records susceptible to sampling bias.
 
 ---
 
@@ -263,6 +291,28 @@ Figure based on [infographic](https://informationisbeautiful.net/visualizations/
 
 ---
 
+# Socioeconomic causes
 
+* Analysis suggests that most baby boomers became infected when they were infants, not as young adults
+* Shifts the health care burden from individuals to public agencies.
 
+<img src="/img/marginalized.png" width="650px"/>
+
+<small>Figure from Edlin (2011) Nature 474: 518-519.</small>
+
+---
+
+# Core concepts
+
+<small>
+<ul>
+<li>Many pathogen origins due to agriculture, urbanization.</li>
+<li>We can use phylogenies to reconstruct origins and epidemic expansion.</li>
+<li>There are enormous numbers of possible trees.</li>
+<li>HIV crossed over multiple times. </li>
+<li>Global pandemic did not originate from contaminated oral polio vaccine.</li>
+<li>HIV pandemic originated in Central Africa about 1920. </li>
+<li>The shape of a phylogeny contains information about past population growth (coalescent).</li>
+<li>HCV epidemics tend to originate from iatrogenic causes.</li>
+</small>
 
