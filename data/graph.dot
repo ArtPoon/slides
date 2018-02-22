@@ -1,0 +1,28 @@
+graph chain {
+    graph [dpi=300];
+    node [shape="circle" style="filled" fontname="Arial" penwidth=5 color="white" fillcolor="firebrick"];
+    A [fillcolor="#A6CEE3" width=0.485533];
+    B [fillcolor="#1F78B4" width=0.3540391];
+    C [fillcolor="#B2DF8A" width=0.4630063];
+    D [fillcolor="#33A02C" width=0.4410278];
+    E [fillcolor="#FB9A99" width=0.5889326];
+    F [fillcolor="#E31A1C" width=0.3005214 fontcolor="white"];
+    G [fillcolor="#FDBF6F" width=0.5765047];
+    H [fillcolor="#FF7F00" width=0.5549270];
+    I [fillcolor="#CAB2D6" width=0.4618656];
+    J [fillcolor="#6A3D9A" width=0.7230073 fontcolor="white"];
+    
+	I--H [dist=0.0135718];
+	H--G [dist=0.0186953];
+	G--F [dist=0.0178225];
+	G--E [dist=0.0169586];
+	F--E [dist=0.0160985];
+	E--D [dist=0.0118239];
+	E--C [dist=0.0152742];
+	E--B [dist=0.0135553];
+	E--A [dist=0.0178483];
+	D--B [dist=0.0187170];
+	C--B [dist=0.0118169];
+	C--A [dist=0.0178343];
+	B--A [dist=0.0127167];
+}
