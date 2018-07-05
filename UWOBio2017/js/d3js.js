@@ -80,12 +80,13 @@ var Reveald3js = window.Reveald3js || (function(){
             iframe = slide.querySelector('iframe') ||
                 Reveal.getSlideBackground(idx.h, idx.v).querySelector('iframe'),
             fig = (iframe.contentWindow || iframe.contentDocument);
-        try {
-            fig._transitions[fig._transition_state]();
-        } catch(e) {
-            console.log(fig._transitions);
-            console.log(fig._transition_state);
+        
+        if (fig._transition_state < 0) {
+        	console.log("fig._transition_state=", fig._transition_state);
+        	fig._transition_state = 0;
         }
+        fig._transitions[fig._transition_state]();        
+        
         fig._transition_state = fig._transition_state + 1;
     });
 
