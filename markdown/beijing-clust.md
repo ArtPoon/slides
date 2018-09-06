@@ -129,9 +129,18 @@ Spatial and Spatiotemporal Epidemiology 1(2-3): 105-116.
 
 # Clustering in real time
 
+<table>
+<tr>
+<td>
 * Abundant data accumulating at centers of HIV research and care
 * Routine genotyping HIV *pol* for drug resistance screening
 * With sufficient testing, it may be possible to monitor outbreaks in real time (Little *et al.* 2014).
+</td>
+<td>
+  <img src="/img/lancet-fig1.png"/>
+</td>
+</tr>
+</table>
 
 <small>Little *et al.* Using HIV networks to inform real time prevention interventions.  PLOS ONE 2014;9(6):e98433.</small>
 
