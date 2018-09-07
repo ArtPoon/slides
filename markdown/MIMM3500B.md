@@ -244,7 +244,7 @@ Figure based on [infographic](https://informationisbeautiful.net/visualizations/
     <h1>The coalescent</h1>
     <div id="coalescent" class="fig-container"
          data-fig-id="fig-coalescent"
-         data-file="coaltrace.html"
+         data-file="/include/coaltrace.html"
          style="height:450px">
     </div>
     <small><small><a href="http://bedford.io/projects/coaltrace/">coaltrace</a> by Trevor Bedford</small></small>

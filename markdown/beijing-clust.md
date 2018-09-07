@@ -53,16 +53,8 @@ Spatial and Spatiotemporal Epidemiology 1(2-3): 105-116.
 ## Genetic clustering
 * A subset of infections that are more genetically similar than other infections.
 * Early uses of genetic clusters for HSV-1, TB.
-* Enormous number of *ad hoc* approaches to genetic clustering, no standard.
-* Development of these methods largely independent of space-time clustering, public health.
-
----
-
-# Background
-## HIV-1 clustering
-* Rapidly evolution on similar time scale as transmission
-* HIV-1 establishes life-long chronic infection
-
+* Use genetic "space" to approximate geographic space.
+* Needs measurable evolution to be on a similar time scale as transmission.
 
 ---
 
@@ -70,9 +62,9 @@ Spatial and Spatiotemporal Epidemiology 1(2-3): 105-116.
 <tr>
 <td>
   <h1>Background</h1>
-  <h2>Glenochil, Scotland</h2>
+  <h2>HIV clustering</h2>
   <ul>
-    <li></li>
+    <li>HIV-1 outbreak in Glenochil prison, Scotland</li>
     <li>Blood samples collected from 14 inmates positive for HIV infection</li>
     <li>One of the earlier examples of clustering applied to HIV-1</li>
   </ul>
@@ -101,6 +93,8 @@ Spatial and Spatiotemporal Epidemiology 1(2-3): 105-116.
 # Clustering methods
 ## Pairwise distances
 
+* Enormous number of *ad hoc* approaches to genetic clustering, no standard.
+* Development of these methods largely independent of space-time clustering, public health.
 * A genetic distance is a function that maps two sequences to a number, $d(s_1,s_2)\rightarrow \mathbf{R}$.
 * This distance is often used to approximate their *divergence time*.
 * A simple example is the Hamming distance (number of differences between two aligned sequences)
