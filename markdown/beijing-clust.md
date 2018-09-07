@@ -49,12 +49,27 @@ Spatial and Spatiotemporal Epidemiology 1(2-3): 105-116.
 
 ---
 
-# Background
-## Genetic clustering
-* A subset of infections that are more genetically similar than other infections.
-* Early uses of genetic clusters for HSV-1, TB.
-* Use genetic "space" to approximate geographic space.
-* Needs measurable evolution to be on a similar time scale as transmission.
+<table>
+<tr>
+  <td>
+    <h1>Background</h1>
+    <h2>Genetic clustering</h2>
+    <ul>
+      <li>A subset of infections that are more genetically similar than other infections.</li>
+      <li>Early uses of genetic clusters for HSV-1, TB.</li>
+      <li>Use genetic "space" to approximate geographic space.</li>
+      <li>Needs evolution on same time scale as transmission.</li>
+    </ul>
+    
+    <small>
+    Tuberculosis MIRU-VNTR minimum spanning tree from Reynaud et al. PLOS ONE 2017;e0171584
+    </small>
+    </td>
+    <td width="40%">
+      <img src="/img/MIRU-VNTR.pone.e0171584.jpg" width="300px"/>
+    </td>
+</tr>
+</table>
 
 ---
 
@@ -62,11 +77,12 @@ Spatial and Spatiotemporal Epidemiology 1(2-3): 105-116.
 <tr>
 <td>
   <h1>Background</h1>
-  <h2>HIV clustering</h2>
+  <h2>Genetic clustering and HIV</h2>
   <ul>
     <li>HIV-1 outbreak in Glenochil prison, Scotland</li>
     <li>Blood samples collected from 14 inmates positive for HIV infection</li>
     <li>One of the earlier examples of clustering applied to HIV-1</li>
+    <li>Now a very popular method for studying HIV transmission</li>
   </ul>
 </td>
 <td width="40%">
@@ -78,27 +94,27 @@ Spatial and Spatiotemporal Epidemiology 1(2-3): 105-116.
 ---
 
 
-# Background
-## Genetic clusters
+# Clustering methods
+## How do we make clusters?
 
-* Clustering infections in genetic instead of geographical space
-* A genetic cluster may reveal an outbreak --- less time between transmissions to evolve
-* Large databases available
-* Nonparametric cluster methods are fast
-   * Pairwise distance clustering
-   * Subtree clustering
+* Enormous number of *ad hoc* approaches to genetic clustering, no "best" method.
+* Pairwise clustering
+* Subtree clustering
+* Both are *non-parametric* - clusters are informed by empirical distribution(s), not by a model.
 
 ---
 
 # Clustering methods
 ## Pairwise distances
 
-* Enormous number of *ad hoc* approaches to genetic clustering, no standard.
-* Development of these methods largely independent of space-time clustering, public health.
 * A genetic distance is a function that maps two sequences to a number, $d(s_1,s_2)\rightarrow \mathbf{R}$.
 * This distance is often used to approximate their *divergence time*.
-* A simple example is the Hamming distance (number of differences between two aligned sequences)
-* Cluster pairs of sequences whose distance falls below some threshold $d*$
+* A simple example is the Hamming distance (number of differences between two aligned sequences).
+* Build up clusters from pairs of sequences with a distance below some threshold.
+
+---
+
+Pairwise animation to go here?
 
 ---
 
@@ -122,21 +138,63 @@ Spatial and Spatiotemporal Epidemiology 1(2-3): 105-116.
 ---
 
 # Clustering in real time
+## Rationale
 
 <table>
 <tr>
-<td>
-* Abundant data accumulating at centers of HIV research and care
-* Routine genotyping HIV *pol* for drug resistance screening
-* With sufficient testing, it may be possible to monitor outbreaks in real time (Little *et al.* 2014).
+  <td>
+    <ul>
+      <li>Abundant data accumulating at centers of HIV research and care.</li>
+      <li>Routine genotyping HIV *pol* for drug resistance screening.</li>
+      <li>With sufficient testing, it may be possible to monitor outbreaks in real time (Little et al. 2014&ast;).</li>
 </td>
-<td>
+<td width="50%">
   <img src="/img/lancet-fig1.png"/>
+  <small>
+  Accumulation of HIV-1 genotypes and faster sample processing time at the BC Centre for Excellence in HIV/AIDS.
+  </small>
 </td>
 </tr>
 </table>
 
-<small>Little *et al.* Using HIV networks to inform real time prevention interventions.  PLOS ONE 2014;9(6):e98433.</small>
+<small>&ast;SJ Little et al.  *Using HIV networks to inform real time prevention interventions.*  PLOS ONE 2014;9(6):e98433.</small>
+
+---
+
+# Clustering in real time
+## Yet another clustering algorithm
+
+* Patristic distance: the total branch length from one tip to another in the tree (custom Python script).
+<img src="/img/patristic.png" width="200px"/>
+* Averaged distances over 100 bootstrap trees:
+<img src="/img/bootstrapping.png" width="400px"/>
+
+---
+
+# Clustering in real time
+![](/img/monitoring-pipeline.png)
+
+---
+
+# Clustering in real time
+## Data security
+
+* Entire network behind dual firewall (no outside access)
+* Anonymous patient IDs replaced with randomized labels.
+* Sequence data randomized (bootstrap) while preserving evolutionary information.
+* All data securely erased from storage media (Guttman method) immediately after analysis.
+
+---
+
+# Clustering in real time
+## Data visualization
+
+<img src="/img/cluster0.png" width="750px">
+
+---
+
+* How do decide which clusters are actionable for public health?
+
 
 ---
 
