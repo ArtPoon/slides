@@ -137,7 +137,7 @@ Pairwise animation to go here?
 
 ---
 
-# Clustering in real time
+# Real-time clustering
 ## Rationale
 
 <table>
@@ -161,7 +161,7 @@ Pairwise animation to go here?
 
 ---
 
-# Clustering in real time
+# Real-time clustering
 ## Yet another clustering algorithm
 
 * Patristic distance: the total branch length from one tip to another in the tree (custom Python script).
@@ -171,12 +171,12 @@ Pairwise animation to go here?
 
 ---
 
-# Clustering in real time
+# Real-time clustering
 ![](/img/monitoring-pipeline.png)
 
 ---
 
-# Clustering in real time
+# Real-time clustering
 ## Data security
 
 * Entire network behind dual firewall (no outside access)
@@ -186,15 +186,41 @@ Pairwise animation to go here?
 
 ---
 
-# Clustering in real time
-## Data visualization
+# Real-time clustering
 
-<img src="/img/cluster0.png" width="750px">
+<img src="/img/cluster0.png" width="90%"/>
 
 ---
 
-* How do decide which clusters are actionable for public health?
+# Real-time clustering
+## Reading network diagrams
 
+* Many applications of network diagrams, *e.g.*, contact tracing.
+* Public health officials tended to interpret network "ties" as contacts or transmission events.
+* Genetic similarity is not sufficient data to infer transmission.
+
+<img src="/img/transtree.png" width="75%"/>
+
+---
+
+# Real-time clustering
+## What is an actionable cluster?
+
+* How do decide which clusters are actionable for public health?
+* A popular indicator was the number of cases in the last month / 3 / 6 months: **genetic-time clustering**.
+
+![](/img/report1.png)
+
+---
+
+<section data-state="cluster">
+  <h1>Real-time clustering</h1>
+  <div id="cluster" class="fig-container"
+       data-fig-id="fig-cluster"
+       data-file="/include/cluster55.html"
+       style="height:600px"></div>
+  <div id="c55label">Cluster 55</div>
+</section>
 
 ---
 
