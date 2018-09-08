@@ -176,6 +176,28 @@ Pairwise animation to go here?
 
 ---
 
+<table>
+<tr>
+  <td>
+    <h1>Real-time clustering</h1>
+    <h2>Ethical and legal concerns</h2>
+    <ul>
+      <li>Long history of using HIV clustering in court cases.</li>
+      <li>In Canada, people found guilty for HIV transmission without disclosure can be found guilty of aggravated sexual assault.</li>
+      <li>Up to **life imprisonment** and registration on the Sexual Offender Registry.</li>
+
+</td>
+<td width="40%">
+  <img src="/img/dentist.png"/>
+  <small>
+  Phylogeny from case of "Florida dentist" from Ou *et al.* (1992, Science).
+  </small>
+</td>
+</tr>
+</table>
+
+---
+
 # Real-time clustering
 ## Data security
 
@@ -224,82 +246,95 @@ Pairwise animation to go here?
 
 ---
 
-# Clustering methods
-## Getting skeptical about clusters
-* Volz *et al.* (2012): "virus from recent infections tend to be phylogenetically clustered at a greater rate.."
-* Villandre *et al.* (2016): "...common methods often have limited success in detecting contact network communities from phylogenies."
-* Dearlove *et al.* (2017): "...groups of closely related viruses can also occur due to [...] over-sampling."
+# Real-time clustering
+## Cluster 55 timeline
 
-<table><tr>
- <td><img src="/img/short-internals.png"/></td>
- <td><img src="/img/short-tips.png" height="150"/></td>
-</tr></table>
+![](/img/LancetFigure4a.png)
+<small>
+$\hspace{1in}\circ = $ baseline sample date, $\;\;\diamond =$ HIV genotype record date
+</small>
 
----
-
-# Simulation
-## Compartmental models
-
-* Test clustering methods by simulating outbreaks.
-* Systems of ordinary differential equations.
-* Each variable corresponds to the size of a subpopulation (susceptible, infected).
-* Forward-time simulation of reaction kinetics with @tgvaughan's [MASTER](https://github.com/tgvaughan/MASTER/wiki) program.
+* 8 new cases in 3 months detected (June 24, 2014)
+* Public Health Officer authorizes formal outbreak investigation (June 27, 2014)
+* Investigation followed by public health follow-up (July 2, 2014)
 
 ---
 
-# Simulation
-## Epidemic in structured populations
+<table>
+<tr>
+  <td>
+    <h1>Real-time clustering</h1>
+    <h2>Retrospective</h2>
+    <ul>
+      <li>Perhaps the first example of automated real-time genetic monitoring directly leading to a public health response.</li>
+      <li>Not feasible to prove effect of intervention without an unethical controlled study.</li>
+      <li>Similar systems are now being built around the world.</li>
+</td>
+<td width="40%">
+  <img src="/img/lancet-hiv.jpg"/>
+</td>
+</tr>
+</table>
+
+---
+
+# Limitations of clustering
+## What do clusters really mean?
+
+* Inherent assumption that a cluster represents an outbreak.
+* Infections may be genetically similar only because they were rapidly diagnosed.
+* Explains strong association between clusters and acute infections (Volz et al. 2012).
+
+<small>
+EM Volz et al. (2012) *Simple epidemiological dynamics explain phylogenetic clustering of HIV from patients with recent infection.* PLOS Comput Biol 28:e1002552.
+</small>
+
+---
+
+# Limitations of clustering
+## Simulation experiments
 
 <img src="/img/model75.png" height="200"/>
-`$$
-\begin{align*}
-	\frac{dS_i}{dt} &= -\beta_i S_i I_i + m (S_{j\ne i} - S_i),\\
-	\frac{dI_i}{dt} &= \beta_i S_i I_i + m(I_{j\ne i} - I_i) - (\mu+\psi) I_i\\
-	\frac{dI^*_i}{dt} &= \psi_i I_i,\,  \frac{dR}{dt} = \mu \sum_i I_i\\
-\end{align*}
-$$`
+
+* Epidemic in a risk-structured population.
+* Compartmental SIR dynamics.
 
 ---
+
+# Limitations of clustering
+## Simulation outputs
+<img src="/img/simulation.svg" width="80%"/>
+
+---
+
+**Current methods tend to pick clusters of sampling.**
 
 <img src="/img/ROC.svg" height="500"/>
 
-<small>Poon (2016) Impacts and shortcomings of genetic clustering methods for infectious disease outbreaks. Virus Evol 2(2):vew031.</small>
+<small>Poon (2016) *Impacts and shortcomings of genetic clustering methods for infectious disease outbreaks.* Virus Evol 2(2):vew031.</small>
 
 ---
 
 # Model-based clustering
-## Focus on internal-node distances
-* Internal node heights define upper limit to transmission times
+## A new approach
 
-<img src="/img/transmission-tree.svg" height="300"/>
+* Instead of looking at genetic similarity, what we focus on what we really care about?
+* Coalescence rate is more related to the rate of transmission than the number of infections (Volz et al. 2009).
+* We develop a model to examine HIV transmission through branching rates (coalescence).  
+
+<small>
+EM Volz et al. (2009) *Phylodynamics of infectious disease epidemics.* Genetics 183: 1421.
+</small>
 
 ---
 
 # Model-based clustering
-## Markov-modulated Poisson process (MMPP)
+## Markov-modulated Poisson process
 <img src="/img/model.svg" height="450"/>
 
-<small>from McCloskey and Poon (2017) PLOS Computat Biol 13(11): e1005868</small>
-
----
-
-# Model-based clustering
-## Transition rates and branching rates
-
-`$$
-\begin{align*}
-	Q &= 
-    \begin{bmatrix}
-    	-\sigma_1 & \sigma_{12} & \cdots & \sigma_{1m} \\
-        \sigma_{21} & -\sigma_2 & \cdots & \sigma_{2m} \\
-        \vdots & \vdots & \ddots & \vdots \\
-        \sigma_{m1} & \sigma_{m2} & \cdots & \sigma_{m}
-    \end{bmatrix} \\
-    \sigma_i &= \sum_{j \neq i} \sigma_{ij} \\
-    \vec{\lambda} &= [\lambda_1,\, \ldots,\, \lambda_m]^T \\
-    \Lambda &= \mathrm{diag}({\vec{\lambda}}).
-\end{align*}
-$$`
+<small>
+McCloskey and Poon (2017) PLOS Comput Biol 13(11): e1005868
+</small>
 
 ---
 
@@ -308,7 +343,7 @@ $$`
 
 <img src="/img/ROC2.svg" height="500"/>
 
-<small>from McCloskey and Poon (2017) PLOS Computat Biol 13(11): e1005868</small>
+<small>McCloskey and Poon (2017) PLOS Comput Biol 13(11): e1005868</small>
 
 ---
 
@@ -319,8 +354,25 @@ $$`
 
 ---
 
-# clmp
-##  An R module (Clustering with MMPP)
+# Model-based clustering
+## Incomplete sampling is still a problem
+
+<img src="/img/ROC3.svg" width="85%"/>
+
+Results from simulations with sampling reduced from 98% to 50%.
+
+---
+
+If high-risk groups are less sampled (under-diagnosed) then **clustering may systematically bias public health away from groups most at risk**.
+
+<img src="/img/false-clusters.svg" width="80%"/>
+
+---
+
+**clmp: an R module (Clustering with MMPP)**
+
+http://github.com/PoonLab/clmp
+
 
 ```R
 > require(clmp)
@@ -345,74 +397,15 @@ labels    0   1
 
 ---
 
-## Open problems
-1. Incomplete sampling can create false clusters
-2. Clustering methods don't address population-level dynamics, *e.g.*, exponential growth at start of epidemic
-3. MMPP can be misled by zero branch lengths
-
----
-
-# Open problems
-## Incomplete sampling
-
-* We assumed near-complete sampling of infected population
-* if we reduce sampling to 50%, high false positive rate!
-
-<img src="/img/ROC3.svg" height="400"/>
-
----
-
-# Open problems
-## Incomplete sampling
-
-* Worst-case scenario -- groups with high transmission rates have low sampling rates:
-<img src="/img/MMPP2.svg"/>
-
----
-
-# Open problems
-## Incomplete sampling
- 
-* Use second MMPP to model variation in sampling rates along the tree?
-* Model joint distribution of transmission and sampling rates?
-* Incorporate additional information?  *e.g.,* infection staging at diagnosis (acute vs. chronic)
-* Also see recent work by Barido-Sottani and Stadler (R package ML.MSBD, *bioRxiv*).
-
----
-
-# Open problems
-## Population-level dynamics
-
-<table><tr>
-<td width="50%">
-  <ul>
-  <li>MMPP is modeling lineage-level variation in transmission (branching) rates</li>
-  <li>Rates also vary at population level due to numbers of infected, susceptibles</li>
-  <li>Rescale tree in transmission time?</li>
-  </ul>
-</td>
-<td>
-  <img src="/img/SIRplot.svg"/>
-</td>
-</tr></table>
-
----
-
-# Open problems
-## Zero branch lengths
-
-* Maximum likelihood is unable to infer a non-zero branch length due to insufficient mutations ("sampling zeroes")
-* Also known as soft polytomies
-* Neighbor-joining trees tend to have less variable branch lengths
-* Smoothing methods may approximate a more realistic branch length distribution.
-
----
-
 ## Concluding remarks
 
-* MMPP seems to confer greater accuracy for detecting clusters of transmission
-* *All* methods suffer from high false positive rate due to incomplete sampling
-* We really need to work on these methods before using them to guide public health decisions!
+* There are many ways to define clusters - we still do not know which method is most effective for real-time prevention (but see Wertheim *et al.* 2018).
+* Model-based clustering seems to confer greater accuracy for detecting clusters of transmission.
+* _All_ methods suffer from high false positive rate due to incomplete sampling.
+
+<small>
+JO Wertheim et al. (2018) *Growth of HIV-1 Molecular Transmission Clusters in New York City.*  J Infect Dis, in press.
+</small>
 
 ---
 
