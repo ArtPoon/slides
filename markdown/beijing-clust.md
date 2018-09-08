@@ -365,7 +365,7 @@ Results from simulations with sampling reduced from 98% to 50%.
 
 If high-risk groups are less sampled (under-diagnosed) then **clustering may systematically bias public health away from groups most at risk**.
 
-<img src="/img/false-clusters.svg" width="80%"/>
+<img src="/img/MMPP2.svg" width="80%"/>
 
 ---
 
