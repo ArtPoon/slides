@@ -180,10 +180,16 @@ Western University
 
 ---
 
-# Funding
-<center>
-![](/img/GenomeCanadaLogo.png) ![](/img/shim.png) ![](/img/cihr.png)
-<br>
-<br>
-Positions available!
-</center>
+# Thanks!
+
+<table>
+  <tr>
+    <td><img src="/img/OGI_Logo2015.png" height="100"/></td>
+    <td><img src="/img/GenomeCanadaLogo.png" height="100"/></td>
+    <td><img src="/img/NIH_NIAID.jpg" height="150"></td>
+  </tr>
+  <tr>
+    <td><img src="/img/cihr.png"  height="150"/></td>
+    <td><img src="/img/NSERC_RGB.png"/></td>
+  </tr>
+</table>
