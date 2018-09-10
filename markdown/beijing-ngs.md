@@ -56,7 +56,7 @@ Western University
 
 * High error rates in homopolymers (single nucleotide repeats).
 * Some homopolymers associated with HIV drug resistance (e.g., K103N) &mdash; genome is ~40% A!
-* Could not be resolved with bioinformatics &mdash; eventually, this platform was discontinued.
+* Could not be resolved with bioinformatics &mdash; eventually, this platform was discontinued in 2013.
 
 <img src="/img/K103N.png" width="60%"/>
 
@@ -165,7 +165,76 @@ Western University
 
 * [github.com/cfe-lab/Kive]() stores a "fingerprint" of every data input and output handled by MiCall.
 
-<img src="/img/kive-pipeline.png" width="75%"/>
+<img src="/img/kive-pipeline.png" width="70%"/>
+
+---
+
+# Applications of NGS
+## Detect resistance effects of polymorphisms
+
+Figure from Mariano
+
+---
+
+# Applications of NGS
+## Reconstruct HIV evolution within a host
+
+* Enough diversity in NGS data to map HIV mutations over time.
+<img src="/img/ds2.png" width="55%"/>
+<small><small>
+A Poon et al. (2012) *Reconstructing the dynamics of HIV evolution within hosts from serial deep sequence data.* PLOS Comput Biol 8:e1002753.
+</small></small>
+
+---
+
+# Applications of NGS
+## Bottleneck at genital mucosal barrier
+
+Sequence diversity (p-distance) in cervical and plasma samples in women with acute HIV infections.
+
+<img src="/img/klein.png"/>
+
+<small><small>
+K Klein et al. (2018) *Higher sequence diversity in the vaginal tract
+than in blood at early HIV-1 infection.* PLOS Pathog 14:e1006754.
+</small></small>
+
+---
+
+# Applications of NGS
+## Detecting HIV superinfection
+
+Within-host HIV-1 p24 trees revealing superinfection in two subjects from Rakai, Uganda.
+
+<img src="/img/redd.png" width="65%"/>
+
+<small><small>
+AD Redd et al. (2018) *Identification of HIV superinfection in seroconcordant couples in Rakai, Uganda, by use of next-generation deep sequencing.* J Clin Microbiol 49: 2859.
+</small></small>
+
+
+---
+
+# HIV latency
+## What is the latent reservoir?
+
+* HIV DNA becomes integrated into the host genome.
+* A small fraction of infected cells enter a state of transcriptional silence.
+* Invisible to immune system, resistant to drug treatment.
+* Long-lived reservoir can quickly reseed infection on treatment interruption.
+
+---
+
+# HIV latency
+## How large is the reservoir?
+
+---
+
+Retrovirology paper (gloss over the stats)
+
+---
+
+PNAS paper
 
 ---
 
