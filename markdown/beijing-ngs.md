@@ -161,18 +161,80 @@ Western University
 ---
 
 # MiCall
-## Pipeline tracking
+## Version tracking
 
-* [github.com/cfe-lab/Kive]() stores a "fingerprint" of every data input and output handled by MiCall.
+* CFE lab stores a "fingerprint" of every data input and output handled by MiCall using an in-house software called Kive ([github.com/cfe-lab/Kive]()).
 
 <img src="/img/kive-pipeline.png" width="70%"/>
 
 ---
 
-# Applications of NGS
-## Detect resistance effects of polymorphisms
+# MiCall
+## Open-source licensing
 
-Figure from Mariano
+* Released source code under AGPL-3.0 license at [github.com/cfe-lab/MiCall]()
+* Free to use, modify and redistribute with attribution. 
+* Developing a more user friendly version at [github.com/PoonLab/MiCall-Lite]()
+
+---
+
+# Outline
+## 3 applications of NGS
+
+1. Finding new HIV drug resistance polymorphisms
+2. Measuring the latent reservoir
+3. Dating the latent reservoir
+
+---
+
+# Drug resistance
+## INSTIs
+<table>
+<tr>
+  <td>
+    <ul>
+      <li>Integrase strand transfer inhibitors.</li>
+      <li>Difficult for HIV to evolve resistance, used for salvage therapy.</li>
+      <li>Postdoc **Mariano Avino** with **Joint Clinical Research Centre** (JCRC) in Uganda and **Case Western Reserve University**.</li>
+      <li>Examine virological failure in non-B patients failing INSTI-based regimens.</li>
+    </ul>
+  </td>
+  <td width="30%">
+    <table width>
+      <tr><td colspan=2><img src="/img/mariano.jpeg" style="border: solid;"></td></tr>
+      <tr><td><img src="/img/JCRC.jpg" width="120px"/></td>
+      <td><img src="/img/CWRU.jpg" width="150px"/></td></tr>
+    </table>
+  </td>
+<tr>
+</table>
+
+
+---
+
+# Drug resistance
+## Data collection
+
+* Retrieved archived plasma samples from *n*=382 JCRC patients with non-B infections
+  * 85 treatment naive
+  * 129 first-line treatment failure
+  * 116 second-line treatment failure
+  * 53 failure raltegravir (RAL)-based regimen
+* Sequenced two overlapping regions of HIV integrase on MiSeq
+
+---
+
+# Drug resistance
+## 
+
+---
+
+<section data-state="svm">
+  <div id="svm" class="fig-container"
+       data-fig-id="fig-cluster"
+       data-file="/include/svm.html"
+       style="height:600px"></div>
+</section>
 
 ---
 
