@@ -329,6 +329,20 @@ AJ Murray *et al.* (2016) J Immunol 197:407.
 
 ---
 
+# HIV latency
+## Dating the reservoir
+
+* When HIV integrates into the host cell genome, its evolution is effectively frozen.
+* We can build a phylogeny relating copies of HIV within a single host.
+* We can use sample collection dates to rescale the tree to time.
+
+<table><tr>
+<td><img src="/img/timetree.png" width="400px"/></td>
+<td><img src="/img/timetree-scaled.png" width="300px"/></td>
+</tr></table>
+
+---
+
 # Acknowledgements
 
 * The laboratory results I have cited were obtained by my former colleagues at 
