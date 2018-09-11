@@ -225,7 +225,11 @@ Western University
 ---
 
 # Drug resistance
-## 
+## SVM classification
+
+* Encode the NGS data as a large binary matrix where `1` indicates that an amino acid is adequately present at a particular site.
+* Since there are many more predictor variables (amino acids) than observations (samples), we used a **support vector machine** (SVM) that defines a model using data points instead of variables.
+* Trained and validated SVM to classify RAL-exposed samples from naive samples and other treatment failures.
 
 ---
 
@@ -238,42 +242,12 @@ Western University
 
 ---
 
-# Applications of NGS
-## Reconstruct HIV evolution within a host
+# Drug resistance
+## Concluding remarks
 
-* Enough diversity in NGS data to map HIV mutations over time.
-<img src="/img/ds2.png" width="55%"/>
-<small><small>
-A Poon et al. (2012) *Reconstructing the dynamics of HIV evolution within hosts from serial deep sequence data.* PLOS Comput Biol 8:e1002753.
-</small></small>
-
----
-
-# Applications of NGS
-## Bottleneck at genital mucosal barrier
-
-Sequence diversity (p-distance) in cervical and plasma samples in women with acute HIV infections.
-
-<img src="/img/klein.png"/>
-
-<small><small>
-K Klein et al. (2018) *Higher sequence diversity in the vaginal tract
-than in blood at early HIV-1 infection.* PLOS Pathog 14:e1006754.
-</small></small>
-
----
-
-# Applications of NGS
-## Detecting HIV superinfection
-
-Within-host HIV-1 p24 trees revealing superinfection in two subjects from Rakai, Uganda.
-
-<img src="/img/redd.png" width="65%"/>
-
-<small><small>
-AD Redd et al. (2018) *Identification of HIV superinfection in seroconcordant couples in Rakai, Uganda, by use of next-generation deep sequencing.* J Clin Microbiol 49: 2859.
-</small></small>
-
+* We find both known and potentially novel mutations associated with INSTI resistance. 
+* NGS is useful because, in resource-limited settings, a patient may have stopped a failing treatment long before they are able to visit a clinic.
+* Drug resistance mutations may have reverted to low frequencies.
 
 ---
 
@@ -281,22 +255,77 @@ AD Redd et al. (2018) *Identification of HIV superinfection in seroconcordant co
 ## What is the latent reservoir?
 
 * HIV DNA becomes integrated into the host genome.
-* A small fraction of infected cells enter a state of transcriptional silence.
-* Invisible to immune system, resistant to drug treatment.
-* Long-lived reservoir can quickly reseed infection on treatment interruption.
+* A small fraction of infected cells enter an inactive state.
+* Long-lived reservoir invisible to immune system and drug treatment; reseeds the infection.
+<img src="/img/latency.jpg" width="500px"/>
+
+<small><small>
+AJ Murray *et al.* (2016) J Immunol 197:407.
+</small></small>
 
 ---
 
 # HIV latency
 ## How large is the reservoir?
 
+* The reservoir is largely composed of resting CD4+ T cells.
+* We measure the latent reservoir by the number of infected units per million (IUPM) cells.
+* Use a limiting dilution assay to estimate the IUPM.
+![](/img/limiting-dilution.png)
+
 ---
 
-Retrovirology paper (gloss over the stats)
+# HIV latency
+## Estimating IUPM from NGS data
+
+<table>
+  <tr>
+    <td>
+    <ul>
+      <li>A well tests posiitve if there is one or many infected cells.</li>
+      <li>Detecting multiple HIV variants in a well by NGS may improve estimates.</li>
+      <li>We developed a new Bayesian method to use NGS to estimate IUPM</li>
+      <li>Applied to samples collected from Rakai, Uganda, by Johns Hopkins Medicine and NIAID (US).</li>
+    </ul>
+    </td>
+    <td width="30%">
+      <table>
+        <tr><td colspan=2><img src="/img/prodger.jpeg"/>
+        <small><small>Dr. Jessica Prodger</small></small></td></tr>
+        <tr><td><img src="/img/Hopkins.png"/></td></tr>
+        <tr><td><img src="/img/NIH_NIAID.jpg" width="150px"/></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
 
 ---
 
-PNAS paper
+# HIV latency
+## Results
+
+<table>
+  <tr>
+    <td>
+      Simulations show greater accuracy with increasing true IUPM.
+      <img src="/img/iupm-barplots.png"/>
+    </td>
+    <td>
+      <img src="/img/iupm-realdata.png"/>
+    </td>
+  </tr>
+</table>
+
+---
+
+# HIV latency
+## How does the reservoir persist?
+
+* Half-life estimates for latent reservoir range from 4 to 12 years.
+* Viral rebound within days of treatment interruption implies constant high rate of reactivation.
+* Hypotheses:
+  1. Growth of latently infected T-cells (clonal expansion).
+  2. Low-level replication of HIV in drug sanctuaries.
 
 ---
 
