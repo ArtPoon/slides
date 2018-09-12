@@ -1,5 +1,9 @@
 // derived from http://bl.ocks.org/weiglemc/6185069
 
+// TODO: make points explode from center, like a bit like:
+// http://bl.ocks.org/cmgiven/e5dfe0888968ee8c507f5469a4d62b6f
+
+
 var margin = {top: 20, right: 20, bottom: 30, left: 50},
     width = 1000 - margin.left - margin.right,
     height = 600 - margin.top - margin.bottom;
