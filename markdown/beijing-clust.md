@@ -114,10 +114,6 @@ Spatial and Spatiotemporal Epidemiology 1(2-3): 105-116.
 
 ---
 
-Pairwise animation to go here?
-
----
-
 # Clustering methods
 ## Phylogenies
 
