@@ -254,10 +254,21 @@ positional arguments:
 ---
 
 # Drug resistance
+## HIV-1 subtype classifications
+
+<img src="/img/integrase-subtypes.png" width="40%"/>
+
+<small>
+Maximum likelihood tree (PhyML) using NGS consensus sequences.
+</small>
+
+---
+
+# Drug resistance
 ## SVM classification
 
-* Encode the NGS data as a large binary matrix where `1` indicates that an amino acid is adequately present at a particular site.
-* Since there are many more predictor variables (amino acids) than observations (samples), we used a **support vector machine** (SVM) that defines a model using data points instead of variables.
+* Encoded NGS data as a **large binary matrix** where `1` indicates an amino acid frequency above some threshold.
+* Since there are many more variables (amino acids) than observations (samples), we used a **support vector machine** (SVM) that defines a model using data points instead of variables.
 * Trained and validated SVM to classify RAL-exposed samples from naive samples and other treatment failures.
 
 ---
@@ -344,6 +355,9 @@ AJ Murray *et al.* (2016) J Immunol 197:407.
     </td>
   </tr>
 </table>
+<small><small>
+Poon *et al.* (2018) *Quantitation of the latent HIV-1 reservoir from the sequence diversity in viral outgrowth assays.*  Retrovirology 15: 47.
+</small></small>
 
 ---
 
@@ -359,27 +373,126 @@ AJ Murray *et al.* (2016) J Immunol 197:407.
 ---
 
 # HIV latency
-## Dating the reservoir
+## Dated-tip phylogenies
 
-* When HIV integrates into the host cell genome, its evolution is effectively frozen.
 * We can build a phylogeny relating copies of HIV within a single host.
-* We can use sample collection dates to rescale the tree to time.
+* Without other information, time and the rate of evolutiona are confounded (left).
+* We can use sample collection dates to "pin" tips to a timeline, and rescale the tree in time.
 
 <table><tr>
-<td><img src="/img/timetree.png" width="400px"/></td>
-<td><img src="/img/timetree-scaled.png" width="300px"/></td>
+<td><img src="/img/timetree.png" width="450px"/></td>
+<td><img src="/img/timetree-scaled.png" width="400px"/></td>
 </tr></table>
+
+---
+
+# HIV latency
+## Dating HIV in the reservoir
+
+<table>
+  <tr>
+    <td>
+      <ul>
+        <li>When HIV integrates into the host cell genome, its evolution is effectively frozen.</li>
+        <li>If evolution is sufficiently "clock-like" (constant rate of evolution), then we can extrapolate when HIV DNA became latent.</li>
+        <li>Requires that we estimate the **root** &mdash; the earliest point in time in the phylogeny.</li>
+      </ul>
+    </td>
+    <td width="40%">
+      <img src="/img/blind-dating-cartoon.png"/>
+    </td>
+  </tr>
+</table>
+
+---
+
+# HIV latency
+## Data collection
+
+<table>
+  <tr>
+    <td width="60%">
+    <ul>
+      <li> Collaboration with Dr. Zabrina Brumme and Dr. Jeff Joy at BC Centre for Excellence (CFE) in HIV/AIDS.</li>
+      <li>Obtained **pre-therapy** samples of HIV plasma RNA from 2 patients from CFE archive.</li>
+      <li>Sampled post-treatment HIV DNA from same patients.</li>
+      <li>Applied our method to date these reservoir sequences.</li>
+    </ul>
+    </td>
+    <td width="30%">
+      <table>
+        <tr><td><img src="/img/zabrina-and-jeff.jpg"/>
+        <tr><td><img src="/img/cfelogo.png"/></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+---
+
+# HIV latency
+
+<table>
+  <tr>
+    <td width="60%">
+    <h2>Participant 1</h2>
+    <ul>
+      <li>P1 was diagnosed with HIV-1 on August 1996.</li>
+      <li>Did not achieve viral suppression until August 2006.</li>
+      <li>Viral rebound following unsuccessful regimen change (Fall 2017).</li>
+      <li>Sequenced post-treatment HIV RNA ($\circ$) and DNA ($\diamond$).</li>
+      <li>HIV DNA dated far deeper than post-treatment RNA.</li>
+    </ul>
+    </td>
+    <td width="35%">
+      <img src="/img/bd-patient1.png"/>
+    </td>
+  </tr>
+</table>
+
+<small><small>
+BR Jones *et al.* (2018) *Phylogenetic approach to recover integration dates of latent HIV sequences within-host.*  Proc Natl Acad Sci USA.
+</small></small>
+
+---
+
+# HIV latency
+
+<table>
+  <tr>
+    <td width="60%">
+    <h2>Participant 2</h2>
+    <ul>
+      <li>P2 was diagnosed with HIV-1 on April 1995.</li>
+      <li>Initiated dual therapy in July 2000.</li>
+      <li>Switched to combination therapy (cART) August 2006 and achieved viral suppression.</li>
+      <li>5 sequences dated to time of diagnosis, before earliest sample.</li>
+      <li>Reservoir harbours replication-competent HIV from early stage of infection.</li>
+    </ul>
+    </td>
+    <td width="35%">
+      <img src="/img/bd-patient2.png"/>
+    </td>
+  </tr>
+</table>
+
+<small><small>
+BR Jones *et al.* (2018) *Phylogenetic approach to recover integration dates of latent HIV sequences within-host.*  Proc Natl Acad Sci USA.
+</small></small>
+
+---
+
+![](/img/bd-pnas.png)
 
 ---
 
 # Acknowledgements
 
-* The laboratory results I have cited were obtained by my former colleagues at 
- the *BC Centre for Excellence in HIV/AIDS* 
-  * Chanson J. Brumme
-  * Luke C. Swenson
-  * Hope Lapointe
-  * P. Richard Harrigan
+* The development and validation of the MiCall pipeline was made possible by the members of the BC Centre for Excellence in HIV/AIDS Molecular Laboratory.
+
+* These studies were also made possible by collaborations with JCRC Uganda, Case Western Reserve University, Johns Hopkins School of Medicine, and the National Institutes of Allergy and Infectious Diseases (NIH).
+
+* And by the donation by study participants of samples for research purposes.
 
 ---
 
