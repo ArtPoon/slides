@@ -126,17 +126,48 @@ Western University
 * Paired-end reads are merged and discordant calls in overlapping regions are resolved
 * Group aligned reads by unique sequence (reduce file size ~half)
 * Outputs coverage, nucleotide and amino acid frequencies, and alignment.
-* Released this pipeline as open-source, [github.com/cfe-lab/MiCall]()
+
+---
+
+# MiCall
+## Demo
+
+```
+art@Misato:~$ micall -h
+usage: micall [-h] [--outdir OUTDIR] [--unzipped] [--interop INTEROP]
+              [--readlen READLEN] [--index INDEX]
+              fastq1 [fastq2]
+
+Use the MiCall pipeline to process gzip-comprssed FASTQ file(s) for one
+sample.
+
+positional arguments:
+  fastq1                Path to *.R1.fastq.gz file of paired set, or to an
+                        unpaired *.fastq.gz file.
+  fastq2                Path to *.R2.fastq.gz file of paired set. Unused if
+                        processing an unpaired sample.
+```
 
 ---
 
 # MiCall
 ## Bad tile-cycle combinations
 
-* Every HIV RT sample in this run had ~3% E138A
-* Quality scores for these bases were normal.
+<table>
+  <tr>
+    <td>
+      <ul>
+        <li>Every HIV RT sample in this run had ~3% E138A.</li>
+        <li>Quality scores for these bases were normal.</li>
+      </ul>
+    </td>
+    <td>
+      <img src="/img/E138A.svg"\>
+    </td>
+  </tr>
+</table>
 
-<img src="/img/E138A.svg" width="55%"\>
+
 
 ---
 
@@ -146,7 +177,6 @@ Western University
 * An Illumina system generates a set of "InterOp" files for every run.
 * The file `ErrorMetricsOut.bin` reports &phi;X174 error rates.
 * The 3% E138A was due to one bad tile-cycle combo - this was not reflected in base quality scores!
-
 <img src="/img/bad-cycles1.png" width="75%"/>
 
 ---
@@ -164,7 +194,6 @@ Western University
 ## Version tracking
 
 * CFE lab stores a "fingerprint" of every data input and output handled by MiCall using an in-house software called Kive ([github.com/cfe-lab/Kive]()).
-
 <img src="/img/kive-pipeline.png" width="70%"/>
 
 ---

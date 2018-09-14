@@ -46,7 +46,7 @@ var tooltip = d3.select("body").append("div")
 
 
 d3.csv("/data/svm.csv", function(data) {
-    console.log(data[0]);
+    //console.log(data[0]);
  
     data.forEach(function(d) {
         d.Weight = +d.Weight;  // cast string as number
@@ -92,8 +92,12 @@ d3.csv("/data/svm.csv", function(data) {
         return 4;
       }
     })
-    .attr("cx", xMap)
-    .attr("cy", yMap)
+    
+    // start in upper left corner
+    .attr("cx", 0)//xMap)
+    .attr("cy", 0)//yMap)
+    
+    // color by odds ratio
     .style("fill", function(d) {
       if (d.Odd > 1 && d.lower > 1) {
         return "#1f77b4";
@@ -103,6 +107,8 @@ d3.csv("/data/svm.csv", function(data) {
       }
       return "#bbb";
     })
+    
+    // enable mouse-over tooltips
     .on("mouseover", function(d) {
       tooltip.transition()
         .duration(200)
@@ -112,6 +118,7 @@ d3.csv("/data/svm.csv", function(data) {
         .style("top", (d3.event.pageY - 10) + "px");
       d3.select(this).style("r", 15);
     })
+    
     .on("mouseout", function(d) {
       tooltip.transition()
       .duration(500)
@@ -123,6 +130,23 @@ d3.csv("/data/svm.csv", function(data) {
           return 4;
         }
       });
-  });
+    })
+  
+    // animate the points!
+    .transition()
+    .duration(1000)
+    .attr("cx", xMap)
+    .attr("cy", yMap)
 });
+
+// FIXME: this doesn't work...
+d3.select('body').on("keydown", function () {
+  console.log(d3.event.keyCode);
+  if (d3.event.keyCode==16) {
+    console.log('shift')
+    d3.selectAll('.tooltip').each(function() {
+    })
+  }
+});
+
 
