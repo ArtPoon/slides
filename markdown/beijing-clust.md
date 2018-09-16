@@ -231,6 +231,10 @@ Spatial and Spatiotemporal Epidemiology 1(2-3): 105-116.
 
 ---
 
+<img src="/img/BCmap.svg" height="650px"/>
+
+---
+
 <section data-state="cluster">
   <h1>Real-time clustering</h1>
   <div id="cluster" class="fig-container"
@@ -266,7 +270,7 @@ $\hspace{1in}\circ = $ baseline sample date, $\;\;\diamond =$ HIV genotype recor
       <li>Not feasible to prove effect of intervention without an unethical controlled study.</li>
       <li>Similar systems are now being built around the world.</li>
 </td>
-<td width="40%">
+<td width="50%">
   <img src="/img/lancet-hiv.jpg"/>
 </td>
 </tr>
@@ -290,7 +294,7 @@ EM Volz et al. (2012) *Simple epidemiological dynamics explain phylogenetic clus
 # Limitations of clustering
 ## Simulation experiments
 
-<img src="/img/model75.png" height="200"/>
+<img src="/img/model75.png" height="250"/>
 
 * Epidemic in a risk-structured population.
 * Compartmental SIR dynamics.
@@ -299,7 +303,7 @@ EM Volz et al. (2012) *Simple epidemiological dynamics explain phylogenetic clus
 
 # Limitations of clustering
 ## Simulation outputs
-<img src="/img/simulation.svg" width="80%"/>
+<img src="/img/simulation.svg" width="90%"/>
 
 ---
 
