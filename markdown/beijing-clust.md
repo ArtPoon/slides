@@ -39,6 +39,10 @@ Western University
   </ul>
 </td><td width="40%">
   <img src="/img/384px-Ph_AH1N1_map.PNG"/>
+  <small><small>
+  Map of 2009 H1N1 outbreak in the Philippines (CC-BY-SA).
+  <!-- https://en.wikipedia.org/wiki/2009_flu_pandemic_in_the_Philippines -->
+  </small></small>
 </td></tr>
 </table>
 
@@ -134,17 +138,17 @@ Spatial and Spatiotemporal Epidemiology 1(2-3): 105-116.
 ---
 
 # Real-time clustering
-## Rationale
 
 <table>
 <tr>
   <td>
+    <h2>Rationale</h2>
     <ul>
       <li>Abundant data accumulating at centers of HIV research and care.</li>
       <li>Routine genotyping HIV *pol* for drug resistance screening.</li>
       <li>With sufficient testing, it may be possible to monitor outbreaks in real time (Little et al. 2014&ast;).</li>
 </td>
-<td width="50%">
+<td width="55%">
   <img src="/img/lancet-fig1.png"/>
   <small>
   Accumulation of HIV-1 genotypes and faster sample processing time at the BC Centre for Excellence in HIV/AIDS.
@@ -168,7 +172,12 @@ Spatial and Spatiotemporal Epidemiology 1(2-3): 105-116.
 ---
 
 # Real-time clustering
+## Pipeline
 ![](/img/monitoring-pipeline.png)
+
+<small>
+Uses Python, FastTree2, mpi4py, BioPython, networkx, R, jinja2, $\LaTeX$, svglib
+</small>
 
 ---
 
@@ -231,7 +240,10 @@ Spatial and Spatiotemporal Epidemiology 1(2-3): 105-116.
 
 ---
 
-<img src="/img/BCmap.svg" height="650px"/>
+<img src="/img/BCmap.svg" height="600px"/>
+<small>
+Cluster 0 case numbers mapped to province, distorted by regional population.
+</small> 
 
 ---
 
@@ -283,6 +295,16 @@ $\hspace{1in}\circ = $ baseline sample date, $\;\;\diamond =$ HIV genotype recor
 
 * Inherent assumption that a cluster represents an outbreak.
 * Infections may be genetically similar only because they were rapidly diagnosed.
+  <table>
+    <tr>
+      <td>
+        <img src="/img/short-internals.png"/>
+      </td>
+      <td>
+        <img src="/img/short-tips.png"/>
+      </td>
+    </tr>
+  </table>
 * Explains strong association between clusters and acute infections (Volz et al. 2012).
 
 <small>
@@ -297,7 +319,7 @@ EM Volz et al. (2012) *Simple epidemiological dynamics explain phylogenetic clus
 <img src="/img/model75.png" height="250"/>
 
 * Epidemic in a risk-structured population.
-* Compartmental SIR dynamics.
+* Compartmental SIR dynamics, forward-time simulation (MASTER, Vaughan and Drummond 2013).
 
 ---
 
