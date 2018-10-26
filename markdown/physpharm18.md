@@ -17,8 +17,30 @@ Department of Pathology & Laboratory Medicine
 ## Global burden of HIV-1
 
 * About 36 million people living with HIV-1 in the world
+* Over 63,000 in Canada - disproportionate growth in Saskatchewan
 * Life expectancy greatly improved by combination antiretroviral therapy
-* Life-long treatment with emerging side-effects
+* No cure: life-long treatment with emerging side-effects
+
+---
+
+# Background
+## Natural history of HIV infection
+
+![](/img/hiv-timecourse.svg)
+
+<small>
+Source: https://commons.wikimedia.org/wiki/File:Hiv-timecourse_copy.svg
+</small>
+
+---
+
+# Background
+## HIV treatment
+
+* Rapid virus evolution necessitates combination antiretroviral therapy (cART)
+* Patient can achieve complete viral suppression within days of starting treatment.
+* If the patient stops treatment, viral rebound to original levels occurs within days &mdash; even after decades of successful viral suppression.
+* Infection is being re-seeded from a latent reservoir of infected cells.
 
 ---
 
@@ -37,16 +59,69 @@ AJ Murray *et al.* (2016) J Immunol 197:407.
 ---
 
 # HIV latency
+## Cure by shock-and-kill
+
+<img src="/img/shock-and-kill.jpg"/>
+<small><small>
+Figure from S. Deeks (2012) __Shock and kill__. **Nature** 487:439
+</small></small>
+
+* Can we eradicate virus from the latent reservoir?
+* Shock: induce HIV latency reversal
+* Kill: immune response against re-activated infected cells, cART blocks further infection
+
+---
+
+# HIV latency
 ## How large is the reservoir?
 
 * The reservoir is largely composed of resting CD4+ T cells.
-* We measure the latent reservoir by the number of infected units per million (IUPM) cells.
+* We measure the latent reservoir by the number of **i**nfectious **u**nits **p**er **m**illion (IUPM) cells.
 * Use a limiting dilution assay to estimate the IUPM.
 ![](/img/limiting-dilution.png)
 
 ---
 
-# HIV latency
+# How large is the reservoir?
+## Limiting dilution assay
+* Readout of limiting dilution assay is positive/negative wells with $n$ cells
+* Probability of a negative well
+  $$P(Y=0) = \exp(-\lambda n)$$
+  where $\lambda$ is the proportion of cells infected.
+* Probability that $m$ of $M$ wells are positive:
+  $$P(m|M,n,\lambda) = {M\choose m} (1-\exp(\lambda n))^m \exp(\lambda n)^{M-m}$$
+
+---
+
+# How large is the reservoir?
+## Limitations
+
+* A positive well may contain one or more infected cells.
+* If all wells are positive, then our estimate of $\lambda\rightarrow\infty$.
+* We can control this probability with dilution.
+* Downside: maintaining each well culture is a lot of work!
+
+---
+
+<table><tr>
+<td width="70%" style="vertical-align:center;">
+  <h1>How large is the reservoir?</h1>
+  <h2>Sequencing</h2>
+  <ul>
+    <li>IUPM assays are now often combined with genetic sequencing.</li>
+    <li>Characterize the composition of the latent reservoir.</li>
+    <li>Next-generation sequencing can make it cost-effective to sequence individual viruses.</li>
+    <li>Can we use this additional information to improve our estimate of IUPM?</li>
+  </ul>
+</td>
+<td>
+  <img src="/img/salantes-tree.svg" height="600px"/>
+</td>
+</table>
+
+---
+
+# How large is the reservoir?
 ## Estimating IUPM from NGS data
 
 <table>
@@ -72,7 +147,7 @@ AJ Murray *et al.* (2016) J Immunol 197:407.
 
 ---
 
-# HIV latency
+# How large is the reservoir?
 ## Results
 
 <table>
@@ -107,7 +182,7 @@ Poon *et al.* (2018) *Quantitation of the latent HIV-1 reservoir from the sequen
 ## Dated-tip phylogenies
 
 * We can build a phylogeny relating copies of HIV within a single host.
-* Without other information, time and the rate of evolutiona are confounded (left).
+* Without other information, time and the rate of evolution are confounded (left).
 * We can use sample collection dates to "pin" tips to a timeline, and rescale the tree in time.
 
 <table><tr>
