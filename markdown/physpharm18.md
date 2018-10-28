@@ -77,7 +77,7 @@ Figure from S. Deeks (2012) __Shock and kill__. **Nature** 487:439
 
 * The reservoir is largely composed of resting CD4+ T cells.
 * We measure the latent reservoir by the number of **i**nfectious **u**nits **p**er **m**illion (IUPM) cells.
-* Use a limiting dilution assay to estimate the IUPM.
+* Use a limiting dilution assay to estimate the IUPM (quantitative viral outgrowth assay)
 ![](/img/limiting-dilution.png)
 
 ---
@@ -85,10 +85,13 @@ Figure from S. Deeks (2012) __Shock and kill__. **Nature** 487:439
 # How large is the reservoir?
 ## Limiting dilution assay
 * Readout of limiting dilution assay is positive/negative wells with $n$ cells
-* Probability of a negative well
+* Probability of a negative well:
+
   $$P(Y=0) = \exp(-\lambda n)$$
+  
   where $\lambda$ is the proportion of cells infected.
 * Probability that $m$ of $M$ wells are positive:
+
   $$P(m|M,n,\lambda) = {M\choose m} (1-\exp(\lambda n))^m \exp(\lambda n)^{M-m}$$
 
 ---
@@ -104,7 +107,7 @@ Figure from S. Deeks (2012) __Shock and kill__. **Nature** 487:439
 ---
 
 <table><tr>
-<td width="70%" style="vertical-align:center;">
+<td width="70%" valign="middle">
   <h1>How large is the reservoir?</h1>
   <h2>Sequencing</h2>
   <ul>
@@ -112,7 +115,9 @@ Figure from S. Deeks (2012) __Shock and kill__. **Nature** 487:439
     <li>Characterize the composition of the latent reservoir.</li>
     <li>Next-generation sequencing can make it cost-effective to sequence individual viruses.</li>
     <li>Can we use this additional information to improve our estimate of IUPM?</li>
+    <li>*e.g.,* sequencing two different viruses from a positive well implies at least *two* infected cells</li>
   </ul>
+  <small><small>Image from DB Salantes *et al.* (2018) J Clin Invest 128(7)</small></small>
 </td>
 <td>
   <img src="/img/salantes-tree.svg" height="600px"/>
@@ -128,10 +133,11 @@ Figure from S. Deeks (2012) __Shock and kill__. **Nature** 487:439
   <tr>
     <td>
     <ul>
-      <li>A well tests posiitve if there is one or many infected cells.</li>
-      <li>Detecting multiple HIV variants in a well by NGS may improve estimates.</li>
-      <li>We developed a new Bayesian method to use NGS to estimate IUPM</li>
-      <li>Applied to samples collected from Rakai, Uganda, by Johns Hopkins Medicine and NIAID (US).</li>
+      <li>Cohort of HIV-1 patients in Rakai Health Science Program in Uganda.</li>
+      <li>Collaboration with Johns Hopkins Medical School and NIAID.</li>
+      <li>Does the latent reservoir vary in different human populations?</li>
+      <li>Recruited about 90 participants into reservoir study.</li>
+      <li>Next-generation sequencing of QVOA assays from this cohort nearly complete.</li>
     </ul>
     </td>
     <td width="30%">
@@ -144,6 +150,28 @@ Figure from S. Deeks (2012) __Shock and kill__. **Nature** 487:439
     </td>
   </tr>
 </table>
+
+---
+
+# How large is the reservoir?
+## Bayesian inference
+
+* HIV-1 evolves so rapidly that every nucleotide may be polymorphic within a single patient.
+* We don't know the frequencies of different variants.
+* Need to simultaneously estimate these frequencies along with the IUPM!
+<img src="/img/seqiupm.svg" width="800px"/>
+
+---
+
+# How large is the reservoir?
+## Markov chain sampling
+
+* A good situation for Bayesian inference - need robustness to uncertainty.
+* Implemented an MCMC (Markov chain Monte Carlo) method in *R* to estimate IUPM from sequence data.
+<img src="/img/iupmBayes.svg" width="600px"/>
+<small>
+Released as open source at http://github.com/ArtPoon/iupmBayes
+</small>
 
 ---
 
@@ -165,6 +193,39 @@ Figure from S. Deeks (2012) __Shock and kill__. **Nature** 487:439
 Poon *et al.* (2018) *Quantitation of the latent HIV-1 reservoir from the sequence diversity in viral outgrowth assays.*  Retrovirology 15: 47.
 </small></small>
 
+
+---
+
+# How large is the reservoir?
+## Latest results, Rakai study
+
+<table>
+  <tr>
+    <td>
+    <ul>
+      <li>We can combine data from sequencing multiple regions of HIV genome.</li>
+      <li>Joint Bayesian estimate $>$ standard IUPM (binomial test, *P*=.008).</li>
+      <li>Genetic diversity provides a dilution series - potential savings in lab work.</li>
+    </ul>
+    </td>
+    <td width="55%">
+      <img src="/img/IUPMvsJoint.svg"/>
+    </td>
+  </tr>
+</table>
+
+---
+
+# HIV latency
+## Reservoir decay
+
+<img src="/img/rosenbloom.svg" width="500px"/>
+<img src="/img/iupm-decay.jpeg" width="500px"/>
+
+<small><small>
+Images from Rosenbloom *et al.* (2017) Nature 551; Crooks *et al.* (2015) J Inf Dis 212.
+</small></small>
+
 ---
 
 # HIV latency
@@ -178,7 +239,27 @@ Poon *et al.* (2018) *Quantitation of the latent HIV-1 reservoir from the sequen
 
 ---
 
-# HIV latency
+# Blind dating
+## The great debate!
+
+<table>
+  <tr>
+    <td>
+    <ul>
+      <li>If the reservoir persists because of low-level replication, then shock-and-kill is unlikely to work.</li>
+      <li>Phylogenetic trees reconstructed from within-host HIV-1 sequence diversity are being used as evidence for **both** sides.</li>
+      <li>Can we determine when an HIV-1 lineage entered the latent reservoir?</li>
+    </ul>
+    </td>
+    <td width="50%">
+      <img src="/img/lorenzo.svg"/>
+    </td>
+  </tr>
+</table>
+
+---
+
+# Blind dating
 ## Dated-tip phylogenies
 
 * We can build a phylogeny relating copies of HIV within a single host.
@@ -187,12 +268,12 @@ Poon *et al.* (2018) *Quantitation of the latent HIV-1 reservoir from the sequen
 
 <table><tr>
 <td><img src="/img/timetree.png" width="450px"/></td>
-<td><img src="/img/timetree-scaled.png" width="400px"/></td>
+<td><img src="/img/timetree-scaled.png" width="350px"/></td>
 </tr></table>
 
 ---
 
-# HIV latency
+# Blind dating
 ## Dating HIV in the reservoir
 
 <table>
@@ -212,7 +293,28 @@ Poon *et al.* (2018) *Quantitation of the latent HIV-1 reservoir from the sequen
 
 ---
 
-# HIV latency
+<table>
+  <tr>
+    <td>
+      <h1>Blind dating</h1>
+      <h2>Validation</h2>
+      <ul>
+        <li>First tested "blind dating" method on simulated data (not shown, too easy).</li>
+        <li>Next tested on real HIV-1 RNA sequence data from published patient data sets.</li>
+        <li>Censored random sequences and estimated dates of sampling.</li>
+        <li>Mean absolute error in date estimates about 0.48 years (range 0.26 to 0.89).</li>
+      </ul>
+    </td>
+    <td width="35%">
+      <img src="/img/jones-validation.svg"/>
+    </td>
+  </tr>
+</table>
+
+
+---
+
+# Blind dating
 ## Data collection
 
 <table>
@@ -235,8 +337,6 @@ Poon *et al.* (2018) *Quantitation of the latent HIV-1 reservoir from the sequen
 </table>
 
 ---
-
-# HIV latency
 
 <table>
   <tr>
@@ -261,8 +361,6 @@ BR Jones *et al.* (2018) *Phylogenetic approach to recover integration dates of 
 </small></small>
 
 ---
-
-# HIV latency
 
 <table>
   <tr>
@@ -292,11 +390,21 @@ BR Jones *et al.* (2018) *Phylogenetic approach to recover integration dates of 
 
 ---
 
+# Blind dating
+## Concluding remarks
+
+* The latent reservoir comprises lineages from different points in time.
+* Some lineages date back over 20 years from the time of sampling.
+* No latent HIV lineages mapped to period of complete viremia suppression &mdash; implies that ongoing replication is negligible.
+* Promise for a cure?
+
+---
+
 # Acknowledgements
 
-* The development and validation of the MiCall pipeline was made possible by the members of the BC Centre for Excellence in HIV/AIDS Molecular Laboratory.
-
-* These studies were also made possible by collaborations with JCRC Uganda, Case Western Reserve University, Johns Hopkins School of Medicine, and the National Institutes of Allergy and Infectious Diseases (NIH).
+* These studies were made possible by collaborations with JCRC Uganda, Case Western Reserve University, 
+  Johns Hopkins School of Medicine, and the National Institutes of Allergy and Infectious Diseases (NIH),
+  and the BC Centre for Excellence in HIV/AIDS.
 
 * And by the donation by study participants of samples for research purposes.
 
