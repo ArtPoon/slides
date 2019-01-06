@@ -62,7 +62,7 @@ Department of Pathology & Laboratory Medicine; Microbiology & Immunology; Applie
 <section data-state="tree">
   <div id="tree" class="fig-container"
        data-fig-id="fig-phylo"
-       data-file="phylo.html"
+       data-file="/include/phylo.html"
        style="height:700px"></div>
 </section>
 
@@ -204,7 +204,7 @@ Department of Pathology & Laboratory Medicine; Microbiology & Immunology; Applie
 <section data-state="coalescent-slide">
     <div id="coalescent" class="fig-container"
          data-fig-id="fig-coalescent"
-         data-file="/html/coaltrace.html"
+         data-file="/include/coaltrace.html"
          style="height:450px">
     </div>
     <small><small><a href="http://bedford.io/projects/coaltrace/">coaltrace</a> by Trevor Bedford</small></small>
@@ -294,7 +294,7 @@ Department of Pathology & Laboratory Medicine; Microbiology & Immunology; Applie
 <section data-state="cluster">
   <div id="cluster" class="fig-container"
        data-fig-id="fig-cluster"
-       data-file="/html/cluster55.html"
+       data-file="/include/cluster55.html"
        style="height:600px"></div>
   <div id="c55label">Cluster 55</div>
 </section>
