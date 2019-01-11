@@ -12,8 +12,6 @@
   * Retrieve a record using an index
   * Index has to be built, updated; slower to add new records.
 
-
-
 ---
 
 # Tables
@@ -37,13 +35,13 @@
 * Basically, how fields in different tables are related to each other.
 * The defining characteristic of relational databases. 
 
-<img src="/img/schema.png" width="400px"/>
+<img src="/img/schema.png" width="500px"/>
 
 ---
 
 # Relational databases
 
-* A reltaional database is implemented with a *structured query language* (SQL).
+* A relational database is implemented with a *structured query language* (SQL).
 * SQL is used to create, update, and query a relational database.
 * First developed by IBM in 1980's, based on work by [Ted Codd](https://en.wikipedia.org/wiki/Edgar_F._Codd).
 * Later other companies developed commercial implementations of SQL, such as Oracle.
@@ -54,7 +52,7 @@
 
 # Non-relational databases
 
-* Although relational databases are very common, some agencies dealing with massive amounts of data have adopted a different approach.
+* Although relational databases are very common, some agencies dealing with massive amounts of data (*e.g.*, Google, Amazon, Netflix) have adopted a different approach.
 * A non-relational database or *NoSQL* has no fixed database schema - great when database has to adapt to new demands.
 * NoSQL allows the addition of new fields in real-time.
 * Supports distributed computing (multiple servers/sites).
@@ -65,14 +63,24 @@
 
 * `SELECT` is an SQL command that returns one or more fields from records from one or more tables
 
-```sql
+```
 select LAST_NAME from CHARACTERS where NUMBER_OF_EYES is 2
 ```
 
-```console
+```
 Fry
 Rodriguez
 ```
+
+---
+
+# Is a spreadsheet application the same as a DMS?
+
+* DMS = database management system.
+* A spreadsheet app like MS Excel can store data in a structured format.
+* A relational database can be built in Excel using a "master" spreadsheet.
+* Performance of Excel does not scale with size of database.
+* Database management systems like SQL enable multiple users to query and modify the database -- Excel is a single-user application.
 
 ---
 
@@ -97,7 +105,7 @@ Rodriguez
 # Origins of Genbank
 
 * The Atlas of Protein Sequence and Structure (Dayhoff and Ecks)
-* Dr. Margaret Oakley Dayhoff was the first professional curator of a sequence database and arguably the founder of bioinformatics.
+* Dr. Margaret Oakley Dayhoff was the first professional curator of a sequence database and arguably the founder of bioinformatics (*more later!*).
 * Both Dayhoff and the Los Alamos National Laboratory (headed by Walter Goad) submitted proposals to NIH to form what is now Genbank.
 * Dayhoff managed the *Atlas* as a proprietary resource, whereas Goad intended the database to be a free public resource.
 
@@ -130,18 +138,27 @@ was awarded.
 
 ---
 
-# Demonstrate sra-toolkit
+# Demonstrate fasterq-dump
 
 ---
 
-# In-class assignment
-## Find an ID database
+# In-class assignment - Find a database
 
 1. Record URL
-2. Describe the database's focus/purpose.
+   * https://www.ncbi.nlm.nih.gov/genbank/
+2. Briefly describe the database's focus/purpose.
+   * "An annotated collection of all publicly available DNA sequences."
 3. Provide the number of records, if available.
+   * 211,281,415 sequences.
 4. Compose a simple query and describe it here.
+   * "honey badger"
 5. Provide the first result of the simple query in (4).
+   ```
+   LOCUS       KR477832                 792 bp    DNA     linear   MAM 18-OCT-2015
+   DEFINITION  Mellivora capensis isolate Mcap4 nACHr alpha 1 subunit (CHRNA1)
+               gene, partial cds.
+   ACCESSION   KR477832
+   ```
 
 ---
 
