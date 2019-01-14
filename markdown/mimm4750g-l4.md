@@ -8,7 +8,7 @@
 * So far we have learned about querying the Genbank database using keywords.
 * What if we only have a nucleotide or protein sequence to work with?
 * An unknown species has no keywords to search by.
-* One approach would be to *align* the sequence against every other sequence in the database, and take whatever aligns best.  
+* One approach would be to *align* the sequence against every other sequence in the database, and take whatever aligns best. 
 * This would take too long!  (More on alignment later.)
 
 ---
@@ -68,7 +68,7 @@
 
 ---
 
-# Solution (copy to INCA)
+# INCA Q2
 
 * Sequence: `TACCTAGGGG`
 
@@ -76,7 +76,7 @@
 
 | AC | AG | CC | CT | GG | TA |
 |----|----|----|----|----|----|
-| 1  | 1  |  1 | 1  | 3  | 2  |
+|   |  |   |   |   |   |
 
 * How I handled this question in R:
 
@@ -111,8 +111,33 @@ table(pieces)
 * A measure of sequence homology (similarity that implies common ancestry).
 * Sequences do not have to be exactly the same to be closely related.
 * BUT this means that we have to know how some residues are more similar than others!
+* *e.g.,* is glutamic acid (E) closer to glutamine (Q) or arginine (R)?
+* A score is a rough estimate of how likely one type of substitution is over another.
 
+---
 
+# Calculating scores
+
+* [Dayhoff](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5037978/) pioneered the concept of quantifying amino acid substitution rates from the comparative analysis of protein sequences.
+* Dayhoff *et al.* (1978) mapped 1,572 AA substitutions to trees relating protein sequences in the *Atlas*.
+
+|       |  A  | R  | N   | D   |C  |Q   |
+|-------|-----|----|-----|-----|---|----|
+| A Ala |     |    |     |     |   |    |
+| R Arg | 30  |    |     |     |   |    |
+| N Asn | 109 | 17 |     |     |   |    |
+| D Asp | 154 | 0  | 532 |     |   |    |
+| C Cys | 33  | 10 | 0   | 0   |   |    |
+| Q Gln | 93  | 120 | 50 | 76  | 0 |    |
+| E Glu | 266 | 0  | 94  | 831 | 0 | 422 | 
+
+---
+
+# PAM matrices
+
+* accepted point mutations (abbreviated as PAM)
+* calculate *mutation probability matrix* ($M$) from observed mutation counts ($A$):
+`$$M_{ij} = \frac{\lambda m_j A_{ij}}{\sum_{i}A_{ij}}$$`
 
 ---
 
