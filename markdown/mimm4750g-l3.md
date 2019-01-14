@@ -154,7 +154,8 @@ FEATURES             Location/Qualifiers
 # Converting between file formats
 
 * One of the fundamental tasks in bioinformatics is the conversion of data from one format to another.
-* Often a required step to feed the output of one program as input for another.
+* Different programs write data to files in different formats, even when the data contain the same information.
+* Converting formats is often a required step to feed the output of one program as input for another (building *pipelines*).
 
 ---
 
@@ -218,6 +219,13 @@ An article in *The Perl Journal* by [Lincoln Stein](https://oicr.on.ca/investiga
 
 * "Scripting language" is difficult to define.
 * Generally a script is a program that automates the execution of tasks.
+* A scripting language is often developed using a compiled language - it operates at a higher (more abstract) level.
+* (Like making macaroni and cheese with a Kraft Dinner mix instead of growing a wheat field, harvesting the grain, milling the grain into flour...)
+
+---
+
+# Perl was the backbone of bioinformatics
+
 * Perl (Practical Extraction and Reporting Language) was developed by Larry Wall (first release 1987)
 * The *lingua franca* of bioinformatics for many years.
 * Reputation for enabling developers to do work quickly ("there's more than one way to do it"), but can be difficult to read.
@@ -259,6 +267,7 @@ for($i=1;$i<@lines;$i++) #The 1st line is header
 
 ---
 
+A conversion of the Illumina Perl code to Python
 ```python
 import sys
 

@@ -114,7 +114,7 @@ Figure based on [infographic](https://informationisbeautiful.net/visualizations/
     </ul>
     <div id="markovchain" class="fig-container"
          data-fig-id="fig-markov"
-         data-file="markov-chain.html"
+         data-file="/include/markov-chain.html"
          style="height:300px">
     </div>
     <small><small>Animation adapted from <a href="http://setosa.io/blog/2014/07/26/markov-chains/index.html">Setosa blog</a> JavaScript</small></small>
