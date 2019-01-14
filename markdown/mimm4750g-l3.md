@@ -1,3 +1,4 @@
+# MIMM4750G
 ## Data formats and scripting languages
 
 ---
@@ -15,6 +16,7 @@
 * Tables are a fundamental mode of organizing data
 * Rows represent observations
 * Columns represent variables
+* A common export format for databases.
 
 ---
 
@@ -169,9 +171,9 @@ FEATURES             Location/Qualifiers
 
 * Web interface not adequate for building an analysis pipeline
 * Several open-source programs for converting formats:
-  * BioPython.SeqIO module
+  * Bio* libraries (*e.g.*, BioPython.SeqIO module)
   * [seqmagick](https://github.com/fhcrc/seqmagick), essentially a front-end for SeqIO
-* but often we just have to do it ourselves -- this is why scripting languages are so popular.
+* but often we just have to do it ourselves -- this is why **scripting languages** are so popular.
 
 ---
 
