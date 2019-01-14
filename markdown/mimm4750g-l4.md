@@ -12,6 +12,42 @@
 
 ---
 
+# Dot plots
+
+* A simple visualization tool for comparing two unaligned sequences.
+* Make a table with one sequence along the top, and a second down the left.
+* Fill in cells where both sequences contain the same residue.
+
+|   | g | a | t | c | g | a | a | c | t | g | g |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| t | | | &middot; | | | | | | &middot; | |
+| g | &middot; | | | | &bull; | | | | | &middot; | &middot; |
+| a | | &middot; | | | | &bull; | &middot; | | | |
+| a | | &middot; | | | | &middot; | &bull; | | | |
+| c | | | | &middot;| | | | &bull; | | |
+| g |&middot; | | | |&middot; | | | | |&bull; | |
+| g |&middot; | | | |&middot; | | | | | |&bull;|
+
+---
+
+# INCA exercise
+
+* Fill out this dot plot!
+
+| |C|A|G|A|A|G|A|A|T|C|
+|-|-|-|-|-|-|-|-|-|-|-|
+|G| | | | | | | | | | |
+|A| | | | | | | | | | |
+|G| | | | | | | | | | |
+|A| | | | | | | | | | |
+|A| | | | | | | | | | |
+|G| | | | | | | | | | |
+|C| | | | | | | | | | |
+
+(Portions of 16S rRNA from Vibrio cholerae and S.typhimurium.)
+
+---
+
 # BLAST 
 
 * Basic Local Alignment Search Tool
@@ -72,6 +108,9 @@ table(pieces)
 # What is a score?
 
 * A measure of sequence homology (similarity that implies common ancestry).
+* Sequences do not have to be exactly the same to be closely related.
+* BUT this means that we have to know how some residues are more similar than others!
+
 
 
 ---
