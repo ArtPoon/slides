@@ -111,7 +111,7 @@ table(pieces)
 * A measure of sequence homology (similarity that implies common ancestry).
 * Sequences do not have to be exactly the same to be closely related.
 * BUT this means that we have to know how some residues are more similar than others!
-* *e.g.,* is glutamic acid (E) closer to glutamine (Q) or arginine (R)?
+* *e.g.,* is glutamic acid (E) closer to cysteine (C) or aspartic acid (D)?
 * A score is a rough estimate of how likely one type of substitution is over another.
 
 ---
@@ -119,7 +119,7 @@ table(pieces)
 # Calculating scores
 
 * [Dayhoff](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5037978/) pioneered the concept of quantifying amino acid substitution rates from the comparative analysis of protein sequences.
-* Dayhoff *et al.* (1978) mapped 1,572 AA substitutions to trees relating protein sequences in the *Atlas*.
+* Dayhoff *et al.* (1978) mapped 1,572 AA substitutions to trees relating protein sequences in the *Atlas* with <15% divergence.
 
 |       |  A  | R  | N   | D   |C  |Q   |
 |-------|-----|----|-----|-----|---|----|
@@ -138,6 +138,31 @@ table(pieces)
 * accepted point mutations (abbreviated as PAM)
 * calculate *mutation probability matrix* ($M$) from observed mutation counts ($A$):
 `$$M_{ij} = \frac{\lambda m_j A_{ij}}{\sum_{i}A_{ij}}$$`
+  where $\lambda$ is a scaling constant, and 
+`$$m_j = \frac{\sum_{i\ne j} A_{ij}}{n_j}$$`
+  <small>(the total number of mutations away from amino acid $j$, divided by total number of occurrences of this AA in the sequences).</small>
+
+---
+
+# PAM250 matrix
+
+250 mutations per 100 amino acids
+![](/img/pam250.png)
+<small>
+**Is** glutamic acid (E) closer to cysteine (C) or aspartic acid (D)?
+</small>
+
+---
+
+# BLOSUM62
+
+* BLOcks SUbstitution Matrix
+* Calculated from the BLOCKS database of local alignments of highly conserved regions of proteins.
+
+
+---
+
+# Back to BLAST - evaluating significance
 
 ---
 
@@ -145,5 +170,5 @@ table(pieces)
 
 * [The BLAST Sequence Analysis Tool](https://www.ncbi.nlm.nih.gov/books/NBK153387/)
 
-
+* [BLAST substitution matrices](https://www.ncbi.nlm.nih.gov/blast/html/sub_matrix.html)
 
