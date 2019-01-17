@@ -31,7 +31,8 @@
 
 ---
 
-# INCA exercise
+<img src="/img/inti.png" width="150px"/>
+# INCA Q1
 
 * Fill out this dot plot!
 
@@ -68,6 +69,7 @@
 
 ---
 
+<img src="/img/inti.png" width="150px"/>
 # INCA Q2
 
 * Sequence: `TACCTAGGGG`
@@ -146,7 +148,7 @@ table(pieces)
 
 # PAM250 matrix
 
-250 mutations per 100 amino acids
+250 mutations per 100 amino acids (scaled from PAM1).
 ![](/img/pam250.png)
 <small>
 **Is** glutamic acid (E) closer to cysteine (C) or aspartic acid (D)?
@@ -158,11 +160,55 @@ table(pieces)
 
 * BLOcks SUbstitution Matrix
 * Calculated from the (no longer maintained) BLOCKS database of local alignments of highly conserved regions of proteins.
+* PAM is based on mutations mapped to a phylogeny.
+* BLOSUM is based on odds ratios of AAs in an alignment.
 
+---
+
+# Log-odds
+
+* Consider an alignment of protein sequences.
+* Frequency of amino acid $a$ is $p_a$.
+* If an aligned pair of AAs $a$ and $b$ are independent, then their probability is $p_a\times p_b$.
+* Ratio of the *observed* probability ($q_{a,b}$) to this expectation is the *odds*.
+* Taking the log of the odds gives us the log-odds:
+  $$s(a,b)= \lambda\log\frac{q_{a,b}}{p_a p_b}$$
+  where $\lambda$ is used to round $s$ to nice integers.
+
+---
+
+<img src="/img/inti.png" width="150px"/>
+# INCA Q3
+
+* The observed frequency of aligned pairs of tryptophan (W) is $q_{\scriptsize W,W}=0.0065$.
+* The observed frequency of W alone is $p_{\scriptsize W}=0.013$.
+* What is $s_{WW}$ if we set $\lambda = 2.88$?  Round to one decimal place (*i.e.,* `xy.z`).
+* Now do the same for leucine ($q_{\scriptsize L,L}=0.0371$, $p_L=0.099$)
+
+<small>
+Example stolen from SR Eddy (2004), Nature Biotechnol 22(8):1035.
+</small>
+
+---
+
+# BLOSUM62
+
+* Like PAM, there are several BLOSUM matrices for different levels of evolutionary divergence.
+* Unlike PAM, each BLOSUM matrix is derived from its own alignment, rather than being extrapolated from one data-derived matrix.
+* BLOSUM62 derived from an alignment of protein segments of <62% identity
+* Considered to be comparable to PAM250.
+* BLAST generally uses BLOSUM62
 
 ---
 
 # Back to BLAST - evaluating significance
+
+* Recall BLAST searches for high-scoring sequence pair (HSP).
+* The expected number of HSPs with score $\ge S$:
+
+  $$E=Kmn \exp{-\lambda S}$$
+  
+  where $m$ and $n$ are the sequence lengths, and $K$ and $\lambda$ are parameters.
 
 ---
 
@@ -173,7 +219,9 @@ table(pieces)
 
 # Further readings
 
-* [The BLAST Sequence Analysis Tool](https://www.ncbi.nlm.nih.gov/books/NBK153387/)
+* [The Statistics of Sequence Similarity Scores](https://www.ncbi.nlm.nih.gov/BLAST/tutorial/Altschul-1.html)
 
-* [BLAST substitution matrices](https://www.ncbi.nlm.nih.gov/blast/html/sub_matrix.html)
+* [Selecting the Right Similarity-Scoring Matrix](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3848038/)
+
+
 
