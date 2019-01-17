@@ -166,6 +166,11 @@ table(pieces)
 
 ---
 
+# Types of BLAST queries
+
+
+---
+
 # Further readings
 
 * [The BLAST Sequence Analysis Tool](https://www.ncbi.nlm.nih.gov/books/NBK153387/)
