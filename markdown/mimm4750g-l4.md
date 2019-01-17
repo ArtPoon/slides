@@ -157,7 +157,7 @@ table(pieces)
 # BLOSUM62
 
 * BLOcks SUbstitution Matrix
-* Calculated from the BLOCKS database of local alignments of highly conserved regions of proteins.
+* Calculated from the (no longer maintained) BLOCKS database of local alignments of highly conserved regions of proteins.
 
 
 ---
