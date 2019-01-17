@@ -208,7 +208,8 @@ Example stolen from SR Eddy (2004), Nature Biotechnol 22(8):1035.
 
   $$E=Kmn \exp{-\lambda S}$$
   
-  where $m$ and $n$ are the sequence lengths, and $K$ and $\lambda$ are parameters.
+  where $m$ and $n$ are the sequence lengths.
+* $K$ and $\lambda$ are parameters that depend on the BLOSUM matrix
 
 ---
 
