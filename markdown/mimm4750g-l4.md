@@ -216,7 +216,7 @@ Example stolen from SR Eddy (2004), Nature Biotechnol 22(8):1035.
 # Types of BLAST queries
 
 * NCBI maintains both nucleotide and protein databases
-<img src="/img/blast-tools.png" width="500px"/>
+<img src="/img/BLAST-tools.png" width="500px"/>
 
 ---
 
