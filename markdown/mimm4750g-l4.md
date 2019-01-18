@@ -206,15 +206,28 @@ Example stolen from SR Eddy (2004), Nature Biotechnol 22(8):1035.
 * Recall BLAST searches for high-scoring sequence pair (HSP).
 * The expected number of HSPs with score $\ge S$:
 
-  $$E=Kmn \exp{-\lambda S}$$
+  $$E=Kmn e^{-\lambda S}$$
   
   where $m$ and $n$ are the sequence lengths.
-* $K$ and $\lambda$ are parameters that depend on the BLOSUM matrix
+* $K$ and $\lambda$ are pre-defined parameters that depend on the BLOSUM matrix.
 
 ---
 
 # Types of BLAST queries
 
+* NCBI maintains both nucleotide and protein databases
+<img src="/img/blast-tools.png" width="500px"/>
+
+---
+
+# BLAST databases
+
+* **nr/nt** (non-redundant nucleotide collection) - identical sequences merged into same record
+* 16S rRNA
+* **est** (expressed sequence tags) - partial cDNA sequences
+* **SRA** (sequence read archive) next-generation sequence data
+* **VecScreen** - identify segments of vector origin
+* **IgBLAST** - search immunoglobulin and T-cell receptor sequences
 
 ---
 
@@ -224,5 +237,5 @@ Example stolen from SR Eddy (2004), Nature Biotechnol 22(8):1035.
 
 * [Selecting the Right Similarity-Scoring Matrix](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3848038/)
 
-
+* [Database resources of the National Center for Biotechnology Information](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4702911/)
 
