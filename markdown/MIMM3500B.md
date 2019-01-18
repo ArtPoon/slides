@@ -122,12 +122,30 @@ Figure based on [infographic](https://informationisbeautiful.net/visualizations/
 
 ---
 
+<section data-state="numtrees-slide">
+    <h1>How many trees?</h1>
+    <ul>
+      <li>There are an enormous number of possible trees relating even a small number of species!</li>
+    </ul>
+    <div id="howmany" class="fig-container"
+         data-fig-id="fig-howmany"
+         data-file="/include/numtrees.html"
+         style="height:150px">
+    </div>
+    <ul>
+      <li>There are about 7.5&times;10<sup><small>18</small></sup> grains of sand on the planet.</li>
+      <li>There are about 10<sup><small>80</small></sup> atoms in the universe.</li>
+    </ul>
+</section>
+
+---
+
 # Maximum likelihood
 
-* There are an enormous number of possible trees relating even a small number of species!
-* $3.35\times 10^{184}$ trees relating 100 tips.
+* A Markov model of evolution enables us to calculate the likelihood that 2 sequences are related by a branch of time $t$.
 * Attempt to find the tree that maximizes the likelihood of the evolutionary model.
-* Many software programs for doing this: *e.g.,* RAxML, PhyML.
+* Integrate over all possible ancestral sequences.
+* Many software programs for doing this: *e.g.,* [RAxML](https://cme.h-its.org/exelixis/web/software/raxml/index.html), [PhyML](http://www.atgc-montpellier.fr/phyml/), [MEGA](https://www.megasoftware.net/).
 
 ---
 
@@ -165,6 +183,9 @@ Figure based on [infographic](https://informationisbeautiful.net/visualizations/
 * Learn about the origin of pathogens by determining *when* they originated, expanded.
 * Not much of a fossil record for viruses or bacteria.
 * Microbes evolve quickly - we can extrapolate to the past if we have samples from different points in time.
+
+<img src="/img/pithovirus.jpg" width="250px"/>
+<small>False color image of <i>Pithovirus sibericum</i> from 30,000yo sample</small>
 
 ---
 

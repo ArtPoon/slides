@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<head>
+<style>
+    body {
+      font: 36px sans-serif;
+    }
+    input {
+      padding: 1px;
+      font-size: 24px;
+      font-family: sans-serif;    
+    }
+    td {
+      padding: 4px;
+    }
+</style>
+</head>
+
+<body>
+
+<script src="/js/jquery.min.js"></script>
+
+<center>
+<form>
+  <table>
+    <tr>
+      <td><label>Number of tips</label></td>
+      <td><input type="number" id="ntips_input" value="3" min="3" max="87"></td>
+    </tr>
+    <tr>
+      <td><label>Number of unrooted binary trees: </label></td>
+      <td><output name="nu" id="nu_output">1</output></td>
+    </tr>
+    <tr>
+       <td><label>Number of rooted binary trees: </label></td>
+       <td><output name="nr" id="nr_output">3</output></td>
+    </tr>
+  </table>
+</form>
+</center>
+
+<script>
+function fact(n) {
+  if (n<0) return undefined;
+  var result = 1;
+  for (var i = 2; i <= n; i++) {
+    result = result * i;
+  }
+  return result;
+}
+
+
+$("#ntips_input").bind("input", function() {
+  //console.log(this.value);
+  var n=this.value;
+  //console.log(n);
+  var num_unroot = fact(2*n-4) / (fact(n-2)*Math.pow(2,n-2));
+  $("#nu_output").val(num_unroot);
+  $("#nr_output").val(num_unroot * (2*n-3));
+})
+.trigger('input');
+</script>
+
+</body>
+</html>
