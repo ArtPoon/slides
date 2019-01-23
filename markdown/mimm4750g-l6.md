@@ -48,7 +48,7 @@ GGGATGCACTCGCTG
     <div id="jukes" class="fig-container"
          data-fig-id="fig-jukes"
          data-file="/include/jukes-cantor.html"
-         style="height:500px">
+         style="height:550px">
     </div>
     <div></div>
     </center>
