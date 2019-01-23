@@ -34,4 +34,23 @@ GGGATGCACTCGCTG
 # Multiple hits
 
 * A big problem with the Hamming and *p*-distances is that they tend to  underestimate the amount of evolution.
-* 
+* Suppose we are tracking the evolution of a sequence `AAAA`
+* A single mutation occurs resulting `AGAA` ($p=0.25$)
+* As we continue to accumulate mutations, the chance that we mutate a site *that has already undergone a mutation* increases.
+* Multiple hits mask evidence of previous evolution (`A` $\rightarrow$ `G` $\rightarrow$ `A`).
+
+---
+
+<section data-state="jukes-slide">
+    <center>
+    <div id="jukes" class="fig-container"
+         data-fig-id="fig-jukes"
+         data-file="/include/jukes-cantor.html"
+         style="height:600px">
+    </div>
+    </center>
+</section>
+
+
+
+
