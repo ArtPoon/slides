@@ -7,23 +7,64 @@
 div.wrapper {
   text-align: center;
 }
-div.example {
+#sequence {
   text-align: center;
+  font: 24pt Courier,serif;
+}
+#button-wrap {
+  font: 16pt;
 }
 body {
   font: 16pt sans-serif;
 }
+#output {
+  font: 16pt;
+}
 </style>
 
 
-<div id="wrapper">
-  <div id="jukes-cantor"></div>
-</div>
+<center>
+<table>
+  <tr>
+    <td><div id="wrapper">
+      <div id="jukes-cantor"></div>
+    </div></td>
+    <td>
+      <table>
+      <tr><td>
+        <div id="sequence">
+          <div id="seq1"></div>
+        </div>
+      </td></tr>
+      <tr><td>
+        <div id="button-wrap">
+          <input type="submit" value="Evolve" onclick="evolve()" style="font-size: 20px" id="jc-button"/>
+        </div>
+      </td></tr>
+      <tr><td>
+        Number of mutations = <span id="mutation-count">0</span>
+      </td></tr>
+      <tr><td>
+        p-distance = <span id="p-distance">0</span>
+      </td></tr>
+      <tr><td>
+        Predicted num. mutations = <span id="predict-sub">0</span>
+      </td></tr>
+      <tr><td>
+        Jukes-Cantor adjustment = <span id="jc-dist">0</span>
+      </td></tr>
+    </td>
+  </tr>
+</table>
+</center>
+
 
 <script src="/js/d3.v3.min.js"></script>
+<script src="/js/jquery.min.js"></script>
+
 <script>
 
-var margin = {top: 20, right: 20, bottom: 30, left: 30},
+var margin = {top: 20, right: 20, bottom: 30, left: 50},
     width = 550 - margin.left - margin.right,
     height = 550 - margin.top - margin.bottom;
 
@@ -59,7 +100,7 @@ d3.csv("/data/jukes.csv", function(error, data) {
   
   // don't want dots overlapping axis, so add in buffer to data domain
   xScale.domain([d3.min(data, xValue)-0.1, d3.max(data, xValue)+0.1]);
-  yScale.domain([d3.min(data, yValue)-0.1, d3.max(data, yValue)+0.1]);
+  yScale.domain([d3.min(data, yValue)-0.01, d3.max(data, yValue)+0.1]);
   
   // x-axis
   svg.append("g")
@@ -86,28 +127,92 @@ d3.csv("/data/jukes.csv", function(error, data) {
       .text("p-distance");
       
   // draw points
-  var line = d3.svg.line()
-    .x(function(d) { return d.time; })
-    .y(function(d) { return d.dist; })
-    .interpolate("basis");
+  var linefunc = d3.svg.line()
+    .x(function(d) { return xScale(d.time); })
+    .y(function(d) { return yScale(d.dist); })
+    .interpolate("linear");
     
-  svg.append("path")
-     .data([data])
-     .attr("class", "line")
-     .attr("d", line);
-     
-     // p-distance   
-svg.append("line")
-  .attr("x1", xScale(0))
-  .attr("y1", yScale(0))
-  .attr("x2", xScale(1))
-  .attr("y2", yScale(1))
-  .attr("stroke-width", 2)
-  .attr("stroke", "#00000040");
-});
-
-
+  var path = svg.append("path")
+     .attr("d", linefunc(data))
+     .attr("stroke", "steelblue")
+     .attr("stroke-width", "3")
+     .attr("fill", "none");
+ 
   
+  var totalLength = path.node().getTotalLength();
+  path.attr("stroke-dasharray", totalLength + " " + totalLength)
+      .attr("stroke-dashoffset", totalLength)
+      .transition()
+        .duration(2000)
+        .ease("linear")
+        .attr("stroke-dashoffset", 0);
+  
+  
+  // p-distance   
+  svg.append("line")
+    .attr("x1", xScale(0))
+    .attr("y1", yScale(0))
+    .attr("x2", xScale(1))
+    .attr("y2", yScale(1))
+    .attr("stroke-width", 2)
+    .attr("stroke", "#00000040");
+
+});  // end d3.csv
+
+
+// functions for stepping sequence through mutations at random
+var seq1 = "AAAAAAAAAA";
+$("#seq1").text(seq1);
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+
+var nmut = 0;
+
+function evolve () {
+  if (nmut >= 20) {
+    return;
+  }
+  var pos = getRandomInt(seq1.length);
+  var from_nuc = seq1[pos];
+  var to_nuc = "ACGT".replace(from_nuc, "");
+  
+  to_nuc = to_nuc[getRandomInt(to_nuc.length)];
+  seq1 = seq1.slice(0, pos) + to_nuc + seq1.slice(pos+1, seq1.length);
+  $("#seq1").text(seq1);
+  
+  nmut+=1;
+  $("#mutation-count").text(nmut);
+  //console.log("nmut: ", nmut);
+  
+  var d = nmut / seq1.length;
+  
+  // calculate p-distance
+  var pd = 0;
+  for (var i=0; i<seq1.length; i++) {
+    if (seq1[i] != "A") {
+      pd += 1;
+    }
+  }
+  pd /= seq1.length;
+  $("#p-distance").text(pd);
+  
+  svg.append("circle")
+    .attr("cx", xScale(d))
+    .attr("cy", yScale(pd))
+    .attr("r", 5)
+    .style("fill", "black");
+
+  // update predicted number of substitutions given p-distance
+  $("#predict-sub").text(pd*seq1.length);
+
+  // calculate jukes-cantor
+  console.log(pd);
+  $("#jc-dist").text(Math.round(
+    -3/4 * Math.log(1-4/3*pd) * 10 * seq1.length
+  ) / 10);
+};
 </script>
 
 

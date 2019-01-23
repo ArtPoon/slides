@@ -41,16 +41,19 @@ GGGATGCACTCGCTG
 
 ---
 
+
 <section data-state="jukes-slide">
+    <h1>Jukes-Cantor simulation</h1>
     <center>
     <div id="jukes" class="fig-container"
          data-fig-id="fig-jukes"
          data-file="/include/jukes-cantor.html"
-         style="height:600px">
+         style="height:500px">
     </div>
+    <div></div>
     </center>
 </section>
 
-
+---
 
 
