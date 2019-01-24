@@ -59,7 +59,6 @@ myApp.factory('utils', function() {
 });
 
 
-
 myApp.directive('stDiagram', function($compile) {
   function link(scope, el, attr) {
     el = d3.select(el[0]);
@@ -215,6 +214,8 @@ myApp.directive('stDiagram', function($compile) {
 
     var currentState = 0;
     function loop() {
+    
+      // determine next state
       var i = currentState;
       var nextStates = scope.transitionMatrix[i];
       var nextState = -1;
@@ -235,7 +236,9 @@ myApp.directive('stDiagram', function($compile) {
         scope.$emit('stateChange', next);
       });
       currentStateG
-        .transition().duration(+scope.duration * 0.25)
+        .transition()
+        .delay(2000 * -Math.log(Math.random())/3)
+        .duration(+scope.duration * 0.25)
         .style('opacity', 1)
         .ease('cubic-in')
         .attrTween('transform', function() {
