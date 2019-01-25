@@ -1,5 +1,6 @@
 # MIMM4750g
 ## Genetic distances
+![](https://imgs.xkcd.com/comics/genetic_testing.png)
 
 ---
 
@@ -109,6 +110,8 @@ GGGATGCACTCGCTG
 > Why does this calculator occasionally report a "Jukes-Cantor adjustment" of `NaN`?  (Not a Number)
 
 Hint: think about some of the assumptions of the Jukes-Cantor model.
+
+Another hint: The log of $x\le 0$ is not a number (undefined).
 
 ---
 
