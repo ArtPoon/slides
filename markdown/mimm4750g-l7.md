@@ -49,5 +49,59 @@
 * A *non-parametric* clustering method uses the observed distribution of one or more characteristics to cluster the data.
 * For example, if we look at cars on a one-lane road, we can build up clusters from any two cars closer than some cut-off distance of each other.
 * A *parametric* clustering method fits a model to the data to define clusters.
+* 
+
+---
+
+<table>
+  <tr>
+    <td>
+      <h1>k-means clustering</h1>
+      <ul>
+        <li>A popular clustering method (unsupervised, dissociative, nonparametric)</li>
+        <li>*k* refers to the number of clusters defined by "means".</li>
+        <li>Assign each point to the closest mean, while locating the optimum locations of means.</li>
+        <li>(top) A simulated dataset with three clusters, called *mouse*.</li>
+        <li>(bottom) A k-means clustering of *mouse* with *k* set to the true value.</li>
+      </ul>
+    </td>
+    <td>
+      <img src="/img/kmeans-actual.png" width="500px"/>
+      <img src="/img/kmeans.png" width="500px"/>
+    </td>
+  </tr>
+</table>
+
+---
+
+<table>
+  <tr>
+    <td style="vertical-align:middle">
+      <h1>Gaussian mixture models</h1>
+      <ul>
+        <li>Another popular clustering method (unsupervised, **parametric**)</li>
+        <li>Find the assignments of each data point to one of *k* Gaussian distributions.</li>
+        <li>Also find the mean and variance of each Gaussian that maximizes likelihood.</li>
+        <li>Method can determine for itself the optimal number of clusters.</li>
+        <li>(bottom) Gaussian mixture model applied to *mouse* data.</li>
+      </ul>
+    </td>
+    <td>
+      <img src="/img/kmeans-actual.png" width="500px"/>
+      <img src="/img/mouse-gmm.png" width="500px"/>
+    </td>
+  </tr>
+</table>
+
+---
+
+# Distance-based clustering
+
+* A simple nonparametric clustering method that is popular for sequence data.
+* 
+
+---
+
+# Applications
 
 
