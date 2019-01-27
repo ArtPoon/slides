@@ -1,0 +1,449 @@
+
+<style>
+  div.wrapper {
+    text-align: center;
+  }
+  div.njtree {
+    text-align: center;
+  }
+  .link {
+    stroke: #aaa;
+    stroke-width: 2px;
+  }
+
+  .textClass {
+    stroke: #323232;
+    font-family: "Cabin", "Droid Sans", Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    stroke-width: .5;
+    font-size: 14px;
+  }
+  
+  table {
+    font-size: 12px;
+  }
+  
+  .bar rect {
+  shape-rendering: crispEdges;
+}
+
+.bar text {
+  fill: #999999;
+}
+
+.axis path, .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+    .ticks {
+      font: 14px sans-serif;
+    }
+
+    .track,
+    .track-inset,
+    .track-overlay {
+      stroke-linecap: round;
+    }
+
+    .track {
+      stroke: #dcdcdc;
+      stroke-width: 10px;
+    }
+
+    .track-inset {
+      stroke: #dcdcdc;
+      stroke-width: 8px;
+    }
+
+    .track-overlay {
+      pointer-events: stroke;
+      stroke-width: 50px;
+      stroke: transparent;
+    }
+
+    .handle {
+      fill: #fff;
+      stroke: #000;
+      stroke-opacity: 0.5;
+      stroke-width: 1.25px;
+    }
+</style>
+
+
+<div id="wrapper">
+  <table>
+    <tr>
+      <td><div id="tn93"></div></td>
+    </tr>
+    <tr>
+      <td align="center"><div id="histogram"></div></td>
+    </tr>
+  </table>
+</div>
+
+<script src="/js/d3.v3.min.js"></script>
+<script src="/js/jquery.min.js"></script>
+
+
+<script>
+
+var w = 600,  // width
+    h = 600;  // height
+
+var data = {};
+
+var vis = d3.select("div#tn93")
+            .append("svg:svg")
+            .attr("width", w)
+            .attr("height", h)
+            .attr("id", "mySvg")
+            .attr("pointer-events", "all")
+            .attr("viewBox", "0 0 " + w + " " + h)
+            .attr("perserveAspectRatio", "xMinYMid meet")
+            .append('svg:g');
+
+
+// layout for histogram
+var margin = {top:50, right:50, bottom:0, left:50},
+    width = 800 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+var histHeight = height/3;
+
+var svg = d3.select("div#histogram")
+    .append("svg:svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom);
+
+var hist = svg.append("g")
+    .attr("class", "histogram")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+// position linked nodes using physical simulation
+var force = d3.layout.force();
+
+var nodes = force.nodes(),
+    links = force.links();
+
+function myGraph() {
+    /*
+    Define an object class for manipulating a d3 network.
+    Adapted from code by Lopez Hugo:
+      http://bl.ocks.org/hugolpz/cd89b50d834828261b45af9e7a5ce926
+     */
+    this.addNode = function(id, r) {
+        nodes.push({"id": id, "r": r})
+        update();
+    };
+
+    this.removeNode = function(id) {
+        var i = 0;
+        var n = this.findNode(id);
+        if (n == null) {
+            // no node with this 'id'
+            return;  // returns undefined
+        }
+
+        while (i < links.length) {
+            if ((links[i]['source'] == n) || (links[i]['target'] == n)) {
+                // remove links that connect to this node
+                links.splice(i, 1);
+            }
+            else i++;
+        }
+        nodes.splice(this.findNodeIndex(id), 1);
+        update();
+    };
+
+    this.removeLink = function (source, target) {
+        // remove directed edge between nodes with given IDs, if it exists
+        var link;
+        for (var i = 0; i < links.length; i++) {
+            link = links[i];
+            if ((link.source.id == source && link.target.id == target) || 
+                (link.source.id == target && link.target.id == source)) {
+                links.splice(i, 1);
+                break;
+            }
+        }
+        // if no matching edge, no big deal
+        update();
+    };
+    
+    this.removeLinkToNode = function(target) {
+      var link,
+          parent;
+      for (var i=0; i<links.length; i++) {
+        link = links[i];
+        if (link.target.id == target) {
+          links.splice(i, 1);
+          parent = link.source.id;
+          break;  // expect only on incoming-link
+        }
+      }
+      update();
+      return parent;
+    }
+
+    this.removeAllLinks = function () {
+        links.splice(0, links.length);
+        update();
+    };
+
+    this.removeAllNodes = function () {
+        nodes.splice(0, nodes.length);
+        update();
+    };
+
+    this.addLink = function(source, target, dist) {
+        /*
+            Add link object to [links] Array between nodes specified
+            by IDs.
+            @param source: ID of parent node
+            @param target: ID of child node
+            @param dist: distance attribute (float)
+         */
+        var node1 = this.findNode(source),
+            node2 = this.findNode(target);
+
+        if (node1 == null || node2 == null) {
+            return;  // do nothing
+        }
+        links.push({"source": node1, "target": node2, "dist": dist});
+        update();
+    };
+
+
+    /* accessor functions */
+    this.findNode = function(id) {
+        // search through Array of node objects and return the object
+        // with the requested (id)
+        for (var i in nodes) {  // for..in iterates over indices
+            if (nodes[i]["id"] === id) return nodes[i];
+        }
+        console.log("Warning: failed to retrieve node with id: "+id);
+        return null;
+    };
+
+    this.findNodeIndex = function(id) {
+        for (var i = 0; i < nodes.length; i++) {
+            if (nodes[i].id == id) {
+                return i;
+            }
+        }
+        console.log("Warning: failed to index node witih id: " + id);
+        return null;
+    };
+
+    update();  // go!
+}
+
+
+var update = function() {
+    /*
+     Redraw d3 network.
+     */
+    var link = vis.selectAll("line")
+            .data(links, function (d) {
+                return d.source.id + "-" + d.target.id;
+            });
+
+    link.enter().append("line")
+        .attr("id", function (d) {
+            return d.source.id + '-' + d.target.id;
+        })
+        .attr("class", "link");
+    link.exit().remove();
+
+    var node = vis.selectAll("g.node")
+        .data(nodes, function(d) {
+            return d.id;
+        });
+    
+    /*
+    node.append("text")
+        .attr("dx", 12)
+        .attr("dy", ".35em")
+        .text(function(d) { return d.id });
+    */
+    var nodeEnter = node.enter().append("g")
+        .attr("class", "node")
+        .call(force.drag);
+
+    nodeEnter.append("svg:circle")
+        .attr("r", function (d) { return 50*d.r; })
+        .attr("id", function (d) { return d.id; })
+        .attr("class", "nodeStrokeClass");
+
+    node.exit().remove();
+    
+    node.select("circle")
+        .style("fill", "#fff")
+        .style("stroke", "#aaa")
+        .style("stroke-width", "3");
+
+    force.on("tick", function() {
+        node.attr("transform", function (d) {
+            return "translate(" + d.x + "," + d.y + ")";
+        });
+
+        link.attr("x1", function(d) { return d.source.x; })
+            .attr("y1", function(d) { return d.source.y; })
+            .attr("x2", function(d) { return d.target.x; })
+            .attr("y2", function(d) { return d.target.y; });
+    });
+
+    // restart the force layout
+    force.charge(-200)
+         .gravity(0.2)
+         .linkDistance(function(d) {
+            return 200*d.dist;
+         })
+         .size([w, h])
+         .start();
+};
+
+function keepNodesOnTop() {
+    $(".nodeStrokeClass").each(function( index ) {
+        var gnode = this.parentNode;
+        gnode.parentNode.appendChild(gnode);
+    });
+}
+
+
+
+// ===========================================
+//  initialize graph
+var graph = new myGraph();
+var dist;
+var distances = [];
+var dist;
+
+
+d3.csv("/data/tn93.csv", function(d) {
+  data.links = d;
+  
+  // determine node count
+  var max_node_id = 0;
+  for (var i=0; i<data.links.length; i++) {
+    link = data.links[i];
+    
+    node_id = +link.ID2;
+    if (node_id > max_node_id) {
+        max_node_id = node_id;
+    }
+  }
+
+ 
+  // add nodes
+  for (var i=1; i<=max_node_id; i++) {
+    graph.addNode(""+i, 0.2);
+  }
+
+  for (var i=0; i<data.links.length; i++) {
+    link = data.links[i];
+    dist = +link.Distance;
+    distances.push(dist);
+    
+    if (dist < 0.05) {
+        graph.addLink(link.ID1, link.ID2, dist*5+0.1);
+    }
+  }
+  
+  keepNodesOnTop();
+  
+  
+  // histogram code ----------------
+      
+
+    
+  // set up scales
+  var xMax = d3.max(distances);
+  var xMin = d3.min(distances);
+  var x = d3.scale.linear()
+      .domain([xMin, xMax])
+      .range([0, width]);
+      
+  var histogram = d3.layout.histogram()
+      .bins(20)
+      (distances);
+      
+  var yMax = d3.max(histogram, function(d){return d.length});
+  var yMin = d3.min(histogram, function(d){return d.length});
+  
+  var y = d3.scale.linear()
+      .domain([0, yMax])
+      .range([histHeight, 0]);
+
+  var xAxis = d3.svg.axis()
+      .scale(x)
+      .orient("bottom");
+
+  // draw histogram
+  var bar = hist.selectAll(".bar")
+      .data(histogram)
+      .enter().append("g")
+      .attr("class", "bar")
+      .attr("transform", function(d) { return "translate(" + x(d.x) + "," + y(d.y) + ")"; });
+
+
+  bar.append("rect")
+      .attr("x", 1)
+      .attr("width", (x(histogram[0].dx) - x(0)) - 1)
+      .attr("height", function(d) { return histHeight - y(d.y); })
+      .attr("fill", "steelblue");
+
+
+
+    // slider code
+    var drag = d3.behavior.drag()
+        .origin(function(d) { return {x: d[0], y: d[1]}; })
+        .on("drag", console.log(d3.event));
+    
+    var currentValue = 0;
+
+    var slider = svg.append("g")
+        .attr("class", "slider")
+        .attr("transform", "translate(" + margin.left + "," + (margin.top+histHeight+5) + ")");    
+
+    slider.append("line")
+        .attr("class", "track")  //style
+        .attr("x1", x.range()[0])
+        .attr("x2", x.range()[1])
+        .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
+        .attr("class", "track-inset")
+        .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
+        .attr("class", "track-overlay");
+
+    //console.log(drag);    
+    slider.call(drag);
+
+    // label ticks
+    slider.insert("g", ".track-overlay")
+        .attr("class", "ticks")
+        .attr("transform", "translate(0," + 18 + ")")
+        .selectAll("text")
+        .data(x.ticks(10))
+        .enter()
+        .append("text")
+        .attr("x", x)
+        .attr("y", 10)
+        .attr("text-anchor", "middle")
+        .text(function(d) { return d; });
+
+    var handle = slider.insert("circle", ".track-overlay")
+        .attr("class", "handle")
+        .attr("r", 9);
+
+    function dragmove(d) {
+        var ex = d3.event.x;
+        d.x = ex;
+        handle.attr("cx", ex);
+    }
+});
+
+
+</script>
