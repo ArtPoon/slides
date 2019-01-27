@@ -399,9 +399,15 @@ d3.csv("/data/tn93.csv", function(d) {
 
 
     // slider code
+    function dragmove(d) {
+        var ex = d3.event.x;
+        console.log(ex);
+        //d.x = ex;
+        handle.attr("cx", ex);
+    }
     var drag = d3.behavior.drag()
-        .origin(function(d) { return {x: d[0], y: d[1]}; })
-        .on("drag", console.log(d3.event));
+        .on("drag", dragmove)
+        .origin(function() { return {x: 0, y: 0} });
     
     var currentValue = 0;
 
@@ -438,11 +444,7 @@ d3.csv("/data/tn93.csv", function(d) {
         .attr("class", "handle")
         .attr("r", 9);
 
-    function dragmove(d) {
-        var ex = d3.event.x;
-        d.x = ex;
-        handle.attr("cx", ex);
-    }
+
 });
 
 
