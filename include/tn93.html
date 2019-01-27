@@ -76,8 +76,6 @@
   <table>
     <tr>
       <td><div id="tn93"></div></td>
-    </tr>
-    <tr>
       <td align="center"><div id="histogram"></div></td>
     </tr>
   </table>
@@ -89,25 +87,25 @@
 
 <script>
 
-var w = 600,  // width
-    h = 600;  // height
+var w = 500,  // width
+    h = 500;  // height
 
 var data = {};
 
 var vis = d3.select("div#tn93")
-            .append("svg:svg")
-            .attr("width", w)
-            .attr("height", h)
-            .attr("id", "mySvg")
-            .attr("pointer-events", "all")
-            .attr("viewBox", "0 0 " + w + " " + h)
-            .attr("perserveAspectRatio", "xMinYMid meet")
-            .append('svg:g');
+    .append("svg:svg")
+    .attr("width", w)
+    .attr("height", h)
+    .attr("id", "mySvg")
+    .attr("pointer-events", "all")
+    .attr("viewBox", "0 0 " + w + " " + h)
+    .attr("perserveAspectRatio", "xMinYMid meet")
+    .append('svg:g');
 
 
 // layout for histogram
 var margin = {top:50, right:50, bottom:0, left:50},
-    width = 800 - margin.left - margin.right,
+    width = 500 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
 var histHeight = height/3;
@@ -129,139 +127,137 @@ var nodes = force.nodes(),
     links = force.links();
 
 function myGraph() {
-    /*
-    Define an object class for manipulating a d3 network.
-    Adapted from code by Lopez Hugo:
-      http://bl.ocks.org/hugolpz/cd89b50d834828261b45af9e7a5ce926
-     */
-    this.addNode = function(id, r) {
-        nodes.push({"id": id, "r": r})
-        update();
-    };
+  /*
+  Define an object class for manipulating a d3 network.
+  Adapted from code by Lopez Hugo:
+    http://bl.ocks.org/hugolpz/cd89b50d834828261b45af9e7a5ce926
+   */
+  this.addNode = function(id, r) {
+    nodes.push({"id": id, "r": r})
+    redraw();
+  };
 
-    this.removeNode = function(id) {
-        var i = 0;
-        var n = this.findNode(id);
-        if (n == null) {
-            // no node with this 'id'
-            return;  // returns undefined
-        }
-
-        while (i < links.length) {
-            if ((links[i]['source'] == n) || (links[i]['target'] == n)) {
-                // remove links that connect to this node
-                links.splice(i, 1);
-            }
-            else i++;
-        }
-        nodes.splice(this.findNodeIndex(id), 1);
-        update();
-    };
-
-    this.removeLink = function (source, target) {
-        // remove directed edge between nodes with given IDs, if it exists
-        var link;
-        for (var i = 0; i < links.length; i++) {
-            link = links[i];
-            if ((link.source.id == source && link.target.id == target) || 
-                (link.source.id == target && link.target.id == source)) {
-                links.splice(i, 1);
-                break;
-            }
-        }
-        // if no matching edge, no big deal
-        update();
-    };
-    
-    this.removeLinkToNode = function(target) {
-      var link,
-          parent;
-      for (var i=0; i<links.length; i++) {
-        link = links[i];
-        if (link.target.id == target) {
-          links.splice(i, 1);
-          parent = link.source.id;
-          break;  // expect only on incoming-link
-        }
-      }
-      update();
-      return parent;
+  this.removeNode = function(id) {
+    var i = 0;
+    var n = this.findNode(id);
+    if (n == null) {
+      // no node with this 'id'
+      return;  // returns undefined
     }
 
-    this.removeAllLinks = function () {
-        links.splice(0, links.length);
-        update();
-    };
+    while (i < links.length) {
+      if ((links[i]['source'] == n) || (links[i]['target'] == n)) {
+        // remove links that connect to this node
+        links.splice(i, 1);
+      }
+      else i++;
+    }
+    nodes.splice(this.findNodeIndex(id), 1);
+    redraw();
+  };
 
-    this.removeAllNodes = function () {
-        nodes.splice(0, nodes.length);
-        update();
-    };
+  this.removeLink = function (source, target) {
+    // remove directed edge between nodes with given IDs, if it exists
+    var link;
+    for (var i = 0; i < links.length; i++) {
+      link = links[i];
+      if ((link.source.id == source && link.target.id == target) || 
+        (link.source.id == target && link.target.id == source)) {
+        links.splice(i, 1);
+        break;
+      }
+    }
+    // if no matching edge, no big deal
+    redraw();
+  };
+  
+  this.removeLinkToNode = function(target) {
+    var link,
+        parent;
+    for (var i=0; i<links.length; i++) {
+      link = links[i];
+      if (link.target.id == target) {
+        links.splice(i, 1);
+        parent = link.source.id;
+        break;  // expect only on incoming-link
+      }
+    }
+    redraw();
+    return parent;
+  }
 
-    this.addLink = function(source, target, dist) {
-        /*
-            Add link object to [links] Array between nodes specified
-            by IDs.
-            @param source: ID of parent node
-            @param target: ID of child node
-            @param dist: distance attribute (float)
-         */
-        var node1 = this.findNode(source),
-            node2 = this.findNode(target);
+  this.removeAllLinks = function () {
+      links.splice(0, links.length);
+      redraw();
+  };
 
-        if (node1 == null || node2 == null) {
-            return;  // do nothing
-        }
-        links.push({"source": node1, "target": node2, "dist": dist});
-        update();
-    };
+  this.removeAllNodes = function () {
+      nodes.splice(0, nodes.length);
+      redraw();
+  };
+
+  this.addLink = function(source, target, dist) {
+    /*
+        Add link object to [links] Array between nodes specified
+        by IDs.
+        @param source: ID of parent node
+        @param target: ID of child node
+        @param dist: distance attribute (float)
+     */
+    var node1 = this.findNode(source),
+      node2 = this.findNode(target);
+
+    if (node1 == null || node2 == null) {
+      return;  // do nothing
+    }
+    links.push({"source": node1, "target": node2, "dist": dist});
+    redraw();
+  };
 
 
-    /* accessor functions */
-    this.findNode = function(id) {
-        // search through Array of node objects and return the object
-        // with the requested (id)
-        for (var i in nodes) {  // for..in iterates over indices
-            if (nodes[i]["id"] === id) return nodes[i];
-        }
-        console.log("Warning: failed to retrieve node with id: "+id);
-        return null;
-    };
+  /* accessor functions */
+  this.findNode = function(id) {
+    // search through Array of node objects and return the object
+    // with the requested (id)
+    for (var i in nodes) {  // for..in iterates over indices
+      if (nodes[i]["id"] === id) return nodes[i];
+    }
+    console.log("Warning: failed to retrieve node with id: "+id);
+    return null;
+  };
 
-    this.findNodeIndex = function(id) {
-        for (var i = 0; i < nodes.length; i++) {
-            if (nodes[i].id == id) {
-                return i;
-            }
-        }
-        console.log("Warning: failed to index node witih id: " + id);
-        return null;
-    };
+  this.findNodeIndex = function(id) {
+    for (var i = 0; i < nodes.length; i++) {
+      if (nodes[i].id == id) {
+          return i;
+      }
+    }
+    console.log("Warning: failed to index node witih id: " + id);
+    return null;
+  };
 
-    update();  // go!
+  redraw();  // go!
 }
 
 
-var update = function() {
-    /*
-     Redraw d3 network.
-     */
+var redraw = function() {
+    /* Redraw d3 network. */    
     var link = vis.selectAll("line")
-            .data(links, function (d) {
-                return d.source.id + "-" + d.target.id;
-            });
+      .data(links, function (d) {
+        return d.source.id + "-" + d.target.id;
+      });
 
     link.enter().append("line")
-        .attr("id", function (d) {
-            return d.source.id + '-' + d.target.id;
-        })
-        .attr("class", "link");
+      .attr("id", function (d) {
+        return d.source.id + '-' + d.target.id;
+      })
+      .attr("class", "link");
     link.exit().remove();
 
     var node = vis.selectAll("g.node")
-        .data(nodes, function(d) {
-            return d.id;
-        });
+      .data(nodes, function(d) {
+        return d.id;
+      });
     
     /*
     node.append("text")
@@ -270,47 +266,47 @@ var update = function() {
         .text(function(d) { return d.id });
     */
     var nodeEnter = node.enter().append("g")
-        .attr("class", "node")
-        .call(force.drag);
+      .attr("class", "node")
+      .call(force.drag);
 
     nodeEnter.append("svg:circle")
-        .attr("r", function (d) { return 50*d.r; })
-        .attr("id", function (d) { return d.id; })
-        .attr("class", "nodeStrokeClass");
+      .attr("r", function (d) { return 30*d.r; })
+      .attr("id", function (d) { return d.id; })
+      .attr("class", "nodeStrokeClass");
 
     node.exit().remove();
     
     node.select("circle")
-        .style("fill", "#fff")
-        .style("stroke", "#aaa")
-        .style("stroke-width", "3");
+      .style("fill", "#fff")
+      .style("stroke", "#aaa")
+      .style("stroke-width", "3");
 
     force.on("tick", function() {
-        node.attr("transform", function (d) {
-            return "translate(" + d.x + "," + d.y + ")";
-        });
+      node.attr("transform", function (d) {
+        return "translate(" + d.x + "," + d.y + ")";
+      });
 
-        link.attr("x1", function(d) { return d.source.x; })
-            .attr("y1", function(d) { return d.source.y; })
-            .attr("x2", function(d) { return d.target.x; })
-            .attr("y2", function(d) { return d.target.y; });
+      link.attr("x1", function(d) { return d.source.x; })
+        .attr("y1", function(d) { return d.source.y; })
+        .attr("x2", function(d) { return d.target.x; })
+        .attr("y2", function(d) { return d.target.y; });
     });
 
     // restart the force layout
-    force.charge(-200)
-         .gravity(0.2)
-         .linkDistance(function(d) {
-            return 200*d.dist;
-         })
-         .size([w, h])
-         .start();
+    force.charge(-100)
+       .gravity(0.2)
+       .linkDistance(function(d) {
+          return 150*d.dist;
+       })
+       .size([w, h])
+       .start();
 };
 
 function keepNodesOnTop() {
-    $(".nodeStrokeClass").each(function( index ) {
-        var gnode = this.parentNode;
-        gnode.parentNode.appendChild(gnode);
-    });
+  $(".nodeStrokeClass").each(function( index ) {
+    var gnode = this.parentNode;
+    gnode.parentNode.appendChild(gnode);
+  });
 }
 
 
@@ -321,7 +317,8 @@ var graph = new myGraph();
 var dist;
 var distances = [];
 var dist;
-
+var currentValue = 0;  // of slider
+var x;
 
 d3.csv("/data/tn93.csv", function(d) {
   data.links = d;
@@ -333,7 +330,7 @@ d3.csv("/data/tn93.csv", function(d) {
     
     node_id = +link.ID2;
     if (node_id > max_node_id) {
-        max_node_id = node_id;
+      max_node_id = node_id;
     }
   }
 
@@ -343,29 +340,29 @@ d3.csv("/data/tn93.csv", function(d) {
     graph.addNode(""+i, 0.2);
   }
 
+  
   for (var i=0; i<data.links.length; i++) {
     link = data.links[i];
     dist = +link.Distance;
     distances.push(dist);
     
     if (dist < 0.05) {
-        graph.addLink(link.ID1, link.ID2, dist*5+0.1);
+      graph.addLink(link.ID1, link.ID2, dist*5+0.1);
     }
   }
   
   keepNodesOnTop();
   
   
-  // histogram code ----------------
-      
-
+  // --------------- histogram code ---------------- //
     
   // set up scales
   var xMax = d3.max(distances);
   var xMin = d3.min(distances);
-  var x = d3.scale.linear()
+  x = d3.scale.linear()
       .domain([xMin, xMax])
-      .range([0, width]);
+      .range([0, width])
+      .clamp(true);
       
   var histogram = d3.layout.histogram()
       .bins(20)
@@ -398,54 +395,59 @@ d3.csv("/data/tn93.csv", function(d) {
 
 
 
-    // slider code
-    function dragmove(d) {
-        var ex = d3.event.x;
-        console.log(ex);
-        //d.x = ex;
-        handle.attr("cx", ex);
-    }
-    var drag = d3.behavior.drag()
-        .on("drag", dragmove)
-        .origin(function() { return {x: 0, y: 0} });
-    
-    var currentValue = 0;
-
-    var slider = svg.append("g")
-        .attr("class", "slider")
-        .attr("transform", "translate(" + margin.left + "," + (margin.top+histHeight+5) + ")");    
-
-    slider.append("line")
-        .attr("class", "track")  //style
-        .attr("x1", x.range()[0])
-        .attr("x2", x.range()[1])
-        .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
-        .attr("class", "track-inset")
-        .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
-        .attr("class", "track-overlay");
-
-    //console.log(drag);    
-    slider.call(drag);
-
-    // label ticks
-    slider.insert("g", ".track-overlay")
-        .attr("class", "ticks")
-        .attr("transform", "translate(0," + 18 + ")")
-        .selectAll("text")
-        .data(x.ticks(10))
-        .enter()
-        .append("text")
-        .attr("x", x)
-        .attr("y", 10)
-        .attr("text-anchor", "middle")
-        .text(function(d) { return d; });
-
-    var handle = slider.insert("circle", ".track-overlay")
-        .attr("class", "handle")
-        .attr("r", 9);
+  // --------------- slider code ---------------------- //   
+  function dragmove(d) {
+    currentValue = d3.event.x;
+    var ex = x.invert(currentValue);
+    console.log(ex);
+    //d.x = ex;
+    handle.attr("cx", currentValue);
+    redraw();
+  }
+  
+  var drag = d3.behavior.drag()
+    .on("drag", dragmove)
+    .origin(function() { 
+        var t = d3.transform(d3.select(this).attr("transform"));
+        return {x: t.translate[0], y: t.translate[1]};
+        //return {x: 0, y: 0} 
+    });
 
 
-});
+  var slider = svg.append("g")
+    .attr("class", "slider")
+    .attr("transform", "translate(" + margin.left + "," + (margin.top+histHeight+5) + ")");    
+
+  slider.append("line")
+    .attr("class", "track")  //style
+    .attr("x1", x.range()[0])
+    .attr("x2", x.range()[1])
+    .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
+    .attr("class", "track-inset")
+    .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
+    .attr("class", "track-overlay");
+
+  //console.log(drag);    
+  slider.call(drag);
+
+  // label ticks
+  slider.insert("g", ".track-overlay")
+    .attr("class", "ticks")
+    .attr("transform", "translate(0," + 18 + ")")
+    .selectAll("text")
+    .data(x.ticks(10))
+    .enter()
+    .append("text")
+    .attr("x", x)
+    .attr("y", 10)
+    .attr("text-anchor", "middle")
+    .text(function(d) { return d; });
+
+  var handle = slider.insert("circle", ".track-overlay")
+    .attr("class", "handle")
+    .attr("r", 9)
+    .attr("cx", x(0.05));
+});  // end d3.csv
 
 
 </script>
