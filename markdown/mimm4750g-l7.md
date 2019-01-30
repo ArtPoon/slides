@@ -50,7 +50,7 @@
 * A *non-parametric* clustering method uses the observed distribution of one or more characteristics to cluster the data.
 * For example, if we look at cars on a one-lane road, we can build up clusters from any two cars closer than some cut-off distance of each other.
 * A *parametric* clustering method fits a model to the data to define clusters.
-* 
+* If we have a model on the distance between cars, we can identify groups of cars that are consistent with a "close following" mode.
 
 ---
 
@@ -127,6 +127,9 @@
   </td>
 </tr>
 </table>
+<small>
+Source: Simmonds, Peter, *et al.* (2017) Nat Rev Microbiol 15: 161.
+</small>
 
 ---
 
@@ -227,3 +230,4 @@
 
 * [Consensus statement: Virus taxonomy in the age of metagenomics](https://www.nature.com/articles/nrmicro.2016.177)
 * [ICTV: Comments to proposed modification to code rule 3.21 (defining virus species)](https://talk.ictvonline.org/ictv1/f/general_ictv_discussions-20/3930/comments-to-proposed-modification-to-code-rule-3-21-defining-virus-species)
+
