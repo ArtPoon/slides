@@ -40,8 +40,7 @@
 
 ---
 
-# Origins of HIV-1
-
+**INCA Q1** - According to this tree, at least how many times has SIV moved into the human species?
 <img src="/img/HIV-tree.png" width=500px/>
 
 <small><small>Modified from Joy *et al.* (2015) Origin and Evolution of Human Immunodeficiency Viruses. <u>Global Virology I.</u> Springer, New York.</small></small>
@@ -85,15 +84,45 @@
 
 * Unweighted pair group method with arithmetic mean.
 * A simple hierarchical clustering method.
-* Every sequence starts out as a cluster of one.
+* Every sequence starts out as a cluster of one ($|X|=1$).
 * Algorithm:
-  1. Join clusters $i$, $j$ with minimum distance $D(i,j)$
-  2. Add cluster $ij$ with $D(ij,k)=(D(i,k)+D(j,k))/2$
+  1. Join clusters $X$, $Y$ with minimum distance $d(X,Y)$
+  2. Replace $X$ and $Y$ with cluster $X\cup Y$, where $d(X\cup Y, Z) = \frac{|X|d(X,Z) + |Y|d(Y,Z)}{|X|+|Y|}$.
   3. Go to step 1 until only one cluster remains (the root).
 
 ---
 
-# UPGMA
+# Ultrametric trees
 
+<table>
+<tr>
+<td style="vertical-align:middle">
+  <ul>
+  <li>Because of how UPGMA computes the distances of ancestral nodes, it generates trees where every tip is the same distance from the root.</li>
+  <li>This is what you would get if:</li>
+  <li>
+    <ol>
+      <li>we sample each tip at the same moment in time.</li>
+      <li>the rate of evolution is constant.</li>
+    </ol>
+  </li>
+  </ul>
+</td>
+<td width="40%">
+  ![](/img/ultrametric.png)
+</td>
+</table>
+
+---
+
+<section data-state="nj-slide">
+    <h1>Neighbor-joining</h1>
+    <br/>
+    <div id="nj" class="fig-container"
+         data-fig-id="fig-nj"
+         data-file="/include/njtree.html"
+         style="height:800px">
+    </div>
+</section>
 
 

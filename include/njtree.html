@@ -1,0 +1,489 @@
+<!-- author @ArtPoon -->
+
+<style>
+  div.wrapper {
+    text-align: center;
+    font: 16px Cabin, sans-serif;
+  }
+  div.njtree {
+    text-align: center;
+  }
+  .link {
+    stroke: #aaa;
+    stroke-width: 2px;
+  }
+
+  .textClass {
+    stroke: #323232;
+    font-family: "Cabin", "Droid Sans", Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    stroke-width: .5;
+    font-size: 14px;
+  }
+  
+table {
+  margin-bottom: 1rem;
+  width: 100%;
+  border: 1px solid #e5e5e5;
+  border-collapse: collapse;
+  font: 18px Cabin,sans-serif;
+}
+td,
+th {
+  padding: .25rem .5rem;
+  border: 1px solid #e5e5e5;
+}
+tbody tr:nth-child(odd) td,
+tbody tr:nth-child(odd) th {
+  background-color: #f9f9f9;
+}
+
+</style>
+
+
+<div id="wrapper">
+  <input type="button" id="reset_btn" value="Reset" onclick="reset()"/>
+  <input type="button" id="step_btn" value="Step!" onclick="nextStage()"/>
+  <table>
+    <tr>
+      <td><div id="csvtable"></div></td>
+      <td><div id="njtree"></div></td>
+    </tr>
+  </table>
+</div>
+
+
+<script src="/js/d3.v3.min.js"></script>
+<script src="/js/jquery.min.js"></script>
+
+<script>
+
+var w = 600,  // width
+    h = 500;  // height
+
+
+var vis = d3.select("div#njtree")
+            .append("svg:svg")
+            .attr("width", w)
+            .attr("height", h)
+            .attr("id", "mySvg")
+            .attr("pointer-events", "all")
+            .attr("viewBox", "0 0 " + w + " " + h)
+            .attr("perserveAspectRatio", "xMinYMid meet")
+            .append('svg:g');
+
+// position linked nodes using physical simulation
+var force = d3.layout.force();
+
+var nodes = force.nodes(),
+    links = force.links();
+
+
+function myGraph() {
+    /*
+    Define an object class for manipulating a d3 network.
+    Adapted from code by Lopez Hugo:
+      http://bl.ocks.org/hugolpz/cd89b50d834828261b45af9e7a5ce926
+     */
+    this.addNode = function(id, r) {
+        nodes.push({"id": id, "r": r})
+        update();
+    };
+
+    this.removeNode = function(id) {
+        var i = 0;
+        var n = this.findNode(id);
+        if (n == null) {
+            // no node with this 'id'
+            return;  // returns undefined
+        }
+
+        while (i < links.length) {
+            if ((links[i]['source'] == n) || (links[i]['target'] == n)) {
+                // remove links that connect to this node
+                links.splice(i, 1);
+            }
+            else i++;
+        }
+        nodes.splice(this.findNodeIndex(id), 1);
+        update();
+    };
+
+    this.removeLink = function (source, target) {
+        // remove directed edge between nodes with given IDs, if it exists
+        var link;
+        for (var i = 0; i < links.length; i++) {
+            link = links[i];
+            if ((link.source.id == source && link.target.id == target) || 
+                (link.source.id == target && link.target.id == source)) {
+                links.splice(i, 1);
+                break;
+            }
+        }
+        // if no matching edge, no big deal
+        update();
+    };
+    
+    this.removeLinkToNode = function(target) {
+      var link,
+          parent;
+      for (var i=0; i<links.length; i++) {
+        link = links[i];
+        if (link.target.id == target) {
+          links.splice(i, 1);
+          parent = link.source.id;
+          break;  // expect only on incoming-link
+        }
+      }
+      update();
+      return parent;
+    }
+
+    this.removeAllLinks = function () {
+        links.splice(0, links.length);
+        update();
+    };
+
+    this.removeAllNodes = function () {
+        nodes.splice(0, nodes.length);
+        update();
+    };
+
+    this.addLink = function(source, target, dist) {
+        /*
+            Add link object to [links] Array between nodes specified
+            by IDs.
+            @param source: ID of parent node
+            @param target: ID of child node
+            @param dist: distance attribute (float)
+         */
+        var node1 = this.findNode(source),
+            node2 = this.findNode(target);
+
+        if (node1 == null || node2 == null) {
+            return;  // do nothing
+        }
+        links.push({"source": node1, "target": node2, "dist": dist});
+        update();
+    };
+
+
+    /* accessor functions */
+    this.findNode = function(id) {
+        // search through Array of node objects and return the object
+        // with the requested (id)
+        for (var i in nodes) {  // for..in iterates over indices
+            if (nodes[i]["id"] === id) return nodes[i];
+        }
+        console.log("Warning: failed to retrieve node with id: "+id);
+        return null;
+    };
+
+    this.findNodeIndex = function(id) {
+        for (var i = 0; i < nodes.length; i++) {
+            if (nodes[i].id == id) {
+                return i;
+            }
+        }
+        console.log("Warning: failed to index node witih id: " + id);
+        return null;
+    };
+
+    update();  // go!
+}
+
+
+var update = function() {
+    /*
+     Redraw d3 network.
+     */
+    var link = vis.selectAll("line")
+            .data(links, function (d) {
+                return d.source.id + "-" + d.target.id;
+            });
+
+    link.enter().append("line")
+        .attr("id", function (d) {
+            return d.source.id + '-' + d.target.id;
+        })
+        .attr("class", "link");
+    link.exit().remove();
+
+    var node = vis.selectAll("g.node")
+        .data(nodes, function(d) {
+            return d.id;
+        });
+    
+    node.append("text")
+        .attr("dx", 12)
+        .attr("dy", ".35em")
+        .text(function(d) { return d.id });
+
+    var nodeEnter = node.enter().append("g")
+        .attr("class", "node")
+        .call(force.drag);
+
+    nodeEnter.append("svg:circle")
+        .attr("r", function (d) { return 50*d.r; })
+        .attr("id", function (d) { return d.id; })
+        .attr("class", "nodeStrokeClass");
+
+    node.exit().remove();
+    
+    node.select("circle")
+        .style("fill", "#fff")
+        .style("stroke", "#aaa")
+        .style("stroke-width", "3");
+
+    force.on("tick", function() {
+        node.attr("transform", function (d) {
+            return "translate(" + d.x + "," + d.y + ")";
+        });
+
+        link.attr("x1", function(d) { return d.source.x; })
+            .attr("y1", function(d) { return d.source.y; })
+            .attr("x2", function(d) { return d.target.x; })
+            .attr("y2", function(d) { return d.target.y; });
+    });
+
+    // restart the force layout
+    force.charge(-500)
+         .gravity(0.05)
+         .linkDistance(function(d) {
+            return 200*d.dist;
+         })
+         .size([w, h])
+         .start();
+};
+
+
+// ===========================================
+//  initialize graph
+var graph = new myGraph();
+
+var csvdata,
+    headers,
+    node_names,
+    scaling_factor,
+    dists;
+
+var stage;
+
+
+function reset () {
+    /*
+     Reset d3 network and read data from CSV file.
+     */
+    $('#step_btn').removeAttr('disabled');
+    graph.removeAllLinks();
+    graph.removeAllNodes();
+    
+    d3.text("/data/nj-example.csv").get(function(error, rows) {
+      stage = 0;
+      csvdata = d3.csv.parseRows(rows);
+      headers = csvdata[0];
+      var n = headers.length;
+      node_names = headers.slice(1, n);
+               
+      if (csvdata.length != n) {
+        console.warn("Not a square matrix!");
+      }
+      
+      // convert array into Object
+      var sum = 0;
+      dists = Array(n-1);
+      for (var i=1; i < n; i++) {
+        dists[i-1] = Array(n-1);
+        for (var j=1; j < n; j++) {
+          dists[i-1][j-1] = +csvdata[i][j];
+          if (i>j) {
+            sum = sum+dists[i-1][j-1];
+          }
+        }
+      }
+      scaling_factor = sum / (n*(n-1)/2);
+      
+      tabulate();
+      
+      // initialize graph
+      graph.addNode("root", 0.1);
+      for (var i=1; i<n; i++) {
+        graph.addNode(headers[i], 0.1);
+        graph.addLink("root", headers[i], 0.5);
+        // TODO: make these edges a fainter color
+      }
+      keepNodesOnTop();
+    });
+}
+reset();
+
+
+function tabulate () {
+  // create table
+  var tbl = d3.select("div#csvtable")
+    .html("")  // wipe out previous contents
+    .append('table');
+    
+  tbl.append('thead').append('tr')
+      .selectAll('th')
+      .data(node_names).enter()
+      .append('th')
+      .text(function(d) { return d; });
+      
+  tbl.append('tbody')
+    .selectAll('tr')
+      .data(dists).enter()
+      .append('tr')
+    
+    .selectAll('td')
+      .data(function(d) { return d; }).enter()
+      .append('td')
+      .text(function(d) { return d; });
+}
+
+
+
+function keepNodesOnTop() {
+    $(".nodeStrokeClass").each(function( index ) {
+        var gnode = this.parentNode;
+        gnode.parentNode.appendChild(gnode);
+    });
+}
+
+
+
+function njoin() {
+    /* 
+     Determine which nodes to join next based on their 
+     distances.
+     */
+    var n = dists.length;
+    
+    // compute u
+    var u = Array(n);
+    for (var i=0; i<n; i++) {
+      var sum=0;
+      for (var j=0; j<n; j++) {
+        if (j==i) { continue; }
+        sum += dists[i][j];
+      }
+      u[i] = sum/(n-2);  // zero-indexing for vector
+    }
+    
+    // choose i,j that minimizes D(i,j)-u(i)-u(j)
+    var min_i, min_j, val, min_value = Infinity;
+    for (var i=0; i<n; i++) {
+      for (var j=i+1; j<n; j++) {
+        val = dists[i][j] - u[i] - u[j];
+        if (val < min_value) {
+          min_value = val;
+          min_i = i;
+          min_j = j;
+        }
+      }
+    }
+    
+    // calculate branch lengths of (i) and (j) to new node
+    var v_i = dists[min_i][min_j]/2 + (u[min_i]-u[min_j])/2,
+        v_j = dists[min_i][min_j]/2 + (u[min_j]-u[min_i])/2;
+    
+    return {'i': min_i, 'j': min_j, 'v_i': v_i, 'v_j': v_j};
+}
+
+
+
+function nextStage() {
+  /*
+   Events triggered by Step! button.
+   Perform one iteration of neighbor-joining algorithm.
+   */
+  var ntips = csvdata.length-1;
+  
+  if (stage < ntips-3) {
+    var neighbors = njoin();
+    var i = neighbors.i,
+        j = neighbors.j;
+    
+    // concatenate new node name
+    new_node = node_names[i] + node_names[j];
+    node_names.push(new_node);
+    graph.addNode(new_node, 0.1);
+    //console.log(new_node);
+    
+    
+    // calculate distance from new node (ij) to remaining nodes
+    var n = dists.length;
+    var new_row = Array(n);
+    
+    for (var k = 0; k<n; k++) {
+      if (k==i || k==j) {
+        continue;
+      }
+      new_row[k] = (dists[i][k] + dists[j][k] - dists[i][j]) / 2;
+      dists[k].push(new_row[k]);
+    }
+    new_row.push(0);  // distance to self
+    dists.push(new_row);
+
+    
+    // remove branches from unknown parent to i and j
+    parent = graph.removeLinkToNode(node_names[i]);
+    parent = graph.removeLinkToNode(node_names[j]);
+    //console.log(parent);
+    
+    // add branches from new node to i and j
+    graph.addLink(new_node, node_names[i], neighbors.v_i / scaling_factor);
+    graph.addLink(new_node, node_names[j], neighbors.v_j / scaling_factor);
+    graph.addLink(parent, new_node, 0.1);
+    
+    
+    // delete rows i and j from array
+    if (i > j) {
+      // do higher index to preserve indexing
+      dists.splice(i,1);
+      dists.splice(j,1);
+    } else {
+      dists.splice(j,1);
+      dists.splice(i,1);
+    }
+
+    // delete columns i and j from remaining rows
+    for (var k=0; k<n-1; k++) {
+      if (i > j) {
+        dists[k].splice(i,1);
+        dists[k].splice(j,1);
+      } else {
+        dists[k].splice(j,1);
+        dists[k].splice(i,1);
+      }
+    }
+
+    
+    // remove merged nodes
+    if (neighbors.i < neighbors.j) {
+      node_names.splice(neighbors.j, 1);
+      node_names.splice(neighbors.i, 1);
+    } else {
+      node_names.splice(neighbors.i, 1);
+      node_names.splice(neighbors.j, 1);
+    }
+    
+    tabulate();
+    
+    stage = stage + 1;
+    // deactivate Step! button
+    if (stage == ntips-3) {
+      $('#step_btn').attr('disabled', 'disabled');
+    }
+  }
+  keepNodesOnTop();
+}
+
+
+
+</script>
+
+
+
+
+
