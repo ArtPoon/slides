@@ -1,5 +1,6 @@
 # MIMM4750G
 ## Building trees
+<img src="https://imgs.xkcd.com/comics/birds_and_dinosaurs.png" width="300px"/>
 
 ---
 
@@ -149,5 +150,23 @@
          style="height:800px">
     </div>
 </section>
+
+---
+
+# Pros and cons of NJ
+
+* Distance-based methods are faster than likelihood-based methods (next week)
+* Unlike UPGMA, NJ is robust to changing rates of evolution
+* Effective for massive data sets.
+* Demonstrably accurate for reconstructed trees from simulated data.
+
+---
+
+# Software for NJ
+
+* [MEGA](https://www.megasoftware.net/)
+* [RapidNJ](http://birc.au.dk/software/rapidnj/)
+* [R package ape](https://rdrr.io/cran/ape/man/nj.html)
+
 
 
