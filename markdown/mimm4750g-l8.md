@@ -8,7 +8,15 @@
 * A tree-based hypothesis about how populations are related by common ancestors.
 * Each population (species/infection) is represented by a tip of the tree.
 * Connected by branches to common ancestors (nodes).
+![](/img/phylogeny-crop.png)
+
+---
+
+# What is a root?
+* Phylogenies can be rooted or unrooted.
+* The root is a hypothesis about what point on the tree represents the earliest time.
 ![](/img/trees.png)
+* There are different ways to display trees: (*left*) usually used for unrooted trees, (*right*) usually rooted *but not always*.
 
 ---
 
@@ -32,16 +40,17 @@
   <li>Study proposes that ancestral Proteobacteria were free-living bacteria.</li>
   </ul>
 </td>
-<td width="50%">
-  <img src="/img/proteobacteria.png" width="500px">
+<td width="55%">
+  <img src="/img/proteobacteria.png" width="550px">
   <small>Figure from Sachs *et al.* (2014) *Proc Roy Soc Lond B*, 10.1098/rspb.2013.2146</small>
 </td>
 </table>
 
 ---
 
-**INCA Q1** - According to this tree, at least how many times has SIV moved into the human species?
-<img src="/img/HIV-tree.png" width=500px/>
+>**INCA Q1** - According to this tree, at least how many times has SIV moved into the human species?
+
+<img src="/img/HIV-tree.png" width=400px/>
 
 <small><small>Modified from Joy *et al.* (2015) Origin and Evolution of Human Immunodeficiency Viruses. <u>Global Virology I.</u> Springer, New York.</small></small>
 
@@ -64,11 +73,8 @@
          data-file="/include/numtrees.html"
          style="height:150px">
     </div>
-    <ul>
-      <li>There are about 7.5&times;10<sup><small>18</small></sup> grains of sand on the planet.</li>
-      <li>There are about 10<sup><small>80</small></sup> atoms in the universe.</li>
-    </ul>
 </section>
+>**INCA Q2** Why are there always more possible rooted trees than unrooted trees?
 
 ---
 
@@ -83,11 +89,14 @@
 # UPGMA
 
 * Unweighted pair group method with arithmetic mean.
-* A simple hierarchical clustering method.
-* Every sequence starts out as a cluster of one ($|X|=1$).
+* Every sequence starts out as a cluster of one ($n_{\scriptsize X}=1$).
 * Algorithm:
-  1. Join clusters $X$, $Y$ with minimum distance $d(X,Y)$
-  2. Replace $X$ and $Y$ with cluster $X\cup Y$, where $d(X\cup Y, Z) = \frac{|X|d(X,Z) + |Y|d(Y,Z)}{|X|+|Y|}$.
+  1. Join clusters $X$, $Y$ with minimum distance:
+       
+     `$$d(X,Y)=\sum_{x\in X} \sum_{y\in Y} d(x,y) / (n_X n_Y)$$`
+  2. Replace $X$ and $Y$ with cluster $X\cup Y$, where:
+     
+     `$$d(X\cup Y, Z) = \frac{n_{\scriptsize X} d(X,Z) + n_{\scriptsize Y} d(Y,Z)} {n_{\scriptsize X} + n_{\scriptsize Y}}$$`
   3. Go to step 1 until only one cluster remains (the root).
 
 ---
@@ -100,18 +109,34 @@
   <ul>
   <li>Because of how UPGMA computes the distances of ancestral nodes, it generates trees where every tip is the same distance from the root.</li>
   <li>This is what you would get if:</li>
-  <li>
     <ol>
       <li>we sample each tip at the same moment in time.</li>
       <li>the rate of evolution is constant.</li>
     </ol>
-  </li>
   </ul>
 </td>
 <td width="40%">
   ![](/img/ultrametric.png)
 </td>
 </table>
+
+---
+
+# Neighbor-joining trees
+
+* Another distance-based clustering method for making trees
+* Start with a "star" phylogeny: every tip directly descended from the root
+* Add ancestral nodes that minimize the total branch length of the tree
+
+---
+
+# NJ algorithm
+
+1. Calculate distance matrix $d_{ij}$
+2. Calculate vector `$u_i=\sum_{j=1}^{n}d_{ij} / (n-2)$`
+3. Find which $i$ and $j$ that minimize $d_{ij} - u_i - u_j$
+4. Place new node $ij$ ancestral to $i$ and $j$.
+5. Calculate new distances from $ij$ to $i$, $j$ and previous ancestor.
 
 ---
 
