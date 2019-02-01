@@ -102,6 +102,18 @@
 
 ---
 
+> INCA Q3: Using the matrix below, (*a*) which tips get joined first? (*b*) what is the distance from the new node to the remaining tip?
+
+|   | Bb | Mh | Pa |
+|---|---|---|---|
+| Bifidobacterium bombi | 0 | 17 | 20 |
+| Mycobacterium haemophilum | 17 | 0 | 6 |
+| Pseudonocardia alaniniphila | 20 | 6 | 0 |
+
+<small>Hamming distances derived from 16S rRNA sequences</small>
+
+---
+
 # Ultrametric trees
 
 <table>
