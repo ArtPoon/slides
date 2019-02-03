@@ -70,5 +70,74 @@
 
 ---
 
-  
-  
+# Likelihood
+
+* The term *likelihood* is a signal that we using the PDF to measure the probability of the **hypothesis** given the **data**.
+* Since summing across parameters does not sum to 1, all that matters is the *relative* difference in likelihood.
+* Might as well drop factors independent of parameters, *e.g.*, ${N\choose y}$:
+  $$P(N,y\;|\;p) \propto p^y (1-p)^{(N-y)}$$
+* Sometimes we replace the $P$ with $\mathcal{L}$, *e.g.,* $\mathcal{L}(p|N,y)$
+
+---
+
+# Maximum likelihood
+
+* Trying to learn about the world by determining parameter values that maximize the likelihood of the model, given the data.
+* These parameter values are the *maximum likelihood estimates* (MLE).
+* They are only as useful as the model is an accurate representation of reality.
+
+---
+
+# Finding the MLE
+
+* To estimate the parameter that maximizes likelihood, we can use first-year calculus (ha!)
+
+\begin{align}
+  \mathcal{L}(p|N,y) & \propto p^y (1-p)^{N-y} \\\\[6pt]
+  \log(\mathcal{L}) & \propto y\log(p) + (N-y)\log(1-p) \\\\[6pt]
+  \frac{d\log(\mathcal{L})}{dp} & \propto \frac{y}{p} + (-1)\frac{N-y}{1-p}
+\end{align}
+
+* If we set the left side to 0, some algebra gives us $\;\hat{p} = y/N$.
+
+---
+
+# ML tree reconstruction
+
+* For reconstructing trees, the parameters include:
+  * the distribution of branches relating the sequences
+  * the lengths of those branches
+  * parameters of the model of evolution along those branches
+* (We'll get more into models of evolution later.)
+* Obviously, it is not possible to calculate an exact likelihood for this model!
+
+---
+
+# Maximum likelihood heuristics
+
+* As long as we can calculate the likelihood for a specific set of parameters, we can search parameter space for the MLE (*optimization*).
+* Heuristic search methods (again!)
+* For phylogenies, this requires a way to move through the space of trees.
+* First proposed by [Joe Felsenstein](https://en.wikipedia.org/wiki/Joseph_Felsenstein).
+
+---
+
+# Tree rearrangements
+
+* Nearest-neighbor interchange: swap subtrees that are connected by a single branch.
+* Subtree pruning and regrafting: move a subtree to an entirely different location in the tree.
+* Small moves are easier to make, but can be slow to traverse tree space.
+
+---
+
+
+
+---
+
+# Software
+
+* RAxML
+* PhyML
+* FastTree2 
+* GARLI
+* MEGA (again)
