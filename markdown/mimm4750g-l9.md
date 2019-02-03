@@ -29,4 +29,46 @@
 
 ---
 
+# Properties of a probability distribution
 
+* A probability distribution function (PDF) can be *discrete* or *continuous*. 
+* The binomial PDF is discrete. There can be either 1 or 2 heads but never 1.5.
+* A PDF *must* sum to 1 (100%) across all possible data outcomes, *for a given hypothesis*.
+![](https://imgs.xkcd.com/comics/geeks_and_nerds.png)
+
+---
+
+# Probability and inference
+
+* When our model of some biological or epidemiological process is simple enough, we may be able to calculate the probability distribution.
+* This is the probability of the *data* given the *hypothesis*.
+* **But we already know the data!** What we want to learn about is the hypothesis!
+
+---
+
+# Likelihood
+
+  
+  
+* This probability distribution
+  
+  $P(N,y\;|\;p) = {N\choose y} p^y (1-p)^{(N-y)}$
+  
+   has two sets of variables:
+  1. Parameters that define the hypothesis (*p*).
+  2. Variables that comprise the data (*N*, *y*).
+
+---
+
+<section data-state="bin3d-slide">
+    <div id="bin3d" class="fig-container"
+         data-fig-id="fig-bin3d"
+         data-file="/include/binomial3d.html"
+         style="height:900px">
+    </div>
+</section>
+
+---
+
+  
+  
