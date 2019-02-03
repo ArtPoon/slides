@@ -102,6 +102,20 @@
 
 ---
 
+# Log-likelihood
+
+* As we add more data, the likelihood gets smaller:
+  
+  $$P(\text{everything}) = P(\text{first thing}) \times P(\text{another thing})\\\\
+   \times \ldots P(\text{last thing})$$
+   
+* Taking the $\log$ of a very small value gives you a very negative number:
+  $\log(3.45\times 10^{-73}) = -166.8503$
+* The log likelihood should never be $0$ or greater.
+* The MLE is the log-likelihood that is the least negative.
+
+---
+
 # ML tree reconstruction
 
 * For reconstructing trees, the parameters include:
@@ -122,6 +136,22 @@
 
 ---
 
+# Optimization
+
+* A major challenge of optimization heuristics is that there can be multiple "peaks" (locally optimal solutions)
+* A "greedy" heuristic that searches for the MLE by always tuning parameters to increase likelihood.
+* A more robust heuristic should have some strategy for climbing down local peaks.
+![](/img/Hill_Climbing_with_Simulated_Annealing.gif)
+
+---
+
+# Other strategies
+
+* Random restarts - begin searches at different parameter combinations to sample different peaks.
+* Starting with a pretty good guess: many ML-based tree reconstruction programs will initiate the search at a distance-based tree (such as NJ).
+
+---
+
 # Tree rearrangements
 
 * Nearest-neighbor interchange: swap subtrees that are connected by a single branch.
@@ -130,14 +160,10 @@
 
 ---
 
-
-
----
-
 # Software
 
-* RAxML
-* PhyML
-* FastTree2 
-* GARLI
-* MEGA (again)
+* [RAxML](https://cme.h-its.org/exelixis/web/software/raxml/index.html)
+* [PhyML](http://www.atgc-montpellier.fr/phyml/)
+* [FastTree2](http://www.microbesonline.org/fasttree/)
+* [GARLI](http://www.bio.utexas.edu/faculty/antisense/garli/Garli.html)
+* [MEGA](https://www.megasoftware.net/)
