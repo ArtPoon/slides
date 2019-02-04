@@ -1,6 +1,6 @@
 # MIMM4750G
 ## Probability and likelihood
-<img src="https://imgs.xkcd.com/comics/increased_risk.png" width="250px"/>
+<img src="https://imgs.xkcd.com/comics/increased_risk.png" width="300px"/>
 
 ---
 
