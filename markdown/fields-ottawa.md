@@ -42,8 +42,23 @@ Figure from Tebit and Arts (2011) Lancet Inf Dis 11: 45-56.
 # Impact of HIV-1 subtypes
 
 * Understanding the global epidemiology of HIV-1/M
-* Variation in rates of progression to AIDS (subtype D)
-* Distinct mutational pathways to evolve drug resistance
+* Variation in rates of progression to AIDS (subtypes C, D)
+<img src="/img/venner-arts.jpg" width="500px"/>
+* Distinct mutational pathways to evolve drug resistance.
+
+<small>
+Figure from C Venner *et al.* (2016) EBioMedicine 13: 305-314.
+</small>
+
+
+---
+
+# Subtyping
+
+* Compare a sequence to a reference database of "pure" subtype sequences
+* Identify recombinant as a combination of two or more parent reference sequences.
+* Sliding window methods (BOOTSCAN)
+* 
 
 ---
 
@@ -54,5 +69,7 @@ Figure from Tebit and Arts (2011) Lancet Inf Dis 11: 45-56.
 <small>
 Figure from Bell and Bedford (2017) PLOS Pathog 13: e1006466.
 </small>
+
+---
 
 
