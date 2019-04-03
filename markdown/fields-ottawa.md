@@ -7,7 +7,9 @@ Department of Pathology and Laboratory Medicine, Department of Applied Mathemati
 
 ---
 
+<!--
 <iframe src="https://ourworldindata.org/grapher/number-of-people-living-with-hiv?time=1990..2016" style="width: 100%; height: 600px; border: 0px none;"></iframe>
+-->
 
 ---
 
@@ -315,4 +317,57 @@ Demographic "skyline" reconstructions from BEAST
 
 ---
 
+# Frequency of genomes per cluster
+
+---
+
+# Communities are fairly stable
+
+<img src="/img/dynsbm/ABandC.svg" width="800px"/>
+
+<small>
+Evidence of disruption at 5' end of *env*.
+</small>
+
+---
+
+# How many genomes are recombinant?
+
+---
+
+**Community transitions are consistent with "known" recombinants.**
+
+<img src="/img/dynsbm/breakpoints.svg" width="800px"/>
+<small>
+Plot excludes "blips" (transitions from A to B immediately followed by a revision from B to A in the next window).
+</small>
+
+---
+
+# A new nomenclature proposal?
+
+* Unsupervised clustering of genomic variation may define new centres of diversity.
+
+
+---
+
+![](/img/lab-photo.jpg)
+
+<small>
+Left to right: Dr. Mariano Avino, **Dr. Abayomi Olabode**, Garway Ng, Lisa-Monique Edward, John Palmer, Connor Chato, *Art and Fiona*, David Dick, Laura Mu&ntilde;oz-Baena.  (Photo credit: Marin Poon.)
+<small>
+
+---
+
+<table>
+  <tr>
+    <td><img src="/img/OGI_Logo2015.png" height="150"/></td>
+    <td><img src="/img/GenomeCanadaLogo.png" height="150"/></td>
+    <td><img src="/img/NIH_NIAID.jpg" height="200"></td>
+  </tr>
+  <tr>
+    <td><img src="/img/cihr.png"  height="200"/></td>
+    <td><img src="/img/NSERC_RGB.png"/></td>
+  </tr>
+</table>
 
