@@ -7,9 +7,9 @@ Department of Pathology and Laboratory Medicine, Department of Applied Mathemati
 
 ---
 
-<!--
+
 <iframe src="https://ourworldindata.org/grapher/number-of-people-living-with-hiv?time=1990..2016" style="width: 100%; height: 600px; border: 0px none;"></iframe>
--->
+
 
 ---
 
@@ -297,11 +297,23 @@ Demographic "skyline" reconstructions from BEAST
 
 ---
 
+# Data reduction
+
+* SBM becomes computationally non-feasible with the complete data set.
+* We reduced the $n=3,900$ genome sequences to the most diverse $n=500$.
+* Progressive "pruning" of the shortest branches from the ML phylogeny.
+
+---
+
 # Constructing a graph
 
 * We calculated the Tamura-Nei (1993; TN93) genetic distance for every pair of fragments in a window.
 * Used the lower 10% quantile of the TN93 distribution as the graph-defining threshold for each window.
 * Processed the series of graphs along the HIV-1 genome with dynamic stochastic block models (R package [dynsvm](https://cran.r-project.org/web/packages/dynsbm/index.html); Matias and Miele).
+
+---
+
+# example of a graph
 
 ---
 
@@ -328,9 +340,11 @@ Demographic "skyline" reconstructions from BEAST
 
 ---
 
-# Communities correlate with major subtypes
 
-<img src="/img/dynsbm/subtypes.svg" width="1200px"/>
+<section data-background="/img/dynsbm/subtypes.svg" data-background-size="contain">
+<h1>Communities correlate with major subtypes</h1>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+</section>
 
 ---
 
@@ -350,6 +364,7 @@ Plot excludes "blips" (transitions from A to B immediately followed by a revisio
 # A new nomenclature proposal?
 
 * Unsupervised clustering of genomic variation may define new centres of diversity.
+* Can we select new reference points for characterizing recent recombinants?
 
 
 ---
