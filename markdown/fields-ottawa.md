@@ -115,10 +115,16 @@ $^1$ RA Neher *et al.* (2011) PLOS Comput Biol 6(1); $^2$ F Zanini *et al* (2017
   <td>
     Root-to-tip regression
     <img src="/img/korber-fig1.png"/>
+    <small>
+    from B Korber *et al.* (2000) Science 288: 1789.
+    </small>
   </td>
   <td width="50%">
     Bayesian sampling
     <img src="/img/worobey-fig.png"/>
+    <small>
+    from M Worobey *et al.* (2008) Nature 455: 661.
+    </small>
   </td>
 </tr>
 </table>
@@ -146,7 +152,7 @@ $^1$ RA Neher *et al.* (2011) PLOS Comput Biol 6(1); $^2$ F Zanini *et al* (2017
 * Queried Genbank for HIV-1 sequences of minimum length 8,000nt ($n=7,816$)
 * Manually reviewed all entries for *in vitro* clones, repeated samples, and non-group M variants.
 * Reviewed associated literature for missing collection dates.
-* Final total $n=3,900$ sequence records.
+* Final total: $n=3,900$ genome sequences.
 
 ---
 
@@ -305,7 +311,7 @@ Demographic "skyline" reconstructions from BEAST
 
 <img src="/img/dynsbm/ICL.svg" height="400px"/>
 
-<sup>1</sup><small>C Biernacki *et al.* (1998) Assessing a Mixture Model for Clustering with the Integrated Classification Likelihood. INRIA.</small>
+<small>$^1$C Biernacki *et al.* (1998) Assessing a Mixture Model for Clustering with the Integrated Classification Likelihood. INRIA.</small>
 
 ---
 
@@ -317,17 +323,14 @@ Demographic "skyline" reconstructions from BEAST
 
 ---
 
-# Frequency of genomes per cluster
+# Communities are fairly stable
+![](/img/dynsbm/barplots.svg)
 
 ---
 
-# Communities are fairly stable
+# Communities correlate with major subtypes
 
-<img src="/img/dynsbm/ABandC.svg" width="800px"/>
-
-<small>
-Evidence of disruption at 5' end of *env*.
-</small>
+<img src="/img/dynsbm/subtypes.svg" width="1200px"/>
 
 ---
 
