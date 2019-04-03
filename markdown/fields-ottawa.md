@@ -7,7 +7,7 @@ Department of Pathology and Laboratory Medicine, Department of Applied Mathemati
 
 ---
 
-<!--<iframe src="https://ourworldindata.org/grapher/number-of-people-living-with-hiv?time=1990..2016" style="width: 100%; height: 600px; border: 0px none;"></iframe>-->
+<iframe src="https://ourworldindata.org/grapher/number-of-people-living-with-hiv?time=1990..2016" style="width: 100%; height: 600px; border: 0px none;"></iframe>
 
 ---
 
