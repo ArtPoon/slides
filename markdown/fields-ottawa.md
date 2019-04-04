@@ -336,7 +336,7 @@ Demographic "skyline" reconstructions from BEAST
 ---
 
 # Communities are fairly stable
-![](/img/dynsbm/barplots.svg)
+<img src="/img/dynsbm/barplots.svg" width="1000px"/>
 
 ---
 
@@ -348,7 +348,9 @@ Demographic "skyline" reconstructions from BEAST
 
 ---
 
-# How many genomes are recombinant?
+# Number of putative breakpoints
+
+![](/img/dynsbm/ntrans.svg)
 
 ---
 
@@ -365,7 +367,7 @@ Plot excludes "blips" (transitions from A to B immediately followed by a revisio
 
 * Unsupervised clustering of genomic variation may define new centres of diversity.
 * Can we select new reference points for characterizing recent recombinants?
-
+* Need simulation experiments to assess what network communities really mean.
 
 ---
 
