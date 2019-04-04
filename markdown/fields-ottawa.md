@@ -309,11 +309,11 @@ Demographic "skyline" reconstructions from BEAST
 
 * We calculated the Tamura-Nei (1993; TN93) genetic distance for every pair of fragments in a window.
 * Used the lower 10% quantile of the TN93 distribution as the graph-defining threshold for each window.
-* Processed the series of graphs along the HIV-1 genome with dynamic stochastic block models (R package [dynsvm](https://cran.r-project.org/web/packages/dynsbm/index.html); Matias and Miele).
+* Processed the series of graphs along the HIV-1 genome with dynamic stochastic block models (R package [dynsbm](https://cran.r-project.org/web/packages/dynsbm/index.html); Matias and Miele).
 
 ---
 
-# example of a graph
+<section data-background="/img/dynsbm/tn93.svg" data-background-size="contain" />
 
 ---
 
