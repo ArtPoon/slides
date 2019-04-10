@@ -30,7 +30,26 @@
       },
       "text": {
         "headline": "The birth of bioinformatics",
-        "text": "Dr. Margaret O. Dayhoff pioneers the use of computers to store and process protein sequences.  Dayhoff and Eck release the Atlas of Protein Sequence and Structure."
+        "text": "Dr. Margaret O. Dayhoff pioneers the use of computers to store and process protein sequences.  Dayhoff implements the first computer program to reconstruct a phylogenetic tree from molecular sequences, and a matrix scheme for comparing sequences that is the foundation to BLAST.  Dayhoff and Eck release the Atlas of Protein Sequence and Structure."
+      }
+    },
+    
+    {
+      "start_date": {
+        "year": "1965",
+        "month": "",
+        "format": ""
+      },
+      "group": "Bioinformatics",
+      "media": {
+        "caption": "",
+        "credit": "",
+        "url": "https://twitter.com/i/web/status/1094991304004636673",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "Olga Kennard founds the CCDC",
+        "text": "The Cambridge Crystallographic Data Centre is one of the earliest scientific databases and predecessor to the Protein Data Bank."
       }
     },
     
@@ -62,13 +81,13 @@
       "group": "Art",
       "media": {
         "caption": "",
-        "credit": "",
+        "credit": "u/archeobits @reddit",
         "url": "img/unisys-icon.jpg",
         "thumb": ""
       },
       "text": {
         "headline": "The UNISYS ICON",
-        "text": "The Ontario Minister of Education Bette Stephenson advocates for microcomputers in the classroom.  The Canadian Educational Microprocessor Corporation wins the contract and creates the ICON workstation.  This is how I learn to code in C."
+        "text": "The Ontario Minister of Education Bette Stephenson advocates for microcomputers in the classroom.  The Canadian Educational Microprocessor Corporation wins the contract and creates the diskless ICON workstation.  This is my first exposure to a UNIX-like operating system and how I learn to code in C."
       }
     },
     
@@ -87,7 +106,7 @@
       },
       "text": {
         "headline": "First year biology in U Toronto",
-        "text": "Convocation Hall is occupied by nearly 2,000 students.  We learn that evolution is a mixture of stochastic and deterministic processes.  I decide to become an evolutionary biologist."
+        "text": "Convocation Hall is occupied by nearly 2,000 students.  We learn that evolution is a mixture of stochastic and deterministic processes.  I decide to become an evolutionary biologist.  My parents stage a series of interventions."
       }
     },
     
@@ -113,7 +132,7 @@
     {
       "start_date": {
         "year": "1996",
-        "month": "",
+        "month": "6",
         "format": ""
       },
       "group": "Art",
@@ -125,7 +144,7 @@
       },
       "text": {
         "headline": "Forays into weed ecology",
-        "text": "Works as a summer research assistant in backwoods of northern Ontario.  Inhaled fungicide.  Heatstroke.  Borrowed my mom's Volvo to transport samples - returned with trunk full of dirt and ants."
+        "text": "Works as a summer research assistant at the Thornton Bales Conservation Area.  Inhaled fungicide.  Heatstroke.  Borrowed my mom's Volvo to transport samples - returned with trunk full of dirt and ants."
       }
     },
     
@@ -133,7 +152,7 @@
     {
       "start_date": {
         "year": "1996",
-        "month": "",
+        "month": "2",
         "format": ""
       },
       "group": "Bioinformatics",
@@ -145,16 +164,14 @@
       },
       "text": {
         "headline": "Perl saves the Human Genome Project",
-        "text": "The Perl scripting language enables the interchange of data and results between centres participating in the Human Genome Project.  I don't hear about this until about 2003."
+        "text": "The Perl scripting language enables the interchange of data and results between centres participating in the Human Genome Project.  I don't hear about any of this until about 2003."
       }
-    },
-    
-    
+    },    
     
     {
       "start_date": {
         "year": "1997",
-        "month": "",
+        "month": "9",
         "format": ""
       },
       "group": "Art",
@@ -173,7 +190,7 @@
     {
       "start_date": {
         "year": "1998",
-        "month": "",
+        "month": "2",
         "format": ""
       },
       "group": "Art",
@@ -191,8 +208,8 @@
     
     {
       "start_date": {
-        "year": "1999",
-        "month": "",
+        "year": "1998",
+        "month": "9",
         "format": ""
       },
       "group": "Art",
@@ -203,9 +220,131 @@
         "thumb": ""
       },
       "text": {
-        "headline": "Racoons and unlimited NeXTs",
-        "text": "UBC Zoology is housed in WWII-era portables."
+        "headline": "Racoons and UNIX",
+        "text": "UBC Zoology is housed in WWII-era portables. I get the worst office and a pile of discarded NeXT workstations.  Hanging out with the IT staff yields an informal education in network IT and UNIX.  Also kayaks."
+      }
+    },
+    
+    {
+      "start_date": {
+        "year": "2000",
+        "month": "3",
+        "format": ""
+      },
+      "group": "Art",
+      "media": {
+        "caption": "",
+        "credit": "",
+        "url": "img/PoonOtto2000.png",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "First peer-reviewed paper",
+        "text": "Revisits a model developed by RA Fisher in 1930.  Theoretical analysis of the chance that an endangered population may go extinct from the accumulation of harmful mutations.  (Spoiler: it's not likely.)   Learns about mathematical statistics, probability theory, stochastic processes and other cool things they don't teach in 2nd year stats."
+      }
+    },
+    
+    {
+      "start_date": {
+        "year": "2000",
+        "month": "8",
+        "format": ""
+      },
+      "group": "Art",
+      "media": {
+        "caption": "",
+        "credit": "",
+        "url": "",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "From the dry lab to the wet lab",
+        "text": "Joins a bacteriophage experimental evolution lab to study compensatory evolution.  Argues constantly with supervisor."
+      }
+    },
+    
+    {
+      "start_date": {
+        "year": "2000",
+        "month": "10",
+        "format": ""
+      },
+      "group": "Bioinformatics",
+      "media": {
+        "caption": "",
+        "credit": "Excerpt from PEP 20 - The Zen of Python",
+        "url": "<blockquote><p>In the face of ambiguity, refuse the temptation to guess.</br>There should be one &mdash; and preferably only one &mdash; obvious way to do it.</br>Although that way may not be obvious at first unless you're Dutch.</p></blockquote>",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "Python 2.0 is released",
+        "text": "Like Perl, Python is a scripting language that adheres to a different philosophy.  It eventually supercedes Perl as the dominant language in bioinformatics."
+      }
+    },
+    
+    {
+      "start_date": {
+        "year": "2001",
+        "month": "1",
+        "format": ""
+      },
+      "group": "Bioinformatics",
+      "media": {
+        "caption": "",
+        "credit": "",
+        "url": "img/barlow.png",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "Computer intensive methods in statistics",
+        "text": "Grad course taught at Scripps Institute of Oceanography by Jay Barlow. I couldn't afford MATLAB so I had to write my own programs in C. Every student received a stack of photocopied hand-written notes from Jay (I still have them)."
+      }
+    },
+    
+    
+    {
+      "start_date": {
+        "year": "2003",
+        "month": "",
+        "format": ""
+      },
+      "group": "Art",
+      "media": {
+        "caption": "",
+        "credit": "",
+        "url": "",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "Compensatory mutation",
+        "text": "Creates a new experimental system to measure the rate of compensatory mutation.  Collaborates with friend Brad Davis on meta-analysis of compensatory mutation rates using something called R."
+      }
+    },
+    
+    {
+      "start_date": {
+        "year": "2006",
+        "month": "",
+        "format": ""
+      },
+      "end_date": {
+        "year": "2013"
+      },
+      "group": "Bioinformatics",
+      "media": {
+        "caption": "",
+        "credit": "KA Wetterstrand, NHGRI.",
+        "url": "https://www.genome.gov/images/content/costpergenome_2017.jpg",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "The X-Prize for the $1,000 genome is launched",
+        "text": "The prize would later be cancelled in 2013 because sequencing technology improved faster than exponentially soon after the competition start date."
       }
     }
   ]
 }
+
+
+
+
