@@ -1,0 +1,132 @@
+{
+  "scale": "human",
+  
+  "title": {
+    "media": {
+      "caption": "",
+      "credit": "",
+      "url": "http://localhost:8001/TimelineJS3/img/IMG_20190409_0002.jpg",
+      "thumb": ""
+    },
+    "text": {
+      "headline": "\"What a waste\"",
+      "text": "<div style=\"font-size: 24pt; line-height: 36px\">Life as a weirdo and the growth of bioinformatics</div>"
+    }
+  },
+    
+  "events": [
+    {
+      "start_date": {
+        "year": "1954",
+        "month": "",
+        "format": ""
+      },
+      "group": "Bioinformatics",
+      "media": {
+        "caption": "",
+        "credit": "Ruth E. Dayhoff, M.D.",
+        "url": "https://cfmedicine.nlm.nih.gov/static/img/gallery/076_06.jpg",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "The birth of bioinformatics",
+        "text": "Dr. Margaret O. Dayhoff pioneers the use of computers to store and process protein sequences.  Dayhoff and Eck release the Atlas of Protein Sequence and Structure."
+      }
+    },
+    
+    {
+      "start_date": {
+        "year": "1982",
+        "month": "",
+        "format": ""
+      },
+      "group": "Bioinformatics",
+      "media": {
+        "caption": "",
+        "credit": "American Philosophical Society Archives",
+        "url": "https://www.researchgate.net/profile/Bruno_Strasser/publication/51214024/figure/fig3/AS:276476915142664@1442928641655/Walter-Goad-in-front-of-a-terminal-accessing-the-GenBank-database-circa-1983-Goad.png",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "Public release of NCBI Genbank",
+        "text": "Building on Dayhoff's work, Walter Goad and the Los Alamos National Laboratory (LANL) are awarded a grant to build a public database.  The initial release comprised about 2,000 sequence records."
+      }
+    },
+    
+    {
+      "start_date": {
+        "year": "1989",
+        "month": "",
+        "format": ""
+      },
+      "group": "Art",
+      "media": {
+        "caption": "",
+        "credit": "",
+        "url": "img/unisys-icon.jpg",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "The UNISYS ICON",
+        "text": "The Ontario Minister of Education Bette Stephenson advocates for microcomputers in the classroom.  The Canadian Educational Microprocessor Corporation wins the contract and creates the ICON workstation.  This is how I learn to code in C."
+      }
+    },
+    
+    {
+      "start_date": {
+        "year": "1994",
+        "month": "",
+        "format": ""
+      },
+      "group": "Art",
+      "media": {
+        "credit": "Dr. Spencer Barrett",
+        "caption": "",
+        "url": "<blockquote><p>No, you're not going to end up working at a McDonald's if you go into evolutionary biology.</p></blockquote>",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "First year biology in U Toronto",
+        "text": "Convocation Hall is occupied by nearly 2,000 students.  We learn that evolution is a mixture of stochastic and deterministic processes.  I decide to become an evolutionary biologist."
+      }
+    },
+    
+    {
+      "start_date": {
+        "year": "1995",
+        "month": "",
+        "format": ""
+      },
+      "group": "Art",
+      "media": {
+        "caption": "",
+        "credit": "Victoria Dawson/The Varsity",
+        "url": "https://thevarsity.ca/wp-content/uploads/2015/01/RW-Victoria-DawsonIMG_6432-2.jpg",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "Doing research out of peer pressure",
+        "text": "Signs up for a 2nd year research opportunity because my friends are doing it.  Selects a population genetics lab because the words look neat.  Walks into the lab that afternoon and gets the job.  (Continues to walk into random labs.)"
+      }
+    },
+    
+    {
+      "start_date": {
+        "year": "1998",
+        "month": "",
+        "format": ""
+      },
+      "group": "Art",
+      "media": {
+        "caption": "",
+        "credit": "",
+        "url": "http://hawaiireedlab.com/gwiki/images/7/74/Kimura1955.png",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "Discovering math in biology",
+        "text": ""
+      }
+    }
+  ]
+}
