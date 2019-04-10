@@ -109,7 +109,67 @@
         "text": "Signs up for a 2nd year research opportunity because my friends are doing it.  Selects a population genetics lab because the words look neat.  Walks into the lab that afternoon and gets the job.  (Continues to walk into random labs.)"
       }
     },
+
+    {
+      "start_date": {
+        "year": "1996",
+        "month": "",
+        "format": ""
+      },
+      "group": "Art",
+      "media": {
+        "caption": "",
+        "credit": "Lyndon Penner (CBC)",
+        "url": "https://i.cbc.ca/1.3237423.1442863100!/fileImage/httpImage/image.jpg_gen/derivatives/4x3_1180/goldenrod.jpg",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "Forays into weed ecology",
+        "text": "Works as a summer research assistant in backwoods of northern Ontario.  Inhaled fungicide.  Heatstroke.  Borrowed my mom's Volvo to transport samples - returned with trunk full of dirt and ants."
+      }
+    },
     
+    
+    {
+      "start_date": {
+        "year": "1996",
+        "month": "",
+        "format": ""
+      },
+      "group": "Bioinformatics",
+      "media": {
+        "caption": "",
+        "credit": "Lincoln Stein",
+        "url": "<blockquote><p>Some groups attempted to build large monolithic systems on top of complex relational databases; they were thwarted time and again by the highly dynamic nature of biological research.</p></blockquote>",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "Perl saves the Human Genome Project",
+        "text": "The Perl scripting language enables the interchange of data and results between centres participating in the Human Genome Project.  I don't hear about this until about 2003."
+      }
+    },
+    
+    
+    
+    {
+      "start_date": {
+        "year": "1997",
+        "month": "",
+        "format": ""
+      },
+      "group": "Art",
+      "media": {
+        "caption": "",
+        "credit": "Canuckistan@Flicker",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/0/06/University_of_Toronto_Schools_May_2011.jpg",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "High school teaching",
+        "text": "Decided to become a high school teacher. Walked into University of Toronto Schools to volunteer and became responsible for Grade 11 Science. There is no training.  Became a goth and wore nail polish."
+      }
+    }, 
+        
     {
       "start_date": {
         "year": "1998",
@@ -125,7 +185,26 @@
       },
       "text": {
         "headline": "Discovering math in biology",
-        "text": ""
+        "text": "David Houle explains Kimura's diffusion approximation of genetic drift in 4th year population genetics. I get an NSERC.  David advises me to go train with Sally Otto."
+      }
+    },
+    
+    {
+      "start_date": {
+        "year": "1999",
+        "month": "",
+        "format": ""
+      },
+      "group": "Art",
+      "media": {
+        "caption": "",
+        "credit": "",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/NeXT_Pizzabox-IMG_7227.jpg/1920px-NeXT_Pizzabox-IMG_7227.jpg",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "Racoons and unlimited NeXTs",
+        "text": "UBC Zoology is housed in WWII-era portables."
       }
     }
   ]
