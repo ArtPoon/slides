@@ -222,7 +222,7 @@
       },
       "text": {
         "headline": "Discovering math in biology",
-        "text": "David Houle explains Kimura's diffusion approximation of genetic drift in 4th year population genetics. I get an NSERC.  David advises me to go train with Sally Otto."
+        "text": "David Houle explains Kimura's diffusion approximation of genetic drift in 4th year population genetics. I get an NSERC.  David advises me to go train with Sally Otto (a genius in mathematical biology who becomes a MacArthur Fellow in 2011)."
       }
     },
     
@@ -241,7 +241,7 @@
       },
       "text": {
         "headline": "Racoons and UNIX",
-        "text": "UBC Zoology is housed in WWII-era portables. I get the worst office and a pile of discarded NeXT workstations.  Hanging out with the IT staff yields an informal education in network IT and UNIX.  Also kayaks."
+        "text": "UBC Zoology is housed in WWII-era portables. I get the worst office and a pile of discarded NeXT workstations.  Hanging out with the IT staff yields an informal education in network IT and UNIX.  They let me run simulations on the departmental e-mail server."
       }
     },
     
@@ -279,7 +279,7 @@
       },
       "text": {
         "headline": "From the dry lab to the wet lab",
-        "text": "Joins a bacteriophage experimental evolution lab to study compensatory evolution.  Argues constantly with supervisor."
+        "text": "Joins Dr. Lin Chao's experimental evolution lab to study compensatory evolution in bacteriophage.  We argue about everything."
       }
     },
     
@@ -322,7 +322,7 @@
       },
       "text": {
         "headline": "Computer intensive methods in statistics",
-        "text": "Grad course taught at Scripps Institute of Oceanography by Jay Barlow. I couldn't afford MATLAB so I had to write my own programs in C. Every student received a stack of photocopied hand-written notes from Jay (I still have them)."
+        "text": "Grad course taught at Scripps Institute of Oceanography by Jay Barlow.  I couldn't afford MATLAB so I wrote my own programs in C.  Every student received a stack of photocopied hand-written notes from Jay (I still have them)."
       }
     },
     
@@ -443,7 +443,7 @@
       },
       "text": {
         "headline": "The X-Prize for the $1,000 genome is launched",
-        "text": "The prize would later be cancelled in 2013 because sequencing technology improved faster than exponentially soon after the competition start date.  We start messing with NGS around 2006."
+        "text": "The prize would later be cancelled in 2013 because sequencing technology improved faster than exponentially soon after the competition start date.  We start messing around with NGS data around 2008."
       }
     },
     
@@ -462,7 +462,7 @@
       },
       "text": {
         "headline": "St. Paul's Hospital",
-        "text": "Employed as a bioinformatician, I order, assemble and configure a new computing cluster.  I am given a slip of paper with a list of 3 things the director wants the lab to achieve.  (I accomplish two of them.)"
+        "text": "Employed as a bioinformatician, I order, assemble and configure a new computing cluster.  I am given a slip of paper with a list of five things the director wants the HIV lab to achieve."
       }
     },
     
@@ -481,7 +481,7 @@
       },
       "text": {
         "headline": "We have a kid",
-        "text": "Fiona's born in La Jolla, California, and attends her first Comic-Con at age 1."
+        "text": "Fiona's born in La Jolla, California, and attends her first Comic-Con at age 1.  After a couple of years, my wife and I decide \"that wasn't so bad\" and have another kid."
       }
     },
     
@@ -500,7 +500,7 @@
       },
       "text": {
         "headline": "Building a lab",
-        "text": "As a new adjunct, I get a 3-year CIHR grant as PI (my first try).  I start to build a team.  We occupy a corner of a condemned nursing school.<br/>(While the vegetarian student was at math camp, I bought the others a BBQ lunch.)"
+        "text": "As a new adjunct, I get a 3-year CIHR grant as PI (my first attempt that is followed by many failures).  I start to build a team.  We occupy a corner of a condemned nursing school. <i>(left)</i> When the vegetarian student was away at math camp, I bought the others a BBQ lunch."
       }
     },
     
@@ -525,6 +525,25 @@
     
     {
       "start_date": {
+        "year": "2013",
+        "month": "6",
+        "format": ""
+      },
+      "group": "Art",
+      "media": {
+        "caption": "",
+        "credit": "",
+        "url": "img/LancetFigure4b.png",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "Real-time outbreak detection",
+        "text": "I build the automated real-time HIV monitoring system in British Columbia using Python, R, MPI, graphviz and LaTeX.  In July 2014, the system detects an outbreak of transmitted HIV drug resistance and launches the world's first public health response triggered by such a system."
+      }
+    },
+    
+    {
+      "start_date": {
         "year": "2016",
         "month": "",
         "format": ""
@@ -538,12 +557,17 @@
       },
       "text": {
         "headline": "Finally growing up",
-        "text": "After a bunch of papers from 2013 onwards, my team and I publish together in the Lancet ID.  I'm still an adjunct, and share an office with five other people."
+        "text": "After a bunch of papers from 2013 onwards, my team and I publish together in the Lancet ID, the Lancet HIV and PLOS Computational Biology.  I'm still an adjunct, and share an office with five other people.  It's time to go."
       }
     },
     
     
     {
+      "background": {
+        "color": "#000",
+        "opacity": 50,
+        "url": null
+      },
       "start_date": {
         "year": "2018",
         "month": "",
@@ -557,8 +581,8 @@
         "thumb": ""
       },
       "text": {
-        "headline": "Bioinformatics today",
-        "text": "Bioinformatics has matured into a discipline in its own right, but there are near infinite combinations of its parental fields (biology, statistics and computer science) that remain to be explored."
+        "headline": "What is bioinformatics?",
+        "text": "Bioinformatics is the intersection of biology, statistics and computer science.  It is the development and application of methods to extract information from massive amounts of biological data."
       }
     },
     
@@ -566,6 +590,25 @@
       "start_date": {
         "year": "2019",
         "month": "",
+        "format": ""
+      },
+      "group": "Art",
+      "media": {
+        "caption": "",
+        "credit": "",
+        "url": "img/cake.png",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "What is <i>my</i> bioinformatics?",
+        "text": "I study the evolution and epidemiology of viruses.  My bioinformatics is \"What if we take all the data in the world about X and ask about Y?\""
+      }
+    },
+    
+    {
+      "start_date": {
+        "year": "2019",
+        "month": "4",
         "format": ""
       },
       "group": "Art",
