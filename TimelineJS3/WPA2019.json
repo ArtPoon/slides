@@ -16,6 +16,11 @@
     
   "events": [
     {
+      "background": {
+        "color": "#000",
+        "opacity": 50,
+        "url": null
+      },
       "start_date": {
         "year": "1954",
         "month": "",
@@ -30,11 +35,16 @@
       },
       "text": {
         "headline": "The birth of bioinformatics",
-        "text": "Dr. Margaret O. Dayhoff pioneers the use of computers to store and process protein sequences.  Dayhoff implements the first computer program to reconstruct a phylogenetic tree from molecular sequences, and a matrix scheme for comparing sequences that is the foundation to BLAST.  Dayhoff and Eck release the Atlas of Protein Sequence and Structure."
+        "text": "Dr. Margaret O. Dayhoff pioneers the use of computers to store and process protein sequences.  Dayhoff implements the first computer program to reconstruct a phylogenetic tree from molecular sequences, and a matrix scheme for comparing sequences that is the foundation to BLAST."
       }
     },
     
     {
+      "background": {
+        "color": "#000",
+        "opacity": 50,
+        "url": null
+      },
       "start_date": {
         "year": "1965",
         "month": "",
@@ -54,6 +64,11 @@
     },
     
     {
+      "background": {
+        "color": "#000",
+        "opacity": 50,
+        "url": null
+      },
       "start_date": {
         "year": "1982",
         "month": "",
@@ -150,6 +165,11 @@
     
     
     {
+      "background": {
+        "color": "#000",
+        "opacity": 50,
+        "url": null
+      },    
       "start_date": {
         "year": "1996",
         "month": "2",
@@ -254,7 +274,7 @@
       "media": {
         "caption": "",
         "credit": "",
-        "url": "",
+        "url": "img/labbench.jpg",
         "thumb": ""
       },
       "text": {
@@ -264,6 +284,11 @@
     },
     
     {
+      "background": {
+        "color": "#000",
+        "opacity": 50,
+        "url": null
+      },
       "start_date": {
         "year": "2000",
         "month": "10",
@@ -288,7 +313,7 @@
         "month": "1",
         "format": ""
       },
-      "group": "Bioinformatics",
+      "group": "Art",
       "media": {
         "caption": "",
         "credit": "",
@@ -304,7 +329,7 @@
     
     {
       "start_date": {
-        "year": "2003",
+        "year": "2004",
         "month": "",
         "format": ""
       },
@@ -312,7 +337,7 @@
       "media": {
         "caption": "",
         "credit": "",
-        "url": "",
+        "url": "img/gel.png",
         "thumb": ""
       },
       "text": {
@@ -323,12 +348,91 @@
     
     {
       "start_date": {
+        "year": "2005",
+        "month": "6",
+        "format": ""
+      },
+      "group": "Art",
+      "media": {
+        "caption": "",
+        "credit": "yhdoo@San Diego Reader",
+        "url": "https://media.sandiegoreader.com/img/photos/2015/04/18/yhdoo_Hillcrest_20150418_t658.JPG?ff95ca2b4c25d2d6ff3bfb257febf11d604414e5",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "Becoming a bioinformatician",
+        "text": "About to join a fruit fly lab in UC Davis, I respond to a last-minute postdoc ad on EvolDir and become a bioinformatician at the Center for AIDS Research instead.  I learn Python and R."
+      }
+    },
+    
+    {
+      "start_date": {
+        "year": "2005",
+        "month": "8",
+        "format": ""
+      },
+      "group": "Art",
+      "media": {
+        "caption": "",
+        "credit": "Penguin Computing",
+        "url": "https://www.penguincomputing.com/wp-content/uploads/2017/07/relion-xe2112-angle-800x512.jpg",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "Cluster computing",
+        "text": "First exposure to parallel computing on a Beowulf cluster.  I learn how to implement code with a message passing interface (MPI) and how to launch a fleet of 300 processors from my laptop on the beach."
+      }
+    },
+    
+    {
+    "start_date": {
+        "year": "2006",
+        "month": "6",
+        "format": ""
+      },
+      "group": "Art",
+      "media": {
+        "caption": "",
+        "credit": "",
+        "url": "http://hyphy.org/w/images/f/f9/Datapanel.png",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "Hypothesis Testing using Phylogenies",
+        "text": "HyPhy is a software package in development by Sergei Pond since 1997.  I become a core developer and build the machine learning toolbox in C++.  Today HyPhy has over 10,000 registered users and over 1,800 citations."
+      }
+    },
+    
+    {
+      "start_date": {
+        "year": "2007",
+        "month": "6",
+        "format": ""
+      },
+      "group": "Art",
+      "media": {
+        "caption": "",
+        "credit": "Telegraph UK",
+        "url": "https://www.telegraph.co.uk/content/dam/Travel/leadAssets/27/85/rum-barbados_2785385a.jpg?imwidth=1400",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "Traded over a bottle of rum",
+        "text": "The International Drug Resistance Workshop is held in Barbados.  When Simon gets back, I learn that I have a job interview with a hospital back in Vancouver."
+      }
+    },
+        
+    
+    {
+      "background": {
+        "color": "#000",
+        "opacity": 50,
+        "url": null
+      },
+      "start_date": {
         "year": "2006",
         "month": "",
         "format": ""
-      },
-      "end_date": {
-        "year": "2013"
       },
       "group": "Bioinformatics",
       "media": {
@@ -339,7 +443,141 @@
       },
       "text": {
         "headline": "The X-Prize for the $1,000 genome is launched",
-        "text": "The prize would later be cancelled in 2013 because sequencing technology improved faster than exponentially soon after the competition start date."
+        "text": "The prize would later be cancelled in 2013 because sequencing technology improved faster than exponentially soon after the competition start date.  We start messing with NGS around 2006."
+      }
+    },
+    
+    {
+      "start_date": {
+        "year": "2008",
+        "month": "8",
+        "format": ""
+      },
+      "group": "Art",
+      "media": {
+        "caption": "",
+        "credit": "Joe Mabel",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Vancouver_-_St_Paul%27s_Hospital_pano_01.jpg/1920px-Vancouver_-_St_Paul%27s_Hospital_pano_01.jpg",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "St. Paul's Hospital",
+        "text": "Employed as a bioinformatician, I order, assemble and configure a new computing cluster.  I am given a slip of paper with a list of 3 things the director wants the lab to achieve.  (I accomplish two of them.)"
+      }
+    },
+    
+    {
+      "start_date": {
+        "year": "2008",
+        "month": "9",
+        "format": ""
+      },
+      "group": "Art",
+      "media": {
+        "caption": "",
+        "credit": "",
+        "url": "img/IMG_0446.jpg",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "We have a kid",
+        "text": "Fiona's born in La Jolla, California, and attends her first Comic-Con at age 1."
+      }
+    },
+    
+    {
+      "start_date": {
+        "year": "2011",
+        "month": "4",
+        "format": ""
+      },
+      "group": "Art",
+      "media": {
+        "caption": "",
+        "credit": "",
+        "url": "img/powerful-nap.JPG",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "Building a lab",
+        "text": "As a new adjunct, I get a 3-year CIHR grant as PI (my first try).  I start to build a team.  We occupy a corner of a condemned nursing school.<br/>(While the vegetarian student was at math camp, I bought the others a BBQ lunch.)"
+      }
+    },
+    
+    {
+      "start_date": {
+        "year": "2013",
+        "month": "",
+        "format": ""
+      },
+      "group": "Art",
+      "media": {
+        "caption": "",
+        "credit": "",
+        "url": "img/Octocat.png",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "Open science",
+        "text": "GitHub is a code-sharing web service Starts to use Github to release our project as open source, to coordinate development tasks and other lab activities.  Eventually I use GitHub to coordinate writing manuscripts and grants, presentations and teaching materials."
+      }
+    },
+    
+    {
+      "start_date": {
+        "year": "2016",
+        "month": "",
+        "format": ""
+      },
+      "group": "Art",
+      "media": {
+        "caption": "",
+        "credit": "",
+        "url": "img/cover.tif.jpg",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "Finally growing up",
+        "text": "After a bunch of papers from 2013 onwards, my team and I publish together in the Lancet ID.  I'm still an adjunct, and share an office with five other people."
+      }
+    },
+    
+    
+    {
+      "start_date": {
+        "year": "2018",
+        "month": "",
+        "format": ""
+      },
+      "group": "Bioinformatics",
+      "media": {
+        "caption": "",
+        "credit": "Image generated by Cytoscape plug-in Cerebral",
+        "url": "https://www.cs.ubc.ca/labs/imager/tr/2007/barskya_cerebral_appnote/cerebralmapk.png",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "Bioinformatics today",
+        "text": "Bioinformatics has matured into a discipline in its own right, but there are near infinite combinations of its parental fields (biology, statistics and computer science) that remain to be explored."
+      }
+    },
+    
+    {
+      "start_date": {
+        "year": "2019",
+        "month": "",
+        "format": ""
+      },
+      "group": "Art",
+      "media": {
+        "caption": "",
+        "credit": "",
+        "url": "https://i.ebayimg.com/images/g/BQkAAOSwwo1Xf7PD/s-l1600.jpg",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "How did I get here?",
+        "text": "I think I always wanted to do bioinformatics before it existed as a field.  It was sheer luck that nudged me onto this path.  Every student in biology and medical sciences should be getting some basic training in bioinformatics.  Figuring out how to teach bioinformatics is one of the next big challenges for the field."
       }
     }
   ]
