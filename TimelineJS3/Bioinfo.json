@@ -9,7 +9,7 @@
       "thumb": ""
     },
     "text": {
-      "headline": "The birth of bioinformatics",
+      "headline": "The First Bioinformaticist",
       "text": "<div style=\"font-size: 24pt; line-height: 36px\">Margaret Dayhoff and the origin of Genbank</div>"
     }
   },
@@ -168,18 +168,41 @@
       }
     },
     
+
+    {
+      "background": {"color": "#000", "opacity": 50, "url": null},
+      "start_date": {"year": "1980", "month": "", "format": ""},
+      "media": {
+        "caption": "Minitel 1, built in 1982",
+        "credit": "",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/3/37/Minitel1.jpg",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "Dayhoff releases <i>The Atlas</i> database over telephone network",
+        "text": "At 500,000 nucleotides, it is the largest such database in the world.  Although database is free, users must sign an agreement to not distribute the database in order to gain password access.  The next year, the NIH cuts support for Dayhoff's database."
+      }
+    },
+    
+    
+        {
+      "background": {"color": "#000", "opacity": 50, "url": null},
+      "start_date": {"year": "1981", "month": "", "format": ""},
+      "media": {
+        "caption": "",
+        "credit": "J. Noel Chiappa",
+        "url": "http://mercury.lcs.mit.edu/~jnc/tech/jpg/ARPANet/G82Feb.jpg",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "NIH issues request for proposals for national sequence database",
+        "text": "Dayhoff's application is in the final pool of proposals.  A second was submitted by Walter Goad, a theoretical physicist from the Los Alamos National Laboratory who contributed to the atomic bomb.  He had no prior experience with protein sequences, but anticipates the role of ARPANET in providing online access."
+      }
+    },
     
     {
-      "background": {
-        "color": "#000",
-        "opacity": 50,
-        "url": null
-      },
-      "start_date": {
-        "year": "1982",
-        "month": "",
-        "format": ""
-      },
+      "background": {"color": "#000", "opacity": 50, "url": null},
+      "start_date": {"year": "1982", "month": "", "format": ""},
       "media": {
         "caption": "",
         "credit": "American Philosophical Society Archives",
@@ -187,11 +210,40 @@
         "thumb": ""
       },
       "text": {
-        "headline": "Public release of NCBI Genbank",
-        "text": "Building on Dayhoff's work, Walter Goad and the Los Alamos National Laboratory (LANL) are awarded a grant to build a public database.  The initial release comprised about 2,000 sequence records."
+        "headline": "NIH contract awarded to Walter Goad",
+        "text": "The initial release of the LANL database comprised about 2,000 sequence records.  ARPANET embodies the emerging cultural values of the internet, <i>i.e.</i>, open access to data and resources.  After 20 years as the world's authority on sequence databases, Dayhoff relinquishes her nucleic acid database to LANL."
       }
-    }    
+    },
     
+    {
+      "background": {"color": "#000", "opacity": 50, "url": null},
+      "start_date": {"year": "1983", "month": "", "format": ""},
+      "media": {
+        "caption": "",
+        "credit": "Ruth E. Dayhoff, M.D.; U.S. National Library of Medicine",
+        "url": "https://media.springernature.com/lw785/springer-static/image/chp%3A10.1007%2F978-3-642-34749-8_1/MediaObjects/81407_2_En_1_Fig2_HTML.jpg",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "Dayhoff dies of heart failure, 8 months after NIH announcement",
+        "text": "The LANL database eventually becomes the NCBI Genbank, which today stores over 388 trillion nucleotides.  It employs many of the techniques originally developed by Dayhoff.  Deceased at the age of 58, she would never see her legacy in bioinformatics."
+      }
+    },
+    
+    {
+      "background": {"color": "#000", "opacity": 50, "url": null},
+      "start_date": {"year": "1983", "month": "", "format": ""},
+      "media": {
+        "caption": "",
+        "credit": "",
+        "url": "",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "Sources",
+        "text": "<ul><li>Strasser BJ. Collecting, comparing, and computing sequences: the making of Margaret O. Dayhoff’s Atlas of Protein Sequence and Structure, 1954–1965. Journal of the History of Biology. 2010 Dec 1;43(4):623-60.</li><li>Strasser BJ. The experimenter’s museum: GenBank, natural history, and the moral economies of biomedicine. Isis. 2011 Mar 1;102(1):60-96.</li><li>Moody G. Digital code of life: how bioinformatics is revolutionizing science, medicine, and business. John Wiley & Sons; 2004 Feb 3.</li><li>Hagen JB. The origins of bioinformatics. Nature Reviews Genetics. 2000 Dec;1(3):231.</li></ul>"
+      }
+    }
   ]
 }
 
