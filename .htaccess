@@ -1,0 +1,4 @@
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^slides.filogeneti.ca
+RewriteRule ^(.*)$ /slides/$1 [L,NC,QSA]
+
