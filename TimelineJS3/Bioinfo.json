@@ -1,0 +1,252 @@
+{
+  "scale": "human",
+  
+  "title": {
+    "media": {
+      "caption": "",
+      "credit": "",
+      "url": "https://www.researchgate.net/profile/Bruno_Strasser/publication/51214024/figure/fig1/AS:276476915142658@1442928641444/Margaret-O-Dayhoff-second-from-left-behind-Robert-S-Ledley-at-the-inauguration-of.png",
+      "thumb": ""
+    },
+    "text": {
+      "headline": "The First Bioinformaticist",
+      "text": "<div style=\"font-size: 24pt; line-height: 36px\">Margaret Dayhoff and the origin of Genbank</div>"
+    }
+  },
+    
+  "events": [
+    {
+      "background": {
+        "color": "#000",
+        "opacity": 50,
+        "url": null
+      },
+      "start_date": {
+        "year": "1953",
+        "month": "",
+        "format": ""
+      },
+      "media": {
+        "caption": "",
+        "credit": "Bettmann/Corbis",
+        "url": "https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2013/11/20/1384952783884/Frederick-Sanger-and-a-DN-009.jpg?width=620&quality=45&auto=format&fit=max&dpr=2&s=6663b2a235ded1518de8dad0faeaa51b",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "Frederick Sanger sequences insulin",
+        "text": "Insulin becomes the first protein to have its sequence determined in the laboratory. This finding establishes that proteins are in fact comprised of a specific linear combination of amino acids with a definite structure."
+      }
+    },
+  
+    {
+      "background": {
+        "color": "#000",
+        "opacity": 50,
+        "url": null
+      },
+      "start_date": {
+        "year": "1960",
+        "month": "",
+        "format": ""
+      },
+      "media": {
+        "caption": "",
+        "credit": "Ruth E. Dayhoff, M.D.",
+        "url": "https://cfmedicine.nlm.nih.gov/static/img/gallery/076_06.jpg",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "Margaret Dayhoff joins the NBRF",
+        "text": "Dayhoff becomes the Associate Director of the new National Biomedical Research Foundatoin (NBRF) with the mission to explore applications of computers to biology and medicine.  She writes a series of FORTRAN programs to assemble complete proteins from fragments in a few minutes, which previously took months."
+      }
+    },
+    
+    {
+      "background": {
+        "color": "#000",
+        "opacity": 50,
+        "url": null
+      },
+      "start_date": {
+        "year": "1965",
+        "month": "",
+        "format": ""
+      },
+      "media": {
+        "caption": "",
+        "credit": "",
+        "url": "https://pbs.twimg.com/media/DzIwq0TXgAAvykn?format=jpg&name=4096x4096",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "Olga Kennard founds the CCDC",
+        "text": "The Cambridge Crystallographic Data Centre is one of the earliest scientific databases and predecessor to the Protein Data Bank. Crystallography is the first biological science to take full advantage of digital computers in the 1950s."
+      }
+    },
+    
+    
+    {
+      "background": {"color": "#000", "opacity": 50, "url": null},
+      "start_date": {"year": "1965", "month": "", "format": ""},
+      "end_date": {"year": 1974},
+      "media": {
+        "caption": "",
+        "credit": "",
+        "url": "/img/dayhoff-atlas.png",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "<i>The Atlas of Protein Sequence and Structure</i>",
+        "text": "Dayhoff and Eck use computer programs they developed to gather and process all publicly available protein sequences, which they compile into a copyrighted book.  The first volume contained 66 entries.  <i>The Atlas</i> is stored and processed on punch cards."
+      }
+    },
+    
+    
+    {
+      "background": {"color": "#000", "opacity": 50, "url": null},
+      "start_date": {"year": "1966", "month": "", "format": ""},
+      "media": {
+        "caption": "",
+        "credit": "A. Lyddiatt, D. Peacock and D. Boulter (1978)",
+        "url": "/img/cytochromeC.png",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "First tree built from protein sequences by computer",
+        "text": "In the 1966 edition of <i>The Atlas</i>, Dayhoff and Eck publish a phylogenetic tree relating organisms by the protein cytochrome <i>c</i>, including yeast, tuna, kangaroo and human.  This tree offers more realistic estimates of branch lengths than subsequent work."
+      }
+    },
+ 
+    {
+      "background": {"color": "#000", "opacity": 50, "url": null},
+      "start_date": {"year": "1968", "month": "", "format": ""},
+      "media": {
+        "caption": "",
+        "credit": "",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/5/57/PAM250.png",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "Point-accepted mutation (PAM) matrices",
+        "text": "In the 3rd volume of <i>The Atlas</i>, Dayhoff and Eck describe a method to estimate the evolutionary distance between two proteins.  This highly influential model  becomes a core component of BLAST."
+      }
+    },
+       
+    
+    {
+      "background": {"color": "#000", "opacity": 50, "url": null},
+      "start_date": {"year": "1969", "month": "", "format": ""},
+      "media": {
+        "caption": "",
+        "credit": "",
+        "url": "<blockquote>‘Personally I believe that you are the kind of person who should become a member of the American Society of Biological Chemists.  [However, the candidate must] demonstrate that he or she has done research which is clearly his own. The compilation of the Atlas [...] scarcely fits into this pattern.</blockquote>",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "Dayhoff rejected from the American Society of Biological Chemists",
+        "text": ""
+      }
+    },
+    
+    
+ 
+    
+    
+    {
+      "background": {"color": "#000", "opacity": 50, "url": null},
+      "start_date": {"year": "1972", "month": "", "format": ""},
+      "end_date": {"year": 1980},
+      "media": {
+        "caption": "",
+        "credit": "",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/c/c0/Largetape.jpg",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "Dayhoff begins to distribute <i>The Atlas</i> on magnetic tape",
+        "text": "Due to a lack of grant support, Dayhoff decides to adopt commercial practices to support the cost of maintaining the database.  In 1977, each <i>Atlas</i> tape was sold for $400.  Like the book, these tapes were copyrighted and purchasers had to agree to not redistribute the database.  Resentment builds in the scientific community."
+      }
+    },
+    
+
+    {
+      "background": {"color": "#000", "opacity": 50, "url": null},
+      "start_date": {"year": "1980", "month": "", "format": ""},
+      "media": {
+        "caption": "Minitel 1, built in 1982",
+        "credit": "",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/3/37/Minitel1.jpg",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "Dayhoff releases <i>The Atlas</i> database over telephone network",
+        "text": "At 500,000 nucleotides, it is the largest such database in the world.  Although database is free, users must sign an agreement to not distribute the database in order to gain password access.  The next year, the NIH cuts support for Dayhoff's database."
+      }
+    },
+    
+    
+        {
+      "background": {"color": "#000", "opacity": 50, "url": null},
+      "start_date": {"year": "1981", "month": "", "format": ""},
+      "media": {
+        "caption": "",
+        "credit": "J. Noel Chiappa",
+        "url": "http://mercury.lcs.mit.edu/~jnc/tech/jpg/ARPANet/G82Feb.jpg",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "NIH issues request for proposals for national sequence database",
+        "text": "Dayhoff's application is in the final pool of proposals.  A second was submitted by Walter Goad, a theoretical physicist from the Los Alamos National Laboratory who contributed to the atomic bomb.  He had no prior experience with protein sequences, but anticipates the role of ARPANET in providing online access."
+      }
+    },
+    
+    {
+      "background": {"color": "#000", "opacity": 50, "url": null},
+      "start_date": {"year": "1982", "month": "", "format": ""},
+      "media": {
+        "caption": "",
+        "credit": "American Philosophical Society Archives",
+        "url": "https://www.researchgate.net/profile/Bruno_Strasser/publication/51214024/figure/fig3/AS:276476915142664@1442928641655/Walter-Goad-in-front-of-a-terminal-accessing-the-GenBank-database-circa-1983-Goad.png",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "NIH contract awarded to Walter Goad",
+        "text": "The initial release of the LANL database comprised about 2,000 sequence records.  ARPANET embodies the emerging cultural values of the internet, <i>i.e.</i>, open access to data and resources.  After 20 years as the world's authority on sequence databases, Dayhoff relinquishes her nucleic acid database to LANL."
+      }
+    },
+    
+    {
+      "background": {"color": "#000", "opacity": 50, "url": null},
+      "start_date": {"year": "1983", "month": "", "format": ""},
+      "media": {
+        "caption": "",
+        "credit": "Ruth E. Dayhoff, M.D.; U.S. National Library of Medicine",
+        "url": "https://media.springernature.com/lw785/springer-static/image/chp%3A10.1007%2F978-3-642-34749-8_1/MediaObjects/81407_2_En_1_Fig2_HTML.jpg",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "Dayhoff dies of heart failure, 8 months after NIH announcement",
+        "text": "The LANL database eventually becomes the NCBI Genbank, which today stores over 388 trillion nucleotides.  It employs many of the techniques originally developed by Dayhoff.  Deceased at the age of 58, she would never see her legacy in bioinformatics."
+      }
+    },
+    
+    {
+      "background": {"color": "#000", "opacity": 50, "url": null},
+      "start_date": {"year": "1983", "month": "", "format": ""},
+      "media": {
+        "caption": "",
+        "credit": "",
+        "url": "",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "Sources",
+        "text": "<ul><li>Strasser BJ. Collecting, comparing, and computing sequences: the making of Margaret O. Dayhoff’s Atlas of Protein Sequence and Structure, 1954–1965. Journal of the History of Biology. 2010 Dec 1;43(4):623-60.</li><li>Strasser BJ. The experimenter’s museum: GenBank, natural history, and the moral economies of biomedicine. Isis. 2011 Mar 1;102(1):60-96.</li><li>Moody G. Digital code of life: how bioinformatics is revolutionizing science, medicine, and business. John Wiley & Sons; 2004 Feb 3.</li><li>Hagen JB. The origins of bioinformatics. Nature Reviews Genetics. 2000 Dec;1(3):231.</li></ul>"
+      }
+    }
+  ]
+}
+
+
+
+
