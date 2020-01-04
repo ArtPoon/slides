@@ -24,6 +24,9 @@ body {
   background: #FFF;
   background-color: #FFF; }
 
+.container {
+  display: inline-block;
+}
 
 .reveal {
   font-family: "Lato", Helvetica, sans-serif;
