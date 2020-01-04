@@ -212,6 +212,14 @@ body {
   font-size: 0.75em;
 }
 
+.reveal tr:nth-child(2n) {
+  background-color: #eee;
+}
+
+.reveal tr:nth-child(2n+1) {
+  background-color: #fff;
+}
+
 .reveal table th {
   font-weight: bold; }
 
@@ -225,7 +233,8 @@ body {
   vertical-align: top;
   text-align: left;
   padding: 0.2em 0.5em 0.2em 0.5em;
-  font-size: 1.2em;
+  font-size: 1.1em;
+  font-weight: 500;
 }
 
 .reveal table th[align="center"],
