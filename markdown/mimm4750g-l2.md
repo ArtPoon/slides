@@ -1,5 +1,7 @@
 ## Databases
 
+![](https://imgs.xkcd.com/comics/exploits_of_a_mom.png)
+
 ---
 
 # What is a database?
@@ -24,8 +26,6 @@
 | 1   | Fry       | Philip J.   | 2              |
 | 2   | Leela     | Turanga     | 1              |
 | 3   | Rodriguez | Bender Bending | 2           |
-
-* Can you add another row to this table?
 
 ---
 
@@ -96,32 +96,28 @@ Rodriguez
 # Genbank
 
 * https://www.ncbi.nlm.nih.gov/genbank/
+
 * Perhaps the largest public repository of genetic sequences in the world.
+
 * Maintained by the US National Center for Biotechnology Information (NCBI)
-* Have you used Genbank for your research?  Have you deposited sequences in Genbank?
+
+> Have you used Genbank for your research?  Have you deposited sequences in Genbank?
 
 ---
 
 # Origins of Genbank
 
 * The Atlas of Protein Sequence and Structure (Dayhoff and Ecks)
-* Dr. Margaret Oakley Dayhoff was the first professional curator of a sequence database and arguably the founder of bioinformatics (*more later!*).
+* Dr. Margaret Oakley Dayhoff was the first professional curator of a sequence database and arguably the founder of bioinformatics.
 * Both Dayhoff and the Los Alamos National Laboratory (headed by Walter Goad) submitted proposals to NIH to form what is now Genbank.
 * Dayhoff managed the *Atlas* as a proprietary resource, whereas Goad intended the database to be a free public resource.
 
 ---
 
-# Origins of Genbank
-
-> When science funding agencies and the scientific
-community finally recognized the potential of sequence databases for the production of knowledge, [Dayhoff] lost the contract to build such a database to a physicist with no prior experience in sequence collecting [...] she died of heart failure eight months after the contract
-was awarded.
-
-<div style="text-align: right"> Bruno J. Strasser, <i>The Experimentalist's Museum</i>.</div>
-
----
-
 # Demonstrate a Genbank query
+
+<iframe width="800" height="500" src="https://www.ncbi.nlm.nih.gov/genbank/">
+</iframe>
 
 ---
 
@@ -138,21 +134,26 @@ was awarded.
 
 ---
 
+# Demonstrate an SRA query
+
+<iframe width="800" height="500" src="https://www.ncbi.nlm.nih.gov/sra/">
+</iframe>
+
+---
+
 # Demonstrate fasterq-dump
 
 ---
 
-# In-class assignment - Find a database
+# In-class assignment
 
-1. Record URL
+1. Navigate to Genbank
+   
    * https://www.ncbi.nlm.nih.gov/genbank/
-2. Briefly describe the database's focus/purpose.
-   * "An annotated collection of all publicly available DNA sequences."
-3. Provide the number of records, if available.
-   * 211,281,415 sequences.
-4. Compose a simple query and describe it here.
-   * "honey badger"
-5. Provide the first result of the simple query in (4).
+   
+2. Compose a simple query and describe it here.
+   
+3. Provide the first result of the simple query in (4).
    ```
    LOCUS       KR477832                 792 bp    DNA     linear   MAM 18-OCT-2015
    DEFINITION  Mellivora capensis isolate Mcap4 nACHr alpha 1 subunit (CHRNA1)

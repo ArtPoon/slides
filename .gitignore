@@ -2,4 +2,6 @@ MathJax/
 reveal.js/
 /img/*.mp*
 .idea/
+/img/*.pdf
+/img/*.graffle
 
