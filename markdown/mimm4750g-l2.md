@@ -41,11 +41,11 @@
 
 # Relational databases
 
-* A relational database is implemented with a *structured query language* (SQL).
+* A [relational database](https://en.wikipedia.org/wiki/Relational_database) is implemented with a *structured query language* (SQL).
 * SQL is used to create, update, and query a relational database.
 * First developed by IBM in 1980's, based on work by [Ted Codd](https://en.wikipedia.org/wiki/Edgar_F._Codd).
 * Later other companies developed commercial implementations of SQL, such as Oracle.
-* MySQL is an open-source implementation.
+* [MySQL](https://en.wikipedia.org/wiki/MySQL) is an open-source implementation.
 * Many languages now support SQL in different ways.
 
 ---
@@ -53,7 +53,7 @@
 # Non-relational databases
 
 * Although relational databases are very common, some agencies dealing with massive amounts of data (*e.g.*, Google, Amazon, Netflix) have adopted a different approach.
-* A non-relational database or *NoSQL* has no fixed database schema - great when database has to adapt to new demands.
+* A non-relational database or [NoSQL](https://en.wikipedia.org/wiki/NoSQL) has no fixed database schema - great when database has to adapt to new demands.
 * NoSQL allows the addition of new fields in real-time.
 * Supports distributed computing (multiple servers/sites).
 
@@ -76,7 +76,7 @@ Rodriguez
 
 # Is a spreadsheet application the same as a DMS?
 
-* DMS = database management system.
+* DMS = [database management system](https://en.wikipedia.org/wiki/Database#Database_management_system).
 * A spreadsheet app like MS Excel can store data in a structured format.
 * A relational database can be built in Excel using a "master" spreadsheet.
 * Performance of Excel does not scale with size of database.
@@ -84,11 +84,11 @@ Rodriguez
 
 ---
 
-# Front-ends
+# Front- and back-ends
 
 * Most web pages are *dynamic content* - the information that gets displayed in your browser is the result of a database query.
-* In contrast, the web resources for this class are *static* web pages that were rendered from text files in a format called *Markdown*.
-* Code responsible for database transactions take place in the *back end*.
+* Other web sites use *static pages* in which web content is generated from plain text files in a specific format such as [HTML](https://en.wikipedia.org/wiki/HTML) or [Markdown](https://en.wikipedia.org/wiki/Markdown).
+* Code responsible for database transactions to serve dynamic content take place in the [back end](https://en.wikipedia.org/wiki/Front_and_back_ends).
 * The *front end* is what you see: a web interface with forms and other data from which the back-end will compose a query.
 
 ---
