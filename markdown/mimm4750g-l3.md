@@ -116,7 +116,7 @@ TTAAATTGAAATTGTTACTGTAATCATACCTGGTTTGTTTCAGAGCCATATCACCAAGATAGAGAACAAC
 
 # PHYLIP
 
-* Used by [Joe Felsenstein]'s phylogenetic software package of the same name
+* Used by [Joe Felsenstein](http://evolution.genetics.washington.edu/phylip.html)'s phylogenetic software package of the same name
 * The first line has two numbers: the number of sequences, and the sequence length
 * Sequence labels are limited to 10 characters in length.
 
