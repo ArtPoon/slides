@@ -1,5 +1,6 @@
-# MIMM4750G
-## Data formats and scripting languages
+## Sequence data formats
+
+![](https://imgs.xkcd.com/comics/standards.png)
 
 ---
 
@@ -52,10 +53,30 @@ Measles,3268,153,37,40,73
 
 ---
 
+# Tabular data in bioinformatics
+
+* Many file formats in bioinformatics are simply tabular data with comment fields.
+* For example, the [variant call format](https://gatk.broadinstitute.org/hc/en-us/articles/360035531692?id=11005) (VCF) for recording sequence variants is a tab-separated table:
+
+```
+##fileformat=VCFv4.2
+##contig=<ID=20,length=62435964,assembly=B36,md5=f126cdf8a6e0c7f379d618ff66beb2da,species="Homo sapiens",taxonomy=x>
+##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
+##FORMAT=<ID=GQ,Number=1,Type=Integer,Description="Genotype Quality">
+##FORMAT=<ID=DP,Number=1,Type=Integer,Description="Read Depth">
+##FORMAT=<ID=HQ,Number=2,Type=Integer,Description="Haplotype Quality">
+#CHROM POS ID REF ALT QUAL FILTER INFO FORMAT NA00001 NA00002 NA00003
+20	14370	rs6054257	G	A	29	PASS	NS=3;DP=14;AF=0.5;DB;H2	GT:GQ:DP:HQ 0|0:48:1:51,51	1|0:48:8:51,51	1/1:43:5:.,.
+20	17330	.	T	A	3	q10	NS=3;DP=11;AF=0.017	GT:GQ:DP:HQ	0|0:49:3:58,50 0|1:3:5:65,3	0/0:41:3
+20	1110696	rs6040355	A	G,T	67	PASS	NS=2;DP=10;AF=0.333,0.667;AA=T;DB GT:GQ:DP:HQ	1|2:21:6:23,27	2|1:2:0:18,2	2/2:35:4
+```
+
+---
+
 # Sequence data formats
 
 * Sequence data are more complicated.
-* The relative position of a nucleotide or amino acid is significant.
+* The relative position of a nucleotide or amino acid is significant.  Swapping "columns" results in a completely different data set.
 * Different sequence lengths breaks a standard assumption of tabular data.
 * We may need to associate sequences with complex metadata.
 
@@ -74,13 +95,14 @@ Measles,3268,153,37,40,73
 | S | C,G |
 | M | A,C |
 
-Can you think of a mnemonic for 2-fold mixtures?
+> Can you think of a [mnemonic](https://en.wikipedia.org/wiki/Mnemonic) for 2-fold mixtures?
 
 ---
 
 # FASTA
 
 * One of the most common file formats for sequence data.
+* Originated from a sequence alignment program ([FAST-All](https://en.wikipedia.org/wiki/FASTA), 1987) that is no longer used.
 * Every sequence record starts with a `>` symbol, followed by the sequence label (header).
 * The sequence appears on subsequent lines until the next `>`.
 
@@ -92,21 +114,41 @@ TTAAATTGAAATTGTTACTGTAATCATACCTGGTTTGTTTCAGAGCCATATCACCAAGATAGAGAACAAC
 
 ---
 
+# PHYLIP
+
+* Used by [Joe Felsenstein]'s phylogenetic software package of the same name
+* The first line has two numbers: the number of sequences, and the sequence length
+* Sequence labels are limited to 10 characters in length.
+
+```
+1  140
+KP728283.1 GGATCTTTTGTGTGCGAATAACTATGAGGAAGATTAATAATTTTCCTCTC 
+           ATTGAAATTTATATCGGAATTTAAATTGAAATTGTTACTGTAATCATACC
+           TGGTTTGTTTCAGAGCCATATCACCAAGATAGAGAACAAC
+```
+
+---
+
 # NEXUS
 
-* The NEXUS format was designed to incorporate many different data types, including sequences.
+* The [NEXUS format](https://en.wikipedia.org/wiki/Nexus_file) was designed to incorporate many different data types, including sequences.
 * Data are organized into *blocks* enclosed by `BEGIN` and `END` tags.
+* Used by several phylogenetic software packages.
 
 ```
 #NEXUS
-BEGIN DATA;
-DIMENSIONS  NTAX=4 NCHAR=140;
-FORMAT DATATYPE=DNA GAP=- MISSING=?;
-MATRIX
-AF084930.1 Proteus vulgaris  GGATCCGGGGAGGAAAGTCCGGGCTCC...
-P.aeruginosa RNase P RNA     AGAGUCGAUUGGACAGUCGCUGUCGCG...
+
+begin data;
+dimensions ntax=1 nchar=140;
+format interleave datatype=DNA missing=N gap=-;
+
+matrix
+KP728283.1           GGATCTTTTGTGTGCGAATAACTATGAGGAAGATTAATAATTTTCCTCTC
+KP728283.1           ATTGAAATTTATATCGGAATTTAAATTGAAATTGTTACTGTAATCATACC
+KP728283.1           TGGTTTGTTTCAGAGCCATATCACCAAGATAGAGAACAAC
 ;
-END;
+
+end;
 ```
 
 ---
@@ -132,23 +174,28 @@ BBBBBFFFBFFFGGGGGGGGGGHHHHHHHHGGGGGHHHHGHHHGHHHHHHHHGHHHH...
 * A very complex format that contains a diverse amount of information:
 
 ```
-LOCUS       NC_014372              18935 bp    cRNA    linear   VRL 13-AUG-2018
-DEFINITION  Tai Forest ebolavirus isolate Tai Forest
-            virus/H.sapiens-tc/CIV/1994/Pauleoula-CI, complete genome.
-ACCESSION   NC_014372
+LOCUS       KP728283               18926 bp    cRNA    linear   VRL 11-FEB-2015
+DEFINITION  Zaire ebolavirus isolate Ebola
+            virus/H.sapiens-wt/CHE/2014/Makona-GE1, complete genome.
+ACCESSION   KP728283
+VERSION     KP728283.1
+KEYWORDS    .
+SOURCE      Zaire ebolavirus
+  ORGANISM  Zaire ebolavirus
+            Viruses; ssRNA viruses; ssRNA negative-strand viruses;
+            Mononegavirales; Filoviridae; Ebolavirus.
 ```
 
 ```
 FEATURES             Location/Qualifiers
-     source          1..18935
-                     /organism="Tai Forest ebolavirus"
+     source          1..18926
+                     /organism="Zaire ebolavirus"
                      /mol_type="viral cRNA"
-                     /isolate="Tai Forest virus/H.sapiens-tc/CIV/1994/Pauleoula-CI"
+                     /isolate="Ebola virus/H.sapiens-wt/CHE/2014/Makona-GE1"
                      /host="Homo sapiens"
-                     /db_xref="taxon:186541"
-                     /country="Cote d'Ivoire"
-                     /collection_date="Nov-1994"
-                     /note="Ivory Coast ebolavirus"
+                     /db_xref="taxon:186538"
+                     /country="Switzerland"
+                     /collection_date="21-Nov-2014"
 ```
 
 ---
@@ -161,17 +208,19 @@ FEATURES             Location/Qualifiers
 
 ---
 
-# EMBOSS Seqret
+# Online/GUI-based conversion tools
 
-* https://www.ebi.ac.uk/Tools/sfc/emboss_seqret/
+* [EMBOSS Seqret](https://www.ebi.ac.uk/Tools/sfc/emboss_seqret/)
+* [LANL HIV Sequence Database](https://www.hiv.lanl.gov/content/sequence/FORMAT_CONVERSION/form.html)
+* [Geneious](https://www.geneious.com/features/import-export-sequence-data/)
 
 ---
 
 # How do we really do it?
 
-* Web interface not adequate for building an analysis pipeline
+* Web/GUI interfaces not adequate for building an analysis pipeline
 * Several open-source programs for converting formats:
-  * Bio* libraries (*e.g.*, BioPython.SeqIO module)
+  * Bio&ast; libraries (*e.g.*, BioPython.SeqIO module)
   * [seqmagick](https://github.com/fhcrc/seqmagick), essentially a front-end for SeqIO
 * but often we just have to do it ourselves -- this is why **scripting languages** are so popular.
 
@@ -183,37 +232,15 @@ An article in *The Perl Journal* by [Lincoln Stein](https://oicr.on.ca/investiga
 * Project start date 1990, involving many groups.
 * Estimated 1 to 10 terabytes needed to complete project.
 * Different groups came up with different data exchange formats.
-
-> Despite the fact that everyone was working on the same problems, no two groups took exactly the same approach.
+* Perl enabled different groups to rapidly convert outputs to the other group's format.
 
 ---
 
 # How Perl saved the Human Genome Project (2)
 
-> The long range solution to this problem is to come up with uniform data interchange standards that genome software must adhere to. [...] However, standards require time to agree on...
+> Despite the fact that everyone was working on the same problems, no two groups took exactly the same approach. Programs to solve a given problem were written and rewritten multiple times. While a given piece of software wasn't guaranteed to work better than its counterpart developed elsewhere, you could always count on it to sport its own idiosyncratic user interface and data format. 
 
-* Perl enabled different groups to rapidly convert outputs to the other group's format.
-
----
-
-# How Perl saved the Human Genome Project (3)
-
-> Some groups attempted to build large monolithic systems on top of complex relational databases; they were thwarted time and again by the highly dynamic nature of biological research. By the time a system that could deal with the ins and outs of a complex laboratory protocol had been designed, implemented and debugged, the protocol had been superseded by new technology and the software engineers had to go back to the drawing board.
-
----
-
-# What is Perl?
-
-* Perl is a programming language.
-* It is an *interpreted* language:
-
-|             | Compiled | Interpreted |
-|-------------|----------|-------------|
-| Running     | Compile once | Interpret every time |
-| Openness    | Distribute binaries | Distribute source |
-| Performance | Faster | Slower |
-| Development | Difficult | Easy |
-| *Analogy*   | Buying a Tesla | Renting a bike |
+Lincoln Stein (1996)
 
 ---
 
@@ -266,6 +293,7 @@ for($i=1;$i<@lines;$i++) #The 1st line is header
 * "There should be one - and preferably only one - obvious way to do it."
 * Notorious for whitespace requirements ("Readability counts.").
 * Has overtaken Perl in popularity, even bioinformatics.
+* Both Perl and Python have [Bio&ast;.SeqIO](https://biopython.org/wiki/SeqIO) libraries for converting sequence formats.
 
 ---
 
@@ -291,7 +319,7 @@ for line in handle:
 
 # Suggested readings
 
-* [How Perl Saved the Human Genome Project](https://web.stanford.edu/class/gene211/handouts/How_Perl_HGP.html)
+* [How Perl Saved the Human Genome Project](https://web.archive.org/web/20070202101624/http://www.bioperl.org/wiki/How_Perl_saved_human_genome)
 
 
 
