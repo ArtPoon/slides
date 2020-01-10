@@ -93,27 +93,6 @@ Rodriguez
 
 ---
 
-# Genbank
-
-* https://www.ncbi.nlm.nih.gov/genbank/
-
-* Perhaps the largest public repository of genetic sequences in the world.
-
-* Maintained by the US National Center for Biotechnology Information (NCBI)
-
-> Have you used Genbank for your research?  Have you deposited sequences in Genbank?
-
----
-
-# Origins of Genbank
-
-* The Atlas of Protein Sequence and Structure (Dayhoff and Ecks)
-* Dr. Margaret Oakley Dayhoff was the first professional curator of a sequence database and arguably the founder of bioinformatics.
-* Both Dayhoff and the Los Alamos National Laboratory (headed by Walter Goad) submitted proposals to NIH to form what is now Genbank.
-* Dayhoff managed the *Atlas* as a proprietary resource, whereas Goad intended the database to be a free public resource.
-
----
-
 # Demonstrate a Genbank query
 
 <iframe width="800" height="500" src="https://www.ncbi.nlm.nih.gov/genbank/">
@@ -143,23 +122,32 @@ Rodriguez
 
 # Demonstrate fasterq-dump
 
+![](/img/fasterq-dump.png)
+
+---
+
+# No fasterq-dump for Windows
+
+![](/img/no-fasterq-for-win.png)
+
+---
+
+# Emerging infectious diseases
+
+<iframe width="800" height="500" src="https://eidr.ecohealthalliance.org/">
+</iframe>
+
 ---
 
 # In-class assignment
 
-1. Navigate to Genbank
+1. Select an interesting outbreak from the EID database
+
+2. Query Genbank for this pathogen.  Use the taxonomy browser (right column) to refine your query.
    
-   * https://www.ncbi.nlm.nih.gov/genbank/
-   
-2. Compose a simple query and describe it here.
-   
-3. Provide the first result of the simple query in (4).
-   ```
-   LOCUS       KR477832                 792 bp    DNA     linear   MAM 18-OCT-2015
-   DEFINITION  Mellivora capensis isolate Mcap4 nACHr alpha 1 subunit (CHRNA1)
-               gene, partial cds.
-   ACCESSION   KR477832
-   ```
+3. How many hits did you find?  
+
+4. What is the accession number and description for the first hit?
 
 ---
 
