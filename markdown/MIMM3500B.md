@@ -44,7 +44,8 @@ Image by <a href="https://what-if.xkcd.com/80/">Randall Munroe</a>.
 * Zika virus: first isolated 1947 in east Africa
 * Ebola virus: first isolated in 1976; [western Africa outbreak](https://en.wikipedia.org/wiki/Western_African_Ebola_virus_epidemic) in 2014 
 * [Wuhan coronavirus](https://en.wikipedia.org/wiki/Wuhan_coronavirus): *It's happening right now*
-<img width=350px src="https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/G5RRD4RSUII6VICT3RWZIS5HOY.jpg&w=1440"/>
+<img width=350px src="https://ichef.bbci.co.uk/news/660/cpsprodpb/1320E/production/_110505387_059086447.jpg"/>
+<small>Image credit: AFP</small>
 
 ---
 
