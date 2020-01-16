@@ -1,6 +1,8 @@
 # MIMM4750G
 ## Score matrices and BLAST
 
+![](https://imgs.xkcd.com/comics/proteins.png)
+
 ---
 
 # Search a sequence database
@@ -31,10 +33,9 @@
 
 ---
 
-<img src="/img/inti.png" width="150px"/>
-# INCA Q1
+# In-class exercise
 
-* Fill out this dot plot!
+* Fill out this dot plot! (See OWL)
 
 | |C|A|G|A|A|G|A|A|T|C|
 |-|-|-|-|-|-|-|-|-|-|-|
@@ -69,21 +70,19 @@
 
 ---
 
-<img src="/img/inti.png" width="150px"/>
-# INCA Q2
+# In-class exercise (2)
 
-* Sequence: `TACCTAGGGG`
-
-* 2-mer counts:
+* Entabulate all 2-mers in the sequence `TACCTAGGGG`
 
 | AC | AG | CC | CT | GG | TA |
 |----|----|----|----|----|----|
-|   |  |   |   |   |   |
+|    |    |    |    |    |    |
 
 * How I handled this question in R:
 
 ```R
-s <- paste(sample(c('A','C','G','T'), 10, replace=T), collapse='')
+#s <- paste(sample(c('A','C','G','T'), 10, replace=T), collapse='')
+s <- "TACCTAGGGG"
 pieces <- sapply(1:(nchar(s)-1), function(i) substr(s, i, i+1))
 table(pieces)
 ```
@@ -95,7 +94,7 @@ table(pieces)
 * BLAST scans the database for high-scoring words (3-mers for proteins).
 * From one pair of high-scoring words (*hit*), search left and right for a second hit within some maximum distance $A$.
 * Require 2 hits to trigger a gap-free *extension* (incorporate flanking residues into candidate alignment).
-<img src="/img/Neighbor_HSP.jpg" width="450px"/>
+<img src="/img/Neighbor_HSP.jpg" width="400px"/>
 
 ---
 
@@ -131,7 +130,7 @@ table(pieces)
 | D Asp | 154 | 0  | 532 |     |   |    |
 | C Cys | 33  | 10 | 0   | 0   |   |    |
 | Q Gln | 93  | 120 | 50 | 76  | 0 |    |
-| E Glu | 266 | 0  | 94  | 831 | 0 | 422 | 
+| E Glu | 266 | 0  | 94  | 831 | 0 | 422 |
 
 ---
 
@@ -177,8 +176,7 @@ table(pieces)
 
 ---
 
-<img src="/img/inti.png" width="150px"/>
-# INCA Q3
+# In-class exercise (3)
 
 * The observed frequency of aligned pairs of tryptophan (W) is $q_{\scriptsize W,W}=0.0065$.
 * The observed frequency of W alone is $p_{\scriptsize W}=0.013$.
