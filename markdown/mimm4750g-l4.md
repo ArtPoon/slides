@@ -214,7 +214,12 @@ Example stolen from SR Eddy (2004), Nature Biotechnol 22(8):1035.
 # Types of BLAST queries
 
 * NCBI maintains both nucleotide and protein databases
-<img src="/img/BLAST-tools.png" width="500px"/>
+
+<img src="https://open.oregonstate.education/app/uploads/sites/6/2016/10/I.7_2_blast_types.png#fixme" width="600px"/>
+
+<small>
+Image source: [A Primer for Computational Biology](https://open.oregonstate.education/computationalbiology/chapter/command-line-blast/) by Shawn T. O'Neil (CC-NC-SA 4.0)
+<small>
 
 ---
 
@@ -234,6 +239,8 @@ Example stolen from SR Eddy (2004), Nature Biotechnol 22(8):1035.
 * [The Statistics of Sequence Similarity Scores](https://www.ncbi.nlm.nih.gov/BLAST/tutorial/Altschul-1.html)
 
 * [Selecting the Right Similarity-Scoring Matrix](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3848038/)
+
+* [Oregon State University Open Textbook: A Primer for Computational Biology](https://open.oregonstate.education/computationalbiology/chapter/command-line-blast/)
 
 * [Database resources of the National Center for Biotechnology Information](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4702911/)
 
