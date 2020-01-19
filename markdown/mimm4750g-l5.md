@@ -1,6 +1,8 @@
 # MIMM4750G
 ## Sequence alignment
 
+![](https://imgs.xkcd.com/comics/here_to_help.png)
+
 ---
 
 # What is an alignment?
@@ -8,7 +10,7 @@
 * So far we have talked about comparing sequences residue-by-residue with a score matrix.
 * The underlying assumption is that these sequences are aligned.
 * An alignment is a hypothesis about how residues (nt, aa) in homologous sequences are related to residues in a common ancestor.
-* This is not trivial because of insertions and deletions.
+* This is not trivial because of [insertions](https://en.wikipedia.org/wiki/Insertion_(genetics) and [deletions](https://en.wikipedia.org/wiki/Deletion_(genetics).
 
 ```
 Query  1    CTRPNNTRKSVSITIGPGRASYATG---GQAHC  30
@@ -45,7 +47,6 @@ Sbjct  95   CTRPNNTRKS--ITIGPGRASYATGGIIGQAHC  125
 * Until TKF91-type methods become feasible, we continue to use heurstic methods.
 * A <a href="https://en.wikipedia.org/wiki/Heuristic_(computer_science)">heuristic</a> is an algorithm for solving a problem that has no theoretical guarantee of being accurate.
 * In practice, heuristic is designed to quickly produce a solution that is "good enough".
-![](https://imgs.xkcd.com/comics/here_to_help.png)
 
 ---
 
