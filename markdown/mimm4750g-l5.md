@@ -47,6 +47,7 @@ Sbjct  95   CTRPNNTRKS--ITIGPGRASYATGGIIGQAHC  125
 * Until TKF91-type methods become feasible, we continue to use heurstic methods.
 * A <a href="https://en.wikipedia.org/wiki/Heuristic_(computer_science)">heuristic</a> is an algorithm for solving a problem that has no theoretical guarantee of being accurate.
 * In practice, heuristic is designed to quickly produce a solution that is "good enough".
+* For example, [greedy hill climbing](https://en.wikipedia.org/wiki/Hill_climbing) is a heuristic for locating a maximum that is not guaranteed to be the *global* maximum.
 
 ---
 
@@ -84,7 +85,7 @@ Sbjct  95   CTRPNNTRKS--ITIGPGRASYATGGIIGQAHC  125
 * For a gap of length $l$:
   * **Linear gap penalty** = $-ld$, where $d$ is a constant per-gap penalty.
   * **Affine gap penalty** = $-d-(l-1)e$, where $d$ is the gap *opening* penalty and $e$ is the gap *extension* penalty.
-* It is more common to use affine gap penalties.
+* It is more common to use [affine](https://en.wikipedia.org/wiki/Affine_combination) gap penalties.
 
 ---
 
@@ -102,7 +103,8 @@ ACTGATC   ACTGATC
 
 # Dynamic programming
 
-* Dynamic programming is a fundmanetal concept in computer science.
+* Finding the optimal placement of gaps is difficult!
+* Dynamic programming is a fundamental concept in computer science.
 * A complex problem can be broken down into a sequence of much smaller, simpler *recursive* problems.
 * "Recursive" means that the problems are nested within each other.  Solving one is part of solving another.
 * Retrieving the solutions to problems nested within the next problem saves work!

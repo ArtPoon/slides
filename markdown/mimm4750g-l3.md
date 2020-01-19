@@ -88,12 +88,12 @@ Measles,3268,153,37,40,73
 
 | Symbol | Bases | Symbol | Bases | Symbol | Bases |
 |--------|-------|--------|-------|---------|-------|
-| W | A,T | B | A,C,T | N | A,C,G,T |
+| W | A,T | B | C,G,T | N | A,C,G,T |
 | R | A,G | D | A,G,T | X | A,C,G,T |
-| K | G,T | H | A,C,T |
-| Y | C,T | V | A,C,G |
-| S | C,G |
-| M | A,C |
+| K | G,T | H | A,C,T |||
+| Y | C,T | V | A,C,G |||
+| S | C,G |||||
+| M | A,C |||||
 
 > Can you think of a [mnemonic](https://en.wikipedia.org/wiki/Mnemonic) for 2-fold mixtures?
 
