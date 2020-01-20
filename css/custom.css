@@ -102,6 +102,7 @@ body {
 .reveal img,
 .reveal video,
 .reveal iframe {
+  border: 0px;
   max-width: 95%;
   max-height: 95%;
   }
