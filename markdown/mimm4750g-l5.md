@@ -10,7 +10,7 @@
 * So far we have talked about comparing sequences residue-by-residue with a score matrix.
 * The underlying assumption is that these sequences are aligned.
 * An alignment is a hypothesis about how residues (nt, aa) in homologous sequences are related to residues in a common ancestor.
-* This is not trivial because of [insertions](https://en.wikipedia.org/wiki/Insertion_(genetics) and [deletions](https://en.wikipedia.org/wiki/Deletion_(genetics).
+* This is not trivial because of [insertions](https://en.wikipedia.org/wiki/Insertion_(genetics)) and [deletions](https://en.wikipedia.org/wiki/Deletion_(genetics)).
 
 ```
 Query  1    CTRPNNTRKSVSITIGPGRASYATG---GQAHC  30
@@ -93,10 +93,12 @@ Sbjct  95   CTRPNNTRKS--ITIGPGRASYATGGIIGQAHC  125
 
 * Terminal gaps are a contiguous run of gaps on either extreme left or right of a pairwise alignment.
 * Also known as "leading" and "trailing" gaps.
-```
-ACTGATC   ACTGATC
----GATC   ACTG---
-```
+  
+  ```
+  ACTGATC   ACTGATC
+  ---GATC   ACTG---
+  ```
+  
 * We might not want to penalize these when aligning partial (incomplete) sequences.
 
 ---
@@ -104,8 +106,7 @@ ACTGATC   ACTGATC
 # Dynamic programming
 
 * Finding the optimal placement of gaps is difficult!
-* Dynamic programming is a fundamental concept in computer science.
-* A complex problem can be broken down into a sequence of much smaller, simpler *recursive* problems.
+* [Dynamic programming](https://en.wikipedia.org/wiki/Dynamic_programming):  A complex problem can be broken down into a sequence of much smaller, simpler *recursive* problems.
 * "Recursive" means that the problems are nested within each other.  Solving one is part of solving another.
 * Retrieving the solutions to problems nested within the next problem saves work!
 
@@ -224,5 +225,26 @@ ACTGATC   ACTGATC
 * [AliView](http://www.ormbunkar.se/aliview/)
 * [SeaView](http://doua.prabi.fr/software/seaview)
 
+---
 
+# Demonstration on HIV dataset
+
+```
+art@Kestrel:~/Desktop$ head HIV-1-brazil.fa 
+>MK327370.1 HIV-1 isolate HIV-1_BR_0149PR from Brazil envelope glycoprotein (env) gene, partial cds
+GTAGTAATTAGATCTGCCAATTTCACAAACAATGCTAAAGTCATAATAGTACAGCTGAATGAATCTGTAG
+AAATTAATTGTACAAGACCCAACAACAATACAAGAAAAAGTATACATATAGGACCAGGGAGAGCATTTTA
+TGCAACAGACATAATAGGAGATATAAGACAAGCACATTGTAACATCAGTGAAGCAAAATGGAATAACACT
+TTAAAGCAGGTAGTTAGAAAATTAAGAGAACAATTTAAGAATACAACAATAGTCTTTGATCAATCCTCAG
+GAGGGGATCCAGAAATTGTAATGCACAGTTTTAATTGTGGAGGAGAGTTCTTTTACTGTAATACAACAAA
+ATTGTTTAATAGTACTTGGAATACTACAGGAAATTTCACTAAAGGGGCAGATCACAATGGCACAATCATA
+CTCCCATGCAGAATAAAACAAATTATAAACATGTGGCAGGAAGTAGGAAAAGCAATGTATGCCCCTCCCA
+TCCAAGGACAAATTAACTGTACATCAAATATTACAGGGCTGTTATTAACAAGAGATGGTGGTAATAACAG
+TAGTAGTAATGAAACCTTCAGA
+art@Kestrel:~/Desktop$ mafft HIV-1-brazil.fa > aligned.fa
+
+nseq =  148
+distance =  ktuples
+iterate =  0
+```
 
