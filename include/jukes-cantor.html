@@ -103,7 +103,7 @@ function reset() {
     update_distances();
     
     // clear the plot region
-    svg.selectAll("*").remove();
+    jcsvg.selectAll("*").remove();
     
     d3.csv("/data/jukes.csv", function(error, data) {
       data.forEach(function(d) {
@@ -117,7 +117,7 @@ function reset() {
       yScale.domain([d3.min(data, yValue)-0.01, d3.max(data, yValue)+0.1]);
   
       // x-axis
-      svg.append("g")
+      jcsvg.append("g")
           .attr("class", "x axis")
           .attr("transform", "translate(0," + height + ")")
           .call(xAxis)
