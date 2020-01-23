@@ -17,6 +17,61 @@ GGTTGCGCTCGTTGA    GGGATGCACTCGCTG
 
 ---
 
+# Diversity
+
+* There are several ways to measure sequence diversity.
+* Fraction of polymorphic sites - what counts as a polymorphism?
+* Minor allele frequency (MAF): the frequency of the *second*-most common residue
+  <img src="/img/MAF.png" width="500px"/>
+  
+* Call a site polymorphic if MAF is greater than 1% and less than 5%.
+
+---
+
+# Sequence entropy
+
+<table>
+  <tr>
+    <td>
+    <ul>
+    <li>The concept of entropy comes from [information theory](https://en.wikipedia.org/wiki/Information_theory)</li>
+    <li>For each site, we calculate:
+    
+    $$S = -\sum_i p_i \log p_i$$
+    where $p_i$ is the frequency of the $i$-th residue at that site.
+    </li>
+    <li>Entropy is highest when residues appear at equal frequency.</li>
+    </td>
+    <td width="50%">
+      <img src="/img/entropy.png"/>
+    </td>
+  </tr>
+</table>
+
+---
+
+# Applications of diversity measures
+
+* Which regions of the genome are the most conserved (least diverse)?
+* Conserved regions can make good targets for antibodies.
+
+<img src="https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0044163.g003&type=large" width="400px"/>
+<small>Entropy plot of HIV-1 *env* sequences in asymptomatic chronic HIV-1 patient (10.1371/journal.pone.0044163)</small>
+
+---
+
+# Genetic distances
+
+* Another approach to quantify diversity is to use a distance measure
+* A genetic distance is a function $d(x,y)$ that maps sequences $x$ and $y$ to some non-negative value.
+* It should have the following properties:
+	* $d(x,y) \ge 0$ for all $x,y\in \Omega$
+	* If $x=y$, then $d(x,y)=0$
+	* $d(x,y) = d(y,x)$ (symmetry)
+* It does *not* have to satisfy the triangle ineqaulity: $d(x,z) \le d(x,y) + d(y,z)$
+
+---
+
 # p-distances
 
 * The simplest distance is to count the number of different residues.
