@@ -32,15 +32,17 @@ GGTTGCGCTCGTTGA    GGGATGCACTCGCTG
 
 <table>
   <tr>
-    <td>
-    <ul>
-    <li>The concept of entropy comes from [information theory](https://en.wikipedia.org/wiki/Information_theory)</li>
-    <li>For each site, we calculate:
-    
-    $$S = -\sum_i p_i \log p_i$$
-    where $p_i$ is the frequency of the $i$-th residue at that site.
-    </li>
-    <li>Entropy is highest when residues appear at equal frequency.</li>
+    <td width="50%">
+      <ul>
+      <li>
+        The concept of entropy comes from <a href="https://en.wikipedia.org/wiki/Information_theory">information theory</a>.
+      </li>
+      <li>
+        For each site, we calculate:
+        $$S = -\sum_i p_i \log p_i$$
+        where $p_i$ is the frequency of the $i$-th residue at that site.
+      </li>
+      <li>Entropy is highest when residues appear at equal frequency.</li>
     </td>
     <td width="50%">
       <img src="/img/entropy.png"/>
@@ -56,7 +58,7 @@ GGTTGCGCTCGTTGA    GGGATGCACTCGCTG
 * Conserved regions can make good targets for antibodies.
 
 <img src="https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0044163.g003&type=large" width="400px"/>
-<small>Entropy plot of HIV-1 *env* sequences in asymptomatic chronic HIV-1 patient (10.1371/journal.pone.0044163)</small>
+<small>Entropy plot of HIV-1 <i>env</i> sequences in asymptomatic chronic HIV-1 patient (10.1371/journal.pone.0044163)</small>
 
 ---
 
