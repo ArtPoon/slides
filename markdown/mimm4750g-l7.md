@@ -8,6 +8,7 @@
 
 * A cluster is a subset (group) of objects that are more similar to each other than objects outside the cluster.
 * Clustering is subjective.  Our brains are wired to see patterns where none exist.
+![](/img/random.png)
 
 ---
 
@@ -32,9 +33,20 @@
 
 # Supervised and unsupervised clustering
 
-* Terms associated with machine learning.
-* *Supervised* clustering means that you have assigned some data to clusters yourself, and leave the rest to the machine.
-* *Unsupervised* clustering means that the machine has to figure it all out itself.
+<table>
+<tr>
+<td style="font-size: 28px;">
+<ul>
+<li>Terms associated with machine learning.</li>
+<li>*Supervised* clustering means that you have assigned some data to clusters yourself, and leave the rest to the machine.</li>
+<li>*Unsupervised* clustering means that the machine has to figure it all out itself.</li>
+</ul>
+</td>
+<td width="40%">
+<img src="https://imgs.xkcd.com/comics/machine_learning.png"/>
+</td>
+</tr>
+</table>
 
 ---
 
@@ -54,9 +66,10 @@
 
 ---
 
+
 <table>
   <tr>
-    <td>
+    <td style="font-size: 26px;">      
       <h1>k-means clustering</h1>
       <ul>
         <li>A popular clustering method (unsupervised, dissociative, nonparametric)</li>
@@ -66,7 +79,7 @@
         <li>(bottom) A k-means clustering of *mouse* with *k* set to the true value.</li>
       </ul>
     </td>
-    <td>
+    <td width="35%">
       <img src="/img/kmeans-actual.png" width="500px"/>
       <img src="/img/kmeans.png" width="500px"/>
     </td>
@@ -77,7 +90,7 @@
 
 <table>
   <tr>
-    <td style="vertical-align:middle">
+    <td style="vertical-align:middle; font-size: 26px;">
       <h1>Gaussian mixture models</h1>
       <ul>
         <li>Another popular clustering method (unsupervised, **parametric**)</li>
@@ -110,6 +123,8 @@
 * Recall from last lecture, a *genetic distance* is used to quantify the difference between two sequences.
 * The Tamura-Nei (1993, TN93) distance is the most complex distance that can be written as a closed-form expression.
 * The [International Committee on the Taxonomy of Viruses](https://talk.ictvonline.org/) allows the definition of a new virus species based on genetic clustering, although this remains controversial.
+
+> Unfortunately, in recent years, ICTV Study Groups [...] have created large number of species on the basis of a single criterion, namely a certain percentage of genome similarity between individual viruses. 
 
 ---
 
@@ -220,9 +235,28 @@ Source: Simmonds, Peter, *et al.* (2017) Nat Rev Microbiol 15: 161.
   </td>
 </table>
 
+---
 
+# HIV epidemiology
 
-
+<table>
+  <tr>
+    <td style="font-size:26px">
+      <ul>
+        <li>HIV-1 outbreak in Glenochil prison, Scotland</li>
+        <li>Blood samples collected from 14 inmates positive for HIV infection</li>
+        <li>One of the earlier examples of clustering applied to HIV-1</li>
+        <li>Now a very popular method for studying HIV transmission</li>
+      </ul>
+      <small>
+      Image source: DL Yirrell *et al*. (1997) BMJ, https://doi.org/10.1136/bmj.314.7092.1446
+      </small>
+    </td>
+    <td width="40%">
+      <img src="/img/glenochil-crop.png" width="400px"/>
+    </td>
+  </tr>
+</table>
 
 ---
 
