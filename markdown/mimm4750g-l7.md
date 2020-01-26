@@ -185,9 +185,9 @@ Source: Simmonds, Peter, *et al.* (2017) Nat Rev Microbiol 15: 161.
 <section data-state="tn93-slide">
     <h1>TN93 clustering</h1>
     <br/>
-    <div id="jukes" class="fig-container"
+    <div id="tn93" class="fig-container"
          data-fig-id="fig-tn93"
-         data-file="/include/tn93.html"
+         data-file="/include/clustering.html"
          style="height:600px">
     </div>
 </section>
