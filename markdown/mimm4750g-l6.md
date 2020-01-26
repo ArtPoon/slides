@@ -7,6 +7,7 @@
 # Aligned sequences
 
 * Now that we can align sequences, we can make biologically meaningful comparisons.
+* Which parts of the gene/genome are more variable? more conserved?
 * Which sequences are more closely related than others?
 * It is far easier to measure similarity when the sequences are aligned.
 ```
@@ -14,6 +15,11 @@ GGGTTGCGCTCGTTG    GGGTTGCGCTCGTTG
 || |        |      ||| ||| |||| ||
 GGTTGCGCTCGTTGA    GGGATGCACTCGCTG
 ```
+
+---
+
+# Genetic diversity
+* how do we measure diversity?
 
 ---
 
