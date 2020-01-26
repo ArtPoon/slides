@@ -1,6 +1,6 @@
 # MIMM4750G
 ## Genetic clustering
-![](https://imgs.xkcd.com/comics/machine_learning.png)
+![](https://imgs.xkcd.com/comics/chat_systems.png)
 
 ---
 
@@ -159,7 +159,7 @@ Source: Simmonds, Peter, *et al.* (2017) Nat Rev Microbiol 15: 161.
   </ul>
   </td>
   <td>
-    ![](/img/bacteria-species.png)
+    <img src="/img/bacteria-species.png"/>
     <small>
     MLSA phylogenetic tree of *Streptococcus* from C Fraser *et al.* (2009) Science 323: 741.
     </small>
