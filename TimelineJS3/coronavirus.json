@@ -1,0 +1,143 @@
+{
+  "scale": "human",
+  
+  "title": {
+    "media": {
+      "caption": "",
+      "credit": "Darley Shen/Reuters",
+      "url": "https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/4YY7M4R4HAI6VOWK5N5M4CRUKU.jpg&w=1440",
+      "thumb": ""
+    },
+    "text": {
+      "headline": "Phylogenetics in real time",
+      "text": "<div style=\"font-size: 24pt; line-height: 36px\">The Wuhan coronavirus outbreak</div>"
+    }
+  },
+    
+  "events": [
+    {
+      "background": {"color": "#000", "opacity": 50, "url": null},
+      "start_date": {"year": "2019", "month": "12", "day": "31", "format": ""},
+      "media": {
+        "caption": "",
+        "credit": "",
+        "url": "https://twitter.com/arambaut/status/1212030834565357570",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "Initial reports of viral pneumonia",
+        "text": "27 reported cases of pneumonia related to a seafood market in Wuhan are determined to have a viral cause.  Influenza A virus, respiratory syncytial virus and SARS coronavirus are soon ruled out."
+      }
+    },
+        
+        
+    {
+      "background": {"color": "#000", "opacity": 50, "url": null},
+      "start_date": {"year": "2020", "month": "1", "day": "10", "format": ""},
+      "media": {
+        "caption": "",
+        "credit": "",
+        "url": "https://twitter.com/john_jxw/status/1215835658020888576",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "Initial release of genome sequence",
+        "text": "The genome sequence is immediately released to the public. Preliminary analysis indicates it is most closely related to bat SARS-coronaviruses."
+      }
+    },
+    
+    {
+      "background": {"color": "#000", "opacity": 50, "url": null},
+      "start_date": {"year": "2020", "month": "1", "day": "12", "format": ""},
+      "media": {
+        "caption": "",
+        "credit": "",
+        "url": "https://twitter.com/trvrb/status/1216497614423638017",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "Additional genomes released",
+        "text": "Five new genomes are produced by three different labs and deposited in the open access GISAID database.  Researchers begin to post their analysis results on http://virological.org"
+      }
+    },
+    
+   {
+      "background": {"color": "#000", "opacity": 50, "url": null},
+      "start_date": {"year": "2020", "month": "1", "day": "22", "hour": "7", "format": ""},
+      "media": {
+        "caption": "",
+        "credit": "Xiaowei Jiang @john_jxw",
+        "url": "https://twitter.com/john_jxw/status/1219956616985858049",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "A recombinant origin discovered",
+        "text": "Researchers release initial findings that the Wuhan coronavirus is a recombinant of multiple bat coronavirus genomes."
+      }
+    },
+        
+    {
+      "background": {"color": "#000", "opacity": 50, "url": null},
+      "start_date": {"year": "2020", "month": "1", "day": "22", "hour": "11", "format": ""},
+      "media": {
+        "caption": "",
+        "credit": "",
+        "url": "https://twitter.com/TexasDownUnder/status/1220014483516592129",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "ARCGIS team releases real-time map of outbreak",
+        "text": "Web document updated in real time with geospatial information from case data."
+      }
+    },
+    
+    {
+      "background": {"color": "#000", "opacity": 50, "url": null},
+      "start_date": {"year": "2020", "month": "1", "day": "22", "hour": "19", "format": ""},
+      "media": {
+        "caption": "",
+        "credit": "",
+        "url": "https://twitter.com/trvrb/status/1220134146640449537",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "nextstrain.org releases real-time phylogeny",
+        "text": "Nextstrain (http://nextstrain.org/ncov) releases an interactive web document that updates in real time as additional genomes are released.  Source code is released at http://github.com/nextstrain/ncov"
+      }
+    },
+    
+    {
+      "background": {"color": "#000", "opacity": 50, "url": null},
+      "start_date": {"year": "2020", "month": "1", "day": "24", "format": ""},
+      "media": {
+        "caption": "",
+        "credit": "",
+        "url": "https://twitter.com/erikmvolz/status/1221092152157057024",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "A single origin mapped to mid-December 2019",
+        "text": "There is now enough sequences to estimate the rate of evolution, which makes it possible to date the ancestor of genomes that have been sampled so far.  Several groups announce their estimates on virological.org."
+      }
+    },
+    
+    {
+      "background": {"color": "#000", "opacity": 50, "url": null},
+      "start_date": {"year": "2020", "month": "1", "day": "26", "format": ""},
+      "media": {
+        "caption": "",
+        "credit": "",
+        "url": "https://twitter.com/MRC_Outbreak/status/1221032729971773440",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "Estimated R0 at 2.6 new cases per infection",
+        "text": "Based on compuational modeling of projected growth. An epidemic is self-sustaining when R0 exceeds 1.  R0 estimates for flu range from 1.5 to 2.5.  Phylodynamic estimates likely in the next week."
+      }
+    }
+  ]
+}
+
+
+
+
