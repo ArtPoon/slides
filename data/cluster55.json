@@ -1,0 +1,2102 @@
+{
+  "nodes": [
+    {"id":"HHALUNAUUN","group":0,"geno":"R","r":0.134},
+    {"id":"GUTDNHTTAA","group":0,"geno":"R","r":0.191},
+    {"id":"UUWAULWHNI","group":0,"geno":"S","r":0.05},
+    {"id":"GLWAUTHLGL","group":1,"geno":"S","r":0.308},
+    {"id":"HUWHUAIDHW","group":1,"geno":"R","r":0.244},
+    {"id":"NTWGIANDN","group":0,"geno":"S","r":0.05},
+    {"id":"WDGAGUIGT","group":1,"geno":"R","r":0.151},
+    {"id":"GGUNIGLDHL","group":0,"geno":"R","r":0.05},
+    {"id":"GNUHLADAII","group":0,"geno":"S","r":0.05},
+    {"id":"ULALWIHHD","group":0,"geno":"S","r":0.05},
+    {"id":"HTAAIUHNUA","group":1,"geno":"R","r":0.227},
+    {"id":"TWDDNHNGT","group":0,"geno":"S","r":0.05},
+    {"id":"HHTUUANAGN","group":0,"geno":"R","r":0.05},
+    {"id":"LTLIGDGLU","group":0,"geno":"R","r":0.05},
+    {"id":"UGAGLLUIL","group":0,"geno":"S","r":0.2},
+    {"id":"UWDAATNGWT","group":0,"geno":"S","r":0.05},
+    {"id":"HWLGHWAUTI","group":0,"geno":"S","r":0.05},
+    {"id":"GAHNAWTHGN","group":0,"geno":"S","r":0.05},
+    {"id":"GAHWLLLADH","group":1,"geno":"R","r":0.24},
+    {"id":"GITGUWWDLT","group":1,"geno":"S","r":0.188},
+    {"id":"GLAWATIIGT","group":0,"geno":"S","r":0.05},
+    {"id":"UWLGHUIDGH","group":0,"geno":"S","r":0.05},
+    {"id":"HNDTDWGNWI","group":1,"geno":"R","r":0.26},
+    {"id":"THALNTTHNW","group":0,"geno":"R","r":0.05},
+    {"id":"GTUUDTNNDN","group":0,"geno":"R","r":0.266},
+    {"id":"UWWGHLNWA","group":1,"geno":"R","r":0.212},
+    {"id":"GDAHWLHHWA","group":0,"geno":"S","r":0.05},
+    {"id":"TAULIIWGT","group":1,"geno":"S","r":0.332},
+    {"id":"DNULGNUIU","group":0,"geno":"S","r":0.05},
+    {"id":"GTWWHGNWHU","group":0,"geno":"R","r":0.05},
+    {"id":"TGNTIGLHND","group":0,"geno":"S","r":0.05},
+    {"id":"UWHUGWGWNG","group":1,"geno":"R","r":0.28},
+    {"id":"TGLDTUGHII","group":0,"geno":"R","r":0.05},
+    {"id":"HITTILWHUA","group":0,"geno":"R","r":0.05},
+    {"id":"UHTDNAUHUN","group":0,"geno":"S","r":0.26},
+    {"id":"NNLNNUAWA","group":1,"geno":"R","r":0.18}
+  ],
+  "links1": 
+  [
+    {
+      "source": "UGAGLLUIL",
+      "target": "TGNTIGLHND",
+      "weight": 0.237,
+      "id": "1"
+    },
+    {
+      "source": "GUTDNHTTAA",
+      "target": "UUWAULWHNI",
+      "weight": 0.703,
+      "id": "2"
+    },
+    {
+      "source": "GLAWATIIGT",
+      "target": "HITTILWHUA",
+      "weight": 0.6175,
+      "id": "3"
+    },
+    {
+      "source": "UWHUGWGWNG",
+      "target": "NNLNNUAWA",
+      "weight": 0.398,
+      "id": "4"
+    },
+    {
+      "source": "HNDTDWGNWI",
+      "target": "UWWGHLNWA",
+      "weight": 0.442,
+      "id": "5"
+    },
+    {
+      "source": "HUWHUAIDHW",
+      "target": "HTAAIUHNUA",
+      "weight": 0.3815,
+      "id": "6"
+    },
+    {
+      "source": "HITTILWHUA",
+      "target": "UWWGHLNWA",
+      "weight": 0.7025,
+      "id": "7"
+    },
+    {
+      "source": "GTUUDTNNDN",
+      "target": "HHALUNAUUN",
+      "weight": 0.5245,
+      "id": "8"
+    },
+    {
+      "source": "GUTDNHTTAA",
+      "target": "GTWWHGNWHU",
+      "weight": 0.467,
+      "id": "9"
+    },
+    {
+      "source": "TGLDTUGHII",
+      "target": "LTLIGDGLU",
+      "weight": 0.4885,
+      "id": "10"
+    },
+    {
+      "source": "GAHNAWTHGN",
+      "target": "TAULIIWGT",
+      "weight": 0.9705,
+      "id": "11"
+    },
+    {
+      "source": "GTUUDTNNDN",
+      "target": "HITTILWHUA",
+      "weight": 0.7125,
+      "id": "12"
+    },
+    {
+      "source": "HITTILWHUA",
+      "target": "HHALUNAUUN",
+      "weight": 0.343,
+      "id": "13"
+    },
+    {
+      "source": "GUTDNHTTAA",
+      "target": "HUWHUAIDHW",
+      "weight": 0.6695,
+      "id": "14"
+    },
+    {
+      "source": "GGUNIGLDHL",
+      "target": "HNDTDWGNWI",
+      "weight": 1.048,
+      "id": "15"
+    },
+    {
+      "source": "GLWAUTHLGL",
+      "target": "WDGAGUIGT",
+      "weight": 0.8165,
+      "id": "16"
+    },
+    {
+      "source": "GLAWATIIGT",
+      "target": "HHALUNAUUN",
+      "weight": 0.5395,
+      "id": "17"
+    },
+    {
+      "source": "GLAWATIIGT",
+      "target": "HNDTDWGNWI",
+      "weight": 0.849,
+      "id": "18"
+    },
+    {
+      "source": "UWWGHLNWA",
+      "target": "THALNTTHNW",
+      "weight": 0.4885,
+      "id": "19"
+    },
+    {
+      "source": "ULALWIHHD",
+      "target": "NNLNNUAWA",
+      "weight": 0.431,
+      "id": "20"
+    },
+    {
+      "source": "GTWWHGNWHU",
+      "target": "HTAAIUHNUA",
+      "weight": 0.703,
+      "id": "21"
+    },
+    {
+      "source": "GGUNIGLDHL",
+      "target": "THALNTTHNW",
+      "weight": 0.7645,
+      "id": "22"
+    },
+    {
+      "source": "LTLIGDGLU",
+      "target": "WDGAGUIGT",
+      "weight": 0.4925,
+      "id": "23"
+    },
+    {
+      "source": "GTWWHGNWHU",
+      "target": "NTWGIANDN",
+      "weight": 1.0725,
+      "id": "24"
+    },
+    {
+      "source": "HHALUNAUUN",
+      "target": "UWHUGWGWNG",
+      "weight": 0.249,
+      "id": "25"
+    },
+    {
+      "source": "HHALUNAUUN",
+      "target": "TWDDNHNGT",
+      "weight": 0.944,
+      "id": "26"
+    },
+    {
+      "source": "HUWHUAIDHW",
+      "target": "UUWAULWHNI",
+      "weight": 0.5015,
+      "id": "27"
+    },
+    {
+      "source": "HITTILWHUA",
+      "target": "WDGAGUIGT",
+      "weight": 0.7515,
+      "id": "28"
+    },
+    {
+      "source": "UWHUGWGWNG",
+      "target": "NTWGIANDN",
+      "weight": 0.9785,
+      "id": "29"
+    },
+    {
+      "source": "GGUNIGLDHL",
+      "target": "ULALWIHHD",
+      "weight": 0.972,
+      "id": "30"
+    },
+    {
+      "source": "GUTDNHTTAA",
+      "target": "UWHUGWGWNG",
+      "weight": 0.373,
+      "id": "31"
+    },
+    {
+      "source": "GUTDNHTTAA",
+      "target": "TWDDNHNGT",
+      "weight": 1.068,
+      "id": "32"
+    },
+    {
+      "source": "GGUNIGLDHL",
+      "target": "NNLNNUAWA",
+      "weight": 0.8875,
+      "id": "33"
+    },
+    {
+      "source": "TGLDTUGHII",
+      "target": "THALNTTHNW",
+      "weight": 0.41,
+      "id": "34"
+    },
+    {
+      "source": "THALNTTHNW",
+      "target": "DNULGNUIU",
+      "weight": 0.3945,
+      "id": "35"
+    },
+    {
+      "source": "GTUUDTNNDN",
+      "target": "ULALWIHHD",
+      "weight": 0.6515,
+      "id": "36"
+    },
+    {
+      "source": "GGUNIGLDHL",
+      "target": "HHTUUANAGN",
+      "weight": 0.711,
+      "id": "37"
+    },
+    {
+      "source": "HHALUNAUUN",
+      "target": "WDGAGUIGT",
+      "weight": 0.5635,
+      "id": "38"
+    },
+    {
+      "source": "UUWAULWHNI",
+      "target": "NNLNNUAWA",
+      "weight": 0.452,
+      "id": "39"
+    },
+    {
+      "source": "GUTDNHTTAA",
+      "target": "WDGAGUIGT",
+      "weight": 0.8295,
+      "id": "40"
+    },
+    {
+      "source": "GTUUDTNNDN",
+      "target": "NNLNNUAWA",
+      "weight": 0.3755,
+      "id": "41"
+    },
+    {
+      "source": "GAHWLLLADH",
+      "target": "HTAAIUHNUA",
+      "weight": 0.66,
+      "id": "42"
+    },
+    {
+      "source": "HNDTDWGNWI",
+      "target": "UUWAULWHNI",
+      "weight": 0.5625,
+      "id": "43"
+    },
+    {
+      "source": "HNDTDWGNWI",
+      "target": "ULALWIHHD",
+      "weight": 0.5415,
+      "id": "44"
+    },
+    {
+      "source": "GGUNIGLDHL",
+      "target": "LTLIGDGLU",
+      "weight": 0.8995,
+      "id": "45"
+    },
+    {
+      "source": "GGUNIGLDHL",
+      "target": "UWWGHLNWA",
+      "weight": 1.098,
+      "id": "46"
+    },
+    {
+      "source": "HUWHUAIDHW",
+      "target": "LTLIGDGLU",
+      "weight": 0.4305,
+      "id": "47"
+    },
+    {
+      "source": "GLWAUTHLGL",
+      "target": "TGLDTUGHII",
+      "weight": 0.7025,
+      "id": "48"
+    },
+    {
+      "source": "HITTILWHUA",
+      "target": "LTLIGDGLU",
+      "weight": 0.516,
+      "id": "49"
+    },
+    {
+      "source": "THALNTTHNW",
+      "target": "NTWGIANDN",
+      "weight": 1.0205,
+      "id": "50"
+    },
+    {
+      "source": "HHALUNAUUN",
+      "target": "DNULGNUIU",
+      "weight": 0.3,
+      "id": "51"
+    },
+    {
+      "source": "UWWGHLNWA",
+      "target": "DNULGNUIU",
+      "weight": 0.6595,
+      "id": "52"
+    },
+    {
+      "source": "TWDDNHNGT",
+      "target": "NTWGIANDN",
+      "weight": 0.4385,
+      "id": "53"
+    },
+    {
+      "source": "GAHWLLLADH",
+      "target": "HNDTDWGNWI",
+      "weight": 0.6095,
+      "id": "54"
+    },
+    {
+      "source": "GAHNAWTHGN",
+      "target": "HHTUUANAGN",
+      "weight": 1.067,
+      "id": "55"
+    },
+    {
+      "source": "GUTDNHTTAA",
+      "target": "UWLGHUIDGH",
+      "weight": 1.0035,
+      "id": "56"
+    },
+    {
+      "source": "GTWWHGNWHU",
+      "target": "GLWAUTHLGL",
+      "weight": 0.73,
+      "id": "57"
+    },
+    {
+      "source": "GAHWLLLADH",
+      "target": "DNULGNUIU",
+      "weight": 0.335,
+      "id": "58"
+    },
+    {
+      "source": "THALNTTHNW",
+      "target": "NNLNNUAWA",
+      "weight": 0.278,
+      "id": "59"
+    },
+    {
+      "source": "HTAAIUHNUA",
+      "target": "UUWAULWHNI",
+      "weight": 0.613,
+      "id": "60"
+    },
+    {
+      "source": "HUWHUAIDHW",
+      "target": "WDGAGUIGT",
+      "weight": 0.678,
+      "id": "61"
+    },
+    {
+      "source": "ULALWIHHD",
+      "target": "UWHUGWGWNG",
+      "weight": 0.51,
+      "id": "62"
+    },
+    {
+      "source": "GNUHLADAII",
+      "target": "NTWGIANDN",
+      "weight": 0.7355,
+      "id": "63"
+    },
+    {
+      "source": "HNDTDWGNWI",
+      "target": "TGLDTUGHII",
+      "weight": 0.625,
+      "id": "64"
+    },
+    {
+      "source": "UUWAULWHNI",
+      "target": "UWWGHLNWA",
+      "weight": 0.6125,
+      "id": "65"
+    },
+    {
+      "source": "GLWAUTHLGL",
+      "target": "DNULGNUIU",
+      "weight": 0.687,
+      "id": "66"
+    },
+    {
+      "source": "TGNTIGLHND",
+      "target": "TAULIIWGT",
+      "weight": 0.5365,
+      "id": "67"
+    },
+    {
+      "source": "UWHUGWGWNG",
+      "target": "TWDDNHNGT",
+      "weight": 0.928,
+      "id": "68"
+    },
+    {
+      "source": "GNUHLADAII",
+      "target": "TGNTIGLHND",
+      "weight": 0.2095,
+      "id": "69"
+    },
+    {
+      "source": "UUWAULWHNI",
+      "target": "UWHUGWGWNG",
+      "weight": 0.531,
+      "id": "70"
+    },
+    {
+      "source": "GDAHWLHHWA",
+      "target": "GLAWATIIGT",
+      "weight": 0.9295,
+      "id": "71"
+    },
+    {
+      "source": "UWWGHLNWA",
+      "target": "WDGAGUIGT",
+      "weight": 0.789,
+      "id": "72"
+    },
+    {
+      "source": "UWHUGWGWNG",
+      "target": "UWWGHLNWA",
+      "weight": 0.6085,
+      "id": "73"
+    },
+    {
+      "source": "GUTDNHTTAA",
+      "target": "HITTILWHUA",
+      "weight": 0.467,
+      "id": "74"
+    },
+    {
+      "source": "HITTILWHUA",
+      "target": "NNLNNUAWA",
+      "weight": 0.492,
+      "id": "75"
+    },
+    {
+      "source": "GTWWHGNWHU",
+      "target": "NNLNNUAWA",
+      "weight": 0.4645,
+      "id": "76"
+    },
+    {
+      "source": "GUTDNHTTAA",
+      "target": "NNLNNUAWA",
+      "weight": 0.57,
+      "id": "77"
+    },
+    {
+      "source": "GAHNAWTHGN",
+      "target": "NTWGIANDN",
+      "weight": 0.364,
+      "id": "78"
+    },
+    {
+      "source": "HITTILWHUA",
+      "target": "HHTUUANAGN",
+      "weight": 0.3155,
+      "id": "79"
+    },
+    {
+      "source": "GTUUDTNNDN",
+      "target": "HTAAIUHNUA",
+      "weight": 0.7505,
+      "id": "80"
+    },
+    {
+      "source": "GAHWLLLADH",
+      "target": "UWHUGWGWNG",
+      "weight": 0.206,
+      "id": "81"
+    },
+    {
+      "source": "HHTUUANAGN",
+      "target": "NNLNNUAWA",
+      "weight": 0.3315,
+      "id": "82"
+    },
+    {
+      "source": "GAHWLLLADH",
+      "target": "THALNTTHNW",
+      "weight": 0.326,
+      "id": "83"
+    },
+    {
+      "source": "GTWWHGNWHU",
+      "target": "DNULGNUIU",
+      "weight": 0.378,
+      "id": "84"
+    },
+    {
+      "source": "HTAAIUHNUA",
+      "target": "UWHUGWGWNG",
+      "weight": 0.609,
+      "id": "85"
+    },
+    {
+      "source": "HHTUUANAGN",
+      "target": "UWHUGWGWNG",
+      "weight": 0.2215,
+      "id": "86"
+    },
+    {
+      "source": "HHALUNAUUN",
+      "target": "UWWGHLNWA",
+      "weight": 0.5145,
+      "id": "87"
+    },
+    {
+      "source": "GNUHLADAII",
+      "target": "GLAWATIIGT",
+      "weight": 1.0395,
+      "id": "88"
+    },
+    {
+      "source": "ULALWIHHD",
+      "target": "WDGAGUIGT",
+      "weight": 0.663,
+      "id": "89"
+    },
+    {
+      "source": "TAULIIWGT",
+      "target": "NTWGIANDN",
+      "weight": 0.8705,
+      "id": "90"
+    },
+    {
+      "source": "GLAWATIIGT",
+      "target": "NTWGIANDN",
+      "weight": 0.793,
+      "id": "91"
+    },
+    {
+      "source": "GGUNIGLDHL",
+      "target": "NTWGIANDN",
+      "weight": 0.727,
+      "id": "92"
+    },
+    {
+      "source": "HHTUUANAGN",
+      "target": "UWWGHLNWA",
+      "weight": 0.542,
+      "id": "93"
+    },
+    {
+      "source": "HNDTDWGNWI",
+      "target": "WDGAGUIGT",
+      "weight": 0.739,
+      "id": "94"
+    },
+    {
+      "source": "UWWGHLNWA",
+      "target": "LTLIGDGLU",
+      "weight": 0.5535,
+      "id": "95"
+    },
+    {
+      "source": "GDAHWLHHWA",
+      "target": "TWDDNHNGT",
+      "weight": 0.342,
+      "id": "96"
+    },
+    {
+      "source": "GUTDNHTTAA",
+      "target": "ULALWIHHD",
+      "weight": 0.6545,
+      "id": "97"
+    },
+    {
+      "source": "TGLDTUGHII",
+      "target": "NNLNNUAWA",
+      "weight": 0.4645,
+      "id": "98"
+    },
+    {
+      "source": "GUTDNHTTAA",
+      "target": "GAHWLLLADH",
+      "weight": 0.424,
+      "id": "99"
+    },
+    {
+      "source": "TWDDNHNGT",
+      "target": "NNLNNUAWA",
+      "weight": 1.093,
+      "id": "100"
+    },
+    {
+      "source": "GAHWLLLADH",
+      "target": "UUWAULWHNI",
+      "weight": 0.582,
+      "id": "101"
+    },
+    {
+      "source": "GGUNIGLDHL",
+      "target": "GDAHWLHHWA",
+      "weight": 0.8635,
+      "id": "102"
+    },
+    {
+      "source": "GUTDNHTTAA",
+      "target": "HHTUUANAGN",
+      "weight": 0.3065,
+      "id": "103"
+    },
+    {
+      "source": "GTWWHGNWHU",
+      "target": "HHALUNAUUN",
+      "weight": 0.343,
+      "id": "104"
+    },
+    {
+      "source": "GTWWHGNWHU",
+      "target": "ULALWIHHD",
+      "weight": 0.604,
+      "id": "105"
+    },
+    {
+      "source": "GNUHLADAII",
+      "target": "TWDDNHNGT",
+      "weight": 0.452,
+      "id": "106"
+    },
+    {
+      "source": "GTWWHGNWHU",
+      "target": "THALNTTHNW",
+      "weight": 0.4375,
+      "id": "107"
+    },
+    {
+      "source": "GTUUDTNNDN",
+      "target": "GTWWHGNWHU",
+      "weight": 0.7125,
+      "id": "108"
+    },
+    {
+      "source": "HWLGHWAUTI",
+      "target": "UWLGHUIDGH",
+      "weight": 0.5765,
+      "id": "109"
+    },
+    {
+      "source": "HHTUUANAGN",
+      "target": "UUWAULWHNI",
+      "weight": 0.4645,
+      "id": "110"
+    },
+    {
+      "source": "GUTDNHTTAA",
+      "target": "GTUUDTNNDN",
+      "weight": 0.7905,
+      "id": "111"
+    },
+    {
+      "source": "HTAAIUHNUA",
+      "target": "NNLNNUAWA",
+      "weight": 0.53,
+      "id": "112"
+    },
+    {
+      "source": "UWHUGWGWNG",
+      "target": "DNULGNUIU",
+      "weight": 0.284,
+      "id": "113"
+    },
+    {
+      "source": "GGUNIGLDHL",
+      "target": "TGNTIGLHND",
+      "weight": 0.836,
+      "id": "114"
+    },
+    {
+      "source": "GUTDNHTTAA",
+      "target": "GLAWATIIGT",
+      "weight": 0.6635,
+      "id": "115"
+    },
+    {
+      "source": "GLWAUTHLGL",
+      "target": "ULALWIHHD",
+      "weight": 0.3085,
+      "id": "116"
+    },
+    {
+      "source": "TGLDTUGHII",
+      "target": "NTWGIANDN",
+      "weight": 1.045,
+      "id": "117"
+    },
+    {
+      "source": "GLAWATIIGT",
+      "target": "HTAAIUHNUA",
+      "weight": 0.8995,
+      "id": "118"
+    },
+    {
+      "source": "HHALUNAUUN",
+      "target": "UUWAULWHNI",
+      "weight": 0.437,
+      "id": "119"
+    },
+    {
+      "source": "HHTUUANAGN",
+      "target": "WDGAGUIGT",
+      "weight": 0.591,
+      "id": "120"
+    },
+    {
+      "source": "GGUNIGLDHL",
+      "target": "GAHWLLLADH",
+      "weight": 0.7735,
+      "id": "121"
+    },
+    {
+      "source": "UWHUGWGWNG",
+      "target": "THALNTTHNW",
+      "weight": 0.3435,
+      "id": "122"
+    },
+    {
+      "source": "GNUHLADAII",
+      "target": "GAHNAWTHGN",
+      "weight": 0.7525,
+      "id": "123"
+    },
+    {
+      "source": "UUWAULWHNI",
+      "target": "LTLIGDGLU",
+      "weight": 0.464,
+      "id": "124"
+    },
+    {
+      "source": "UGAGLLUIL",
+      "target": "THALNTTHNW",
+      "weight": 1.0475,
+      "id": "125"
+    },
+    {
+      "source": "GTUUDTNNDN",
+      "target": "UWHUGWGWNG",
+      "weight": 0.6185,
+      "id": "126"
+    },
+    {
+      "source": "GLAWATIIGT",
+      "target": "GLWAUTHLGL",
+      "weight": 0.9265,
+      "id": "127"
+    },
+    {
+      "source": "GGUNIGLDHL",
+      "target": "GUTDNHTTAA",
+      "weight": 0.8625,
+      "id": "128"
+    },
+    {
+      "source": "UGAGLLUIL",
+      "target": "NTWGIANDN",
+      "weight": 0.516,
+      "id": "129"
+    },
+    {
+      "source": "GAHWLLLADH",
+      "target": "ULALWIHHD",
+      "weight": 0.561,
+      "id": "130"
+    },
+    {
+      "source": "HHALUNAUUN",
+      "target": "UGAGLLUIL",
+      "weight": 1.0215,
+      "id": "131"
+    },
+    {
+      "source": "GLWAUTHLGL",
+      "target": "UWHUGWGWNG",
+      "weight": 0.636,
+      "id": "132"
+    },
+    {
+      "source": "TGNTIGLHND",
+      "target": "TWDDNHNGT",
+      "weight": 0.3145,
+      "id": "133"
+    },
+    {
+      "source": "UWHUGWGWNG",
+      "target": "WDGAGUIGT",
+      "weight": 0.6575,
+      "id": "134"
+    },
+    {
+      "source": "GTUUDTNNDN",
+      "target": "LTLIGDGLU",
+      "weight": 0.4535,
+      "id": "135"
+    },
+    {
+      "source": "HUWHUAIDHW",
+      "target": "ULALWIHHD",
+      "weight": 0.453,
+      "id": "136"
+    },
+    {
+      "source": "ULALWIHHD",
+      "target": "LTLIGDGLU",
+      "weight": 0.443,
+      "id": "137"
+    },
+    {
+      "source": "GITGUWWDLT",
+      "target": "UWLGHUIDGH",
+      "weight": 1.027,
+      "id": "138"
+    },
+    {
+      "source": "HHALUNAUUN",
+      "target": "ULALWIHHD",
+      "weight": 0.3885,
+      "id": "139"
+    },
+    {
+      "source": "GGUNIGLDHL",
+      "target": "HITTILWHUA",
+      "weight": 0.8165,
+      "id": "140"
+    },
+    {
+      "source": "HITTILWHUA",
+      "target": "HUWHUAIDHW",
+      "weight": 0.5915,
+      "id": "141"
+    },
+    {
+      "source": "GUTDNHTTAA",
+      "target": "GNUHLADAII",
+      "weight": 0.975,
+      "id": "142"
+    },
+    {
+      "source": "GLWAUTHLGL",
+      "target": "UUWAULWHNI",
+      "weight": 0.505,
+      "id": "143"
+    },
+    {
+      "source": "HNDTDWGNWI",
+      "target": "LTLIGDGLU",
+      "weight": 0.5035,
+      "id": "144"
+    },
+    {
+      "source": "GLAWATIIGT",
+      "target": "HUWHUAIDHW",
+      "weight": 0.788,
+      "id": "145"
+    },
+    {
+      "source": "GUTDNHTTAA",
+      "target": "TGNTIGLHND",
+      "weight": 0.8375,
+      "id": "146"
+    },
+    {
+      "source": "GUTDNHTTAA",
+      "target": "GLWAUTHLGL",
+      "weight": 0.808,
+      "id": "147"
+    },
+    {
+      "source": "GGUNIGLDHL",
+      "target": "HUWHUAIDHW",
+      "weight": 0.987,
+      "id": "148"
+    },
+    {
+      "source": "UWHUGWGWNG",
+      "target": "LTLIGDGLU",
+      "weight": 0.422,
+      "id": "149"
+    },
+    {
+      "source": "UGAGLLUIL",
+      "target": "TWDDNHNGT",
+      "weight": 0.2325,
+      "id": "150"
+    },
+    {
+      "source": "HITTILWHUA",
+      "target": "TWDDNHNGT",
+      "weight": 1.022,
+      "id": "151"
+    },
+    {
+      "source": "GTWWHGNWHU",
+      "target": "GAHWLLLADH",
+      "weight": 0.222,
+      "id": "152"
+    },
+    {
+      "source": "GLAWATIIGT",
+      "target": "TGNTIGLHND",
+      "weight": 0.902,
+      "id": "153"
+    },
+    {
+      "source": "HUWHUAIDHW",
+      "target": "UWWGHLNWA",
+      "weight": 0.381,
+      "id": "154"
+    },
+    {
+      "source": "ULALWIHHD",
+      "target": "TGLDTUGHII",
+      "weight": 0.5765,
+      "id": "155"
+    },
+    {
+      "source": "GGUNIGLDHL",
+      "target": "TWDDNHNGT",
+      "weight": 0.6765,
+      "id": "156"
+    },
+    {
+      "source": "GTUUDTNNDN",
+      "target": "DNULGNUIU",
+      "weight": 0.6695,
+      "id": "157"
+    },
+    {
+      "source": "HHTUUANAGN",
+      "target": "TWDDNHNGT",
+      "weight": 0.9165,
+      "id": "158"
+    },
+    {
+      "source": "HTAAIUHNUA",
+      "target": "WDGAGUIGT",
+      "weight": 0.7895,
+      "id": "159"
+    },
+    {
+      "source": "DNULGNUIU",
+      "target": "LTLIGDGLU",
+      "weight": 0.473,
+      "id": "160"
+    },
+    {
+      "source": "DNULGNUIU",
+      "target": "NTWGIANDN",
+      "weight": 0.8725,
+      "id": "161"
+    },
+    {
+      "source": "HITTILWHUA",
+      "target": "NTWGIANDN",
+      "weight": 1.0725,
+      "id": "162"
+    },
+    {
+      "source": "HHALUNAUUN",
+      "target": "LTLIGDGLU",
+      "weight": 0.316,
+      "id": "163"
+    },
+    {
+      "source": "UGAGLLUIL",
+      "target": "TAULIIWGT",
+      "weight": 0.5095,
+      "id": "164"
+    },
+    {
+      "source": "TGLDTUGHII",
+      "target": "TWDDNHNGT",
+      "weight": 0.9945,
+      "id": "165"
+    },
+    {
+      "source": "GTWWHGNWHU",
+      "target": "WDGAGUIGT",
+      "weight": 0.7515,
+      "id": "166"
+    },
+    {
+      "source": "GLAWATIIGT",
+      "target": "UUWAULWHNI",
+      "weight": 0.8215,
+      "id": "167"
+    },
+    {
+      "source": "UUWAULWHNI",
+      "target": "TGLDTUGHII",
+      "weight": 0.5975,
+      "id": "168"
+    },
+    {
+      "source": "GLAWATIIGT",
+      "target": "TWDDNHNGT",
+      "weight": 0.7425,
+      "id": "169"
+    },
+    {
+      "source": "HTAAIUHNUA",
+      "target": "THALNTTHNW",
+      "weight": 0.489,
+      "id": "170"
+    },
+    {
+      "source": "GAHWLLLADH",
+      "target": "UGAGLLUIL",
+      "weight": 1.0565,
+      "id": "171"
+    },
+    {
+      "source": "GLAWATIIGT",
+      "target": "ULALWIHHD",
+      "weight": 0.8005,
+      "id": "172"
+    },
+    {
+      "source": "GGUNIGLDHL",
+      "target": "TGLDTUGHII",
+      "weight": 0.789,
+      "id": "173"
+    },
+    {
+      "source": "ULALWIHHD",
+      "target": "THALNTTHNW",
+      "weight": 0.3625,
+      "id": "174"
+    },
+    {
+      "source": "GTWWHGNWHU",
+      "target": "TWDDNHNGT",
+      "weight": 1.022,
+      "id": "175"
+    },
+    {
+      "source": "GTWWHGNWHU",
+      "target": "UGAGLLUIL",
+      "weight": 1.0995,
+      "id": "176"
+    },
+    {
+      "source": "GUTDNHTTAA",
+      "target": "UGAGLLUIL",
+      "weight": 0.7555,
+      "id": "177"
+    },
+    {
+      "source": "TGNTIGLHND",
+      "target": "DNULGNUIU",
+      "weight": 0.9815,
+      "id": "178"
+    },
+    {
+      "source": "HTAAIUHNUA",
+      "target": "LTLIGDGLU",
+      "weight": 0.542,
+      "id": "179"
+    },
+    {
+      "source": "HNDTDWGNWI",
+      "target": "THALNTTHNW",
+      "weight": 0.4385,
+      "id": "180"
+    },
+    {
+      "source": "HHALUNAUUN",
+      "target": "HNDTDWGNWI",
+      "weight": 0.4645,
+      "id": "181"
+    },
+    {
+      "source": "GUTDNHTTAA",
+      "target": "UWWGHLNWA",
+      "weight": 0.7805,
+      "id": "182"
+    },
+    {
+      "source": "GDAHWLHHWA",
+      "target": "TAULIIWGT",
+      "weight": 0.564,
+      "id": "183"
+    },
+    {
+      "source": "HHTUUANAGN",
+      "target": "THALNTTHNW",
+      "weight": 0.2085,
+      "id": "184"
+    },
+    {
+      "source": "ULALWIHHD",
+      "target": "DNULGNUIU",
+      "weight": 0.561,
+      "id": "185"
+    },
+    {
+      "source": "GTUUDTNNDN",
+      "target": "HHTUUANAGN",
+      "weight": 0.552,
+      "id": "186"
+    },
+    {
+      "source": "GAHNAWTHGN",
+      "target": "UWHUGWGWNG",
+      "weight": 1.0785,
+      "id": "187"
+    },
+    {
+      "source": "GLAWATIIGT",
+      "target": "LTLIGDGLU",
+      "weight": 0.7125,
+      "id": "188"
+    },
+    {
+      "source": "GAHNAWTHGN",
+      "target": "TWDDNHNGT",
+      "weight": 0.5385,
+      "id": "189"
+    },
+    {
+      "source": "GLAWATIIGT",
+      "target": "NNLNNUAWA",
+      "weight": 0.6885,
+      "id": "190"
+    },
+    {
+      "source": "HNDTDWGNWI",
+      "target": "DNULGNUIU",
+      "weight": 0.6095,
+      "id": "191"
+    },
+    {
+      "source": "HTAAIUHNUA",
+      "target": "ULALWIHHD",
+      "weight": 0.592,
+      "id": "192"
+    },
+    {
+      "source": "GTUUDTNNDN",
+      "target": "HUWHUAIDHW",
+      "weight": 0.639,
+      "id": "193"
+    },
+    {
+      "source": "GAHWLLLADH",
+      "target": "UWWGHLNWA",
+      "weight": 0.6595,
+      "id": "194"
+    },
+    {
+      "source": "UUWAULWHNI",
+      "target": "WDGAGUIGT",
+      "weight": 0.7115,
+      "id": "195"
+    },
+    {
+      "source": "THALNTTHNW",
+      "target": "TWDDNHNGT",
+      "weight": 0.97,
+      "id": "196"
+    },
+    {
+      "source": "HHTUUANAGN",
+      "target": "HHALUNAUUN",
+      "weight": 0.1825,
+      "id": "197"
+    },
+    {
+      "source": "GDAHWLHHWA",
+      "target": "GNUHLADAII",
+      "weight": 0.182,
+      "id": "198"
+    },
+    {
+      "source": "GUTDNHTTAA",
+      "target": "TGLDTUGHII",
+      "weight": 0.4395,
+      "id": "199"
+    },
+    {
+      "source": "GTUUDTNNDN",
+      "target": "GAHWLLLADH",
+      "weight": 0.6695,
+      "id": "200"
+    },
+    {
+      "source": "GGUNIGLDHL",
+      "target": "DNULGNUIU",
+      "weight": 0.6165,
+      "id": "201"
+    },
+    {
+      "source": "UWWGHLNWA",
+      "target": "NNLNNUAWA",
+      "weight": 0.5295,
+      "id": "202"
+    },
+    {
+      "source": "GAHWLLLADH",
+      "target": "HHALUNAUUN",
+      "weight": 0.3,
+      "id": "203"
+    },
+    {
+      "source": "UHTDNAUHUN",
+      "target": "UWLGHUIDGH",
+      "weight": 0.408,
+      "id": "204"
+    },
+    {
+      "source": "HITTILWHUA",
+      "target": "UUWAULWHNI",
+      "weight": 0.625,
+      "id": "205"
+    },
+    {
+      "source": "TWDDNHNGT",
+      "target": "DNULGNUIU",
+      "weight": 0.822,
+      "id": "206"
+    },
+    {
+      "source": "GLWAUTHLGL",
+      "target": "UWWGHLNWA",
+      "weight": 0.7175,
+      "id": "207"
+    },
+    {
+      "source": "HTAAIUHNUA",
+      "target": "DNULGNUIU",
+      "weight": 0.66,
+      "id": "208"
+    },
+    {
+      "source": "GAHNAWTHGN",
+      "target": "DNULGNUIU",
+      "weight": 0.9725,
+      "id": "209"
+    },
+    {
+      "source": "UHTDNAUHUN",
+      "target": "UWDAATNGWT",
+      "weight": 1.0215,
+      "id": "210"
+    },
+    {
+      "source": "TGLDTUGHII",
+      "target": "DNULGNUIU",
+      "weight": 0.3505,
+      "id": "211"
+    },
+    {
+      "source": "GLWAUTHLGL",
+      "target": "HHTUUANAGN",
+      "weight": 0.5695,
+      "id": "212"
+    },
+    {
+      "source": "DNULGNUIU",
+      "target": "WDGAGUIGT",
+      "weight": 0.7085,
+      "id": "213"
+    },
+    {
+      "source": "GAHWLLLADH",
+      "target": "WDGAGUIGT",
+      "weight": 0.7085,
+      "id": "214"
+    },
+    {
+      "source": "GAHWLLLADH",
+      "target": "TGLDTUGHII",
+      "weight": 0.1945,
+      "id": "215"
+    },
+    {
+      "source": "THALNTTHNW",
+      "target": "WDGAGUIGT",
+      "weight": 0.5375,
+      "id": "216"
+    },
+    {
+      "source": "GUTDNHTTAA",
+      "target": "NTWGIANDN",
+      "weight": 0.7285,
+      "id": "217"
+    },
+    {
+      "source": "GLWAUTHLGL",
+      "target": "LTLIGDGLU",
+      "weight": 0.569,
+      "id": "218"
+    },
+    {
+      "source": "TGNTIGLHND",
+      "target": "NTWGIANDN",
+      "weight": 0.598,
+      "id": "219"
+    },
+    {
+      "source": "DNULGNUIU",
+      "target": "NNLNNUAWA",
+      "weight": 0.449,
+      "id": "220"
+    },
+    {
+      "source": "GGUNIGLDHL",
+      "target": "UUWAULWHNI",
+      "weight": 1.0205,
+      "id": "221"
+    },
+    {
+      "source": "GAHWLLLADH",
+      "target": "GLWAUTHLGL",
+      "weight": 0.687,
+      "id": "222"
+    },
+    {
+      "source": "HHTUUANAGN",
+      "target": "ULALWIHHD",
+      "weight": 0.416,
+      "id": "223"
+    },
+    {
+      "source": "UGAGLLUIL",
+      "target": "UWHUGWGWNG",
+      "weight": 1.0055,
+      "id": "224"
+    },
+    {
+      "source": "UWHUGWGWNG",
+      "target": "TGNTIGLHND",
+      "weight": 1.06,
+      "id": "225"
+    },
+    {
+      "source": "HITTILWHUA",
+      "target": "HTAAIUHNUA",
+      "weight": 0.703,
+      "id": "226"
+    },
+    {
+      "source": "GAHWLLLADH",
+      "target": "NTWGIANDN",
+      "weight": 1.0295,
+      "id": "227"
+    },
+    {
+      "source": "HTAAIUHNUA",
+      "target": "TGLDTUGHII",
+      "weight": 0.6755,
+      "id": "228"
+    },
+    {
+      "source": "GTUUDTNNDN",
+      "target": "TGLDTUGHII",
+      "weight": 0.685,
+      "id": "229"
+    },
+    {
+      "source": "GAHWLLLADH",
+      "target": "LTLIGDGLU",
+      "weight": 0.473,
+      "id": "230"
+    },
+    {
+      "source": "GLAWATIIGT",
+      "target": "THALNTTHNW",
+      "weight": 0.5655,
+      "id": "231"
+    },
+    {
+      "source": "TGLDTUGHII",
+      "target": "WDGAGUIGT",
+      "weight": 0.724,
+      "id": "232"
+    },
+    {
+      "source": "GDAHWLHHWA",
+      "target": "DNULGNUIU",
+      "weight": 1.009,
+      "id": "233"
+    },
+    {
+      "source": "HHTUUANAGN",
+      "target": "HUWHUAIDHW",
+      "weight": 0.431,
+      "id": "234"
+    },
+    {
+      "source": "UWHUGWGWNG",
+      "target": "TGLDTUGHII",
+      "weight": 0.2215,
+      "id": "235"
+    },
+    {
+      "source": "HITTILWHUA",
+      "target": "HNDTDWGNWI",
+      "weight": 0.6525,
+      "id": "236"
+    },
+    {
+      "source": "GTWWHGNWHU",
+      "target": "UWWGHLNWA",
+      "weight": 0.7025,
+      "id": "237"
+    },
+    {
+      "source": "GUTDNHTTAA",
+      "target": "GDAHWLHHWA",
+      "weight": 0.865,
+      "id": "238"
+    },
+    {
+      "source": "HHALUNAUUN",
+      "target": "HTAAIUHNUA",
+      "weight": 0.515,
+      "id": "239"
+    },
+    {
+      "source": "HHALUNAUUN",
+      "target": "NTWGIANDN",
+      "weight": 0.9945,
+      "id": "240"
+    },
+    {
+      "source": "GUTDNHTTAA",
+      "target": "UHTDNAUHUN",
+      "weight": 1.0755,
+      "id": "241"
+    },
+    {
+      "source": "HITTILWHUA",
+      "target": "DNULGNUIU",
+      "weight": 0.378,
+      "id": "242"
+    },
+    {
+      "source": "GGUNIGLDHL",
+      "target": "GTWWHGNWHU",
+      "weight": 0.8165,
+      "id": "243"
+    },
+    {
+      "source": "GGUNIGLDHL",
+      "target": "HHALUNAUUN",
+      "weight": 0.7385,
+      "id": "244"
+    },
+    {
+      "source": "GTWWHGNWHU",
+      "target": "HHTUUANAGN",
+      "weight": 0.3155,
+      "id": "245"
+    },
+    {
+      "source": "HTAAIUHNUA",
+      "target": "UWWGHLNWA",
+      "weight": 0.1545,
+      "id": "246"
+    },
+    {
+      "source": "GNUHLADAII",
+      "target": "UGAGLLUIL",
+      "weight": 0.3745,
+      "id": "247"
+    },
+    {
+      "source": "GDAHWLHHWA",
+      "target": "TGNTIGLHND",
+      "weight": 0.1825,
+      "id": "248"
+    },
+    {
+      "source": "GUTDNHTTAA",
+      "target": "GAHNAWTHGN",
+      "weight": 0.8285,
+      "id": "249"
+    },
+    {
+      "source": "GAHWLLLADH",
+      "target": "GLAWATIIGT",
+      "weight": 0.5745,
+      "id": "250"
+    },
+    {
+      "source": "UUWAULWHNI",
+      "target": "THALNTTHNW",
+      "weight": 0.411,
+      "id": "251"
+    },
+    {
+      "source": "GTUUDTNNDN",
+      "target": "GLAWATIIGT",
+      "weight": 0.909,
+      "id": "252"
+    },
+    {
+      "source": "HHALUNAUUN",
+      "target": "THALNTTHNW",
+      "weight": 0.181,
+      "id": "253"
+    },
+    {
+      "source": "HUWHUAIDHW",
+      "target": "THALNTTHNW",
+      "weight": 0.3775,
+      "id": "254"
+    },
+    {
+      "source": "HUWHUAIDHW",
+      "target": "UWHUGWGWNG",
+      "weight": 0.4975,
+      "id": "255"
+    },
+    {
+      "source": "GGUNIGLDHL",
+      "target": "HTAAIUHNUA",
+      "weight": 1.0985,
+      "id": "256"
+    },
+    {
+      "source": "GAHWLLLADH",
+      "target": "NNLNNUAWA",
+      "weight": 0.449,
+      "id": "257"
+    },
+    {
+      "source": "GGUNIGLDHL",
+      "target": "UWHUGWGWNG",
+      "weight": 0.7225,
+      "id": "258"
+    },
+    {
+      "source": "GLAWATIIGT",
+      "target": "HHTUUANAGN",
+      "weight": 0.512,
+      "id": "259"
+    },
+    {
+      "source": "GAHWLLLADH",
+      "target": "HITTILWHUA",
+      "weight": 0.222,
+      "id": "260"
+    },
+    {
+      "source": "GLAWATIIGT",
+      "target": "UWHUGWGWNG",
+      "weight": 0.5235,
+      "id": "261"
+    },
+    {
+      "source": "GAHWLLLADH",
+      "target": "HHTUUANAGN",
+      "weight": 0.2725,
+      "id": "262"
+    },
+    {
+      "source": "HITTILWHUA",
+      "target": "UWHUGWGWNG",
+      "weight": 0.249,
+      "id": "263"
+    },
+    {
+      "source": "HITTILWHUA",
+      "target": "THALNTTHNW",
+      "weight": 0.4375,
+      "id": "264"
+    },
+    {
+      "source": "GLAWATIIGT",
+      "target": "UWWGHLNWA",
+      "weight": 0.899,
+      "id": "265"
+    },
+    {
+      "source": "GAHNAWTHGN",
+      "target": "GLAWATIIGT",
+      "weight": 0.893,
+      "id": "266"
+    },
+    {
+      "source": "UWDAATNGWT",
+      "target": "UWLGHUIDGH",
+      "weight": 0.9495,
+      "id": "267"
+    },
+    {
+      "source": "HTAAIUHNUA",
+      "target": "HNDTDWGNWI",
+      "weight": 0.4425,
+      "id": "268"
+    },
+    {
+      "source": "GLWAUTHLGL",
+      "target": "HUWHUAIDHW",
+      "weight": 0.6065,
+      "id": "269"
+    },
+    {
+      "source": "GUTDNHTTAA",
+      "target": "LTLIGDGLU",
+      "weight": 0.582,
+      "id": "270"
+    },
+    {
+      "source": "GLWAUTHLGL",
+      "target": "NNLNNUAWA",
+      "weight": 0.557,
+      "id": "271"
+    },
+    {
+      "source": "GTUUDTNNDN",
+      "target": "UWWGHLNWA",
+      "weight": 0.75,
+      "id": "272"
+    },
+    {
+      "source": "GGUNIGLDHL",
+      "target": "GNUHLADAII",
+      "weight": 0.9735,
+      "id": "273"
+    },
+    {
+      "source": "GLWAUTHLGL",
+      "target": "THALNTTHNW",
+      "weight": 0.516,
+      "id": "274"
+    },
+    {
+      "source": "GDAHWLHHWA",
+      "target": "NTWGIANDN",
+      "weight": 0.6255,
+      "id": "275"
+    },
+    {
+      "source": "GTUUDTNNDN",
+      "target": "HNDTDWGNWI",
+      "weight": 0.7,
+      "id": "276"
+    },
+    {
+      "source": "UUWAULWHNI",
+      "target": "DNULGNUIU",
+      "weight": 0.582,
+      "id": "277"
+    },
+    {
+      "source": "HUWHUAIDHW",
+      "target": "DNULGNUIU",
+      "weight": 0.5485,
+      "id": "278"
+    },
+    {
+      "source": "GITGUWWDLT",
+      "target": "UHTDNAUHUN",
+      "weight": 1.099,
+      "id": "279"
+    },
+    {
+      "source": "GLWAUTHLGL",
+      "target": "HNDTDWGNWI",
+      "weight": 0.6675,
+      "id": "280"
+    },
+    {
+      "source": "HUWHUAIDHW",
+      "target": "HNDTDWGNWI",
+      "weight": 0.277,
+      "id": "281"
+    },
+    {
+      "source": "GTWWHGNWHU",
+      "target": "GLAWATIIGT",
+      "weight": 0.6175,
+      "id": "282"
+    },
+    {
+      "source": "GTWWHGNWHU",
+      "target": "LTLIGDGLU",
+      "weight": 0.516,
+      "id": "283"
+    },
+    {
+      "source": "GAHNAWTHGN",
+      "target": "UGAGLLUIL",
+      "weight": 0.616,
+      "id": "284"
+    },
+    {
+      "source": "HNDTDWGNWI",
+      "target": "NNLNNUAWA",
+      "weight": 0.4795,
+      "id": "285"
+    },
+    {
+      "source": "HHALUNAUUN",
+      "target": "TGLDTUGHII",
+      "weight": 0.3155,
+      "id": "286"
+    },
+    {
+      "source": "HHALUNAUUN",
+      "target": "NNLNNUAWA",
+      "weight": 0.304,
+      "id": "287"
+    },
+    {
+      "source": "GTUUDTNNDN",
+      "target": "UUWAULWHNI",
+      "weight": 0.6725,
+      "id": "288"
+    },
+    {
+      "source": "GLAWATIIGT",
+      "target": "TGLDTUGHII",
+      "weight": 0.59,
+      "id": "289"
+    },
+    {
+      "source": "HUWHUAIDHW",
+      "target": "TGLDTUGHII",
+      "weight": 0.564,
+      "id": "290"
+    },
+    {
+      "source": "GLWAUTHLGL",
+      "target": "HITTILWHUA",
+      "weight": 0.73,
+      "id": "291"
+    },
+    {
+      "source": "NNLNNUAWA",
+      "target": "WDGAGUIGT",
+      "weight": 0.4145,
+      "id": "292"
+    },
+    {
+      "source": "HHALUNAUUN",
+      "target": "HUWHUAIDHW",
+      "weight": 0.4035,
+      "id": "293"
+    },
+    {
+      "source": "GLAWATIIGT",
+      "target": "UGAGLLUIL",
+      "weight": 0.82,
+      "id": "294"
+    },
+    {
+      "source": "HHTUUANAGN",
+      "target": "TGNTIGLHND",
+      "weight": 1.076,
+      "id": "295"
+    },
+    {
+      "source": "GGUNIGLDHL",
+      "target": "UGAGLLUIL",
+      "weight": 0.754,
+      "id": "296"
+    },
+    {
+      "source": "GUTDNHTTAA",
+      "target": "HHALUNAUUN",
+      "weight": 0.279,
+      "id": "297"
+    },
+    {
+      "source": "UUWAULWHNI",
+      "target": "ULALWIHHD",
+      "weight": 0.3515,
+      "id": "298"
+    },
+    {
+      "source": "UWWGHLNWA",
+      "target": "TGLDTUGHII",
+      "weight": 0.675,
+      "id": "299"
+    },
+    {
+      "source": "HUWHUAIDHW",
+      "target": "NNLNNUAWA",
+      "weight": 0.4185,
+      "id": "300"
+    },
+    {
+      "source": "HHTUUANAGN",
+      "target": "HTAAIUHNUA",
+      "weight": 0.5425,
+      "id": "301"
+    },
+    {
+      "source": "ULALWIHHD",
+      "target": "UWWGHLNWA",
+      "weight": 0.5915,
+      "id": "302"
+    },
+    {
+      "source": "GGUNIGLDHL",
+      "target": "GAHNAWTHGN",
+      "weight": 0.827,
+      "id": "303"
+    },
+    {
+      "source": "GLAWATIIGT",
+      "target": "WDGAGUIGT",
+      "weight": 0.948,
+      "id": "304"
+    },
+    {
+      "source": "UGAGLLUIL",
+      "target": "TGLDTUGHII",
+      "weight": 1.072,
+      "id": "305"
+    },
+    {
+      "source": "GUTDNHTTAA",
+      "target": "HNDTDWGNWI",
+      "weight": 0.7305,
+      "id": "306"
+    },
+    {
+      "source": "HITTILWHUA",
+      "target": "ULALWIHHD",
+      "weight": 0.604,
+      "id": "307"
+    },
+    {
+      "source": "HHTUUANAGN",
+      "target": "NTWGIANDN",
+      "weight": 0.967,
+      "id": "308"
+    },
+    {
+      "source": "GAHNAWTHGN",
+      "target": "HHALUNAUUN",
+      "weight": 1.0945,
+      "id": "309"
+    },
+    {
+      "source": "GTWWHGNWHU",
+      "target": "HNDTDWGNWI",
+      "weight": 0.6525,
+      "id": "310"
+    },
+    {
+      "source": "GAHNAWTHGN",
+      "target": "TGNTIGLHND",
+      "weight": 0.698,
+      "id": "311"
+    },
+    {
+      "source": "HHTUUANAGN",
+      "target": "LTLIGDGLU",
+      "weight": 0.3435,
+      "id": "312"
+    },
+    {
+      "source": "GUTDNHTTAA",
+      "target": "HTAAIUHNUA",
+      "weight": 0.781,
+      "id": "313"
+    },
+    {
+      "source": "GAHWLLLADH",
+      "target": "HUWHUAIDHW",
+      "weight": 0.5485,
+      "id": "314"
+    },
+    {
+      "source": "GUTDNHTTAA",
+      "target": "DNULGNUIU",
+      "weight": 0.424,
+      "id": "315"
+    },
+    {
+      "source": "HWLGHWAUTI",
+      "target": "UHTDNAUHUN",
+      "weight": 0.4585,
+      "id": "316"
+    },
+    {
+      "source": "GTWWHGNWHU",
+      "target": "HUWHUAIDHW",
+      "weight": 0.5915,
+      "id": "317"
+    },
+    {
+      "source": "GLAWATIIGT",
+      "target": "DNULGNUIU",
+      "weight": 0.4175,
+      "id": "318"
+    },
+    {
+      "source": "GTWWHGNWHU",
+      "target": "TGLDTUGHII",
+      "weight": 0.1825,
+      "id": "319"
+    },
+    {
+      "source": "HHTUUANAGN",
+      "target": "HNDTDWGNWI",
+      "weight": 0.492,
+      "id": "320"
+    },
+    {
+      "source": "GAHWLLLADH",
+      "target": "TWDDNHNGT",
+      "weight": 0.979,
+      "id": "321"
+    },
+    {
+      "source": "GTWWHGNWHU",
+      "target": "HITTILWHUA",
+      "weight": 0.1825,
+      "id": "322"
+    },
+    {
+      "source": "HHTUUANAGN",
+      "target": "DNULGNUIU",
+      "weight": 0.2725,
+      "id": "323"
+    },
+    {
+      "source": "UGAGLLUIL",
+      "target": "DNULGNUIU",
+      "weight": 0.8995,
+      "id": "324"
+    },
+    {
+      "source": "GTWWHGNWHU",
+      "target": "UUWAULWHNI",
+      "weight": 0.625,
+      "id": "325"
+    },
+    {
+      "source": "HNDTDWGNWI",
+      "target": "UWHUGWGWNG",
+      "weight": 0.5585,
+      "id": "326"
+    },
+    {
+      "source": "THALNTTHNW",
+      "target": "LTLIGDGLU",
+      "weight": 0.29,
+      "id": "327"
+    },
+    {
+      "source": "GDAHWLHHWA",
+      "target": "GAHNAWTHGN",
+      "weight": 0.7255,
+      "id": "328"
+    },
+    {
+      "source": "GNUHLADAII",
+      "target": "TAULIIWGT",
+      "weight": 0.674,
+      "id": "329"
+    },
+    {
+      "source": "GTWWHGNWHU",
+      "target": "UWHUGWGWNG",
+      "weight": 0.249,
+      "id": "330"
+    },
+    {
+      "source": "GDAHWLHHWA",
+      "target": "UGAGLLUIL",
+      "weight": 0.2645,
+      "id": "331"
+    },
+    {
+      "source": "GTUUDTNNDN",
+      "target": "GLWAUTHLGL",
+      "weight": 0.7775,
+      "id": "332"
+    },
+    {
+      "source": "GLWAUTHLGL",
+      "target": "HTAAIUHNUA",
+      "weight": 0.718,
+      "id": "333"
+    },
+    {
+      "source": "HITTILWHUA",
+      "target": "UGAGLLUIL",
+      "weight": 1.0995,
+      "id": "334"
+    },
+    {
+      "source": "GUTDNHTTAA",
+      "target": "THALNTTHNW",
+      "weight": 0.447,
+      "id": "335"
+    },
+    {
+      "source": "HHTUUANAGN",
+      "target": "UGAGLLUIL",
+      "weight": 0.994,
+      "id": "336"
+    },
+    {
+      "source": "NNLNNUAWA",
+      "target": "LTLIGDGLU",
+      "weight": 0.221,
+      "id": "337"
+    },
+    {
+      "source": "HITTILWHUA",
+      "target": "TGLDTUGHII",
+      "weight": 0.1825,
+      "id": "338"
+    },
+    {
+      "source": "TAULIIWGT",
+      "target": "TWDDNHNGT",
+      "weight": 0.587,
+      "id": "339"
+    },
+    {
+      "source": "GTUUDTNNDN",
+      "target": "WDGAGUIGT",
+      "weight": 0.297,
+      "id": "340"
+    },
+    {
+      "source": "HHTUUANAGN",
+      "target": "TGLDTUGHII",
+      "weight": 0.288,
+      "id": "341"
+    },
+    {
+      "source": "GTUUDTNNDN",
+      "target": "THALNTTHNW",
+      "weight": 0.4985,
+      "id": "342"
+    },
+    {
+      "source": "GLWAUTHLGL",
+      "target": "HHALUNAUUN",
+      "weight": 0.542,
+      "id": "343"
+    }
+  ]
+}
+
