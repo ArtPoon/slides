@@ -57,21 +57,31 @@ button {
   pointer-events: stroke;
   stroke-width: 50px;
   stroke: transparent;
-  cursor: crosshair;
+  cursor: grab;
 }
 
 .handle {
-  fill: #fff;
+  fill: #f95;
   stroke: #000;
   stroke-opacity: 0.5;
-  stroke-width: 1.25px;
+  stroke-width: 2px;
 }
 
 </style>
 
 
-<svg id="graph-svg" width="800" height="400"></svg>
-<svg id="slider-svg" width="800" height="100"></svg>
+<table>
+<tr>
+<td>
+<svg id="graph-svg" width="800" height="600"></svg>
+</td>
+</tr>
+<tr>
+<td>
+<svg id="slider-svg" width="800" height="50"></svg>
+</td>
+</tr>
+</table>
 
 <script src="/js/d3.v4.min.js"></script>
 <script src="/js/jquery-3.2.1.min.js"></script>
@@ -92,7 +102,8 @@ var svg = d3.select("svg#graph-svg"),
 var color = d3.scaleOrdinal(d3.schemeCategory10);
 
 var link = svg.append("g").selectAll(".link"),
-	node = svg.append("g").selectAll(".node");
+    node = svg.append("g").selectAll(".node");
+
 
 //	force simulation initialization
 const forceX = d3.forceX(width / 2).strength(0.1);
@@ -101,54 +112,44 @@ const forceY = d3.forceY(height / 2).strength(0.1);
 var simulation = d3.forceSimulation()
 	.force("link", d3.forceLink()
 		.id(function(d) { return d.id; })
-		.distance(function(d) { return d.weight; })
+		.distance(function(d) { return d.weight; }).strength(0.1)
 		)
 	.force("charge", d3.forceManyBody()
-		.strength(function(d) { return -300;}))
+		.strength(function(d) { return -300;})
+		)
   //.force("link", d3.forceLink().distance(function(d) { return d.weight; }).strength(0.1))
 	.force("center", d3.forceCenter(width / 2, height / 2))
 	.force('x', forceX)
 	.force('y', forceY);
 
-//	filtered types
-typeFilterList = [];
-
-//	filter button event handlers
-$(".filter-btn").on("click", function() {
-	var id = $(this).attr("value");
-	if (typeFilterList.includes(id)) {
-		typeFilterList.splice(typeFilterList.indexOf(id), 1)
-	} else {
-		typeFilterList.push(id);
-	}
-	filter();
-	update();
-});
-
 
 //	data read and store
-d3.json("/data/cluster-italy.json", function(err, g) {
+d3.json("/data/c55.json", function(err, g) {
 	if (err) throw err;
-
-	var nodeByID = {};
-
-	g.nodes.forEach(function(n) {
-		nodeByID[n.id] = n;
-	});
-
-	g.links1.forEach(function(l) {
-		l.sourceGroup = nodeByID[l.source].group.toString();
-		l.targetGroup = nodeByID[l.target].group.toString();
-	});
+	
+  g.links1.forEach(function(l) {
+    l.filtered = false;
+  })
 
 	graph = g;
 	store = $.extend(true, {}, g);
 
+/*
+  slider.transition()
+  .duration(750)
+  .tween("move", function() {
+    var i = d3.interpolate(0, 0.02);
+    return function(t) { move(i(t)); };
+  })
+  */
+  filter();
 	update();
 });
 
 //	general update pattern for updating the graph
 function update() {
+  //console.log('update');
+  
 	//	UPDATE
 	node = node.data(graph.nodes, function(d) { return d.id;});
 	//	EXIT
@@ -156,7 +157,7 @@ function update() {
 	//	ENTER
 	var newNode = node.enter().append("circle")
 		.attr("class", "node")
-		.attr("r", radius)
+		.attr("r", function(d) {return (50*d.r+5);})
 		.attr("fill", function(d) {return color(d.group);})
 		.call(d3.drag()
           .on("start", dragstarted)
@@ -226,10 +227,13 @@ function ticked() {
 
 //	filter function
 function filter() {
+  //console.log('filter');
+  
 	//	add and remove links from data based on availability of nodes
 	store.links1.forEach(function(l) {
 	    if (l.weight <= cutoff) {
 	      if (l.filtered) {
+          
 	        l.filtered = false;
 	        graph.links1.push($.extend(true, {}, l));
 	      }
@@ -244,26 +248,13 @@ function filter() {
 	          });
 	      }
 	    }
-	    /*
-		if (!(typeFilterList.includes(l.sourceGroup) || typeFilterList.includes(l.targetGroup)) && l.filtered) {
-			l.filtered = false;
-			graph.links1.push($.extend(true, {}, l));
-		} else if ((typeFilterList.includes(l.sourceGroup) || typeFilterList.includes(l.targetGroup)) && !l.filtered) {
-			l.filtered = true;
-			graph.links1.forEach(function(d, i) {
-				if (l.id === d.id) {
-					graph.links1.splice(i, 1);
-				}
-			});
-		}
-		*/
 	});			
 }
 
 
 // ========================= SLIDER ========================== 
     
-var cutoff = 0.05;
+var cutoff = 0.0;
 
 var svg2 = d3.select("svg#slider-svg"),
     margin = {right: 50, left: 50},
@@ -271,7 +262,7 @@ var svg2 = d3.select("svg#slider-svg"),
     height2 = +svg2.attr("height");
 
 var x = d3.scaleLinear()
-    .domain([0, 0.05])
+    .domain([0, 0.02])
     .range([0, width2])
     .clamp(true);
 
@@ -302,19 +293,18 @@ slider.insert("g", ".track-overlay")
   .data(x.ticks(10))
   .enter().append("text")
     .attr("x", x)
+    .attr("y", 5)
     .attr("text-anchor", "middle")
     .text(function(d) { return d; });
 
 var handle = slider.insert("circle", ".track-overlay")
     .attr("class", "handle")
-    .attr("r", 9);
+    .attr("r", 9)
+    .attr("fill", "red");
 
-slider.transition()
-  .duration(750)
-  .tween("move", function() {
-    var i = d3.interpolate(0, 0.02);
-    return function(t) { move(i(t)); };
-  })
+/*
+
+*/
 
 function move(h) {
   cutoff = h; 

@@ -1,7 +1,11 @@
 MathJax/
 reveal.js/
-/img/*.mp*
+img/*.mp*
 .idea/
-/img/*.pdf
-/img/*.graffle
+img/*.pdf
+img/*.graffle
+
+# use -f to force 
+img/
+data/
 
