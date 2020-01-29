@@ -75,40 +75,10 @@
         "text": "Researchers release initial findings that the Wuhan coronavirus is a recombinant of multiple bat coronavirus genomes."
       }
     },
-        
-    {
-      "background": {"color": "#000", "opacity": 50, "url": null},
-      "start_date": {"year": "2020", "month": "1", "day": "22", "hour": "11", "format": ""},
-      "media": {
-        "caption": "",
-        "credit": "",
-        "url": "https://twitter.com/TexasDownUnder/status/1220014483516592129",
-        "thumb": ""
-      },
-      "text": {
-        "headline": "ARCGIS team releases real-time map of outbreak",
-        "text": "Web document updated in real time with geospatial information from case data."
-      }
-    },
     
     {
       "background": {"color": "#000", "opacity": 50, "url": null},
-      "start_date": {"year": "2020", "month": "1", "day": "22", "hour": "19", "format": ""},
-      "media": {
-        "caption": "",
-        "credit": "",
-        "url": "https://twitter.com/trvrb/status/1220134146640449537",
-        "thumb": ""
-      },
-      "text": {
-        "headline": "nextstrain.org releases real-time phylogeny",
-        "text": "Nextstrain (http://nextstrain.org/ncov) releases an interactive web document that updates in real time as additional genomes are released.  Source code is released at http://github.com/nextstrain/ncov"
-      }
-    },
-    
-    {
-      "background": {"color": "#000", "opacity": 50, "url": null},
-      "start_date": {"year": "2020", "month": "1", "day": "24", "format": ""},
+      "start_date": {"year": "2020", "month": "1", "day": "24", "hour": 7, "format": ""},
       "media": {
         "caption": "",
         "credit": "",
@@ -120,19 +90,34 @@
         "text": "There is now enough sequences to estimate the rate of evolution, which makes it possible to date the ancestor of genomes that have been sampled so far.  Several groups announce their estimates on virological.org."
       }
     },
-    
+        
     {
       "background": {"color": "#000", "opacity": 50, "url": null},
-      "start_date": {"year": "2020", "month": "1", "day": "26", "format": ""},
+      "start_date": {"year": "2020", "month": "1", "day": "24", "hour": 11, "format": ""},
       "media": {
         "caption": "",
         "credit": "",
-        "url": "https://twitter.com/MRC_Outbreak/status/1221032729971773440",
+        "url": "https://twitter.com/JonRead15/status/1220749549318430721",
         "thumb": ""
       },
       "text": {
-        "headline": "Estimated R0 at 2.6 new cases per infection",
-        "text": "Based on compuational modeling of projected growth. An epidemic is self-sustaining when R0 exceeds 1.  R0 estimates for flu range from 1.5 to 2.5.  Phylodynamic estimates likely in the next week."
+        "headline": "Estimated R0 at ~2.6 new cases per infection",
+        "text": "Multiple groups release preprints reporting their estimates of R0 on <i>bioRxiv</i> and <i>medRxiv</i>.  Misleading interpretations of early estimates spread on social media.  Phylodynamic estimates likely in the next week."
+      }
+    },
+    
+    {
+      "background": {"color": "#000", "opacity": 50, "url": null},
+      "start_date": {"year": "2020", "month": "1", "day": "26", "hour": "7", "format": ""},
+      "media": {
+        "caption": "",
+        "credit": "",
+        "url": "/img/neher-tweet.png",
+        "thumb": ""
+      },
+      "text": {
+        "headline": "Real-time, open source phylogenetics",
+        "text": "Nextstrain (http://nextstrain.org/ncov) releases an interactive web document that updates in real time as additional genomes are released.  The developers partner with scientists in China to translate these documents into Chinese."
       }
     }
   ]
