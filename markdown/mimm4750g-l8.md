@@ -72,11 +72,32 @@
 
 ---
 
-# more examples of trees
+<table>
+  <tr>
+    <td>
+      <h1>Origin of HIV-1</h1>
+      <ul>
+        <li>Oral polio vaccine hypothesis: that SIV entered the human population via contaminated vaccine.</li>
+        <li>SIV sequenced from chimpanzee faecal samples collected in the Democratic Republic of the Congo.</li>
+        <li>SIV samples from Kisangani (site of vaccine manufacture) clearly separate from clade containing HIV-1.</li>
+      </ul>
+    </td>
+    <td width="40%"><img src="/img/worobey2004.png" width="400px"/></td>
+  </tr>
+</table>
 
 ---
 
->**INCA Q1** - According to this tree, at least how many times has SIV moved into the human species?
+# Human malaria is polyphyletic
+* Virulence has been gained and lost multiple times in history of *Plasmodium* genus.
+<img src="/img/rsos171780f02.jpg" width="600px"/>
+<small><small>
+Image credit: Figure 2 from Galen *et al.* 2018. Roy Soc Open Sci 5:  https://doi.org/10.1098/rsos.171780
+</small></small>
+
+---
+
+> According to this tree, at least how many times has SIV moved into the human species?
 
 <img src="/img/HIV-tree.png" width=400px/>
 
@@ -115,7 +136,7 @@
 * Every sequence starts out as a cluster of one ($n_{\scriptsize X}=1$).
 * Algorithm:
   1. Join clusters $X$, $Y$ with minimum distance:
-       
+     
      `$$d(X,Y)=\sum_{x\in X} \sum_{y\in Y} d(x,y) / (n_X n_Y)$$`
   2. Replace $X$ and $Y$ with cluster $X\cup Y$, where:
      
