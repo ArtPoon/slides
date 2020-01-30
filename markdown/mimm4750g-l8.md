@@ -16,8 +16,11 @@
 # What is a root?
 * Phylogenies can be rooted or unrooted.
 * The root is a hypothesis about what point on the tree represents the earliest time.
-![](/img/trees.png)
-* There are different ways to display trees: (*left*) usually used for unrooted trees, (*right*) usually rooted *but not always*.
+
+<center>
+<iframe src="/include/rooting.html" width=800px height=400px>
+</iframe>
+</center>
 
 ---
 
