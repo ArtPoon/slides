@@ -1,6 +1,6 @@
 # MIMM4750G
 ## Building trees
-<img src="https://imgs.xkcd.com/comics/birds_and_dinosaurs.png" width="300px"/>
+<img src="https://imgs.xkcd.com/comics/herpetology.png"/>
 
 ---
 
@@ -13,14 +13,34 @@
 
 ---
 
-# What is a root?
-* Phylogenies can be rooted or unrooted.
+# Phylogenies can be rooted or unrooted.
 * The root is a hypothesis about what point on the tree represents the earliest time.
 
 <center>
-<iframe src="/include/rooting.html" width=800px height=400px>
+<iframe src="/include/rooting.html" width=900px height=450px>
 </iframe>
 </center>
+
+---
+
+# Nodes
+
+* A node represents a common ancestor of one or more descendants.
+* If a node has two descendants, then it is a *binary* or *bifurcating* node.
+  <img width="600px" src="https://imgs.xkcd.com/comics/natural_parenting.png"/>
+* A node with more than two descendants is a *polytomy* (not a dichotomy).
+* A polytomy is *soft* if there is not enough data to resolve it into binary nodes; otherwise it is *hard* (a true simultaneous split).
+
+---
+
+# Clades
+
+* A clade is a set of descendants of an ancestral node.
+* A *monophyletic* clade contains **all** the descendants of the node.
+* A *paraphyletic* clade contains only some of the descendants.
+  * Birds are a monophyletic clade.
+  * Reptiles are a paraphyletic clade that contains birds.
+* A *polyphyletic* clade does not contain the common ancestor of the descendants.
 
 ---
 
@@ -52,18 +72,15 @@
 
 ---
 
+# more examples of trees
+
+---
+
 >**INCA Q1** - According to this tree, at least how many times has SIV moved into the human species?
 
 <img src="/img/HIV-tree.png" width=400px/>
 
 <small><small>Modified from Joy *et al.* (2015) Origin and Evolution of Human Immunodeficiency Viruses. <u>Global Virology I.</u> Springer, New York.</small></small>
-
----
-
-# Ebola virus outbreak in West Africa
-
-<video data-autoplay data-src="/img/nature22040-sv1.mp4" type="video/mp4"></video>
-<small><small>Supplementary video, Dudas <i>et al.</i> 2017, Nature 544.</small></small>
 
 ---
 
@@ -75,10 +92,12 @@
     <div id="howmany" class="fig-container"
          data-fig-id="fig-howmany"
          data-file="/include/numtrees.html"
-         style="height:150px">
+         style="height:200px">
     </div>
+    <blockquote style="">
+    Why are there always more possible rooted trees than unrooted trees?
+    </blockquote>
 </section>
->**INCA Q2** Why are there always more possible rooted trees than unrooted trees?
 
 ---
 
@@ -102,18 +121,6 @@
      
      `$$d(X\cup Y, Z) = \frac{n_{\scriptsize X} d(X,Z) + n_{\scriptsize Y} d(Y,Z)} {n_{\scriptsize X} + n_{\scriptsize Y}}$$`
   3. Go to step 1 until only one cluster remains (the root).
-
----
-
-> INCA Q3: Using the matrix below, (*a*) which tips get joined first? (*b*) what is the distance from the new node to the remaining tip?
-
-|   | Bb | Mh | Pa |
-|---|---|---|---|
-| Bifidobacterium bombi | 0 | 17 | 20 |
-| Mycobacterium haemophilum | 17 | 0 | 6 |
-| Pseudonocardia alaniniphila | 20 | 6 | 0 |
-
-<small>Hamming distances derived from 16S rRNA sequences</small>
 
 ---
 
