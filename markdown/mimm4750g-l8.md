@@ -35,12 +35,24 @@
 
 # Clades
 
-* A clade is a set of descendants of an ancestral node.
-* A *monophyletic* clade contains **all** the descendants of the node.
-* A *paraphyletic* clade contains only some of the descendants.
-  * Birds are a monophyletic clade.
-  * Reptiles are a paraphyletic clade that contains birds.
-* A *polyphyletic* clade does not contain the common ancestor of the descendants.
+<table>
+  <tr>
+    <td>
+    <ul>
+      <li>A clade is a set of descendants of an ancestral node.</li>
+      <li>A *monophyletic* clade contains **all** the descendants of the node.</li>
+      <li>A *paraphyletic* clade contains only some of the descendants.</li>
+      <ul>
+      <li>Birds are a monophyletic clade.</li>
+      <li>Reptiles are a paraphyletic clade that contains birds.</li>
+      </ul>
+      <li>A *polyphyletic* clade does not contain the common ancestor of the descendants.</li>
+    </ul>
+    </td>
+    <td><img src="/img/clades.png" width="400px"/></td>
+  </tr>
+</table>
+
 
 ---
 
@@ -74,7 +86,7 @@
 
 <table>
   <tr>
-    <td>
+    <td style="vertical-align: middle;">
       <h1>Origin of HIV-1</h1>
       <ul>
         <li>Oral polio vaccine hypothesis: that SIV entered the human population via contaminated vaccine.</li>
@@ -82,7 +94,13 @@
         <li>SIV samples from Kisangani (site of vaccine manufacture) clearly separate from clade containing HIV-1.</li>
       </ul>
     </td>
-    <td width="40%"><img src="/img/worobey2004.png" width="400px"/></td>
+    <td width="40%">
+      <img src="/img/worobey2004.png" width="400px"/>
+          <small>
+    Image credit: Worobey <i>et al.</i> (2004) Nature. https://doi.org/10.1038/428820a
+    </small>
+    </td>
+
   </tr>
 </table>
 
@@ -132,7 +150,7 @@ Image credit: Figure 2 from Galen *et al.* 2018. Roy Soc Open Sci 5:  https://do
 
 # UPGMA
 
-* Unweighted pair group method with arithmetic mean.
+* Unweighted Pair Group Method with Arithmetic mean.
 * Every sequence starts out as a cluster of one ($n_{\scriptsize X}=1$).
 * Algorithm:
   1. Join clusters $X$, $Y$ with minimum distance:
@@ -149,7 +167,7 @@ Image credit: Figure 2 from Galen *et al.* 2018. Roy Soc Open Sci 5:  https://do
 
 <table>
 <tr>
-<td style="vertical-align:middle">
+<td style="vertical-align:middle; font-size: 20pt">
   <ul>
   <li>Because of how UPGMA computes the distances of ancestral nodes, it generates trees where every tip is the same distance from the root.</li>
   <li>This is what you would get if:</li>
@@ -158,6 +176,9 @@ Image credit: Figure 2 from Galen *et al.* 2018. Roy Soc Open Sci 5:  https://do
       <li>the rate of evolution is constant.</li>
     </ol>
   </ul>
+  <blockquote>
+  Why might you expect ultrametric trees to be a bad choice for viruses?
+  </blockquote>
 </td>
 <td width="40%">
   ![](/img/ultrametric.png)
@@ -171,6 +192,7 @@ Image credit: Figure 2 from Galen *et al.* 2018. Roy Soc Open Sci 5:  https://do
 * Another distance-based clustering method for making trees
 * Start with a "star" phylogeny: every tip directly descended from the root
 * Add ancestral nodes that minimize the total branch length of the tree
+* NJ is a greedy heuristic algorithm!
 
 ---
 
@@ -178,9 +200,12 @@ Image credit: Figure 2 from Galen *et al.* 2018. Roy Soc Open Sci 5:  https://do
 
 1. Calculate distance matrix $d_{ij}$
 2. Calculate vector `$u_i=\sum_{j=1}^{n}d_{ij} / (n-2)$`
+   * The mean distances to each node, indexed by $i$.
 3. Find which $i$ and $j$ that minimize $d_{ij} - u_i - u_j$
+   * Select the shortest distance given what's typical for those nodes.
 4. Place new node $ij$ ancestral to $i$ and $j$.
 5. Calculate new distances from $ij$ to $i$, $j$ and previous ancestor.
+   * (Formulae not shown.)
 
 ---
 
@@ -207,9 +232,13 @@ Image credit: Figure 2 from Galen *et al.* 2018. Roy Soc Open Sci 5:  https://do
 
 # Software for NJ
 
-* [MEGA](https://www.megasoftware.net/)
-* [RapidNJ](http://birc.au.dk/software/rapidnj/)
-* [R package ape](https://rdrr.io/cran/ape/man/nj.html)
+* [MEGA](https://www.megasoftware.net/) - cross-platform GUI application
+* [RapidNJ](http://birc.au.dk/software/rapidnj/) - command-line program (source code)
+* [R package ape](https://rdrr.io/cran/ape/man/nj.html) - not recommended, slow
 
+<br/>
 
+# Further readings
+
+* [Building trees](https://artpoon.github.io/BioID/Trees.html)
 

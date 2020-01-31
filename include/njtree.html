@@ -217,6 +217,7 @@ var update = function() {
     node.append("text")
         .attr("dx", 12)
         .attr("dy", ".35em")
+        .style("stroke", "")
         .text(function(d) { return d.id });
 
     var nodeEnter = node.enter().append("g")
@@ -224,7 +225,7 @@ var update = function() {
         .call(force.drag);
 
     nodeEnter.append("svg:circle")
-        .attr("r", function (d) { return 50*d.r; })
+        .attr("r", function (d) { return 100*d.r; })
         .attr("id", function (d) { return d.id; })
         .attr("class", "nodeStrokeClass");
 
@@ -232,7 +233,7 @@ var update = function() {
     
     node.select("circle")
         .style("fill", "#fff")
-        .style("stroke", "#aaa")
+        .style("stroke", "#000")
         .style("stroke-width", "3");
 
     force.on("tick", function() {
