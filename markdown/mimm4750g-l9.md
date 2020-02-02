@@ -34,7 +34,7 @@
 * A probability distribution function (PDF) can be *discrete* or *continuous*. 
 * The binomial PDF is discrete. There can be either 1 or 2 heads but never 1.5.
 * A PDF *must* sum to 1 (100%) across all possible data outcomes, *for a given hypothesis*.
-![](https://imgs.xkcd.com/comics/geeks_and_nerds.png)
+<img src="https://imgs.xkcd.com/comics/geeks_and_nerds.png" width="300px"/>
 
 ---
 
@@ -173,8 +173,8 @@ $$`
   <td>
   <ul>
     <li>We don't know the ancestral state, so we have to sum over all possibilities throughout the entire tree.</li>
-    <li>This would require a lot of calculations, but we can use [dynamic programming](https://en.wikipedia.org/wiki/Dynamic_programming) to store results.</li>
-    <li>Start from the tips, work our way down &mdash; [post-order traversal](https://en.wikipedia.org/wiki/Tree_traversal).</li>
+    <li>This would require a lot of calculations, but we can use <a href="https://en.wikipedia.org/wiki/Dynamic_programming">dynamic programming</a> to store results.</li>
+    <li>Start from the tips, work our way down &mdash; <a href="https://en.wikipedia.org/wiki/Tree_traversal"/>post-order traversal</a>.</li>
     <li>All calculations above the node can be retrieved from storage.</li>
   </ul>
   </td>
@@ -232,7 +232,8 @@ Image credit: B Dasgupta <i>et al.</i> (2016) Encyclopedia of Algorithms. https:
 
 # Tree rearrangements (2)
 
-<img src="https://www.genetics.org/content/genetics/170/1/419/F1.large.jpg" width="400px"/>
+<img src="https://www.genetics.org/content/genetics/170/1/419/F1.large.jpg" width="500px"/>
+
 * Subtree pruning and regrafting: move a subtree to an entirely different location in the tree.
 
 <small>

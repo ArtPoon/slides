@@ -181,7 +181,7 @@ Image credit: Figure 2 from Galen *et al.* 2018. Roy Soc Open Sci 5:  https://do
   </blockquote>
 </td>
 <td width="40%">
-  ![](/img/ultrametric.png)
+  <img src="/img/ultrametric.png"/>
 </td>
 </table>
 
