@@ -19,7 +19,6 @@
                .append("g")
                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-
   // set up plotting scales
   var xValue = function(d) { return d.x; },
       xScale = d3.scale.linear().range([0, width]),
