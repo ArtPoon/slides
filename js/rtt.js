@@ -1,6 +1,6 @@
 // use IIFE to isolate namespace
-(function rootingCharts() {
-  var margin = {top: 20, right: 20, bottom: 30, left: 50},
+//(function rttCharts() {
+  var margin = {top: 30, right: 20, bottom: 60, left: 100},
       width = 400,
       height = 400,
       svg = d3.select("div#unrooted")
@@ -40,17 +40,17 @@
   var tValue = function(d) { return d.year; },
       x2Scale = d3.scale.linear().range([0, width2]),  // map domain to range
       x2Map = function(d) { return x2Scale(tValue(d)); },
-      x2Axis = d3.svg.axis().scale(x2Scale).orient("bottom");  // draw axis
+      x2Axis = d3.svg.axis().scale(x2Scale).orient("bottom").tickFormat(d3.format("d")).ticks(6);
 
   var dValue = function(d) { return d.x / 1000; },
       y2Scale = d3.scale.linear().range([height2, 0]),
       y2Map = function(d) { return y2Scale(dValue(d)); },
-      y2Axis = d3.svg.axis().scale(y2Scale).orient("left");
+      y2Axis = d3.svg.axis().scale(y2Scale).orient("left").ticks(6);
 
   // color palette
   var palette = d3.scale.category20();
 
-  var tree = readTree(example);
+  var tree = readTree(ebola);
   equalAngleLayout(tree);
 
   var data = fortify(tree, sort=true),
@@ -125,6 +125,9 @@
   // draw initial rooted tree
   var rootedTree = rerootTree( closestEdge([xScale(0), yScale(0)]) );
   rootedLayout(rootedTree);
+  
+  var origin = 1900,
+      rSquared = 0;
   drawScatter(rootedTree);
 
 
@@ -392,6 +395,52 @@
       node.y = temp / node.y.length;
     }
   }
+  
+  var tips;
+  
+  function regression(nodes) {
+    const sum = (accumulator, currentValue) => accumulator + currentValue;
+    
+    var tips = nodes.filter(node => node.isTip),
+        n = tips.length,
+        x = tips.map(a => a.year),
+        y = tips.map(a => a.x),
+        xy = tips.map(a => a.year * a.x);
+        
+    var sumX = x.reduce(sum),
+        sumY = y.reduce(sum),
+        sumXY = xy.reduce(sum),
+        x2 = x.map(a => a*a),
+        y2 = y.map(a => a*a),
+        sumX2 = x2.reduce(sum),
+        sumY2 = y2.reduce(sum);
+    
+    // maximum likelihood estimators - JA Rice (1988) page 455
+    var varX = n*sumX2 - sumX*sumX,
+        interceptY = (sumX2 * sumY - sumX * sumXY) / varX,
+        slope = (n*sumXY - sumX*sumY) / varX;
+    
+    tips.forEach(function(node) {
+      node.yhat = (node.year * slope + interceptY) / 1000;
+    });
+    
+    // update statistics
+    origin = -interceptY / slope;
+    if (origin < 0 | origin > 2018) {
+      origin = "undefined";
+    }
+    
+    // explained sum of squares
+    var ess = tips.map(node => (node.yhat - node.x/1000)**2);
+    ess = ess.reduce(sum);
+    
+    // total sum of squares
+    var tss = tips.map(node => (node.x/1000 - sumY/(1000*n))**2);
+    tss = tss.reduce(sum);
+    rSquared = 1-ess/tss;
+    
+    return(tips);
+  }
 
   function drawScatter(nodes) {
     //console.log(nodes);
@@ -405,6 +454,60 @@
       d3.min(nodes, xValue), d3.max(nodes, dValue)
     ]);
 
+      svg2.append("g")
+          .attr("class", "axis")
+          .attr("transform", "translate(0," + height2 + ")")
+          .call(x2Axis);
+       
+      svg2.append("text")
+          .attr("class", "label")
+          .attr("transform", "translate(" + width2/2 + "," + (height2+50) + ")")
+          .style("text-anchor", "middle")
+          .text("Year of sample collection");
+
+      svg2.append("g")
+          .attr("class", "y axis")
+          .attr("transform", "translate(0,0)")
+          .call(y2Axis);
+          
+      svg2.append("text")
+          .attr("class", "label")
+          .attr("transform", "translate(-70,"+(height2/2)+"),rotate(270)")
+          .style("text-anchor", "middle")
+          .text("Distance from root");
+      
+      tips = regression(nodes);
+      
+      svg2.append("text")
+          .attr("class", "origin")
+          .attr("transform", "translate(0,-10)")
+          .style("text-anchor", "start")
+          .text("Origin: " + Math.round(origin));
+      
+      svg2.append("text")
+          .attr("class", "r2")
+          .attr("transform", "translate(200,-10)")
+          .style("text-anchor", "start")
+          .text("R2: " + 100*Math.round(rSquared*1e4) / 1e4 + "%");
+          
+      var rline = d3.svg.line()
+        .x(function(d) { return x2Scale(d.year); })
+        .y(function(d) { return y2Scale(d.yhat); });
+    
+      svg2.append("path")
+          .attr("d", rline(tips))
+          .attr("class", "line")
+          .attr("stroke", function () {
+            if (origin == "undefined") { 
+              return "#b2222299"; 
+            } else { 
+              return "#5f9ea099";
+            }
+            })
+          .attr("stroke-width", function() {
+            return rSquared*100+5;
+          });
+          
     svg2.selectAll(".dot")
       .data(nodes)
       .enter().append("circle")
@@ -421,16 +524,6 @@
           return("white");
         };
       });
-
-      svg2.append("g")
-          .attr("class", "axis")
-          .attr("transform", "translate(0," + height2 + ")")
-          .call(x2Axis);
-
-      svg2.append("g")
-          .attr("class", "y axis")
-          .attr("transform", "translate(0,0)")
-          .call(y2Axis);
   }
 
   function updateScatter(nodes) {
@@ -439,13 +532,40 @@
       d3.min(nodes, dValue), d3.max(nodes, dValue)
     ]);
 
+    svg2.selectAll("g .y.axis").call(y2Axis);
+    
+    tips = regression(nodes);
+    
+    // FIXME: this is defined twice :-P
+    var rline = d3.svg.line()
+      .x(function(d) { return x2Scale(d.year); })
+      .y(function(d) { return y2Scale(d.yhat); });
+    
+    svg2.select("path.line")
+        .attr("stroke", function () {
+            if (origin == "undefined") { 
+              return "#b2222299"; 
+            } else { 
+              return "#5f9ea099";
+            }
+            })
+        .attr("stroke-width", function() {
+          return (rSquared*100+5);
+        })
+        .attr("d", rline(tips));
+    
     svg2.selectAll(".dot")
         .data(nodes)
         .transition().duration(100)
         .ease('linear')
         .attr("cx", x2Map)
         .attr("cy", y2Map);
-
-    svg2.selectAll("g .y.axis").call(y2Axis);
+        
+    svg2.select("text.origin")
+        .text("Origin: " + Math.round(origin));
+        
+    svg2.select("text.r2")
+        .text("R2: " + 100*Math.round(rSquared*1e4) / 1e4 + "%");
   }
-}());
+//}());
+

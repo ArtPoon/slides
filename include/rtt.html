@@ -2,10 +2,13 @@
 
 <style>
     .reroot table {
-        width: 100%;
+      width: 100%;
     }
     .reroot th {
       font-size: 12pt;
+    }
+    .reroot td {
+      padding: 10px;
     }
     rect {
         fill: none;
@@ -13,17 +16,27 @@
         pointer-events: all;
     }
 
-    .axis {
+    .axis path,
+    .axis line {
+      fill: none;
+      stroke: #999;
       shape-rendering: crispEdges;
+      stroke-width: 2px;
     }
 
-    .axis {
-      fill: #888;
-      stroke-width: 1;
-    }
-
-    text {
+    .axis text {
       font-family: Helvetica, Arial, sans-serif;
+      font-size: 12pt;
+    }
+    
+    text.label {
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 14pt;
+    }
+    
+    text.origin,
+    text.r2 {
+      font-size: 14pt;
     }
 </style>
 
