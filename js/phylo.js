@@ -157,7 +157,7 @@ function fortify(tree, sort=true) {
                 'thisLabel': node.label,
                 'children': node.children.map(x=>x.id),
                 'branchLength': 0.,
-                'isTip': (node.children.length==0),
+                'isTip': false,
                 'x': node.x,
                 'y': node.y,
                 'angle': node.angle
