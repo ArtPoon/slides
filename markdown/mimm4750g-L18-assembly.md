@@ -25,7 +25,7 @@
 
 # *de novo* assembly for pathogens
 
-Percentage of unique reads as a function of read length for (a) $\lambda$-phage and (b) E.coli K12. 
+Percentage of unique reads as a function of read length for (a) $\lambda$-phage and (b) E.coli K12.
 
 ![](/img/gni170f1.jpeg)
 
@@ -44,7 +44,7 @@ Figure from N Whiteford *et al.* (2005) Nucleic Acids Research 33: e171.
 <img src="/img/jigsaw.jpg" width="400px"/>
 
 <small><small><small>
-Image source: http://homeli.co.uk/1000-colours-rainbow-cmyk-gamut-jigsaw-puzzle-by-clemens-habicht/ 
+Image source: http://homeli.co.uk/1000-colours-rainbow-cmyk-gamut-jigsaw-puzzle-by-clemens-habicht/
 </small></small></small>
 
 ---
@@ -63,7 +63,7 @@ Image source: http://homeli.co.uk/1000-colours-rainbow-cmyk-gamut-jigsaw-puzzle-
 
 * Immediately looking for the largest matching sub-string between two strings is time-consuming.
 * Instead, we can check if a short *prefix* of one string occurs somewhere in the second string.
-* Requiring the suffix to match 
+* Requiring the suffix to match
 
 <img src="/img/prefix-match.svg"/>
 
@@ -172,7 +172,7 @@ This simplifies things a LOT!
 * [SPAdes](http://cab.spbu.ru/software/spades/) - uses de Bruijn graphs, designed for bacterial genomes
 * [Velvet](https://www.ebi.ac.uk/~zerbino/velvet/) - uses de Bruijn graphs, popular, Linux only.
 * [ABySS](http://www.bcgsc.ca/platform/bioinfo/software/abyss) - Canadian! uses a "Bloom filter" (advancement on de Bruijn graphs)
-* [Ray](http://denovoassembler.sourceforge.net/) - Also Canadian (Quebec)! yes, still de Bruijn graphs. 
+* [Ray](http://denovoassembler.sourceforge.net/) - Also Canadian (Quebec)! yes, still de Bruijn graphs.
 
 ---
 
