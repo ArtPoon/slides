@@ -23,9 +23,9 @@
 
 ---
 
-# *de novo* assembly for pathogens
+# Is *de novo* assembly feasible for pathogens?
 
-Percentage of unique reads as a function of read length for (a) $\lambda$-phage and (b) E.coli K12. 
+Percentage of unique reads as a function of read length for (a) $\lambda$-phage and (b) E.coli K12.
 
 ![](/img/gni170f1.jpeg)
 
@@ -44,7 +44,7 @@ Figure from N Whiteford *et al.* (2005) Nucleic Acids Research 33: e171.
 <img src="/img/jigsaw.jpg" width="400px"/>
 
 <small><small><small>
-Image source: http://homeli.co.uk/1000-colours-rainbow-cmyk-gamut-jigsaw-puzzle-by-clemens-habicht/ 
+Image source: http://homeli.co.uk/1000-colours-rainbow-cmyk-gamut-jigsaw-puzzle-by-clemens-habicht/
 </small></small></small>
 
 ---
@@ -53,7 +53,7 @@ Image source: http://homeli.co.uk/1000-colours-rainbow-cmyk-gamut-jigsaw-puzzle-
 
 * This requires that we compare every pair of pieces!
 * Quadratic complexity ($O(N^2)$) with the number of reads, which is already a huge number.
-* Made even more difficult if we want to tolerate *inexact* matches!
+* Made even more difficult if we want to tolerate *inexact* matches (sequencing error or polymorphism)!
 
 <img src="/img/contig2.png" width="500px"/>
 
@@ -63,33 +63,34 @@ Image source: http://homeli.co.uk/1000-colours-rainbow-cmyk-gamut-jigsaw-puzzle-
 
 * Immediately looking for the largest matching sub-string between two strings is time-consuming.
 * Instead, we can check if a short *prefix* of one string occurs somewhere in the second string.
-* Requiring the suffix to match 
+* Requiring the suffix to match
 
 <img src="/img/prefix-match.svg"/>
 
 ---
 
-# Overlap graph
+# Overlap graphs
 
 * The presence/absence of an overlap between any two reads can be represented as a *graph* (or network)
-* To illustrate, Ben Langmead (developer of Bowtie) generates an overlap graph of the string:
+* To illustrate, [Ben Langmead](https://en.wikipedia.org/wiki/Ben_Langmead) (developer of Bowtie) generates an overlap graph of the string:
 
 ```
 to_every_thing_turn_turn_turn_there_is_a_season
 ```
 
-* This example sets the prefix search length to $l=3$.
-* For example, `o_every` has a 3-prefix `o_e` that appears at position 1 of  `to_ever`.  The longest match is length `6`: `o_ever`
+* In the following example, this string is the genome and we have one read per nucleotide position of length 7.
 
 ---
 
-The start of the graph is not too difficult to read:
+* This example sets the prefix search length to $l=3$.
+* For example, `o_every` has a 3-prefix `o_e` that appears at position 1 of  `to_ever`.  The longest match is length `6`: `o_ever`
+* The start of the graph is simple enough:
 
 ![](/img/langmead1.svg)
 
 ---
 
-but the whole thing is pretty gnarly!
+but the whole graph is pretty gnarly!
 
 <img src="/img/langmead-full.svg" width="700px"/>
 
@@ -141,6 +142,8 @@ This simplifies things a LOT!
 ['_long', 'long_', 'ng_lo', 'ong_l', '_long', 'ong_t', 'ng_lo', '_long', 'g_tim', 'long_', 'g_lon', 'a_lon', 'g_lon', 'ong_l', 'ng_ti', 'long_']
 ```
 
+<small>See original example in Ben's [lecture slides](http://www.cs.jhu.edu/~langmea/resources/lecture_notes/17_assembly_dbg_v2.pdf).</small>
+
 ---
 
 * Each pair of k-1 words are automatically connected by an edge
@@ -172,7 +175,7 @@ This simplifies things a LOT!
 * [SPAdes](http://cab.spbu.ru/software/spades/) - uses de Bruijn graphs, designed for bacterial genomes
 * [Velvet](https://www.ebi.ac.uk/~zerbino/velvet/) - uses de Bruijn graphs, popular, Linux only.
 * [ABySS](http://www.bcgsc.ca/platform/bioinfo/software/abyss) - Canadian! uses a "Bloom filter" (advancement on de Bruijn graphs)
-* [Ray](http://denovoassembler.sourceforge.net/) - Also Canadian (Quebec)! yes, still de Bruijn graphs. 
+* [Ray](http://denovoassembler.sourceforge.net/) - Also Canadian (Quebec)! yes, still de Bruijn graphs.
 
 ---
 
