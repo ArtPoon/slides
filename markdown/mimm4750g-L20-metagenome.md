@@ -65,3 +65,4 @@
 
 * [A review of methods and databases for metagenomic classification and assembly](https://academic.oup.com/bib/article/20/4/1125/4210288)
 * [Abundant Human DNA Contamination Identified in Non-Primate Genome Databases](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0016410)
+* [Direct Metagenomic Detection of Viral Pathogens in Nasal and Fecal Specimens Using an Unbiased High-Throughput Sequencing Approach](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2625441/)
