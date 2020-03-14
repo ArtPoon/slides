@@ -5,6 +5,12 @@
 
 ---
 
+# What is metagenomics?
+
+* Analyzing the genetic composition of a sample that comprises more than one species.
+
+---
+
 # Untargeted sequencing
 
 * If we can't use template-specific primers, what *can* we do?
