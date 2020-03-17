@@ -23,32 +23,6 @@
 
 ---
 
-# Is *de novo* assembly feasible for pathogens?
-
-Percentage of unique reads as a function of read length for (a) $\lambda$-phage and (b) E.coli K12.
-
-![](/img/gni170f1.jpeg)
-
-<small>
-Figure from N Whiteford *et al.* (2005) Nucleic Acids Research 33: e171.
-</small>
-
----
-
-# Finding overlaps
-
-* This has been compared to opening a box of ten million puzzle pieces and finding which pieces match together...
-* except that the edges always line up, and some of the pieces are repeated many times, and other pieces belong to different sets...
-
-
-<img src="/img/jigsaw.jpg" width="400px"/>
-
-<small><small><small>
-Image source: http://homeli.co.uk/1000-colours-rainbow-cmyk-gamut-jigsaw-puzzle-by-clemens-habicht/
-</small></small></small>
-
----
-
 # Finding overlaps
 
 * This requires that we compare every pair of pieces!
@@ -66,6 +40,15 @@ Image source: http://homeli.co.uk/1000-colours-rainbow-cmyk-gamut-jigsaw-puzzle-
 * Requiring the suffix to match
 
 <img src="/img/prefix-match.svg"/>
+
+---
+
+# Data structures
+
+* The problem of matching substrings can be made more efficient by converting the strings into a specialized data structure.
+* Two major categories of assembly algorithms/data structures:
+  1. Overlap graphs
+  2. de Bruijn graphs
 
 ---
 
