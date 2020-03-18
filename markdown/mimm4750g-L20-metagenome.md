@@ -14,6 +14,14 @@
 
 ---
 
+# 16S rRNA studies are not metagenomics!
+
+* 16S is targeted sequencing of a specific region of the genome.
+* The phrase "16S metagenomic" appears in over 2,000 articles in the peer reviewed literature!
+
+
+---
+
 # Untargeted sequencing
 
 * [Shotgun sequencing](https://en.wikipedia.org/wiki/Shotgun_sequencing) - random shearing of nucleic acids that are incorporated into a sequencing library.
@@ -149,8 +157,30 @@ Source: FP Breitwieser <i>et al.</i> (2017) [Briefings Bioinf 20: 1125](https://
 
 # Applications of metagenomics for infectious diseases
 
+* Microbial ecology / "microbiomes"
 * Clinical diagnostics
 * Discovery of novel pathogens
+
+---
+
+# Microbial ecology
+
+---
+
+# Example
+
+---
+
+# Microbiomes and infectious disease
+
+---
+
+# Example
+
+---
+
+# Clinical diagnostics and novel pathogens
+* (next lecture)
 
 ---
 
