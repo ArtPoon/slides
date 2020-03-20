@@ -165,22 +165,88 @@ Source: FP Breitwieser <i>et al.</i> (2017) [Briefings Bioinf 20: 1125](https://
 
 # Microbial ecology
 
+* The study of interactions between microorganisms, their environment, and other organisms.
+* How are host-microbe relationships formed?  How are they disrupted?
+* What causes a host-microbe relationship to become a pathogenic one?
+* Where do infectious diseases come from?
+
 ---
 
-# Example
+# Total RNA metagenomics of sandflies
+
+* *Lutzomyia longipalpis* is a vector of [Leishmania](https://en.wikipedia.org/wiki/Leishmania), which causes fatal systemic disease in nearly 60,000/yr.
+* Total RNA was extracted from 4 groups of 100 sandflies each for metagenomic sequencing.
+<table><tr>
+<td style="vertical-align: middle">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/LeishmaniaMexicana_Promastigote_SEM.jpg/640px-LeishmaniaMexicana_Promastigote_SEM.jpg" width="250px"/>
+  <small>Image credit: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:LeishmaniaMexicana_Promastigote_SEM.jpg)</small>
+</td>
+<td>
+  <img src="/img/journal.pntd.0001304.g002.png" width="650px"/>
+  <small>
+  Image credit: CB McCarthy <i>et al.</i> [PLOS Negl Trop Dis 5: e1304](https://doi.org/10.1371/journal.pntd.0001304).
+  </small>
+</td>
+</tr></table>
 
 ---
 
 # Microbiomes and infectious disease
 
+* What role does variation in the "microbiome" play in host susceptibility to infection? pathogenesis?
+* Can we artificially restore a microbiome that was eradicated by antibiotic treatment?
+* [*Clostriudium difficile*](https://en.wikipedia.org/wiki/Clostridioides_difficile_infection) and faecal transplantation.
+
 ---
 
-# Example
+# Metagenomics of faecal transplants
+
+![](/img/s40168-017-0270-x.png)
+<small>
+Image credit: STM Lee <i>et al.</i> (2017) [Microbiome 5:50](https://doi.org/10.1186/s40168-017-0270-x).
+</small>
 
 ---
 
 # Clinical diagnostics and novel pathogens
-* (next lecture)
+
+<table>
+<tr>
+  <td style="font-size: 20pt">
+    <ul>
+      <li>Application of metagenomics for cases of [idiopathic disease](https://en.wikipedia.org/wiki/Idiopathic_disease) (unknown cause).</li>
+      <li>Discovery of novel pathogens, *e.g.*, a cluster of idiopathic hemorrhagic fever (4 of 5 cases fatal) in South Africa caused by novel arenavirus ([Lujo virus](https://en.wikipedia.org/wiki/Lujo_mammarenavirus)) by total RNA extraction, random primer amplification.</li>
+    </ul>
+  </td>
+  <td style="vertical-align: middle" width="50%">
+    <img src="/img/lujo-virus.png" width="400px">
+    <small>
+    Image credit: T Briese <i>et al.</i> (2009) [PLoS Pathog 5: e1000455](https://dx.doi.org/10.1371%2Fjournal.ppat.1000455).
+    </small>
+  </td>
+</tr>
+</table>
+
+---
+
+# Case study of idiopathic [uveitis](https://en.wikipedia.org/wiki/Uveitis)
+
+<table>
+  <tr>
+    <td>
+      <small>(A) Clinical course, (B) iris atrophy and (C) inflammatory cell aggregates</small>
+      <img src="https://media.springernature.com/full/springer-static/image/art%3A10.1186%2Fs13073-016-0344-6/MediaObjects/13073_2016_344_Fig2_HTML.gif?as=webp" width="400px"/>
+    </td>
+    <td>
+      <small>Metagenomic analysis and rubella virus phylogeny</small>
+      <img src="https://media.springernature.com/full/springer-static/image/art%3A10.1186%2Fs13073-016-0344-6/MediaObjects/13073_2016_344_Fig3_HTML.gif?as=webp" width="400px"/>
+    </td>
+  </tr>
+</table>
+
+<small>
+Image credit: T Doan <i>et al.</i> (2016) [Genome Med 8: 90](https://doi.org/10.1186/s13073-016-0344-6).
+</small>
 
 ---
 
