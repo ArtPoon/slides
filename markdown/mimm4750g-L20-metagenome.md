@@ -179,12 +179,12 @@ Source: FP Breitwieser <i>et al.</i> (2017) [Briefings Bioinf 20: 1125](https://
 <table><tr>
 <td style="vertical-align: middle">
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/LeishmaniaMexicana_Promastigote_SEM.jpg/640px-LeishmaniaMexicana_Promastigote_SEM.jpg" width="250px"/>
-  <small>Image credit: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:LeishmaniaMexicana_Promastigote_SEM.jpg)</small>
+  <small>Image credit: <a href="https://commons.wikimedia.org/wiki/File:LeishmaniaMexicana_Promastigote_SEM.jpg"/>Wikimedia Commons</a></small>
 </td>
 <td>
   <img src="/img/journal.pntd.0001304.g002.png" width="650px"/>
   <small>
-  Image credit: CB McCarthy <i>et al.</i> [PLOS Negl Trop Dis 5: e1304](https://doi.org/10.1371/journal.pntd.0001304).
+  Image credit: CB McCarthy <i>et al.</i> <a href="https://doi.org/10.1371/journal.pntd.0001304"/>PLOS Negl Trop Dis 5: e1304</a>.
   </small>
 </td>
 </tr></table>
@@ -214,15 +214,15 @@ Image credit: STM Lee <i>et al.</i> (2017) [Microbiome 5:50](https://doi.org/10.
 <tr>
   <td style="font-size: 20pt">
     <ul>
-      <li>Application of metagenomics for cases of [idiopathic disease](https://en.wikipedia.org/wiki/Idiopathic_disease) (unknown cause).</li>
-      <li>Discovery of novel pathogens, *e.g.*, a cluster of idiopathic hemorrhagic fever (4 of 5 cases fatal) in South Africa caused by novel arenavirus ([Lujo virus](https://en.wikipedia.org/wiki/Lujo_mammarenavirus)) by total RNA extraction, random primer amplification.</li>
+      <li>Application of metagenomics for cases of <a href="https://en.wikipedia.org/wiki/Idiopathic_disease"/>idiopathic disease</a> (unknown cause).</li>
+      <li>Discovery of novel pathogens, <i>e.g.</i>, a cluster of idiopathic hemorrhagic fever (4 of 5 cases fatal) in South Africa caused by novel arenavirus (<a href="https://en.wikipedia.org/wiki/Lujo_mammarenavirus"/>Lujo virus</a> by total RNA extraction, random primer amplification.</li>
     </ul>
   </td>
   <td style="vertical-align: middle" width="50%">
-    <img src="/img/lujo-virus.png" width="400px">
-    <small>
-    Image credit: T Briese <i>et al.</i> (2009) [PLoS Pathog 5: e1000455](https://dx.doi.org/10.1371%2Fjournal.ppat.1000455).
-    </small>
+  <img src="/img/lujo-virus.png" width="400px"/>
+  <small>
+    Image credit: T Briese <i>et al.</i> (2009) <a href="https://dx.doi.org/10.1371%2Fjournal.ppat.1000455"/>PLoS Pathog 5: e1000455</a>.
+  </small>
   </td>
 </tr>
 </table>
