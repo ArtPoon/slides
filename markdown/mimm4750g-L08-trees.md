@@ -100,7 +100,6 @@
     Image credit: Worobey <i>et al.</i> (2004) Nature. https://doi.org/10.1038/428820a
     </small>
     </td>
-
   </tr>
 </table>
 
@@ -154,10 +153,10 @@ Image credit: Figure 2 from Galen *et al.* 2018. Roy Soc Open Sci 5:  https://do
 * Every sequence starts out as a cluster of one ($n_{\scriptsize X}=1$).
 * Algorithm:
   1. Join clusters $X$, $Y$ with minimum distance:
-     
+
      `$$d(X,Y)=\sum_{x\in X} \sum_{y\in Y} d(x,y) / (n_X n_Y)$$`
   2. Replace $X$ and $Y$ with cluster $X\cup Y$, where:
-     
+
      `$$d(X\cup Y, Z) = \frac{n_{\scriptsize X} d(X,Z) + n_{\scriptsize Y} d(Y,Z)} {n_{\scriptsize X} + n_{\scriptsize Y}}$$`
   3. Go to step 1 until only one cluster remains (the root).
 
@@ -241,4 +240,3 @@ Image credit: Figure 2 from Galen *et al.* 2018. Roy Soc Open Sci 5:  https://do
 # Further readings
 
 * [Building trees](https://artpoon.github.io/BioID/Trees.html)
-
