@@ -34,7 +34,7 @@
 </table>
 
 <small>
-Image credit: GM Daly <i>et al.</i> (2015) [PLOS ONE 10: e0129059](https://doi.org/10.1371/journal.pone.0129059)
+Image credit: GM Daly <i>et al.</i> (2015) <a href="https://doi.org/10.1371/journal.pone.0129059">PLOS ONE 10: e0129059</a>.
 </small>
 
 ---
@@ -47,7 +47,7 @@ Image credit: GM Daly <i>et al.</i> (2015) [PLOS ONE 10: e0129059](https://doi.o
 * Biotinylated probe enrichment: capture viral genome fragments by targeting conserved regions.
 <img src="/img/41598_2016_Article_BFsrep28324_Fig1_HTML.png"/>
 <small>
-Image credit: P Miyazato <i>et al.</i> (2016) [Sci Rep 6: 28324](https://doi.org/10.1038/srep28324).
+Image credit: P Miyazato <i>et al.</i> (2016) <a href="https://doi.org/10.1038/srep28324">Sci Rep 6: 28324</a>.
 </small>
 
 ---
@@ -91,7 +91,7 @@ cttaaagtataataataataaaattaaaaaaaaatGCTACAGTATGACCCCACTCCTGG
 ```
 
 <small>
-Example from A Morgulis <i>et al.</i> (2006) [J Comp Biol 13: 1028](https://doi.org/10.1089/cmb.2006.13.1028).
+Example from A Morgulis <i>et al.</i> (2006) <a href="https://doi.org/10.1089/cmb.2006.13.1028">J Comp Biol 13: 1028</a>.
 </small>
 
 ---
@@ -135,7 +135,7 @@ $$I(X,Y) = \sum_i \sum_j P(x_i, y_j) \log\left(\frac{P(x_i)P(y_j)}{P(x_i, y_j)}\
 * The vast majority of bacteria and archaea are unculturable.
 ![](/img/nature12352.f1.png)
 <small>
-Image credit: C Rinke <i>et al.</i> (2013) [Nature 499: 431](https://doi.org/10.1038/nature12352).
+Image credit: C Rinke <i>et al.</i> (2013) <a href="https://doi.org/10.1038/nature12352"/>Nature 499: 431</a>.
 </small>
 
 ---
@@ -147,7 +147,7 @@ Image credit: C Rinke <i>et al.</i> (2013) [Nature 499: 431](https://doi.org/10.
 * Detected [Epstein-Barr virus](https://en.wikipedia.org/wiki/Epstein%E2%80%93Barr_virus) and [Roseolovirus](https://en.wikipedia.org/wiki/Roseolovirus) in 6 of 21 (29%) cases.
 
 <small>
-PJ Cimino <i>et al.</i> (2014) [Exp Mol Pathology 96: 310](https://doi-org.proxy1.lib.uwo.ca/10.1016/j.yexmp.2014.03.010).
+PJ Cimino <i>et al.</i> (2014) <a href="https://doi-org.proxy1.lib.uwo.ca/10.1016/j.yexmp.2014.03.010">Exp Mol Pathology 96: 310</a>.
 </small>
 
 ---
@@ -167,7 +167,7 @@ PJ Cimino <i>et al.</i> (2014) [Exp Mol Pathology 96: 310](https://doi-org.proxy
       <img src="https://jb.asm.org/content/jb/194/16/4151/F2.medium.gif"/>
       <small>
       Co-culture of a freshwater <i>Bacillus</i> with <i>Bacillus megaterium</i>-like helper.<br/>
-      Image credit: A D'Onofrio <i>et al.</i>, in EJ Stewart (2012) [J Bacteriol](https://doi.org/10.1128/JB.00345-12).
+      Image credit: A D'Onofrio <i>et al.</i>, in EJ Stewart (2012) <a href="https://doi.org/10.1128/JB.00345-12">J Bacteriol</a>.
       </small>
     </td>
   </tr>
@@ -183,7 +183,7 @@ PJ Cimino <i>et al.</i> (2014) [Exp Mol Pathology 96: 310](https://doi-org.proxy
 * Genome encoded terminal oxidases suggesting improved growth in low oxygen.
 
 <small>
-<i>Host cell-free growth of the Q fever bacterium Coxiella burnetii.</i> [PNAS 106: 4430](https://doi.org/10.1073/pnas.0812074106).
+<i>Host cell-free growth of the Q fever bacterium Coxiella burnetii.</i> <a href="https://doi.org/10.1128/JB.00345-12">PNAS 106: 4430</a>.
 </small>
 
 ---
@@ -209,7 +209,7 @@ PJ Cimino <i>et al.</i> (2014) [Exp Mol Pathology 96: 310](https://doi-org.proxy
 * Contigs obtained after subtraction of human DNA and *de novo* assembly were BLASTX-matched to Old World arenaviruses.
 
 <small>
-G Palacios <i>et al.</i> (2008). A New Arenavirus in a Cluster of Fatal Transplant-Associated Diseases. [N Eng J Med 358: 991](http://doi.org/10.1056/NEJMoa073785).
+G Palacios <i>et al.</i> (2008). A New Arenavirus in a Cluster of Fatal Transplant-Associated Diseases. <a href="http://doi.org/10.1056/NEJMoa073785">N Eng J Med 358: 991</a>.
 </small>
 
 
@@ -237,7 +237,7 @@ G Palacios <i>et al.</i> (2008). A New Arenavirus in a Cluster of Fatal Transpla
 <img src="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fnrg.2017.88/MediaObjects/41576_2018_Article_BFnrg201788_Fig2_HTML.jpg" width="
 800px"/>
 <small>
-Image credit: JL Gardy and NJ Loman (2018) [Nature Rev Genet 19: 9](https://doi.org/10.1038/nrg.2017.88).
+Image credit: JL Gardy and NJ Loman (2018) <a href="https://doi.org/10.1038/nrg.2017.88">Nature Rev Genet 19: 9</a>.
 </small>
 
 ---
