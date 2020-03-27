@@ -91,9 +91,9 @@ Image credit: D Kim <i>et al.</i> (2013) <a href="https://dx.doi.org/10.1186%2Fg
     <td style="font-size: 20pt">
       <h1>Cufflinks</h1>
       <ul>
-        <li>[Cufflinks](http://cole-trapnell-lab.github.io/cufflinks/) assembles a minimal set of transcripts and estimates abundances and tests for differential expression.</li>
+        <li><a href="http://cole-trapnell-lab.github.io/cufflinks/"/>Cufflinks</a> assembles a minimal set of transcripts and estimates abundances and tests for differential expression.</li>
         <li>Takes SAM/BAM alignment format as input.</li>
-        <li>Optional input: reference genome annotation ([GFF](http://gmod.org/wiki/GFF3), generic feature format), ignoring novel transcripts</li>
+        <li>Optional input: reference genome annotation <a href="http://gmod.org/wiki/GFF3"/>GFF</a>, generic feature format), ignoring novel transcripts</li>
         <li>Maps the unmapped reads to potential splices.</li>
       </ul>
       <small>
@@ -174,8 +174,7 @@ $$\hat{\rho_t} \propto \frac{X_t}{\left(\frac{\tilde{l}_t}{10^3}\right) \left(\f
 | Prussian army | 144 | 91 | 32 | 11 | 2 | 0 |
 | Poisson model | 143.1 | 92.1 | 33.3 | 8.9 | 2.0 | 0.6 |
 
-<small>
-Source: L von Bortkiewitsch (1898), <a href="https://digibus.ub.uni-stuttgart.de/viewer/object/1543508614348/36/"/>Das Gesetz der kleinen Zahlen, p. 24</a>.
+<small>Source: L von Bortkiewitsch (1898), <a href="https://digibus.ub.uni-stuttgart.de/viewer/object/1543508614348/36/"/>Das Gesetz der kleinen Zahlen, p. 24</a>.
 </small>
 
 ---
@@ -196,8 +195,8 @@ Source: L von Bortkiewitsch (1898), <a href="https://digibus.ub.uni-stuttgart.de
   <tr>
     <td style="font-size: 20pt; vertical-align: middle">
       <ul>
-        <li>Scatter plot of `$\log_2$` fold change in counts between conditions against the `$\log_{10}$` mean count.</li>
-        <li>Colour marks genes with significant differential expression after adjustment for the [false discovery rate](https://en.wikipedia.org/wiki/False_discovery_rate).</li>
+        <li>Scatter plot of $\log_2$ fold change in counts between conditions against the $\log_{10}$ mean count.</li>
+        <li>Colour marks genes with significant differential expression after adjustment for the <a href="https://en.wikipedia.org/wiki/False_discovery_rate"/>false discovery rate</a>.</li>
       </ul>
       <small>
       Image credit: Anders and Huber (2010) <a href="https://dx.doi.org/10.1186%2Fgb-2010-11-10-r106">Genome Biol 11: R106</a>.
