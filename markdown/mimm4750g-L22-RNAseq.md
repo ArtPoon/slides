@@ -211,42 +211,72 @@ Source: L von Bortkiewitsch (1898), <a href="https://digibus.ub.uni-stuttgart.de
 
 ---
 
-# Read counts are not count data
+# Read counts are proportions
 
-* Poisson and negative binomial distributions assume that counts are independent observations.
-* 
-
----
-
-* DESeq uses a negative binomial distribution to analyze read counts.
+* Poisson and negative binomial distributions assume that counts are independent outcomes.
+  * We are more interested in the proportions than the absolute numbers.
+* [ALDEx2]() uses a multinomial Poisson transformation for read counts `$\mathbf{Y}=\{Y_1, Y_2, \ldots, Y_m\}$`.
+* The multinomial distribution has probability $P(\mathbf{Y}) = \prod_i p_i^{y_i}$
+* $p_i=\lambda_i \left/ \sum_j \lambda_j \right.$, where $\lambda_j$ is the Poisson rate parameter.
 
 ---
 
 # Single-cell transcriptomics
 
-
+<table>
+  <tr>
+    <td style="font-size: 20pt; vertical-align: middle">
+      <ul>
+        <li>Amplify mRNA from a single cell.</li>
+        <li>Cells at different stages result in noisier transcriptomic data.</li>
+        <li>Single-cell transcriptomes tend to have far fewer transcripts, but noisier because of weaker signal.</li>
+        <li>New platforms can process thousands of individual cells simultaneously.</li>
+      </ul>
+      <small>
+      Image credit: EZ Macosko <i>et al.</i> (2015) <a href="https://doi.org/10.1016/j.cell.2015.05.002">Cell 161: P1202.</a>.
+      </small>
+    </td>
+    <td width="40%">
+      <img src="https://marlin-prod.literatumonline.com/cms/attachment/cedc42c0-8b11-419e-9922-0f2f29d8bdf6/fx1.jpg"/>
+    </td>
+  </tr>
+</table>
 
 ---
 
-# Dual RNA-seq
+# Transcriptome of *H. pylori*
 
-* Capture of RNA transcripts from both host and pathogen genomes.
+* *Helicobacter pylori* is helical bacteria that is found in the upper gastrointestinal tract of about half of all people.
+* It is mostly asymptomatic but can cause gastric ulcers.
 
+<img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Immunohistochemical_detection_of_Helicobacter_%281%29_histopatholgy.jpg" width="400px"/>
 
----
-
-# Unknown gene clusters in a fungal pathogen
-
-* *Fusarium* are phytopathogenic fungi that infect a variety of crop plants, leading to yield loss and contamination.
-<img src="https://fieldcrops.cals.cornell.edu/sites/fieldcrops.cals.cornell.edu/files/shared/images/Fusarium%20wilt%20-%20stanyard%208.3.18.jpg" width="400px"/>
 <small>
-Image credit: Mike Stanyard, <a href="https://fieldcrops.cals.cornell.edu/soybeans/diseases-soybeans/fusarium-wilt/"/>Cornell Cooperative Extension</a>.
+Image credit: https://commons.wikimedia.org/wiki/User:KGH
 </small>
 
-* *F. fujikoroi* causes *bakanae* ("foolish seedling") disease in rice: excessively elongated seedlings that mature into infertile plants.
+---
+
+# Complex gene expression in *H. pylori*
+
+* Detected multipole categories of transcriptional start sites (TSS)
+* Primary TSS: most cDNAs within 500nt upstream of annotated start codons.
+<img src="/img/nature08756-venn.png" width="500px"/>
+
+<small>
+Image credit: CM Sharma <i>et al.</i> (2010) <a href="https://doi.org/10.1038/nature08756">Nature 464: 250</a>.
+</small>
 
 ---
 
+# Small non-coding RNAs
+
+* 6S RNA was the first non-coding RNA to be identified.
+* Regulator of $\sigma$ 70-dependent gene transcription - in *E. coli* regulates switch from exponential growth to stationary phase.
+<img src="/img/nature08756-6SRNA.png" width="600px"/>
+<small>
+Image credit: CM Sharma <i>et al.</i> (2010) <a href="https://doi.org/10.1038/nature08756">Nature 464: 250</a>.
+</small>
 
 
 ---
@@ -256,3 +286,4 @@ Image credit: Mike Stanyard, <a href="https://fieldcrops.cals.cornell.edu/soybea
 * [A survey of best practices for RNA-seq data analysis](https://doi.org/10.1186/s13059-016-0881-8)
 * [Statistical Design and Analysis of RNA Sequencing Data](https://www.genetics.org/content/185/2/405)
 * [Comparative analysis of RNA-Seq alignment algorithms and the RNA-Seq unified mapper (RUM)](https://academic.oup.com/bioinformatics/article/27/18/2518/180950)
+* [Deciphering the Cryptic Genome: Genome-wide Analyses of the Rice Pathogen Fusarium fujikuroi Reveal Complex Regulation of Secondary Metabolism and Novel Metabolites](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3694855/)
