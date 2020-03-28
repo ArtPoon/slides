@@ -1,5 +1,35 @@
 # MIMM4750G
-## Visualization
+## Communication
+![](https://imgs.xkcd.com/comics/communicating.png)
+
+---
+
+# Data provenance
+
+* How do you track an analysis?
+
+---
+
+# Reporting
+
+* What should be reported in a manuscript?
+* Description of methods
+
+---
+
+# Data sharing
+
+* Places you can upload data
+
+---
+
+# Method sharing
+
+* Upload pipeline
+
+---
+
+# 
 
 ---
 
