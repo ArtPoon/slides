@@ -209,6 +209,11 @@ Image credit: F Cheng <i>et al.</i> (2012) <a href="https://doi.org/10.1371/jour
 
 ---
 
+![](http://www.hiveplot.com/img/hiveplot-hairball-02.png)
+![](http://www.hiveplot.com/img/yan-et-al.png)
+
+---
+
 # ggtree
 
 <table>
