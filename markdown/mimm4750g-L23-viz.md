@@ -7,7 +7,10 @@
 # Bioinformatics and communication
 
 * Reporting your work
-*
+* Tracking your work
+* Sharing methods
+* Sharing data
+* Data visualization
 
 ---
 
