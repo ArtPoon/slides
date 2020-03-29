@@ -156,8 +156,8 @@ Image credit: Claus O. Wilke, <a href="https://serialmentor.com/dataviz/introduc
     <td style="vertical-align: middle; font-size: 20pt">
       <ul>
       <li><a href="https://cytoscape.org/">Cytoscape</a> is a network visualization software package developed by the <a href="http://nrnb.org/">National Resource for Network Biology</a></li>
-      <li>Integrates network layouts with biological attributes, *e.g.*, interactome data.</li>
-      <li>Many other network viz software, including [Graphviz](https://www.graphviz.org/) and [Gephi](https://gephi.org/).</li>
+      <li>Integrates network layouts with biological attributes, <i>e.g.</i>, interactome data.</li>
+      <li>Many other network viz software, including <a href="https://www.graphviz.org/">Graphviz</a> and <a href="https://gephi.org/">Gephi</a>.</li>
       </ul>
     </td>
     <td width="55%">
@@ -247,4 +247,6 @@ Image credit: F Cheng <i>et al.</i> (2012) <a href="https://doi.org/10.1371/jour
 
 * [Visualization and analytics tools for infectious disease epidemiology: A systematic review](https://www.sciencedirect.com/science/article/pii/S1532046414000914)
 * [Fundamentals of Data Visualization](https://serialmentor.com/dataviz/)
+* [Hive plots: Rational network visualization - farewell to hairballs](http://www.hiveplot.com/)
 * [Nextstrain: real-time tracking of pathogen evolution](https://bedford.io/papers/hadfield-nextstrain/)
+* [The work of Edward Tufte and Graphics Press](https://www.edwardtufte.com/tufte/)
