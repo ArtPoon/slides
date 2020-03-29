@@ -111,6 +111,18 @@ Fast-forward
 
 ---
 
+# Data visualization
+
+* A long history of developing techniques for the visual representation of information.
+* Popularized by [Edward Tufte](https://www.edwardtufte.com/tufte/), "statistician and artist, and Professor Emeritus of Political Science, Statistics, and Computer Science at Yale University".
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Minards_chart_Napoleons_Russian_campaign_of_1812_made_in_1869.jpg/1024px-Minards_chart_Napoleons_Russian_campaign_of_1812_made_in_1869.jpg" width="650px"/>
+
+<small>
+Image credit: M. Minard (1869) <a href="https://commons.wikimedia.org/wiki/File:Minards_chart_Napoleons_Russian_campaign_of_1812_made_in_1869.jpg">Napoleon's Russian campaign of 1812</a>.
+</small>
+
+---
+
 # Ugly, bad and wrong
 
 <table>
@@ -118,8 +130,8 @@ Fast-forward
     <td style="vertical-align: middle; font-size: 20pt">
       <ul>
       <li>Most of the same rules that dictate what makes a good visualization for conventional data apply for bioinformatics.</li>
-      <li>Some visuals are misleading.</li>
-      <li></li>
+      <li>Some visual schemes are inherently misleading.</li>
+      <li>For example, varying the axis scale.</li>
       </ul>
     </td>
     <td width="55%">
@@ -127,6 +139,7 @@ Fast-forward
     </td>
   </tr>
 </table>
+
 <small>
 Image credit: Claus O. Wilke, <a href="https://serialmentor.com/dataviz/introduction.html"/>Fundamentals of Data Visualization</a>.
 </small>
@@ -231,3 +244,4 @@ Image credit: F Cheng <i>et al.</i> (2012) <a href="https://doi.org/10.1371/jour
 
 * [Visualization and analytics tools for infectious disease epidemiology: A systematic review](https://www.sciencedirect.com/science/article/pii/S1532046414000914)
 * [Fundamentals of Data Visualization](https://serialmentor.com/dataviz/)
+* [Nextstrain: real-time tracking of pathogen evolution](https://bedford.io/papers/hadfield-nextstrain/)
