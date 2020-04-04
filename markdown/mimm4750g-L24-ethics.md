@@ -54,7 +54,8 @@
   * You cannot redistribute the data.
   * Publications must acknowledge the originating laboratory.
   * License is non-transferrable.
-* It is currently not possible to download all the data - one must click through each record manually (scraping is discouraged).
+* ~~It is currently not possible to download all the data - one must click through each record manually (scraping is discouraged).~~
+  * **Correction**: some users are able to download all sequences from GISAID, while others cannot - this appears to be an IT issue and not a decision by GISAID.
 
 ---
 
@@ -65,6 +66,7 @@
   * Researchers who benefit most from open access to data tend to be located in high-income countries.
 * The GISAID model encourages acknowledgement of originating labs (but is it enforced?).
 * [Frustration in the research community](https://twitter.com/jxtx/status/1240710221997256706) at lack of open access.
+  * Raw NGS data are available on NCBI SRA for only a small number of patient samples.
 
 ---
 
@@ -215,10 +217,6 @@ Image credit: A Poon <i>et al.</i> (2016) <a href="https://doi.org/10.1016/S2352
 * Requiring clinical labs to access software over the web can mean the transmission of sensitive patient data over unsecured networks.
 * Commercial licensing can exacerbate a system of haves and have nots in research.
   * Growing adoption of subscription-based licensing (*e.g.*, Geneious).
-
-<small>
-&ast;G Duck <i>et al.</i> (2016) <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4917176/"/>PLOS ONE 11: e0157989</a>.
-</small>
 
 ---
 
