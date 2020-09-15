@@ -47,5 +47,18 @@
 ---
 
 # Version control
+* a system for tracking changes to source files and documents
+* `git` is probably the most popular system right now
+* Started by Linus Torvalds when devs withdrew access to proprietary [BitKeeper](https://en.wikipedia.org/wiki/BitKeeper)
+* from the `man` page:
+  ```
+  We divide Git into high level ("porcelain") commands and low level
+  ("plumbing") commands.
+  ```
 
 ---
+
+# `git`
+
+
+```
