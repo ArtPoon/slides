@@ -91,7 +91,7 @@ Image credit: Leon Neal/Getty Images
 
 # The birth of open access
 
-* NIH director [Harold Varmus]https://en.wikipedia.org/wiki/Harold_E._Varmus) conceived of E-Biomed in 1999, which would eventually become [PubMed Central](https://pubmed.ncbi.nlm.nih.gov/).
+* NIH director [Harold Varmus](https://en.wikipedia.org/wiki/Harold_E._Varmus) conceived of E-Biomed in 1999, which would eventually become [PubMed Central](https://pubmed.ncbi.nlm.nih.gov/).
 * In 2000, Varmus and colleagues [Michael Eisen](https://en.wikipedia.org/wiki/Michael_Eisen) and [Patrick Brown](https://en.wikipedia.org/wiki/Patrick_O._Brown) co-founded the [Public Library of Science](https://plos.org/).
 * Open access model:
   * publications are freely available to anyone online
@@ -120,7 +120,15 @@ Image credit: Leon Neal/Getty Images
   * broadly solicits academics to join the editorial board, or lists them without permission
   * advertises fake or spurious impact factors
   * sends e-mail spam to solicit articles
+* Predatory publishers tend to feature an enormous roster of journals.
+  * *e.g.* MDPI was established in 1996 and publishes 272 journal titles (53 in 2020).
 * Related: [hijacked journals](https://en.wikipedia.org/wiki/Journal_hijacking), [predatory conferences](https://en.wikipedia.org/wiki/Predatory_conference)
+
+---
+
+# Journal spam
+
+![](/img/spam.png)
 
 ---
 
@@ -155,7 +163,7 @@ Image credit: Leon Neal/Getty Images
 # What makes a journal "good"?
 
 * For every field, there is an evolving community consensus on which journals are "good" and which are not as good.
-* The latter category does not necessarily include predatory journals.
+* The latter category should not include predatory journals - they might be from less reputable publishers..
 *
 
 ---
