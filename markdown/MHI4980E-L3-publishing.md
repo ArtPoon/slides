@@ -132,10 +132,22 @@ Image credit: Leon Neal/Getty Images
 
 ---
 
+# Why are predatory journals a problem?
+
+* predatoryjournals.com lists 1,177 predatory *publishers* (last update Jan 2017), each with multiple titles.
+* Publishing questionable research without rigorous peer review: creationism, vaccine hesitancy, conspiracy theories.
+* Gaming the system by publishing an enormous number of articles:
+  * plagarism, falsification and/or duplication of results (see [image forensics](https://www.nature.com/articles/d41586-020-01363-z)).
+  * self-referencing to boost your personal metrics (*e.g.*, [h-index](https://en.wikipedia.org/wiki/H-index)).
+* Enormous peer review burden.
+
+---
+
 # Beall's list
 
 * [Jeffrey Beall](https://en.wikipedia.org/wiki/Jeffrey_Beall) is a librarian formerly employed by the University of Colorado Denver who coined the term "predatory journal"
 * Beall created and maintained a [list](https://en.wikipedia.org/wiki/Beall%27s_List) of predatory journals online from 2008 to 2017.
+* Criticized for subjective evaluation, lack of transparency and evidence.
 * The Canadian Center for Science and Education and the [OMICS Publishing Group](https://en.wikipedia.org/wiki/OMICS_Publishing_Group) send letters to Beall threatening to sue for defamation.
 * Eventually harassment from MDPI and Frontiers led Beall to take the list offline.
 
@@ -154,9 +166,10 @@ Image credit: Leon Neal/Getty Images
 
 # Other resources
 
-* [Eriksson and Helgesson's list](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5487745/) - *e.g.*, "The journal and the publisher are unfamiliar to you and all your colleagues."
-* [Thick. Check. Submit.](https://thinkchecksubmit.org/)
-* [Stop Predatory Journals](https://predatoryjournals.com/)
+* [Eriksson and Helgesson's list](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5487745/) - a list of criteria for classifying predatory journals, *e.g.*, "The journal and the publisher are unfamiliar to you and all your colleagues."
+* [Thick. Check. Submit.](https://thinkchecksubmit.org/) - maintains a less comprehensive checklist for selecting a journal.
+* [Stop Predatory Journals](https://predatoryjournals.com/) - GitHub repository, not actively maintained
+
 
 ---
 
@@ -164,15 +177,34 @@ Image credit: Leon Neal/Getty Images
 
 * For every field, there is an evolving community consensus on which journals are "good" and which are not as good.
 * The latter category should not include predatory journals - they might be from less reputable publishers..
-*
+* In the field of virology, for example, the hierarchy used to be:
+  1. *J Virol* (ASM)
+  2. *Virology* (Elsevier)
+  3. *J Gen Virol* (Microbiology Society, UK)
+* Now there is mBio (ASM), Virology J (BMC), Frontiers in Micro, Viruses (MDPI) and more.
 
 ---
 
 # Impact factor
 
+* A [controversial](https://en.wikipedia.org/wiki/Impact_factor#Criticism) measure of journal quality based on the average number of citations.
+* Currently published by Clarivate, a publicly-traded US company that acquired the Institute for Scientific Information (ISI) in 1992.
+* Calculated by counting article citations in the [Journal Citation Reports](https://jcr.clarivate.com/) database:
+
+$$IF = \frac{\text{Citations in current year to papers in last 2 years}}
+{\text{Articles published in last 2 years}}$$
+
+* IF can be inflated by ["citation stacking"](https://www.nature.com/news/brazilian-citation-scheme-outed-1.13604?WT.mc_id=PIN_NatureNews), soliciting review articles and methods papers.
+
 ---
 
-#
+# Alternatives to IF
+
+* Many journals advocate the use of other [bibliometrics](https://en.wikipedia.org/wiki/Bibliometrics) to quantify the impact of articles or journals.
+* Other services offer article-level metrics such as [PlumX](https://plumanalytics.com/learn/about-metrics/) and [Altmetric](https://www.altmetric.com/about-altmetrics/what-are-altmetrics/):
+<img src="/img/altmetrics.png" height="150px"/>
+
+* [San Francisco Declaration on Research Assessment](https://sfdora.org/read/) recommends *against* the use of journal-level metrics; *e.g.*, recommends institutions base promotions on criteria.
 
 ---
 
