@@ -179,3 +179,7 @@ To http://github.com/ArtPoon/slides
 * GitHub provides a web interface for posting [issues](https://guides.github.com/features/issues/) with Markdown plus embedded images, direct links to code, and links to other repositories.
 * Can communicate with other developers.
 * Integration with project management apps like [Jira](https://www.atlassian.com/software/jira), [Slack](https://slack.com/intl/en-ca/) and [Asana](https://asana.com/home).
+
+---
+
+# Make a GitHub or GitLab account
