@@ -219,10 +219,21 @@ $$IF = \frac{\text{Citations in current year to papers in last 2 years}}
 
 ---
 
-# bioRxiv
-
-* *bioRxiv* was launched in 2013, sponsored by the [Cold Spring Harbor Laboratory](https://www.cshl.edu/).
-<img src="https://iiif.elifesciences.org/lax:45133%2Felife-45133-fig1-v2.tif/full/1234,/0/default.webp"/>
+<table>
+<tr>
+<td>
+  <h1>bioRxiv</h1>
+  <ul>
+  <li><i>bioRxiv</i> was launched in 2013, sponsored by the <a href="https://www.cshl.edu/">Cold Spring Harbor Laboratory</a>.</li>
+  <li>Explosive growth, now more than 100 journals accept submissions directly from bioRxiv.</li>
+  <li>Major influence on dissemination of SARS-CoV-2 research, requiring stricter screening procedures (<a href="https://www.nature.com/articles/d41586-020-01394-6">Kwon 2020</a>).</li>
+  </ul>
+</td>
+<td width="50%">
+  <img src="https://iiif.elifesciences.org/lax:45133%2Felife-45133-fig1-v2.tif/full/,1500/0/default.jpg" width="500px"/>
+</td>
+</tr>
+</table>
 
 ---
 
