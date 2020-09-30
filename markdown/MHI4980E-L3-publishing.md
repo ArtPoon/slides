@@ -208,6 +208,24 @@ $$IF = \frac{\text{Citations in current year to papers in last 2 years}}
 
 ---
 
+# Preprint servers
+
+* [*arXiv*](https://arxiv.org/) was founded in 1991 as a webserver for posting manuscripts in theoretical physics before peer review.
+  * Enables rapid dissemination of results.
+  * Establishes research priority ("X was first discovered by Y").
+* A biology-specific section of *arXiv* was opened in 2003, but seldom used.
+* Other efforts to launch a biological preprint service have failed, *e.g.*, The Lancet Electronic Research Archive (1999-2005; [Abdill and Blekhman](https://elifesciences.org/articles/45133)).
+* By 2012, posting to *arXiv* was still a fringe activity amongst biologists - "fear of being scooped" prevents widespread adoption.
+
+---
+
+# bioRxiv
+
+* *bioRxiv* was launched in 2013, sponsored by the [Cold Spring Harbor Laboratory](https://www.cshl.edu/).
+<img src="https://iiif.elifesciences.org/lax:45133%2Felife-45133-fig1-v2.tif/full/1234,/0/default.webp"/>
+
+---
+
 # Further reading
 
 * [The Oligopoly of Academic Publishers in the Digital Era](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0127502)
