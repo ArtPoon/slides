@@ -1,0 +1,139 @@
+---
+output: 
+  revealjs::revealjs_presentation:
+    self_contained: true
+    css: ../css/Rmd-style.css
+center: true
+highlight: zenburn
+knit: (function(inputFile, encoding) { 
+      out_dir <- '../html';
+      rmarkdown::render(inputFile,
+                        encoding=encoding, 
+                        output_file=file.path(dirname(inputFile), out_dir, 'mhi4980e-L05-visuals.html')) })
+
+---
+
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap');
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(
+  comment = '', fig.width = 8, fig.height = 5
+)
+```
+
+## Data visualization
+
+![](https://imgs.xkcd.com/comics/self_description.png)
+<small>https://xkcd.com/688/</small>
+
+
+## Data visualization
+
+* What is data visualization?
+  * A fancy buzzword for making diagrams?
+  * Methods for the visual presentation of quantitative information?
+  * The intersection of art and science?
+* Important skills for science communication!
+
+
+## History
+
+[Minard's](https://en.wikipedia.org/wiki/Charles_Joseph_Minard) (1896) diagram of the [French invasion of Russia](https://en.wikipedia.org/wiki/French_invasion_of_Russia)
+
+![](https://upload.wikimedia.org/wikipedia/commons/2/29/Minard.png)
+
+
+---
+
+[John Snow](https://en.wikipedia.org/wiki/John_Snow)'s (1854) Cholera map
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Snow-cholera-map-1.jpg/1092px-Snow-cholera-map-1.jpg" height="550px"/>
+
+
+## Categories of visuals
+
+* [Claus Wilke](https://en.wikipedia.org/wiki/Claus_O._Wilke) groups visualization methods into the following categories:
+  * Amounts - visualizing counts or totals
+  * Distributions
+  * Proportions
+  * x-y relationships (Associations)
+  * Geospatial data
+  * Uncertainty
+
+
+## Amounts: barplots
+
+* A barplot is a visualization of a quantitative measure partitioned by a categorical variable.
+```{r}
+frogs <- read.csv("../data/frogs.csv")
+table(frogs$Species.Code)
+```
+
+---
+
+```{r fig.width=10}
+par(mar=c(5,5,1,1), mfrow=c(1,2))
+barplot(table(frogs$Species.Code), cex.names=0.8)
+barplot(table(frogs$Species.Code), cex.names=0.8, horiz=T, las=1)
+```
+
+---
+
+Grouped barplots
+```{r}
+barplot(table(frogs$Pelee.Station, frogs$Species.Code), beside=T, xlab='Species code')
+```
+
+---
+
+Stacked barplots
+```{r}
+barplot(table(frogs$Species.Code, frogs$Pelee.Station), legend=T, args.legend=list(x=17, y=110, bty='n', horiz=T), xlab='Monitoring station', ylab='Recorded calls/day')
+```
+
+---
+
+Bad barplots
+```{r}
+par(mfrow=c(1,2), mar=c(4,5,2,1)); tab <- table(frogs$Species.Code)
+barplot(tab[tab>100], ylim=c(100, max(tab)), xpd=FALSE, main="y-axis above 0")
+barplot(log10(table(frogs$Species.Code, frogs$Pelee.Station)+1), main="Log-transformed stacked barplot")
+```
+
+## Distributions - univariate
+
+```{r}
+par(mfrow=c(1,2))
+x <- frogs$Air.Temperature[!is.na(frogs$Air.Temperature)]
+hist(x); rug(x); plot(density(x))
+```
+
+## Distributions - univariate by factor
+
+```{r fig.height=4, fig.width=5}
+suppressMessages(require(ggfree, quietly=T))
+pal <- gg.rainbow(3, c=50)
+par(mar=c(5,7,1,1))
+ridgeplot(split(iris$Sepal.Length, iris$Species), col=pal, fill=add.alpha(pal, 0.3), bty='n', xlab='Sepal length')
+```
+
+## Aesthetics
+
+
+
+## Accessibility
+
+
+
+## Colour
+
+
+
+
+## Further reading
+
+* [Claus Wilke's Fundamentals of Data Visualization](https://clauswilke.com/dataviz/)
