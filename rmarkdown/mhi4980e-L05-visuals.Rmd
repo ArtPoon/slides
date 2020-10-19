@@ -121,6 +121,24 @@ par(mar=c(5,7,1,1))
 ridgeplot(split(iris$Sepal.Length, iris$Species), col=pal, fill=add.alpha(pal, 0.3), bty='n', xlab='Sepal length')
 ```
 
+## Distributions - bivariate
+
+```{r fig.height=4, fig.width=11}
+temp <- frogs[!is.na(frogs$Air.Temp) & !is.na(frogs$Cloud.Cover), ]
+par(mfrow=c(1,3)); plot(temp$Air.Temp, temp$Cloud.Cover)
+require(MASS, quietly=TRUE); k <- kde2d(temp$Air.Temp, temp$Cloud.Cover)
+image(k); contour(k)
+```
+
+
+## Distributions - bivariate in 3D
+
+```{r}
+require(rgl)
+persp3d(k)
+```
+
+
 ## Aesthetics
 
 
