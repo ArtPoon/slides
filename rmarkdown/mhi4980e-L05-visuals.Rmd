@@ -23,6 +23,9 @@ knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_chunk$set(
   comment = '', fig.width = 8, fig.height = 5
 )
+options(rgl.useNULL=TRUE)
+library(rgl)
+knitr::knit_hooks$set(webgl = hook_webgl)
 ```
 
 ## Data visualization
@@ -133,9 +136,9 @@ image(k); contour(k)
 
 ## Distributions - bivariate in 3D
 
-```{r}
+```{r webgl=TRUE}
 require(rgl)
-persp3d(k)
+persp3d(k, lit=F, front='lines', back='lines')
 ```
 
 
