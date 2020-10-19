@@ -25,6 +25,7 @@ knitr::opts_chunk$set(
 )
 options(rgl.useNULL=TRUE)
 library(rgl)
+sm <- suppressMessages
 knitr::knit_hooks$set(webgl = hook_webgl)
 ```
 
@@ -117,19 +118,29 @@ hist(x); rug(x); plot(density(x))
 
 ## Distributions - univariate by factor
 
-```{r fig.height=4, fig.width=5}
-suppressMessages(require(ggfree, quietly=T))
-pal <- gg.rainbow(3, c=50)
-par(mar=c(5,7,1,1))
-ridgeplot(split(iris$Sepal.Length, iris$Species), col=pal, fill=add.alpha(pal, 0.3), bty='n', xlab='Sepal length')
+```{r}
+par(mfrow=c(1,2))
+boxplot(split(iris$Sepal.Length, iris$Species), ylab='Sepal length')
+sm(require(vioplot)); vioplot(split(iris$Sepal.Length, iris$Species))
 ```
 
-## Distributions - bivariate
+
+## Distributions - univariate by factor (2)
+
+```{r fig.height=5, fig.width=11}
+par(mar=c(5,7,1,1), mfrow=c(1,2))
+sm(require(ggfree)); pal <- gg.rainbow(3, c=50)
+x <- split(iris$Sepal.Length, iris$Species); ridgeplot(x, col=pal, fill=add.alpha(pal, 0.3), bty='n', xlab='Sepal length')
+sm(require(beeswarm)); beeswarm(x)
+```
+
+
+## Distributions - bivariate continuous
 
 ```{r fig.height=4, fig.width=11}
 temp <- frogs[!is.na(frogs$Air.Temp) & !is.na(frogs$Cloud.Cover), ]
 par(mfrow=c(1,3)); plot(temp$Air.Temp, temp$Cloud.Cover)
-require(MASS, quietly=TRUE); k <- kde2d(temp$Air.Temp, temp$Cloud.Cover)
+sm(require(MASS)); k <- kde2d(temp$Air.Temp, temp$Cloud.Cover)
 image(k); contour(k)
 ```
 
@@ -141,20 +152,97 @@ require(rgl)
 persp3d(k, lit=F, front='lines', back='lines')
 ```
 
+## Proportions - pies and donuts
+
+```{r fig.width=10}
+par(mfrow=c(1,2), mar=c(1,1,1,1))
+pie(table(frogs$Species))
+ringplot(table(frogs$Species), r0=0.3, r1=0.6, use.names=T, offset=0.1)
+```
+
+## Proportions - stream plots
+
+```{r fig.height=4.5}
+par(mar=c(3,1,1,1)); n <- ncol(cbc); pal <- gg.rainbow(n)
+stackplot(cbc[2:n], x=cbc[,1], type='w', bty='n', yaxt='n', spline=T, border='white', lwd=0.25, col=pal)
+labels <- gsub('\\.', ' ', names(cbc)[2:n])
+legend(x=1959, y=-130, legend=rev(labels), bty='n', cex=0.7, fill=rev(pal), y.intersp=0.8)
+```
+
+
+## Proportions - contingency tables
+```{r}
+tab <- table(frogs$Calling.Code, toupper(frogs$Precipitation))
+plot(tab, shade=TRUE, las=1, main=NA, xlab='Calling code')  # mosaicplot
+```
+
+## Associations - xy-plots
+```{r}
+par(mfrow=c(1,2))
+plot(cars, xlab='Speed', ylab='Stopping distance')
+sm(require(corrplot)); corrplot(cor(mtcars))
+```
+
+## Associations - repeated measures
+```{r fig.width=5}
+slopegraph(co2.emissions)
+```
 
 ## Aesthetics
 
+* Where data visualization intersects art!
+* Aesthetics are not entirely subjective -- or at least, there is some consistency.
+* Some components of aesthetics according to Wilke:
+  * position
+  * shape
+  * size
+  * colour
+  * line width, type
+
+
+## Colour palettes
+
+```{r echo=F, message=F}
+tab <- table(frogs$Species, frogs$Year)
+require(RColorBrewer)
+require(viridis)
+require(wesanderson)
+require(yarrr)
+```
+
+```{r}
+par(mfrow=c(2,3), mar=c(2,2,1,1))
+barplot(tab, col=terrain.colors(6), main='Base R terrain colors'); barplot(tab, col=piratepal('pony'), main='yarrr piratepal pony'); barplot(tab, col=wes_palette("Zissou1", 6, type = "continuous"), main='wesanderson Zizzou1')
+barplot(tab, col=brewer.pal(6, 'Set2'), main='RColorBrewer Set2'); barplot(tab, col=viridis(6), main='Viridis default'); barplot(tab, col=magma(6), main='Viridis magma')
+```
 
 
 ## Accessibility
+* Visual impairment
+  * Small labels are bad (the ggplot2 default settings are *awful*)
+  * Use a substantial contrast between foreground and background
+  * Colours and shapes that are too similar are difficult to distinguish
+* Try to provide alternate text for images you are distributing online
+* Roughly 8% of men and 0.4% of women have some form of colour blindness.
+  * Try to use colour palettes that accommodate the colour blind.
+
+## Alternate text
+
+```{r fig.cap="This is how you add alternate text in RMarkdown"}
+plot(rnorm(100), rnorm(100))
+```
 
 
+## Colour blindness
 
-## Colour
-
-
+```{r message=F, fig.height=4}
+require(dichromat)
+pal <- rainbow(6); par(mfrow=c(1,2), mar=c(5,5,1,1))
+barplot(tab, col=pal); barplot(tab, col=dichromat(pal, type='tritan'))
+```
 
 
 ## Further reading
 
 * [Claus Wilke's Fundamentals of Data Visualization](https://clauswilke.com/dataviz/)
+* [The Effect of Aesthetic on the Usability of Data Visualization](https://ieeexplore.ieee.org/abstract/document/4272047)
