@@ -8,6 +8,11 @@ BIRS: Mathematics and Statistics of Genomic Epidemiology
 
 Departments of Pathology & Laboratory Medicine; Computer Science; Applied Mathematics; Microbiology and Immunology
 
+<small><small>
+<br/>
+Slides published at http://slides.filogeneti.ca/html/BIRS2020-Poon.html
+</small></small>
+
 ---
 
 
