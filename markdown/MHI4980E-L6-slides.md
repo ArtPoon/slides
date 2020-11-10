@@ -144,7 +144,7 @@ Image credit: Peter Norvig, The Gettysberg PowerPoint Presentation
 * Usually between 15 minutes (conference) to 1 hour (seminar).
   * Your presentations for this course will be 20 minutes, with 10 minutes for questions.
 * Avoid speaking too quickly to cram in more material - it is better to throw things out.
-* Write down a list of the most important points (background, rationale, methods, results, concluding remarks) before making your slides.
+* Write down the important points before making your slides - keep to roughly 1 slide per minute.
 
 ---
 

@@ -38,7 +38,8 @@ Departments of Pathology & Laboratory Medicine; Computer Science; Applied Mathem
   * Whole-genome sequencing of *M. tuberculosis*
   * US CDC [HIV Cluster Detection and Response](https://www.cdc.gov/hiv/programresources/guidance/cluster-outbreak/index.html) program
 * Genetic similarity implies epidemiological linkage.
-* Genetic variation becomes a proxy for time and space.
+  * Genetic variation becomes a proxy for time and space.
+* Scales favourably with sample size.
 
 ---
 
@@ -153,34 +154,50 @@ $$E(\rho|\Delta t) = \frac{\sum_{K(\Delta t)} |E^1_{ij}| / |V_j^c|}{(t_{\max}-1)
 
 <img src="/img/maup/decay.png" height="350px"/>
 
-* Fit binomial GLM to observed bipartite edges between known cases.
-* Applied same model to HIV-1 diagnostic dates for Tennessee.
+* Fit binomial GLM to observed edges between known cases.
+* Applied same model to HIV-1 diagnostic dates for Tennessee (adjusted for variation in annual incidence).
+
+---
+
+# Difference in AIC identifies optimal cutoff
+
+<img src="/img/maup/gaic.png" height="350px"/>
+
+* Models roughly equivalent at either extreme threshold.
+* Obtain different optima for different settings, populations.
+
+---
+
+# New cases associated with known case recency
+
+<img src="/img/maup/graphs.png" height="500px"/>
+
+<small><small>
+Each point represents a case - darker shades indicate new case status.  Point size proportional to case recency.
+</small></small>
+
+---
+
+# Concluding remarks
+
+* A statistical framework for optimizing genetic clusters for public health applications.
+  * Optimal thresholds are robust to sub-sampling and consistent over time.
+  * Ongoing work indicates substantial variation in optima among countries.
+* Similar results obtained from subset tree clustering (manuscript *in prep.*)
 
 ---
 
 # Acknowledgements
 
-This framework was implemented in *R* by my MSc student, **Connor Chato**, shown below doing a podcast.
+This framework was developed and implemented by my former MSc student, **Connor Chato**.
 
 <table>
-<tr><td>
-<img style="filter: drop-shadow(3px 3px 3px #333333);" src="/img/connor.jpg" width="300px"/>
-</td></tr>
-</table>
-
----
-
-# Funding
-
-
-<table>
-  <tr>
-    <td><img src="/img/OGI_Logo2015.png" height="150"/></td>
-    <td><img src="/img/GenomeCanadaLogo.png" height="150"/></td>
-    <td><img src="/img/NIH_NIAID.jpg" height="200"></td>
-  </tr>
-  <tr>
-    <td><img src="/img/cihr.png"  height="200"/></td>
-    <td><img src="/img/NSERC_RGB.png"/></td>
-  </tr>
+<tr>
+<td>
+  <img style="filter: drop-shadow(3px 3px 3px #333333);" src="/img/connor.jpg" width="300px"/>
+</td>
+<td>
+  <img src="/img/maup/chato-title.png" height="200px"/>
+</td>
+</tr>
 </table>
