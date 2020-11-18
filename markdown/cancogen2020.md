@@ -15,6 +15,45 @@ Slides published at http://slides.filogeneti.ca/html/BIRS2020-Poon.html
 
 ---
 
+# Contributors
+
+* CoVizu is an open science, collaborative effort
+
+<table class="contrib">
+<tr>
+  <td><img src="https://instagram.fymy1-1.fna.fbcdn.net/v/t51.2885-19/s320x320/23667707_777861409074078_7039112911771402240_n.jpg?_nc_ht=instagram.fymy1-1.fna.fbcdn.net&_nc_ohc=Yt81Nxt0yDoAX8eibBP&tp=25&oh=6de896aebf88ba87a50043e4845afca2&oe=5FDDC283" height="60px"/></td>
+  <td>Emmanuel Wong</td>
+  <td>Database scripts, automation</td>
+</tr>
+<tr>
+  <td><img src="https://avatars0.githubusercontent.com/u/6604824?s=460&u=2a23e9966f4cbd6c7e65f63587485536e9e2a7b4&v=4" height="60px"/></td>
+  <td>Roux-Cil Ferreira</td>
+  <td>Search interface, beadplot visuals, manuscript</td>
+</tr>
+<tr>
+  <td><img src="https://avatars0.githubusercontent.com/u/48563808?s=460&v=4" height="60px"/></td>
+  <td>Kaitlyn Wade</td>
+  <td>Tool tips and info tables</td>
+</tr>
+<tr>
+  <td><img src="https://avatars2.githubusercontent.com/u/56363357?s=460&v=4" height="60px"/></td>
+  <td>Molly Liu</td>
+  <td>CSS</td>
+</tr>
+<tr>
+  <td><img src="https://avatars2.githubusercontent.com/u/42696510?s=460&u=d5f079e2cc2ce33c240abb7655e21c476c209e15&v=4" height="60px"/></td>
+  <td>Laura Mu&ntilde;oz Baena</td>
+  <td>Autocomplete, date search</td>
+</tr>
+<tr>
+  <td><img src="https://pbs.twimg.com/media/DJOttQXXYAI7ec0.jpg" height="60px"/></td>
+  <td>Abayomi Olabode</td>
+  <td>Genetic diversity measures</td>
+</tr>
+</table>
+
+---
+
 # Rapid accumulation of genome data
 
 * First complete genome sequence released January 10<sup>th</sup>.
@@ -73,6 +112,8 @@ Slides published at http://slides.filogeneti.ca/html/BIRS2020-Poon.html
 
 ---
 
+<section data-background-color="ivory">
+
 # Objectives
 
 * Monocultures are bad &mdash; we need more tools!
@@ -81,6 +122,8 @@ Slides published at http://slides.filogeneti.ca/html/BIRS2020-Poon.html
 * Enable users to browse genomes in a global context.
 * Open source from the start
   * First commit April 7, one deprecated 100 line script.
+
+</section>
 
 ---
 
@@ -243,3 +286,6 @@ Upper and lower 95% quantiles (dashed, Poisson) around clock expectation (solid)
 
 # Front-end
 
+* Implemented in JavaScript/D3js.
+* [dev branch](http://localhost:8002)
+* [master branch](http://filogeneti.ca/covizu)
