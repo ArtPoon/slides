@@ -94,4 +94,99 @@ Slides published at http://slides.filogeneti.ca/html/BIRS2020-Poon.html
 
 # Beadplots
 
-![]()
+<img src="/img/beadplot.png" height="300px8"/>
+
+* Variants are represented by horizontal line segments
+* Beads indicate samples from a particular date
+
+---
+
+# Database
+
+* Daily queries for new records from GISAID to local sqlite3 database
+
+<img src="/img/covizu-db-seq.png" height="275px"/>
+
+---
+
+# Sequence alignment
+
+* Multiple alignment is prohibitively time-consuming.
+* Pairwise alignment to a reference and discarding insertions is *de facto* standard.
+* We use a Python wrapper with *minimap2* to align roughly 1,600 genomes/second.
+
+<img src="/img/minimap2.png" height="167px"/>
+
+---
+
+# Genome encoding
+
+* Instead of working with aligned sequences, we extract all differences from a reference genome from *minimap2* output stream as *feature subsets*.
+  * Highly compact representation of genome (~10 features versus 30,000 nt).
+  * Retain all insertion and deletions in addition to substitutions.
+* Similar to mutation annotation of tree strategy by [Yatish Turakhia](https://github.com/yatisht/usher) (UShER, UCSC).
+
+---
+
+# Data cleaning
+
+<table>
+<tr>
+<td>
+<ul>
+<li>We set a low tolerance for uncalled bases (<300 <tt>N</tt>s).</li>
+<li>Exclude problematic sites as defined by <a href="https://github.com/W-L/ProblematicSites_SARS-CoV2">VCF file</a> maintained by <a href="https://www.ebi.ac.uk/research/goldman">Nick Goldman's group @EBI</a>.</li>
+<li>Exclude sequences with excessive divergence given collection date (right), assuming molecular clock of <tt>0.0655</tt> subs/yr and <tt>2019-12-01</tt> T<sub>MRCA</sub>.</li>
+</ul>
+</td>
+<td style="width: 45%">
+<img src="https://user-images.githubusercontent.com/1109328/95021105-0a450800-063d-11eb-9e90-0a4e0f76c382.png"</li>
+<small><small>
+Upper and lower 95% quantiles (dashed, Poisson) around clock expectation (solid) and observed numbers of genetic differences (points) in SARS-CoV-2 genomes.
+</small></small>
+</td>
+</tr>
+</table>
+
+---
+
+# Lineage classification
+
+* Discarded our clustering analysis for [Pangolin](https://github.com/cov-lineages/pangolin/) as emerging consensus.
+* Modified Python script `pangolearn.py` to increase performance (~50x) and reduce memory consumption (<8GB).
+  * [Pull request](https://github.com/cov-lineages/pangolin/pull/91) accepted by cov-lineages dev team.
+
+<img src="https://github.com/cov-lineages/pangolin/raw/master/docs/logo.png" height="200px"/>
+
+---
+
+
+
+<table>
+  <tr>
+    <td style="vertical-align: middle;">
+      <h1>Build time-scaled tree</h1>
+      <ul>
+        <li>Select representative genomes for all lineages (n=263; pass filters, most recent sample).</li>
+        <li>Run <a href="http://www.microbesonline.org/fasttree/">FastTree2</a> on MSA and rescaled with <a href="https://github.com/neherlab/treetime">TreeTime</a>.</li>
+      </ul>
+      <img src="/img/sc2-rtt.svg" height="250px"/>
+    </td>
+    <td width="50%">
+      <img src="/img/sc2-tree.svg" height="600px"/>
+    </td>
+  </tr>
+</table>
+
+
+---
+
+# Genetic distances (within lineage)
+
+* Assume all differences are equally likely to occur
+  * Ignore multiple hits!
+  * Not enough data to quantify rate variation among sites.
+  * Not an awful assumption at this point of pandemic.
+* Compute [symmetric difference](https://en.wikipedia.org/wiki/Symmetric_difference) between feature subsets.
+  * Write output to temporary file
+

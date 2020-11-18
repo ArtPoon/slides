@@ -95,6 +95,12 @@ body {
   font-weight: 300;
   }
 
+.reveal tt{
+  font-family: monospace;
+  font-size: 1.1em;
+  color: grey;
+}
+
 /* Ensure certain elements are never larger than the slide itself */
 .reveal img,
 .reveal video,
@@ -190,6 +196,7 @@ body {
 
 .reveal code {
   font-family: monospace;
+  font-size: 0.9em;
 }
 
 .reveal pre code {
