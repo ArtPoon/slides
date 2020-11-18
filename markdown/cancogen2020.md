@@ -188,5 +188,58 @@ Upper and lower 95% quantiles (dashed, Poisson) around clock expectation (solid)
   * Not enough data to quantify rate variation among sites.
   * Not an awful assumption at this point of pandemic.
 * Compute [symmetric difference](https://en.wikipedia.org/wiki/Symmetric_difference) between feature subsets.
-  * Write output to temporary file
+  * *e.g.*, {1,4,128} &Delta; {4,37,89} = {1,37,89,128}
+  * Use integer indices for features.
+  * Merge genomes with identical feature subsets.
+  * Write output to temporary file to reduce RAM usage.
+
+---
+
+# Bootstrapping
+
+* Sample the feature set union at random with replacement, 100 times.
+* Apply the resulting feature weights to symmetric difference matrix.
+  * Yields integer-valued pairwise distance matrix.
+* Write to file as input for neighbor-joining tree reconstruction with [RapidNJ](https://birc.au.dk/software/rapidnj/).
+* Currently the rate limiting step, using Python `multiprocessing` module.
+
+---
+
+# Generate consensus trees
+
+* 100 bootstrap NJ trees for every lineage
+* BioPython's `majority_consensus` function is slow and wrong!
+  * Had to code my own function (33x faster).
+
+<table>
+  <tr>
+    <td>
+      BioPython
+      <img src="https://user-images.githubusercontent.com/1109328/97740083-1a72ca80-1ab7-11eb-9832-1cb67abaa77a.png" width="250px"/>
+    </td>
+    <td>
+      CoVizu
+      <img src="https://user-images.githubusercontent.com/1109328/97740037-09c25480-1ab7-11eb-836e-526f8916181e.png" width="250px"/>
+    </td>
+    <td>
+      ML
+      <img src="https://user-images.githubusercontent.com/1109328/97748535-fc5f9700-1ac3-11eb-89ac-e52494142a3c.png" width="250px"/>
+    </td>
+  </tr>
+</table>
+
+---
+
+# Convert consensus trees to beadplot data
+
+* Collapse tips with mean branch length <0.5.
+  * Use to label internal nodes.
+* Collect collapsed polytomies into variants.
+* Unlabeled internal nodes are unsampled variants.
+
+<img src="/img/tree2beadplot.png" height="200px"/>
+
+---
+
+# Front-end
 
