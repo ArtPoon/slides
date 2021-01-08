@@ -10,7 +10,7 @@ Departments of Pathology & Laboratory Medicine; Computer Science; Applied Mathem
 
 <small><small>
 <br/>
-Slides published at http://slides.filogeneti.ca/html/BIRS2020-Poon.html
+Slides published at http://slides.filogeneti.ca/html/cancogen2020.html
 </small></small>
 
 ---
