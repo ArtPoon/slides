@@ -110,10 +110,8 @@ Upward trend of bioinformatics in high impact journals in medical sciences
 
 ---
 
-<center>
-<iframe src="https://nextstrain.org/ncov/global" width="850px" height="550px">
-</iframe>
-</center>
+# Nextstrain
+![](nextstrain-namer.png)
 
 ---
 
