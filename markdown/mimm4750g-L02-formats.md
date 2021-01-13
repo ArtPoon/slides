@@ -1,4 +1,4 @@
-## GenBank and data formats
+## Data formats
 
 ![](https://imgs.xkcd.com/comics/standards.png)
 
@@ -201,7 +201,7 @@ An article in *The Perl Journal* by [Lincoln Stein](https://oicr.on.ca/investiga
 
 # How Perl saved the Human Genome Project (2)
 
-> Despite the fact that everyone was working on the same problems, no two groups took exactly the same approach. Programs to solve a given problem were written and rewritten multiple times. While a given piece of software wasn't guaranteed to work better than its counterpart developed elsewhere, you could always count on it to sport its own idiosyncratic user interface and data format. 
+> Despite the fact that everyone was working on the same problems, no two groups took exactly the same approach. Programs to solve a given problem were written and rewritten multiple times. While a given piece of software wasn't guaranteed to work better than its counterpart developed elsewhere, you could always count on it to sport its own idiosyncratic user interface and data format.
 
 Lincoln Stein (1996)
 

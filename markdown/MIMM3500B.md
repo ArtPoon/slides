@@ -1,40 +1,15 @@
-# Evolution:
-## Understanding the origin of pathogens
+# MICROIMM 3500B
+## Evolution: Understanding the origin of pathogens
 ### Art Poon
-Department of Pathology & Laboratory Medicine; Microbiology & Immunology; Applied Mathematics
+
+<small><small>
+Departments of Pathology & Laboratory Medicine<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Microbiology & Immunology<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Applied Mathematics<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Computer Science<br/>
+</small></small>
+
 ![](/img/UWO_Logo.svg)
-
----
-
-# Microbes are everywhere
-* Roughly half of the cells in your body are bacteria&ast;
-* Probably about<sup>&dagger;</sup> as many viruses as cells (including bacteriophages)
-* New human viruses are constantly being discovered: *e.g.,* [Torque teno virus](https://en.wikipedia.org/wiki/Transfusion_transmitted_virus), described in 1997, infects about 90% of all people
-
-![](/img/xkcd-viruses.png)
-
-<small>* Sender, Fuchs and Milo (2016) PLOS Biology 14: e1002533<br/>
-<sup>&dagger;</sup> give or take a few orders of magnitude<br/>
-Image by <a href="https://what-if.xkcd.com/80/">Randall Munroe</a>.
-</small>
-
----
-
-# Emerging infectious diseases
-
-<iframe width="900" height="600" src="https://eidr.ecohealthalliance.org/event-map">
-</iframe>
-
----
-
-# Old pathogens
-
-* [*Helicobacter pylori*](https://en.wikipedia.org/wiki/Helicobacter_pylori) in humans dates to roughly 100,000 years ago&ast;
-* [Endogenous retroviruses](https://en.wikipedia.org/wiki/Endogenous_retrovirus) make up ~8% of human genome (exceeds protein-coding gene content!)
-* Origin of the placenta: capture of retrovirus envelope gene to induce formation of giant syncytia<sup>&dagger;</sup>
-
-<small>* Moodley *et al.* (2012) PLOS Pathog 8(5): e1002693<br/>
-&dagger; Mi *et al.* (2000) Nature 403: 785-789.</small>
 
 ---
 
@@ -42,10 +17,32 @@ Image by <a href="https://what-if.xkcd.com/80/">Randall Munroe</a>.
 
 * HIV-1: origin about 1920 in central Africa
 * Zika virus: first isolated 1947 in east Africa
-* Ebola virus: first isolated in 1976; [western Africa outbreak](https://en.wikipedia.org/wiki/Western_African_Ebola_virus_epidemic) in 2014 
-* [Wuhan coronavirus](https://en.wikipedia.org/wiki/Wuhan_coronavirus): *It's happening right now*
+* Ebola virus: first isolated in 1976; [western Africa outbreak](https://en.wikipedia.org/wiki/Western_African_Ebola_virus_epidemic) in 2014
+* SARS-CoV-2: ongoing, first isolated December 2020.
+
 <img width=350px src="https://ichef.bbci.co.uk/news/660/cpsprodpb/1320E/production/_110505387_059086447.jpg"/>
 <small>Image credit: AFP</small>
+
+---
+
+# How to we reconstruct the origin of pathogens?
+
+* Addressing these questions in a data-driven, quantitative framework.
+* We usually don't have samples from the start of an outbreak.
+* Use evolutionary methods to extrapolate from current genetic samples back in time.
+
+---
+
+# Ebola virus outbreak in West Africa
+
+<video data-autoplay data-src="/img/ebola.mp4" type="video/mp4"></video>
+<small><small>Supplementary video, Dudas <i>et al.</i> 2017, Nature 544.</small></small>
+
+---
+
+# Lessons from evolutionary analysis
+
+
 
 ---
 
@@ -57,24 +54,9 @@ Image by <a href="https://what-if.xkcd.com/80/">Randall Munroe</a>.
 * Sustained armed conflict from 1989 to 2004; massive numbers of displaced refugees<sup>&dagger;</sup>
 
 <small>
-\* Pinzon <i>et al.</i> (2004) Am J Trop Med Hyg 71: 664-674.<br/>
-&dagger; Alexander *et al.* (2015) PLOS Neglect Trop Dis 9(6): e0003652
+&ast; Pinzon <i>et al.</i> (2004) Am J Trop Med Hyg 71: 664-674.<br/>
+&dagger; Alexander <i>et al.</i> (2015) PLOS Neglect Trop Dis 9(6): e0003652
 </small>
-
----
-
-# Ebola virus outbreak in West Africa
-
-<video data-autoplay data-src="/img/ebola.mp4" type="video/mp4"></video>
-<small><small>Supplementary video, Dudas <i>et al.</i> 2017, Nature 544.</small></small>
-
----
-
-# Reconstructing the past
-
-* Addressing these questions in a data-driven, quantitative framework.
-* We usually don't have samples from the start of an outbreak.
-* Use evolutionary methods to extrapolate from current genetic samples back in time.
 
 ---
 
