@@ -2,7 +2,6 @@
 
 ![](https://imgs.xkcd.com/comics/standards.png)
 
-
 ---
 
 # Demonstrate a Genbank query

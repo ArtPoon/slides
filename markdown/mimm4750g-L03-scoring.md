@@ -5,18 +5,20 @@
 
 ---
 
-Databases are great but we want to compare homologous sequences
+# Comparing sequences
 
-What is homology?
+<img src="https://upload.wikimedia.org/wikipedia/commons/d/d8/Ortholog_paralog_analog_%28homologs%29.svg" height="300px"/>
+
+* Some sequences are more similar to each other because they are copies of a common ancestor &mdash; they are [homologous](https://en.wikipedia.org/wiki/Sequence_homology).
+* **How do we figure out whether one sequence is homologous to another?**
 
 ---
-
 
 # Dot plots
 
 * A simple visualization tool for comparing two unaligned sequences.
-* Make a table with one sequence along the top, and a second down the left.
-* Fill in cells where both sequences contain the same residue.
+  * Make a table with one sequence along the top, and a second down the left.
+  * Fill in cells where both sequences contain the same residue.
 
 |   | g | a | t | c | g | a | a | c | t | g | g |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -30,23 +32,75 @@ What is homology?
 
 ---
 
+# Interpreting dot plots
+
+<img src="/img/dotplots.svg" height="500px"/>
+
+---
+
 Dot plots revealing genome rearrangements between strains of *Salmonella enterica*.
 
 ![](https://mmbr.asm.org/content/mmbr/68/3/560/F4.large.jpg)
 
 <small><small>
-Image credit: H Br&uuml;ssow <i>et al.</i> 2004, Microbiol Mol Biol Rev, [68(3) 560-602](10.1128/MMBR.68.3.560-602.2004).
+Image credit: H Br&uuml;ssow <i>et al.</i> 2004, Microbiol Mol Biol Rev, [68(3) 560-602](https://mmbr.asm.org/content/68/3/560).
 </small></small>
 
 ---
 
-# What is a score?
+# Other alignment-free methods
 
-* A measure of sequence homology (similarity that implies common ancestry).
+* Nucleotide frequencies (*e.g.*, GC content)
+* k-mer frequencies count the occurrence of "words", `ACG` is a 3-mer
+* GC content is like a 1-mer comparison.
+
+---
+
+# k-mer statistics
+
+* let $\\{\mathcal{A}\\}^k$ be the set of all possible combinations of $k$ letters in alphabet $\mathcal{A}$
+  * for example, $\mathcal{A} = \\{A, C, G, T\\}$
+* for a sequence $S$, we can extract a frequency vector:
+  $$(f(S,k) \\;\forall\\; w \in \\{\mathcal{A}\\}^k)$$
+* For example, we can calculate a squared [Euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance) between sequences:
+  $$d(f(S), f(T)) = \sum_i (f_i(S)-f_i(T))^2$$
+
+---
+
+# Example
+
+* Let $S =$ `TACT`, and $T=$ `CTAG`
+
+|   | AC | AG | CT | TA |
+|---|----|----|----|----|
+| S | 1  | 0  | 1  | 1  |
+| T | 0  | 1  | 1  | 1  |
+
+
+$$\begin{aligned}
+d &= (1\times 0)^2 + (0\times 1)^2 + (1\times 1)^2 + (1\times 1)^2\\\\
+  &= 2
+\end{aligned}$$
+
+
+---
+
+# Pros and cons
+
+* Alignment is difficult!
+
+* Not as sensitive as alignment-based methods.
+* No way of knowing what the most effective value of $k$ is for your data.
+* We lose information about where important mutations are located in the sequences.
+
+---
+
+# Finding homology in aligned sequences
+
 * Sequences do not have to be exactly the same to be closely related.
 * BUT this means that we have to know how some residues are more similar than others!
-* *e.g.,* is glutamic acid (E) closer to cysteine (C) or aspartic acid (D)?
-* A score is a rough estimate of how likely one type of substitution is over another.
+  * *e.g.,* is glutamic acid (E) closer to cysteine (C) or aspartic acid (D)?
+* An **alignment score** is a rough estimate of how likely one type of substitution is over another.
 
 ---
 
@@ -99,7 +153,6 @@ Image credit: H Br&uuml;ssow <i>et al.</i> 2004, Microbiol Mol Biol Rev, [68(3) 
 
 # Log-odds
 
-* Consider an alignment of protein sequences.
 * Frequency of amino acid $a$ is $p_a$.
 * If an aligned pair of AAs $a$ and $b$ are independent, then their probability is $p_a\times p_b$.
 * Ratio of the *observed* probability ($q_{a,b}$) to this expectation is the *odds*.
@@ -116,9 +169,9 @@ Image credit: H Br&uuml;ssow <i>et al.</i> 2004, Microbiol Mol Biol Rev, [68(3) 
 * What is $s_{WW}$ if we set $\lambda = 2.88$?  Round to one decimal place (*i.e.,* `xy.z`).
 * Now do the same for leucine ($q_{\scriptsize L,L}=0.0371$, $p_L=0.099$)
 
-<small>
-Example stolen from SR Eddy (2004), Nature Biotechnol 22(8):1035.
-</small>
+<small><small>
+Example from SR Eddy (2004), Nature Biotechnol 22(8):1035.
+</small></small>
 
 ---
 
@@ -130,3 +183,21 @@ Example stolen from SR Eddy (2004), Nature Biotechnol 22(8):1035.
 * Considered to be comparable to PAM250.
 
 ---
+
+# Nucleotide score matrices
+
+
+
+---
+
+# Position-specific scoring matrices
+
+---
+
+#
+
+---
+
+# Further readings
+
+* [Where did the BLOSUM62 alignment score matrix come from?](https://www.nature.com/articles/nbt0804-1035)
