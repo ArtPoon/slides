@@ -87,7 +87,7 @@ d &= (1\times 0)^2 + (0\times 1)^2 + (1\times 1)^2 + (1\times 1)^2\\\\
 
 # Pros and cons
 
-* Alignment is difficult!
+* Alignment-free methods are relatively simple and efficient &mdash; avoid the difficult task of aligning sequences.
 
 * Not as sensitive as alignment-based methods.
 * No way of knowing what the most effective value of $k$ is for your data.
@@ -104,12 +104,23 @@ d &= (1\times 0)^2 + (0\times 1)^2 + (1\times 1)^2 + (1\times 1)^2\\\\
 
 ---
 
+# Amino acid properties reflect homology
+
+Training an AI language model on protein sequences reveals clustering by biochemical properties.
+<img src="https://www.biorxiv.org/content/biorxiv/early/2020/12/15/622803/F1.large.jpg" height="300px"/>
+
+<small><small>
+Image credit: A Rives <i>et al.</i> (2020) Biological structure and function emerge from scaling unsupervised learning to 250 million protein sequence. <i>bioRxiv</i>, https://doi.org/10.1101/622803
+</small></small>
+
+---
+
 # Calculating scores
 
 * [Dayhoff](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5037978/) pioneered the concept of quantifying amino acid substitution rates from the comparative analysis of protein sequences.
 * Dayhoff *et al.* (1978) mapped 1,572 AA substitutions to trees relating protein sequences in the *Atlas* with <15% divergence.
 
-|       |  A  | R  | N   | D   |C  |Q   |
+|       |  A  | R  | N   | D   | C | Q  |
 |-------|-----|----|-----|-----|---|----|
 | A Ala |     |    |     |     |   |    |
 | R Arg | 30  |    |     |     |   |    |
@@ -179,25 +190,37 @@ Example from SR Eddy (2004), Nature Biotechnol 22(8):1035.
 
 * Like PAM, there are several BLOSUM matrices for different levels of evolutionary divergence.
 * Unlike PAM, each BLOSUM matrix is derived from its own alignment, rather than being extrapolated from one data-derived matrix.
-* BLOSUM62 derived from an alignment of protein segments of <62% identity
+* BLOSUM62 derived from a "trusted" alignment of protein segments of <62% identity
 * Considered to be comparable to PAM250.
 
 ---
 
 # Nucleotide score matrices
 
+* Protein sequencing was achieved before nucleotide sequencing &mdash; for decades, most biological sequences were amino acid based.
+* Protein sequences are more conserved over time.
+* Score matrices also exist for nucleotides: *e.g.*, default matrix for `BLASTN`:
 
+$$
+\begin{pmatrix}
+2 & -3 & -3 & -3\\\\
+-3 & 2 & -3 & -3\\\\
+-3 & -3 & 2 & -3\\\\
+-3 & -3 & -3 & 2\\\\
+\end{pmatrix}
+$$
 
 ---
 
-# Position-specific scoring matrices
+# Applications
 
----
-
-#
+* BLOSUM matrices are used to score BLAST alignments (blastp), identify homologous sequences.
+* BLOSUM62 is used by default.  You can select from multiple PAM and BLOSUM matrices.
+* [Next lecture](), we will talk about how BLAST works and how we should interpret its results.
 
 ---
 
 # Further readings
 
 * [Where did the BLOSUM62 alignment score matrix come from?](https://www.nature.com/articles/nbt0804-1035)
+* [BLAST Command Line Applications User Manual](https://www.ncbi.nlm.nih.gov/books/NBK279684/)
