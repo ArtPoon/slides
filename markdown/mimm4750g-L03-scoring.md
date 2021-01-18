@@ -82,6 +82,25 @@ d &= (1\times 0)^2 + (0\times 1)^2 + (1\times 1)^2 + (1\times 1)^2\\\\
   &= 2
 \end{aligned}$$
 
+---
+
+# Another example
+
+<img src="https://media.springernature.com/full/springer-static/image/art%3A10.1186%2Fs13059-017-1319-7/MediaObjects/13059_2017_1319_Fig1_HTML.gif" height="500px"/>
+
+<small><small>
+Image credit: A Zielezinski <i>et al.</i> 2017, [Alignment-free sequence comparison: benefits, applications, and tools]((https://genomebiology.biomedcentral.com/articles/10.1186/s13059-017-1319-7)).  <i>Genome Biol</i> 18:186.
+</small></small>
+
+---
+
+There are many alignment-free methods, mostly k-mer based
+
+<img src="/img/alignment-free.png" height="500px"/>
+
+<small><small>
+Image credit: A Zielezinski <i>et al.</i> 2019, [Benchmarking of alignment-free sequence comparison methods](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1755-7). <i>Genome Biol</i> 20:144.
+</small></small>
 
 ---
 
