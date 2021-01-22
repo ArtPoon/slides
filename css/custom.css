@@ -138,7 +138,8 @@ body {
   }
 
 .reveal ul ul {
-  list-style-type: square; }
+  list-style-type: square; 
+}
 
 .reveal ul ul ul {
   list-style-type: circle; }

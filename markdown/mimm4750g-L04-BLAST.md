@@ -18,7 +18,7 @@
 # BLAST
 
 * Basic Local Alignment Search Tool
-* Developed by Stephen Altschul, Walter Gish and David Lipman at the NCBI.
+* Developed by Stephen Altschul, Warren Gish and David Lipman at the NCBI.
 * Local similarity = search for conserved intervals.
 * This requires some way to measure the similarity of unaligned  sequences.
 

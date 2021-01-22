@@ -2,14 +2,12 @@
 ## Evolution: Understanding the origin of pathogens
 ### Art Poon
 
-<small><small>
 Departments of Pathology & Laboratory Medicine<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Microbiology & Immunology<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Applied Mathematics<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Computer Science<br/>
-</small></small>
 
-![](/img/UWO_Logo.svg)
+<img src="/img/UWO_Logo.svg" height="100px"/>
 
 ---
 
@@ -33,20 +31,7 @@ Departments of Pathology & Laboratory Medicine<br/>
 
 ---
 
-# Ebola virus outbreak in West Africa
-
-<video data-autoplay data-src="/img/ebola.mp4" type="video/mp4"></video>
-<small><small>Supplementary video, Dudas <i>et al.</i> 2017, Nature 544.</small></small>
-
----
-
-# Lessons from evolutionary analysis
-
-
-
----
-
-# What drove the 2014 Ebola outbreak?
+# What could have driven the 2014 Ebola outbreak?
 
 * Past outbreaks associated with unusually dry conditions following the rainy season*
 * Close contact with potential host species (fruit bats), bushmeat; environmental disruption from development.
@@ -57,6 +42,34 @@ Departments of Pathology & Laboratory Medicine<br/>
 &ast; Pinzon <i>et al.</i> (2004) Am J Trop Med Hyg 71: 664-674.<br/>
 &dagger; Alexander <i>et al.</i> (2015) PLOS Neglect Trop Dis 9(6): e0003652
 </small>
+
+---
+
+# Phylogenetic reconstruction of EBOV outbreak
+
+<video data-autoplay data-src="/img/ebola.mp4" type="video/mp4"></video>
+<small><small>Supplementary video, Dudas <i>et al.</i> 2017, Nature 544.</small></small>
+
+---
+
+# Factors that spread and sustained EBOV epidemic
+
+<table>
+<tr>
+<td width="60%">
+<ul>
+  <li>Only 5% of virus dispersals involved movement over 232 km.</li>
+  <li>Strongly associated with population size - urbanization.</li>
+  <li>No association with any of 17 vernacular languages (cultural links).</li>
+  <li>Regions with more rainfall tended to have larger outbreaks.</li>
+</ul>
+</td>
+<td>
+  <img src="https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fnature22040/MediaObjects/41586_2017_Article_BFnature22040_Fig7_ESM.jpg" width="350px"/>
+  <small><small>Dudas <i>et al.</i> 2017, Nature 544.</small></small>
+</td>
+</tr>
+</table>
 
 ---
 
@@ -74,16 +87,17 @@ Departments of Pathology & Laboratory Medicine<br/>
 
 <table>
 <tr>
-
-<td width="60%"><ul>
-<li>Live-attenuated polio vaccine cultured in non-human primate cells</li>
-<li>In 1992, <i>Rolling Stone</i> magazine published a story alleging that contaminated OPV was responsible for spreading HIV-1</li>
-<li>Since thoroughly refuted by experimental and phylogenetic analysis.</li>
-<li>Allegations disrupted vaccination campaigns, failure to eliminate polio</li>
-</ul></td>
-
-<td><img src="/img/OPV.png" width=250px/></td>
-
+<td width="60%">
+<ul>
+  <li>Live-attenuated polio vaccine cultured in non-human primate cells</li>
+  <li>In 1992, <i>Rolling Stone</i> magazine published a story alleging that contaminated OPV was responsible for spreading HIV-1</li>
+  <li>Since thoroughly refuted by experimental and phylogenetic analysis.</li>
+  <li>Allegations disrupted vaccination campaigns, failure to eliminate polio</li>
+</ul>
+</td>
+<td>
+  <img src="/img/OPV.png" width=250px/>
+</td>
 </tr>
 </table>
 
@@ -169,3 +183,19 @@ Departments of Pathology & Laboratory Medicine<br/>
 <img src="/img/marginalized.png" width="650px"/>
 
 <small>Figure from Edlin (2011) Nature 474: 518-519.</small>
+
+---
+
+# Rapid determination of SARS-CoV-2 origin
+
+<img src="/img/sarscov2-origin.jpg" height="500px"/>
+
+<small><small>
+Image credit: R Lu <i>et al.</i> (Feb 2020).  Genomic characterisation and epidemiology of 2019 novel coronavirus: implications for virus origins and receptor binding.  Lancet 395: 565-574.
+</small></small>
+
+---
+
+# Nextstrain: Real-time tracking of the pandemic
+
+<img src="/img/nextstrain-namer.png" height="500px"/>
