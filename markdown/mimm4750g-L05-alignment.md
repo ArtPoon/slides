@@ -233,30 +233,8 @@ Aligned HCV sequences
 # Manually editing your alignment
 
 * **Always look at your data!**
-* There are [several programs](https://en.wikipedia.org/wiki/List_of_alignment_visualization_software) available to visually inspect and manually edit a sequence alignment.
-* [AliView](http://www.ormbunkar.se/aliview/)
-* [SeaView](http://doua.prabi.fr/software/seaview)
-
----
-
-# Demonstration on HIV dataset
-
-```
-art@Kestrel:~/Desktop$ head HIV-1-brazil.fa
->MK327370.1 HIV-1 isolate HIV-1_BR_0149PR from Brazil envelope glycoprotein (env) gene, partial cds
-GTAGTAATTAGATCTGCCAATTTCACAAACAATGCTAAAGTCATAATAGTACAGCTGAATGAATCTGTAG
-AAATTAATTGTACAAGACCCAACAACAATACAAGAAAAAGTATACATATAGGACCAGGGAGAGCATTTTA
-TGCAACAGACATAATAGGAGATATAAGACAAGCACATTGTAACATCAGTGAAGCAAAATGGAATAACACT
-TTAAAGCAGGTAGTTAGAAAATTAAGAGAACAATTTAAGAATACAACAATAGTCTTTGATCAATCCTCAG
-GAGGGGATCCAGAAATTGTAATGCACAGTTTTAATTGTGGAGGAGAGTTCTTTTACTGTAATACAACAAA
-ATTGTTTAATAGTACTTGGAATACTACAGGAAATTTCACTAAAGGGGCAGATCACAATGGCACAATCATA
-CTCCCATGCAGAATAAAACAAATTATAAACATGTGGCAGGAAGTAGGAAAAGCAATGTATGCCCCTCCCA
-TCCAAGGACAAATTAACTGTACATCAAATATTACAGGGCTGTTATTAACAAGAGATGGTGGTAATAACAG
-TAGTAGTAATGAAACCTTCAGA
-art@Kestrel:~/Desktop$ mafft HIV-1-brazil.fa > aligned.fa
-
-nseq =  148
-distance =  ktuples
-iterate =  0
-```
+* There are [several programs](https://en.wikipedia.org/wiki/List_of_alignment_visualization_software) available to visually inspect and manually edit a sequence alignment:
+  * [AliView](http://www.ormbunkar.se/aliview/) - Java-based, open source
+  * [SeaView](http://doua.prabi.fr/software/seaview) - older, open source, binaries for all platforms
+  * [MSAViewer](http://msa.biojs.net/app/) - JavaScript (BioJS), online, open source
 
