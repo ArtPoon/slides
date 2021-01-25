@@ -21,12 +21,24 @@ Sbjct  95   CTRPNNTRKS--ITIGPGRASYATGGIIGQAHC  125
 
 ---
 
+Unaligned HCV sequences
+
+![](/img/unaligned-hcv.png)
+
+---
+
+Aligned HCV sequences
+
+![](/img/aligned-hcv.png)
+
+---
+
 # Gap characters
 
 * The presence of an insertion or deletion is indicated by a gap character.
 * By convention, we use a single dash "&ndash;" for each indel.
 * Some programs use non-standard characters like "`.`", "`~`" or "`X`".
-* Without additional information, we cannot tell whether a gap is the result of an insertion in the longer sequence or a deletion in the shorter. 
+* Without additional information, we cannot tell whether a gap is the result of an insertion in the longer sequence or a deletion in the shorter.
 * Hence we use the [portmanteau](https://en.wiktionary.org/wiki/portmanteau) *indel* (insertion/deletion).
 
 ---
@@ -93,12 +105,12 @@ Sbjct  95   CTRPNNTRKS--ITIGPGRASYATGGIIGQAHC  125
 
 * Terminal gaps are a contiguous run of gaps on either extreme left or right of a pairwise alignment.
 * Also known as "leading" and "trailing" gaps.
-  
+
   ```
   ACTGATC   ACTGATC
   ---GATC   ACTG---
   ```
-  
+
 * We might not want to penalize these when aligning partial (incomplete) sequences.
 
 ---
@@ -230,7 +242,7 @@ Sbjct  95   CTRPNNTRKS--ITIGPGRASYATGGIIGQAHC  125
 # Demonstration on HIV dataset
 
 ```
-art@Kestrel:~/Desktop$ head HIV-1-brazil.fa 
+art@Kestrel:~/Desktop$ head HIV-1-brazil.fa
 >MK327370.1 HIV-1 isolate HIV-1_BR_0149PR from Brazil envelope glycoprotein (env) gene, partial cds
 GTAGTAATTAGATCTGCCAATTTCACAAACAATGCTAAAGTCATAATAGTACAGCTGAATGAATCTGTAG
 AAATTAATTGTACAAGACCCAACAACAATACAAGAAAAAGTATACATATAGGACCAGGGAGAGCATTTTA
