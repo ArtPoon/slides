@@ -61,23 +61,6 @@ Image credit: P Miyazato <i>et al.</i> (2016) <a href="https://doi.org/10.1038/s
 
 ---
 
-# Quality control
-
-* Are the assembly contigs reliable?
-* N50: when contigs are sorted by length, N50 is the length of the contig at which we reach 50% of assembled nucleotides.
-
-Sort contigs by lengths in decreasing order:
-![](https://i1.wp.com/www.molecularecologist.com/wp-content/uploads/2017/03/Figure1a.jpg?w=699&ssl=1)
-
-Locate midpoint along concatenated array of contigs (N50=60):
-![](https://i0.wp.com/www.molecularecologist.com/wp-content/uploads/2017/03/Figure1b.jpg?w=699&ssl=1)
-
-<small>
-Image credit: E Videvall <i>et al.</i> https://www.molecularecologist.com/2017/03/whats-n50/
-</small>
-
----
-
 # NGS data processing (before assembly)
 
 * Host subtraction: comparison of reads associated with host genomes, organelles.
