@@ -263,3 +263,4 @@ Image credit: JL Gardy and NJ Loman (2018) <a href="https://doi.org/10.1038/nrg.
 * [A highly abundant bacteriophage discovered in the unknown sequences of human faecal metagenomes](https://www.nature.com/articles/ncomms5498)
 * [The Perils of Pathogen Discovery: Origin of a Novel Parvovirus-Like Hybrid Genome Traced to Nucleic Acid Extraction Spin Columns](https://jvi.asm.org/content/87/22/11966.short)
 * [Growing Unculturable Bacteria](https://jb.asm.org/content/194/16/4151)
+* [Minimum Information about an Uncultivated Virus Genome (MIUViG)](https://www.nature.com/articles/nbt.4306?report=reader)

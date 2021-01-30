@@ -6,15 +6,6 @@
 
 ---
 
-# Now you have data
-
-* Congratulations!  You have several hundred gigabytes of data.
-* Before you start to learn how to *analyze* the data, you need to check if it is any good.
-* Quality control is a necessary and tedious step of NGS analysis.
-* We will focus on [Illumina sequencing](https://www.illumina.com/) - there are many other platforms but right now Illumina is fairly popular.
-
----
-
 # Demultiplexing
 
 * One of the first steps in processing raw NGS outputs
@@ -255,6 +246,86 @@ art@Kestrel:~$ bowtie2 -x adapted -1 Zika-envelope.n1E4.R1.fastq.gz -2 Zika-enve
         0 (0.00%) aligned >1 times
 99.10% overall alignment rate
 ```
+
+---
+
+
+# SAM format
+
+* The SAM (Sequence Alignment/Map) format has become a standard output format for programs that align NGS reads to reference genomes.
+* It is a tabular, tab-separated data format.
+* Comments at top of file prefixed with `@`
+
+```
+@HD	VN:1.0	SO:unsorted
+@SQ	SN:chr7	LN:159138663
+@PG	ID:bowtie2	PN:bowtie2	VN:2.2.8	CL:"/usr/local/bin/bowtie2-align-s --wrapper basic-0 -x chr7 -S SRR5261740.trunc.sam --local -U SRR5261740.trunc.fastq"
+SRR5261740.1	16	chr7	142247517	2	168S96M31S	*	0	0	TTCTCCACCTTGGAGATCCAGCGCACAGAGCAGGGGGACTCGGCCATGTATCTCTGTGCCAGCACCACAGTCGCTCCTGAAAAACTGTTTTTTGGCAGTGGAACCCAGCTCTCTGTCTTGGAGGACCTGAACAACGTGTTCCCCGGGAGACTCCAGTATCTGCGTGATCTGCCCCCAGGAGACACAGGGCCATCCAGCAGAGGAGGCTGGTGCCCATGGCAGGGTCAGGGCAGGATGGGAGCTTTACCAGATCAGGGTCACTGTCCCCATGTACTCTGCGTTGATACCACTGCTT	GHHHGHHGHGHHHHHHHGGGGGHHHHHHHHEGGHHHHGGGGHHHHHHHHHHHFHHHHGGHHHGHHHHGGGGGGGHHHGHGHHHHHHGFHHHHHHHHHHHHHGHGHHHGGHHHHHHHHHHHHHHFHHHGGGGGGGGGGBBBBBBAHHHHHHHHHHHHHHGGGHGHHHHGGGGGGGHHHHHHHHHHHHHHGGHHHHHHHHHHHHHHGHHHGGHHHHHHHHHHHHHHHHHHHHHHHHHHGHHHHHGHHHHHHHHGHHHGHHHHGGGGGHHHHHHHHGGGGGGGGGGFFFBFFFBBBBB	AS:i:143	XS:i:136	XN:i:0	XM:i:7	XO:i:0	XG:i:0	NM:i:7	MD:Z:13G8T0G0C12C12A3A41	YT:Z:UU
+SRR5261740.2	0	chr7	142493746	0	31S103M163S	*	0	0	AAGCAGTGGTATCAACGCAGAGTACATGGGGGGAGAGGGGTGGGTACTGGAGAAGACCAGCCCCTTCGCCAAACAGCCTTACAAAGACATCCAGCTCTAAGGAGCTCAAAACATCCTGAGGACAGTGCCTGGAGAGGACCTGAACAAGGTGGGGAACACCTTGTTCAGGTCCTCTCCAGGCACTGTCCTCAGGATGTTTTGAGCTCCTTAGAGCTGGATGTCTTTGTAAGGCTGTTTGGCGAAGGGGCTGGTCTTCTCCAGTACCCACCCCTCTCCCCCCATGTACTCTGCGTTGAT	CCCCCFFFFFFFGGGGGGGGGGHHHHHHHHGGGGGGGGGGGGGGGHHHHHHHHHHHHHHHHGGGHHHHGGGGHHHHHHHHHHHHGHHHHHHHHHHHHHHHHHGHHHHHHHHHGGGGGGGGGGGGGFGGGGGGGGGGGGGGGFFFFFFFF;BCCCCFCFGGGGGGGGGGGHHGHHHHHHHHHHHHHHHHHGHHHHHHHHHHHGGHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHGHGGGGGGGGGGGHHHHHHHHHHHHHHHHGGGGGGHHHHGGGGHHHHHHHHHGGGGGHH	AS:i:206	XS:i:206	XN:i:0	XM:i:0	XO:i:0	XG:i:0	NM:i:0	MD:Z:103	YT:Z:UU
+SRR5261740.3	0	chr7	142493746	0	176S103M17S	*	0	0	GGGGAACACCTTGTTCAGGTCCTCTCCAGGCACTGTCCTCAGGATGTTTTGAGCTCCTTAGAGCTGGATGTCTTTGTAAGGCTGTTTGGCGAAGGGGCTGGTCTTCTCCAGTACCCACCCCTCTCCCCCCATGTACTCTGCGTTGAAGCAGTGGTATCAACGCAGAGTACATGGGGGGAGAGGGGTGGGTACTGGAGAAGACCAGCCCCTTCGCCAAACAGCCTTACAAAGACATCCAGCTCTAAGGAGCTCAAAACATCCTGAGGACAGTGCCTGGAGAGGACCTGAACAAGGTG	BBBBBBBGGEGGGGGGGHFGGHFHHHHHGGHHHFHGHHHHEHHFHHHHGHHGFGHHHHHHHGHEBGGGGGAEGHHFHHHGHHHHHHHHGHGGGGFGEFEEDGHGHHFBHHFFFGHHGGGGGGDHHHHGGGGHHHDBFFFGBCDGCCCCCCFFFFFFFGGGGGGGGCGHHHHHHHHGGGGGGFGGGGGGGFHHHHHHHHHEHHHHGGGGGHHHHGGGGFHHHHGHHHHHGFHGHHHHHHHHHGHHHGGGHHHFHHBGGGGGGGGGGGGEGGGGGGGGGGGGGGF?EFFFFFFFFF:B	AS:i:206	XS:i:206	XN:i:0	XM:i:0	XO:i:0	XG:i:0	NM:i:0	MD:Z:103	YT:Z:UU
+SRR5261740.4	16	chr7	142247517	2	24S96M173S	*	0	0	GGGAGACTCCAGCACCTGTGTGATCTGCCCCCAGGAGGCACAGGGCTGCCCAGCAGAGGAGCCTGGTGCCCATGACAGAGTCAGGGCAGGATGGGAGCTTTACCAGATCAGGGTCACTGTCCCATGTACTCTGCGTTGATACCACTGCTTACTCTGAAGATCCAGCGCACAGAGCGGGGGGACTCAGCCGTGTATCTCTGTGCCAGCAGCCCCACGGGGACTAGCTACAATGAGCAGTTCTTCGGGCCAGGGACACGGCTCACCGTGCTCGAGGACCTGAAAAAGGTGTTCCC	HHHHGGFHBHHGG@/GGHHGHHHGGCEEEAHHHEHHHHHHFHGHEGHEGHHGHHHHHGHHHGHHEGFHGHHHHHHFHHGHFEHHHHHHHHGHGHHHFFHHHHHHHHHHHHHHHHFFCGHHHHHGFHEFGGEEAEFGGGFFFBCFC1AA1AGFHGHHHHHHAGGGGGGHHHHGFGGGGHHHHHHHGGGGGHHHHHHHHHHHHGGHHGGGGGGGGGGGHHHHHHHHHHHHHHHHHHHHHGGGGGGHHHHHHHHHHGGGGGFGGGGGHGGGGGFHHHHHGGGGGFGGGGFBFBCCC	AS:i:192	XS:i:143	XN:i:0	XM:i:0	XO:i:0	XG:i:0	NM:i:0	MD:Z:96	YT:Z:UU
+```
+
+---
+
+# SAM format
+
+
+* Each line in a SAM corresponds to a read and contains the following information:
+
+| # | Name  | Description          | #  | Name  | Description          |
+|---|-------|----------------------|----|-------|----------------------|
+| 1 | QNAME | Read label           | 7  | RNEXT | Ref. seq. of mate    |
+| 2 | FLAG  | Bitwise flags        | 8  | PNEXT | Map location of 1st  |
+| 3 | RNAME | Reference seq.       |    |       | base in mate         |
+| 4 | POS   | Map location of 1st  | 9  | TLEN  | Insertion length     |
+|   |       | base in read         | 10 | SEQ   | Read sequence        |
+| 5 | MAPQ  | Mapping quality      | 11 | QUAL  | Read quality string  |
+| 6 | CIGAR | Compact idiosyncratic    |    |       |                  |
+|   |       | gapped alignment report  |    |       |                  |
+
+---
+
+# Bitwise flags
+
+* A decimal number is a compact way to store a series of bits.
+* The decimal number `99` maps to the binary number `000001100011`.
+
+| Bit | Description | Bit | Description |
+|-----|-------------|-----|-------------|
+| 1   | read is paired | 64  | first in pair |
+| 2   | read is mapped in a proper pair | 128 | second in pair |
+| 4   | read is not mapped | 256 | not primary alignment |
+| 8   | mate is not mapped | 512 | read fails platform quality checks |
+| 16  | read is reverse strand | 1024 | read is PCR/optical duplicate |
+| 32  | mate is reverse strand | 2048 | supplementary alignment |
+
+> Q3. Decode the flag 99 into four positive states.
+
+---
+
+# CIGAR
+
+* Compact Idiosyncratic Gapped Alignment Report
+* A string representation of how the read aligns to the reference
+
+| Token | Description |
+|-------|-------------|
+| M     | Matched     |
+| I     | Insertion   |
+| D     | Deletion    |
+| S     | Soft clip   |
+
+* For example, `5S45M3I89M1S` means a 5nt soft clip, 45nt match, 3nt insertion, 89nt match, and 1nt soft clip.
+
+---
+
+# BAM
+
+* A BAM (Binary Alignment Map) file is just a SAM file that's been compressed into a binary encoded file (not a plain text file)
+  * File size reduced to about 30% of the original ([source](https://academic.oup.com/bioinformatics/article/32/24/3709/2525655))
+  * By default, the reads are stored in the same order as they appear in the SAM (as they come off the machine).
+* Some programs require the SAM or BAM file to be sorted with respect to their position on the reference genome.
 
 ---
 

@@ -1,15 +1,15 @@
 # MIMM4750G
-## Next-generation sequence analysis
+## Short-read mapping
 ![](https://imgs.xkcd.com/comics/dna.png)
 
 ---
 
-# What is NGS?
+# Next-generation sequencing (NGS)
 
-* A catch-all term for specialized technology for performing genetic sequencing reactions on a very large scale.
+* NGS is a catch-all term for technology that performs sequencing reactions on a very large scale.
 * NGS platforms generate gigabytes or [terabytes](https://en.wikipedia.org/wiki/Terabyte) of sequence data in a day.
   * An [Illumina NovaSeq 6000](https://www.illumina.com/systems/sequencing-platforms/novaseq/specifications.html) system can produce 6TB in one run.
-* The field of bioinformatics grew largely from the need to make sense of these data.
+* Recent growth in bioinformatics has largely been driven by the need to process and analyze NGS data.
 
 ---
 
@@ -18,9 +18,9 @@
 * Whole-genome sequencing
 * Exome sequencing
 * CHiP-seq
-* **Deep sequencing**
+* Deep sequencing (resequencing)
 * RNA sequencing (RNA-seq)
-* **Metagenomics**
+* Metagenomics
 
 ---
 
