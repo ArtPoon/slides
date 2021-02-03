@@ -7,12 +7,12 @@
 # Emerging infectious diseases
 
 * An infectious disease that:
-  1. has recently appeared in a host population for the first time, *e.g.*, SARS-CoV
-  2. was previously limited to isolated, sporadic cases, *e.g.*, HIV-1, Ebola virus
-  3. was only recently been recognized as an infectious disease, *e.g.*, Lyme disease.
+  1. has recently appeared in a host population for the first time, *e.g.*, [SARS-CoV](https://en.wikipedia.org/wiki/Severe_acute_respiratory_syndrome_coronavirus)
+  2. was previously limited to isolated, sporadic cases, *e.g.*, [HIV-1](https://en.wikipedia.org/wiki/History_of_HIV/AIDS), [Ebola virus](https://en.wikipedia.org/wiki/Ebolavirus)
+  3. was only recently been recognized as an infectious disease, *e.g.*, [Lyme disease](https://en.wikipedia.org/wiki/Borrelia).
 
 * **Re-emerging infectious disease:** a pathogen that had declined dramatically, but has again become a significant public health problem.
-  * *e.g.*, measles virus.
+  * *e.g.*, [measles virus](https://en.wikipedia.org/wiki/Measles_morbillivirus).
 
 ---
 
@@ -20,7 +20,7 @@
 
 <table>
   <tr>
-    <td style="font-size: 22pt">
+    <td style="font-size: 20pt">
       <ul>
         <li><i>de novo</i> assembly of NGS data can potentially reconstruct the genome of a completely unknown pathogen.</li>
         <li>Can identify novel pathogen in cases of idiopathic disease.</li>
@@ -33,105 +33,121 @@
   </tr>
 </table>
 
-<small>
+<small><small>
 Image credit: GM Daly <i>et al.</i> (2015) <a href="https://doi.org/10.1371/journal.pone.0129059">PLOS ONE 10: e0129059</a>.
-</small>
+</small></small>
 
 ---
 
 # Sample preparation
 
 * Pathogen enrichment or host depletion
-* Filtration: isolate cell-free bacteria or viruses from host cells
-* Enzymatic degradation: methylation-specific DNAse, rRNA depletion
-* Biotinylated probe enrichment: capture viral genome fragments by targeting conserved regions.
-<img src="/img/41598_2016_Article_BFsrep28324_Fig1_HTML.png"/>
-<small>
+  * Filtration: isolate cell-free bacteria or viruses from host cells
+  * Enzymatic degradation: [methylation](https://en.wikipedia.org/wiki/DNA_methylation)-specific DNAse, rRNA depletion
+  * [Biotinylated](https://en.wikipedia.org/wiki/Biotinylation) probe enrichment: capture viral genome fragments by targeting conserved regions.
+
+<img src="/img/41598_2016_Article_BFsrep28324_Fig1_HTML.png" height="150px"/>
+
+<small><small>
 Image credit: P Miyazato <i>et al.</i> (2016) <a href="https://doi.org/10.1038/srep28324">Sci Rep 6: 28324</a>.
-</small>
+</small></small>
 
 ---
 
 # Amplification for discovery
 
-* <a href="https://en.wikipedia.org/wiki/Primer_(molecular_biology)#Degenerate_primers">Degenerate primers</a>: different bases at some positions to accommodate variation among species.
-* [Random primers](https://en.wikipedia.org/wiki/Random_hexamer): random hexamers for "universal" amplification.
-* [Rolling circle amplification](https://en.wikipedia.org/wiki/Rolling_circle_replication#Rolling_circle_amplification): circularization of template by ligation, followed by recurring elongation.
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Rolling_circle_amplification_mechanism.jpg/800px-Rolling_circle_amplification_mechanism.jpg" width="550px"/>
+* How do you amplify what you don't know?
+  * <a href="https://en.wikipedia.org/wiki/Primer_(molecular_biology)#Degenerate_primers">Degenerate primers</a>: different bases at some positions to accommodate variation among species.
+  * [Random primers](https://en.wikipedia.org/wiki/Random_hexamer): random hexamers for "universal" amplification.
+  * [Rolling circle amplification](https://en.wikipedia.org/wiki/Rolling_circle_replication#Rolling_circle_amplification): circularization of template by ligation, followed by recurring elongation.
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Rolling_circle_amplification_mechanism.jpg/800px-Rolling_circle_amplification_mechanism.jpg" width="500px"/>
+
+<small><small>
+[Creative Commons CC-BY-SA 4.0](https://commons.wikimedia.org/wiki/File:Rolling_circle_amplification_mechanism.jpg)
+</small></small>
 
 ---
 
 # NGS data processing (before assembly)
 
-* Host subtraction: comparison of reads associated with host genomes, organelles.
+* [Host subtraction](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0129059): comparison of reads associated with host genomes, organelles.
   * short read mapping, *e.g.*, BWA or Bowtie
   * k-mer filtering, *e.g.*, [Kontaminant](https://www.earlham.ac.uk/kontaminant) maps k-mers in reads against an k-mer index of reference genomes.
 
-* Low complexity filtering: the [DUST]() algorithm counts 3-mer frequencies in 64nt windows:
+* [Low complexity filtering](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0028819) reduces false positive matches
+  * [DUST](https://pubmed.ncbi.nlm.nih.gov/16796549/) algorithm counts 3-mer frequencies in 64nt windows:
+
 ```
 ACCTGCACATTGTGCACATGTACCCTAAAACTTAAAGTATAATAATAATAAAATTAaaaa
 cttaaagtataataataataaaattaaaaaaaaatGCTACAGTATGACCCCACTCCTGG
 ```
 
-<small>
+<small><small>
 Example from A Morgulis <i>et al.</i> (2006) <a href="https://doi.org/10.1089/cmb.2006.13.1028">J Comp Biol 13: 1028</a>.
-</small>
+</small></small>
 
 ---
 
 # Predicted reading frames
 
-* What makes an open reading frame?
+* Now you have a putative genome &mdash; it should encode at least one gene.
+* What makes an [open reading frame](https://en.wikipedia.org/wiki/Open_reading_frame) (ORF)?
   * Translation initiation codon (`ATG`, `GTG` or `TTG`)
   * [Ribosome binding sites](https://en.wikipedia.org/wiki/Ribosome-binding_site): *e.g.*, prokaryotic Shine-Delgarno sequence `AGGAGG` about 8nt upstream of start codon.
-* GC-rich bacterial genomes are biased to have more potential start codons than stop codons.
+* An ORF may be interspersed with non-coding sequence (introns) between exons.
 
 ---
 
 # ORF prediction
 
-* [Glimmer](http://www.cs.jhu.edu/~genomics/Glimmer/) (Gene Locator and Interpolated Markov ModelER) predicts if sequence composition is consistent with a coding region.
-* Trains a higher-order [Markov model](https://en.wikipedia.org/wiki/Markov_chain#Types_of_Markov_chains) where nucleotide at position $i$ depends on a subset of upstream nucleotides.
-* This subset is determined by [mutual information](https://en.wikipedia.org/wiki/Mutual_information) between upstream bases and the current base:
-
-$$I(X,Y) = \sum_i \sum_j P(x_i, y_j) \log\left(\frac{P(x_i)P(y_j)}{P(x_i, y_j)}\right)$$
+* Can the computer classify a sequence into coding and non-coding regions?
+* Important application of machine learning methods:
+  * [Hidden Markov models](https://en.wikipedia.org/wiki/Hidden_Markov_model) - probability of "emitting" certain nucleotide depends on unobserved state (*e.g.*, in exon); trained on known ORFs
+  * [Neural networks](https://en.wikipedia.org/wiki/Artificial_neural_network) - tend to focus on [splice site](http://science.umd.edu/labs/mount/RNAinfo/consensus.html) motifs
 
 ---
 
-# Homology
+# ORF prediction by homology search
 
 * One could simply [BLAST](http://slides.filogeneti.ca/html/mimm4750g-L04-BLAST.html#/4) a stretch of nucleotide sequence to look for similarity to known coding regions.
-* AGenDA (Alignment-based Gene-Detection Algorithm) aligns pairs of genomes and searches for "conserved splicing signals and start/stop codons around regions of local sequence similarity".
+  * For example, [GeMoMa](http://www.jstacs.de/index.php/GeMoMa) (Gene Model Mapper) BLASTs amino acid sequence from one genome against known proteins of a reference species.
+
+<img src="http://www.jstacs.de/images/9/94/GeMoMa-schema.png" height="250px"/>
 
 ---
 
-# Purifying selection
+# ORF prediction from other methods
 
 * A protein-coding sequence that confers some useful function should be mostly under purifying selection.
-* Non-synonymous substitutions should be less frequent than synonymous substitutions ([dN/dS](http://slides.filogeneti.ca/html/mimm4750g-L11-selection.html#/6)<1).
-* Limitation is that you need multiple divergent copies of potential gene.
+  * Non-synonymous substitutions should be less frequent than synonymous substitutions.
+  * Limitation is that you need multiple divergent copies of potential gene.
+* Direct sequencing of RNA transcripts ([RNA-Seq](https://en.wikipedia.org/wiki/RNA-Seq)) can provide more unambiguous evidence of open reading frames.
 
 ---
 
 # Microbial dark matter
 
-* The vast majority of bacteria and archaea are unculturable.
-![](/img/nature12352.f1.png)
-<small>
+* The vast majority of bacteria and archaea are unculturable (known phyla in grey).
+
+<img src="/img/nature12352.f1.png" height="400px"/>
+
+<small><small>
 Image credit: C Rinke <i>et al.</i> (2013) <a href="https://doi.org/10.1038/nature12352"/>Nature 499: 431</a>.
-</small>
+</small></small>
 
 ---
 
 # Data dredging
 
 * Unmapped reads that were discarded from studies focusing on host genomes, such as human oncology studies, may contain pathogen sequences.
-* Cimino *et al.* (2014) re-analyzed the discarded reads from high grade [gliomas](https://en.wikipedia.org/wiki/Glioma).
-* Detected [Epstein-Barr virus](https://en.wikipedia.org/wiki/Epstein%E2%80%93Barr_virus) and [Roseolovirus](https://en.wikipedia.org/wiki/Roseolovirus) in 6 of 21 (29%) cases.
+  * Role of viruses in brain tumours is controversial.
+  * Cimino *et al.* (2014) re-analyzed the discarded reads (1.9% did not map to human genome) from [brain tumours](https://en.wikipedia.org/wiki/Glioma).
+  * Detected [Epstein-Barr virus](https://en.wikipedia.org/wiki/Epstein%E2%80%93Barr_virus) in 5 of 21 (24%) cases.
 
-<small>
+<small><small>
 PJ Cimino <i>et al.</i> (2014) <a href="https://doi-org.proxy1.lib.uwo.ca/10.1016/j.yexmp.2014.03.010">Exp Mol Pathology 96: 310</a>.
-</small>
+</small></small>
 
 ---
 
@@ -139,7 +155,7 @@ PJ Cimino <i>et al.</i> (2014) <a href="https://doi-org.proxy1.lib.uwo.ca/10.101
 
 <table>
   <tr>
-    <td style="font-size: 22pt">
+    <td style="font-size: 20pt">
       <ul>
         <li>"Unculturable" does not necessarily mean "impossible to culture".</li>
         <li>Functional characterization of a novel genome from dark matter may provide clues to physiology, environmental requirements.</li>
@@ -161,21 +177,21 @@ PJ Cimino <i>et al.</i> (2014) <a href="https://doi-org.proxy1.lib.uwo.ca/10.101
 # <i>Coxiella burnetii</i>
 
 * Bacterial pathogen causes "[Q fever](https://en.wikipedia.org/wiki/Q_fever)", an influenza-like illness, in humans and domesticated animals.
-* Genome sequence became available in 2003.
-* Omsland *et al.* (2009) used microarrays to profile gene expression to determine that protein synthesis was limiting growth.
-* Genome encoded terminal oxidases suggesting improved growth in low oxygen.
+  * Genome sequence became available in 2003.
+  * Omsland *et al.* (2009) used microarrays to profile gene expression to determine that protein synthesis was limiting growth.
+  * Genome encoded terminal oxidases suggesting improved growth in low oxygen.
 
-<small>
-<i>Host cell-free growth of the Q fever bacterium Coxiella burnetii.</i> <a href="https://doi.org/10.1128/JB.00345-12">PNAS 106: 4430</a>.
-</small>
+<small><small>
+Omsland <i>et al.</i> (2009). <i>Host cell-free growth of the Q fever bacterium Coxiella burnetii.</i> <a href="https://doi.org/10.1128/JB.00345-12">PNAS 106: 4430</a>.
+</small></small>
 
 ---
 
 # crAssphage
 
 * A previously unidentified bacteriophage (~97kbp circular DNA genome) found in majority of published human faecal metagenomic data.
-* Majority of proteins encoded by Glimmer-predicted ORFs had no homologous matches in Genbank.
-* The first virus to be named after bioinformatics software (cross-assembly, crAss).
+  * Majority of proteins encoded by predicted ORFs had no homologous matches in Genbank.
+  * The first virus to be named after bioinformatics software (cross-assembly, crAss).
 
 <table><tr>
 <td><img src="https://sciences.sdsu.edu/wp-content/uploads/2019/07/crAss_phage_edwards.jpg" width="300px"/></td>
@@ -187,14 +203,13 @@ PJ Cimino <i>et al.</i> (2014) <a href="https://doi-org.proxy1.lib.uwo.ca/10.101
 # Dandenong virus
 
 * 3 patients who received organ transplants from one donor died of febrile illness 4-6 weeks after.
-* Samples screened for HHV1-8, lyssavirus, IAV, IBV, RSV, picornavirus, adenovirus, human parainfluenza virus, flavivirus, and many more.
-* Total RNA from recipient samples was amplified with random primers and processed by NGS.
-* Contigs obtained after subtraction of human DNA and *de novo* assembly were BLASTX-matched to Old World arenaviruses.
+  * Samples screened for HHV1-8, lyssavirus, IAV, IBV, RSV, picornavirus, adenovirus, human parainfluenza virus, flavivirus, and many more.
+  * Total RNA from recipient samples was amplified with random primers and processed by NGS.
+  * Contigs obtained after subtraction of human DNA and *de novo* assembly were BLASTX-matched to Old World arenaviruses.
 
-<small>
+<small><small>
 G Palacios <i>et al.</i> (2008). A New Arenavirus in a Cluster of Fatal Transplant-Associated Diseases. <a href="http://doi.org/10.1056/NEJMoa073785">N Eng J Med 358: 991</a>.
-</small>
-
+</small></small>
 
 ---
 
@@ -206,13 +221,25 @@ G Palacios <i>et al.</i> (2008). A New Arenavirus in a Cluster of Fatal Transpla
 
 ---
 
+# How do we report a new virus?
+
+<img src="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fnbt.4306/MediaObjects/41587_2019_Article_BFnbt4306_Fig1_HTML.jpg" height="300px"/>
+
+* Required metadata include assembly software, genome type (RNA/DNA) and structure (linear/circular), and number of contigs.
+
+<small><small>
+Image Credit: S Roux <i>et al.</i> (2019). [Minimum Information about an Uncultivated Virus Genome (MIUViG)](https://www.nature.com/articles/nbt.4306?report=reader).  Nature Biotechnol 37:29-37.
+</small></small>
+
+---
+
 # Portable sequencing
 
-<img src="https://nanoporetech.com/sites/default/files/s3/minion-cutout.png" width="400px"/>
+<img src="https://nanoporetech.com/sites/default/files/s3/minion-cutout.png" width="350px"/>
 
 * The Oxford Nanopore MinION weights about 100g and plugs into a computer/laptop via USB.
-* Each single-use flow cell generates about 1-2 million reads, indeterminate read length (exceeding 2Mbp).
-* About 5% to 15% per base error rate.
+  * Each single-use flow cell generates about 1-2 million reads, indeterminate read length (exceeding 2Mbp).
+  * About 5% to 15% per base error rate.
 * Near real-time *de novo* assembly of data makes field deployment possible.
 
 ---
@@ -241,9 +268,7 @@ Image credit: JL Gardy and NJ Loman (2018) <a href="https://doi.org/10.1038/nrg.
 # Further readings
 
 * [Viral pathogen discovery](https://www.sciencedirect.com/science/article/pii/S1369527413000684)
-* [Host Subtraction, Filtering and Assembly Validations for Novel Viral Discovery Using Next Generation Sequencing Data](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0129059)
-* [Experimental determination of translational start sites resolves uncertainties in genomic open reading frame predictions – application to Mycobacterium tuberculosis](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2897130/)
+* [Experimental determination of translational start sites resolves uncertainties in genomic open reading frame predictions - application to Mycobacterium tuberculosis](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2897130/)
 * [A highly abundant bacteriophage discovered in the unknown sequences of human faecal metagenomes](https://www.nature.com/articles/ncomms5498)
 * [The Perils of Pathogen Discovery: Origin of a Novel Parvovirus-Like Hybrid Genome Traced to Nucleic Acid Extraction Spin Columns](https://jvi.asm.org/content/87/22/11966.short)
-* [Growing Unculturable Bacteria](https://jb.asm.org/content/194/16/4151)
-* [Minimum Information about an Uncultivated Virus Genome (MIUViG)](https://www.nature.com/articles/nbt.4306?report=reader)
+
