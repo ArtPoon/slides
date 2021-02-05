@@ -115,6 +115,10 @@ Example from A Morgulis <i>et al.</i> (2006) <a href="https://doi.org/10.1089/cm
 
 <img src="http://www.jstacs.de/images/9/94/GeMoMa-schema.png" height="250px"/>
 
+<small><small>
+Image credit: Jens Keilwagen, Frank Hartung and Jan Grau. https://www.jstacs.de/index.php/GeMoMa
+</small></small>
+
 ---
 
 # ORF prediction from other methods
