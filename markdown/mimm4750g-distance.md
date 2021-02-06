@@ -7,9 +7,10 @@
 # Aligned sequences
 
 * Now that we can align sequences, we can make biologically meaningful comparisons.
-* Which parts of the gene/genome are more variable? more conserved?
-* Which sequences are more closely related than others?
+  * Which parts of the gene/genome are more variable? more conserved?
+  * Which sequences are more closely related than others?
 * It is far easier to measure similarity when the sequences are aligned.
+
 ```
 GGGTTGCGCTCGTTG    GGGTTGCGCTCGTTG
 || |        |      ||| ||| |||| ||
@@ -21,15 +22,16 @@ GGTTGCGCTCGTTGA    GGGATGCACTCGCTG
 # Diversity
 
 * There are several ways to measure sequence diversity.
-* Fraction of polymorphic sites - what counts as a polymorphism?
-* Minor allele frequency (MAF): the frequency of the *second*-most common residue
+  * Fraction of polymorphic sites - what counts as a polymorphism?
+  * Minor allele frequency (MAF): the frequency of the *second*-most common residue
   <img src="/img/MAF.png" width="500px"/>
-  
-* Call a site polymorphic if MAF is greater than 1% and less than 5%.
+  * Sequence entropy
+
+* Convention is to label a site as [polymorphic](https://en.wikipedia.org/wiki/Gene_polymorphism) if MAF is greater than 1% and less than 5%.
 
 ---
 
-# Sequence entropy
+# Diversity: Sequence entropy
 
 <table>
   <tr>
@@ -53,9 +55,9 @@ GGTTGCGCTCGTTGA    GGGATGCACTCGCTG
 
 ---
 
-# Measuring diversity of an alignment
+# Diversity: polymorphisms
 
-* Frequency of polymorphic sites 
+* Frequency of polymorphic sites
 * Mean nucleotide or amino acid entropy - calculate entropy at each site, and then take the average:
   $$\bar{S} = \sum_{j=1}^L S_j / L $$
 * Nucleotide diversity ($\pi$): the average number of differences between two randomly sampled sequences
@@ -70,34 +72,38 @@ GGTTGCGCTCGTTGA    GGGATGCACTCGCTG
 * Conserved regions can make good targets for antibodies.
 
 <img src="https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0044163.g003&type=large" width="400px"/>
-<small>Entropy plot of HIV-1 <i>env</i> sequences in asymptomatic chronic HIV-1 patient (10.1371/journal.pone.0044163)</small>
+
+<small><small>
+Entropy plot of HIV-1 <i>env</i> sequences in asymptomatic chronic HIV-1 patient.  From Chaillon <i>et al.</i> 2012. [PLOS ONE 7:e44163](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0044163).
+</small></small>
 
 ---
 
 # Genetic distances
 
-* Another approach to quantify diversity is to use a distance measure
-* A genetic distance is a function $d(x,y)$ that maps sequences $x$ and $y$ to some non-negative value.
-* It should have the following properties:
+* Another approach to quantify diversity is to use a distance measure (comparing pairs of sequences).
+* A [genetic distance](https://en.wikipedia.org/wiki/Models_of_DNA_evolution) is a function $d(x,y)$ that maps sequences $x$ and $y$ to some non-negative value.
+* A [distance function](https://en.wikipedia.org/wiki/Metric_(mathematics)) $d$ should have the following properties:
 	* $d(x,y) \ge 0$ for all $x,y\in \Omega$
 	* If $x=y$, then $d(x,y)=0$
 	* $d(x,y) = d(y,x)$ (symmetry)
 
 ---
 
-# In-class exercise (Q1)
+# Genetic distances and the triangle inequality
 
 <table>
   <tr>
     <td>
       <ul>
-      <li>A genetic distance does *not* have to satisfy the triangle ineqaulity.</li>
+      <li>A genetic distance does <i>not</i> have to satisfy the triangle inequality, <i>i.e.,</i></li>
       $$d(x,z) \le d(x,y) + d(y,z)$$
-      <li>Suppose sequence *x*=`A`, *y*=`G` and *z*=`C`.  Under what condition would the triangle inequality be violated?</li>
+      <li>Suppose sequence $x=A$, $y=G$ and $z=C$.</li>
+      <li>Under what condition would the triangle inequality be violated?</li>
       </ul>
     </td>
-    <td width="40%">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/TriangleInequality.svg/621px-TriangleInequality.svg.png" width="300px"/>
+    <td width="50%">
+      <img src="/img/triangle-inequality.svg" width="400px"/>
     </td>
   </tr>
 </table>
@@ -106,15 +112,14 @@ GGTTGCGCTCGTTGA    GGGATGCACTCGCTG
 
 # p-distances
 
-* The simplest distance is to count the number of different residues.
+* The simplest distance is to count the number of different residues, <i>i.e.</i>,  the [Hamming distance](https://en.wikipedia.org/wiki/Hamming_distance) (HD):
 ```
 GGGTTGCGCTCGTTG
 ||| ||| |||| ||  = 3 differences
 GGGATGCACTCGCTG
 ```
-* This is called the [Hamming distance](https://en.wikipedia.org/wiki/Hamming_distance).
-* Hamming distance (HD) increases with sequence length.  
-* We can divide the HD by sequence length.  This gives us the p-distance (*p* is for *proportional*).
+* HD increases with sequence length.
+* We can divide the HD by sequence length.  This gives us the [p-distance](https://www.megasoftware.net/web_help_7/hc_p_distance_nucleotide.htm) (*p* is for *proportional*).
 
 > What is the p-distance for the above example?
 
@@ -123,14 +128,14 @@ GGGATGCACTCGCTG
 # Multiple hits
 
 * A big problem with the Hamming and *p*-distances is that they tend to  underestimate the amount of evolution.
-* Suppose we are tracking the evolution of a sequence `AAAA`
-* A single mutation occurs resulting in `AGAA` ($p=0.25$)
-* As we continue to accumulate mutations, the chance that we mutate a site *that has already undergone a mutation* increases.
+  * Suppose we are tracking the evolution of a sequence `AAAA`
+  * A single mutation occurs resulting in `AGAA` ($p=0.25$)
+  * As we continue to accumulate mutations, the chance that we mutate a site *that has already undergone a mutation* increases.
 * Multiple hits mask evidence of previous evolution (`A` $\rightarrow$ `G` $\rightarrow$ `A`).
 
 ---
 
-# Modeling evolution
+# Modeling multiple hits
 
 * Let's make a few lousy assumptions:
   1. Each residue in a sequence evolves independently of the others.
@@ -155,7 +160,7 @@ GGGATGCACTCGCTG
 <section data-state="markov-slide">
     <h1>Markov models</h1>
     <ul>
-      <li>An example of a *continuous time Markov model*.</li>
+      <li>Jukes-Cantor is an example of a <i>continuous time Markov model</i>.</li>
       <li>A system is in one of two or more discrete states.  After some random amount of time, it switches between states.</li>
     </ul>
     <center>
@@ -166,7 +171,9 @@ GGGATGCACTCGCTG
     </div>
     <div></div>
     </center>
-    <small>Based on JS by [Victor Powell](http://setosa.io/blog/2014/07/26/markov-chains/index.html)</small>
+    <small><small><small>
+    Based on <a href="http://setosa.io/blog/2014/07/26/markov-chains/index.html"/>Markov Chains: A visual explanation by Victor Powell</a>
+    </small></small></small>
 </section>
 
 ---
@@ -178,7 +185,7 @@ GGGATGCACTCGCTG
 
   $$\hat{d}=-\frac{3}{4}\ln\left(1-\frac{4}{3}p\right)$$
 
-* Note this is the mean (expected) estimate - evolution is stochastic.
+* Note this is the mean (expected) estimate &mdash; evolution is stochastic, so there will be variation around this mean!
 
 ---
 
@@ -194,10 +201,10 @@ GGGATGCACTCGCTG
 
 ---
 
-# In-class exercise (Q3)
+# In-class exercise
 
 $$\hat{d}=-\frac{3}{4}\ln\left(1-\frac{4}{3}p\right)$$
-  
+
 > At what p-distance does the Jukes-Cantor formula fail?
 
 ---
@@ -206,7 +213,8 @@ $$\hat{d}=-\frac{3}{4}\ln\left(1-\frac{4}{3}p\right)$$
 
 * The Jukes-Cantor model enables us to estimate the divergence time of two populations (species or infections) more accurately.
 * Two distantly related species might otherwise look about the same as more closely related species.
-* (The expected p-distance asymptotes to a maximum value, where a small change in p-distance can imply an enormous change in evolutionary time.)
+  * The expected p-distance asymptotes to a maximum value.
+  * A small change in p-distance can imply an enormous change in evolutionary time.
 
 ---
 
@@ -222,10 +230,10 @@ $$\hat{d}=-\frac{3}{4}\ln\left(1-\frac{4}{3}p\right)$$
 # Which distance should I use?
 
 * It is fairly likely that the assumption of equal nucleotide frequencies is broken.
-* The [HIV-1 genome](https://en.wikipedia.org/wiki/Structure_and_genome_of_HIV) is roughly 40% A's.
-* The [Actinobacteria](https://en.wikipedia.org/wiki/Actinobacteria) (including *Streptomyces*) are also known as "high G+C [Gram-positive bacteria](https://en.wikipedia.org/wiki/Gram-positive_bacteria)".
+  * The [HIV-1 genome](https://en.wikipedia.org/wiki/Structure_and_genome_of_HIV) is roughly 40% A's.
+  * The [Actinobacteria](https://en.wikipedia.org/wiki/Actinobacteria) (including *Streptomyces*) are also known as "high G+C [Gram-positive bacteria](https://en.wikipedia.org/wiki/Gram-positive_bacteria)".
 * Transition/transversion bias is ubiquitous.
-* Nowadays we seldom see distances other than TN93 in use.
+* TN93 is the most realistic distance for which a [closed-form expression](https://en.wikipedia.org/wiki/Closed-form_expression) exists.
 
 ---
 
