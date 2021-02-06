@@ -7,7 +7,7 @@
 div.wrapper {
   text-align: center;
 }
-#sequence {
+div.sequence {
   text-align: center;
   font: 24pt Courier,serif;
 }
@@ -26,34 +26,51 @@ body {
 <center>
 <table>
   <tr>
-    <td><div id="wrapper">
-      <div id="jukes-cantor"></div>
-    </div></td>
+    <td>
+      <div id="wrapper">
+        <div id="jukes-cantor"></div>
+      </div>
+    </td>
     <td>
       <table>
-      <tr><td>
-        <div id="sequence">
-          <div id="seq1"></div>
-        </div>
-      </td></tr>
-      <tr><td>
-        <div id="button-wrap">
-          <input type="submit" value="Evolve" onclick="evolve()" style="font-size: 20px" id="jc-button"/>
-          <input type="submit" value="Reset" onclick="reset()" style="font-size: 20px" id="reset-button"/>
-        </div>
-      </td></tr>
-      <tr><td>
-        Number of mutations = <span id="mutation-count">0</span>
-      </td></tr>
-      <tr><td>
-        p-distance = <span id="p-distance">0</span>
-      </td></tr>
-      <tr><td>
-        Predicted num. mutations = <span id="predict-sub">0</span>
-      </td></tr>
-      <tr><td>
-        Jukes-Cantor adjustment = <span id="jc-dist">0</span>
-      </td></tr>
+        <tr>
+          <td>
+            <div class="sequence">
+              AAAAAAAAAA
+            </div>
+            <div class="sequence">
+              <div id="seq1"></div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div id="button-wrap">
+              <input type="submit" value="Evolve" onclick="evolve()" style="font-size: 20px" id="jc-button"/>
+              <input type="submit" value="Reset" onclick="reset()" style="font-size: 20px" id="reset-button"/>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          Number of mutations = <span id="mutation-count">0</span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          p-distance = <span id="p-distance">0</span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          Predicted num. mutations = <span id="predict-sub">0</span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          Jukes-Cantor adjustment = <span id="jc-dist">0</span>
+          </td>
+        </tr>
       </table>
     </td>
   </tr>
@@ -76,11 +93,11 @@ var jcsvg = d3.select("div#jukes-cantor")
           .attr("width", width + margin.left + margin.right)
           .attr("height", height + margin.top + margin.bottom)
           .append("g")
-          .attr("transform", "translate(" + margin.left + "," + margin.top + ")");          
+          .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 
 
-// setup x 
+// setup x
 var xValue = function(d) { return d.time; }, // data -> value
     xScale = d3.scale.linear().range([0, width]), // value -> display
     xMap = function(d) { return xScale(xValue(d));}, // data -> display
@@ -101,21 +118,21 @@ function reset() {
     $("#seq1").text(seq1);
     nmut = 0;
     update_distances();
-    
+
     // clear the plot region
     jcsvg.selectAll("*").remove();
-    
+
     d3.csv("/data/jukes.csv", function(error, data) {
       data.forEach(function(d) {
         d.time = +d.time;  // cast as numbers
         d.dist = +d.dist;
         //console.log(d);
       });
-  
+
       // don't want dots overlapping axis, so add in buffer to data domain
       xScale.domain([d3.min(data, xValue)-0.1, d3.max(data, xValue)+0.1]);
       yScale.domain([d3.min(data, yValue)-0.01, d3.max(data, yValue)+0.1]);
-  
+
       // x-axis
       jcsvg.append("g")
           .attr("class", "x axis")
@@ -127,7 +144,7 @@ function reset() {
           .attr("y", -6)
           .style("text-anchor", "end")
           .text("Expected number of substitutions per site");
-      
+
       // y-axis
       jcsvg.append("g")
           .attr("class", "y axis")
@@ -139,19 +156,19 @@ function reset() {
           .attr("dy", ".71em")
           .style("text-anchor", "end")
           .text("p-distance");
-      
+
       // draw points
       var linefunc = d3.svg.line()
         .x(function(d) { return xScale(d.time); })
         .y(function(d) { return yScale(d.dist); })
         .interpolate("linear");
-    
+
       var path = jcsvg.append("path")
          .attr("d", linefunc(data))
          .attr("stroke", "steelblue")
          .attr("stroke-width", "3")
          .attr("fill", "none");
- 
+
       var totalLength = path.node().getTotalLength();
       path.attr("stroke-dasharray", totalLength + " " + totalLength)
           .attr("stroke-dashoffset", totalLength)
@@ -159,8 +176,8 @@ function reset() {
             .duration(2000)
             .ease("linear")
             .attr("stroke-dashoffset", 0);
-  
-      // p-distance   
+
+      // p-distance
       jcsvg.append("line")
         .attr("x1", xScale(0))
         .attr("y1", yScale(0))
@@ -168,7 +185,7 @@ function reset() {
         .attr("y2", yScale(1))
         .attr("stroke-width", 2)
         .attr("stroke", "#00000040");
-        
+
     });  // end d3.csv
 };
 reset();
@@ -189,21 +206,21 @@ function evolve () {
   var pos = getRandomInt(seq1.length);
   var from_nuc = seq1[pos];
   var to_nuc = "ACGT".replace(from_nuc, "");
-  
+
   to_nuc = to_nuc[getRandomInt(to_nuc.length)];
   seq1 = seq1.slice(0, pos) + to_nuc + seq1.slice(pos+1, seq1.length);
   $("#seq1").text(seq1);
-  
+
   nmut+=1;
   update_distances();
 }
 
 function update_distances() {
   $("#mutation-count").text(nmut);
-  
+
   // number of substitutions per site
   var d = nmut / seq1.length;
-  
+
   // calculate p-distance
   var pd = 0;
   for (var i=0; i<seq1.length; i++) {
@@ -213,7 +230,7 @@ function update_distances() {
   }
   pd /= seq1.length;
   $("#p-distance").text(pd);
-  
+
   jcsvg.append("circle")
     .attr("cx", xScale(d))
     .attr("cy", yScale(pd))
