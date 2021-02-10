@@ -25,7 +25,7 @@
 
 # Clustering methods
 
-* There are an enormous number of methods (algorithms) for clustering data. 
+* There are an enormous number of methods (algorithms) for clustering data.
 * It is easiest to talk about different categories of clustering methods.
 * Clustering is used in so many contexts that it can be confusing when different methods are used on different kinds of data in the same study!
 
@@ -38,8 +38,8 @@
 <td style="font-size: 28px;">
 <ul>
 <li>Terms associated with machine learning.</li>
-<li>*Supervised* clustering means that you have assigned some data to clusters yourself, and leave the rest to the machine.</li>
-<li>*Unsupervised* clustering means that the machine has to figure it all out itself.</li>
+<li><i>Supervised</i> clustering means that you have assigned some data to clusters yourself, and leave the rest to the machine.</li>
+<li><i>Unsupervised</i> clustering means that the machine has to figure it all out itself.</li>
 </ul>
 </td>
 <td width="40%">
@@ -50,38 +50,33 @@
 
 ---
 
-# Agglomerative and dissociative
-
-* *Agglomerative* (bottom-up) clustering begins with every object in its own tiny cluster, and starts lumping the closest together.
-* *Dissociative* (top-down) clustering begins with every object in one huge cluster, and starts cutting.
-
----
-
 # Non-parametric and parametric
 
 * A *non-parametric* clustering method uses the observed distribution of one or more characteristics to cluster the data.
-* For example, if we look at cars on a one-lane road, we can build up clusters from any two cars closer than some cut-off distance of each other.
+  * For example, if we look at cars on a one-lane road, we can build up clusters from any two cars closer than some cut-off distance of each other.
 * A *parametric* clustering method fits a model to the data to define clusters.
-* If we have a model on the distance between cars, we can identify groups of cars that are consistent with a "close following" mode.
+  * If we have a model on the distance between cars, we can identify groups of cars that are consistent with a "close following" mode.
 
 ---
 
 
 <table>
   <tr>
-    <td style="font-size: 26px;">      
+    <td style="font-size: 24px;">      
       <h1>k-means clustering</h1>
       <ul>
-        <li>A popular clustering method (unsupervised, dissociative, nonparametric)</li>
-        <li>*k* refers to the number of clusters defined by "means".</li>
+        <li>An unsupervised nonparametric method</li>
+        <li>$k$ refers to the number of clusters defined by "means".</li>
         <li>Assign each point to the closest mean, while locating the optimum locations of means.</li>
-        <li>(top) A simulated dataset with three clusters, called *mouse*.</li>
-        <li>(bottom) A k-means clustering of *mouse* with *k* set to the true value.</li>
+        <ul>
+        <li>(top) A simulated dataset with three clusters, called <i>mouse</i>.</li>
+        <li>(bottom) A k-means clustering of <i>mouse</i> with $k$ set to the true value.</li>
+        </ul>
       </ul>
     </td>
-    <td width="35%">
-      <img src="/img/kmeans-actual.png" width="500px"/>
-      <img src="/img/kmeans.png" width="500px"/>
+    <td width="33%">
+      <img src="/img/kmeans-actual.png" width="450px"/>
+      <img src="/img/kmeans.png" width="450px"/>
     </td>
   </tr>
 </table>
@@ -90,17 +85,19 @@
 
 <table>
   <tr>
-    <td style="vertical-align:middle; font-size: 26px;">
+    <td style="vertical-align:middle; font-size: 24px;">
       <h1>Gaussian mixture models</h1>
       <ul>
-        <li>Another popular clustering method (unsupervised, **parametric**)</li>
-        <li>Find the assignments of each data point to one of *k* Gaussian distributions.</li>
+        <li>An unsupervised parametric method</li>
+        <li>Find the assignments of each data point to one of $k$ Gaussian distributions.</li>
         <li>Also find the mean and variance of each Gaussian that maximizes likelihood.</li>
         <li>Method can determine for itself the optimal number of clusters.</li>
-        <li>(bottom) Gaussian mixture model applied to *mouse* data.</li>
-      </ul>
+        <ul>
+          <li>(bottom) Gaussian mixture model applied to <i>mouse</i> data.</li>
+        </ul>      
+        </ul>
     </td>
-    <td>
+    <td width="33%">
       <img src="/img/kmeans-actual.png" width="500px"/>
       <img src="/img/mouse-gmm.png" width="500px"/>
     </td>
@@ -109,26 +106,40 @@
 
 ---
 
-# Distance-based clustering
+# Hierarchical clustering
 
-* A simple nonparametric clustering method that is popular for sequence data.
-* Look at the distribution of all distances between pairs of objects.
-* The distance may be a function of one or more features, *e.g.*, Euclidean distance, $\sqrt{(x_1^2+x_2^2+\ldots+x_n^2)}$.
-* Pick a threshold - any pair below the threshold forms a cluster.
+* Another simple nonparametric clustering method.
+* Calculate the pairwise distance matrix.
+  * The distance may be a function of one or more features, *e.g.*, Euclidean distance, $\sqrt{(x_1^2+x_2^2+\ldots+x_n^2)}$.
+*
 
 ---
 
 # Genetic distance clustering
 
 * Recall from last lecture, a *genetic distance* is used to quantify the difference between two sequences.
-* The Tamura-Nei (1993, TN93) distance is the most complex distance that can be written as a closed-form expression.
-* The [International Committee on the Taxonomy of Viruses](https://talk.ictvonline.org/) allows the definition of a new virus species based on genetic clustering, although this remains controversial.
+  * *e.g.*, Tamura-Nei (1993, TN93) distance is the most complex distance that can be written as a closed-form expression.
+* Pick a threshold - any pair below the threshold forms a cluster.
 
-> Unfortunately, in recent years, ICTV Study Groups [...] have created large number of species on the basis of a single criterion, namely a certain percentage of genome similarity between individual viruses. 
+---
+
+<section data-state="tn93-slide">
+    <div id="tn93" class="fig-container"
+         data-fig-id="fig-tn93"
+         data-file="/include/clustering.html"
+         style="width:800px; margin:0 auto;height:700px">
+    </div>
+</section>
 
 ---
 
 # Defining new virus species
+
+* The [International Committee on the Taxonomy of Viruses](https://talk.ictvonline.org/) allows the definition of a new virus species based on genetic clustering, although this remains controversial.
+
+> Unfortunately, in recent years, ICTV Study Groups [...] have created large number of species on the basis of a single criterion, namely a certain percentage of genome similarity between individual viruses.
+
+---
 
 <table>
 <tr>
@@ -143,7 +154,7 @@
 </tr>
 </table>
 <small>
-Source: Simmonds, Peter, *et al.* (2017) Nat Rev Microbiol 15: 161.
+Source: Simmonds, Peter, <i>et al.</i> (2017) Nat Rev Microbiol 15: 161.
 </small>
 
 ---
@@ -153,7 +164,7 @@ Source: Simmonds, Peter, *et al.* (2017) Nat Rev Microbiol 15: 161.
   <td>
   <h1>Defining bacterial species</h1>
   <ul>
-    <li>Specific loci are frequently used to measure bacterial diversity (*e.g.*, 16S sRNA)</li>
+    <li>Specific loci are frequently used to measure bacterial diversity (<i>e.g.</i>, 16S sRNA)</li>
     <li>Horizontal transfer of genes between different bacteria makes it difficult to define species.</li>
     <li>This problem can be overcome by multilocus sequence analysis (MLSA): using conserved "housekeeping" genes to generate a phylogenetic tree.</li>
   </ul>
@@ -161,7 +172,7 @@ Source: Simmonds, Peter, *et al.* (2017) Nat Rev Microbiol 15: 161.
   <td>
     <img src="/img/bacteria-species.png"/>
     <small>
-    MLSA phylogenetic tree of *Streptococcus* from C Fraser *et al.* (2009) Science 323: 741.
+    MLSA phylogenetic tree of <i>Streptococcus</i> from C Fraser <i>et al.</i> (2009) Science 323: 741.
     </small>
   </td>
 </table>
@@ -195,17 +206,6 @@ Source: Simmonds, Peter, *et al.* (2017) Nat Rev Microbiol 15: 161.
   </td>
 </table>
 
----
-
-<section data-state="tn93-slide">
-    <h1>TN93 clustering</h1>
-    <br/>
-    <div id="tn93" class="fig-container"
-         data-fig-id="fig-tn93"
-         data-file="/include/clustering.html"
-         style="height:600px">
-    </div>
-</section>
 
 ---
 
@@ -257,6 +257,10 @@ Source: Simmonds, Peter, *et al.* (2017) Nat Rev Microbiol 15: 161.
     </td>
   </tr>
 </table>
+
+---
+
+# Transmission clustering
 
 ---
 
