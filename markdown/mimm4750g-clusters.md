@@ -62,7 +62,7 @@
 
 <table>
   <tr>
-    <td style="font-size: 24px;">      
+    <td style="vertical-align:middle; font-size: 24px;">      
       <h1>k-means clustering</h1>
       <ul>
         <li>An unsupervised nonparametric method</li>
@@ -98,7 +98,7 @@
         </ul>
     </td>
     <td width="33%">
-      <img src="/img/kmeans-actual.png" width="500px"/>
+      <img src="/img/kmeans-actual.png" width="450px"/>
       <img src="/img/mouse-gmm.png" width="500px"/>
     </td>
   </tr>
@@ -111,15 +111,17 @@
 * Another simple nonparametric clustering method.
 * Calculate the pairwise distance matrix.
   * The distance may be a function of one or more features, *e.g.*, Euclidean distance, $\sqrt{(x_1^2+x_2^2+\ldots+x_n^2)}$.
-*
+* Use these distances to construct a dendrogram (tree), *e.g.*, unweighted pair group method with arithmetic mean ([UPGMA](https://en.wikipedia.org/wiki/UPGMA)).
 
 ---
 
 # Genetic distance clustering
 
 * Recall from last lecture, a *genetic distance* is used to quantify the difference between two sequences.
-  * *e.g.*, Tamura-Nei (1993, TN93) distance is the most complex distance that can be written as a closed-form expression.
-* Pick a threshold - any pair below the threshold forms a cluster.
+  * *e.g.*, Jukes-Cantor (JC69), Tamura-Nei (1993, TN93) distances.
+* Pick a distance threshold &mdash; any pair of sequences with a distance below that threshold are assigned to the same cluster.
+* Clusters are usually visualized as networks ([graphs](https://en.wikipedia.org/wiki/Network_theory)) where each node represents a sequence (infection) that are connected by [edges](https://en.wikipedia.org/wiki/Glossary_of_graph_theory_terms#edge).
+
 
 ---
 
@@ -127,7 +129,7 @@
     <div id="tn93" class="fig-container"
          data-fig-id="fig-tn93"
          data-file="/include/clustering.html"
-         style="width:800px; margin:0 auto;height:700px">
+         style="width:800px; margin:0 auto; height:700px">
     </div>
 </section>
 
@@ -141,67 +143,55 @@
 
 ---
 
+# Demarcating virus species
+
+<img src="/img/geminivirus.png" height="300px"/>
+
+<small><small>
+Image credit: CM Fauquet <i>et al.</i> (2008) [Geminivirus strain demarcation and nomenclature](https://link.springer.com/article/10.1007%2Fs00705-008-0037-6).  Arch Virol 153:783-821.
+</small></small>
+
+---
+
+
 <table>
-<tr>
-  <td style="vertical-align:middle">
-    <small>Prevalence and abundance of marine viruses</small>
-    <img src="/img/nrmicro.2016.177-f1.jpg" width="400px"/>
-  </td>
-  <td width="50%">
-    <small>Phylogeny of known and novel circular REP-encoding ssDNA viruses</small>
-    <img src="/img/nrmicro.2016.177-f2.jpg" width="400px"/>
-  </td>
-</tr>
+  <tr>
+    <td style="vertical-align:middle; font-size: 24px;">
+      <h1>HIV groups and subtypes</h1>
+      <ul>
+        <li>Defining groupings within species (HIV-1)</li>
+        <li>Four HIV-1 groups (M-P) associated with different zoonotic events.</li>
+        <li>Group M is split into subtypes (A-J).</li>
+        <li>A and F are split into sub-subtypes (A1-A7, F1, F2).</li>    
+        </ul>
+        <small><small>
+        Image credit: N D&eacute;sir&eacute; <i>et al.</i> (2018) Characterization update of HIV-1 M subtypes diversity and proposal for subtypes A and D sub-subtypes reclassification. <a href="https://retrovirology.biomedcentral.com/articles/10.1186/s12977-018-0461-y">Retrovirology 15: 80</a>.
+        </small></small>
+    </td>
+    <td width="40%">
+      <img height="600px" src="https://media.springernature.com/full/springer-static/image/art%3A10.1186%2Fs12977-018-0461-y/MediaObjects/12977_2018_461_Fig1_HTML.png"/>
+    </td>
+  </tr>
 </table>
-<small>
-Source: Simmonds, Peter, <i>et al.</i> (2017) Nat Rev Microbiol 15: 161.
-</small>
+
 
 ---
 
 <table>
   <tr>
-  <td>
-  <h1>Defining bacterial species</h1>
+  <td style="vertical-align: middle; font-size: 20pt;">
+  <h1>Clustering for epidemiology</h1>
   <ul>
-    <li>Specific loci are frequently used to measure bacterial diversity (<i>e.g.</i>, 16S sRNA)</li>
-    <li>Horizontal transfer of genes between different bacteria makes it difficult to define species.</li>
-    <li>This problem can be overcome by multilocus sequence analysis (MLSA): using conserved "housekeeping" genes to generate a phylogenetic tree.</li>
+    <li>In public health, a cluster of cases in space and time implies a common source.</li>
+    <li>A <u>genetic</u> cluster of infections similarly suggests that they are related by recent and rapid transmission events.</li>
+    <li>Sequences can be easier to collect.</li>
+    <li>Genetic clustering requires measurable evolution on a similar time scale as transmission.</li>
   </ul>
   </td>
   <td>
-    <img src="/img/bacteria-species.png"/>
+    <img src="/img/broad-street.jpg" width="300px"/>
     <small>
-    MLSA phylogenetic tree of <i>Streptococcus</i> from C Fraser <i>et al.</i> (2009) Science 323: 741.
-    </small>
-  </td>
-</table>
-
----
-
-# Defining subtypes: HCV
-
-* Clinical significance of virus subtypes (genotypes): differences in pathogenesis, response to treatment.
-* Hepatitis C virus is a flavivirus that can cause fatal liver disease if not cleared by the immune system.
-* About 71 million people worldwide have chronic HCV infection.
-* Rapid evolution: HCV in individuals infected from the same source can become >35% divergent over 17 years ([McAllister *et al.* 1998](https://jvi.asm.org/content/72/6/4893.short)).
-
----
-
-<h1>HCV genotype and subtype clustering</h1>
-<table>
-  <tr>
-  <td>
-  <ul>
-    <li>Early system used distance clustering.</li>
-    <li>Used p-distance of aligned sequence to make tentative assignment.</li>
-    <li>Next generate a tree by clustering on K2P distances.</li>
-  </ul>
-  </td>
-  <td width="50%">
-    <img src="/img/mfig002.jpg" width="400px">
-    <small>
-    HCV distance-based tree from P Simmonds *et al.* (2005) Hepatology 42: 962.
+    Brody et al. (2000) Map-making and myth-making in Broad Street: the London cholera epidemic, 1854.  Lancet 356; 64-68.
     </small>
   </td>
 </table>
@@ -209,58 +199,74 @@ Source: Simmonds, Peter, <i>et al.</i> (2017) Nat Rev Microbiol 15: 161.
 
 ---
 
-# Clustering for epidemiology
-
-* In public health, a cluster of cases in space and time implies a common source.
-* A *genetic* cluster of infections similarly suggests that they are related by recent and rapid transmission events.
-* Genetic clustering requires measurable evolution on a similar time scale as transmission.
-
----
-
 <table>
   <tr>
-  <td>
+  <td style="vertical-align: middle; font-size: 20pt;">
   <h1>Tuberculosis</h1>
   <ul>
     <li>TB is one of top 10 causes of death worldwide</li>
-    <li>Caused by lung infection by *Mycobacterium tuberculosis*.</li>
+    <li>Caused by lung infection by <i><a href="https://en.wikipedia.org/wiki/Mycobacterium_tuberculosis">Mycobacterium tuberculosis</a></i>.</li>
     <li>Clustering of whole-genome sequence data can idenfity high-risk groups and detect undiagnosed cases.</li>
   </ul>
   </td>
-  <td width="60%">
-    <img src="/img/1-s2.0-S1473309912702773-gr4_lrg.png" width="500px"/>
+  <td width="50%">
+    <img src="/img/1-s2.0-S1473309912702773-gr4_lrg.png" width="450px"/>
     <small>
-    Cluster diagram by TM Walker *et al.* (2013) Lancet Inf Dis 13: 137.
+    Cluster diagram by TM Walker <i>et al.</i> (2013) Lancet Inf Dis 13: 137.
     </small>
   </td>
 </table>
 
 ---
 
-# HIV epidemiology
+<small><small>
+Clusters of people living with HIV in British Columbia.  Red/orange = Strong, weak HIV-1 drug resistance.  Grey = deceased.  Circle size &propto; viral load.
+</small></small>
+<img src="/img/big-graph.png" height="550px"/>
+
+---
+
+# Transmission clusters
+
+* A common technique to study the risk structure of a population from HIV-1 sequences.
+* A cluster implies that a group of infections are  related through recent, rapid transmission events.
+* Clusters might *also* arise when some people are diagnosed with HIV sooner after infection.
 
 <table>
   <tr>
-    <td style="font-size:26px">
-      <ul>
-        <li>HIV-1 outbreak in Glenochil prison, Scotland</li>
-        <li>Blood samples collected from 14 inmates positive for HIV infection</li>
-        <li>One of the earlier examples of clustering applied to HIV-1</li>
-        <li>Now a very popular method for studying HIV transmission</li>
-      </ul>
-      <small>
-      Image source: DL Yirrell *et al*. (1997) BMJ, https://doi.org/10.1136/bmj.314.7092.1446
-      </small>
-    </td>
-    <td width="40%">
-      <img src="/img/glenochil-crop.png" width="400px"/>
-    </td>
+    <td><img src="/img/short-internals.png"/></td>
+    <td><img src="/img/short-tips.png"/></td>
   </tr>
 </table>
 
 ---
 
-# Transmission clustering
+
+
+<table>
+  <tr>
+  <td style="vertical-align: middle; font-size: 20pt;">
+  <h1>Transmission clusters (2)</h1>
+  <ul>
+    <li>A very common technique is to find statistical associations between:
+      <ol>
+      <li>potential risk factors, and;</li>
+      <li>whether or not an infection is in a cluster.</li>
+      </ol>
+    </li>
+    <li>Usually quantified by <a href="https://en.wikipedia.org/wiki/Linear_regression#Simple_and_multiple_linear_regression">multiple</a> <a href="https://en.wikipedia.org/wiki/Logistic_regression">logistic regression</a>.</li>
+    </li>
+  </ul>
+  </td>
+  <td width="55%">
+    <img src="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6887514/bin/nihms-1059399-f0003.jpg" height="400px"/>
+    <small>
+    Image credit: M Ragonnet-Cronin <i>et al.</i> (2019) <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6887514/">HIV Transmission Networks Among Transgender Women in Los Angeles County: network analysis of surveillance data</a>. Lancet HIV 6: e164-e172.
+    </small>
+  </td>
+</table>
+
+
 
 ---
 
@@ -268,4 +274,5 @@ Source: Simmonds, Peter, <i>et al.</i> (2017) Nat Rev Microbiol 15: 161.
 
 * [Consensus statement: Virus taxonomy in the age of metagenomics](https://www.nature.com/articles/nrmicro.2016.177)
 * [ICTV: Comments to proposed modification to code rule 3.21 (defining virus species)](https://talk.ictvonline.org/ictv1/f/general_ictv_discussions-20/3930/comments-to-proposed-modification-to-code-rule-3-21-defining-virus-species)
+* [Detecting and Responding to HIV Transmission Clusters: A Guide for Health Departments](https://www.cdc.gov/hiv/pdf/funding/announcements/ps18-1802/CDC-HIV-PS18-1802-AttachmentE-Detecting-Investigating-and-Responding-to-HIV-Transmission-Clusters.pdf), US CDC.
 

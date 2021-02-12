@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <!--
-This document borrows heavily from a D3.js example published at 
+This document borrows heavily from a D3.js example published at
 https://bl.ocks.org/denisemauldin/cdd667cbaf7b45d600a634c8ae32fae5
 which is a fork of:
 https://bl.ocks.org/colbenkharrl/dcb5590173931bb594e195020aaa959d
@@ -80,7 +80,7 @@ button {
 <table>
 <tr>
 <td>
-<svg id="graph-svg" width="800" height="600"></svg>
+<svg id="graph-svg" width="800" height="500"></svg>
 </td>
 </tr>
 <tr>
@@ -133,7 +133,7 @@ var simulation = d3.forceSimulation()
 //	data read and store
 d3.json("/data/c55.json", function(err, g) {
 	if (err) throw err;
-	
+
   g.links1.forEach(function(l) {
     l.filtered = false;
   })
@@ -156,7 +156,7 @@ d3.json("/data/c55.json", function(err, g) {
 //	general update pattern for updating the graph
 function update() {
   //console.log('update');
-  
+
 	//	UPDATE
 	node = node.data(graph.nodes, function(d) { return d.id;});
 	//	EXIT
@@ -235,12 +235,12 @@ function ticked() {
 //	filter function
 function filter() {
   //console.log('filter');
-  
+
 	//	add and remove links from data based on availability of nodes
 	store.links1.forEach(function(l) {
 	    if (l.weight <= cutoff) {
 	      if (l.filtered) {
-          
+
 	        l.filtered = false;
 	        graph.links1.push($.extend(true, {}, l));
 	      }
@@ -255,12 +255,12 @@ function filter() {
 	          });
 	      }
 	    }
-	});			
+	});
 }
 
 
-// ========================= SLIDER ========================== 
-    
+// ========================= SLIDER ==========================
+
 var cutoff = 0.0;
 
 var svg2 = d3.select("svg#slider-svg"),
@@ -276,7 +276,7 @@ var x = d3.scaleLinear()
 var slider = svg2.append("g")
     .attr("class", "slider")
     .attr("transform", "translate(" + margin.left + "," + height2 / 2 + ")");
-    
+
 slider.append("line")
     .attr("class", "track")
     .attr("x1", x.range()[0])
@@ -287,11 +287,11 @@ slider.append("line")
     .attr("class", "track-overlay")
     .call(d3.drag()
         .on("start.interrupt", function() { slider.interrupt(); })
-        .on("start drag", function() { 
-          
+        .on("start drag", function() {
+
           move(x.invert(d3.event.x));
           //console.log(cutoff);
-        }));    
+        }));
 
 slider.insert("g", ".track-overlay")
     .attr("class", "ticks")
@@ -314,7 +314,7 @@ var handle = slider.insert("circle", ".track-overlay")
 */
 
 function move(h) {
-  cutoff = h; 
+  cutoff = h;
   handle.attr("cx", x(cutoff));
   filter();
   update();
