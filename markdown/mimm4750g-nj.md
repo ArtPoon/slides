@@ -99,5 +99,3 @@
 * [MEGA](https://www.megasoftware.net/) - cross-platform GUI application
 * [RapidNJ](http://birc.au.dk/software/rapidnj/) - command-line program (source code)
 * [R package ape](https://rdrr.io/cran/ape/man/nj.html) - not recommended, slow
-
-<br/>
