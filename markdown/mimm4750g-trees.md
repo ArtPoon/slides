@@ -29,7 +29,14 @@
   * genetic distance
   * elapsed time
   * nothing at all (unscaled trees)
-* Be very cautious of unscaled trees - they make the tree look more resolved (fewer soft polytomies) than is supported by the data!
+
+---
+
+# Unscaled trees
+* Be very cautious of unscaled tree layouts
+  * They make the tree look more resolved (fewer soft polytomies).
+
+![](/img/unscaled-tree.svg)
 
 ---
 
@@ -53,10 +60,49 @@
 
 ---
 
-<center>
-<iframe src="http://phylotree.hyphy.org/" height="550px" width="800px">
-</iframe>
-</center>
+# Rectangular/slanted layouts
+
+<small><small>
+Phylogeny of betacoronaviridae including SARS-CoV-2 samples from [Wu <i>et al.</i>](https://www.nature.com/articles/s41586-020-2008-3) (2020) Nature 579: 265-269.
+</small></small>
+<img src="/img/sarscov2-origin.jpg" height="450px"/>
+
+---
+
+# Radial layouts
+
+<small><small>
+SARS-CoV-2 genomes in Ontario displayed by Auspice (Nextstrain) instance maintained by [Finlay Maguire](http://auspice.finlaymagui.re/ncov/north-america/canada/ontario)
+</small></small>
+<img src="/img/auspice.png" height="500px"/>
+
+---
+
+# Unrooted layouts
+
+<small><small>
+Phylogeny summarizing variation in patient mortality by SARS-CoV-2 clade, from [Dumonteil <i>et al.</i>](https://www.mdpi.com/1999-4915/13/2/227) (2021) Viruses 13: 227.
+</small></small>
+<img src="https://www.mdpi.com/viruses/viruses-13-00227/article_deploy/html/images/viruses-13-00227-g001.png" height="450px"/>
+
+---
+
+# Shapes of trees
+
+<table>
+  <tr>
+    <td style="font-size: 18pt;">
+    <ul>
+      <li>"Star-like" trees have short internal branches and long terminal branches, <i>e.g.</i>, HIV.</li>
+      <li>"Comb-like" (unbalanced) trees have excess variation in branching rates among nodes, <i>e.g.,</i> most tips descend from one "trunk" lineage, <i>e.g.</i>, influenza A virus.</li>
+      <li><a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1002947"/>Phylodynamics</a> is the study of how tree shapes are determined by epidemiology and immunology.</li>
+    </ul>
+    </td>
+    <td width="50%">
+      <img src="https://journals.plos.org/plosone/article/figure/image?size=large&id=10.1371/journal.pone.0078122.g001" height="450px"/>
+    </td>
+  </tr>
+</table>
 
 ---
 
@@ -80,6 +126,32 @@
   </tr>
 </table>
 
+---
+
+# Human malaria is polyphyletic
+* Virulence has been gained and lost multiple times in history of *Plasmodium* genus.
+<img src="/img/rsos171780f02.jpg" width="600px"/>
+<small><small>
+Image credit: Figure 2 from Galen <i>et al.</i> 2018. Roy Soc Open Sci 5: <a href="https://royalsocietypublishing.org/doi/10.1098/rsos.171780">171780</a>.
+</small></small>
+
+---
+
+# Paraphyly and source attribution
+
+<table><tr>
+  <td width="65%"><ul>
+    <li>La population de virus dans le corps d'une personne devient tr&egrave;s diverse avec le temps</li>
+    <li>Si une de ces variantes vient &agrave; &ecirc;tre transmise &agrave; une autre personne, alors la prochaine population peut &ecirc;tre emboi&icirc;t&eacute;e dans la premi&egrave;re.</li>
+    <li>On dit que les s&eacute;quences de la premi&egrave;re personne sont *paraphyl&eacute;tiques*</li>
+    <li>Cette notion est d&eacute;j&agrave; applique&eacute;e dans des affaires de transmission du VIH</li>
+  </td>
+  <td>
+    <img src="/img/romero.png" width="35%">
+  </td>
+</tr></table>
+
+<small>Metzker *et al.* (2002) PNAS 99: 14292; Romero-Severson *et al.* (2016) PNAS 113: 2690.</small>
 
 ---
 
@@ -132,15 +204,6 @@
 
 ---
 
-# Human malaria is polyphyletic
-* Virulence has been gained and lost multiple times in history of *Plasmodium* genus.
-<img src="/img/rsos171780f02.jpg" width="600px"/>
-<small><small>
-Image credit: Figure 2 from Galen <i>et al.</i> 2018. Roy Soc Open Sci 5: <a href="https://royalsocietypublishing.org/doi/10.1098/rsos.171780">171780</a>.
-</small></small>
-
----
-
 > According to this tree, at least how many times has SIV moved into the human species?
 
 <img src="/img/HIV-tree.png" width=400px/>
@@ -166,104 +229,29 @@ Image credit: Figure 2 from Galen <i>et al.</i> 2018. Roy Soc Open Sci 5: <a hre
 
 ---
 
-# Distance-based methods
-
-* Building a tree can be viewed as a clustering problem!
-* We already know how to calculate genetic distances between pairs of sequences.
-* Agglomerative (hierarchical) clustering means we group the most similar pair of sequences and progress from there.
-
----
-
-# UPGMA
-
-* Unweighted Pair Group Method with Arithmetic mean.
-* Every sequence starts out as a cluster of one ($n_{\scriptsize X}=1$).
-* Algorithm:
-  1. Join clusters $X$, $Y$ with minimum distance:
-
-     `$$d(X,Y)=\sum_{x\in X} \sum_{y\in Y} d(x,y) / (n_X n_Y)$$`
-  2. Replace $X$ and $Y$ with cluster $X\cup Y$, where:
-
-     `$$d(X\cup Y, Z) = \frac{n_{\scriptsize X} d(X,Z) + n_{\scriptsize Y} d(Y,Z)} {n_{\scriptsize X} + n_{\scriptsize Y}}$$`
-  3. Go to step 1 until only one cluster remains (the root).
-
----
-
-# Ultrametric trees
-
 <table>
-<tr>
-<td style="vertical-align:middle; font-size: 20pt">
-  <ul>
-  <li>Because of how UPGMA computes the distances of ancestral nodes, it generates trees where every tip is the same distance from the root.</li>
-  <li>This is what you would get if:</li>
-    <ol>
-      <li>we sample each tip at the same moment in time.</li>
-      <li>the rate of evolution is constant.</li>
-    </ol>
-  </ul>
-  <blockquote>
-  Why might you expect ultrametric trees to be a bad choice for viruses?
-  </blockquote>
-</td>
-<td width="40%">
-  <img src="/img/ultrametric.png"/>
-</td>
+  <tr>
+    <td style="vertical-align: middle; font-size: 18pt;">
+      <h1>Tree space</h1>
+      <ul>
+        <li>The space of all possible trees is high-dimensional and difficult to visualize.</li>
+        <li>Reconstructing a phylogenetic tree from data is difficult because the number of trees is enormous.</li>
+        <li>Searching through tree space is difficult because there is no natural move from one tree to another.</li>
+      </ul>
+    </td>
+    <td width="40%">
+      <img src="https://matsen.fredhutch.org/images/pt-tree-graph.png"/>
+      <small><small>
+      Image credit: Erick Matsen, <a href="https://matsen.fhcrc.org/general/2019/06/18/pt.html">Bayesian phylogenetic inference without sampling trees</a>.
+      </small></small>
+    </td>
+  </tr>
 </table>
 
----
-
-# Neighbor-joining trees
-
-* Another distance-based clustering method for making trees
-* Start with a "star" phylogeny: every tip directly descended from the root
-* Add ancestral nodes that minimize the total branch length of the tree
-* NJ is a greedy heuristic algorithm!
-
----
-
-# NJ algorithm
-
-1. Calculate distance matrix $d_{ij}$
-2. Calculate vector `$u_i=\sum_{j=1}^{n}d_{ij} / (n-2)$`
-   * The mean distances to each node, indexed by $i$.
-3. Find which $i$ and $j$ that minimize $d_{ij} - u_i - u_j$
-   * Select the shortest distance given what's typical for those nodes.
-4. Place new node $ij$ ancestral to $i$ and $j$.
-5. Calculate new distances from $ij$ to $i$, $j$ and previous ancestor.
-   * (Formulae not shown.)
-
----
-
-<section data-state="nj-slide">
-    <h1>Neighbor-joining</h1>
-    <br/>
-    <div id="nj" class="fig-container"
-         data-fig-id="fig-nj"
-         data-file="/include/njtree.html"
-         style="height:800px">
-    </div>
-</section>
-
----
-
-# Pros and cons of NJ
-
-* Distance-based methods are faster than likelihood-based methods (next week)
-* Unlike UPGMA, NJ is robust to changing rates of evolution
-* Effective for massive data sets.
-* Demonstrably accurate for reconstructed trees from simulated data.
-
----
-
-# Software for NJ
-
-* [MEGA](https://www.megasoftware.net/) - cross-platform GUI application
-* [RapidNJ](http://birc.au.dk/software/rapidnj/) - command-line program (source code)
-* [R package ape](https://rdrr.io/cran/ape/man/nj.html) - not recommended, slow
 
 ---
 
 # Further readings
 
 * [Building trees](https://artpoon.github.io/BioID/Trees.html)
+* [Viral phylodynamics](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1002947)
