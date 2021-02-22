@@ -18,13 +18,16 @@
 * A node represents a common ancestor of one or more descendants.
 * If a node has two descendants, then it is a *binary* or *bifurcating* node.
 * A node with more than two descendants is a *polytomy* (not a dichotomy).
-* A polytomy is *soft* if there is not enough data to resolve it into binary nodes; otherwise it is *hard* (a true simultaneous split).
+* A polytomy is *soft* if there is not enough data to resolve it into binary nodes (*i.e.*, is A more related to B or to C?).
+  * Otherwise it is *hard* polytomy (a true simultaneous split).
 
 ---
 
 # Branches
 
 * A branch connects a descendant node to its immediate ancestral node.
+* A <u>terminal</u> branch ends at a tip (observed).
+* An <u>internal</u> branch connects unobserved ancestors.
 * The length of a branch *may* represent:
   * genetic distance
   * elapsed time
@@ -141,13 +144,13 @@ Image credit: Figure 2 from Galen <i>et al.</i> 2018. Roy Soc Open Sci 5: <a hre
 
 <table><tr>
   <td width="65%"><ul>
-    <li>La population de virus dans le corps d'une personne devient tr&egrave;s diverse avec le temps</li>
-    <li>Si une de ces variantes vient &agrave; &ecirc;tre transmise &agrave; une autre personne, alors la prochaine population peut &ecirc;tre emboi&icirc;t&eacute;e dans la premi&egrave;re.</li>
-    <li>On dit que les s&eacute;quences de la premi&egrave;re personne sont *paraphyl&eacute;tiques*</li>
-    <li>Cette notion est d&eacute;j&agrave; applique&eacute;e dans des affaires de transmission du VIH</li>
+    <li>The virus population within a host becomes diverse over time - this can also be represented by a tree.</li>
+    <li>If a single copy of the virus is transmitted to another person, its descendants will form a clade nested within the tree of the source population.</li>
+    <li>Sequences from the source individual form a paraphyletic clade.</li>
+    <li>This concept has been (controversially) used to reconstruct the direction of HIV transmission in research and as forensic evidence.</li>
   </td>
-  <td>
-    <img src="/img/romero.png" width="35%">
+  <td width="30%">
+    <img src="/img/romero.png" width="120px">
   </td>
 </tr></table>
 
