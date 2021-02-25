@@ -158,15 +158,7 @@ Image credit: Figure 2 from Galen <i>et al.</i> 2018. Roy Soc Open Sci 5: <a hre
 
 ---
 
-# Phylogenies and infectious disease
-
-* Trees represent how pathogen diversity is structured into subtypes.
-* How different pathogen species are related to each other.
-* At a population level, a tree tells us something about how a pathogen spread through host populations.
-
----
-
-# Evolution of pathogenic proteobacteria
+# Pathogenic proteobacteria are polyphyletic
 
 <table>
 <tr>
@@ -186,24 +178,9 @@ Image credit: Figure 2 from Galen <i>et al.</i> 2018. Roy Soc Open Sci 5: <a hre
 
 ---
 
-<table>
-  <tr>
-    <td style="vertical-align: middle; font-size: 18pt;">
-      <h1>Origin of HIV-1</h1>
-      <ul>
-        <li>Oral polio vaccine hypothesis: that SIV entered the human population via contaminated vaccine.</li>
-        <li>SIV sequenced from chimpanzee faecal samples collected in the Democratic Republic of the Congo.</li>
-        <li>SIV samples from Kisangani (site of vaccine manufacture) clearly separate from clade containing HIV-1.</li>
-      </ul>
-    </td>
-    <td width="40%">
-      <img src="/img/worobey2004.png" width="400px"/>
-          <small>
-    Image credit: Worobey <i>et al.</i> (2004) Nature. https://doi.org/10.1038/428820a
-    </small>
-    </td>
-  </tr>
-</table>
+# Newick tree strings
+
+
 
 ---
 
