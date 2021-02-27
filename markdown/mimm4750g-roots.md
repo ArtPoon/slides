@@ -1,119 +1,77 @@
 # MIMM4750G
-## Clocks and roots
+## Roots
 
-![](https://imgs.xkcd.com/comics/estimating_time.png)
-
----
-
-# What is a molecular clock?
-
-<table>
-  <tr>
-  <td style="font-size: 18pt"><ul>
-    <li>The molecular clock is a hypothesis that evolution at a molecular level (<i>e.g.</i>, proteins) occurs at a constant rate.</li>
-    <li>Based on linear relationship between the time that species diverged from their common ancestor, and the number of amino acid differences in homologous proteins (<i>right</i>).</li>
-    <li>The molecular clock does <i>not</i> "tick".</li>
-  </ul></td>
-  <td width="50%">
-    <img src="/img/Dickerson.png"/>
-  <small>Figure from RE Dickerson (1971) J Mol Evol 1: 26.</small>
-  </td>
-  </tr>
-</table>
-
-
----
-
-# Neutral theory
-
-<table>
-  <tr>
-  <td style="font-size: 18pt"><ul>
-    <li>The <a href="https://en.wikipedia.org/wiki/Neutral_theory_of_molecular_evolution">neutral theory</a>: "the great majority of evolutionary changes at the molecular level [...] are caused not by Darwinian selection but by random drift"</li>
-    <li>Without selection, nucleotide substitutions should be a random process at a constant rate.</li>
-    <li>Today, this model is denoted the "strict" clock and is seldom supported by sufficient data.</li>
-  </ul></td>
-  <td width="35%">
-    <img src="https://www.genetics.org/content/genetics/202/4/1243/F1.medium.gif"/>
-  <small>
-  Motoo Kimura and James F. Crow
-  <small>Image credit: Museum of Genetics, Federal University of Rio Grande do Sul, Brazil</small>
-  </small>
-  </td>
-  </tr>
-</table>
-
----
-
-# Testing for a clock
-
-<table>
-  <tr>
-  <td style="font-size: 18pt"><ul>
-    <li>If a clock exists, then sequences should become more distant from the common ancestor as a *linear trend* over time.</li>
-    <li>If the rate of evolution increases (decreases) over time, we expect this trend to be concave up (down).</li>
-    <li>If the rate varies from one lineage to the next, the trend should be noisier.</li>
-  </ul></td>
-  <td width="55%">
-    <img src="http://currents.plos.org/outbreaks/files/2014/04/EBOV_cds_mb_path.png"/>
-  <small>
-  Root-to-tip regression of a Bayesian tree for concatenated coding regions of Ebola virus.
-  <small>Image credit: Dudas and Rambaut (2014) PLOS Currents Outbreaks</small>
-  </small>
-  </td>
-  </tr>
-</table>
-
----
-
-# Clocks and trees
-
-* When we reconstruct a tree by fitting a model of evolution, the lengths of branches are measured in units of *expected numbers of substitutions*.
-
-* This weird unit exists because most models are scaled to $\mu\times t$ (the rate of evolution multiplied by time).
-
-* We say that the rate and time are *confounded* - it is impossible to estimate one parameter without knowing the true value of the other.
-
----
-
-# Confound it!
-
-<img src="/img/timetree.png" width="500px"/>
-
-* A tree can be stretched back in time ($\uparrow t$) and explain the data with *exactly the same likelihood* if we decrease the rate ($\downarrow \mu$).
-* Conversely, if we compress the tree forward in time ($\downarrow t$), we obtain the same likelihood by speeding up the rate ($\uparrow \mu$).
-
----
-
-# Estimating the clock
-
-* For infectious diseases, measurable evolution can occur on a time scale of weeks.
-* This means that a branch of the tree can "grow" in the time between sampling different infections.
-<img src="/img/timetree-scaled.png" width="400px"/>
-* We can use sampling times to "pin down" the tree and prevent the free-scaling problem.
-
----
-
-# Rooting the tree
-
-* If we are directly measuring *time*, then we must impose a direction of time's flow on the tree.
-* This means that we must locate the tree's *root* (the earliest point in time).
-* Rooting trees is difficult!  By definition, it is the point that is the most distant in time &mdash; it cannot be directly observed.
+![](https://imgs.xkcd.com/comics/authorization.png)
 
 ---
 
 # Phylogenies can be rooted or unrooted.
 * The root is a hypothesis about what point on the tree represents the earliest
 time.
+* Just because a tree is presented in a left-to-right (*e.g.*, rectangular) layout does *not* mean that it is rooted!
+* The choice of which node is furthest to the left is completely arbitrary.
 
-  <center>
-  <iframe src="/include/rooting.html" width=900px height=450px>
-  </iframe>
-  </center>
+---
+
+# How to spot unrooted trees
+
+<table>
+
+<tr>
+<td>Rectangular</td><td>Polar/circular</td>
+</tr>
+
+<tr>
+<td>
+<img src="/img/unrooted-rect.svg" height="300px"/>
+</td>
+<td width="50%">
+<img src="/img/unrooted-circular.svg"  height="300px"/>
+</td>
+</tr>
+
+<tr>
+<td>Left-most node has three descendant branches.</td>
+<td>Inner-most node (drawn as an arc) has three descendants.</td>
+</tr>
+
+</table>
+
+This won't work if the left/inner node is a polytomy!
+
+---
+
+Unrooted and rooted trees relating Ebola virus sequences
+<iframe style="width: 1000px; height: 500px" src="/include/rooting.html">
+</iframe>
+<small><small>
+Try clicking and dragging the yellow node around.
+</small></small>
+
+---
+
+
+# Rooting trees is difficult!
+
+* By definition, it is the point that is the most distant in time &mdash; it is the point that we have the *least* direct information about.
+  * The root is essentially never directly observed.
+  * *e.g.*, SARS-CoV-2 may be the closest we've ever been to sampling the root.
+* The root may appear at any point along the length of the entire tree.
 
 ---
 
 # Midpoint rooting
+
+* Determine the longest tip-to-tip path (patristic distance) in the unrooted tree.
+  * The midpoint is halfway along that path.
+  * Credited to [James Farris]([Farris](https://en.wikipedia.org/wiki/James_Ferris)) (1972), who studied the origins of life.
+* Assumes a constant rate of evolution.
+* Presumably, we use the longest patristic distance to minimize random variation.
+
+
+<small><small>
+JS Farris.  Estimating phylogenetic trees from distance matrices.  Am Nat 106: 645-668.
+</small></small>
 
 ---
 
@@ -142,10 +100,10 @@ time.
     <td style="vertical-align:middle">
       <h1>Root-to-tip regression</h1>
       <ul>
-        <li>We can simultaneously estimate the clock (rate of evolution) *and* locate the root.</li>
+        <li>We can simultaneously estimate the clock (rate of evolution) <i>and</i> locate the root.</li>
         <li>Try different placements of the root and look at the plot that results.</li>
         <li>The "best" root should give the cleanest (positive) linear trend.</li>
-        <li>(*right*) Phylogeny and root-to-tip plot for Ebolavirus isolates from 2013-2016 epidemic in West Africa.</li>
+        <li>(<i>right</i>) Phylogeny and root-to-tip plot for Ebolavirus isolates from 2013-2016 epidemic in West Africa.</li>
       </ul>
       <small>
       Image credit: Holmes <i>et al.</i> (2016) Nature 538. https://doi.org/10.1038/nature19790
@@ -178,21 +136,29 @@ Tree from Li, Tanimura and Sharp (1988) Mol Biol Evol 5: 313.
 
 # Origin of HIV-1
 
-<img src="/img/korber-fig1.png" width="400px"/>
+<small>
+Estimate of HIV-1 origin by root-to-tip regression (left) compares favourably to cutting-edge estimates decades later (right).
+</small>
+<table>
+<tr>
+<td><img src="/img/korber-fig1.png" width="400px"/></td>
+<td><img src="/img/hiv-tmrca.png" height="300px"/></td>
+</tr>
+</table>
 
 <small><small>
-Figure from B Korber <i>et al.</i> (2000) <a href="https://science.sciencemag.org/content/288/5472/1789.abstract">Timing the ancestor of the HIV-1 pandemic strains.</a>  Science 288.
+Figures from B Korber <i>et al.</i> (2000) <a href="https://science.sciencemag.org/content/288/5472/1789.abstract">Timing the ancestor of the HIV-1 pandemic strains.</a>  Science 288; M Bletsa <i>et al.</i> (2019) <a href="https://academic.oup.com/ve/article/5/2/vez036/5561482">Divergence dating using mixed effects clock modelling: An application to HIV-1</a>. Virus Evol 5: vez036.
 </small></small>
 
 ---
 
 <img src="/img/inca-rtt.png" width="400px"/>
 
-> Q2.  In the "root to tip" plot above, write down which letters correspond to: (i) $t$; (2) $\mu t$; (3) $\mu$, (4) time of the root.
+> In the "root to tip" plot above, which letters correspond to: (i) $t$; (2) $\mu t$; (3) $\mu$, (4) time of the root?
 
-<small>
+<small><small>
 Figure taken from an analysis of respiratory syncytial virus by C Agoti *et al.* 2014, Emerg Infect Dis 20: 957.
-</small>
+</small></small>
 
 ---
 
@@ -207,115 +173,21 @@ Figure taken from an analysis of respiratory syncytial virus by C Agoti *et al.*
 
 ---
 
-# Clocks on trees
-
-* Fitting a clock model to a tree explicitly accounts for common ancestry of data
-* The length of each branch estimates, $t$, can be directly estimated from dated tips or dated nodes ("fossil record").
-* Strict clock assumes constant rate of evolution, $\mu$, throughout entire tree.
-
----
-
-# Separation of SIV at end of last ice age
-<img src="/img/bioko.png" width="750px"/>
-<small>
-M Worobey *et al.* (2010) Science 329. doi://10.1126/science.1193550
-</small>
-
----
-
-# Relaxing the clock
-
-* Relax the strict clock by modeling how the rate changes along branches of the tree.
-* Allowing every branch to have its own rate would create too many parameters!
-* There are generally four categories of relaxed clocks:
-  1. autocorrelated
-  2. uncorrelated
-  3. discrete multi-rate
-  4. local multi-rate
-
----
-
-# Autocorrelated clocks
-
-* The clock rate is an evolving characteristic along the tree.
-* Rate at branch $i$ is drawn from a distribution centered at the rate of the previous branch:
-
-$$\mu_i \sim \mathcal{N}(\mu_j, \sigma^2 t)$$
-
-<img src="/img/autocorrelated-clock.png" width="300px"/>
+# SARS-CoV-2: When methods disagree
 
 <small>
-Image credit: S Ho and S Duchene (2014) Molecular Ecology, doi: 10.1111/mec.12953
+Clock-based methods tend to root on B clade, outgroup rooting tends to root on A.
 </small>
+<img src="/img/sc2-rooting.png" height="500px">
+
+<small><small>
+Figure from L Pipes <i>et al.</i> (2020) Assessing Uncertainty in the Rooting of the SARS-CoV-2
+Phylogeny. <a href="https://academic.oup.com/mbe/advance-article/doi/10.1093/molbev/msaa316/6028993">Mol Biol Evol</a>, msaa316.
+</small></small>
 
 ---
 
-# Uncorrelated clocks
+# Further reading
 
-* The clock rate of each branch is sampled from a continuous probability distribution, with parameters to estimate:
-
-<table>
-<thead>
-<tr><th>Lognormal</th><th>Gamma</th></tr>
-</thead>
-<tbody>
-<tr>
-<td style="height: 350px">
-<iframe src="http://learnbayes.org/demo/stat-distributions-js/distributionDisplay.html?dist=lognormal" width="500px" height="400px">
-</iframe>
-</td>
-<td style="height: 350px">
-<iframe src="http://learnbayes.org/demo/stat-distributions-js/distributionDisplay.html?dist=gamma" width="500px" height="400px">
-</iframe>
-</td>
-</tr>
-</tbody>
-</table>
-
-<small>
-Source: Richard Morey, <a href="https://github.com/richarddmorey/stat-distributions-js">stat-distributions-js</a>
-</small>
-
----
-
-# Discrete and local multi-rate clocks
-
-<table>
-<tr>
-<td>
-  <ul>
-    <li>A discrete clock model is like FEL: it assumes there are $k$ rate categories and tries to assign each branch to one of them.</li>
-    <li>A local clock model assumes there are $k$ rate categories that are spread across different parts of the tree.</li>
-    <li>The local clock was developed by Anne Yoder and Ziheng Yang&ast; to accommodate different evolutionary rates in mtDNA among mammalian species.</li>
-  </ul>
-</td>
-<td width="50%">
-  <img src="/img/worobey-flu.png" width="450px"/>
-  <small>
-  Image credit: Worobey <i>et al.</i> (2014) Nature 508. https://doi.org/10.1038/nature13016
-
-  &ast; Yoder and Yang (2000) Mol Biol Evol 17: 1081, https://doi.org/10.1093/oxfordjournals.molbev.a026389
-  </small>
-</td>
-</tr>
-
----
-
-# Ebolavirus outbreak in West Africa
-
-![](/img/gire-ebola.svg)
-
-<small>
-SK Gire *et al.* 2014. Genomic surveillance elucidates Ebola virus origin and transmission during the 2014 outbreak. *Science* 345: 1369-1372.
-</small>
-
----
-
-# Further readings
-
-* [Phylogenetic Analysis of Guinea 2014 EBOV Ebolavirus Outbreak](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4024086/)
-* [Timing the Ancestor of the HIV-1 Pandemic Strains](https://science.sciencemag.org/content/288/5472/1789)
-* [Island Biogeography Reveals the Deep History of SIV](https://science.sciencemag.org/content/329/5998/1487)
-* [Molecular-clock methods for estimating evolutionary rates and timescales](https://onlinelibrary.wiley.com/doi/full/10.1111/mec.12953)
-* [A synchronized global sweep of the internal genes of modern avian influenza virus](https://www.nature.com/articles/nature13016)
-
+* [Assessing Uncertainty in the Rooting of the SARS-CoV-2 Phylogeny](https://academic.oup.com/mbe/advance-article/doi/10.1093/molbev/msaa316/6028993)
+* 
