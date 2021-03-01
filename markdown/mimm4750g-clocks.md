@@ -285,7 +285,7 @@ Source: Richard Morey, <a href="https://github.com/richarddmorey/stat-distributi
   <img src="/img/worobey-flu.png" width="450px"/>
   <small>
   Image credit: Worobey <i>et al.</i> (2014) Nature 508. https://doi.org/10.1038/nature13016
-  
+
   &ast; Yoder and Yang (2000) Mol Biol Evol 17: 1081, https://doi.org/10.1093/oxfordjournals.molbev.a026389
   </small>
 </td>
@@ -310,4 +310,3 @@ SK Gire *et al.* 2014. Genomic surveillance elucidates Ebola virus origin and tr
 * [Island Biogeography Reveals the Deep History of SIV](https://science.sciencemag.org/content/329/5998/1487)
 * [Molecular-clock methods for estimating evolutionary rates and timescales](https://onlinelibrary.wiley.com/doi/full/10.1111/mec.12953)
 * [A synchronized global sweep of the internal genes of modern avian influenza virus](https://www.nature.com/articles/nature13016)
-
