@@ -269,3 +269,4 @@ Upper and lower 95% quantiles (dashed, Poisson) around clock expectation (solid)
 * Next feature targets:
   * Enable users to search samples by mutations
   * Implement statistics to interpret bead plot features, *e.g.*, number of unsampled infections.
+  * Finalizing GISAID-embedded version with additional metadata.
