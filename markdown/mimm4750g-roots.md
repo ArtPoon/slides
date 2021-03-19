@@ -190,4 +190,4 @@ Phylogeny. <a href="https://academic.oup.com/mbe/advance-article/doi/10.1093/mol
 # Further reading
 
 * [Assessing Uncertainty in the Rooting of the SARS-CoV-2 Phylogeny](https://academic.oup.com/mbe/advance-article/doi/10.1093/molbev/msaa316/6028993)
-* 
+*
