@@ -132,12 +132,12 @@ Islands in tree space.  Source: Whidden and Matsen (2015) Syst Biol 64. https://
     <td style="font-size: 20pt;">
       <ul>
       <li>There are many probability distributions that we can use as priors.</li>
-      <li>Distributions have different limits (*e.g.*, bounded on the left)</li>
+      <li>Distributions have different limits (<i>e.g.</i>, bounded on the left)</li>
       <li>People tend to prefer setting distributions to be "uninformative".</li>
       <li>Be careful!  What seems uninformative might not be.</li>
       </ul>
     </td>
-    <td width="50%">
+    <td width="45%">
       <img src="/img/priors.png" width="600px"/>
     </td>
   </tr>
@@ -151,7 +151,7 @@ Islands in tree space.  Source: Whidden and Matsen (2015) Syst Biol 64. https://
   * For example, the uniform distribution has lower and upper limits.
 * Since we want to use "parameters" to refer to those in the model we are trying to fit, we call this other set "hyperparameters".
 * We might also use previously collected data to choose hyperparameters.
-  * For example, the mean hyperparameter of a Gaussian prior can be the mean of a previous data set.  (This is hierarchical Bayes
+  * For example, the mean hyperparameter of a Gaussian prior can be the mean of a previous data set <i>i.e.,</i> hierarchical Bayes.
 
 ---
 
@@ -172,12 +172,46 @@ Islands in tree space.  Source: Whidden and Matsen (2015) Syst Biol 64. https://
 
 $$P(H|D) \propto P(D|H) P(H)$$
 
-* We usually can't write down a [closed form expression](https://en.wikipedia.org/wiki/Closed-form_expression) for P(H|D) as a distribution function.
-* The next best thing would be to generate a random sample from this distribution.
+* Our posterior belief is *proportional* to our prior belief, times the likelihood of the data.
 
 ---
 
+# Conjugate priors
+
+* In some cases, multiplying the likelhood and prior yields a posterior distribution that is the same type as the prior.
+* In these cases, the prior distribution is called a *conjugate prior*.
+
+| Likelihood | Prior      | Posterior |
+|------------|------------|-----------|
+| Binomial   | Beta       | Beta      |
+| Negative binomial | Beta  | Beta |
+| Poisson | Gamma | Gamma |
+| Geometric | Beta | Beta |
+| Exponential | Gamma | Gamma |
+| Normal (unknown mean) | Normal | Normal |
+| Normal (unknown variance) | Inverse gamma | Inverse gamma |
+| Multinomial | Dirichlet | Dirichlet |
+
+---
+
+# Beta-binomial
+
+* Remember the likelihood of coin tosses is modeled with a binomial distribution:
+  $$L\propto p^y (1-p)^{N-y}$$
+* The beta distribution is a good choice for probability parameters, because it is bounded on the interval [0,1]:
+  $$\mathrm{Beta}(\alpha,\beta)=\frac{1}{B(\alpha,\beta)} p^{\alpha-1}(1-p)^{\beta-1}$$
 
 
+---
 
+* The posterior updates the hyperparameters $\alpha$ and $\beta$ to $\alpha+y$ and $\beta+N-y$.
+![](/img/beta-binom.svg)
+
+---
+
+# Sampling from the posterior
+
+* We usually can't write down a [closed form expression](https://en.wikipedia.org/wiki/Closed-form_expression) for P(H|D) as a distribution function.
+* The next best thing would be to generate a random sample from this distribution.
+* There are a number of ways to go about this (rejection sampling), but we will focus specifically on Markov chain Monte Carlo (MCMC) sampling.
 
