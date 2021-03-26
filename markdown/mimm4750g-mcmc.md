@@ -5,6 +5,22 @@
 
 ---
 
+# Bayesian inference
+
+* Recall that Bayesian inference is updating our prior belief with new data.
+  $$P(H|D) = \frac{P(D|H) P(H)}{P(D)}$$
+  $$\mathrm{posterior} = \frac{\mathrm{likelihood}\times \mathrm{prior}}{\mathrm{probability\\;of\\;the\\;data}}$$
+
+---
+
+# Sampling the posterior distribution
+
+* We usually do not have an exact closed form solution for the posterior distribution.
+* Instead of solving for the posterior, it might be good enough to generate a random sample of points from this distribution.
+<img src="/img/sampling.svg" height="350px"/>
+
+---
+
 # Monte Carlo
 
 <table>
@@ -13,15 +29,49 @@
   <ul>
     <li><a href="https://en.wikipedia.org/wiki/Stanislaw_Ulam">Stanislaw Ulam</a> was a Polish physicist who, in 1946, was playing solitaire while recovering from brain surgery.</li>
     <li>He reasoned that it would be easier to estimate the probability of winning by playing many times (simulation) than calculating the exact chance.</li>
-    <li>This simulation-based approach was dubbed the "Monte Carlo method" after the casino.</li>
+    <li>This simulation-based approach was dubbed the <a href="https://en.wikipedia.org/wiki/Monte_Carlo_method">"Monte Carlo method"</a> after the casino.</li>
     <li>The method later became used in the Manhattan project.</li>
   </ul>
   </td>
   <td width="35%">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Stanislaw_Ulam.tif/lossy-page1-413px-Stanislaw_Ulam.tif.jpg"/>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Stanislaw_Ulam.tif/lossy-page1-413px-Stanislaw_Ulam.tif.jpg" alt="Unless otherwise indicated, this information has been authored by an employee or employees of the Los Alamos National Security, LLC (LANS), operator of the Los Alamos National Laboratory under Contract No. DE-AC52-06NA25396 with the U.S. Department of Energy. The U.S. Government has rights to use, reproduce, and distribute this information. The public may copy and use this information without charge, provided that this Notice and any statement of authorship are reproduced on all copies. Neither the Government nor LANS makes any warranty, express or implied, or assumes any liability or responsibility for the use of this information."/>
+    <small>
+    Image credit: <a href="https://www.lanl.gov/resources/web-policies/copyright-legal.php">Los Alamos National Laboratory</a>.
+    </small>
   </td>
   </tr>
 </table>
+
+---
+
+<table>
+  <tr>
+  <td style="vertical-align: middle;">
+  <h1>Monte Carlo integration</h1>
+  <ul>
+    <li>We need to be able to integrate the posterior to calculate the mean, 95% interval.</li>
+    <li>Suppose we are able to calculate the posterior probability $P(\theta|D)$ for a given $\theta$, but it is impossible to integrate.</li>
+    <li>Estimate the integral by the proportion of random points between 0 and $M$ (dashed line) below $P(\theta|D)$.</li>
+  </ul>
+  </td>
+  <td width="40%">
+    <img src="/img/monte-carlo.svg" height="400px"/>
+    <small>
+    The curved function represents a posterior distribution function.
+    Red lines represent posterior probabilities we calculate for specific parameter values.
+    </small>
+  </td>
+  </tr>
+</table>
+
+---
+
+# Limitations of Monte Carlo integration
+
+* No guidance on how to pick ceiling (dashed line).
+* May be really inefficient if posterior is low over most of $\theta$.
+* Problematic if it is time-consuming to calculate the posterior.
+* [Importance sampling](https://en.wikipedia.org/wiki/Importance_sampling) draws points from a proposal distribution that (hopefully) concentrates our efforts in the more useful regions of $\theta$.
 
 ---
 
@@ -32,10 +82,13 @@
   <td>
   <ul>
     <li>Suppose you exit the classroom and after every 10 steps, you flip a coin twice.</li>
+    <ul>
     <li>HH, face forward</li>
     <li>HT, turn left</li>
     <li>TH, turn right</li>
     <li>TT, turn around</li>
+    </ul>
+    <li>The random walk originated with <a href="https://en.wikipedia.org/wiki/Ronald_Ross">Sir Ronald Ross'</a> study of <a href="https://blogs.lshtm.ac.uk/library/2015/03/27/karl-pearson-and-sir-ronald-ross/"/>mosquito transmission of malaria</a>, but is remembered more for <a href="https://www.nature.com/articles/072342a0">Pearson's letter</a>.</li>
   </ul>
   </td>
   <td width="40%">
@@ -90,9 +143,9 @@
 
 ![](/img/mcmc.png)
 
-<small>
-Figure from Poon *et al.* (2018) Retrovirology 15:47.
-</small>
+<small><small>
+Figure from Poon <i>et al.</i> (2018) Retrovirology 15:47.
+</small></small>
 
 ---
 
@@ -101,7 +154,7 @@ Figure from Poon *et al.* (2018) Retrovirology 15:47.
 * MCMC is an "auto-correlated" process - the current state will always be similar to the previous state.
 * This is *efficient* because we don't waste time sampling states (parameter values) that are silly.
 * This is *not efficient* because a random walk is slow to explore parameter space.
-* When a random walk has gone long enough, it should eventually "converge" to the posterior distribution.
+* When a random walk has gone long enough, it should eventually "converge" to the posterior distribution (also known as "mixing").
 
 ---
 
@@ -111,4 +164,24 @@ Figure from Poon *et al.* (2018) Retrovirology 15:47.
 * We don't want this to affect the sample, so we throw out the first part of the walk (chain).
 * To reduce auto-correlation the sample, we only keep a small number of samples taken from equal intervals along the chain (thinning).
 
+---
+
+Examples of burn-in and autocorrelation
+<img src="https://bookdown.org/marklhc/notes_bookdown/06_mcmc_files/figure-html/trace-acf-1.png" height="250px"/>
+<img src="https://bookdown.org/marklhc/notes_bookdown/06_mcmc_files/figure-html/trace-acf-2.png" height="250px"/>
+
+<small><small>
+Image credit: Mark Lai (2019). <a href="https://bookdown.org/marklhc/notes_bookdown/markov-chain-monte-carlo.html">Course Handouts for Bayesian Data Analysis Class</a>.
+</small></small>
+
+---
+
+# Effective sample size
+
+* Consider a chain sample of $N$ steps.
+* The ESS is the hypothetical number of truly random samples with the same estimation power as $N$.
+* The theoretical formula for ESS cannot be calculated in practice, so it is estimated; for example:
+
+  `$$\hat{N}_{\mathrm{eff}} = \frac{N}{1 + 2\sum_{t=1}^{2m+1} \hat{\rho}_t}$$`
+  where $\hat{\rho}_t$ is the autocorrelation estimate with lag $t$.
 
