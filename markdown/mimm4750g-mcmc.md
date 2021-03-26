@@ -185,3 +185,14 @@ Image credit: Mark Lai (2019). <a href="https://bookdown.org/marklhc/notes_bookd
   `$$\hat{N}_{\mathrm{eff}} = \frac{N}{1 + 2\sum_{t=1}^{2m+1} \hat{\rho}_t}$$`
   where $\hat{\rho}_t$ is the autocorrelation estimate with lag $t$.
 
+---
+
+# Improving ESS
+
+* What ESS is good enough?
+* BEAST developers tend to recommend a minimum of ESS=200.
+  * Why 200?  Perhaps because the 95% credible interval is estimated by 5 effective samples at either extreme.
+* How do I increase the ESS?
+  * Run your chains longer.
+  * Run more chains.
+  * If the problem is one parameter, evaluate its proposal distribution and sampling frequency.
