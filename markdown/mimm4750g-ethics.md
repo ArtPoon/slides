@@ -1,20 +1,7 @@
 # MIMM4750G
 ## Ethics
 
-![](https://imgs.xkcd.com/comics/research_ethics.png)
-
----
-
-# Scientific ethics
-
-* Doing science
-  * Study design
-  * Informed consent
-  * Fabrication
-* Communicating science
-  * Publication and authorship
-  * Data and resource sharing
-  * Peer review and funding
+![](https://imgs.xkcd.com/comics/human_subjects.png)
 
 ---
 
@@ -24,7 +11,7 @@
   * Data usage: who owns the data?
   * Data sharing and privacy: source attribution
   * Resource sharing: software distribution and licensing
-  * Peer review of source code
+  * Peer review of source code: is it correct?
 
 ---
 
@@ -32,30 +19,19 @@
 
 * Access to data is the fundamental resource of bioinformatics.
 * An enormous amount of data is available in the public domain.
-* An even larger amount of data is not.
-  * The [NIH Genomic Data Commons repository](https://portal.gdc.cancer.gov/repository) holds over 526,000 files - over 60% of the files are controlled access.
-  * The [GISAID]() novel coronavirus database presently holds over 3,400 genome sequences - [Genbank](https://www.ncbi.nlm.nih.gov/genbank/sars-cov-2-seqs/) has about 320 genomes.
+  * An even larger amount of data is not.
+* The [GISAID](https://www.gisaid.org/) novel coronavirus database presently holds **over one million** genome sequences
+  * [Genbank](https://www.ncbi.nlm.nih.gov/genbank/sars-cov-2-seqs/) has about 150,000 genomes.
 
 ---
 
-# Dayhoff and *The Atlas*
+# Data access: GISAID
 
-* Dayhoff and Eck develop new computational methods to compile and analyze a protein sequence database.
-* Dayhoff petitioned researchers to donate protein sequence data in exchange for a copy of *The Atlas*, which is copyrighted material.
-* Unable to obtain sufficient grant support, Dayhoff adopts a commercial model to maintain the database.
-* *The Atlas* is succeeded by Genbank, which operates under an open access model.
-
----
-
-# GISAID
-
-* Primary data source for [nextstrain](https://nextstrain.org/).
+* Primary data source for SARS-CoV-2 genome data around the world.
 * [Data access agreement](https://www.gisaid.org/registration/terms-of-use/):
-  * You cannot redistribute the data.
-  * Publications must acknowledge the originating laboratory.
+  * You cannot redistribute the data, or "enable others to access or use the data through a separate portal".
+  * Publications must acknowledge the originating and submitting laboratories.
   * License is non-transferrable.
-* ~~It is currently not possible to download all the data - one must click through each record manually (scraping is discouraged).~~
-  * **Correction**: some users are able to download all sequences from GISAID, while others cannot - this appears to be an IT issue and not a decision by GISAID.
 
 ---
 
@@ -64,9 +40,9 @@
 * Global inequities:
   * Low- and middle-income countries (LMIC) where some outbreaks are common and important samples can be collected.
   * Researchers who benefit most from open access to data tend to be located in high-income countries.
-* The GISAID model encourages acknowledgement of originating labs (but is it enforced?).
+* The GISAID model encourages (and occasionally enforces) acknowledgement of originating labs.
 * [Frustration in the research community](https://twitter.com/jxtx/status/1240710221997256706) at lack of open access.
-  * Raw NGS data are available on NCBI SRA for only a small number of patient samples.
+  * Some researchers have had their database access revoked by GISAID ([Wadman 2021](https://www.sciencemag.org/news/2021/03/critics-decry-access-transparency-issues-key-trove-coronavirus-sequences)).
 
 ---
 
@@ -96,7 +72,7 @@ An incomplete table:
 
 ---
 
-# Criminalization of HIV transmission
+# Data privacy: Criminalization of HIV transmission
 
 * Around the world, people continue to be prosecuted for HIV transmission.
   * In Canada, people found guilty of HIV transmission can be charged with aggravated sexual assault, with "maximum life imprisonment and mandatory lifetime registration as a sex offender" ([aidslaw.ca](http://www.aidslaw.ca/site/the-criminalization-of-hiv-non-disclosure-in-canada-report/?lang=en))
@@ -104,13 +80,25 @@ An incomplete table:
 
 ---
 
-# HIV forensics and bioinformatics
+# Data privacy: HIV forensics and bioinformatics
 
 <img src="https://ars.els-cdn.com/content/image/1-s2.0-S1684118220300025-gr2_lrg.jpg"/>
 
-<small>
+<small><small>
 Image credit: W-Y Li <i>et al.</i> (2020) <a href="https://doi.org/10.1016/j.jmii.2019.12.002">J Microbiol Immunol Infect, in press</a>.
-</small>
+</small></small>
+
+---
+
+# Data privacy: The Bavarian patient
+
+* "... it appears that this cluster [...] is the direct ancestor of these later viruses and thus led directly to some fraction of the widespread outbreak circulating in Europe today."
+
+<img src="https://pbs.twimg.com/media/ESP5-KDU4AEMuDe?format=jpg&name=large" height="350px"/>
+
+<small><small>
+Source: Twitter (March 4, 2020), Nextstrain developer feed.
+</small></small>
 
 ---
 
@@ -131,13 +119,13 @@ Image credit: W-Y Li <i>et al.</i> (2020) <a href="https://doi.org/10.1016/j.jmi
 </table>
 <img src="/img/LancetFigure4a.png" width="750px"/>
 
-<small>
-Image credit: A Poon <i>et al.</i> (2016) <a href="https://doi.org/10.1016/S2352-3018(16)00046-1"/>Lancet HIV 3: e231</a>.
-</small>
+<small><small>
+Image credit: Poon <i>et al.</i> (2016) <a href="https://doi.org/10.1016/S2352-3018(16)00046-1"/>Lancet HIV 3: e231</a>.
+</small></small>
 
 ---
 
-# Data usage: Costs and benefits
+# Data privacy: Costs and benefits
 
 | Role | Costs | Benefits |
 |------|-------|----------|
@@ -163,7 +151,7 @@ Image credit: A Poon <i>et al.</i> (2016) <a href="https://doi.org/10.1016/S2352
 
 ---
 
-# Restrictive licensing
+# Resource sharing: Restrictive licensing
 
 * Many bioinformatic programs are distributed only as web applications (closed source).
 * Limited processing capability for public use.
@@ -184,7 +172,7 @@ Image credit: A Poon <i>et al.</i> (2016) <a href="https://doi.org/10.1016/S2352
 
 ---
 
-# Abandonware
+# Resource sharing: Abandonware
 
 <table>
   <tr>
@@ -205,13 +193,13 @@ Image credit: A Poon <i>et al.</i> (2016) <a href="https://doi.org/10.1016/S2352
   </tr>
 </table>
 
-<small>
+<small><small>
 &ast;G Duck <i>et al.</i> (2016) <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4917176/"/>PLOS ONE 11: e0157989</a>.
-</small>
+</small></small>
 
 ---
 
-# Ethical implications
+# Resource sharing: Ethical implications
 
 * Unmaintained software can have persistent and undetected bugs, producing inaccurate results.
 * Requiring clinical labs to access software over the web can mean the transmission of sensitive patient data over unsecured networks.
@@ -220,8 +208,27 @@ Image credit: A Poon <i>et al.</i> (2016) <a href="https://doi.org/10.1016/S2352
 
 ---
 
+# Resource sharing: CovidSim
+
+* UK COVID-19 response was informed in part by a simulation program written in 2005 for H5N1.
+  * Projected over 2 million US deaths without intervention.
+* Source code was not released.
+  * After widespread criticism, analysis found the code "a buggy mess" but reproducible ([Chawla 2020](https://www.nature.com/articles/d41586-020-01685-y)).
+* Now a highly active GitHub repository.
+
+---
+
+# Dayhoff and *The Atlas*
+
+* Dayhoff and Eck develop new computational methods to compile and analyze a protein sequence database.
+  * Dayhoff petitioned researchers to donate protein sequence data in exchange for a copy of *The Atlas*, which is copyrighted material.
+* Unable to obtain sufficient grant support, Dayhoff adopts a commercial model to maintain the database.
+  * *The Atlas* is succeeded by Genbank, which operates under an open access model.
+
+---
+
 # Further reading
 
-* [Ethics in Science: Ethical Misconduct in Scientific Research](https://doi-org.proxy1.lib.uwo.ca/10.1201/9781315267968)
-* ["Available upon request": not good enough for microbiome data!](https://doi.org/10.1186/s40168-017-0394-z)
+* [Critics decry access, transparency issues with key trove of coronavirus sequences](https://www.sciencemag.org/news/2021/03/critics-decry-access-transparency-issues-key-trove-coronavirus-sequences)
 * [A large-scale analysis of bioinformatics code on GitHub](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6209220/)
+* [Critiqued coronavirus simulation gets thumbs up from code-checking efforts](https://www.nature.com/articles/d41586-020-01685-y)
