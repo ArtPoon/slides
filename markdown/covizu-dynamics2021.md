@@ -122,7 +122,13 @@ Slides published at http://slides.filogeneti.ca/html/covizu-dynamics2021.html
 # Database
 
 * Under a GISAID Data Access Agreement, CoVizu is provisioned by a custom data feed.
-  <img src="/img/covizu-gisaid.png" height="450px"/>
+
+<table>
+  <tr>
+    <td><img src="/img/covizu-gisaid.png"/></td>
+    <td><img src="/img/gisaid-tiles.png"/></td>
+  </tr>
+</table>
 
 ---
 
