@@ -91,41 +91,16 @@ Aligned HCV sequences
 # Terminal gaps
 
 * Terminal gaps are a contiguous run of gaps on either extreme left or right of a pairwise alignment.
-* Also known as "leading" and "trailing" gaps.
+  * Also known as "leading" and "trailing" gaps.
 
   ```
   ACTGATC   ACTGATC
   ---GATC   ACTG---
   ```
 
-* We might not want to penalize these when aligning partial (incomplete) sequences.
-
----
-
-# Dynamic programming
-
-* Finding the optimal placement of gaps is difficult!
-* [Dynamic programming](https://en.wikipedia.org/wiki/Dynamic_programming):  A complex problem can be broken down into a sequence of much smaller, simpler *recursive* problems.
-* "Recursive" means that the problems are nested within each other.  Solving one is part of solving another.
-* Retrieving the solutions to problems nested within the next problem saves work!
-
----
-
-<table>
-  <tr>
-    <td>
-      <h1>Filling the F matrix</h1>
-      <ul>
-      <li>Most heuristics for sequence alignment operate on a dynamic programming matrix ($F$).</li>
-      <li>Like a *dot plot*, it is a matrix where one sequence labels the columns, and the second labels the rows.</li>
-      <li>Each entry in $F$ is calculated from the entries above, to the left, or diagonally up and left.</li>
-      </ul>
-    </td>
-    <td>
-      <img src="/img/dynamicprogram.png"/>
-    </td>
-  </tr>
-</table>
+* *Global* alignment requires the sequences to be aligned end-to-end &mdash; terminal gaps are penalized.
+* *Local* alignment relaxes this requirement &mdash; it does not penalize terminal gaps.
+  * Use local alignment if you know a sequence is incomplete.
 
 ---
 
@@ -138,15 +113,10 @@ Aligned HCV sequences
     </div>
     </center>
 </section>
-<small>JS adapted from https://github.com/drdrsh</small>
 
----
-
-# Local versus global alignment
-
-* *Global* alignment (*e.g.*, Needleman-Wunsch) requires the sequences to be aligned end-to-end &mdash; terminal gaps are penalized.
-* *Local* alignment (*e.g.*, Smith-Waterman) relaxes this requirement &mdash; it does not penalize terminal gaps.
-* Use local alignment when you know that the query is shorter than the reference, or vice versa.
+<small><small>
+JS adapted from https://github.com/drdrsh
+</small></small>
 
 ---
 
@@ -171,7 +141,7 @@ Aligned HCV sequences
   1. Align closely related sequence pair.
   2. Align a sequence to group of sequences.
   3. Align two groups of sequences.
-* [CLUSTALW](https://en.wikipedia.org/wiki/Clustal) averages scores across residues for each position between groups.
+
 * Preserve all gaps as we proceed down to the root.
 
 ---
@@ -179,39 +149,21 @@ Aligned HCV sequences
 # The paradox of guide trees
 
 * Alignment is more accurate when the guide tree is closer to the actual tree.
-* Most tree-building methods require an alignment.
-* We have to use an alignment-free clustering method to build the guide tree.
-* For example, *MUSCLE* builds a guide tree by counting k-mers.
-
----
-
-# Iterative alignment
-
+  * Most tree-building methods require an alignment.
+  * We have to use an alignment-free clustering method to build the guide tree.
 * After we build an alignment, we can reconstruct a tree.
 * That tree can be plugged back into the alignment process as *the next guide tree*.
-* This method should incrementally improve the accuracy of alignment.
-* Seldom used in practice!
+  * This method should incrementally improve the accuracy of alignment.
 
 ---
 
 # Software
 
-* This is an incomplete list:
-
 | Name | Publication | Description |
 |------|-------------|-------------|
 | [CLUSTALW](http://www.clustal.org/clustal2/) | [1994](https://academic.oup.com/nar/article-abstract/22/22/4673/2400290) | One of the first MSA programs to achieve widespread popularity.  Less accurate than more recent programs. |
-| [T-coffee](http://www.tcoffee.org/Projects/tcoffee/) | [2000](https://www.sciencedirect.com/science/article/pii/S0022283600940427) | Initially performs pairwise alignments of the sequences, but uses a mix of local and global alignments. |
 | [MAFFT](https://mafft.cbrc.jp/alignment/software/) | [2002](https://academic.oup.com/nar/article/30/14/3059/2904316) | Uses a fast Fourier transform to rapidly identify homologous regions between sequences.  |
 | [MUSCLE](https://www.drive5.com/muscle/) | [2004](https://academic.oup.com/nar/article/32/5/1792/2380623) |  Uses an alignment-free *k*-mer based distance to generate a guide tree, and iteratively refines the alignment by partitioning the tree into subtrees. |
-
----
-
-# More software
-
-| Name | Publication | Description |
-|------|-------------|-------------|
-| [BAli-Phy](http://www.bali-phy.org/) | [2006](https://academic.oup.com/bioinformatics/article/22/16/2047/207824) | Uses Bayesian sampling to jointly estimate the alignment and the phylogeny.  We nearly always assume the alignment is a known, fixed quantity when reconstructing the phylogeny.  BAli-Phy infers the alignment and the tree *at the same time*.  Computationally challenging. |
 | [PRANK](http://wasabiapp.org/software/prank/) | [2008](http://science.sciencemag.org/content/320/5883/1632) | Assumes that sequence insertions usually lack evolutionary homology to other insertions.  Tends to spread insertions out to such an extreme that the resulting alignment becomes a sparse scaffold of isolated insertions. |
 | [SAT&eacute;](http://phylo.bio.ku.edu/software/sate/sate.html) | [2009](http://science.sciencemag.org/content/324/5934/1561) | A pipeline for iterative alignment to estimate both the alignment and tree. |
 
@@ -229,11 +181,24 @@ Aligned HCV sequences
 
 # NGS and alignment
 
+* Next-generation sequencing generates millions of reads.
 * The computing time of pairwise alignment is about $O(mn)$ where $m$ and $n$ are the sequence lengths.
 * The development of NGS platforms created a huge challenge for existing alignment methods &mdash; too much data!
   * Local alignment (*e.g.*, Smith-Waterman) is way too slow!
   * BLAST is still too slow!
 * **New alignment programs were needed.**
+
+---
+
+# Short read mapping
+
+* Mapping breaks the alignment problem into two parts:
+  1. Rapidly determine *where* a read should map in a reference genome.
+  2. If we find a good location, do a local pairwise alignment.
+* A read might not necessarily come from a known reference genome.
+* Method has to tolerate sequencing errors.
+
+![](/img/lost-read.svg)
 
 ---
 
@@ -252,4 +217,190 @@ Aligned HCV sequences
   * The index will be larger than the genome(s).
   * Although it can take a long time to build an index, we can use it as many times as we want!
 * Common data structures include [suffix trees](https://en.wikipedia.org/wiki/Suffix_tree) and the [Burrows-Wheeler transform](https://en.wikipedia.org/wiki/Burrows%E2%80%93Wheeler_transform) (BWT).
+  * This approach is similar to BLAST.
 
+---
+
+# Short read mappers
+
+<table>
+<tr>
+<td>
+  <ul>
+    <li>Explosion in number of mappers ~2007-2013.</li>
+    <li>Popular programs include <a href="https://github.com/lh3/bwa">BWA</a> and <a href="https://github.com/BenLangmead/bowtie2">Bowtie</a>.</li>
+    <li>Some recent programs focus on specific applications of NGS, <i>e.g.,</i> <a href="https://pachterlab.github.io/kallisto/">Kallisto</a> for <i>RNA-seq</i></li>
+  </ul>
+</td>
+<td width="50%">
+  <img src="/img/mappers.jpg" height="400px"/>
+</td>
+</tr>
+</table>
+
+<small><small>
+Image source: NA Fonseca <i>et al.</i> (2012) <a href="https://academic.oup.com/bioinformatics/article/28/24/3169/245777">Tools for mapping high-throughput sequencing data.</a> Bioinformatics 28: 3169.
+</small></small>
+
+---
+
+# SAM format
+
+* The [SAM](https://samtools.github.io/hts-specs/SAMv1.pdf) (Sequence Alignment/Map) format has become a standard output format for programs that align NGS reads to reference genomes.
+* It is a tabular, tab-separated data format.
+* Comments at top of file prefixed with `@`
+
+```
+@HD	VN:1.0	SO:unsorted
+@SQ	SN:chr7	LN:159138663
+@PG	ID:bowtie2	PN:bowtie2	VN:2.2.8	CL:"/usr/local/bin/bowtie2-align-s --wrapper basic-0 -x chr7 -S SRR5261740.trunc.sam --local -U SRR5261740.trunc.fastq"
+SRR5261740.1	16	chr7	142247517	2	168S96M31S	*	0	0	TTCTCCACCTTGGAGATCCAGCGCACAGAGCAGGGGGACTCGGCCATGTATCTCTGTGCCAGCACCACAGTCGCTCCTGAAAAACTGTTTTTTGGCAGTGGAACCCAGCTCTCTGTCTTGGAGGACCTGAACAACGTGTTCCCCGGGAGACTCCAGTATCTGCGTGATCTGCCCCCAGGAGACACAGGGCCATCCAGCAGAGGAGGCTGGTGCCCATGGCAGGGTCAGGGCAGGATGGGAGCTTTACCAGATCAGGGTCACTGTCCCCATGTACTCTGCGTTGATACCACTGCTT	GHHHGHHGHGHHHHHHHGGGGGHHHHHHHHEGGHHHHGGGGHHHHHHHHHHHFHHHHGGHHHGHHHHGGGGGGGHHHGHGHHHHHHGFHHHHHHHHHHHHHGHGHHHGGHHHHHHHHHHHHHHFHHHGGGGGGGGGGBBBBBBAHHHHHHHHHHHHHHGGGHGHHHHGGGGGGGHHHHHHHHHHHHHHGGHHHHHHHHHHHHHHGHHHGGHHHHHHHHHHHHHHHHHHHHHHHHHHGHHHHHGHHHHHHHHGHHHGHHHHGGGGGHHHHHHHHGGGGGGGGGGFFFBFFFBBBBB	AS:i:143	XS:i:136	XN:i:0	XM:i:7	XO:i:0	XG:i:0	NM:i:7	MD:Z:13G8T0G0C12C12A3A41	YT:Z:UU
+SRR5261740.2	0	chr7	142493746	0	31S103M163S	*	0	0	AAGCAGTGGTATCAACGCAGAGTACATGGGGGGAGAGGGGTGGGTACTGGAGAAGACCAGCCCCTTCGCCAAACAGCCTTACAAAGACATCCAGCTCTAAGGAGCTCAAAACATCCTGAGGACAGTGCCTGGAGAGGACCTGAACAAGGTGGGGAACACCTTGTTCAGGTCCTCTCCAGGCACTGTCCTCAGGATGTTTTGAGCTCCTTAGAGCTGGATGTCTTTGTAAGGCTGTTTGGCGAAGGGGCTGGTCTTCTCCAGTACCCACCCCTCTCCCCCCATGTACTCTGCGTTGAT	CCCCCFFFFFFFGGGGGGGGGGHHHHHHHHGGGGGGGGGGGGGGGHHHHHHHHHHHHHHHHGGGHHHHGGGGHHHHHHHHHHHHGHHHHHHHHHHHHHHHHHGHHHHHHHHHGGGGGGGGGGGGGFGGGGGGGGGGGGGGGFFFFFFFF;BCCCCFCFGGGGGGGGGGGHHGHHHHHHHHHHHHHHHHHGHHHHHHHHHHHGGHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHGHGGGGGGGGGGGHHHHHHHHHHHHHHHHGGGGGGHHHHGGGGHHHHHHHHHGGGGGHH	AS:i:206	XS:i:206	XN:i:0	XM:i:0	XO:i:0	XG:i:0	NM:i:0	MD:Z:103	YT:Z:UU
+SRR5261740.3	0	chr7	142493746	0	176S103M17S	*	0	0	GGGGAACACCTTGTTCAGGTCCTCTCCAGGCACTGTCCTCAGGATGTTTTGAGCTCCTTAGAGCTGGATGTCTTTGTAAGGCTGTTTGGCGAAGGGGCTGGTCTTCTCCAGTACCCACCCCTCTCCCCCCATGTACTCTGCGTTGAAGCAGTGGTATCAACGCAGAGTACATGGGGGGAGAGGGGTGGGTACTGGAGAAGACCAGCCCCTTCGCCAAACAGCCTTACAAAGACATCCAGCTCTAAGGAGCTCAAAACATCCTGAGGACAGTGCCTGGAGAGGACCTGAACAAGGTG	BBBBBBBGGEGGGGGGGHFGGHFHHHHHGGHHHFHGHHHHEHHFHHHHGHHGFGHHHHHHHGHEBGGGGGAEGHHFHHHGHHHHHHHHGHGGGGFGEFEEDGHGHHFBHHFFFGHHGGGGGGDHHHHGGGGHHHDBFFFGBCDGCCCCCCFFFFFFFGGGGGGGGCGHHHHHHHHGGGGGGFGGGGGGGFHHHHHHHHHEHHHHGGGGGHHHHGGGGFHHHHGHHHHHGFHGHHHHHHHHHGHHHGGGHHHFHHBGGGGGGGGGGGGEGGGGGGGGGGGGGGF?EFFFFFFFFF:B	AS:i:206	XS:i:206	XN:i:0	XM:i:0	XO:i:0	XG:i:0	NM:i:0	MD:Z:103	YT:Z:UU
+SRR5261740.4	16	chr7	142247517	2	24S96M173S	*	0	0	GGGAGACTCCAGCACCTGTGTGATCTGCCCCCAGGAGGCACAGGGCTGCCCAGCAGAGGAGCCTGGTGCCCATGACAGAGTCAGGGCAGGATGGGAGCTTTACCAGATCAGGGTCACTGTCCCATGTACTCTGCGTTGATACCACTGCTTACTCTGAAGATCCAGCGCACAGAGCGGGGGGACTCAGCCGTGTATCTCTGTGCCAGCAGCCCCACGGGGACTAGCTACAATGAGCAGTTCTTCGGGCCAGGGACACGGCTCACCGTGCTCGAGGACCTGAAAAAGGTGTTCCC	HHHHGGFHBHHGG@/GGHHGHHHGGCEEEAHHHEHHHHHHFHGHEGHEGHHGHHHHHGHHHGHHEGFHGHHHHHHFHHGHFEHHHHHHHHGHGHHHFFHHHHHHHHHHHHHHHHFFCGHHHHHGFHEFGGEEAEFGGGFFFBCFC1AA1AGFHGHHHHHHAGGGGGGHHHHGFGGGGHHHHHHHGGGGGHHHHHHHHHHHHGGHHGGGGGGGGGGGHHHHHHHHHHHHHHHHHHHHHGGGGGGHHHHHHHHHHGGGGGFGGGGGHGGGGGFHHHHHGGGGGFGGGGFBFBCCC	AS:i:192	XS:i:143	XN:i:0	XM:i:0	XO:i:0	XG:i:0	NM:i:0	MD:Z:96	YT:Z:UU
+```
+
+---
+
+# SAM format
+
+
+* Each line in a SAM corresponds to a read and contains the following information:
+
+| # | Name  | Description          | #  | Name  | Description          |
+|---|-------|----------------------|----|-------|----------------------|
+| 1 | QNAME | Read label           | 7  | RNEXT | Ref. seq. of mate    |
+| 2 | FLAG  | Bitwise flags        | 8  | PNEXT | Map location of 1st  |
+| 3 | RNAME | Reference seq.       |    |       | base in mate         |
+| 4 | POS   | Map location of 1st  | 9  | TLEN  | Insertion length     |
+|   |       | base in read         | 10 | SEQ   | Read sequence        |
+| 5 | MAPQ  | Mapping quality      | 11 | QUAL  | Read quality string  |
+| 6 | CIGAR | Compact idiosyncratic    |    |       |                  |
+|   |       | gapped alignment report  |    |       |                  |
+
+---
+
+# Bitwise flags
+
+* A decimal number is a compact way to store a series of bits.
+* The decimal number `99` maps to the binary number `000001100011`.
+
+| Bit | Description | Bit | Description |
+|-----|-------------|-----|-------------|
+| 1   | read is paired | 64  | first in pair |
+| 2   | read is mapped in a proper pair | 128 | second in pair |
+| 4   | read is not mapped | 256 | not primary alignment |
+| 8   | mate is not mapped | 512 | read fails platform quality checks |
+| 16  | read is reverse strand | 1024 | read is PCR/optical duplicate |
+| 32  | mate is reverse strand | 2048 | supplementary alignment |
+
+> Decode the flag 99 into four positive states.
+
+---
+
+# CIGAR
+
+* Compact Idiosyncratic Gapped Alignment Report
+* A string representation of how the read aligns to the reference
+
+| Token | Description |
+|-------|-------------|
+| M     | Matched     |
+| I     | Insertion   |
+| D     | Deletion    |
+| S     | Soft clip   |
+
+* For example, `5S45M3I89M1S` means a 5nt soft clip, 45nt match, 3nt insertion, 89nt match, and 1nt soft clip.
+
+---
+
+# BAM
+
+* A BAM (Binary Alignment Map) file is just a SAM file that's been compressed into a binary encoded file (not a plain text file)
+* File size reduced to about 30% of the original ([source](https://academic.oup.com/bioinformatics/article/32/24/3709/2525655))
+* By default, the reads are stored in the same order as they appear in the SAM (as they come off the machine).
+* Some programs require the SAM or BAM file to be sorted with respect to their position on the reference genome.
+
+---
+
+# *de novo* assembly
+
+* Combine short reads that seem to overlap so they form a longer sequence.
+  * A *contig* is a contiguous (uninterrupted) run of nucleotides that is formed from the assembly of short reads.
+* Short-read *mapping* is generally faster and easier, but *de novo* assembly is better when no suitable reference exists.
+
+<img src="/img/contig2.png" width="500px"/>
+
+---
+
+# Finding overlaps
+
+* This requires that we compare every pair of pieces!
+  * Quadratic complexity ($O(N^2)$) with the number of reads, which is already a huge number.
+  * Made even more difficult if we want to tolerate *inexact* matches (sequencing error or polymorphism)!
+* This problem is made more efficient by converting the strings into a specialized data structure, *e.g.*, [de Bruijn graphs](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5531759/).
+
+---
+
+# Some popular assemblers
+
+Not a complete list!
+
+<table class="fullTable">
+<tr>
+  <th width="15%">Name</th>
+  <th>URL</th>
+  <th>Description</th>
+</tr>
+<tr>
+  <td width="15%">ABySS</td>
+  <td><a href="http://www.bcgsc.ca/platform/bioinfo/software/abyss">http://www.bcgsc.ca/platform/bioinfo/software/abyss</a></td>
+  <td>Canadian! Linux and macOS only.</td>
+</tr>
+<tr>
+  <td width="15%">Ray</td>
+  <td><a href="http://denovoassembler.sourceforge.net">http://denovoassembler.sourceforge.net</a></td>
+  <td>Also Canadian!  No longer maintained. Source code only.</td>
+</tr>
+<tr>
+  <td width="15%">Velvet</td>
+  <td><a href="https://www.ebi.ac.uk/~zerbino/velvet">https://www.ebi.ac.uk/~zerbino/velvet</a></td>
+  <td>Linux and macOS only. No longer maintained since 2014.</td>
+</tr>
+<tr>
+  <td width="15%">SOAPdenovo2</td>
+  <td><a href="https://github.com/aquaskyline/SOAPdenovo2">https://github.com/aquaskyline/SOAPdenovo2</a></td>
+  <td>Designed for large genomes. Actively maintained, Linux and macOS only.</td>
+</tr>
+<tr>
+  <td width="15%">SPAdes</td>
+  <td><a href="https://github.com/ablab/spades">https://github.com/ablab/spades</a></td>
+  <td>Designed for prokaryotic genomes, viruses. Actively maintained.  Linux and macOS only.</td>
+</tr>
+</table>
+
+---
+
+# N50
+
+* Are the assembly contigs reliable?
+* N50: when contigs are sorted by length, N50 is the length of the contig at which we reach 50% of assembled nucleotides; longer is better.
+
+Sort contigs by lengths in decreasing order:
+<img src="https://i1.wp.com/www.molecularecologist.com/wp-content/uploads/2017/03/Figure1a.jpg" height="45px"/>
+
+Locate midpoint along concatenated array of contigs (N50=60):
+<img src="https://i0.wp.com/www.molecularecologist.com/wp-content/uploads/2017/03/Figure1b.jpg" height="100px"/>
+
+<small><small>
+Image credit: E Videvall <i>et al.</i> https://www.molecularecologist.com/2017/03/whats-n50/
+</small></small>
+
+---
+
+# Further reading
+
+* [De novo assembly of short sequence reads](https://academic.oup.com/bib/article/11/5/457/1746253) by K Paszkiewicz and DJ Studholme (2010), Briefings in Bioinformatics 11
+* [Ben Langmead's lecture materials](http://www.langmead-lab.org/teaching-materials/)
+* [What's N50?](https://www.molecularecologist.com/2017/03/29/whats-n50/)
+* [The effect of variant interference on de novo assembly for viral deep sequencing](https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-020-06801-w)

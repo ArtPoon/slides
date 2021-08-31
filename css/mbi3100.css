@@ -217,6 +217,27 @@ body {
   font-size: 0.75em;
 }
 
+.fullTable {
+  margin: auto;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 0.75em;
+
+  table-layout: fixed;
+  width: 100%;
+}
+
+.fullTable td {
+  vertical-align: top;
+  text-align: left;
+  padding: 0.2em 0.5em 0.2em 0.5em;
+  font-size: 1.1em;
+  font-weight: 500;
+
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
 .reveal tr:nth-child(2n) {
   background-color: #eee;
 }
