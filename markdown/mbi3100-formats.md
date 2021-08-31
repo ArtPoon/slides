@@ -100,12 +100,35 @@ Measles,3268,153,37,40,73
 
 ---
 
+# Amino acids
+
+* 1-letter system proposed by Dayhoff and Eck
+
+| Amino acid | 3-letter | 1-letter | Amino acid | 3-letter | 1-letter |
+|------------|----------|----------|------------|----------|----------|
+| Alanine | Ala | A | Leucine | Leu | L |
+| Arginine | Arg | R | Lysine | Lys | K |
+| Asparagine | Asn | N | Methionine | Met | M |
+| Aspartic acid | Asp | D | Phenylalanine | Phe | F |
+| Cystine | Cys | C | Proline | Pro | P |
+| Glutamine | Gln | Q | Serine | Ser | S |
+| Glutamic acid | Glu | E | Threonine | Thr | T |
+| Glycine | Gly | G | Tryptophane | Trp | W |
+| Histidine | His | H | Tyrosine | Tyr | Y |
+| Isoleucine | Ile | I | Valine | Val | V |
+
+<small><small>
+See [IUPAC-IUB Commission on Biochemical Nomenclature Tentative Rules: A one-letter notation for amino acid sequences](https://www.sciencedirect.com/science/article/pii/0003986168905043).  Arch Biochem Biophys 125 (1968).
+</small></small>
+
+---
+
 # FASTA
 
 * One of the most common file formats for sequence data.
-* Originated from a sequence alignment program ([FAST-All](https://en.wikipedia.org/wiki/FASTA), 1987) that is no longer used.
+  * Originated from a sequence alignment program ([FAST-All](https://en.wikipedia.org/wiki/FASTA), 1987) that is no longer used.
 * Every sequence record starts with a `>` symbol, followed by the sequence label (header).
-* The sequence appears on subsequent lines until the next `>`.
+  * The sequence appears on subsequent lines until the next `>`.
 
 ```
 >NC_045512.2 Severe acute respiratory syndrome coronavirus 2 isolate Wuhan-Hu-1, complete genome
@@ -121,20 +144,272 @@ TAATTACTGTCGTTGACAGGACACGAGTAACTCGTCTATCTTCTGCAGGCTGCTTACGGTTTCGTCCGTG
 * A very complex format that contains a diverse amount of information:
 
 ```
-LOCUS       NC_045512              29903 bp ss-RNA     linear   VRL 18-JUL-2020
-DEFINITION  Severe acute respiratory syndrome coronavirus 2 isolate Wuhan-Hu-1,
-            complete genome.
-ACCESSION   NC_045512
+LOCUS       KT001281                 265 bp    DNA     linear   VRL 29-JUL-2015
+DEFINITION  Hepatitis B virus isolate 306 polymerase (P) gene, partial cds.
+ACCESSION   KT001281
+VERSION     KT001281.1
+KEYWORDS    .
+SOURCE      Hepatitis B virus
+  ORGANISM  Hepatitis B virus
+            Viruses; Riboviria; Pararnavirae; Artverviricota; Revtraviricetes;
+            Blubervirales; Hepadnaviridae; Orthohepadnavirus.
+REFERENCE   1  (bases 1 to 265)
+  AUTHORS   Oluyinka,O.O., Tong,H.V., Bui Tien,S., Fagbami,A.H., Adekanle,O.,
+            Ojurongbe,O., Bock,C.T., Kremsner,P.G. and Velavan,T.P.
+  TITLE     Occult Hepatitis B Virus Infection in Nigerian Blood Donors and
+            Hepatitis B Virus Transmission Risks
+  JOURNAL   PLoS ONE 10 (7), E0131912 (2015)
+   PUBMED   26148052
+  REMARK    Publication Status: Online-Only
+REFERENCE   2  (bases 1 to 265)
+  AUTHORS   Oluyinka,O.O., Tong,H.V., Bui Tien,S., Fagbami,A.H., Adekanle,O.,
+            Ojurongbe,O., Bock,C.-T., Kremsner,P.G. and Velavan,T.P.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (02-JUN-2015) Institute of Tropical Meicine, University
+            of Tubingen, Wilhelmstrasse 27, Tuebingen, BW 72074, Germany
+COMMENT     ##Assembly-Data-START##
+            Sequencing Technology :: Sanger dideoxy sequencing
+            ##Assembly-Data-END##
+FEATURES             Location/Qualifiers
+     source          1..265
+                     /organism="Hepatitis B virus"
+                     /mol_type="genomic DNA"
+                     /isolate="306"
+                     /isolation_source="serum sample"
+                     /host="Homo sapiens"
+                     /db_xref="taxon:10407"
+                     /country="Nigeria"
+                     /collection_date="2009"
+     gene            <1..>265
+                     /gene="P"
+     CDS             <1..>265
+                     /gene="P"
+                     /codon_start=3
+                     /product="polymerase"
+                     /protein_id="AKS25925.1"
+                     /translation="HDSCSRNLYVSLMLLFKTFGRKLHLYSHPIIMGFRKIPMGVGLS
+                     PFLLAQFTSAICSVVRRAFPHCLAFSYMDDVVLGAKSVQHRESL"
+ORIGIN      
+        1 tgcacgactc ttgctcaagg aacctctatg tttccctcat gttgctgttc aaaaccttcg
+       61 gacggaaatt gcacttgtat tcccatccca tcatcatggg ctttcggaaa attcctatgg
+      121 gagtgggcct cagcccgttt ctcctggctc agtttactag tgccatttgt tcagtggttc
+      181 gccgggcttt cccccactgt ctggctttca gttatatgga tgatgtggta ttgggggcca
+      241 agtctgtaca acatcgtgag tccct
+//
 ```
 
+---
+
+
+# Next-generation sequencing (NGS)
+
+* NGS is a catch-all term for technology that performs sequencing reactions on a very large scale.
+* NGS platforms generate gigabytes or [terabytes](https://en.wikipedia.org/wiki/Terabyte) of sequence data in a day.
+  * An [Illumina NovaSeq 6000](https://www.illumina.com/systems/sequencing-platforms/novaseq/specifications.html) system can produce 6TB in one run.
+* Recent growth in bioinformatics has largely been driven by the need to process and analyze NGS data.
+
+---
+
+# NGS applications
+
+* Whole-genome sequencing
+* Exome sequencing
+* Choromatin immunoprecipitation sequencing ([CHiP-seq](https://www.nature.com/articles/nrg2641))
+* [Deep sequencing](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4119849/) (resequencing)
+* RNA sequencing ([RNA-seq](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2949280/))
+* [Metagenomics](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000667)
+
+---
+
+
+# NGS databases
+
+* Storing and distributing NGS data created a unique problem for those maintaining pubilc databases of conventional sequences.
+* NCBI created the [Short Read Archive](https://www.ncbi.nlm.nih.gov/sra) (now the *Sequence* Read Archive).
+  * As of April 10, 2019, the NCBI SRA held over 26 petabytes of data - about 6,500 4TB hard drives.
+* Partnership with [EMBL-EBI](https://www.ebi.ac.uk/) European Nucleotide Archive and the [National Institute of Genetics](http://www.nig.ac.jp/nig/) DNA Data Bank of Japan.
+
+---
+
+# fasterq-dump
+
+Using `fasterq-dump` to retrieve a WGS data set of *Helicobacter pylori*.
+
 ```
-FEATURES             Location/Qualifiers
-     source          1..29903
-                     /organism="Severe acute respiratory syndrome coronavirus
-                     2"
-                     /mol_type="genomic RNA"
-                     /isolate="Wuhan-Hu-1"
+art@Kestrel:~/Downloads$ fasterq-dump SRR6318672
+spots read      : 198,907
+reads read      : 397,814
+reads written   : 397,814
+art@Kestrel:~/Downloads$ ls -lth | head -n3
+total 2.1G
+-rw-rw-r--  1 art art 103M Mar  6 21:58 SRR6318672_1.fastq
+-rw-rw-r--  1 art art 103M Mar  6 21:58 SRR6318672_2.fastq
 ```
+
+---
+
+# SRA Toolkit
+
+* NCBI requires users to use its own open-source software to download data
+* https://github.com/ncbi/sra-tools
+* `fasterq-dump` uses multi-threading and file caching to make downloads faster
+* current release for Linux only!
+
+
+
+---
+
+# NGS data formats
+
+* Recall that FASTQ is like an expanded version of FASTA
+
+```
+@SRR6318672.2 2 length=251
+GGATAAAATGATACCCGCTTTTTTGATCACGCCCATTTCTAGCCAGATCGCTGGTAAAGTCATCGCGCAAGTGGAGAGCGATATTTTCGCTCACATGGGAAAAGTCGTTTTAATCCCCAAAGGCTCTAAAGTCATAGGCTACTACAGCAACAACAACAAAATGGGCGAATACCGCTTGGATATTGTATGGAGTCGCATCATCACTCCCCATGGGATTAATATCATGCTCACTAACGCTAAGGGGGCGGATA
++SRR6318672.2 2 length=251
+BCCCCFFFFFFFGGGGGGGGGGHGGGHHHHGHGGGHHHHHHHGHHHHHHHGGGGHHHHGHHHHHGGGGGGGHHGHHHGHGGHGGHHHHGGGHGGHHHHHHGHHHHHGGGGGHHHHHHGHGHHFHGHHHHHHHHHHHFFHGHHGHHHHHHHHHHHHHHHHGGHHHHHGGGGGGHDFGGGG0CCGHH:GGGFGGGGGGGDDGGGGGFGGGGGGGGGGFFFFFFFFFFFFFFFFFFFFFFFFFFEE@AC=;FF?
+```
+
+* Row 1 has `@` prefix contains sequence label.
+* Row 2 contains nucleotide sequence.
+* Row 3 has `+` prefix and sometimes repeats label.
+* Row 4 contains quality scores.
+
+---
+
+# Quality scores
+
+* A quality score is a log-transform of the estimated probability ($P$) of an incorrect base call.
+
+$$Q = -10 \times \log_{10} P$$
+
+* So if the error probability is 0.01 (1%), then $\log_{10} (0.01) = -2$, and $Q=20$.
+
+> What is the estimated error probability for Q=40?
+
+---
+
+# Encoding quality scores
+
+* FASTQ uses ASCII encoding to convert quality scores from numbers to single characters.
+
+```
+!"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJ
+|                         |    |         |
+0........................26...31........41
+```
+
+* This saves a lot of space and makes it easier to see how scores relate to different bases:
+
+```
+GGATAAA
++
+BCCCCFF
+33 34 34 34 34 36 36
+```
+
+---
+
+# What is ASCII?
+
+* [American Standard Code for Information Interchange](https://en.wikipedia.org/wiki/ASCII)
+* Data are stored and processed as binary `0`s and `1`s.
+* ASCII is a map of binary numbers to human-readable characters.
+
+| Binary | Decimal | ASCII |
+|--------|---------|-------|
+| 010 0110 | 38 | & |
+| 011 0101 | 53 | 5 |
+| 100 1001 | 73 | I |
+| 100 1010 | 74 | J |
+
+---
+
+# ASCII for FASTQ
+
+* The current version of Illumina systems subtracts `33` from the decimal value of each ASCII character.
+* `I` becomes $73-33=40$, which gives us the $Q$ score.
+
+> What is the character for encoding Q=35?
+
+---
+
+# SAM format
+
+* The SAM (Sequence Alignment/Map) format has become a standard output format for programs that align NGS reads to reference genomes.
+* It is a tabular, tab-separated data format.
+* Comments at top of file prefixed with `@`
+
+```
+@HD	VN:1.0	SO:unsorted
+@SQ	SN:chr7	LN:159138663
+@PG	ID:bowtie2	PN:bowtie2	VN:2.2.8	CL:"/usr/local/bin/bowtie2-align-s --wrapper basic-0 -x chr7 -S SRR5261740.trunc.sam --local -U SRR5261740.trunc.fastq"
+SRR5261740.1	16	chr7	142247517	2	168S96M31S	*	0	0	TTCTCCACCTTGGAGATCCAGCGCACAGAGCAGGGGGACTCGGCCATGTATCTCTGTGCCAGCACCACAGTCGCTCCTGAAAAACTGTTTTTTGGCAGTGGAACCCAGCTCTCTGTCTTGGAGGACCTGAACAACGTGTTCCCCGGGAGACTCCAGTATCTGCGTGATCTGCCCCCAGGAGACACAGGGCCATCCAGCAGAGGAGGCTGGTGCCCATGGCAGGGTCAGGGCAGGATGGGAGCTTTACCAGATCAGGGTCACTGTCCCCATGTACTCTGCGTTGATACCACTGCTT	GHHHGHHGHGHHHHHHHGGGGGHHHHHHHHEGGHHHHGGGGHHHHHHHHHHHFHHHHGGHHHGHHHHGGGGGGGHHHGHGHHHHHHGFHHHHHHHHHHHHHGHGHHHGGHHHHHHHHHHHHHHFHHHGGGGGGGGGGBBBBBBAHHHHHHHHHHHHHHGGGHGHHHHGGGGGGGHHHHHHHHHHHHHHGGHHHHHHHHHHHHHHGHHHGGHHHHHHHHHHHHHHHHHHHHHHHHHHGHHHHHGHHHHHHHHGHHHGHHHHGGGGGHHHHHHHHGGGGGGGGGGFFFBFFFBBBBB	AS:i:143	XS:i:136	XN:i:0	XM:i:7	XO:i:0	XG:i:0	NM:i:7	MD:Z:13G8T0G0C12C12A3A41	YT:Z:UU
+SRR5261740.2	0	chr7	142493746	0	31S103M163S	*	0	0	AAGCAGTGGTATCAACGCAGAGTACATGGGGGGAGAGGGGTGGGTACTGGAGAAGACCAGCCCCTTCGCCAAACAGCCTTACAAAGACATCCAGCTCTAAGGAGCTCAAAACATCCTGAGGACAGTGCCTGGAGAGGACCTGAACAAGGTGGGGAACACCTTGTTCAGGTCCTCTCCAGGCACTGTCCTCAGGATGTTTTGAGCTCCTTAGAGCTGGATGTCTTTGTAAGGCTGTTTGGCGAAGGGGCTGGTCTTCTCCAGTACCCACCCCTCTCCCCCCATGTACTCTGCGTTGAT	CCCCCFFFFFFFGGGGGGGGGGHHHHHHHHGGGGGGGGGGGGGGGHHHHHHHHHHHHHHHHGGGHHHHGGGGHHHHHHHHHHHHGHHHHHHHHHHHHHHHHHGHHHHHHHHHGGGGGGGGGGGGGFGGGGGGGGGGGGGGGFFFFFFFF;BCCCCFCFGGGGGGGGGGGHHGHHHHHHHHHHHHHHHHHGHHHHHHHHHHHGGHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHGHGGGGGGGGGGGHHHHHHHHHHHHHHHHGGGGGGHHHHGGGGHHHHHHHHHGGGGGHH	AS:i:206	XS:i:206	XN:i:0	XM:i:0	XO:i:0	XG:i:0	NM:i:0	MD:Z:103	YT:Z:UU
+SRR5261740.3	0	chr7	142493746	0	176S103M17S	*	0	0	GGGGAACACCTTGTTCAGGTCCTCTCCAGGCACTGTCCTCAGGATGTTTTGAGCTCCTTAGAGCTGGATGTCTTTGTAAGGCTGTTTGGCGAAGGGGCTGGTCTTCTCCAGTACCCACCCCTCTCCCCCCATGTACTCTGCGTTGAAGCAGTGGTATCAACGCAGAGTACATGGGGGGAGAGGGGTGGGTACTGGAGAAGACCAGCCCCTTCGCCAAACAGCCTTACAAAGACATCCAGCTCTAAGGAGCTCAAAACATCCTGAGGACAGTGCCTGGAGAGGACCTGAACAAGGTG	BBBBBBBGGEGGGGGGGHFGGHFHHHHHGGHHHFHGHHHHEHHFHHHHGHHGFGHHHHHHHGHEBGGGGGAEGHHFHHHGHHHHHHHHGHGGGGFGEFEEDGHGHHFBHHFFFGHHGGGGGGDHHHHGGGGHHHDBFFFGBCDGCCCCCCFFFFFFFGGGGGGGGCGHHHHHHHHGGGGGGFGGGGGGGFHHHHHHHHHEHHHHGGGGGHHHHGGGGFHHHHGHHHHHGFHGHHHHHHHHHGHHHGGGHHHFHHBGGGGGGGGGGGGEGGGGGGGGGGGGGGF?EFFFFFFFFF:B	AS:i:206	XS:i:206	XN:i:0	XM:i:0	XO:i:0	XG:i:0	NM:i:0	MD:Z:103	YT:Z:UU
+SRR5261740.4	16	chr7	142247517	2	24S96M173S	*	0	0	GGGAGACTCCAGCACCTGTGTGATCTGCCCCCAGGAGGCACAGGGCTGCCCAGCAGAGGAGCCTGGTGCCCATGACAGAGTCAGGGCAGGATGGGAGCTTTACCAGATCAGGGTCACTGTCCCATGTACTCTGCGTTGATACCACTGCTTACTCTGAAGATCCAGCGCACAGAGCGGGGGGACTCAGCCGTGTATCTCTGTGCCAGCAGCCCCACGGGGACTAGCTACAATGAGCAGTTCTTCGGGCCAGGGACACGGCTCACCGTGCTCGAGGACCTGAAAAAGGTGTTCCC	HHHHGGFHBHHGG@/GGHHGHHHGGCEEEAHHHEHHHHHHFHGHEGHEGHHGHHHHHGHHHGHHEGFHGHHHHHHFHHGHFEHHHHHHHHGHGHHHFFHHHHHHHHHHHHHHHHFFCGHHHHHGFHEFGGEEAEFGGGFFFBCFC1AA1AGFHGHHHHHHAGGGGGGHHHHGFGGGGHHHHHHHGGGGGHHHHHHHHHHHHGGHHGGGGGGGGGGGHHHHHHHHHHHHHHHHHHHHHGGGGGGHHHHHHHHHHGGGGGFGGGGGHGGGGGFHHHHHGGGGGFGGGGFBFBCCC	AS:i:192	XS:i:143	XN:i:0	XM:i:0	XO:i:0	XG:i:0	NM:i:0	MD:Z:96	YT:Z:UU
+```
+
+---
+
+# SAM format
+
+
+* Each line in a SAM corresponds to a read and contains the following information:
+
+| # | Name  | Description          | #  | Name  | Description          |
+|---|-------|----------------------|----|-------|----------------------|
+| 1 | QNAME | Read label           | 7  | RNEXT | Ref. seq. of mate    |
+| 2 | FLAG  | Bitwise flags        | 8  | PNEXT | Map location of 1st  |
+| 3 | RNAME | Reference seq.       |    |       | base in mate         |
+| 4 | POS   | Map location of 1st  | 9  | TLEN  | Insertion length     |
+|   |       | base in read         | 10 | SEQ   | Read sequence        |
+| 5 | MAPQ  | Mapping quality      | 11 | QUAL  | Read quality string  |
+| 6 | CIGAR | Compact idiosyncratic    |    |       |                  |
+|   |       | gapped alignment report  |    |       |                  |
+
+---
+
+# Bitwise flags
+
+* A decimal number is a compact way to store a series of bits.
+* The decimal number `99` maps to the binary number `000001100011`.
+
+| Bit | Description | Bit | Description |
+|-----|-------------|-----|-------------|
+| 1   | read is paired | 64  | first in pair |
+| 2   | read is mapped in a proper pair | 128 | second in pair |
+| 4   | read is not mapped | 256 | not primary alignment |
+| 8   | mate is not mapped | 512 | read fails platform quality checks |
+| 16  | read is reverse strand | 1024 | read is PCR/optical duplicate |
+| 32  | mate is reverse strand | 2048 | supplementary alignment |
+
+> Decode the flag 99 into four positive states.
+
+---
+
+# CIGAR
+
+* Compact Idiosyncratic Gapped Alignment Report
+* A string representation of how the read aligns to the reference
+
+| Token | Description |
+|-------|-------------|
+| M     | Matched     |
+| I     | Insertion   |
+| D     | Deletion    |
+| S     | Soft clip   |
+
+* For example, `5S45M3I89M1S` means a 5nt soft clip, 45nt match, 3nt insertion, 89nt match, and 1nt soft clip.
+
+---
+
+# BAM
+
+* A BAM (Binary Alignment Map) file is just a SAM file that's been compressed into a binary encoded file (not a plain text file)
+* File size reduced to about 30% of the original ([source](https://academic.oup.com/bioinformatics/article/32/24/3709/2525655))
+* By default, the reads are stored in the same order as they appear in the SAM (as they come off the machine).
+* Some programs require the SAM or BAM file to be sorted with respect to their position on the reference genome.
 
 ---
 
@@ -148,10 +423,16 @@ FEATURES             Location/Qualifiers
 
 # How Perl saved the Human Genome Project
 
-* The Human Genome Project (1990) involved many groups that came up with different data formats.
-* Perl enabled them to rapidly convert between formats.
+* Project start date 1990, involving many groups.
+* Estimated 1 to 10 terabytes needed to complete project.
+* Different groups came up with different data exchange formats.
+* Perl enabled different groups to rapidly convert outputs to the other group's format.
 
-> Despite the fact that everyone was working on the same problems, no two groups took exactly the same approach. Programs to solve a given problem were written and rewritten multiple times.
+---
+
+> By the time a system that could deal with the ins and outs of a complex laboratory protocol had been designed, implemented and debugged, the protocol had been superseded by new technology and the software engineers had to go back to the drawing board.
+
+> Most groups, however, learned to build modular, loosely-coupled systems whose parts could be swapped in and out without retooling the whole system.
 
 <small><small>
 [Lincoln Stein](https://oicr.on.ca/investigators/lincoln-stein/), [The Perl Journal](https://web.archive.org/web/20070202101624/http://www.bioperl.org/wiki/How_Perl_saved_human_genome) (1996).
@@ -237,5 +518,8 @@ for line in handle:
 * [Forum thread on the origin of FASTA](https://www.biostars.org/p/214943/)
 * [Sample GenBank record](https://www.ncbi.nlm.nih.gov/genbank/samplerecord/)
 * [How Perl Saved the Human Genome Project](https://web.archive.org/web/20070202101624/http://www.bioperl.org/wiki/How_Perl_saved_human_genome)
+* [Proposed closure of the NCBI SRA (later cancelled)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3129670/)
+* [The history of the FASTQ format](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2847217/)
+* [Quinlan lab *samtools* Tutorial](http://quinlanlab.org/tutorials/samtools/samtools.html)
 
 
