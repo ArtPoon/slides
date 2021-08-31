@@ -1,4 +1,4 @@
-# MIMM4750G
+# MBI3100A
 ## Sequence alignment
 
 ![](https://imgs.xkcd.com/comics/here_to_help.png)

@@ -1,4 +1,4 @@
-# MIMM4750G
+# MBI 3100A
 ## Comparing sequences
 
 ![](https://imgs.xkcd.com/comics/genetic_testing.png)
