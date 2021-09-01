@@ -232,6 +232,7 @@ GGGATGCACTCGCTG
 # Clustering
 
 * A cluster is a subset (group) of objects that are more similar to each other than objects outside the cluster.
+  * Similarity is just the opposite of distance!
 * Clustering is subjective.  Our brains are wired to see patterns where none exist.
 ![](/img/random.png)
 
