@@ -111,7 +111,7 @@ Upward trend of bioinformatics in high impact journals in medical sciences
 ---
 
 # Nextstrain
-![](nextstrain-namer.png)
+![](/img/nextstrain-namer.png)
 
 ---
 
