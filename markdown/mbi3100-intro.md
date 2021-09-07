@@ -9,6 +9,30 @@ All original material released under a Creative Commons license (CC-BY-SA-4.0).
 
 ---
 
+<center>
+<small>
+We acknowledge the <a href="https://www.anishinabek.ca/">Anishinaabek</a> (Ah-nish-in-a-bek), <a href="https://www.haudenosauneeconfederacy.com/">Haudenosaunee</a> (Ho-den-no-show-nee), L&#363;naap&eacute;ewak (Len-ahpay-wuk) and Attawandaron (Add-a-won-da-run) peoples, whose traditional lands we are gathered upon today.
+</small>
+</center>
+
+<img src="/img/land-ack.jpeg"/>
+
+<small><small>
+Image source: Native Land Digital, https://native-land.ca/.
+</small></small>
+
+---
+
+# COVID-19 policies
+
+* Western has both masking and [vaccination](https://www.uwo.ca/univsec/pdf/policies_procedures/section3/mapp311_covid19.pdf) mandates.
+* Students must complete a [symptom checklist](https://myrtc.uwo.ca/) every day.
+  * Students not wearing masks will be asked to leave the classroom.
+  * Eating and drinking in classroom is prohibited.
+* Students who are not fully vaccinated by October 12 and not exempt will be issued a trespass order.
+
+---
+
 # Course materials
 
 * My slides are available at http://slides.filogeneti.ca/html
