@@ -104,6 +104,15 @@ Aligned HCV sequences
 
 ---
 
+# Needleman-Wunsch algorithm
+
+* How do we apply these scores and penalties to align two sequences?
+* Populate a matrix ($F$) with columns labeled with one sequence, and rows labeled with another.
+
+<img src="/img/dynamicprogram.png" height="350px"/>
+
+---
+
 <section data-state="numtrees-slide">
     <center>
     <div id="needleman" class="fig-container"
@@ -176,6 +185,45 @@ JS adapted from https://github.com/drdrsh
   * [AliView](http://www.ormbunkar.se/aliview/) - Java-based, open source
   * [SeaView](http://doua.prabi.fr/software/seaview) - older, open source, binaries for all platforms
   * [MSAViewer](http://msa.biojs.net/app/) - JavaScript (BioJS), online, open source
+
+---
+
+<img src="/img/bad-alignment1.png" height="350px"/>
+
+* Excessive gaps
+* Excessive divergence between aligned regions.
+* Cause: non-homologous sequences in data set.
+
+---
+
+<img src="/img/bad-alignment2.png" height="325px"/>
+
+* Indel-rich and diverse area between conserved regions.
+* May represent a hypervariable region.
+* Unrelated insertion sequences should not be stacked (*e.g.*, PRANK tends to isolate insertions).
+
+---
+
+<img src="/img/bad-alignment3.png" height="350px"/>
+
+* Isolated stretch of mismatched residues in one sequence (HCV reference 4d, DQ516083)
+* Rapid evolution in one lineage unlikely.
+* May represent a double frameshift mutation - in this case, there is a dropout of `T` calls in nucleotide sequence.
+
+---
+
+<img src="/img/bad-alignment4.png" height="250px"/>
+
+* Sometimes an alignment program will struggle with regions where single indels are common.
+* This causes a shuffling effect that is painstakingly difficult to repair manually.
+
+---
+
+<img src="/img/bad-alignment5.png" height="250px"/>
+
+* At the extreme 5' or 3' end of an alignment, it is common for sequences to cut out at different points.
+* The abundance of terminal gaps can create problems for correctly aligning the infrequent sequences that extend out this far.
+* Usually the terminal regions are trimmed off.
 
 ---
 
@@ -312,6 +360,21 @@ Sort contigs by lengths in decreasing order:
 
 Locate midpoint along concatenated array of contigs (N50=60):
 <img src="https://i0.wp.com/www.molecularecologist.com/wp-content/uploads/2017/03/Figure1b.jpg" height="100px"/>
+
+<small><small>
+Image credit: E Videvall <i>et al.</i> https://www.molecularecologist.com/2017/03/whats-n50/
+</small></small>
+
+---
+
+# Quality control (2)
+
+* L50 is the rank of the contig that is associated with the N50 point.
+  * The smallest number of contigs you would need to concatenate to get to 50% of total assembly length.
+  * Lower numbers are better.
+* In [Elin Videvall](http://www.videvall.com)'s example (below), L50 = 3.
+
+<img src="https://i2.wp.com/www.molecularecologist.com/wp-content/uploads/2017/03/Figure3.jpg" height="100px"/>
 
 <small><small>
 Image credit: E Videvall <i>et al.</i> https://www.molecularecologist.com/2017/03/whats-n50/
