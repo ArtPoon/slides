@@ -1,4 +1,4 @@
-# MIMM4750G
+# MBI 3100A
 ## Building trees
 <img src="https://imgs.xkcd.com/comics/phylogenetic_tree.png"/>
 
