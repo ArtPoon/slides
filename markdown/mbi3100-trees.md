@@ -215,7 +215,23 @@ Try clicking and dragging the root (yellow node) around.
 * Building a tree can be viewed as a clustering problem!
 * We already know how to calculate genetic distances between pairs of sequences.
 * Agglomerative (hierarchical) clustering means we group the most similar pair of sequences and progress from there.
+  * Every time we group two objects (A and B), we create an internal node (AB) in the tree.
+  * Approaches vary with how we calculate the distances of new node AB to remaining nodes.
 
+---
+
+# Hierarchical clustering
+
+* Complete linkage clustering, $d(AB,X) = \max(d(A,X), d(B,X))$
+  * if least similar members are joined, then all other members join
+
+* Single linkage clustering,
+
+  $d(AB,X) = \min(d(A,X), d(B,X))$
+  * merged groups can have members that are highly dissimilar
+
+* Ward's method, $d(AB,X) = \sqrt{\sum_i (ab_i-x_i)^2}$
+  * minimize within-cluster variance
 
 ---
 
@@ -233,9 +249,58 @@ Try clicking and dragging the root (yellow node) around.
 
 ---
 
+# Dendrograms
+
+* Preceding algorithms give us branching orders.
+* Branch lengths are calculated under the constraint that all descendants have an equal distance to their ancestor.
+  * The resulting tree is called [ultrametric](https://en.wikipedia.org/wiki/Ultrametric_space)
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/UPGMA_Dendrogram_Hierarchical.svg/800px-UPGMA_Dendrogram_Hierarchical.svg.png" height="250px"/>
+
+<small><small>
+Image source: https://commons.wikimedia.org/wiki/File:UPGMA_Dendrogram_Hierarchical.svg, Creative Commons
+</small></small>
+
+---
+
+# Extracting clusters from dendrograms
+
+* The output of hierarchical clustering is a tree, not clusters.
+  * It remains to "cut" the tree at some point to extract clusters.
+  * *e.g.*, cutting near the root tends to yield two large clusters.
+* Location of the cut point is a subjective decision.
+  * User-specified number of clusters
+* Some automated methods for selecting number of clusters
+  * "knee"/"elbow" method, plot merge distance with number of clusters
+
+---
+
+# Heatmaps
+
+<table>
+  <tr>
+    <td style="font-size: 20pt">
+      <ul>
+        <li>A popular method for <a href="https://en.wikipedia.org/wiki/Data_visualization">visualizing</a> a matrix of intensities, <i>e.g.</i>, gene expression.</li>
+        <li>Hierarchical clustering can be used to reorder rows/columns to bring together similar observations/variables.</li>
+        <li>Dendrograms can be displayed along respective axes.</li>
+      </ul>
+    </td>
+    <td width="50%">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Heatmap.png/600px-Heatmap.png"/>
+      <small>
+      Image source: <a href="https://commons.wikimedia.org/wiki/File:Heatmap.png">https://commons.wikimedia.org/wiki/File:Heatmap.png</a>, Public Domain.
+      </small>
+    </td>
+  </tr>
+</table>
+
+
+---
+
 # Neighbor-joining trees
 
-* Another distance-based clustering method for making trees
+* Another agglomerative, distance-based clustering method.
 * Start with a "star" phylogeny: every tip directly descended from the root
 * Add ancestral nodes that minimize the total branch length of the tree
 * NJ is a greedy heuristic algorithm!
@@ -334,8 +399,7 @@ Try clicking and dragging the root (yellow node) around.
 
 # Further readings
 
-* [Building trees](https://artpoon.github.io/BioID/Trees.html)
-* [Viral phylodynamics](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1002947)
+* [Clustering of High Throughput Gene Expression Data](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3491664/)
 * [Neighbor-joining revealed](https://academic.oup.com/mbe/article/23/11/1997/1322446)
 * [Prospects for inferring very large phylogenies by using the neighbor-joining method](https://www.pnas.org/content/101/30/11030.short)
 * [Felsenstein, The Newick tree format](https://evolution.genetics.washington.edu/phylip/newicktree.html)
