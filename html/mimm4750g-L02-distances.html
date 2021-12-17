@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>4750G Bioinformatics of Infectious Disease</title>
+
+        <link rel="stylesheet" href="/reveal.js/dist/reveal.css">
+        <link rel="stylesheet" href="/css/custom.css">
+
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="/reveal.js/plugin/highlight/zenburn.css">
+
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+            <section data-markdown="/markdown/mimm4750g-distance.md"
+                     data-separator="^\n---\n"
+                     data-separator-vertical="\n___\n"
+                     data-separator-notes="^Note:"
+                     data-charset="iso-8859-15">
+            </section>
+            </div>
+        </div>
+
+        <!--<script src="/reveal.js/lib/js/head.min.js"></script>-->
+        <script src="/reveal.js/dist/reveal.js"></script>
+        <script src="/reveal.js/plugin/notes/notes.js"></script>
+    		<script src="/reveal.js/plugin/markdown/markdown.js"></script>
+        <script src="/reveal.js/plugin/highlight/highlight.js"></script>
+        <script src="/reveal.js/plugin/math/math.js"></script>
+        <script>
+          Reveal.initialize({ plugins: [ RevealMath.KaTeX ] });
+        </script>
+        <script src="/js/jquery.min.js"></script>
+
+        <script>
+            // More info https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                hash: true,
+                history: true,
+                mathjax2: {
+                  mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js',
+                  config: 'TeX-AMS_HTML-full',
+                  // pass other options into `MathJax.Hub.Config()`
+                  tex2jax: {
+                    inlineMath: [ [ '$', '$' ], [ '\\(', '\\)' ] ],
+                    skipTags: [ 'script', 'noscript', 'style', 'textarea', 'pre' ]
+                  }
+                },
+                // More info https://github.com/hakimel/reveal.js#dependencies
+                dependencies: [
+                    { src: '/js/d3.v4.min.js' },
+                    { src: '/js/d3.v3.min.js' },
+                    { src: '/js/d3js.js' },
+                    { src: '/js/processing.min.js' }
+                ],
+                plugins: [ RevealMath.MathJax2, RevealMarkdown, RevealHighlight, RevealNotes ]
+            });
+        </script>
+    </body>
+</html>
+

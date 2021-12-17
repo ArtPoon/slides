@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-        <title>Bioinformatics of Infectious Diseases</title>
+        <title>MIMM4750G L3 - Sequence comparison</title>
 
         <link rel="stylesheet" href="/reveal.js/css/reveal.css">
         <link rel="stylesheet" href="/css/custom.css">
@@ -24,7 +24,7 @@
     <body>
         <div class="reveal">
             <div class="slides">
-            <section data-markdown="/markdown/mimm4750g-coalescent.md"
+            <section data-markdown="/markdown/mimm4750g-clusters.md"
                      data-separator="^\n---\n"
                      data-separator-vertical="\n___\n"
                      data-separator-notes="^Note:"
@@ -57,6 +57,14 @@
                     { src: '/js/d3js.js' },
                     { src: '/js/processing.min.js' }
                 ]
+            });
+        </script>
+        <script>
+            Reveal.addEventListener( 'tree', function() {
+                // reload frame when we reach this slide
+                if (document.getElementById('fig-phylo') != null) {
+                    document.getElementById('fig-phylo').src = document.getElementById('fig-phylo').src;
+                }
             });
         </script>
     </body>

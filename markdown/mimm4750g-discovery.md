@@ -4,6 +4,51 @@
 
 ---
 
+
+# Schedule
+
+* Lectures on Mondays and Fridays at 9:30am
+* Lab practicals on Wednesdays from 9:30am to 11:30am ~~in the Arthur and Sonia Labatt Health Science Building, Genlab HSB-16~~ online.
+
+<img src="/img/HSB-map.png" height="300px"/>
+
+---
+
+# Learning objectives
+
+* Assemble genomes of unknown viruses from [metagenomic](https://en.wikipedia.org/wiki/Metagenomics) data.
+* Cluster virus sequences for [classification](https://en.wikipedia.org/wiki/Virus_classification) and outbreak detection.
+* Understand and apply different strategies for [tree-building](https://en.wikipedia.org/wiki/Computational_phylogenetics).
+* Detect sites under [positive selection](https://en.wikipedia.org/wiki/Directional_selection) in a virus genome.
+* Use [Bayesian methods](https://en.wikipedia.org/wiki/Bayesian_inference) to fit epidemic models to dated sequences.
+* Understand the [ethical challenges](https://en.wikipedia.org/wiki/Information_privacy) of bioinformatics and data sharing.
+
+---
+
+# Evaluation
+
+* This is an essay course!
+* Three components:
+  * Computing lab assignments - 50%
+  * Project proposal (due February 21, 2022) - 15%
+  * Project final report (due April 1, 2022) - 35%
+
+* Turnitin *will* be used to assess written assignments.
+
+---
+
+# How to do well
+
+* Labs:
+  * This course has no prerequisites in computer science - you will not have to write any of your own code.
+  * *However*, you will need to become comfortable with the command line interface.
+
+* Writing:
+  * Start writing your methods section first - it is the easiest to write.
+  * Next, go into your results by describing your analysis outputs.
+
+---
+
 # Emerging infectious diseases
 
 * An infectious disease that:
@@ -62,9 +107,8 @@ Image credit: P Miyazato <i>et al.</i> (2016) <a href="https://doi.org/10.1038/s
   * [Rolling circle amplification](https://en.wikipedia.org/wiki/Rolling_circle_replication#Rolling_circle_amplification): circularization of template by ligation, followed by recurring elongation.
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Rolling_circle_amplification_mechanism.jpg/800px-Rolling_circle_amplification_mechanism.jpg" width="500px"/>
-
 <small><small>
-[Creative Commons CC-BY-SA 4.0](https://commons.wikimedia.org/wiki/File:Rolling_circle_amplification_mechanism.jpg)
+<a href="https://commons.wikimedia.org/wiki/File:Rolling_circle_amplification_mechanism.jpg">Creative Commons CC-BY-SA 4.0</a>
 </small></small>
 
 ---
@@ -89,47 +133,6 @@ Example from A Morgulis <i>et al.</i> (2006) <a href="https://doi.org/10.1089/cm
 
 ---
 
-# Predicted reading frames
-
-* Now you have a putative genome &mdash; it should encode at least one gene.
-* What makes an [open reading frame](https://en.wikipedia.org/wiki/Open_reading_frame) (ORF)?
-  * Translation initiation codon (`ATG`, `GTG` or `TTG`)
-  * [Ribosome binding sites](https://en.wikipedia.org/wiki/Ribosome-binding_site): *e.g.*, prokaryotic Shine-Delgarno sequence `AGGAGG` about 8nt upstream of start codon.
-* An ORF may be interspersed with non-coding sequence (introns) between exons.
-
----
-
-# ORF prediction
-
-* Can the computer classify a sequence into coding and non-coding regions?
-* Important application of machine learning methods:
-  * [Hidden Markov models](https://en.wikipedia.org/wiki/Hidden_Markov_model) - probability of "emitting" certain nucleotide depends on unobserved state (*e.g.*, in exon); trained on known ORFs
-  * [Neural networks](https://en.wikipedia.org/wiki/Artificial_neural_network) - tend to focus on [splice site](http://science.umd.edu/labs/mount/RNAinfo/consensus.html) motifs
-
----
-
-# ORF prediction by homology search
-
-* One could simply [BLAST](http://slides.filogeneti.ca/html/mimm4750g-L04-BLAST.html#/4) a stretch of nucleotide sequence to look for similarity to known coding regions.
-  * For example, [GeMoMa](http://www.jstacs.de/index.php/GeMoMa) (Gene Model Mapper) BLASTs amino acid sequence from one genome against known proteins of a reference species.
-
-<img src="http://www.jstacs.de/images/9/94/GeMoMa-schema.png" height="250px"/>
-
-<small><small>
-Image credit: Jens Keilwagen, Frank Hartung and Jan Grau. https://www.jstacs.de/index.php/GeMoMa
-</small></small>
-
----
-
-# ORF prediction from other methods
-
-* A protein-coding sequence that confers some useful function should be mostly under purifying selection.
-  * Non-synonymous substitutions should be less frequent than synonymous substitutions.
-  * Limitation is that you need multiple divergent copies of potential gene.
-* Direct sequencing of RNA transcripts ([RNA-Seq](https://en.wikipedia.org/wiki/RNA-Seq)) can provide more unambiguous evidence of open reading frames.
-
----
-
 # Microbial dark matter
 
 * The vast majority of bacteria and archaea are unculturable (known phyla in grey).
@@ -151,42 +154,6 @@ Image credit: C Rinke <i>et al.</i> (2013) <a href="https://doi.org/10.1038/natu
 
 <small><small>
 PJ Cimino <i>et al.</i> (2014) <a href="https://doi-org.proxy1.lib.uwo.ca/10.1016/j.yexmp.2014.03.010">Exp Mol Pathology 96: 310</a>.
-</small></small>
-
----
-
-# Culturing the unculturable
-
-<table>
-  <tr>
-    <td style="font-size: 20pt">
-      <ul>
-        <li>"Unculturable" does not necessarily mean "impossible to culture".</li>
-        <li>Functional characterization of a novel genome from dark matter may provide clues to physiology, environmental requirements.</li>
-        <li>Ecological characterization of sample by metagenomics may identify co-abundant "helper" microbes.</li>
-      <ul>
-    </td>
-    <td width="40%">
-      <img src="https://jb.asm.org/content/jb/194/16/4151/F2.medium.gif"/>
-      <small>
-      Co-culture of a freshwater <i>Bacillus</i> with <i>Bacillus megaterium</i>-like helper.<br/>
-      Image credit: A D'Onofrio <i>et al.</i>, in EJ Stewart (2012) <a href="https://doi.org/10.1128/JB.00345-12">J Bacteriol</a>.
-      </small>
-    </td>
-  </tr>
-</table>
-
----
-
-# <i>Coxiella burnetii</i>
-
-* Bacterial pathogen causes "[Q fever](https://en.wikipedia.org/wiki/Q_fever)", an influenza-like illness, in humans and domesticated animals.
-  * Genome sequence became available in 2003.
-  * Omsland *et al.* (2009) used microarrays to profile gene expression to determine that protein synthesis was limiting growth.
-  * Genome encoded terminal oxidases suggesting improved growth in low oxygen.
-
-<small><small>
-Omsland <i>et al.</i> (2009). <i>Host cell-free growth of the Q fever bacterium Coxiella burnetii.</i> <a href="https://doi.org/10.1128/JB.00345-12">PNAS 106: 4430</a>.
 </small></small>
 
 ---
@@ -217,55 +184,80 @@ G Palacios <i>et al.</i> (2008). A New Arenavirus in a Cluster of Fatal Transpla
 
 ---
 
-# False positives
+# What is *de novo* assembly?
 
-* Lack of homology and failure to eliminate contamination makes pathogen discovery susceptible to a high false positive rate.
-* Two labs using *de novo* assembly of NGS data independently discovered a novel recombinant of [*Circoviridae*](https://en.wikipedia.org/wiki/Circoviridae) and [*Parvoviridae*](https://en.wikipedia.org/wiki/Parvoviridae) (parvovirus-like hybrid virus, PHV) in patient samples with chronic seronegative hepatitis and idiopathic diarrhea.
-* PHV could not be detected in re-extractions from same samples - the source was determined to be the Qiagen spin columns (a diatom virus).
+* Combine short reads that seem to overlap so they form a longer sequence.
+* A *contig* is a contiguous (uninterrupted) run of nucleotides that is formed from the assembly of short reads.
+
+<!--* Some methods attempt to further assemble contigs into *scaffolds*.-->
+<img src="/img/contig.png" width="500px"/>
 
 ---
 
-# How do we report a new virus?
+# Pros and cons
 
-<img src="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fnbt.4306/MediaObjects/41587_2019_Article_BFnbt4306_Fig1_HTML.jpg" height="300px"/>
+* Reference *mapping* is generally faster and easier than *de novo* assembly, but needs a good reference.
+* Mapping better suited for variant detection.
+* *de novo* assembly is better suited for discovering new genomes, where no suitable reference exists.
+* Hybrid methods use both *de novo* assembly and mapping to re-assemble local contigs.
 
-* Required metadata include assembly software, genome type (RNA/DNA) and structure (linear/circular), and number of contigs.
+---
+
+# Finding overlaps
+
+* This requires that we compare every pair of pieces!
+* Quadratic complexity ($O(N^2)$) with the number of reads, which is already a huge number.
+* Made even more difficult if we want to tolerate *inexact* matches (sequencing error or polymorphism)!
+
+<img src="/img/contig2.png" width="500px"/>
+
+---
+
+# Substrings
+
+* Immediately looking for the largest matching sub-string between two strings is time-consuming.
+* Instead, we can check if a short *prefix* of one string occurs somewhere in the second string.
+* Requiring the suffix to match
+
+<img src="/img/prefix-match.svg"/>
+
+---
+
+# Data structures
+
+* The problem of matching substrings can be made more efficient by converting the strings into a specialized data structure.
+* Two major categories of assembly algorithms/data structures:
+  1. Overlap graphs
+  2. de Bruijn graphs - memory efficient, scales better with data size.
+
+---
+
+<img src="https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1006994.g001&type=large" height="300px"/>
+
+* A *contig* is a contiguous nucleotide sequence produced from overlapping reads.
+* A *scaffold* is an arrangement of contigs based on mate-pairs that span the gap between adjacent contigs.
+* These outputs are generally written in a FASTA format.
 
 <small><small>
-Image Credit: S Roux <i>et al.</i> (2019). [Minimum Information about an Uncultivated Virus Genome (MIUViG)](https://www.nature.com/articles/nbt.4306?report=reader).  Nature Biotechnol 37:29-37.
+Image credit: Ghurye and Pop (2019). [Modern technologies and algorithms for scaffolding assembled genomes](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1006994).  PLOS Comput Biol 15: e1006994.
 </small></small>
 
----
-
-# Portable sequencing
-
-<img src="https://nanoporetech.com/sites/default/files/s3/minion-cutout.png" width="350px"/>
-
-* The Oxford Nanopore MinION weights about 100g and plugs into a computer/laptop via USB.
-  * Each single-use flow cell generates about 1-2 million reads, indeterminate read length (exceeding 2Mbp).
-  * About 5% to 15% per base error rate.
-* Near real-time *de novo* assembly of data makes field deployment possible.
 
 ---
+# Quality control
 
-<img src="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fnrg.2017.88/MediaObjects/41576_2018_Article_BFnrg201788_Fig2_HTML.jpg" width="
-800px"/>
-<small>
-Image credit: JL Gardy and NJ Loman (2018) <a href="https://doi.org/10.1038/nrg.2017.88">Nature Rev Genet 19: 9</a>.
-</small>
+* Are the assembly contigs reliable?
+* N50: when contigs are sorted by length, N50 is the length of the contig at which we reach 50% of assembled nucleotides; longer is better.
 
----
+Sort contigs by lengths in decreasing order:
+<img src="https://i1.wp.com/www.molecularecologist.com/wp-content/uploads/2017/03/Figure1a.jpg" height="45px"/>
 
-<table>
-  <tr>
-    <td width="55%"><img src="https://www.sciencemag.org/sites/default/files/styles/article_main_image_-_1280w__no_aspect_/public/ca_0607NID_Barcoding_online.jpg?itok=c7GH4Lnk"/></td>
-    <td><img src="https://3.bp.blogspot.com/-tYJ5VUZI7l0/XDzp_WoXk-I/AAAAAAAADlE/iF82svuPrrkVcxMW5OKWwUEiBiZ8q-ZFwCLcBGAs/s640/DSC01344.JPG"/></td>
-  </tr>
-  <tr>
-    <td><img src="https://pbs.twimg.com/media/Ci6FGLrWEAAmE8s?format=jpg&name=4096x4096"/></td>
-    <td><img src="https://www.nasa.gov/sites/default/files/thumbnails/image/128f0462_sequencer_1.jpg"/></td>
-  </tr>
-</table>
+Locate midpoint along concatenated array of contigs (N50=60):
+<img src="https://i0.wp.com/www.molecularecologist.com/wp-content/uploads/2017/03/Figure1b.jpg" height="100px"/>
+
+<small><small>
+Image credit: E Videvall <i>et al.</i> https://www.molecularecologist.com/2017/03/whats-n50/
+</small></small>
 
 ---
 

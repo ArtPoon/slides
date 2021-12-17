@@ -70,7 +70,7 @@ $$Q = -10 \times \log_{10} P$$
 
 * So if the error probability is 0.01 (1%), then $\log_{10} (0.01) = -2$, and $Q=20$.
 
-> Q1. What is the estimated error probability for Q=40?
+> What is the estimated error probability for Q=40?
 
 ---
 
@@ -119,7 +119,6 @@ BCCCCFF
 * The computing time of pairwise alignment is about $O(mn)$ where $m$ and $n$ are the sequence lengths.
 * The development of NGS platforms created a huge challenge for existing alignment methods &mdash; too much data!
   * Local alignment (*e.g.*, Smith-Waterman) is way too slow!
-  * BLAST is still too slow!
 * **New alignment programs were needed.**
 
 ---
