@@ -4,22 +4,14 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-        <title>MIMM4750G L3 - Sequence comparison</title>
+        <title>4750G Bioinformatics of Infectious Disease</title>
 
-        <link rel="stylesheet" href="/reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="/reveal.js/dist/reveal.css">
         <link rel="stylesheet" href="/css/custom.css">
 
         <!-- Theme used for syntax highlighting of code -->
-        <link rel="stylesheet" href="/reveal.js/lib/css/zenburn.css">
+        <link rel="stylesheet" href="/reveal.js/plugin/highlight/zenburn.css">
 
-        <!-- Printing and PDF exports -->
-        <script>
-            var link = document.createElement( 'link' );
-            link.rel = 'stylesheet';
-            link.type = 'text/css';
-            link.href = window.location.search.match( /print-pdf/gi ) ? '/reveal.js/css/print/pdf.css' : '/reveal.js/css/print/paper.css';
-            document.getElementsByTagName( 'head' )[0].appendChild( link );
-        </script>
     </head>
     <body>
         <div class="reveal">
@@ -33,38 +25,39 @@
             </div>
         </div>
 
-        <script src="/reveal.js/lib/js/head.min.js"></script>
-        <script src="/reveal.js/js/reveal.js"></script>
+        <!--<script src="/reveal.js/lib/js/head.min.js"></script>-->
+        <script src="/reveal.js/dist/reveal.js"></script>
+        <script src="/reveal.js/plugin/notes/notes.js"></script>
+    		<script src="/reveal.js/plugin/markdown/markdown.js"></script>
+        <script src="/reveal.js/plugin/highlight/highlight.js"></script>
+        <script src="/reveal.js/plugin/math/math.js"></script>
+        <script>
+          Reveal.initialize({ plugins: [ RevealMath.KaTeX ] });
+        </script>
         <script src="/js/jquery.min.js"></script>
 
         <script>
             // More info https://github.com/hakimel/reveal.js#configuration
             Reveal.initialize({
+                hash: true,
                 history: true,
-                math: {
-                    mathjax: '/MathJax/MathJax.js',
-                    config: 'TeX-AMS_SVG'
+                mathjax2: {
+                  mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js',
+                  config: 'TeX-AMS_HTML-full',
+                  // pass other options into `MathJax.Hub.Config()`
+                  tex2jax: {
+                    inlineMath: [ [ '$', '$' ], [ '\\(', '\\)' ] ],
+                    skipTags: [ 'script', 'noscript', 'style', 'textarea', 'pre' ]
+                  }
                 },
                 // More info https://github.com/hakimel/reveal.js#dependencies
                 dependencies: [
-                    { src: '/reveal.js/plugin/markdown/marked.js' },
-                    { src: '/reveal.js/plugin/markdown/markdown.js' },
-                    { src: '/reveal.js/plugin/notes/notes.js', async: true },
-                    { src: '/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-                    { src: '/reveal.js/plugin/math/math.js', async: true },
                     { src: '/js/d3.v4.min.js' },
                     { src: '/js/d3.v3.min.js' },
                     { src: '/js/d3js.js' },
                     { src: '/js/processing.min.js' }
-                ]
-            });
-        </script>
-        <script>
-            Reveal.addEventListener( 'tree', function() {
-                // reload frame when we reach this slide
-                if (document.getElementById('fig-phylo') != null) {
-                    document.getElementById('fig-phylo').src = document.getElementById('fig-phylo').src;
-                }
+                ],
+                plugins: [ RevealMath.MathJax2, RevealMarkdown, RevealHighlight, RevealNotes ]
             });
         </script>
     </body>

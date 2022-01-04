@@ -31,10 +31,6 @@ GGTTGCGCTCGTTGA    GGGATGCACTCGCTG
 
 ---
 
-`$$\alpha + \beta = 1$$`
-
----
-
 # Diversity: Sequence entropy
 
 <table>
