@@ -30,6 +30,7 @@
         <script src="/reveal.js-4.2.1/plugin/notes/notes.js"></script>
     		<script src="/reveal.js-4.2.1/plugin/markdown/markdown.js"></script>
         <script src="/reveal.js-4.2.1/plugin/highlight/highlight.js"></script>
+        <script src="/reveal.js-4.2.1/plugin/math/math.js"></script>
 
         <script src="/js/jquery.min.js"></script>
 
@@ -38,10 +39,6 @@
             Reveal.initialize({
                 hash: true,
                 history: true,
-                math: {
-                    mathjax: '/MathJax/MathJax.js',
-                    config: 'TeX-AMS_SVG'
-                },
                 // More info https://github.com/hakimel/reveal.js#dependencies
                 dependencies: [
                     { src: '/js/d3.v4.min.js' },
@@ -49,7 +46,7 @@
                     { src: '/js/d3js.js' },
                     { src: '/js/processing.min.js' }
                 ],
-                plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+                plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
             });
         </script>
     </body>

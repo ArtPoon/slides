@@ -61,6 +61,18 @@
 
 ---
 
+# Microbial dark matter
+
+* The vast majority of bacteria and archaea are unculturable (known phyla in grey).
+
+<img src="/img/nature12352.f1.png" height="400px"/>
+
+<small><small>
+Image credit: C Rinke <i>et al.</i> (2013) <a href="https://doi.org/10.1038/nature12352"/>Nature 499: 431</a>.
+</small></small>
+
+---
+
 # Novel genomes
 
 <table>
@@ -133,31 +145,6 @@ Example from A Morgulis <i>et al.</i> (2006) <a href="https://doi.org/10.1089/cm
 
 ---
 
-# Microbial dark matter
-
-* The vast majority of bacteria and archaea are unculturable (known phyla in grey).
-
-<img src="/img/nature12352.f1.png" height="400px"/>
-
-<small><small>
-Image credit: C Rinke <i>et al.</i> (2013) <a href="https://doi.org/10.1038/nature12352"/>Nature 499: 431</a>.
-</small></small>
-
----
-
-# Data dredging
-
-* Unmapped reads that were discarded from studies focusing on host genomes, such as human oncology studies, may contain pathogen sequences.
-  * Role of viruses in brain tumours is controversial.
-  * Cimino *et al.* (2014) re-analyzed the discarded reads (1.9% did not map to human genome) from [brain tumours](https://en.wikipedia.org/wiki/Glioma).
-  * Detected [Epstein-Barr virus](https://en.wikipedia.org/wiki/Epstein%E2%80%93Barr_virus) in 5 of 21 (24%) cases.
-
-<small><small>
-PJ Cimino <i>et al.</i> (2014) <a href="https://doi-org.proxy1.lib.uwo.ca/10.1016/j.yexmp.2014.03.010">Exp Mol Pathology 96: 310</a>.
-</small></small>
-
----
-
 # crAssphage
 
 * A previously unidentified bacteriophage (~97kbp circular DNA genome) found in majority of published human faecal metagenomic data.
@@ -176,7 +163,7 @@ PJ Cimino <i>et al.</i> (2014) <a href="https://doi-org.proxy1.lib.uwo.ca/10.101
 * 3 patients who received organ transplants from one donor died of febrile illness 4-6 weeks after.
   * Samples screened for HHV1-8, lyssavirus, IAV, IBV, RSV, picornavirus, adenovirus, human parainfluenza virus, flavivirus, and many more.
   * Total RNA from recipient samples was amplified with random primers and processed by NGS.
-  * Contigs obtained after subtraction of human DNA and *de novo* assembly were BLASTX-matched to Old World arenaviruses.
+  * Contigs obtained after subtraction of human DNA and __*de novo* assembly__ were similar to Old World arenaviruses.
 
 <small><small>
 G Palacios <i>et al.</i> (2008). A New Arenavirus in a Cluster of Fatal Transplant-Associated Diseases. <a href="http://doi.org/10.1056/NEJMoa073785">N Eng J Med 358: 991</a>.
@@ -229,6 +216,7 @@ G Palacios <i>et al.</i> (2008). A New Arenavirus in a Cluster of Fatal Transpla
 * Two major categories of assembly algorithms/data structures:
   1. Overlap graphs
   2. de Bruijn graphs - memory efficient, scales better with data size.
+* We're glossing over a lot of methodological detail here &mdash; if you want to know more, see Ben Langmead's [teaching materials](https://langmead-lab.org/teaching-materials/)
 
 ---
 
@@ -236,7 +224,6 @@ G Palacios <i>et al.</i> (2008). A New Arenavirus in a Cluster of Fatal Transpla
 
 * A *contig* is a contiguous nucleotide sequence produced from overlapping reads.
 * A *scaffold* is an arrangement of contigs based on mate-pairs that span the gap between adjacent contigs.
-* These outputs are generally written in a FASTA format.
 
 <small><small>
 Image credit: Ghurye and Pop (2019). [Modern technologies and algorithms for scaffolding assembled genomes](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1006994).  PLOS Comput Biol 15: e1006994.
@@ -244,6 +231,7 @@ Image credit: Ghurye and Pop (2019). [Modern technologies and algorithms for sca
 
 
 ---
+
 # Quality control
 
 * Are the assembly contigs reliable?

@@ -4,90 +4,9 @@
 
 ---
 
-
-`$$ J(\theta_0,\theta_1) = \sum_{i=0} $$`
-
-
----
-
-# Aligned sequences
-
-* Now that we can align sequences, we can make biologically meaningful comparisons.
-  * Which parts of the gene/genome are more variable? more conserved?
-  * Which sequences are more closely related than others?
-* It is far easier to measure similarity when the sequences are aligned.
-
-```
-GGGTTGCGCTCGTTG    GGGTTGCGCTCGTTG
-|| |        |      ||| ||| |||| ||
-GGTTGCGCTCGTTGA    GGGATGCACTCGCTG
-```
-
----
-
-# Diversity
-
-* There are several ways to measure sequence diversity.
-  * Fraction of polymorphic sites - what counts as a polymorphism?
-  * Minor allele frequency (MAF): the frequency of the *second*-most common residue
-  <img src="/img/MAF.png" width="500px"/>
-  * Sequence entropy
-
-* Convention is to label a site as [polymorphic](https://en.wikipedia.org/wiki/Gene_polymorphism) if MAF is greater than 1% and less than 5%.
-
----
-
-# Diversity: Sequence entropy
-
-<table>
-  <tr>
-    <td width="50%">
-      <ul>
-      <li>
-        The concept of entropy comes from <a href="https://en.wikipedia.org/wiki/Information_theory">information theory</a>.
-      </li>
-      <li>
-        For each site, we calculate:
-        $$S = -\sum_i p_i \log p_i$$
-        where $p_i$ is the frequency of the $i$-th residue at that site.
-      </li>
-      <li>Entropy is highest when residues appear at equal frequency.</li>
-    </td>
-    <td width="50%">
-      <img src="/img/entropy.png"/>
-    </td>
-  </tr>
-</table>
-
----
-
-# Diversity: polymorphisms
-
-* Frequency of polymorphic sites
-* Mean nucleotide or amino acid entropy - calculate entropy at each site, and then take the average:
-  $$\bar{S} = \sum_{j=1}^L S_j / L $$
-* Nucleotide diversity ($\pi$): the average number of differences between two randomly sampled sequences
-
-`$$\pi = \frac{2\sum_i \sum_j \pi_{ij}}{n(n-1)}$$`
-
----
-
-# Applications of diversity measures
-
-* Which regions of the genome are the most conserved (least diverse)?
-* Conserved regions can make good targets for antibodies.
-
-<img src="https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0044163.g003&type=large" width="400px"/>
-
-<small><small>
-Entropy plot of HIV-1 <i>env</i> sequences in asymptomatic chronic HIV-1 patient.  From Chaillon <i>et al.</i> 2012. [PLOS ONE 7:e44163](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0044163).
-</small></small>
-
----
-
 # Genetic distances
 
-* Another approach to quantify diversity is to use a distance measure (comparing pairs of sequences).
+* How do we measure how similar two sequences are?
 * A [genetic distance](https://en.wikipedia.org/wiki/Models_of_DNA_evolution) is a function $d(x,y)$ that maps sequences $x$ and $y$ to some non-negative value.
 * A [distance function](https://en.wikipedia.org/wiki/Metric_(mathematics)) $d$ should have the following properties:
 	* $d(x,y) \ge 0$ for all $x,y\in \Omega$
@@ -113,6 +32,51 @@ Entropy plot of HIV-1 <i>env</i> sequences in asymptomatic chronic HIV-1 patient
     </td>
   </tr>
 </table>
+
+---
+
+# Alignment-free methods
+
+* A $k$-mer is a substring of length $k$ characters.
+  * For example, `GGGTT` has the following 2-mers: `GG`, `GT` and `TT`.
+* Map a sequence to a "feature space" of all possible k-mers for given k.
+  * Let $W_k(s)$ represent the set of all k-mers in sequence $s$.
+  * Let $f(s, w)$ represent the frequency of k-mer $w\in W_k(s)$.
+* We can compare two sequences by comparing their frequency distributions $f(s, w)$ and $f(t, w)$.
+
+---
+
+<img src="https://media.springernature.com/full/springer-static/image/art%3A10.1186%2Fs13059-017-1319-7/MediaObjects/13059_2017_1319_Fig1_HTML.gif" width="600px"/>
+
+<small><small>
+Image credit: A Zielezinski <i>et al.</i> 2017, [Alignment-free sequence comparison: benefits, applications, and tools]((https://genomebiology.biomedcentral.com/articles/10.1186/s13059-017-1319-7)).  <i>Genome Biol</i> 18:186.
+</small></small>
+
+---
+
+# Some examples of k-mer based distances
+
+* Manhattan distance ($W = W_k(s) \cup W_k(t)$):
+$$d(s, t) = \sum_{w\in W} |f(s,w) - f(t,w)|$$
+* Euclidean distance:
+$$d(s, t) = \sqrt{\sum_{w\in W} (f(s,w) - f(t,w))^2}$$
+* Canberra distance:
+$$d(s, t) = \sum_{w\in W}\frac{|f(s,w) - f(t,w)|}{|f(s,w)|+|f(t,w)|}$$
+
+---
+
+# Aligned sequences
+
+* If we can align sequences, we can make biologically meaningful comparisons.
+  * Which parts of the gene/genome are more variable? more conserved?
+  * Which sequences are more closely related than others?
+* It is far easier to measure similarity when the sequences are aligned.
+
+```
+GGGTTGCGCTCGTTG    GGGTTGCGCTCGTTG
+|| |        |      ||| ||| |||| ||
+GGTTGCGCTCGTTGA    GGGATGCACTCGCTG
+```
 
 ---
 
@@ -195,23 +159,14 @@ GGGATGCACTCGCTG
 
 ---
 
-<section data-state="jukes-slide">
-    <h1>Jukes-Cantor simulation</h1>
-    <br/>
+<section data-state="jukes-slide"
+    <br/><br/><br/>
     <div id="jukes" class="fig-container"
          data-fig-id="fig-jukes"
          data-file="/include/jukes-cantor.html"
-         style="height:4000px">
+         style="height:800px">
     </div>
 </section>
-
----
-
-# In-class exercise
-
-$$\hat{d}=-\frac{3}{4}\ln\left(1-\frac{4}{3}p\right)$$
-
-> At what p-distance does the Jukes-Cantor formula fail?
 
 ---
 
@@ -248,3 +203,85 @@ $$\hat{d}=-\frac{3}{4}\ln\left(1-\frac{4}{3}p\right)$$
 * [MEGA](https://www.megasoftware.net/) - user-friendly software for sequence analysis.
 * `dist.dna` function in the *R* package `ape`
 * [tn93](https://github.com/veg/tn93) - a very fast TN93 calculator in C++
+
+---
+
+# Genetic distance clustering
+
+* A [cluster](https://en.wikipedia.org/wiki/Cluster_analysis) is a group of observations that are more similar to each other than observations outside the cluster.
+* In distance-based (pairwise) clustering, any pair of sequences with a distance below a threshold are assigned to the same cluster.
+  * The selection of this threshold can be fairly subjective!
+* Several applications of clustering for infectious diseases:
+  * Defining a virus nomenclature (taxonomy)
+  * Finding population-level associations with transmission patterns (epidemiology)
+  * Detecting outbreaks (epidemiology)
+
+---
+
+# Defining new virus species
+
+* The [International Committee on the Taxonomy of Viruses](https://talk.ictvonline.org/) allows the definition of a new virus species based on genetic clustering, although this remains controversial.
+
+> Unfortunately, in recent years, ICTV Study Groups [...] have created large number of species on the basis of a single criterion, namely a certain percentage of genome similarity between individual viruses.
+
+---
+
+# Demarcating virus species
+
+<img src="/img/geminivirus.png" height="300px"/>
+
+<small><small>
+Image credit: CM Fauquet <i>et al.</i> (2008) [Geminivirus strain demarcation and nomenclature](https://link.springer.com/article/10.1007%2Fs00705-008-0037-6).  Arch Virol 153:783-821.
+</small></small>
+
+---
+
+<table>
+  <tr>
+    <td style="vertical-align:middle; font-size: 24px;">
+      <h1>HIV groups and subtypes</h1>
+      <ul>
+        <li>Defining groupings within species (HIV-1)</li>
+        <li>Four HIV-1 groups (M-P) associated with different zoonotic events.</li>
+        <li>Group M is split into subtypes (A-J).</li>
+        <li>A and F are split into sub-subtypes (A1-A7, F1, F2).</li>    
+        </ul>
+        <small><small>
+        Image credit: N D&eacute;sir&eacute; <i>et al.</i> (2018) Characterization update of HIV-1 M subtypes diversity and proposal for subtypes A and D sub-subtypes reclassification. <a href="https://retrovirology.biomedcentral.com/articles/10.1186/s12977-018-0461-y">Retrovirology 15: 80</a>.
+        </small></small>
+    </td>
+    <td width="40%">
+      <img height="600px" src="https://media.springernature.com/full/springer-static/image/art%3A10.1186%2Fs12977-018-0461-y/MediaObjects/12977_2018_461_Fig1_HTML.png"/>
+    </td>
+  </tr>
+</table>
+
+---
+
+# Clustering bacteria
+
+<table>
+  <tr>
+    <td>
+      <ul>
+        <li>Bacterial genomes tend to be more fluid than viruses, with less conserved genes.</li>
+        <li>Calculating distances requires a conserved locus (<i>e.g.</i>, 16S rRNA) or set of "core" genes, <i>e.g.</i>, multi-locus sequence typing, MLST.</li>
+        <li>Gradually being replaced with whole genome methods that predict core and accessory loci (right)</li>
+      </ul>
+    </td>
+    <td width="50%">
+      <img src="https://poppunk.readthedocs.io/en/latest/_images/unconstrained_refine.png" width="500px">
+      <small>
+      Image source: <a href="https://poppunk.readthedocs.io/en/latest/model_fitting.html">PopPUNK documentation, Lees and Croucher (2020)</a>
+      </small>
+    </td>
+  </tr>
+</table>
+
+---
+
+# Further readings
+
+* [Consensus statement: Virus taxonomy in the age of metagenomics](https://www.nature.com/articles/nrmicro.2016.177)
+* [ICTV: Comments to proposed modification to code rule 3.21 (defining virus species)](https://talk.ictvonline.org/ictv1/f/general_ictv_discussions-20/3930/comments-to-proposed-modification-to-code-rule-3-21-defining-virus-species)
+* [Hanage *et al.* (2006) Sequences, sequence clusters and bacterial species](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1764932/)
