@@ -4,6 +4,12 @@
 
 ---
 
+
+`$$ J(\theta_0,\theta_1) = \sum_{i=0} $$`
+
+
+---
+
 # Aligned sequences
 
 * Now that we can align sequences, we can make biologically meaningful comparisons.
