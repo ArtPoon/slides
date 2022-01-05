@@ -4,6 +4,38 @@
 
 ---
 
+# What is a phylogeny?
+
+* A tree-based hypothesis about how populations are related by common ancestors.
+* Each population (species/infection) is represented by a tip of the tree.
+* Connected by branches to common ancestors (nodes).
+
+<img width="400px" src="/img/phylogeny-crop.png"/>
+
+---
+
+# Nodes
+
+* A node represents a common ancestor of one or more descendants.
+  * If a node has two descendants, then it is a *binary* or *bifurcating* node.
+* A node with more than two descendants is a *polytomy* (not a dichotomy).
+  * A polytomy is *soft* if there is not enough data to resolve it into binary nodes (*i.e.*, is A more related to B or to C?).
+  * Otherwise it is *hard* polytomy (a true simultaneous split).
+
+---
+
+# Branches
+
+* A branch connects a descendant node to its immediate ancestral node.
+  * A <u>terminal</u> branch ends at a tip (observed).
+  * An <u>internal</u> branch connects unobserved ancestors.
+* The length of a branch *may* represent:
+  * genetic distance
+  * elapsed time
+  * nothing at all (unscaled trees)
+
+---
+
 # Distance-based methods
 
 * Building a tree can be viewed as a clustering problem!
@@ -23,30 +55,6 @@
 
      `$$d(X\cup Y, Z) = \frac{n_{\scriptsize X} d(X,Z) + n_{\scriptsize Y} d(Y,Z)} {n_{\scriptsize X} + n_{\scriptsize Y}}$$`
   3. Go to step 1 until only one cluster remains (the root).
-
----
-
-# Ultrametric trees
-
-<table>
-<tr>
-<td style="vertical-align:middle; font-size: 20pt">
-  <ul>
-  <li>Because of how UPGMA computes the distances of ancestral nodes, it generates trees where every tip is the same distance from the root.</li>
-  <li>This is what you would get if:</li>
-    <ol>
-      <li>we sample each tip at the same moment in time.</li>
-      <li>the rate of evolution is constant.</li>
-    </ol>
-  </ul>
-  <blockquote>
-  Why might you expect ultrametric trees to be a bad choice for viruses?
-  </blockquote>
-</td>
-<td width="40%">
-  <img src="/img/ultrametric.png"/>
-</td>
-</table>
 
 ---
 
@@ -139,24 +147,10 @@
 
 ---
 
-# Rate variation among sites
-
-* Some parts of the genome evolve more rapidly than others.
-  * Conserved, functionally important sequences.
-  * Surface-exposed proteins, escape from neutralizing antibodies.
-
-<img src="/img/variation-among-sites2.png" height="350px"/>
-
-<small><small>
-Part of the NS5A region (including V3 domain) in an alignment of hepatitis C virus polypeptide sequences.
-</small></small>
-
----
-
 
 * Distance-based methods compare pairs of sequences:
 
-<img src="/img/variation-among-sites.png" height="30px"/>
+<img src="/img/variation-among-sites.png"/>
 
 * These methods cannot detect variation among sites because there is no way of storing information about where differences were observed.
 * As we will see later, likelihood methods can fit a model of rate variation to the entire alignment, not just pairs of sequences.
@@ -259,17 +253,6 @@ Part of the NS5A region (including V3 domain) in an alignment of hepatitis C vir
   * some interpret it as the chance that the clade would be observed if the experiment was repeated with *new data*
   * others as the probability that the clade is present in the *true tree* (probably not statistically valid).
 * If the support value at a branch fall below some threshold, then it is collapsed into a polytomy.
-
----
-
-# Failing to understand bootstraps
-
-Phylogenetic tree from an HIV transmission court case in Taiwan
-<img src="/img/taiwan-source-attribution2.png" height="400px"/>
-
-<small><small>
-Source: WY Li <i>et al.</i> (2020) Source identification of HIV-1 transmission in three lawsuits Using Ultra-Deep pyrosequencing and phylogenetic analysis. [J Microbiol Immunol Infect](https://www.sciencedirect.com/science/article/pii/S1684118220300025?via%3Dihub), <i>in press</i>.
-</small></small>
 
 ---
 

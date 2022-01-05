@@ -90,6 +90,17 @@ Image credit: W-Y Li <i>et al.</i> (2020) <a href="https://doi.org/10.1016/j.jmi
 
 ---
 
+# Failing to understand bootstraps
+
+Phylogenetic tree from an HIV transmission court case in Taiwan
+<img src="/img/taiwan-source-attribution2.png" height="400px"/>
+
+<small><small>
+Source: WY Li <i>et al.</i> (2020) Source identification of HIV-1 transmission in three lawsuits Using Ultra-Deep pyrosequencing and phylogenetic analysis. [J Microbiol Immunol Infect](https://www.sciencedirect.com/science/article/pii/S1684118220300025?via%3Dihub), <i>in press</i>.
+</small></small>
+
+---
+
 # Data privacy: The Bavarian patient
 
 * "... it appears that this cluster [...] is the direct ancestor of these later viruses and thus led directly to some fraction of the widespread outbreak circulating in Europe today."
