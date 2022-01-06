@@ -1,6 +1,6 @@
 # MIMM4750G
 ## Probability and likelihood
-<img src="https://imgs.xkcd.com/comics/increased_risk.png" width="300px"/>
+<img src="https://imgs.xkcd.com/comics/increased_risk.png" width="250px"/>
 
 ---
 
@@ -31,7 +31,7 @@
 
 # Properties of a probability distribution
 
-* A probability distribution function (PDF) can be *discrete* or *continuous*. 
+* A probability distribution function (PDF) can be *discrete* or *continuous*.
 * The binomial PDF is discrete. There can be either 1 or 2 heads but never 1.5.
 * A PDF *must* sum to 1 (100%) across all possible data outcomes, *for a given hypothesis*.
 <img src="https://imgs.xkcd.com/comics/geeks_and_nerds.png" width="300px"/>
@@ -49,9 +49,9 @@
 # Likelihood
 
 * This probability distribution
-  
+
   $P(N,y\;|\;p) = {N\choose y} p^y (1-p)^{(N-y)}$
-  
+
    has two sets of variables:
   1. Parameters that define the hypothesis (*p*).
   2. Variables that comprise the data (*N*, *y*).
@@ -90,11 +90,11 @@
 
 * To estimate the parameter that maximizes likelihood, we can use first-year calculus (ha!)
 
-\begin{align}
+$$\begin{align}
   \mathcal{L}(p|N,y) & \propto p^y (1-p)^{N-y} \\\\[6pt]
   \log(\mathcal{L}) & \propto y\log(p) + (N-y)\log(1-p) \\\\[6pt]
   \frac{d\log(\mathcal{L})}{dp} & \propto \frac{y}{p} + (-1)\frac{N-y}{1-p}
-\end{align}
+\end{align}$$
 
 * If we set the left side to 0, some algebra gives us $\;\hat{p} = y/N$.
 
@@ -104,7 +104,7 @@
 
 * As we add more data, the likelihood gets smaller:
 
-`$$P(\text{everything}) = P(\text{first thing}) \times P(\text{another thing})\\\\ \times \ldots P(\text{last thing})$$`
+$$P(\text{everything}) = P(\text{first thing}) \times P(\text{another thing})\\\\ \times \ldots P(\text{last thing})$$
 
 * Taking the $\log$ of a very small value gives you a very negative number:
   $\log(3.45\times 10^{-73}) = -166.8503$
@@ -142,13 +142,13 @@ $$P=\exp(Qt)$$
 
 `$$Q=\begin{matrix}
  & \begin{matrix} \hspace{1ex}A & \hspace{1ex}C & \hspace{1ex}G & \hspace{1ex}T\end{matrix} \\
-\begin{matrix}A\\C\\G\\T\end{matrix} & 
+\begin{matrix}A\\C\\G\\T\end{matrix} &
 \begin{pmatrix}
 -4 & 1 & 2 & 1\\
 1 & -4 & 1 & 2\\
 2 & 1 & -4 & 1\\
 1 & 2 & 1 & -4\\
-\end{pmatrix} 
+\end{pmatrix}
 \end{matrix}
 \times 10^{-3}
 $$`
@@ -161,7 +161,7 @@ $$`
 </ul>
 
 </td>
-<td><img src="/img/transprob.png" width="500px"/></td>
+<td width="45%"><img src="/img/transprob.png" width="500px"/></td>
 </table>
 
 ---
@@ -188,7 +188,7 @@ $$`
 
 * There must be some ancestor below the root, but we don't know what it is.
 * We assume the probabilities of nucleotides at the root follow a *stationary distribution* (result after an infinite amount of evolution).
-* These frequencies are usually represented by `$(\pi_A, \pi_C, \pi_G, \pi_T)$`.
+  * These frequencies are usually represented by `$(\pi_A, \pi_C, \pi_G, \pi_T)$`.
 * Set to the observed frequencies in the alignment, or estimate from the data.
 
 ---
@@ -196,7 +196,7 @@ $$`
 # Maximum likelihood heuristics
 
 * As long as we can calculate the likelihood for a specific set of parameters, we can search parameter space for the MLE (*optimization*).
-* Heuristic search methods (again!)
+  * This is a [heuristic search method](https://en.wikipedia.org/wiki/Heuristic_(computer_science)) &mdash; a relatively simple method for solving a problem that is not guaranteed to be right.
 * For phylogenies, this requires a way to move through the space of trees.
 * First proposed by [Joe Felsenstein](https://en.wikipedia.org/wiki/Joseph_Felsenstein).
 
@@ -208,6 +208,10 @@ $$`
 * A "greedy" heuristic that searches for the MLE by always tuning parameters to increase likelihood.
 * A more robust heuristic should have some strategy for climbing down local peaks.
 ![](https://upload.wikimedia.org/wikipedia/commons/d/d5/Hill_Climbing_with_Simulated_Annealing.gif)
+
+<small><small>
+Image source: Wikimedia Commons, <a href="https://commons.wikimedia.org/wiki/File:Hill_Climbing_with_Simulated_Annealing.gif">Hill climbing with simulated annealing</a>.
+</small></small>
 
 ---
 
@@ -224,28 +228,28 @@ $$`
 * Nearest-neighbor interchange: swap subtrees that are connected by a single branch.
 * Small moves are easier to make, but can be slow to traverse tree space.
 
-<small>
-Image credit: B Dasgupta <i>et al.</i> (2016) Encyclopedia of Algorithms. https://doi.org/10.1007/978-1-4939-2864-4_256
-</small>
+<small><small>
+Image source: B Dasgupta <i>et al.</i> (2016) <a href="https://doi.org/10.1007/978-1-4939-2864-4_256">Encyclopedia of Algorithms</a>. 
+</small></small>
 
 ---
 
 # Tree rearrangements (2)
 
-<img src="https://www.genetics.org/content/genetics/170/1/419/F1.large.jpg" width="500px"/>
+<img src="/img/5692f1.jpeg" width="500px"/>
 
 * Subtree pruning and regrafting: move a subtree to an entirely different location in the tree.
 
-<small>
-Image credit: Marc Suchard (2005) Genetics 170. https://doi.org/10.1534/genetics.103.025692
-</small>
+<small><small>
+Image credit: Marc Suchard (2005) <a href="https://doi.org/10.1534/genetics.103.025692">Stochastic Models for Horizontal Gene Transfer: Taking a Random Walk Through Tree Space</a>. Genetics 170(1): 419-431.
+</small></small>
 
 ---
 
 # Software
 
-* [IQ-Tree](http://www.iqtree.org/)
-* [FastTree2](http://www.microbesonline.org/fasttree/)
-* [RAxML](https://cme.h-its.org/exelixis/web/software/raxml/index.html)
-* [PhyML](http://www.atgc-montpellier.fr/phyml/)
-* [MEGA](https://www.megasoftware.net/)
+* [IQ-Tree](http://www.iqtree.org/) - cutting edge; attempts to select best model before building tree.
+* [FastTree2](http://www.microbesonline.org/fasttree/) - fast and approximate, usually very close to other ML programs.
+* [RAxML](https://cme.h-its.org/exelixis/web/software/raxml/index.html) - one of the top ML programs.
+* [PhyML](http://www.atgc-montpellier.fr/phyml/) - also a contender for top ML program.
+* [MEGA](https://www.megasoftware.net/) - as usual, provides a nice GUI.
