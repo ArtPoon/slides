@@ -8,7 +8,8 @@
 
 * Variation in fitness that is associated with variation in the environment.
 * Selection is responsible for the spread of drug resistance in pathogens.
-* Host adaptation: a mutant allele of the [Duffy blood-group antigen](https://en.wikipedia.org/wiki/Duffy_antigen_system) (Fy) that reduces risk of infection by *Plasmodium vivax* (vivax malaria) is [near fixation in sub-Saharan Africa](https://www.nature.com/articles/nrg3734).
+  * Host adaptation: a mutant allele of the [Duffy blood-group antigen](https://en.wikipedia.org/wiki/Duffy_antigen_system) (Fy) that reduces risk of infection by *Plasmodium vivax* (vivax malaria) is [near fixation in sub-Saharan Africa](https://www.nature.com/articles/nrg3734).
+
 <img src="/img/vivax.jpg" width="500px"/>
 
 ---
@@ -54,7 +55,7 @@
 * Infer selection by comparting relative rates of evolution.
 * Requires a baseline/point of reference, *e.g.,* "neutrally evolving" pseudogenes.
 * A popular contrast is non-synonymous versus synonymous variation within protein-coding sequence.
-* [Non-synonymous](https://en.wikipedia.org/wiki/Nonsynonymous_substitution) = nucleotide substitution alters the amino acid encoded by the codon.
+  * [Non-synonymous](https://en.wikipedia.org/wiki/Nonsynonymous_substitution) = nucleotide substitution alters the amino acid encoded by the codon.
 * Such approaches are generally called ["dN/dS" methods](https://en.wikipedia.org/wiki/Ka/Ks_ratio).
 
 ---
@@ -62,7 +63,7 @@
 # dN/dS
 
 * There are 9 possible nucleotide substitutions in a 3-nt codon.
-* We assume that [nonsense](https://en.wikipedia.org/wiki/Nonsense_mutation) substitutions to a stop codon don't persist.
+  * We assume that [nonsense](https://en.wikipedia.org/wiki/Nonsense_mutation) substitutions to a stop codon don't persist.
 * The [genetic code](https://en.wikipedia.org/wiki/Genetic_code) determines how many of these 9 nt changes would result in a non-synonymous change &mdash; this is the number of NS sites.
 * dN is the ratio between the numbers of observed NS substitutions and of NS sites.
 * dS is the same ratio for synonymous substitutions and sites.
@@ -72,26 +73,27 @@
 # A simple example
 
 * The codon `ACG` encodes threonine (T).  It has 3 synonymous sites and 6 nonsynymous sites (*e.g.*, `ATG` for methionine).
-* Suppose we count 8 non-synonymous and 4 synonymous substitutions in the tree.
-* We observed over twice as many non-synonymous substitutions!  Is this evidence of strong diversifying selection at this codon?
+  * Suppose we count 8 non-synonymous and 4 synonymous substitutions in the tree.
+  * We observed over twice as many non-synonymous substitutions!  Is this evidence of strong diversifying selection at this codon?
 * The ratio dN/dS is $\frac{8}{6} / \frac{4}{3}$ = 1.  **Even though we observed more NS substitutions, this is neutral.**
 
 ---
 
 <!--* Major histocompatibility complex (MHC) antigen recognition site , $dN > dS$ driven by host-pathogen arms race$^1$.-->
-![](/img/EndoTable.png)
+A majority of the first examples of genes under positive selection came from viruses and bacteria:
+<img src="/img/EndoTable.png" width="600px"/>
 
-<small>
+<small><small>
 Table from Endo, Ikeo and Gojobori. 1996, Mol Biol Evol 13: 685.
 <!--$^1$ Hughes and Nei 1989, Genetics 86.-->
-</small>
+</small></small>
 
 ---
 
 # The Goldman-Yang / Muse-Gaut models
 * In 1994, very similar models were proposed in two ground-breaking papers (in the same journal, next to each other [in the same issue](https://academic.oup.com/mbe/issue/11/5)).
-* There are 61 sense codons: $61\times60/2=1830$ rates.
-* Using these assumptions, the GY and MG models enable us to specify a codon model using as few as *two* parameters.
+  * There are 61 sense codons: $61\times60/2=1830$ rates.
+  * These models enable us to specify a codon model using as few as *two* parameters.
 * The main parameter is called $\omega$ or $R$, depending who you ask.  It is simply the ratio of non-syn. and syn. rates (dN/dS).
 
 ---
@@ -100,16 +102,16 @@ Table from Endo, Ikeo and Gojobori. 1996, Mol Biol Evol 13: 685.
 
 1. There is never more than one nucleotide substitution within a codon at a time (*e.g.*, no simultaneous mutations).
 2. The codon context has no effect on nucleotide substitution rates.
-3. The dN/dS ratio does not care what amino acid is encoded by the codon, only whether the amino acid is *changed*. 
+3. The dN/dS ratio does not care what amino acid is encoded by the codon, only whether the amino acid is *changed*.
 
 ---
 
 # Maximum likelihood (ML)
 
-* We can use ML to reconstruct the tree best supported by the data.
-* We can also use ML to fit one of these codon models to the tree.
-* It is *possible* to simultaneously estimate both the tree and the codon model, but 
-* It is simpler to "fix" our analysis to a single tree when fitting the model.
+* We can [use ML to reconstruct the tree](https://slides.filogeneti.ca/html/mimm4750g-L06-likelihood.html#/) best supported by the data.
+  * We can also use ML to fit one of these codon models to the tree.
+* It is *possible* to simultaneously estimate both the tree and the codon model, but...
+  * It is simpler to "fix" our analysis to a single tree when fitting the model.
 * Methods to simultaneously fit the tree and codon model have only recently been developed, *e.g.,* [CodonPhyML](https://sourceforge.net/projects/codonphyml/files/).
 
 ---
@@ -119,7 +121,7 @@ Table from Endo, Ikeo and Gojobori. 1996, Mol Biol Evol 13: 685.
 * In the same year, Ziheng Yang described methods to allow dN/dS to change at different codon sites of a protein-coding gene.
 * This was a critical improvement because it is often not the *entire gene* that is under diversifying selection.
 * This allows us to pick out individual amino acids under strong selection, even if the rest of the gene is highly conserved.
-* Implemented by Yang in 1997 into the software package [PAML](http://abacus.gene.ucl.ac.uk/software/paml.html) (Phylogenetic Analysis by Maximum Likelihood).
+  * Implemented by Yang in 1997 into the software package [PAML](http://abacus.gene.ucl.ac.uk/software/paml.html) (Phylogenetic Analysis by Maximum Likelihood).
 
 ---
 
@@ -135,7 +137,7 @@ Table from Endo, Ikeo and Gojobori. 1996, Mol Biol Evol 13: 685.
     </ul>
   </td>
   <td width="40%">
-    <img src="/img/dnds-influenza.png" width="250px"/>
+    <img src="/img/dnds-influenza.png" width="225px"/>
     <small>
     Figure from Meyer and Wilke (2015) PLOS Pathog 11: e1004940.
     </small>
@@ -148,7 +150,7 @@ Table from Endo, Ikeo and Gojobori. 1996, Mol Biol Evol 13: 685.
 # Random-effects likelihood
 
 * Yang allows dN/dS ($\omega$) to vary among sites by assuming that these values followed a [gamma distribution](https://en.wikipedia.org/wiki/Gamma_distribution).
-* The gamma distribution is a *continuous* probability density function for values greater than zero, ideal for rates.
+  * Recall the gamma distribution is a *continuous* probability density function for values greater than zero, ideal for rates.
 * To make easier to compute, Yang split the gamma distribution up into 5 rate categories of equal area (probability).
 * This approach is still used for many models, and gamma is represented by a `G` or the symbol $\Gamma$.
 
@@ -164,9 +166,9 @@ Table from Endo, Ikeo and Gojobori. 1996, Mol Biol Evol 13: 685.
 
 # Counting methods
 
-* Suzuki and Gojobori described a non-parametric "counting" method to measure selection
-* Reconstruct what substitutions occured on each branch by parsimony or maximum likelihood.
-* Use a binomial test to identify sites with significantly more NS substitutions than expected.
+* [Suzuki and Gojobori (1999)](https://academic.oup.com/mbe/article/16/10/1315/2925367) described a non-parametric "counting" method to measure selection.
+  * Reconstruct what substitutions occured on each branch by parsimony or maximum likelihood.
+  * Use a binomial test to identify sites with significantly more NS substitutions than expected.
 * **All three types of methods basically give you the same results if you have enough data.**
 
 ---
@@ -183,7 +185,7 @@ Table from Endo, Ikeo and Gojobori. 1996, Mol Biol Evol 13: 685.
     <li>Codons in spike protein under strong positive selection (magenta), close to residues involved in receptor binding (green).</li>
     </ul>
     <small>
-    Image credit: M Cotten *et al.* (2014) mBio. https://doi.org/10.1128/mBio.01062-13
+    Image credit: M Cotten <i>et al.</i> (2014) <a href="https://doi.org/10.1128/mBio.01062-13">Spread, Circulation, and Evolution of the Middle East Respiratory Syndrome Coronavirus</a>. mBio 5(1).
     </small>
   </td>
   <td width="30%">
@@ -194,59 +196,49 @@ Table from Endo, Ikeo and Gojobori. 1996, Mol Biol Evol 13: 685.
 
 ---
 
-<table>
-<tr>
-  <td style="font-size: 18pt; vertical-align:middle;">
-    <h1 style="font-size: 24pt">Episodic selection</h1>
-    <ul>
-    <li>The previous models assume that differences in dN/dS are constant over time.</li>
-    <li>What if selection at a specific site is driven by a change in the  environment?</li>
-    <li>Yang (again) and Nielsen (2002) proposed the branch-site method that assigns branches of the tree into two categories.</li>
-    <li>Difficult to work more complex models because of over-fitting!</li>
-    </ul>
-  </td>
-  <td width="30%">
-    <img src="/img/ziheng-yang.jpg"/>
-    <small>
-    Ziheng Yang.
-    </small>
-  </td>
-</tr>
-</table>
+# Episodic selection
+
+* The previous models assume that differences in dN/dS are constant over time.
+* What if selection at a specific site is driven by a change in the environment?
+* Yang (again) and Nielsen (2002) proposed the branch-site method that assigns branches of the tree into two categories.
+* Difficult to work more complex models because of over-fitting!
+
 
 ---
 
-<img src="/img/bsrel.png" width="800px"/>
-**Patterns of adaptation to coronaviruses in aminopeptidase N receptor.** (left) Tree of 84 mammalian species, highlighting branches with episodic selection. (right) Structural model of AMPEP.
-<small>
-Image credit: D Enard *et al.* (2016) eLIFE 10.7554/eLife.12469
-</small>
+<img src="/img/bsrel.png" width="750px"/>
+
+Patterns of adaptation to coronaviruses in aminopeptidase N receptor. (left) Tree of 84 mammalian species, highlighting branches with episodic selection. (right) Structural model of AMPEP.
+
+<small><small>
+Image credit: D Enard <i>et al.</i> (2016) eLife 10.7554/eLife.12469
+</small></small>
 
 ---
 
 # Detecting directional selection
 
 * Directional selection is transient, making it difficult to "see".
-* When selection brings a specific variant from low to high frequency in the population, there is a local depletion of genetic variation.
+  * When selection brings a specific variant from low to high frequency in the population, there is a local depletion of genetic variation.
 * This is called a "selective sweep".
+
 <img src="/img/selective-sweep.jpg" width="450px"/>
 
-<small>
-Figure from RD Hernandez *et al.* 2011, Science 331: 920.
-</small>
+<small><small>
+Figure from RD Hernandez <i>et al.</i> 2011, Science 331: 920.
+</small></small>
 
 ---
 
 # Selective sweeps
 
-* Presently a very active area of research.
 * Methods look for parts of the genome with reduced variation, patterns in [linkage disequilibrium](https://en.wikipedia.org/wiki/Linkage_disequilibrium) or the [allele frequency distribution](https://en.wikipedia.org/wiki/Allele_frequency_spectrum).
 
 <img src="/img/40709_2017_64_Fig1_HTML.jpg" width="600px">
 
-<small>
-Image credit: Pavlidis and Alachiotis (2017) J Biol Res 24. doi:10.1186/s40709-017-0064-0
-</small>
+<small><small>
+Image credit: Pavlidis and Alachiotis (2017) <a href="https://jbiolres.biomedcentral.com/articles/10.1186/s40709-017-0064-0">A survey of methods and tools to detect recent and strong positive selection</a>. J Biol Res 24: 7.
+</small></small>
 
 ---
 
