@@ -1,35 +1,11 @@
 # MIMM4750G
-## Rates of evolution
+## Substitution models
 ![](https://imgs.xkcd.com/comics/evolving.png)
-
----
-
-# Why do viruses and bacteria evolve so rapidly?
-
-<table>
-  <tr>
-    <td style="font-size: 22pt;">
-      <ul>
-        <li>Pathogens tend to have faster rates of evolution than their host.</li>
-        <li>Hosts have larger genomes, more genes: more potential for defense?</li>
-        <li>An evolutionary arms race.</li>
-      </ul>
-    </td>
-    <td width="50%">
-      <img src="/img/duchene.png"/>
-      <small>
-      Image credit: based on data from Duchene and Holmes (2018) Virus Evol; Bulmer et al. (1991) PNAS.
-      </small>
-    </td>
-  </tr>
-
-</table>
 
 ---
 
 # Substitution Rates
 
-* We measure rate of evolution by the number of substitutions per site per unit time.
 * A substitution occurs when a new mutation appears *and* increases in frequency until it is established in the population.
 * **Individuals do not evolve, populations do.**
 ![](/img/fixation.png)
@@ -39,70 +15,10 @@ Simulations of allele frequency evolution in R.
 
 ---
 
-# Mutation rates
-
-* The rate of evolution is limited by the input of new mutations.
-* RNA viruses encode a reverse transcriptase that lacks proof-reading ability.
-* Not every mutation becomes fixed.
-
-<img src="https://science.sciencemag.org/content/sci/323/5919/1308/F1.large.jpg?width=800&height=600" width="450px"/>
-
-<small><small>
-Image credit: Gago *et al.* Science 323. 10.1126/science.1169202
-</small></small>
-
-
----
-
-# Population size
-* Pathogen populations are structured by their compartmentalization into different infected hosts.
-* The total pathogen population evolves like a smaller population: the *effective population size*.
-* Population size influences the influx of new mutations, and the probability a new mutation will "fix" (genetic drift).
-* Pathogens often undergo [population bottlenecks](https://en.wikipedia.org/wiki/Population_bottleneck) on transmission to the next host.
-
-> What else causes a bottleneck in pathogens?
-
----
-
-# Generation times
-
-* Pathogens produce more generations relative to their hosts.
-* Does this affect the rate of evolution?
-* More mutation (genome copied more frequently)
-
-| Species |  Generation time |
-|---------|------------------|
-| Escherichia coli | 15 hours |
-| Staphylococcus aureus | 2 hours |
-| HIV-1   | about 1 day&ast; |
-
-&ast; This is a coalescent estimate.
-
----
-
-# Selection
-
-* Positive selection drives the fixation of beneficial mutations.
-* Response to selection is transient - once the population has adapted, it no longer increases the rate of evolution.
-* Changing environments creates more positive selection.
-  * *e.g.,* Moving from one host environment to another.
-
----
-
-# Why do rates matter?
-
-* Measure the adaptation potential of pathogens.
-* Sites that evolve faster than others can reveal targets of host-specific selection (antigenic sites).
-* Conserved sites might make good targets for vaccine development / drug treatment.
-* We can use the rate of evolution to extrapolate back in time.
-
----
-
 <section data-state="markov-slide">
     <h1>Modeling evolution</h1>
     <ul>
-      <li>Recall that sequence evolution is often modeled as a *continuous-time Markov chain*</li>
-      <li>Constant rate of evolution - exponential waiting times.</li>
+      <li>Sequence evolution is often modelled as a discrete-state, continuous-time Markov chain.</li>
     </ul>
     <center>
     <div id="markov" class="fig-container"
@@ -112,26 +28,121 @@ Image credit: Gago *et al.* Science 323. 10.1126/science.1169202
     </div>
     <div></div>
     </center>
-    <small>Based on JS by [Victor Powell](http://setosa.io/blog/2014/07/26/markov-chains/index.html)</small>
+    <small><small>
+    Based on JavaScript by <a href="http://setosa.io/blog/2014/07/26/markov-chains/index.html">Victor Powell</a>.
+    </small></small>
 </section>
+
+---
+
+# Markov chains
+
+* **Markov property**: the probability of being in state $X$ at time $t$ depends *only* on its previous state and no others (memoryless).
+
+* The state space is **discrete** if the system can only assume one out of a finite number of values.
+
+* A Markov chain describes a sequence of states over time.
+  * In a **discrete-time** Markov chain, state transitions occur only at regular time intervals.
+  * In a **continuous-time** Markov chain, state transitions can occur at any time.
+<li>Constant rate of evolution - exponential waiting times.</li>
+
+---
+
+# State transitions
+
+<table>
+  <tr>
+    <td>
+      <ul>
+        <li>A discrete-time Markov chain is defined by a matrix of transition probabilities between states, $P$:</li>
+      </ul>
+      $$\begin{matrix}
+      & & \textrm{to} \\
+      & & E & A\\
+      \hline
+      \textrm{from} & E & 0.3 & 0.7\\
+                    & A & 0.4 & 0.6\\
+      \end{matrix}$$
+      <ul>
+        <li>Note each row must sum to one.</li>
+      </ul>
+    </td>
+    <td width="35%">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Markovkate_01.svg" width="300px"/>
+    </td>
+  </tr>
+</table>
+
+---
+
+# Stationary distributions
+
+* The stationary distribution is a probability vector $\pi$ such that $\pi P = \pi$ and $\sum\pi = 1$.
+
+`$$
+\begin{pmatrix}
+\pi_E & \pi_A \\
+\end{pmatrix}
+\begin{pmatrix}
+0.3 & 0.7 \\
+0.4 & 0.6 \\
+\end{pmatrix} = \begin{pmatrix}
+0.3\pi_E+0.4\pi_A & 0.7\pi_E+0.6\pi_A \\
+\end{pmatrix}
+$$`
+
+$$
+0.3\pi_E + 0.4(1-\pi_E) = \pi_E
+\pi_E = 0.4/1.1 = 0.\overline{36}
+$$
+
+<img src="/img/stationary-prob.svg" height="300px"/>
+
+---
+
+# Continuous-time Markov chains
+
+* If we assume that all substitution rates are constant over time, then the time between substitution events (waiting time) is [exponentially distributed](https://en.wikipedia.org/wiki/Exponential_distribution).
+<img src="https://upload.wikimedia.org/wikipedia/commons/0/02/Exponential_probability_density.svg" width="300px"/>
+
+<small>
+Outcome of exponential waiting times for 20 events:
+</small>
+<img width="80%" style='border:1px solid #000000' src="/img/poisson-process.svg"/>
+
+---
+
+# Rate matrices
+
+* Unlike discrete-time Markov chains, we do not have fixed state transition probabilities.
+* The probability of moving from state $X$ to $Y$ depends on how much time has elapsed between observations.
+* Instead, we use a matrix of instantaneous rates:
+
+`$$\begin{matrix}
+& & \textrm{to} \\
+& & E & A\\
+\hline
+\textrm{from} & E & -0.02 & 0.02\\
+              & A & 0.05 & -0.05\\
+\end{matrix}$$`
+
+* Each diagonal entry is set such that each row sums to 0.
 
 ---
 
 # Substitution models
 
 * The Jukes-Cantor model can be expressed by the following rate matrix:
-
-$$ \left( \begin{matrix}
+$$ \begin{pmatrix}
   \ast & \mu & \mu & \mu \\\\
   \mu & \ast & \mu & \mu \\\\
   \mu & \mu & \ast & \mu \\\\
   \mu & \mu & \mu & \ast \\
-  \end{matrix}\right)$$
+  \end{pmatrix}$$
 
 * The diagonal entries $\ast$ are set to $-3\mu$ so that each row sums to 0.
 
-<!--
-
+---
 
 # Rates into probabilities
 
@@ -139,9 +150,8 @@ $$ \left( \begin{matrix}
 * This is a computationally costly operation that accounts for all possible transitions that may occur in time $t$.
 * For a rate matrix $Q$, the probability matrix is:
 
-  $$P(t) = \exp^{Q t}$$
-* This is where the confounding of rate and time appears.
--->
+  $$P(t) = \exp(Q t)$$
+* Note that rate is confounded by time!
 
 ---
 
@@ -179,19 +189,6 @@ $$\begin{matrix}
 
 ---
 
-# Rate variation
-
-* Rates of evolution vary among different sites of the genome.
-* Letting every site have its own rate creates too many parameters!
-* Assume that rates belong to one of multiple rate *categories*.
-* [Ziheng Yang](https://en.wikipedia.org/wiki/Ziheng_Yang) used a discretized\* [gamma distribution](https://en.wikipedia.org/wiki/Gamma_distribution):
-<img src="/img/discgamma.png" width="400px"/>
-<small>
-\* split into intervals of equal probability
-</small>
-
----
-
 # Model specification
 
 * PAUP* was a popular commercial software package for reconstructing phylogenies.
@@ -203,66 +200,94 @@ $$\begin{matrix}
 
 ---
 
-# Why does the model matter?
+# Time reversible models
 
-* There are an enormous number of possible time-reversible models of nucleotide substitution.
-* Using the wrong model (*model misspecification*) can bias estimates of other model parameters, *e.g.,* reconstructing the correct tree.
-* The process of figuring out which model is best supported by the data is called *model selection*.
-
----
-
-# Model selection
-
-* We want to choose the model that has the best fit to the data.
-* Adding parameters to the model improves the fit.
-* We need to justify additional parameters!
-
-  ![](/img/xkcd-curves-crop.png)
+* If a model is time reversible, then the probability of a transition from state $X$ to $Y$ in time $t$ is the same as going from $Y$ to $X$ in the same time.
+  * It is possible to fit a non-reversible model, but we immediately double the number of parameters!
+  * We also need to have a definite starting point (*e.g.*, the tree must be rooted).
 
 ---
 
-# Likelihood ratio test
+# Rate variation
 
-* The *likelihood ratio test* (LRT) is a method of model selection that applies when one model is a special case of another.
-  * *e.g.,* the JC69 model is a special case of HKY85 where $\kappa=1$.
-* If the likelihood of model 1 (less complex) is $L_1$ and model 2 (more complex) is $L_2$, then this test statistic:
-  $$-2\log\left(\frac{L_1}{L_2}\right) = -2(\log L_1 - \log L_2)$$
-  follows a $\chi^2_k$ distribution.
-* $k$ is the difference in the number of parameters.
-
----
-
-# $\chi^2$-squared distribution
-
-<img src="/img/dchisq.png" width="400px"/>
-
-```R
-x <- seq(0, 10, length.out=100)
-plot(x, dchisq(x, df=1), type='l', ylab='Probability density',
-     xlab=expression(chi^2), cex.lab=1.2, ylim=c(0, 0.5), lwd=2)
-```
+* Rates of evolution vary among different sites of the genome.
+  * For example, parts of a virus genome that encode a surface-exposed protein tend to evolve faster under selection by the host immune response.
+* Letting every site have its own rate creates too many parameters!
+  * Assume that rates belong to one of multiple rate *categories*.
+*
 
 ---
 
-# Nested models
+# Parametric methods
 
-* LRT requires that the models are *nested* - one model must be a special case of another.
-* For example, HKY85 is a special case of TN93, where `$r_{AG}=r_{CT}$`.
-* What if we want to select between models that are *not* nested?
-* This is a basis for *hypothesis testing* - "Do the data support the addition of this parameter?"
-> Briefly describe a biological problem where the LRT would be useful.
+
+<table>
+  <tr>
+    <td>
+      <ul>
+        <li>A parametric method uses a distribution function to model rate variation.</li>
+        <li><i>e.g.</i>, <a href="https://en.wikipedia.org/wiki/Ziheng_Yang">Ziheng Yang</a> used a <a href="https://en.wikipedia.org/wiki/Gamma_distribution">gamma distribution</a>, which is a flexible, continuous distribution over the range $(+0, \infty)$.</li>
+        <li>The gamma distribution has two parameters ($\alpha$ and $\beta$), but is usually simplified to $\alpha=\beta$.</li>
+        <li>It is split into $k$ intervals of equal area (probability), where $k$ is often set to 4.</li>
+    </td>
+    <td width="40%">
+      <img src="/img/discgamma.png" width="350px"/>
+    </td>
+  </tr>
+</table>
 
 ---
 
-# Akaike information criterion
+# Non-parametric methods
 
-* What if the models are not nested?
-* The Akaike information criterion (AIC) penalizes the model's likelihood by the number of parameters
+* Alternatively, we can estimate $k$ rate classes, where $k$ is specified by the user:
+  * The mean is fixed *a priori* to some value $\mu$, around which we estimate the rates for each class.
+  * We estimate the probability that a site belongs to each rate class.
+  * Thus, each additional class adds two parameters ([Mannino *et al.*, 2020](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0229493)).
 
-* *There is no statistical distribution*!  **The best model minimizes the AIC.**
+* This "general discrete distribution" is more flexible, *e.g.*, allowing for bimodal rate distributions.
 
-  $$\text{AIC} = 2k - 2\log(L)$$
 
 ---
 
-![](https://www.google.com/logos/doodles/2017/hirotugu-akaikes-90th-birthday-5767291382792192.3-2x.png)
+# Invariant sites
+
+* For many organisms, the vast majority of positions in the genome are conserved over the time scale of sampling.
+* Another non-parametric approach to model rate variation is to add a probability $p$ that a site does not evolve at all.
+  * This approach is analogous to a zero-inflated statistical distributions, *e.g.*, [zero-inflated Poisson](https://en.wikipedia.org/wiki/Zero-inflated_model).
+  * Distinguishing between *structural* (deterministic) and *sampling* (by chance) zeroes.
+
+---
+
+# Hidden Markov models
+
+* The previous methods assumes all sites are [independent and identically distributed](https://en.wikipedia.org/wiki/Independent_and_identically_distributed_random_variables).
+* One more approach to modelling rate variation is to fit a second discrete-state Markov model where sites along the sequence belong to one of $k$ rate classes.
+  * These rate class assignments cannot be directly observed &mdash; it is a [latent variable](https://en.wikipedia.org/wiki/Latent_variable).
+* The hidden Markov model (HMM) causes a sequence to transition from one rate class to another in a "smoothed" fashion.
+
+---
+
+![](/img/felsenstein-hmm.svg)
+
+<small><small>
+Image source: Felsenstein J, Churchill GA. Molecular biology and evolution. 1996 Jan 1;13(1):93-104.
+</small></small>
+
+---
+
+# Model specification with rate variation
+
+* Named models generally have conventional abbreviations:
+  * For example, the generalized time reversible model is GTR.
+* If we add a gamma distribution to model rate variation, we denote this as "GTR+G"
+* If we add a zero-rate category for invariant sites, we write "+I", *e.g.*, "GTR+G+I"
+* A general discrete or "free rate" model is specified in IQ-TREE by "+R"
+
+---
+
+# Suggested readings
+
+* [Equiprobable discrete models of site-specific substitution rates underestimate the extent of rate variability](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7051046/)
+* [IQ-TREE substitution models documentation](http://www.iqtree.org/doc/Substitution-Models)
+* [First Links in the Markov Chain](https://www.americanscientist.org/article/first-links-in-the-markov-chain), American Scientist
