@@ -138,7 +138,12 @@ $$ \begin{pmatrix}
   \mu & \ast & \mu & \mu \\\\
   \mu & \mu & \ast & \mu \\\\
   \mu & \mu & \mu & \ast \\
-  \end{pmatrix}$$
+  \end{pmatrix} = \begin{pmatrix}
+  \ast & 1 & 1 & 1 \\\\
+  1 & \ast & 1 & 1 \\\\
+  1 & 1 & \ast & 1 \\\\
+  1 & 1 & 1 & \ast \\
+  \end{pmatrix}\mu$$
 
 * The diagonal entries $\ast$ are set to $-3\mu$ so that each row sums to 0.
 
@@ -167,10 +172,9 @@ $$\begin{matrix}
     \kappa\pi_A & \ast & \kappa\pi_G & \pi_T\\\\
     \pi_A & \kappa\pi_C & \ast & \kappa\pi_T\\\\
     \kappa\pi_A & \pi_C & \kappa\pi_G & \ast
-  \end{pmatrix}
+  \end{pmatrix}\mu
 \end{matrix}$$
 
-> What does &ast; equal for the top row?
 
 ---
 
@@ -214,7 +218,7 @@ $$\begin{matrix}
   * For example, parts of a virus genome that encode a surface-exposed protein tend to evolve faster under selection by the host immune response.
 * Letting every site have its own rate creates too many parameters!
   * Assume that rates belong to one of multiple rate *categories*.
-*
+
 
 ---
 
