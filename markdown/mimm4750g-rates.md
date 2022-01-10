@@ -295,3 +295,4 @@ Image source: Felsenstein J, Churchill GA. Molecular biology and evolution. 1996
 * [Equiprobable discrete models of site-specific substitution rates underestimate the extent of rate variability](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7051046/)
 * [IQ-TREE substitution models documentation](http://www.iqtree.org/doc/Substitution-Models)
 * [First Links in the Markov Chain](https://www.americanscientist.org/article/first-links-in-the-markov-chain), American Scientist
+* [Understanding Continuous-Time Markov Models](https://revbayes.github.io/tutorials/dice/#:~:text=In%20a%20continuous%2Dtime%20Markov,process%20in%20the%20Q%20matrix.), RevBayes documentation

@@ -53,8 +53,15 @@ Image source: Wikimedia Commons, <a href="https://commons.wikimedia.org/wiki/Fil
 
 * We want to choose the model that has the best fit to the data.
 * Adding parameters to the model improves the fit.
-* We need to justify additional parameters!
+  * If we add too many parameters, we over-fit the data.
+  * The model cannot be applied to other data.
+  * We need to justify additional parameters!
 
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/68/Overfitted_Data.png" width="300px"/>
+
+<small><small>
+Image source: Wikmedia Commons, <a href="https://commons.wikimedia.org/wiki/File:Overfitted_Data.png">Overfitted data</a>
+</small></small>
 
 ---
 

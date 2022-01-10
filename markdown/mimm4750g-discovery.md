@@ -7,10 +7,9 @@
 
 # Schedule
 
-* Lectures on Mondays and Fridays at 9:30am
-* Lab practicals on Wednesdays from 9:30am to 11:30am ~~in the Arthur and Sonia Labatt Health Science Building, Genlab HSB-16~~ online.
-
-<img src="/img/HSB-map.png" height="300px"/>
+* Lectures on Mondays and Fridays at 9:30am in [Biological and Geological Sciences Building](https://wts.uwo.ca/ctg/classrooms/biological_and_geological_sciences/index.html), room 1056.
+* Lab practicals on Wednesdays from 9:30am to 11:30am in the [Arthur and Sonia Labatt Health Science Building](https://www.vreng.ca/western-university-arthur--sonia-labatt-health-sciences-building.html), [Genlab](https://wts.uwo.ca/genlabs/) HSB-16.
+* **All sessions online until January 31st, 2022**, at least.
 
 ---
 
@@ -27,13 +26,13 @@
 
 # Evaluation
 
-* This is an essay course!
+* This is an [essay course](https://www.uwo.ca/univsec/pdf/academic_policies/registration_progression_grad/coursenumbering.pdf)!
 * Three components:
   * Computing lab assignments - 50%
   * Project proposal (due February 21, 2022) - 15%
   * Project final report (due April 1, 2022) - 35%
 
-* Turnitin *will* be used to assess written assignments.
+* [TurnItIn](https://elearningtoolkit.uwo.ca/tools/TurnItIn.html) *will* be used to assess written assignments.
 
 ---
 
@@ -42,6 +41,7 @@
 * Labs:
   * This course has no prerequisites in computer science - you will not have to write any of your own code.
   * *However*, you will need to become comfortable with the command line interface.
+  * Reviewing `Lab00.md` is *strongly recommended*.
 
 * Writing:
   * Start writing your methods section first - it is the easiest to write.
