@@ -4,7 +4,6 @@
 
 Departments of Pathology & Laboratory Medicine<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Microbiology & Immunology<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Applied Mathematics<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Computer Science<br/>
 
 <img src="/img/UWO_Logo.svg" height="100px"/>
@@ -38,10 +37,10 @@ Departments of Pathology & Laboratory Medicine<br/>
 * Dramatic population growth, urbanization in affected regions.
 * Sustained armed conflict from 1989 to 2004; massive numbers of displaced refugees<sup>&dagger;</sup>
 
-<small>
+<small><small>
 &ast; Pinzon <i>et al.</i> (2004) Am J Trop Med Hyg 71: 664-674.<br/>
 &dagger; Alexander <i>et al.</i> (2015) PLOS Neglect Trop Dis 9(6): e0003652
-</small>
+</small></small>
 
 ---
 
@@ -101,7 +100,9 @@ Departments of Pathology & Laboratory Medicine<br/>
 </tr>
 </table>
 
-<small>Excerpts from Worobey *et al.* (2004) Nature 428</small>
+<small><small>
+Excerpts from Worobey <i>et al.</i> (2004) Nature 428
+</small></small>
 
 ---
 

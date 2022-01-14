@@ -41,6 +41,19 @@ Image source: Wikimedia Commons, <a href="https://commons.wikimedia.org/wiki/Fil
 
 ---
 
+# Review: Calculating tree likelihood
+
+* Jointly estimate the tree (branching order, lengths) and model parameters (substitution rates, rate variation).
+* Starting from the tips, we calculate the likelihood at each branch:
+
+$$P_{ij}(t) = (1-e^{-r_{ij} t})\pi_j \textrm{, for  } i\ne j$$
+
+* Averaging over all possible ancestral states:
+
+$$P_{j}(t) = \sum_{i\in \{A,C,G,T\}} P_{ij}(t)$$
+
+---
+
 # Why does the model matter?
 
 * There are an enormous number of possible time-reversible models of nucleotide substitution.
@@ -100,27 +113,70 @@ plot(x, dchisq(x, df=1), type='l', ylab='Probability density',
 
 # Stepwise methods
 
-* Posada MODELTEST
+* A hierarchical method of model selection when there are multiple predictor variables.
+  * Forward selection starts from null model and adds most significant term.
+  * Backward selection starts from full model and subtracts least significant term.
+* Each step can be subjected to a likelihood ratio test.
+* Need to adjust for multiple comparisons (multiple testing).
+
+---
+
+# Multiple testing
+
+* A *p* value represents the probability of obtaining the observed data given the null hypothesis is true.
+  * It is the probability of getting the result by chance.
+* If we do [20 experiments](https://xkcd.com/882/), on average one of them will be significant at $\alpha=0.05$.
+* A [Bonferroni correction](https://en.wikipedia.org/wiki/Bonferroni_correction) divides $\alpha$ by the number of tests.
+  * Assumes tests are independent.
+
+---
+
+# MODELTEST
+
+<img src="/img/modeltest.png" width="600px"/>
+
+* Hierarchical testing of 24 different substitution models with 4-5 tests ($\alpha=0.01$).
+
+<small><small>
+Image credit: Posada and Crandall (1998) <a href="https://academic.oup.com/bioinformatics/article/14/9/817/259559">MODELTEST: testing the model of DNA substitution</a>. Bioinformatics 14: 817-818.
+</small></small>
 
 ---
 
 # Akaike information criterion
 
 * What if the models are not nested?
-* The Akaike information criterion (AIC) penalizes the model's likelihood by the number of parameters
+* The [Akaike information criterion](https://en.wikipedia.org/wiki/Akaike_information_criterion) (AIC) penalizes the model's likelihood ($L$) by the number of parameters ($k$).
 
 * *There is no statistical distribution*!  **The best model minimizes the AIC.**
 
-  $$\text{AIC} = 2k - 2\log(L)$$
+  $$\text{AIC} = 2k - 2\log\left(L(\hat{\theta})\right)$$
+
+where $\hat\theta$ are the maximum likelihood estimates of model parameters.
 
 ---
 
 # AICc
 
+* The AIC is approximately unbiased for large sample size and small numbers of variables.
+* The corrected Akaike information criterion (AICc) was proposed by Hurvich and Tsai (1989) to deal with small samples ([Cavanaugh (1997)](https://www.sciencedirect.com/science/article/pii/S0167715296001289)):
+$$\text{AICc} = n \log \hat\sigma_n^2 + \frac{n(n+k)}{n-k-2}$$
+
+  where $k$ is the number of parameters, $n$ is the sample size, and:
+
+$$\hat\sigma_n^2 = \frac{1}{n}\sum_i (y_i-\hat\beta x_i)^2$$
+
 ---
 
-# Practical example (substitution models)
+# Limitations of AIC
+* Assumes independent observations
+  * Genetic sequences are related by common ancestors
+* Exploring model space entails long running times
+* Selecting the best substitution model does not necessarily produce the most accurate tree ([Abadi et al. (2020)](https://academic.oup.com/mbe/article/37/11/3338/5862639)).
+
+
 
 ---
 
-# Practical example 2?
+# Suggested readings
+
