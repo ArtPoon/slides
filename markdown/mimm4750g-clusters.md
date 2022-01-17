@@ -233,6 +233,16 @@ Image credit: M Ragonnet-Cronin <i>et al.</i> (2019) <a href="https://www.ncbi.n
 
 ---
 
+# Ethical and legal issues
+
+* Genetic clusters have been used as molecular forensic evidence in HIV transmission cases.
+  * HIV transmission is criminalized in many countries - in Canada, people can be charged with aggravated sexual assault.
+* Having genetically similar infections can be consistent with direct transmission, but it is not sufficient  ([Bernard *et al.* (2017)](https://onlinelibrary.wiley.com/doi/full/10.1111/j.1468-1293.2007.00486.x)).
+* We are responsible for preventing data and methods from being misused.
+  * More about this in ethics lecture!
+
+---
+
 # Suggested readings
 
 * [Defining HIV-1 transmission clusters based on sequence data](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5482559/)
