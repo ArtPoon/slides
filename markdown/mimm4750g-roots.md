@@ -64,9 +64,8 @@ Try clicking and dragging the yellow node around.
 * Most substitution models that we fit to aligned sequences in order to build trees are *time reversible*:
 $$P_{ij}(t)\pi_j = P_{ji}(t)\pi_i$$
 * This is a convenient property because:
-  * the likelihood of the tree is unaffected by the placement of the root (Felsenstein's "pulley principle");
+  * the [likelihood of the tree](https://slides.filogeneti.ca/html/mimm4750g-L06-likelihood.html#/11) is unaffected by the placement of the root (Felsenstein's "pulley principle");
   * we can compute this likelihood by iterating down from the tips.
-* More on this topic in a later lecture!
 
 ---
 
@@ -216,7 +215,7 @@ Figure taken from an analysis of respiratory syncytial virus by C Agoti *et al.*
 # Non-reversible model rooting
 
 * Relax the assumption of time-reversibility ($P_{ij}(t)\pi_i = P_{ji}(t)\pi_j$)
-* Location of the root becomes another model parameter to estimate.
+* Location of the root becomes another parametemo
 * Does not work very well unless evolution is highly non-reversible ([Huelsenbeck *et al* 2002](https://academic.oup.com/sysbio/article/51/1/32/1631340)):
   * non-symmetric substitution rates
   * skewed nucleotide frequencies
