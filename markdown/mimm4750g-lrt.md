@@ -180,3 +180,6 @@ $$\hat\sigma_n^2 = \frac{1}{n}\sum_i (y_i-\hat\beta x_i)^2$$
 
 # Suggested readings
 
+* [The likelihood ratio test: The theory – from "Linear Mixed Models in Linguistics and Psychology: A Comprehensive Introduction"](https://vasishth.github.io/Freq_CogSci/the-likelihood-ratio-test-the-theory.html)
+* [Hirotogu Akaike's 90th Birthday - Google Doodle](https://www.google.com/doodles/hirotugu-akaikes-90th-birthday)
+* [Model Selection and Model Averaging in Phylogenetics: Advantages of Akaike Information Criterion and Bayesian Approaches Over Likelihood Ratio Tests](https://academic.oup.com/sysbio/article/53/5/793/2842928)

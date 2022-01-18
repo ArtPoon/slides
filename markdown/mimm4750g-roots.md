@@ -50,6 +50,25 @@ Try clicking and dragging the yellow node around.
 
 ---
 
+# Neighbor-joining trees are unrooted
+
+* Recall from a [previous lecture](http://localhost:8002/html/mimm4750g-L04-njoin.html#/) that neighbor-joining (NJ) progressively merges clusters (agglomerative clustering).
+* NJ stops when none of the clusters contain only one tip node.
+* Every internal node in the resulting tree has a degree of 3 edges.
+* There is no node that represents a root.
+
+---
+
+# Maximum likelihood trees are (usually) unrooted
+
+* Most substitution models that we fit to aligned sequences in order to build trees are *time reversible*:
+$$P_{ij}(t)\pi_j = P_{ji}(t)\pi_i$$
+* This is a convenient property because:
+  * the likelihood of the tree is unaffected by the placement of the root (Felsenstein's "pulley principle");
+  * we can compute this likelihood by iterating down from the tips.
+* More on this topic in a later lecture!
+
+---
 
 # Rooting trees is difficult!
 
@@ -64,13 +83,26 @@ Try clicking and dragging the yellow node around.
 
 * Determine the longest tip-to-tip path (patristic distance) in the unrooted tree.
   * The midpoint is halfway along that path.
-  * Credited to [James Farris]([Farris](https://en.wikipedia.org/wiki/James_Ferris)) (1972), who studied the origins of life.
-* Assumes a constant rate of evolution.
+  * Credited to [James Farris](https://www.journals.uchicago.edu/doi/abs/10.1086/282802) (1972), who studied the origins of life.
 * Presumably, we use the longest patristic distance to minimize random variation.
 
+<img src="https://www.mun.ca/biology/scarr/Panda_problem_midpoint_rooting.jpg" width="400px"/>
 
 <small><small>
-JS Farris.  Estimating phylogenetic trees from distance matrices.  Am Nat 106: 645-668.
+Image credit: Steven M. Carr (Memorial University), https://www.mun.ca/biology/scarr/Panda_midpoint_rooting.html
+</small></small>
+
+---
+
+# Pros and cons with midpoint rooting
+
+* No additional information necessary!  Fast.
+* Assumes a constant rate of evolution. Requires sufficient divergence from root.
+
+<img src="https://onlinelibrary.wiley.com/cms/asset/6d94e1de-09ce-491b-8b2e-e50b12470e36/jmv25731-fig-0002-m.jpg" width="500px"/>
+
+<small><small>
+Midpoint rooted tree of SARS-CoV-2 genomes from Li <i>et al.</i> (2020) [J Med Virol 92: 602-611](https://onlinelibrary.wiley.com/doi/full/10.1002/jmv.25731).
 </small></small>
 
 ---
@@ -78,7 +110,7 @@ JS Farris.  Estimating phylogenetic trees from distance matrices.  Am Nat 106: 6
 # Outgroup rooting
 
 * An *outgroup* is a species or infection that is not closely related to the sample set.
-* We place the root at the point where the branch leading to the outgroup intersects the tree.
+  * We place the root at the point where the branch leading to the outgroup intersects the tree.
 * If the outgroup is too *close*, then the root is too influenced by sampling bias (our choice of outgroup).
 * If the outgroup is too *distant*, then where it intersects the tree is subject to random variation.
 
@@ -95,13 +127,21 @@ JS Farris.  Estimating phylogenetic trees from distance matrices.  Am Nat 106: 6
 
 ---
 
+<img src="https://journals.plos.org/plosntds/article/file?id=10.1371/journal.pntd.0008856.g001&type=large" width="550px"/>
+
+<small><small>
+Image credit: Edrdige and van der Hoek (2020) <a href="https://journals.plos.org/plosntds/article?id=10.1371/journal.pntd.0008856">Emerging orthobunyaviruses associated with CNS disease</a>.
+</small></small>
+
+---
+
 <table>
   <tr>
     <td style="vertical-align:middle">
       <h1>Root-to-tip regression</h1>
       <ul>
-        <li>We can simultaneously estimate the clock (rate of evolution) <i>and</i> locate the root.</li>
-        <li>Try different placements of the root and look at the plot that results.</li>
+        <li>Assume the rate of evolution is constant over time, and fast enough for measurable evolution over months/years of sampling.</li>
+        <li>Divergence from the root (total branch length) should increase linearly with time.</li>
         <li>The "best" root should give the cleanest (positive) linear trend.</li>
         <li>(<i>right</i>) Phylogeny and root-to-tip plot for Ebolavirus isolates from 2013-2016 epidemic in West Africa.</li>
       </ul>
@@ -117,7 +157,7 @@ JS Farris.  Estimating phylogenetic trees from distance matrices.  Am Nat 106: 6
 
 ---
 
-<iframe src="/include/rtt.html" width="1200px" height="600px">
+<iframe style="max-width: none;" src="/include/rtt.html" width="1500px" height="600px">
 </iframe>
 
 ---
@@ -162,7 +202,7 @@ Figure taken from an analysis of respiratory syncytial virus by C Agoti *et al.*
 
 ---
 
-# Problems with RTT
+# Problems with root-to-tip (RTT) regression
 
 * RTT assumes that:
   * every point is an independent observation
@@ -170,6 +210,16 @@ Figure taken from an analysis of respiratory syncytial virus by C Agoti *et al.*
 * Tips share common ancestry - the distance of a tip from the root is largely shared with neighbouring tips
 * Not a reliable method for dating the root, but a decent rough estimate.
 * A good, quick check to see if your data are "clock-like"
+
+---
+
+# Non-reversible model rooting
+
+* Relax the assumption of time-reversibility ($P_{ij}(t)\pi_i = P_{ji}(t)\pi_j$)
+* Location of the root becomes another model parameter to estimate.
+* Does not work very well unless evolution is highly non-reversible ([Huelsenbeck *et al* 2002](https://academic.oup.com/sysbio/article/51/1/32/1631340)):
+  * non-symmetric substitution rates
+  * skewed nucleotide frequencies
 
 ---
 
@@ -187,7 +237,7 @@ Phylogeny. <a href="https://academic.oup.com/mbe/advance-article/doi/10.1093/mol
 
 ---
 
-# Further reading
+# Suggested readings
 
+* ["Rooting trees, methods for": In Encyclopedia of Evolutionary Biology](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7149615/)
 * [Assessing Uncertainty in the Rooting of the SARS-CoV-2 Phylogeny](https://academic.oup.com/mbe/advance-article/doi/10.1093/molbev/msaa316/6028993)
-*

@@ -229,7 +229,7 @@ Image source: Wikimedia Commons, <a href="https://commons.wikimedia.org/wiki/Fil
 * Small moves are easier to make, but can be slow to traverse tree space.
 
 <small><small>
-Image source: B Dasgupta <i>et al.</i> (2016) <a href="https://doi.org/10.1007/978-1-4939-2864-4_256">Encyclopedia of Algorithms</a>. 
+Image source: B Dasgupta <i>et al.</i> (2016) <a href="https://doi.org/10.1007/978-1-4939-2864-4_256">Encyclopedia of Algorithms</a>.
 </small></small>
 
 ---
@@ -253,3 +253,9 @@ Image credit: Marc Suchard (2005) <a href="https://doi.org/10.1534/genetics.103.
 * [RAxML](https://cme.h-its.org/exelixis/web/software/raxml/index.html) - one of the top ML programs.
 * [PhyML](http://www.atgc-montpellier.fr/phyml/) - also a contender for top ML program.
 * [MEGA](https://www.megasoftware.net/) - as usual, provides a nice GUI.
+
+---
+
+# Suggested readings
+
+* [Felsenstein Phylogenetic Likelihood](https://link.springer.com/article/10.1007/s00239-020-09982-w)
