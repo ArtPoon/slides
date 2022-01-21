@@ -17,18 +17,18 @@
 * The maximum likelihood estimate (MLE) is a single combination of parameter values.
 * If the likelihood function is "rugged", then there may be many parameter values that are about as good as the MLE!
 <img src="/img/matsen-islands.png" width="550px"/>
-<small>
-Islands in tree space.  Source: Whidden and Matsen (2015) Syst Biol 64. https://doi.org/10.1093/sysbio/syv006
-</small>
+<small><small>
+Islands in tree space.  Source: Whidden and Matsen (2015) <a href="https://doi.org/10.1093/sysbio/syv006">Syst Biol 64</a>.
+</small></small>
 
 ---
 
 # Being Bayesian
 
 * A Bayesian would object to relying on a single estimate
-* It is more robust to refer to the **distribution** of parameters that are supported by the data.
+  * It is more robust to refer to the **distribution** of parameters that are supported by the data.
 * A Bayesian would also object to the assumption that the experiment is completely objective.
-* The design of an experiment is shaped by an investigator's **subjective belief** about the outcome.
+  * The design of an experiment is shaped by an investigator's **subjective belief** about the outcome.
 
 ---
 
@@ -55,7 +55,7 @@ Islands in tree space.  Source: Whidden and Matsen (2015) Syst Biol 64. https://
 
 # Conditional probability
 
-* We are used to thinking about the probability of an outcome, $P(D)$.
+* We are used to thinking about the probability of an outcome, $P(D)$
 * This implicitly involves some model (hypothesis), $P(D|H)$.
 * We say that $P(D|H)$ is "the probability of the data, conditional on the hypothesis being true".  This is the likelihood.
 <img src="/img/conditional.png" width="550px"/>
@@ -215,3 +215,16 @@ $$P(H|D) \propto P(D|H) P(H)$$
 * The next best thing would be to generate a random sample from this distribution.
 * There are a number of ways to go about this (rejection sampling), but we will focus specifically on Markov chain Monte Carlo (MCMC) sampling.
 
+---
+
+# Suggested readings
+
+<table><tr>
+<td><ul>
+<li><a href="https://seeing-theory.brown.edu/bayesian-inference/index.html">Seeing Theory: A visual introduction to probability and statistics.</a> Brown University. <b>Highly recommended!</b></li>
+<li><a href="https://www.nature.com/articles/s43586-020-00001-2">Bayesian statistics and modelling</a>.  Nature Reviews Methods Primers 1: 1.</li>
+</ul></td>
+<td width="33%">
+<img src="https://imgs.xkcd.com/comics/bayes_theorem.png"/>
+</td>
+</tr></table>

@@ -48,6 +48,14 @@
 
 <img src="/img/poisson-process.svg" width="100%"/>
 
+* It is a constant *rate* of events, not a constant amount of time between events!
+* The number of events that occurs over a given amount of time is described by the [Poisson distribution]():
+
+<table><tr>
+<td style="font-size: 24pt;">$$P(Y|\lambda) = \frac{\lambda^Y e^{-\lambda}}{Y!}$$</td>
+<td><img src="https://upload.wikimedia.org/wikipedia/commons/1/16/Poisson_pmf.svg" width="300px"/></td>
+</tr></table>
+
 ---
 
 # Neutral theory
