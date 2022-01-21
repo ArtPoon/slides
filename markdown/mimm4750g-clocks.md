@@ -27,20 +27,6 @@
 
 ---
 
-# SARS-CoV-2: When methods disagree
-
-<small>
-Clock-based methods tend to root on B clade, outgroup rooting tends to root on A.
-</small>
-<img src="/img/sc2-rooting.png" height="500px">
-
-<small><small>
-Figure from L Pipes <i>et al.</i> (2020) Assessing Uncertainty in the Rooting of the SARS-CoV-2
-Phylogeny. <a href="https://academic.oup.com/mbe/advance-article/doi/10.1093/molbev/msaa316/6028993">Mol Biol Evol</a>, msaa316.
-</small></small>
-
----
-
 # What is a molecular clock?
 
 <table>
@@ -48,7 +34,6 @@ Phylogeny. <a href="https://academic.oup.com/mbe/advance-article/doi/10.1093/mol
   <td style="font-size: 18pt"><ul>
     <li>The molecular clock is a hypothesis that evolution at a molecular level (<i>e.g.,</i> proteins) occurs at a constant rate.</li>
     <li>Based on linear relationship between the time that species diverged from their common ancestor, and the number of amino acid differences in homologous proteins (<i>right</i>).</li>
-    <li>The molecular clock does <i>not</i> "tick".</li>
   </ul></td>
   <td width="50%">
     <img src="/img/Dickerson.png"/>
@@ -57,6 +42,11 @@ Phylogeny. <a href="https://academic.oup.com/mbe/advance-article/doi/10.1093/mol
   </tr>
 </table>
 
+---
+
+# The molecular clock does not "tick"
+
+<img src="/img/poisson-process.svg" width="100%"/>
 
 ---
 
@@ -70,7 +60,7 @@ Phylogeny. <a href="https://academic.oup.com/mbe/advance-article/doi/10.1093/mol
     <li>Today, this model is denoted the "strict" clock and is seldom supported by sufficient data.</li>
   </ul></td>
   <td width="35%">
-    <img src="https://www.genetics.org/content/genetics/202/4/1243/F1.medium.gif"/>
+    <img src="/img/m_1243fig1.jpeg"/>
   <small>
   Motoo Kimura and James F. Crow
   <small>Image credit: Museum of Genetics, Federal University of Rio Grande do Sul, Brazil</small>
@@ -91,7 +81,7 @@ Phylogeny. <a href="https://academic.oup.com/mbe/advance-article/doi/10.1093/mol
     <li>If the rate varies from one lineage to the next, the trend should be noisier.</li>
   </ul></td>
   <td width="55%">
-    <img src="http://currents.plos.org/outbreaks/files/2014/04/EBOV_cds_mb_path.png"/>
+    <img src="/img/EBOV_cds_mb_path.jpg"/>
   <small>
   Root-to-tip regression of a Bayesian tree for concatenated coding regions of Ebola virus.
   <small>Image credit: Dudas and Rambaut (2014) PLOS Currents Outbreaks</small>
