@@ -15,9 +15,21 @@
 
 # Sampling the posterior distribution
 
-* We usually do not have an exact closed form solution for the posterior distribution.
-* Instead of solving for the posterior, it might be good enough to generate a random sample of points from this distribution.
-<img src="/img/sampling.svg" height="350px"/>
+<table><tr>
+  <td>
+    <ul>
+      <li>We usually do not have an exact closed form solution for the posterior distribution.</li>
+      <li>Instead of solving for the posterior, it might be good enough <u>to generate a random sample of points from this distribution</u>.</li>
+      <li><a href="https://en.wikipedia.org/wiki/Law_of_large_numbers">If our sample size is large enough</a>, the sample mean should be a decent estimate of the actual mean, etc.</li>
+    </ul>
+  </td>
+  <td width="45%">
+    <img src="/img/sampling.svg"/>
+    <small>
+    A normal distribution (solid, blue), and a <a href="https://en.wikipedia.org/wiki/Kernel_density_estimation">kernel density</a> (line, red) for a random sample of 20 points.
+    </small>
+  </td>
+</tr></table>
 
 ---
 
@@ -68,10 +80,24 @@
 
 # Limitations of Monte Carlo integration
 
-* No guidance on how to pick ceiling (dashed line).
-* May be really inefficient if posterior is low over most of $\theta$.
-* Problematic if it is time-consuming to calculate the posterior.
+* This is Monte Carlo integration by *uniform sampling*.
+* No guidance on how to pick ceiling ($M$, dashed line).
+  * Ideally, set to maximum value of posterior - but this is unknown!
+  * May be really inefficient if posterior is low over most of $\theta$.
+  * Problematic if it is time-consuming to calculate the posterior.
+
+---
+
+# Importance sampling
+
 * [Importance sampling](https://en.wikipedia.org/wiki/Importance_sampling) draws points from a proposal distribution that (hopefully) concentrates our efforts in the more useful regions of $\theta$.
+* Difficult to choose the right proposal distribution!
+
+<img src="https://i.stack.imgur.com/XGyXh.png" width="550px"/>
+
+<small><small>
+Image credit: Wojciech Jarosz, <a href="https://www.cs.dartmouth.edu/~wjarosz/publications/dissertation/appendixA.pdf">Dissertation Appendix A</a>, and <a href="https://computergraphics.stackexchange.com/a/4994">this StackExchange post</a>.
+</small></small>
 
 ---
 
@@ -152,9 +178,10 @@ Figure from Poon <i>et al.</i> (2018) Retrovirology 15:47.
 # Convergence
 
 * MCMC is an "auto-correlated" process - the current state will always be similar to the previous state.
-* This is *efficient* because we don't waste time sampling states (parameter values) that are silly.
-* This is *not efficient* because a random walk is slow to explore parameter space.
+  * This is *efficient* because we don't waste time sampling states (parameter values) that are silly.
+  * This is *not efficient* because a random walk is slow to explore parameter space.
 * When a random walk has gone long enough, it should eventually "converge" to the posterior distribution (also known as "mixing").
+* How long is long enough?  This is [unknowable](https://en.wikipedia.org/wiki/There_are_known_knowns)!
 
 ---
 
@@ -196,3 +223,10 @@ Image credit: Mark Lai (2019). <a href="https://bookdown.org/marklhc/notes_bookd
   * Run your chains longer.
   * Run more chains.
   * If the problem is one parameter, evaluate its proposal distribution and sampling frequency.
+
+---
+
+# Suggested ~~readings~~ web apps!
+
+* [bayes.js: A Small Library for Doing MCMC in the Browser](https://www.sumsar.net/blog/2015/12/bayes-js-a-small-library-for-doing-mcmc-in-the-browser/) - Features intuitive JavaScript animations for the MCMC trace and histograms.
+* [The Markov-chain Monte Carlo Interactive Gallery](https://chi-feng.github.io/mcmc-demo/app.html?algorithm=RandomWalkMH&target=banana) - A nice animated web interface for learning different MCMC sampling algorithms!
