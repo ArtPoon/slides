@@ -4,12 +4,37 @@
 
 ---
 
-# Bayesian inference
+# Review: Bayesian inference
 
-* We spent the previous lecture and lab talking about and learning work with Bayesian methods.
 * Bayesian inference is extremely useful for dealing with complex models like *trees*.
 * A tree is a model that is made up of branching patterns and branch lengths.  This is a lot of parameters!
-* The MLE of the tree is only one point in a *massive* space of all possible trees.
+* A maximum likelihood estimate of a tree is only one point in a *massive* space of all possible trees.
+
+---
+
+<section data-state="numtrees-slide">
+    <h1>How many trees?</h1>
+    <ul>
+      <li>There are an enormous number of possible trees relating even a small number of species!</li>
+    </ul>
+    <div id="howmany" class="fig-container"
+         data-fig-id="fig-howmany"
+         data-file="/include/numtrees.html"
+         style="height:200px;">
+    </div>
+    <blockquote>
+    Why are there always more possible rooted trees than unrooted trees?
+    </blockquote>
+</section>
+
+---
+
+# Review: Prior distributions
+
+* A prior probability distribution represents our belief about the hypothesis $\theta$ *before* seeing the data.
+  * An uninformative prior does not place weight on any value $\theta$.
+* Setting an informative (narrow) prior can mean we waste less time sampling unrealistic values of $\theta$.
+  * This might help us deal with the size of tree space.
 
 ---
 
@@ -50,14 +75,15 @@
 # The coalescent
 
 * To make things simple, assume everyone has one and only one ancestor (pathogens!).
-* The probability that two *randomly sampled* individuals have a common ancestor in the previous generation is $1/N$, where $N$ is the population size.
+* The probability that two *randomly sampled* individuals have a common ancestor in the previous generation is $1/N$
+  * $N$ is the population size.
 * Every individual is equally likely to be the ancestor.
 
 ---
 
 # Geometric distribution
 
-* The expected number of generations we go back is described by a geometric distribution:
+* The expected number of generations we go back is described by a [geometric distribution](https://en.wikipedia.org/wiki/Geometric_distribution):
   $$P(t) = (1-p)^{t-1} p$$
 
 * $t-1$ "failures" until a success.
@@ -69,7 +95,7 @@
 
 # Mean time to ancestor
 
-* The average for the geometric distribution is simply $1/p$.
+* The mean for the geometric distribution is simply $1/p$.
 * Since $p=1/N$, we expect to go $N$ generations until we reach the common ancestor of two random individuals.
 * *We can learn something about the entire population from sampling a much smaller number of individuals.*
 
@@ -84,7 +110,7 @@
         <li>If we sample $n$ individuals at random, then there are
         $${n\choose 2} = \frac{n!}{(n-2)!2!} = \frac{n(n-1)}{2} \text{ pairs.}$$
         </li>
-        <li>We multiply the $p$ by this amount (go back in time until *any* pair coalesces).</li>
+        <li>We multiply the $p$ by this amount (go back in time until <i>any</i> pair coalesces).</li>
         <li>After each coalescence, we subtract 1 from $n$.  The total coalescence rate gets slower!</li>
       </ul>
     </td>
@@ -98,116 +124,105 @@
 
 # The MRCA
 
-* Most recent common ancestor.
+* MRCA = most recent common ancestor.
 * The "most recent" recognizes the idea that the ancestor of the MRCA is *also* a common ancestor of the entire sample.
 * The *total* mean time to get to the MRCA of all *n* individuals:
 
-  $$2N\sum_{k=n}^{2} \frac{1}{k(k-1)} \approx 2N\; \textrm{generations}$$
+  $$2N\sum_{k=n}^{2} \frac{1}{k(k-1)} = 2N\left(1-\frac{1}{n}\right) \xrightarrow[]{n\rightarrow \infty} 2N \textrm{ generations}$$
+
+---
+
+# Sampling the MRCA
+
+* One of the interesting results of the coalescent is that we don't have to sample many descendants to sample the ancestor.
+$$E[T_{\textrm{MRCA}}] = 2N\left(1-\frac{1}{n}\right)$$
+* We converge rapidly to $2N$ with increasing sample size $n$.
+* NOTE: the coalescent says nothing about which nodes are related!
+
+---
+
+# Continuous approximation
+
+* We've been assuming discrete, non-overlapping generations, but time is continuous!
+* The continuous analogue of the geometric distribution is the [exponential distribution](https://en.wikipedia.org/wiki/Exponential_distribution).
+* The coalescent process can be described in continuous time with a series of exponential distributions ($k=\\{n, n-1, \ldots, 2\\}$):
+$$f(\tau_k)=\lambda_k \exp(-\lambda_k \tau_k),\\; \lambda_k = \frac{{k\choose 2}}{N}$$
 
 ---
 
 # Effective population size
 
-* The coalescent model required a lot of assumptions.
-* None of these assumptions are very good.
-* The *effective* population size ($N_e$) is what $N$ *would* be if the population actually met all of the assumptions.
+* The *effective* population size ($N_e$) is what $N$ *would* be if the population actually met all  assumptions of the coalescent model.
+* Some examples of $N_e$ estimates:
+
+| Species | $N_e$ |
+|---------|-------|
+| *Homo sapiens* | 10,400 |
+| *Drosophila melanogaster* | 1,150,000 |
+| *Caenorhabditis elegans* | 80,000 |
+| *Escherichia coli* | 25,000,000 |
+
+<small><small>
+Source: Brian Charlesworth (2009). Effective population size and patterns of molecular evolution and variation.  <a href="https://www.nature.com/articles/nrg2526">Nature Rev Genet 10: 195-205</a>.
+</small></small>
 
 ---
 
-# $N_e$ for pathogens
+# Effective sizes for pathogens
 
 * The model is even worse for pathogens!
 * Pathogen populations are even more structured than "large organism" populations.
-* Each host is a population.
-* We usually use one bulk (average) sequence from each host!
-* We often talk about *effective number of infections*, but it is a lot more complicated than that!
+  * Each host is a population.
+  * We usually use one bulk (average) sequence from each host!
+* We often talk about *effective number of infections*, but it is a lot more complicated  ([Frost and Volz 2010](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2880113/)).
 
 ---
 
-# Population dynamics
+# Within-host coalescent
 
-* If the population changes, the coalescent tree should as well:
-
-<img src="/img/coalescent.png" width="700px"/>
-
----
-
-# Tree shapes
-
-* An exponentially growing population should have a "star-like" tree with most coalescent events in the past.
-* A constant-size population should have most coalescent events in the recent past.
-* A collapsing population should have many more coalescent events in the recent past.
+* We can reconstruct a tree relating copies of a pathogen genome within a single host.
+  * Technically, this tree is a geneaology, not a phylogeny, because it relates individuals and not populations.
+* The coalescent model was applied to HIV-1 within host trees to estimate $N_e=10^3-10^4$ (*e.g.*, [Leigh Brown 1997](https://www.pnas.org/content/94/5/1862.short)).
+  * High $N_e$ implies deterministic evolution, whereas low $N_e$ means stronger genetic drift.
 
 ---
 
-# Skyline models
+# Generation time
 
-* What if the population dynamics don't follow any simple model?
-* A skyline estimates when the population size changes, and the new size.
-<img src="/img/skyline.png" width="400px"/>
+* The time to coalescent events is expressed in units of generations.
+  * We have to know the generation time $g_c$ in order to express this in units of real time!
+$$T_{\textrm{MRCA}} = 2N_e\textrm{ generations} \times g_c \frac{\textrm{years}}{\textrm{generation}}$$
 
----
-
-<table>
-<tr>
-  <td style="font-size:22pt;">
-    <h1>Smooth skylines</h1>
-    <ul>
-      <li>"Averaging" the skyline over a sample from the posterior distribution.</li>
-      <li>(right) Population dynamics of genetic diversity of H5N1 viruses isolated from poultry in China (Vijaykrishna *et al*, PLOS Pathogens 2008:4)</li>
-    </ul>
-  </td>
-  <td width="40%">
-    <img src="https://journals.plos.org/plospathogens/article/file?id=10.1371/journal.ppat.1000161.g005&type=medium" width="400px"/>
-  </td>
-</tr>
-</table>
+* If we have another way of estimating $T_{\textrm{MRCA}}$ or take the time elapsed between samples, then we can solve for $g_c$.
+  * This method was used to estimate $g_c$ for HIV-1 within hosts (1.2 days; [Rodrigo *et al.* 1999](https://www.pnas.org/content/96/5/2187.short)).
 
 ---
 
-# Hepatitis C virus in Egypt
+# Generation time for pathogens
 
-* About 15% of adult population infected by HCV genotype 4
-* Coalescent reconstructed found epidemic growth associated with massive public health campaign against snail fever.
+* In epidemiology, the [generation time](https://royalsocietypublishing.org/doi/10.1098/rsif.2020.0756) ($G_{ij}$) is the expected waiting time between two infections in a transmission chain.
+* Serial interval ($S_{ij}$) is time between symptomatic onsets.
 
-<img src="/img/HCV-egypt.png" width="400px"/>
+<img src="/img/rsif.2020.0756.svg" width="400px"/>
 
-<small>Figure from Drummond *et al*, 2005. *Bayesian Coalescent Inference of Past Population Dynamics from Molecular Sequences.* Mol Biol Evol 22: 1185-1192.</small>
-
----
-
-# Hepatitis C virus in North America
-
-* HCV is highly prevalent in the "baby boomer" generation
-* Why?  Unsafe sex practices, experimenting with drugs?
-* Who will pay for new treatments that cost $10,000's of dollars?
-
-<table><tr>
-  <td><img src="/img/poster-chalkboard8.5x11.jpg" width="300px"/></td>
-  <td><img src="/img/GenHep.png"/></td>
-</tr></table>
+<small><small>
+Image source: Lehtinen <i>et al.</i> (2020) <a href="https://royalsocietypublishing.org/doi/full/10.1098/rsif.2020.0756">J R Soc Interface 18: 20200756</a>.
+</small></small>
 
 ---
 
-<img src="/img/HCV-Joy.png" width="700px"/>
+# Adding the tree prior
 
-<small>Figure from Joy *et al.* Lancet Inf Dis 16(6): 698-702.</small>
+* We use the coalescent as a prior distribution on trees, $P(T|\Theta)$.
+  * $N_e$ is a parameter of the tree prior (a [hyperparameter](https://en.wikipedia.org/wiki/Hyperparameter)) to estimate from the data.
+  * It has its own prior distribution (a [hyperprior](https://en.wikipedia.org/wiki/Hyperprior)) with parameters that go into $\Theta$.
 
----
-
-# Neolithic expansion of human tuberculosis
-
-<img src="/img/comas-MTBC.png" width="700px"/>
-
-<small>I Comas *et al.* 2013. Out-of-Africa migration and Neolithic co-expansion of *Mycobacterium tuberculosis* with modern humans. Nature Genetics 45: 1176-1182.</small>
+$$P(T, \Theta|D) = \frac{P(D |T,\Theta)\color{red}{P(T,\Theta)}}{P(D)} = \frac{P(D|T, \Theta) \color{red}{P(T|\Theta) P(\Theta)}}{P(D)}$$
 
 ---
 
-# In class exercise!
-<img src="https://upload.wikimedia.org/wikipedia/commons/b/bb/Ten_sided_dice.png" width="150px"/>
+# Suggested readings
 
-* mark every 5th node as a tip (5, 15, 25, ...)
-* roll two d10s as the tens and ones values; i.e., $5\times10 + 3$
-* repeat for a total of 10 - mark these values in the next generation as ancestors
-* trace branches back from current generation the closest ancestor for each node
-* write your names on your worksheet and hand in
+* [Bayesian Evolutionary Analysis with BEAST](https://www-cambridge-org.proxy1.lib.uwo.ca/core/books/bayesian-evolutionary-analysis-with-beast/81F5894F05E87F13C688ADB00178EE00) - book, requires UWO credentials to access.
+* [Viral phylodynamics](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1002947) - an accessible review article that includes a section on coalescent theory.
+* [Stochastic or deterministic: what is the effective population size of HIV-1?](https://www.sciencedirect.com/science/article/pii/S0966842X06002332)
