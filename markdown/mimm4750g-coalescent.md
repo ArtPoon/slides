@@ -98,6 +98,8 @@
 * The mean for the geometric distribution is simply $1/p$.
 * Since $p=1/N$, we expect to go $N$ generations until we reach the common ancestor of two random individuals.
 * *We can learn something about the entire population from sampling a much smaller number of individuals.*
+* The model assumes that only one coalescent event can occur per generation!
+  * Compatible with small sample size relative to population.
 
 ---
 

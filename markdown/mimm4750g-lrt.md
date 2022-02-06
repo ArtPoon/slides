@@ -78,6 +78,12 @@ Image source: Wikmedia Commons, <a href="https://commons.wikimedia.org/wiki/File
 
 ---
 
+# Examples of model misspecification
+
+* ???
+
+---
+
 # Likelihood ratio test
 
 * The *likelihood ratio test* (LRT) is a method of model selection that applies when one model is a special case of another.
@@ -168,12 +174,30 @@ $$\hat\sigma_n^2 = \frac{1}{n}\sum_i (y_i-\hat\beta x_i)^2$$
 
 ---
 
+# Akaike weights
+
+* The difference in AIC between model $i$ and the best model:
+$$\Delta_i \textrm{AIC} = \textrm{AIC}_i - \min \textrm{AIC}$$
+* 
+* The Akaike weight of a given model is calculated from these differences as:
+$$w_i = \frac{\exp (-\Delta_i/2)}{\sum_j \exp(-\Delta_j/2)}$$
+* $w_i$ is a number between 0 and 1 that can be interpreted as the probability that the model is the best one.
+
+---
+
+# Model averaging
+
+* If our objective is to estimate one or more parameters and no model is clearly better than the others,
+
+---
+
 # Limitations of AIC
 * Assumes independent observations
   * Genetic sequences are related by common ancestors
+  * Selecting the best substitution model does not necessarily produce the most accurate tree ([Abadi et al. (2020)](https://academic.oup.com/mbe/article/37/11/3338/5862639)).
 * Exploring model space entails long running times
-* Selecting the best substitution model does not necessarily produce the most accurate tree ([Abadi et al. (2020)](https://academic.oup.com/mbe/article/37/11/3338/5862639)).
-
+* AIC is not statistically consistent
+  * Increasing the amount of data does not make it certain that AIC selects the correct model.
 
 
 ---
