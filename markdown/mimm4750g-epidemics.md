@@ -111,11 +111,78 @@ $$\frac{dI}{dt} = \beta S I$$
 
 # The basic reproduction number
 
-* $\frac{dS}{dt} = -\beta S I$ is always $<0$, except for edge case $S=0$.
+* Let's rewrite the second equation as:
+$$\frac{dI}{dt} = (\beta S-\gamma)I$$
+
+* This implies that the number of infections increases ($dI/dt>0$) when $S>\gamma/\beta$.
+* If we start with a single infection ($I_0=1$), then the initial rate of increase is simply $\beta S_0 - \alpha$.
 
 ---
 
-# Compartmental models
+# The basic reproduction number
+
+* Let $R_0=\beta S_0/\alpha$ (not the same $R$ as the removed compartment).
+  * If $R_0>1$, then $\beta S_0 > \alpha$ and $dI/dt>0$, and vice versa.
+* If the epidemic starts from a single infection (index case, $I_0=1$), then $S_0 \approx N$, and $R_0 = \frac{\beta N}{\alpha}$.
+* Recall $\beta N$ is the number of contacts per individual per unit time.
+  * $1/\alpha$ is the mean duration from infection to removal.
+  * Expected number of secondary infections from the index case.
+
+---
+
+# $R_0$ is context dependent
+
+* Note that $R_0$ contains the population size ($N$ or $S_0$).
+  * It is not an immutable quantity of the pathogen.
+  * The number of contacts depends on cultural practices, population density.
+
+<img height="250px" src="https://ars.els-cdn.com/content/image/1-s2.0-S1473309917303079-gr4.jpg"/>
+
+<small><small>
+Image source: FM Guerra <i>et al.</i> (2017) The basic reproduction number (R0) of measles: a systematic review.  <a href="https://www.sciencedirect.com/science/article/pii/S1473309917303079">Lancet Inf Dis 17: e420</a>
+</small></small>
+
+---
+
+# Effective reproduction number
+
+* The number of contacts with susceptible individuals varies over time.
+* $R_t$ or $R_e$ is the expected number of infections from an infected individual at time $t$.
+* If $\beta$ and $\gamma$ do not vary over time, then:
+$$R(t) = \frac{S(t)}{S(0)} R_0$$
+
+<small><small>
+Source: Nishiura and Chowell (2009) The effective reproduction number as a prelude to statistical estimation of time-dependent epidemic trends.  In: <a href="https://link.springer.com/chapter/10.1007/978-90-481-2313-1_5">Mathematical and Statistical Estimation Approaches in Epidemiology</a>, pp. 103-121.
+</small></small>
+
+---
+
+# The SIS model
+
+* Instead of being removed from the population, infected individuals return to a susceptible state with no immunity.
+$$\begin{align*}
+\frac{dS}{dt} &= -\beta S I + \gamma I\\\\[6pt]
+\frac{dI}{dt} &= \beta S I - \gamma I
+\end{align*}
+$$
+* $dI/dt$ can be written in as a logistic function:
+$$\frac{dI}{dt} = (\beta N + \gamma) I \left(1 - \frac{I}{N-\frac{\gamma}{\beta}}\right)$$
+
+---
+
+# SEIR
+
+* A person can be infected but not infectious, *i.e.*, will not transmit their infection on to others.
+  * The time between infection and becoming infectious is the *latent period* (*e.g.*, for SARS-CoV-2 this is about 3 to 5 days).
+* We can add an "exposed" compartment to represent individuals in this state:
+$$\begin{align*}
+\frac{dS}{dt} = -\beta S I &\hspace{1em}  \frac{dE}{dt} = \beta S I - \kappa E\\\\[6pt]
+\frac{dI}{dt} = \kappa E - \gamma I & \hspace{1em} \frac{dR}{dt} = \gamma I
+\end{align*}$$
+
+---
+
+# Flow charts
 
 * It's easier to visualize these models as flow chrarts:
 
@@ -125,30 +192,30 @@ $$\frac{dI}{dt} = \beta S I$$
 
 ---
 
-# Basic reproduction number
+A flow chart of a compartmental model for SARS-CoV-2 infection dynamics
 
-* "R naught" is the expected number of secondary cases from the index case (all other individuals are susceptible).
-* If $R_0<1$, then we expect the infection to die out.  If $R_0>1$, then we expect it to spread.
-* For the SIR model (with death rate $\gamma$),
+![](https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/41419416-551e-41f2-8960-df67c0c9e13d/gr1_lrg.jpg)
 
-  $$R_0 = \frac{\beta N}{\gamma}$$
-
-* Increases with transmission rate ($\beta$), and declines with death rate $\gamma$.
+<small><small>
+Image source: Z Du <i>et al. (2021) </i>Comparative cost-effectiveness of SARS-CoV-2 testing strategies in the USA: a modelling study. <a href="https://doi.org/10.1016/S2468-2667(21)00002-5">Lancet Public Health 6: E184</a>.
+</small></small>
 
 ---
 
-# Fitting compartmental models to trees
+# Limitations of compartmental models
 
-* Either birth-death or coalescent models can be used to represent a compartmental model.
-* Birth-death models were adapted to epidemics by linking rates to population sizes ([K&uuml;hnert *et al.* 2014](https://royalsocietypublishing.org/doi/full/10.1098/rsif.2013.1106)).
-* Coalescent models were adapted by [Volz *et al.* 2009](https://www.genetics.org/content/183/4/1421.short).
-* Both approaches are implemented in the same software!
+* Ignores social structure (homogeneous mixing).
+  * Every individual is equally likely to contact every other individual in the population.
+* Rates are constant over time.
+  * Population-wide mitigation such as a lockdown would cause rates to change.
+* A closed population without immigration or emigration.
 
 ---
-
 
 # Suggested readings
 
 * [Calculus Volume 1: OpenStax](https://opentextbc.ca/calculusv1openstax/chapter/exponential-growth-and-decay/)
 * [Simple Compartmental Models for Disease Transmission](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7316089/)
+* [JAMA Guide to Statistics and Methods: Modeling Epidemics With Compartmental Models](https://jamanetwork.com/journals/jama/fullarticle/2766672)
+* [Complexity of the Basic Reproduction Number (R0)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6302597/)
 * [Coalescent inference for infectious disease: meta-analysis of hepatitis C](https://royalsocietypublishing.org/doi/full/10.1098/rstb.2012.0314)
