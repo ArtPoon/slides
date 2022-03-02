@@ -67,6 +67,8 @@
 
 ---
 
+Testing whether BEAGLE does indeed make the analysis faster, even on a single CPU.
+
 ```
 Failed to load BEAGLE library: no hmsbeagle-jni in java.library.path:
 Total calculation time: 22.351 seconds
@@ -110,9 +112,34 @@ End likelihood: -1978.2260570343312
 
 ---
 
+# BEAST workflow
+
+* Generate a starting tree
+* Calculate the prior probability of the starting tree
+* Calculate the tree likelihood given:
+  * the sequence alignment (data)
+  * the tree
+  * a substitution model (with prior)
+  * tip dates (data)
+  * clock model (with prior)
+
+---
+
+# Starting tree
+
+* Initializing a chain sample with a decent tree can speed up convergence.
+* BEAUti enables the user to use:
+  * a user-specified tree (Newick format)
+  * an UPGMA or NJ tree
+  * a random coalescent tree
+
+<img src="https://www.beast2.org/images/BEAUTIViewStartinTree.png" height="250px"/>
+
+---
+
 # Tree priors
 
-* A large number of different tree priors are implemented in BEAST.
+* A large number of different tree priors are implemented in BEAST:
 
 |  |  | BEAST 1 | BEAST 2 |
 |---|--|---------|---------|
@@ -121,7 +148,11 @@ End likelihood: -1978.2260570343312
 |  | Logistic |  | &#10003; |
 |  | Skyline |  &#10003; | &#10003; |
 |  | Skygrid |  | &#10003; |
-| Birth-death |
+|  | SIR | &#10003; |  |
+| Birth-death | Calibrated Yule | &#10003; | &#10003; |
+|  | Serial sampling | &#10003; | &#10003; |
+|  | Serial skyline | &#10003; |  |
+|  | SIR | &#10003; |  |
 
 <small><small>
 Source: https://www.beast2.org/features/
@@ -129,43 +160,95 @@ Source: https://www.beast2.org/features/
 
 ---
 
+# Substitution models
 
+* For nucleotide data, BEAST2 supports JC69, HKY, TN93, and GTR
+  * other models can be specified by editing XML
+* rate variation with discrete gamma (+G) and invariant sites (+I)
 
----
-
-* Can use the coalescent or birth-death model as a prior over trees.
-* Rearranges and rescales parts of the tree to perform a *random walk* over the posterior distribution of trees.
-* At the same time, samples parameters of a model of evolution that is needed to reconstruct the tree from sequences.
-* Outputs trace logs of posterior, likelihood, prior and model parameters &mdash; trees are written to a separate log.
-
+<img src="/img/beauti-site.png" height="300px"/>
 
 ---
 
-# Generating XML
+# Tip dates
 
-* Most users set up an analysis with the GUI program BEAUti (*Bayesian Evolutionary Analysis Utility*) rather than directly edit XML.
-
-<img src="/img/beauti.png" width="600px"/>
+* Sample collection dates are data!
+* BEAUti enables you to input dates several ways, including:
+  * manually (editing text fields)
+  * automatically from sequence names using:
+    * splitting on a delimiter (*e.g.*, underscores)
+    * pattern matching (regular expressions)
+    * importing from a headerless tab-delimited file
 
 ---
 
-# Running BEAST
+# Regular expressions
 
-* BEAST can take a very long time!
-* Since we are trying to explore an enormous model space, we usually run chains of $10^8$ steps or more!
-* BEAST tries to estimate how long it takes to perform 1 million steps.
+* A regular expression (regex) is a string that represents one or more other strings.
+  * Similar to UNIX wildcards (where `*` can represent one or more of any character)
+* `.` represents any one character; `.+` represents one or more of anything.
+* `([0-9]+)` captures any sequence of digits as a group.
+* This has always been a buggy feature.
+
+---
+
+# Clock models
+
+* A molecular clock model links sample collection dates (data) to our likelihood calculation.
+* BEAST has a several clock models available, including:
+  * Strict clock
+  * Relaxed clocks
+    * Uncorrelated (lognormal/exponential)
+    * Random local (inherit parent branch rate, or draw from distribution)
+
+---
+
+# Operator analysis
+
+* At the end of a BEAST run, it will print an operator analysis:
 
 ```
-# BEAST v1.10.5 Prerelease #23570d1
-# Generated Sun Mar 03 13:42:57 EST 2019 [seed=1551638575176]
-# benchmark2.xml
-state	Posterior   	Prior       	Likelihood  	rootHeight  	clock.rate  	alpha
-0	-568698.9433	-16.9645    	-568681.9788	0.20000     	1.00000     	0.50000     	-
-10000	-215056.1166	59.1339     	-215115.2505	0.26252     	1.00000     	0.32615     	-
-20000	-202604.8926	72.8223     	-202677.7148	0.23844     	1.00000     	0.30842     	0.11 hours/million states
-30000	-196143.5414	72.3079     	-196215.8493	0.27209     	1.00000     	0.26344     	0.11 hours/million states
-40000	-193720.6293	59.7853     	-193780.4145	0.39626     	1.00000     	0.26003     	0.11 hours/million states
-50000	-193206.4970	56.6362     	-193263.1333	0.45645     	1.00000     	0.24143     	0.11 hours/million states
+Operator                                                     Tuning    #accept    #reject      Pr(m)  Pr(acc|m)
+ScaleOperator(StrictClockRateScaler.c:RSV2_1)               0.77915      16614      55345    0.03589    0.23088
+UpDownOperator(strictClockUpDownOperator.c:RSV2_1)          0.78031        706      70870    0.03589    0.00986 Try setting scaleFactor to about 0.883
 ```
 
+* An operator is an MCMC proposal that changes one or more model parameters.
+* `Tuning` is a weight that determines how often that operator is used.
+
 ---
+
+# Tuning operators
+
+* If the probability of accepting a proposal is too low, the chain will fail to converge.
+* If the acceptance probability is too high, the proposal is probably taking very small steps and the chain will fail to converge.
+* We can adjust a faultly proposal with the BEAUti Operator panel:
+![](/img/operators.png)
+
+---
+
+# Fuzzy caterpillars
+
+* Visually inspecting a trace is a legitimate quality control step!
+
+<table>
+<tr>
+  <td>Good mixing</td><td>Bad mixing</td>
+</tr>
+<tr>
+  <td><img src="https://taming-the-beast.org/tutorials/CoupledMCMC-Tutorial/figures/Tracer.png" height="250px"/></td>
+  <td><img src="https://taming-the-beast.org/tutorials/Troubleshooting/figures/tracer_run3.png" height="250px"/></td>
+</tr>
+</table>
+
+<small><small>
+Image sources: Taming the BEAST workshop, <a href="https://taming-the-beast.org/tutorials/Troubleshooting/">Troubleshooting</a> and <a href="https://taming-the-beast.org/tutorials/CoupledMCMC-Tutorial/">Coupled MCMC</a> tutorials.  
+</small></small>
+
+---
+
+# Suggested readings
+
+* BEAST has a large user community with many resources online!
+* You can find a large list of online tutorials [here](https://www.beast2.org/tutorials/)
+* [Taming the BEAST](https://taming-the-beast.org/) workshops and tutorials
