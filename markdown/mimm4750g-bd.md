@@ -96,7 +96,37 @@ $$`
 
 # Stochastic growth
 
-* These differential equations have a closed form solution
+* These differential equations have a closed form solution.  
+  * For the simplest case where we start with one lineage at $t=0$:
+
+`$$
+\begin{align*}
+p_0(t)&=\alpha & p_n(t) &= (1-\alpha)(1-\beta)\beta^{n-1}\\[6pt]
+\alpha &= \frac{ \epsilon (e^{rt}-1) }
+              { e^{rt} - \epsilon } &
+\beta &= \frac{\alpha}{\epsilon}\\[6pt]
+\epsilon &= \frac{\mu}{\lambda} & r &= \lambda - \mu\\
+\end{align*}
+$$`
+
+* $\alpha$ is the probability of going extinct before time $t$.
+
+<small><small>
+Source: Luke Harmon, <a href="https://lukejharmon.github.io/pcm/chapter10_birthdeath/">Phylogenetic comparative methods, chapter 10</a>.
+</small></small>
+
+---
+
+![](/img/bddists.svg)
+
+```R
+bddist <- function(t, n, lambda, mu) {
+  eps <- mu/lambda; r <- lambda-mu; ert <- exp(r*t)
+  alpha <- eps*(ert-1)/(ert-eps); beta <- (ert-1)/(ert-eps)
+  pn <- (1-alpha)*(1-beta)*beta^(1:n-1)
+  c(alpha, pn)
+}
+```
 
 ---
 
