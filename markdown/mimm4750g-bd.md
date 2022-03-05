@@ -35,6 +35,71 @@ A realization of a pure birth process using the `bdtree` function in R package `
 
 ---
 
-# Birth-death process
+# Differences from the coalescent
+
+* Birth-death models are processes that move forward in time.
+* The number of tips is a random outcome.
+  * For the coalescent,  the number and times associated with tips are *data*.
+* For BD models, we have to model how infections are sampled from the population.
+  * The simplest model is that a given number $n$ is sampled at the same time.
+
+---
+
+# Birth-death processes
 
 * Let every lineage go extinct ("death") at a rate $\mu$.
+* At a lineage level, the waiting time till either birth or death is exponentially distributed:
+$$\tau \sim (\lambda + \mu) e^{-(\lambda+\mu)\tau}$$
+* The probability that the next event is a birth is:
+$$\frac{\lambda}{\lambda+\mu}$$
+
+---
+
+# Deterministic growth or decay
+
+<table>
+<tr>
+  <td style="font-size: 20pt;">
+    <ul>
+      <li>The net diversification rate is $r=\lambda-\mu$.</li>
+      <li>The deterministic (expected) number of lineages at time $t$ is simply an exponential growth model:</li>
+    </ul>
+    $$N_t = N_0 e^{r t}$$
+  </td>
+  <td width="50%">
+    <img src="https://lukejharmon.github.io/pcm/images/figure10-3.png" height="400px"/>
+    Expected number of lineages for $r>0$ (top line) and $r<0$ (bottom line).
+  </td>
+</tr>
+</table>
+
+<small><small>
+Image source: Luke Harmon, Phylogenetic Comparative Methods, <a href="https://lukejharmon.github.io/pcm/chapter10_birthdeath/">Chapter 10</a>.
+</small></small>
+
+---
+
+# Stochastic growth
+
+* Let $p_n(t)$ be the probability of $n$ lineages existing at time $t$.
+* We can write the following differential equations:
+
+`$$
+\begin{align}
+\frac{dp_0(t)}{dt} = &\; \mu p_1(t)\\[6pt]
+\frac{dp_n(t)}{dt} = &\; (n-1)\lambda p_{n-1}(t) - n(\lambda+\mu) p_n(t) +\\
+ &\; (n+1)\mu p_{n+1}(t)\\
+\end{align}
+$$`
+
+---
+
+# Stochastic growth
+
+* These differential equations have a closed form solution
+
+---
+
+# Suggested readings
+
+* [Phylogenetic Comparative Methods](https://lukejharmon.github.io/pcm) (online textbook), Luke Harmon
