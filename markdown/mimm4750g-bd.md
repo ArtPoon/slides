@@ -32,3 +32,9 @@
 <small><small>
 A realization of a pure birth process using the `bdtree` function in R package `phytools`.
 </small></small>
+
+---
+
+# Birth-death process
+
+* Let every lineage go extinct ("death") at a rate $\mu$.
