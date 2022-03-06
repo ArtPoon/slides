@@ -117,6 +117,8 @@ Source: Luke Harmon, <a href="https://lukejharmon.github.io/pcm/chapter10_birthd
 
 ---
 
+Probability distributions for $\lambda=0.1$, $t=5.0$, and $\mu=0$ or $\mu=0.05$
+
 ![](/img/bddists.svg)
 
 ```R
@@ -128,8 +130,105 @@ bddist <- function(t, n, lambda, mu) {
 }
 ```
 
+
+---
+
+# Tree likelihood
+
+* How do we calculate the likelihood of a tree under a birth-death model?
+* We assume *complete sampling*: all $n$ lineages that have survived to the present day have been sampled.
+* Let the root of the tree, where a lineage splits into two (the first birth event), have time $t_1$.
+  * There are $n-1$ splits at times $t_1, t_2, \ldots, t_{n-1}$.
+  * We will measure time in reverse, so the most recent time is 0, and $t_{i-1} > t_{i}$.
+
+---
+
+# Tree likelihood (2)
+
+<table>
+  <tr>
+    <td>
+      <ul>
+        <li>Let $D_N(t)$ be the probability that a lineage at some time $t$ in the past is ancestral to a present-day subtree (clade) $N$.</li>
+        <li>Let $E(t)$ be the probability that a lineage at time $t$ leaves no descendants in the present day.</li>
+        <li>Start at the tips of the tree and calculate $D_N(t)$ and $E(t)$, moving back towards the root.</li>
+      </ul>
+    </td>
+    <td width="40%">
+      <img src="/img/figure11-5.png"/>
+      $D_N(t)=1$ for sampled tips.
+      <small>
+      Source: Luke Harmon, <a href="https://lukejharmon.github.io/pcm/chapter10_birthdeath/">Phylogenetic comparative methods, chapter 10</a>.
+      </small>
+    </td>
+  </tr>
+</table>
+
+---
+
+# Tree likelihood (3)
+
+* We use differential equations to solve for how $D_N(t)$ and $E(t)$ change as we move along a branch back in time:
+
+`$$
+\begin{align}
+\frac{dD_N(t)}{dt} &= -(\lambda+\mu)D_N(t) + 2\lambda E(t) D_N(t)\\[6pt]
+\frac{dE(t)}{dt} &= \mu - (\mu+\lambda)E(t) + \lambda E(t)^2\\
+\end{align}
+$$`
+
+* For the case of complete sampling and constant rates $\mu$ and $\lambda$, these have a closed-form solution.
+
+---
+
+# Tree likelihood (4)
+* When we reach a branching point, we combine likelihoods:
+
+$$D_{N'}(t) = D_N(t) D_M(t) \lambda$$
+
+* To calculate the full likelihood of the tree, we multiply across all $2n-2$ nodes (branches) of the tree.
+<img src="https://lukejharmon.github.io/pcm/images/figure11-7.png" height="250px"/>
+
+<small><small>
+Source: Luke Harmon, <a href="https://lukejharmon.github.io/pcm/chapter10_birthdeath/">Phylogenetic comparative methods, chapter 10</a>.
+</small></small>
+
+---
+
+# Incomplete sampling
+
+
+<img src="https://lukejharmon.github.io/pcm/images/figure10-5.png" height="300px"/>
+
+* In complete sampling, extinct lineages (A) cannot be sampled (B).
+* Sampling is almost always incomplete (C).
+
+<small><small>
+Source: Luke Harmon, <a href="https://lukejharmon.github.io/pcm/chapter10_birthdeath/">Phylogenetic comparative methods, chapter 10</a>.
+</small></small>
+
+---
+
+# Incomplete sampling (2)
+
+* If we don't account for incomplete sampling, then our estimates of $\mu$ and $\lambda$ will be biased.
+* If sampling of tips is completely at random, then we can just modify each $D_N(0)$ from $1$ to $1-\rho$.
+  * $\rho$ is the "sampling probability" or "fraction".
+* $E(0)$ increases from $0$ to $\rho$ - failing to be sampled is the same as going extinct.
+
+---
+
+# Birth-death models for infectious diseases
+
+* There needed to be further improvements to the birth-death model before it could be used for infectious diseases.
+* The current model assumes that all tips are sampled at a single time point.
+  * Infections are sampled at different points in time (serial sampling).
+* We assume that birth and death rates are constant over time.
+  * Birth and death rates change with the number of infected and susceptible hosts.
+
 ---
 
 # Suggested readings
 
 * [Phylogenetic Comparative Methods](https://lukejharmon.github.io/pcm) (online textbook), Luke Harmon
+* [Bayesian evolutionary analysis with BEAST 2](https://ocul-uwo.primo.exlibrisgroup.com/permalink/01OCUL_UWO/r0c2m8/alma991045009498005163), Drummond and Bouckaert, eds.
