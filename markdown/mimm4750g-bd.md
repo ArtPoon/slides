@@ -133,9 +133,9 @@ bddist <- function(t, n, lambda, mu) {
 
 ---
 
-# Tree likelihood
+# Tree probability
 
-* How do we calculate the likelihood of a tree under a birth-death model?
+* How do we calculate the probability of a tree under a birth-death model?
 * We assume *complete sampling*: all $n$ lineages that have survived to the present day have been sampled.
 * Let the root of the tree, where a lineage splits into two (the first birth event), have time $t_1$.
   * There are $n-1$ splits at times $t_1, t_2, \ldots, t_{n-1}$.
@@ -143,7 +143,7 @@ bddist <- function(t, n, lambda, mu) {
 
 ---
 
-# Tree likelihood (2)
+# Tree probability (2)
 
 <table>
   <tr>
@@ -166,7 +166,7 @@ bddist <- function(t, n, lambda, mu) {
 
 ---
 
-# Tree likelihood (3)
+# Tree probability (3)
 
 * We use differential equations to solve for how $D_N(t)$ and $E(t)$ change as we move along a branch back in time:
 
@@ -181,12 +181,12 @@ $$`
 
 ---
 
-# Tree likelihood (4)
-* When we reach a branching point, we combine likelihoods:
+# Tree probability (4)
+* When we reach a branching point, we combine probabilities:
 
 $$D_{N'}(t) = D_N(t) D_M(t) \lambda$$
 
-* To calculate the full likelihood of the tree, we multiply across all $2n-2$ nodes (branches) of the tree.
+* To calculate the joint probability of the tree, we multiply across all $2n-2$ nodes (branches) of the tree.
 <img src="https://lukejharmon.github.io/pcm/images/figure11-7.png" height="250px"/>
 
 <small><small>
