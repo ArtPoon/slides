@@ -51,6 +51,22 @@ Source: Trevor Bedford, [Wikimedia Commons](https://commons.wikimedia.org/wiki/F
 
 ---
 
+# Application to HIV-1
+
+* One of the first applications of Stadler's birth-death model with serial sampling was to the [Swiss HIV Cohort Study](https://academic.oup.com/ije/article/39/5/1179/799735).
+
+<img src="/img/stadler-hiv.png" height="250px"/>
+
+<div style="word-wrap: break-word; width: 80%; margin: auto; font-size: 16pt; font-weight: normal;">
+Black points represent sampling dates for 10 HIV-1 sub-epidemics in Switzerland; <font color="red">red</font> and <font color="blue">blue</font> points represent BD estimates with linked and unlinked rates.
+</div>
+
+<small><small>
+Image source: Stadler <i>et al.</i> (2012) Estimating the basic reproductive number from viral sequence data. <a href="https://academic.oup.com/mbe/article/29/1/347/1750040">Mol Biol Evol 29(1):347</a>.
+</small></small>
+
+---
+
 # Birth-death skylines
 
 
@@ -59,3 +75,19 @@ Source: Trevor Bedford, [Wikimedia Commons](https://commons.wikimedia.org/wiki/F
 
 # Birth-death SIR
 
+---
+
+# Multi-type BDSIR
+
+---
+
+# BDSIR in BEAST
+
+
+
+---
+
+# Advantages over the standard coalescent
+
+* The BDSIR model is directly to epidemiological parameters.
+* A coalescent skyline, for example, can recover shifts in effective population size, but not whether those changes are due to changes in birth (transmission) or death (recovery).
