@@ -50,7 +50,10 @@
 # Basic workflow
 
 * Generate a multiple sequence alignment with another program such as MAFFT.
-* Sequences may be labelled with collection dates
+  * Sequences may be labelled with collection dates.
+* Generate an XML file from sequences and model settings with BEAUti.
+* Run the analysis with input XML in BEAST.
+* Post-processing BEAST logs with Tracer, FigTree, and others.
 
 ![](/img/beast-workflow.png)
 
