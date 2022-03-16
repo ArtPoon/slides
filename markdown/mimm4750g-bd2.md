@@ -13,6 +13,15 @@
 
 ---
 
+# Review: Contemporaneous sampling
+
+* So far we have talked about birth-death models that assume that all lineages were sampled at the same time (complete sampling).
+* We can assume that only a proportion of lineages existing in the present (extant) are sampled (incomplete sampling).
+* We refer to this approach as "contemporaneous sampling".
+  * Contemporary = "occuring at the same time"
+
+---
+
 # Serial sampling
 
 * Infections are sampled at different points in time.
@@ -194,6 +203,32 @@ Image source: Grenfell <i>et al.</i> (2004) Unifying the epidemiological and evo
 
 ---
 
-# Phylodynamics and phylogenetics
+# Applications of phylodynamics
 
-* 
+<img src="/img/346_56_f4.jpeg" height="350px"/>
+
+Coalescent skylines (skygrid) of HIV-1 groups M and O.
+
+<small><small>
+Source: Faria <i>et al.</i> (2014) The early spread and epidemic ignition of HIV-1 in human populations. <a href="https://www.science.org/doi/full/10.1126/science.1256739">Science 346: 56</a>.
+</small></small>
+
+---
+
+# Applications of phylodynamics (2)
+
+<img src="https://iiif.elifesciences.org/lax/05055%2Felife-05055-fig5-v2.tif/full/1500,/0/default.jpg" height="250px"/>
+
+Estimates of $R_e$ for Victoria and Yamagata variants of influenza B virus using BDSIR, compared to the numbers of confirmed cases per year.
+
+<small><small>
+Source: Vijaykrishna <i>et al.</i> (2015) The contrasting phylodynamics of human influenza B viruses.  <a href="https://elifesciences.org/articles/5055">eLife 4: e05055</a>.
+</small></small>
+
+
+---
+
+# Further readings
+
+* [Birth-death skyline (BDSKY) tutorial](https://www.beast2.org/files/2015/05/bdskytutorialv2.1.1.pdf)
+* [Topic page: Viral phylodynamics](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1002947)
