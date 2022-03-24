@@ -20,8 +20,8 @@
 * Access to data is the fundamental resource of bioinformatics.
 * An enormous amount of data is available in the public domain.
   * An even larger amount of data is not.
-* The [GISAID](https://www.gisaid.org/) novel coronavirus database presently holds **over one million** genome sequences
-  * [Genbank](https://www.ncbi.nlm.nih.gov/genbank/sars-cov-2-seqs/) has about 150,000 genomes.
+* The [GISAID](https://www.gisaid.org/) novel coronavirus database presently holds nearly 10 million genome sequences (March 2022).
+  * [Genbank](https://www.ncbi.nlm.nih.gov/genbank/sars-cov-2-seqs/) has about 4.3 million genomes.
 
 ---
 
@@ -46,21 +46,78 @@
 
 ---
 
-# Data access: costs and benefits
+# Data sharing: costs and benefits
 
-An incomplete table:
 
 | Role | Costs | Benefits |
 |------|-------|----------|
 | Source | Potential loss of privacy | Personalized diagnosis, treatment? |
-| Producer | Resources to generate data | Results from analysis |
+| Producer | Resources to generate data |  |
 |          | Loss of scientific priority |  |
 | Distributor | Data storage |   |
 |             | Network maintenance |   |
 |             | Data curation |    |
-| Consumers |  | Scientific curiosity |
+| Consumers | Time and effort | Scientific curiosity |
 |           |  | Development and validation of new methods |
 |           |  | Publication |
+| Public |  | Reproducibility |
+|   |  | Discovery, new technologies |
+
+---
+
+# Data ownership
+
+<table>
+  <tr>
+    <td>
+      <ul>
+        <li>What is data ownership?</li>
+        <li>Who owns the data?</li>
+        <ul>
+          <li>Is it the person we collected the sample from?</li>
+          <li>Is it the person collected the sample?</li>
+          <li>Is it the lab that sequenced the sample?</li>
+          <li>Is it the person who converted the raw data into a useable sequence?</li>
+        </ul>
+        <li>Ownership is even more ambiguous for virus genomes than human genomes.</li>
+      </ul>
+    </td>
+    <td width="40%">
+      <img src="https://upload.wikimedia.org/wikipedia/en/d/d7/Henrietta_Lacks_%281920-1951%29.jpg"/>
+      <small>
+      Henrietta Lacks, an African-American woman whose tumour biopsy was the source of the first immortalized cell line.
+      </small>
+      <small><small>
+      Source: <a href="https://en.wikipedia.org/wiki/File:Henrietta_Lacks_(1920-1951).jpg">Wikipedia</a>, published under fair usage policy.
+      </small></small>
+    </td>
+  </tr>
+</table>
+
+---
+
+# Data stewards/custodians
+
+* A data steward is responsible for curating data and quality control, maintaining data access and integrity.
+* [FAIR principles](https://www.go-fair.org/fair-principles/):
+  * Findable - Is the data labelled, described?
+  * Accessible - Can people access the data?
+  * Interoperable - Is the data in a standard, useable format?
+  * Reusable - Is the data detailed enough that makes it useful?
+
+---
+
+# Data privacy
+
+* Data are anonymous if they cannot be linked to the originating person (using current or foreseeable methods).
+* De-identification: identifiers have been removed, but could be relinked with additional data.
+  * For example, Gymrek *et al* re-identified participants from public Y-chromosome sequences and genealogy websites.
+
+<img src="/img/339_321_f2.jpeg" height="200px"/>
+
+<small><small>
+Source: Gymrek <i>et al.</i> (2013) Identifying personal genomes by surname inference.  <a href="https://www.science.org/doi/10.1126/science.1229566">Science 339: 321</a>.
+</small></small>
 
 ---
 
@@ -136,7 +193,7 @@ Image credit: Poon <i>et al.</i> (2016) <a href="https://doi.org/10.1016/S2352-3
 
 ---
 
-# Data privacy: Costs and benefits
+# Source attribution: Costs and benefits
 
 | Role | Costs | Benefits |
 |------|-------|----------|
@@ -148,98 +205,14 @@ Image credit: Poon <i>et al.</i> (2016) <a href="https://doi.org/10.1016/S2352-3
 |              |   | Publication |
 | Public health | Learning curve | Cost-effective deployment of resources |
 |               | Misinterpretation |  |
-| Community | Stigmatization | Reduced HIV transmission? |
-
----
-
-# Resource sharing
-
-* Many bioinformatic programs and workflows (pipelines) are published under permissive free licenses.
-* The [GNU General Public License](https://www.gnu.org/licenses/gpl-3.0.en.html):
-  * grants permission to use, reverse-engineer, modify and distribute the software
-  * must provide source code
-  * derived work must adopt GPL ("viral" licensing)
-
----
-
-# Resource sharing: Restrictive licensing
-
-* Many bioinformatic programs are distributed only as web applications (closed source).
-* Limited processing capability for public use.
-  * *e.g.*, some protein structural predictors can only be accessed through web forms
-* Bioinformatic software distributed under a commercial license:
-  * [Geneious](https://www.geneious.com/)
-  * [CLC Workbench](https://digitalinsights.qiagen.com/products-overview/discovery-insights-portfolio/analysis-and-visualization/qiagen-clc-main-workbench/)
-
----
-
-# Why use restrictive licensing?
-
-* Scientific software development is often not a sustainable model.
-  * Funding agencies rarely support software development.
-  * Developers move on as they graduate, get other jobs.
-* Bioinformatics is filled with [abandonware](https://en.wikipedia.org/wiki/Abandonware).
-* Most open-source bioinformatics programs do not provide a graphical user interface, and limited technical support.
-
----
-
-# Resource sharing: Abandonware
-
-<table>
-  <tr>
-    <td style="font-size: 20pt; vertical-align: middle">
-      <ul>
-        <li>Increasing number of research articles accompanied by source code.</li>
-        <li>About one-third of repositories had no commits after publication.</li>
-        <li>Over 70% of bioinformatic programs were never re-used post-publication&ast;.</li>
-      </ul>
-    </td>
-    <td width="55%">
-      <img src="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6209220/bin/pone.0205898.g001.jpg"/>
-      <br/>
-      <small>
-      Image credit: PH Russell <i>et al.</i> (2018) <a href="https://dx.doi.org/10.1371%2Fjournal.pone.0205898"/>PLOS ONE 13: e0205898</a>.
-      </small>
-    </td>
-  </tr>
-</table>
-
-<small><small>
-&ast;G Duck <i>et al.</i> (2016) <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4917176/"/>PLOS ONE 11: e0157989</a>.
-</small></small>
-
----
-
-# Resource sharing: Ethical implications
-
-* Unmaintained software can have persistent and undetected bugs, producing inaccurate results.
-* Requiring clinical labs to access software over the web can mean the transmission of sensitive patient data over unsecured networks.
-* Commercial licensing can exacerbate a system of haves and have nots in research.
-  * Growing adoption of subscription-based licensing (*e.g.*, Geneious).
-
----
-
-# Resource sharing: CovidSim
-
-* UK COVID-19 response was informed in part by a simulation program written in 2005 for H5N1.
-  * Projected over 2 million US deaths without intervention.
-* Source code was not released.
-  * After widespread criticism, analysis found the code "a buggy mess" but reproducible ([Chawla 2020](https://www.nature.com/articles/d41586-020-01685-y)).
-* Now a highly active GitHub repository.
-
----
-
-# Dayhoff and *The Atlas*
-
-* Dayhoff and Eck develop new computational methods to compile and analyze a protein sequence database.
-  * Dayhoff petitioned researchers to donate protein sequence data in exchange for a copy of *The Atlas*, which is copyrighted material.
-* Unable to obtain sufficient grant support, Dayhoff adopts a commercial model to maintain the database.
-  * *The Atlas* is succeeded by Genbank, which operates under an open access model.
+| Community | Stigmatization | Reduced transmission? |
 
 ---
 
 # Further reading
 
+* [Global Alliance for Genomics & Health](https://www.ga4gh.org/genomic-data-toolkit/regulatory-ethics-toolkit/)
+* [Genomics and data science: an application within an umbrella](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1724-1)
 * [Critics decry access, transparency issues with key trove of coronavirus sequences](https://www.sciencemag.org/news/2021/03/critics-decry-access-transparency-issues-key-trove-coronavirus-sequences)
 * [A large-scale analysis of bioinformatics code on GitHub](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6209220/)
 * [Critiqued coronavirus simulation gets thumbs up from code-checking efforts](https://www.nature.com/articles/d41586-020-01685-y)
