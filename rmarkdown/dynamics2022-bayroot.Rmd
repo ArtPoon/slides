@@ -206,12 +206,7 @@ $$
 * We used an exact stochastic simulation module in R (`twt`) to simulate cell population dynamics (forward time).
   * Virus replication completely blocked by ART initiation at time $t=10$.
 
-<table>
-  <tr>
-    <td><img src="../img/cellular-model.png" width="350px"/></td>
-    <td><img src="../img/cellular-model-dynamics.png" width="350px"/></td>
-  </tr>
-</table>
+<img src="../img/cellular-model.png" width="400px"/>
 
 ```{r eval=FALSE, echo=FALSE}
 require(twt, quietly=TRUE)
@@ -233,6 +228,32 @@ plot(outer, type='s', cex=0.5)
 abline(v=10, lty=2)
 dev.off()
 ```
+
+---
+
+## Simulating population dynamics
+
+<table>
+  <tr>
+    <td>
+      <ul>
+        <li>Branching events require a "source" cell to induce a "target" cell to change state.</li>
+        <ul>
+          <li>Transmission of virus from an infected cell to a susceptible cell.</li>
+        </ul>
+        <li>Transition events occur when a cell switches from one state (compartment) to another.</li>
+        <ul>
+          <li><i>e.g.</i>, reactivation of a latently-infected cell.</li>
+        </ul>
+        <li>Discrete events determine population dynamics over time.</li>
+      </ul>
+    </td>
+    <td width="45%">
+      <img src="../img/eventlog-screencap.png"/>
+      <img src="../img/cellular-model-dynamics.png"/>
+    </td>
+  </tr>
+</table>
 
 ---
 
@@ -280,21 +301,19 @@ dev.off()
 
 ---
 
-## Results
+## Comparing `bayroot` to root-to-tip regression
 
-* Comparing `bayroot` to root-to-tip regression
-
-<img src="../img/latent1.1.compare.png" width="300px"/>
+<img src="../img/latent1.6.compare.png" width="500px"/>
 
 ```{r echo=FALSE, eval=FALSE}
-tf <- "~/git/bayroot/data/latent1.1.cens.nwk.fas.ft2.nwk"
+tf <- "~/git/bayroot/data/latent1.3.cens.nwk.fas.ft2.nwk"
 cf <- gsub("\\.cens\\.nwk\\.fas\\.ft2\\.nwk", ".times.csv", tf)
 
 phy <- read.tree(tf)
 rt <- root2tip(phy)
 true.vals <- get.true.values(rt, cf)
 
-#res <- fit.bayroot(tf, cf, settings=settings, nstep=2e4, skip=20)
+res <- fit.bayroot(tf, cf, settings=settings, nstep=2e4, skip=20)
 dt2months <- function(dt, refdate="2000-01-01") {
   interval(as.Date(refdate), as.Date(dt, origin="1970-01-01")) / months(1)
 }
@@ -312,7 +331,7 @@ bay.hi <- interval(as.Date("2000-01-01"), bay.hi) / months(1)
 
 bay.div <- sapply(res$pred.dates, function(x) mean(x$div) / settings$seq.len)
 
-png("~/slides/img/latent1.1.compare.png", width=150*5, height=150*5, res=150)
+#png("~/slides/img/latent1.1.compare.png", width=150*5, height=150*5, res=150)
 par(mar=c(5,5,1,1))
 plot(rt, true.vals=true.vals, xlab="Collection date (months since origin)",
      ylab="Divergence")
@@ -321,6 +340,8 @@ segments(x0=bay.lo, x1=bay.hi, y0=bay.div, col=rgb(0,0,1,0.5))
 abline(v=10, lty=2)
 legend(x=13, y=0.1, legend=c("RTT", "bayroot", "true date"), 
        col=c('red', 'blue', 'black'), pch=c(19, 19, 3), pt.lwd=2)
-dev.off()
+#dev.off()
 ```
+
+---
 
