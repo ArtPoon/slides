@@ -83,7 +83,7 @@ knitr::opts_chunk$set(echo = FALSE)
         <li>Ignores variation in number of mutations &mdash; there is one, and only one, estimated date.</li>
         <li>Unclear how to deal with divergent outgrowth sequences.</li>
         <li>Proviral sequences can be mapped to the future (<i>right</i>, red zone).</li>
-        <li>Assumes the tree is known without error.</li>
+        <li>Assumes location of root and clock rate are known without error.</li>
       </ul>
     </td>
     <td width="45%">
@@ -204,8 +204,7 @@ $$
 ## Simulation model
 
 * We used an exact stochastic simulation module in R (`twt`) to simulate cell population dynamics (forward time).
-  * Virus replication completely blocked by ART initiation at time $t=10$.
-
+* Discrete events with exponential waiting times determine population dynamics over time.
 <img src="../img/cellular-model.png" width="400px"/>
 
 ```{r eval=FALSE, echo=FALSE}
@@ -240,12 +239,12 @@ dev.off()
         <li>Branching events require a "source" cell to induce a "target" cell to change state.</li>
         <ul>
           <li>Transmission of virus from an infected cell to a susceptible cell.</li>
+          <li>Virus replication completely blocked by ART initiation at time $t=10$.</li>
         </ul>
         <li>Transition events occur when a cell switches from one state (compartment) to another.</li>
         <ul>
           <li><i>e.g.</i>, reactivation of a latently-infected cell.</li>
         </ul>
-        <li>Discrete events determine population dynamics over time.</li>
       </ul>
     </td>
     <td width="45%">
@@ -271,7 +270,7 @@ dev.off()
         <li>Retaining these tree annotations lets us collapse branches associated with latently-infected cells.</li>
       </ul>
     </td>
-    <td width="45%">
+    <td width="50%">
       <img src="../img/cellular-model-tree.png"/>
     </td>
   </tr>
@@ -303,45 +302,82 @@ dev.off()
 
 ## Comparing `bayroot` to root-to-tip regression
 
-<img src="../img/latent1.6.compare.png" width="500px"/>
+When clock signal is strong, advantage of `bayroot` is largely due to prior information about ART initiation.
+
+<table>
+  <tr>
+    <td>
+      <img src="../img/latent1.19.compare.png" width="500px"/>
+      <small>Integration date estimates for one replicate simulation.</small>
+    </td>
+    <td width="35%">
+      <img src="../img/bayroot-slopegraph.png" height="400px"/>
+      <small>Paired Wilcoxon sign-rank test, $P=3.55\times 10^{-4}$, $n=50$.</small>
+    </td>
+  </tr>
+</table>
 
 ```{r echo=FALSE, eval=FALSE}
-tf <- "~/git/bayroot/data/latent1.3.cens.nwk.fas.ft2.nwk"
+tf <- "~/git/bayroot/data/latent1.19.cens.nwk.fas.ft2.nwk"  # 8, 17
 cf <- gsub("\\.cens\\.nwk\\.fas\\.ft2\\.nwk", ".times.csv", tf)
-
 phy <- read.tree(tf)
 rt <- root2tip(phy)
 true.vals <- get.true.values(rt, cf)
-
+settings <- list(seq.len=1233, format="%Y-%m-%d", mindate=as.Date("1999-12-01"),
+                 maxdate=as.Date("2000-04-01"), meanlog=-5, sdlog=2,
+                 root.delta=0.01, date.sd=10, rate.delta=0.01)
 res <- fit.bayroot(tf, cf, settings=settings, nstep=2e4, skip=20)
-dt2months <- function(dt, refdate="2000-01-01") {
-  interval(as.Date(refdate), as.Date(dt, origin="1970-01-01")) / months(1)
-}
 
-bay.mean <- as.Date(sapply(res$pred.dates, function(x) mean(x$int.date)),
-                    origin="1970-01-01")
-bay.lo <- as.Date(sapply(res$pred.dates, function(x) quantile(x$int.date, 0.025)),
-                  origin="1970-01-01")
-bay.hi <- as.Date(sapply(res$pred.dates, function(x) quantile(x$int.date, 0.975)),
-                  origin="1970-01-01")
-
-bay.mean <- interval(as.Date("2000-01-01"), bay.mean) / months(1)
-bay.lo <- interval(as.Date("2000-01-01"), bay.lo) / months(1)
-bay.hi <- interval(as.Date("2000-01-01"), bay.hi) / months(1)
-
-bay.div <- sapply(res$pred.dates, function(x) mean(x$div) / settings$seq.len)
-
-#png("~/slides/img/latent1.1.compare.png", width=150*5, height=150*5, res=150)
+png("~/slides/img/latent1.19.compare.png", width=5*300, height=4*300, res=300)
 par(mar=c(5,5,1,1))
-plot(rt, true.vals=true.vals, xlab="Collection date (months since origin)",
-     ylab="Divergence")
-points(bay.mean, bay.div, pch=19, col=rgb(0,0,1,0.5), cex=0.8)
-segments(x0=bay.lo, x1=bay.hi, y0=bay.div, col=rgb(0,0,1,0.5))
-abline(v=10, lty=2)
-legend(x=13, y=0.1, legend=c("RTT", "bayroot", "true date"), 
+plot(rt, true.vals=true.vals, xlab="Collection date (months since origin)", ylab="Divergence"); abline(v=10, lty=2)
+est <- get.estimates(res, rt)
+points(est$est, est$div, pch=19, col=rgb(0,0,1,0.5), cex=0.8)
+segments(x0=est$lo95, x1=est$hi95, y0=est$div, col=rgb(0,0,1,0.3), lwd=5)
+legend(x=13, y=0.03, legend=c("RTT", "bayroot", "true date"), cex=0.8,
        col=c('red', 'blue', 'black'), pch=c(19, 19, 3), pt.lwd=2)
-#dev.off()
+dev.off()
 ```
 
 ---
 
+## ... and with greater uncertainty
+
+<table>
+  <tr>
+    <td>
+      <img src="../img/latent2.1.compare.png" height="350px"/>
+      <small>
+      Integration date estimates for one replicate simulation.
+      </small>
+    </td>
+    <td>
+      <img src="../img/bayroot-slopegraph2.png" height="400px"/>
+      <small>
+      Paired Wilcoxon sign-rank test, $P=3.82\times 10^{-7}$, $n=50$.
+      </small>
+    </td>
+  </tr>
+</table>
+
+Results with a narrow prior on root date; with a less informative prior, `bayroot` results become similar to RTT.
+
+---
+
+## Further work
+
+* A simple and efficient means of incorporating prior knowledge and managing uncertainty in dating the HIV reservoir.
+* Characterize sensitivity of `bayroot` to varying model parameters, *e.g.*, transition of active infected T-cell to resting state.
+* R package available from `https://github.com/PoonLab/bayroot`
+
+<small>
+This study was supported by funding from CIHR and NIH (REACH AI164565-01).  RC was supported by an Ontario Genomics-CANSSI Fellowship in Genome Data Science.
+</small>
+<table>
+  <tr>
+    <td><img src="../img/cihr.png" width="250px"/></td>
+    <td><img src="https://images.squarespace-cdn.com/content/v1/6243671f3ef52601342f9047/93cb2520-cc1a-4979-a8a3-3e024fedf183/logo.png?format=1500w" width="400px"/></td>
+    <td><img src="../img/OGI_Logo2015.png"/></td>
+    <td><img src="http://www.canssi.ca/wp-content/uploads/2013/02/canssi_logo1.jpg"/></td>
+  </tr>
+</table>
