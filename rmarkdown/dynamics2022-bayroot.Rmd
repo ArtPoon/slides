@@ -364,6 +364,26 @@ Results with a narrow prior on root date; with a less informative prior, `bayroo
 
 ---
 
+## Application to real data
+
+ZM1044M, Zambia-Emory HIV Research Project
+<table>
+  <tr>
+    <td>
+      <img src="../img/ZMtrace.png" height="450px"/>
+    </td>
+    <td>
+      <img src="../img/ZMrtt.png" height="450px"/>
+    </td>
+  </tr>
+</table>
+
+<small>
+Brooks *et al.*, 2020, PLOS Pathog 16(6): e1008378.
+</small>
+
+---
+
 ## Further work
 
 * A simple and efficient means of incorporating prior knowledge and managing uncertainty in dating the HIV reservoir.
