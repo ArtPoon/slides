@@ -189,9 +189,9 @@
       "background": {"color": "#000", "opacity": 50, "url": null},
       "start_date": {"year": "1981", "month": "", "format": ""},
       "media": {
-        "caption": "",
-        "credit": "J. Noel Chiappa",
-        "url": "http://mercury.lcs.mit.edu/~jnc/tech/jpg/ARPANet/G82Feb.jpg",
+        "caption": "ARPANET/MILNET Geographic map in April 1984",
+        "credit": "WikiMedia Commons",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/5/5a/ARPANET_-_MILNT_Diagram_1984.jpg",
         "thumb": ""
       },
       "text": {
