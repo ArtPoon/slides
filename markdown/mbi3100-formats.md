@@ -253,7 +253,7 @@ total 2.1G
 * NCBI requires users to use its own open-source software to download data
 * https://github.com/ncbi/sra-tools
 * `fasterq-dump` uses multi-threading and file caching to make downloads faster
-* current release for Linux only!
+* originally only available for Linux and macOS - recently made available for [Windows](https://github.com/ncbi/sra-tools/wiki/01.-Downloading-SRA-Toolkit).
 
 
 
@@ -261,7 +261,7 @@ total 2.1G
 
 # NGS data formats
 
-* Recall that FASTQ is like an expanded version of FASTA
+* FASTQ is like an expanded version of FASTA
 
 ```
 @SRR6318672.2 2 length=251
@@ -272,7 +272,7 @@ BCCCCFFFFFFFGGGGGGGGGGHGGGHHHHGHGGGHHHHHHHGHHHHHHHGGGGHHHHGHHHHHGGGGGGGHHGHHHGHG
 
 * Row 1 has `@` prefix contains sequence label.
 * Row 2 contains nucleotide sequence.
-* Row 3 has `+` prefix and sometimes repeats label.
+* Row 3 has `+` prefix and sometimes repeats the label.
 * Row 4 contains quality scores.
 
 ---
@@ -344,10 +344,15 @@ BCCCCFF
 
 # How Perl saved the Human Genome Project
 
-* Project start date 1990, involving many groups.
-* Estimated 1 to 10 terabytes needed to complete project.
-* Different groups came up with different data exchange formats.
-* Perl enabled different groups to rapidly convert outputs to the other group's format.
+* Project [start date 1990](https://www.genome.gov/human-genome-project/timeline), involving [many groups](https://static-content.springer.com/esm/art%3A10.1038%2F35057062/MediaObjects/41586_2001_BF35057062_MOESM1_ESM.doc) around the world.
+  * Estimated 1 to 10 terabytes needed to complete project.
+  * Different groups came up with different data exchange formats.
+* [Perl](https://www.perl.org/) enabled different groups to rapidly convert outputs to the other group's format.
+<img src="https://cdn-media-1.freecodecamp.org/images/1*UwwXV56KMLJhnSNcLH7iJQ.jpeg" height="200px"/>
+
+<small><small>
+Image source: https://www.freecodecamp.org/news/how-pcs-were-advertised-in-the-1990s-cdaee59f2555/
+</small></small>
 
 ---
 
@@ -363,22 +368,44 @@ BCCCCFF
 
 # Perl is a scripting language
 
-* "Scripting language" is difficult to define.
-* Generally a script is a program that automates the execution of tasks.
-* A scripting language is often developed using a compiled language - it operates at a higher (more abstract) level.
-* (Like making macaroni and cheese with a Kraft Dinner mix instead of growing a wheat field, harvesting the grain, milling the grain into flour...)
+* "[Scripting language](https://en.wikipedia.org/wiki/Scripting_language)" is difficult to define.
+  * Generally a script is a program that automates the execution of tasks.
+* A scripting language is often developed using a [compiled](https://en.wikipedia.org/wiki/Compiler) language - it operates at a higher (more abstract) level.
+
+> Like making macaroni and cheese with a Kraft Dinner mix instead of growing a wheat field, harvesting the grain, milling the grain into flour...
 
 ---
 
 # Perl was the backbone of bioinformatics
 
-* Perl (Practical Extraction and Reporting Language) was developed by Larry Wall (first release 1987)
-* The *lingua franca* of bioinformatics for many years.
-* Reputation for enabling developers to do work quickly ("there's more than one way to do it"), but can be difficult to read.
+<table>
+  <tr>
+    <td style="font-size: 19pt">
+      <ul>
+        <li>Perl (<a href="">Practical Extraction and Reporting Language</a>) was developed by <a href="https://en.wikipedia.org/wiki/Larry_Wall"/>Larry Wall</a> (first release 1987)</li>
+        <ul>
+        <li>Powerful tools for parsing strings and processing <a href="https://en.wikipedia.org/wiki/Regular_expression">regular expressions</a>.</li>
+        <li>The <i>lingua franca</i> of bioinformatics for many years.</li>
+        </ul>
+        <li>Reputation for enabling developers to do work quickly ("there's more than one way to do it"), but can be difficult to read.</li>
+        <ul>
+        <li>The motto goes on to state "<a href="https://man.archlinux.org/man/perl.1perl.en#NOTES">Divining how many more is left as an exercise to the reader.</a>"</li>
+        </ul>
+      </ul>
+    </td>
+    <td width="25%">
+      <img src="https://learning.oreilly.com/library/cover/0596000804/250w/"/>
+      <small>
+      Front cover for the book published by <a href="https://www.oreilly.com/library/view/beginning-perl-for/0596000804/"/>O'Reilly</a>.
+      </small>
+    </td>
+  </tr>
+</table>
+
 
 ---
 
-A bit of Perl code by Illumina to find genome positions with an `N`
+A bit of Perl code by [Illumina](https://www.illumina.com/) to find genome positions with an `N`:
 
 ```
 my $a=();
@@ -402,12 +429,17 @@ for($i=1;$i<@lines;$i++) #The 1st line is header
 }
 ```
 
+<small><small>
+Source: no longer available online.
+</small></small>
+
 ---
 
 # Python
 
 * Another scripting language developed by Guido van Rossum (first release 1990).
-* "There should be one - and preferably only one - obvious way to do it."
+> "There should be one - and preferably only one - obvious way to do it."
+
 * Notorious for whitespace requirements ("Readability counts.").
 * Has overtaken Perl in popularity, even bioinformatics.
 * Both Perl and Python have [Bio&ast;.SeqIO](https://biopython.org/wiki/SeqIO) libraries for converting sequence formats.
