@@ -52,13 +52,23 @@ Image credit: H Br&uuml;ssow <i>et al.</i> 2004, Microbiol Mol Biol Rev, [68(3) 
 
 ---
 
+# Pros and cons of dot plots
+
+* Intuitive, easy to make
+* Does not require the sequences to be aligned to each other ("alignment-free"), skipping a complicated step
+* Restricted to pairs of sequences
+* Does not scale well with sequence length
+* A visualization tool, not an analysis.
+
+---
+
 # Other alignment-free methods
 
 * Nucleotide frequencies (*e.g.*, GC content)
 * k-mer frequencies count the occurrence of "words", `ACG` is a 3-mer
 * GC content is like a 1-mer comparison.
   * $\frac{C+G}{A+C+G+T}$
-  * can identify regions of horizontal transfer<sup>1</sup>
+  * can identify regions of horizontal transfer<sup>1</sup> between genomes with divergent GC content.
 
 <small><small>
 Gao and Zhang (2006) [GC-Profile: a web-based tool for visualizing and analyzing the variation of GC content in genomic sequences](https://academic.oup.com/nar/article/34/suppl_2/W686/2505479).  Nucl Acid Res 34: W686.
@@ -76,9 +86,9 @@ Gao and Zhang (2006) [GC-Profile: a web-based tool for visualizing and analyzing
 | S | 1  | 0  | 1  | 1  |
 | T | 0  | 1  | 1  | 1  |
 
-
+* The dot (inner) product of these vectors gives a distance:
 $$\begin{aligned}
-d &= (1\times 0)^2 + (0\times 1)^2 + (1\times 1)^2 + (1\times 1)^2\\\\
+d &= (1\times 0) + (0\times 1) + (1\times 1) + (1\times 1)\\\\
   &= 2
 \end{aligned}$$
 
@@ -109,8 +119,9 @@ Image credit: A Zielezinski <i>et al.</i> 2019, [Benchmarking of alignment-free 
 * Alignment-free methods are relatively simple and efficient &mdash; avoid the difficult task of aligning sequences.
 
 * Not as sensitive as alignment-based methods.
-* No way of knowing what the most effective value of $k$ is for your data.
+* No way of knowing *a priori* what the most effective value of $k$ is for your data.
 * We lose information about where important mutations are located in the sequences.
+  * For example, if a specific region is more divergent.
 
 ---
 
@@ -120,12 +131,13 @@ Image credit: A Zielezinski <i>et al.</i> 2019, [Benchmarking of alignment-free 
 * BUT this means that we have to know how some residues are more similar than others!
   * *e.g.,* is glutamic acid (E) closer to cysteine (C) or aspartic acid (D)?
 * An **alignment score** is a rough estimate of how likely one type of substitution is over another.
+  * We will get into how sequences are aligned in [a later lecture](https://slides.filogeneti.ca/html/mbi3100-L04-alignment.html).
 
 ---
 
 # Calculating scores
 
-* [Dayhoff](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5037978/) pioneered the concept of quantifying amino acid substitution rates from the comparative analysis of protein sequences.
+* [Dayhoff](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5037978/) pioneered the concept of quantifying amino acid substitution rates by comparing protein sequences.
   * Dayhoff *et al.* (1978) mapped 1,572 AA substitutions to trees relating protein sequences in the *Atlas* with <15% divergence.
 
 |       |  A  | R  | N   | D   | C | Q  |
@@ -143,11 +155,11 @@ Image credit: A Zielezinski <i>et al.</i> 2019, [Benchmarking of alignment-free 
 # PAM matrices
 
 * accepted point mutations (abbreviated as PAM)
-* calculate *mutation probability matrix* ($M$) from observed mutation counts ($A$):
-`$$M_{ij} = \frac{\lambda m_j A_{ij}}{\sum_{i}A_{ij}}$$`
-  where $\lambda$ is a scaling constant, and
-`$$m_j = \frac{\sum_{i\ne j} A_{ij}}{n_j}$$`
-  <small>(the total number of mutations away from amino acid $j$, divided by total number of occurrences of this AA in the sequences).</small>
+* calculate probability that $i$ mutates to $j$ ($M_{ij}$) from observed mutation counts ($A_{ij}$):
+$$M_{ij} \propto \frac{A_{ij}}{n_j}$$
+where $n_j$ is the total number of $j$ residues.
+
+* diagonal entries are set so that each column sums to one (left stochastic matrix).
 
 ---
 
@@ -160,7 +172,7 @@ PAM250 matrix: 250 mutations per 100 amino acids (scaled from PAM1).
 
 # BLOSUM
 
-* BLOcks SUbstitution Matrix
+* BLOcks SUbstitution Matrix ([Henikoff and Henikoff 1992](https://www.pnas.org/doi/abs/10.1073/pnas.89.22.10915))
 * Calculated from the (no longer maintained) [BLOCKS database](https://academic.oup.com/nar/article/24/1/197/2359962) of local alignments of highly conserved regions of proteins.
 * PAM is based on mutations mapped to a phylogeny.
 * BLOSUM is based on [odds ratios](https://en.wikipedia.org/wiki/Odds_ratio) of AAs in an alignment.
