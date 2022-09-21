@@ -86,7 +86,7 @@ Gao and Zhang (2006) [GC-Profile: a web-based tool for visualizing and analyzing
 | S | 1  | 0  | 1  | 1  |
 | T | 0  | 1  | 1  | 1  |
 
-* The dot (inner) product of these vectors gives a distance:
+* The dot (inner) product of these vectors gives a similarity measure:
 $$\begin{aligned}
 d &= (1\times 0) + (0\times 1) + (1\times 1) + (1\times 1)\\\\
   &= 2
