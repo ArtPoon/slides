@@ -9,7 +9,7 @@
 
 * So far we have talked about comparing sequences residue-by-residue with a score matrix.
 * The underlying assumption is that these sequences are aligned.
-* An alignment is a hypothesis about how residues (nt, aa) in homologous sequences are related to residues in a common ancestor.
+* An [alignment](https://en.wikipedia.org/wiki/Sequence_alignment) is a hypothesis about how residues (nt, aa) in homologous sequences are related to residues in a common ancestor.
 * This is not trivial because of [insertions](https://en.wikipedia.org/wiki/Insertion_(genetics)) and [deletions](https://en.wikipedia.org/wiki/Deletion_(genetics)).
 
 ```
@@ -36,24 +36,17 @@ Aligned HCV sequences
 # Gap characters
 
 * The presence of an insertion or deletion is indicated by a gap character.
-* By convention, we use a single dash "&ndash;" for each indel.
-* Some programs use non-standard characters like "`.`", "`~`" or "`X`".
+  * By convention, we use a single dash "&ndash;" for each indel.
+  * Some programs use non-standard characters like "`.`", "`~`" or "`X`".
 * Without additional information, we cannot tell whether a gap is the result of an insertion in the longer sequence or a deletion in the shorter.
 * Hence we use the [portmanteau](https://en.wiktionary.org/wiki/portmanteau) *indel* (insertion/deletion).
-
----
-
-# Heuristic methods
-* A <a href="https://en.wikipedia.org/wiki/Heuristic_(computer_science)">heuristic</a> is an algorithm for solving a problem that has no theoretical guarantee of being accurate.
-* In practice, heuristic is designed to quickly produce a solution that is "good enough".
-* For example, [greedy hill climbing](https://en.wikipedia.org/wiki/Hill_climbing) is a heuristic for locating a maximum that is not guaranteed to be the *global* maximum.
 
 ---
 
 # Score matrices (again)
 
 * A major feature of heuristic methods of alignment
-* Remember a score quantifies the likelihood of a residue being replaced by another.
+  * Remember a score quantifies the likelihood of a residue being replaced by another.
 * Find which alignment of two sequences maximizes the score.
 * A simple score matrix for nucleotides: $+1$ (match), $-1$ (mismatch).
 
@@ -104,28 +97,28 @@ Aligned HCV sequences
 
 ---
 
-# Needleman-Wunsch algorithm
+# Scoring an alignment
 
-* How do we apply these scores and penalties to align two sequences?
-* Populate a matrix ($F$) with columns labeled with one sequence, and rows labeled with another.
+<center>
+<tt>
+ACTGATC<br/>
+-C--ACC
+</tt>
+</center>
 
-<img src="/img/dynamicprogram.png" height="350px"/>
+* There are two gaps in this example.  If we are using affine scoring (open `-2` and extend `-1`) then the total penalty is `-2 + (-3)`.
+  * If we ignore terminal gaps, then the penalty is `-3`.
+* There are three matches (`+3`) and one mismatch (`-1`)
+* The alignment score is `-3`.
 
 ---
 
-<section data-state="numtrees-slide">
-    <center>
-    <div id="needleman" class="fig-container"
-         data-fig-id="fig-needleman"
-         data-file="/include/needleman.html"
-         style="height:600px">
-    </div>
-    </center>
-</section>
+# Pairwise alignment
 
-<small><small>
-JS adapted from https://github.com/drdrsh
-</small></small>
+* There are several heuristic algorithms that have been developed to find the optimal alignment of two sequences.
+  * The [Needleman-Wunsch](https://en.wikipedia.org/wiki/Needleman%E2%80%93Wunsch_algorithm) algorithm was developed to solve the global alignment problem.
+  * The [Smith-Waterman](https://en.wikipedia.org/wiki/Smith%E2%80%93Waterman_algorithm) algorithm extends NW to solve the local alignment problem.
+* Subsequent improvements have greatly reduced the time complexity.
 
 ---
 
@@ -155,7 +148,7 @@ JS adapted from https://github.com/drdrsh
 
 ---
 
-# The paradox of guide trees
+# Iterative alignment
 
 * Alignment is more accurate when the guide tree is closer to the actual tree.
   * Most tree-building methods require an alignment.
@@ -311,6 +304,70 @@ Image source: NA Fonseca <i>et al.</i> (2012) <a href="https://academic.oup.com/
 
 ---
 
+# de Bruijn graphs
+
+* de Bruijn graphs are like [word ladder games](https://en.wikipedia.org/wiki/Word_ladder).
+* Get all 5-mers from the string `a_long_long_long_time`.
+* Scramble the 5-mers so they are incorporated in random order.
+
+```python
+>>> s = "a_long_long_long_time"
+>>> kmers = [s[i:(i+5)] for i in range(0, len(s)-5)]
+>>> kmers
+['a_lon', '_long', 'long_', 'ong_l', 'ng_lo', 'g_lon', '_long', 'long_', 'ong_l', 'ng_lo', 'g_lon', '_long', 'long_', 'ong_t', 'ng_ti', 'g_tim']
+>>> import random
+>>> random.shuffle(kmers)
+>>> kmers
+['_long', 'long_', 'ng_lo', 'ong_l', '_long', 'ong_t', 'ng_lo', '_long', 'g_tim', 'long_', 'g_lon', 'a_lon', 'g_lon', 'ong_l', 'ng_ti', 'long_']
+```
+
+<small>See original example in Dr. Ben Langmead's [lecture slides](http://www.cs.jhu.edu/~langmea/resources/lecture_notes/17_assembly_dbg_v2.pdf).</small>
+
+---
+
+* Each pair of k-1 words are automatically connected by an edge
+* Draw an additional edge whenever we encounter the same pair.
+
+<img src="/img/deBruijn1.svg" width="750px"/>
+
+---
+
+![](/img/deBruijn2.svg)
+
+---
+
+Traversing the final graph recovers the original sequence.
+
+![](/img/deBruijn3.svg)
+
+---
+
+# Quality control
+
+* Are the assembly contigs reliable?
+* N50: when contigs are sorted by length, N50 is the length of the contig at which we reach 50% of assembled nucleotides; longer is better.
+
+Sort contigs by lengths in decreasing order:
+<img src="https://i1.wp.com/www.molecularecologist.com/wp-content/uploads/2017/03/Figure1a.jpg" height="45px"/>
+
+Locate midpoint along concatenated array of contigs (N50=60):
+<img src="https://i0.wp.com/www.molecularecologist.com/wp-content/uploads/2017/03/Figure1b.jpg" height="100px"/>
+
+<small><small>
+Image credit: E Videvall <i>et al.</i> https://www.molecularecologist.com/2017/03/whats-n50/
+</small></small>
+
+---
+
+# Pros and cons
+
+* Short-read *mapping* is generally faster and easier than *de novo* assembly, but needs a good reference.
+* Mapping better suited for variant detection.
+* *de novo* assembly is better suited for discovering new genomes, where no suitable reference exists.
+* Hybrid methods use both *de novo* assembly and mapping to re-assemble local contigs.
+
+---
+
 # Some popular assemblers
 
 Not a complete list!
@@ -347,38 +404,6 @@ Not a complete list!
   <td>Designed for prokaryotic genomes, viruses. Actively maintained.  Linux and macOS only.</td>
 </tr>
 </table>
-
----
-
-# N50
-
-* Are the assembly contigs reliable?
-* N50: when contigs are sorted by length, N50 is the length of the contig at which we reach 50% of assembled nucleotides; longer is better.
-
-Sort contigs by lengths in decreasing order:
-<img src="https://i1.wp.com/www.molecularecologist.com/wp-content/uploads/2017/03/Figure1a.jpg" height="45px"/>
-
-Locate midpoint along concatenated array of contigs (N50=60):
-<img src="https://i0.wp.com/www.molecularecologist.com/wp-content/uploads/2017/03/Figure1b.jpg" height="100px"/>
-
-<small><small>
-Image credit: E Videvall <i>et al.</i> https://www.molecularecologist.com/2017/03/whats-n50/
-</small></small>
-
----
-
-# Quality control (2)
-
-* L50 is the rank of the contig that is associated with the N50 point.
-  * The smallest number of contigs you would need to concatenate to get to 50% of total assembly length.
-  * Lower numbers are better.
-* In [Elin Videvall](http://www.videvall.com)'s example (below), L50 = 3.
-
-<img src="https://i2.wp.com/www.molecularecologist.com/wp-content/uploads/2017/03/Figure3.jpg" height="100px"/>
-
-<small><small>
-Image credit: E Videvall <i>et al.</i> https://www.molecularecologist.com/2017/03/whats-n50/
-</small></small>
 
 ---
 
