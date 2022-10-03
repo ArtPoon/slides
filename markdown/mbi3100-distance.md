@@ -19,6 +19,20 @@ GGTTGCGCTCGTTGA    GGGATGCACTCGCTG
 
 ---
 
+# Measuring sequence diversity
+
+* Which regions of the genome are the most conserved (least diverse)?
+* Variable regions can reveal targets of diversifying selection, *e.g.*, major histocompatibility loci.
+* Conserved regions can make good targets for sequencing primers, antibodies.
+
+<img src="https://media.springernature.com/full/springer-static/image/art%3A10.1007%2Fs10811-011-9730-z/MediaObjects/10811_2011_9730_Fig1_HTML.gif" width="600px"/>
+
+<small><small>
+Variable (V) regions along dinoflagellate 18S rRNA sequences.  From J-S Ki 2011. [J Applied Pathol 24: 1035-1043](https://link.springer.com/article/10.1007/s10811-011-9730-z).
+</small></small>
+
+---
+
 # Diversity
 
 * There are several ways to measure sequence diversity.
@@ -58,23 +72,23 @@ GGTTGCGCTCGTTGA    GGGATGCACTCGCTG
 # Diversity: polymorphisms
 
 * Frequency of polymorphic sites
-* Mean nucleotide or amino acid entropy - calculate entropy at each site, and then take the average:
-  $$\bar{S} = \sum_{j=1}^L S_j / L $$
+* Mean nucleotide or amino acid entropy - calculate entropy at each site, and then take the average: $\bar{S} = \sum_{j=1}^L S_j / L $
+
 * Nucleotide diversity ($\pi$): the average number of differences between two randomly sampled sequences
-  $$\pi = \frac{2\sum_i \sum_j \pi_{ij}}{n(n-1)}$$
+`$$\pi = \frac{2\sum_{i=1}^{n-1} \sum_{j=i+1}^{n} \pi_{ij}}{n(n-1)}$$`
 
 ---
 
-# Applications of diversity measures
+# Sliding windows
 
-* Which regions of the genome are the most conserved (least diverse)?
-* Conserved regions can make good targets for antibodies.
+* Site-wise diversity measures can be too noisy to be useful.
+* Averaging diversity by gene requires knowledge of gene coordinates, may be too coarse.
+* A "sliding window" takes the average of a statistic for a given window size and step size.
+<img src="http://1.bp.blogspot.com/-eSp1w_oJsBc/U0NmHgWv76I/AAAAAAAAAzU/XyFsegtRKrU/s1600/Screen+Shot+2014-04-07+at+9.59.13+PM.png" height="200px">
 
-<img src="https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0044163.g003&type=large" width="400px"/>
-
-<small><small>
-Entropy plot of HIV-1 <i>env</i> sequences in asymptomatic chronic HIV-1 patient.  From Chaillon <i>et al.</i> 2012. [PLOS ONE 7:e44163](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0044163).
-</small></small>
+<small>
+Image source: http://coleoguy.blogspot.com/2014/04/sliding-window-analysis.html
+</small>
 
 ---
 
@@ -86,26 +100,6 @@ Entropy plot of HIV-1 <i>env</i> sequences in asymptomatic chronic HIV-1 patient
 	* $d(x,y) \ge 0$ for all $x,y\in \Omega$
 	* If $x=y$, then $d(x,y)=0$
 	* $d(x,y) = d(y,x)$ (symmetry)
-
----
-
-# Genetic distances and the triangle inequality
-
-<table>
-  <tr>
-    <td>
-      <ul>
-      <li>A genetic distance does <i>not</i> have to satisfy the triangle inequality, <i>i.e.,</i></li>
-      $$d(y,z) \le d(x,y) + d(x,z)$$
-      <li>Suppose sequence $x=A$, $y=G$ and $z=C$.</li>
-      <li>Under what condition would the triangle inequality be violated?</li>
-      </ul>
-    </td>
-    <td width="50%">
-      <img src="/img/triangle-inequality.svg" width="400px"/>
-    </td>
-  </tr>
-</table>
 
 ---
 
@@ -211,24 +205,6 @@ GGGATGCACTCGCTG
 
 ---
 
-# Improvements to Jukes-Cantor
-
-* [Kimura](https://en.wikipedia.org/wiki/Motoo_Kimura)'s two-parameter distance (1980, K2P) has different rates for transitions and transverions.
-* [Tajima](https://www.genetics.org/content/204/2/389)-[Nei](https://en.wikipedia.org/wiki/Masatoshi_Nei)'s (1984) distance allows unequal nucleotide frequencies.
-* [Tamura](http://www.biol.se.tmu.ac.jp/member/tamura/en/) 3-parameter distance (1992) extends K2P to allow for GC-content bias.
-* Tamura-Nei (1993, TN93) has two rates for transitions and a transverion rate, and unequal nucleotide frequencies.
-  * TN93 is the most realistic distance for which a [closed-form expression](https://en.wikipedia.org/wiki/Closed-form_expression) exists.
-
----
-
-# Software for calculating distances
-
-* [MEGA](https://www.megasoftware.net/) - user-friendly software for sequence analysis.
-* `dist.dna` function in the *R* package `ape`
-* [tn93](https://github.com/veg/tn93) - a very fast TN93 calculator in C++
-
----
-
 # Clustering
 
 * A cluster is a subset (group) of objects that are more similar to each other than objects outside the cluster.
@@ -243,9 +219,10 @@ GGGATGCACTCGCTG
 # Clustering methods
 
 * Clustering is useful:
-  * for finding real patterns
+  * for finding real patterns, *e.g.*, biological pathways
   * to reduce a large database to a representative subset
-  * to define species
+  * to define species, other taxonomic groupings
+  * to detect anomalies (outbreaks)
 
 * There are an enormous number of methods (algorithms) for clustering data.
   * It is easiest to talk about different categories of clustering methods.
@@ -329,9 +306,8 @@ GGGATGCACTCGCTG
 
 # Hierarchical clustering
 
-* Another simple nonparametric clustering method.
-* Calculate the pairwise distance matrix.
-  * The distance may be a function of one or more features, *e.g.*, Euclidean distance, $\sqrt{(x_1^2+x_2^2+\ldots+x_n^2)}$.
+* Another class of unsupervised, nonparametric clustering methods.
+* Hierarchical clustering requires (1) a set of distance/similarity measurements, and (2) criteria for linking similar groups.
 * Use these distances to construct a dendrogram (tree), *e.g.*, unweighted pair group method with arithmetic mean ([UPGMA](https://en.wikipedia.org/wiki/UPGMA)).
 
 ---
@@ -422,4 +398,3 @@ Image credit: CM Fauquet <i>et al.</i> (2008) [Geminivirus strain demarcation an
 * [Consensus statement: Virus taxonomy in the age of metagenomics](https://www.nature.com/articles/nrmicro.2016.177)
 * [ICTV: Comments to proposed modification to code rule 3.21 (defining virus species)](https://talk.ictvonline.org/ictv1/f/general_ictv_discussions-20/3930/comments-to-proposed-modification-to-code-rule-3-21-defining-virus-species)
 * [Detecting and Responding to HIV Transmission Clusters: A Guide for Health Departments](https://www.cdc.gov/hiv/pdf/funding/announcements/ps18-1802/CDC-HIV-PS18-1802-AttachmentE-Detecting-Investigating-and-Responding-to-HIV-Transmission-Clusters.pdf), US CDC.
-
