@@ -1,6 +1,6 @@
 # MBI 3100A
-## Genetic distances
-![](https://imgs.xkcd.com/comics/star_wars.png)
+## Diversity, distance and clusters
+![](https://imgs.xkcd.com/comics/truck_proximity.png)
 
 ---
 
@@ -348,20 +348,54 @@ GGGATGCACTCGCTG
 
 * The end result of hierarchical clustering is a tree or "dendrogram"
 * Lengths of branches connecting $x$ and $y$ to their "ancestor" are calculated by splitting the distance $d(x, y)$ in half.
-* We can extract clusters from this tree by "cutting" it at any height.
 
 <img src="/img/hclust.svg" width="1000px"/>
 
-<small>
-Source: Data from https://github.com/genomicsclass/tissuesGeneExpression
-</small>
+<small><small>
+Source: Gene expression data from M Love and R Irizarry, https://github.com/genomicsclass/tissuesGeneExpression
+</small></small>
 
 ---
 
-# Genetic distance clustering
+
+# Extracting clusters from dendrograms
+
+* The output of hierarchical clustering is a tree, not clusters.
+  * It remains to "cut" the tree at some point to extract clusters.
+  * *e.g.*, cutting near the root tends to yield two large clusters.
+* Location of the cut point is a subjective decision.
+  * User-specified number of clusters
+* Some automated methods for selecting number of clusters
+  * "knee"/"elbow" method, plot merge distance with number of clusters
+
+---
+
+# Heatmaps
+
+<table>
+  <tr>
+    <td style="font-size: 20pt">
+      <ul>
+        <li>A popular method for <a href="https://en.wikipedia.org/wiki/Data_visualization">visualizing</a> a matrix of intensities, <i>e.g.</i>, gene expression.</li>
+        <li>Hierarchical clustering can be used to reorder rows/columns to bring together similar observations/variables.</li>
+        <li>Dendrograms can be displayed along respective axes.</li>
+      </ul>
+    </td>
+    <td width="50%">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Heatmap.png/600px-Heatmap.png"/>
+      <small>
+      Image source: <a href="https://commons.wikimedia.org/wiki/File:Heatmap.png">https://commons.wikimedia.org/wiki/File:Heatmap.png</a>, Public Domain.
+      </small>
+    </td>
+  </tr>
+</table>
+
+---
+
+# From trees to networks
 
 * Remember a *genetic distance* is used to quantify the difference between two sequences.
-  * *e.g.*, Jukes-Cantor (JC69), Tamura-Nei (1993, TN93) distances.
+  * *e.g.*, Jukes-Cantor (JC69)
   * Pick a distance threshold &mdash; any pair of sequences with a distance below that threshold are assigned to the same cluster.
 * Clusters are often visualized as networks ([graphs](https://en.wikipedia.org/wiki/Network_theory)) where each node represents a sequence.
   * Similar sequences are connected by [edges](https://en.wikipedia.org/wiki/Glossary_of_graph_theory_terms#edge).
@@ -441,6 +475,7 @@ Image credit: CM Fauquet <i>et al.</i> (2008) [Geminivirus strain demarcation an
 
 # Suggested readings
 
+* [PH525x series - Biomedical Data Science - Clustering and heatmaps](https://genomicsclass.github.io/book/pages/clustering_and_heatmaps.html)
+* [How does gene expression clustering work?](https://www.nature.com/articles/nbt1205-1499)
 * [Consensus statement: Virus taxonomy in the age of metagenomics](https://www.nature.com/articles/nrmicro.2016.177)
-* [ICTV: Comments to proposed modification to code rule 3.21 (defining virus species)](https://talk.ictvonline.org/ictv1/f/general_ictv_discussions-20/3930/comments-to-proposed-modification-to-code-rule-3-21-defining-virus-species)
 * [Detecting and Responding to HIV Transmission Clusters: A Guide for Health Departments](https://www.cdc.gov/hiv/pdf/funding/announcements/ps18-1802/CDC-HIV-PS18-1802-AttachmentE-Detecting-Investigating-and-Responding-to-HIV-Transmission-Clusters.pdf), US CDC.
