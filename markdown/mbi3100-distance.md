@@ -431,34 +431,12 @@ Image credit: CM Fauquet <i>et al.</i> (2008) [Geminivirus strain demarcation an
 
 ---
 
+<h1>Epidemic structure from clustering</h1>
 <table>
   <tr>
   <td style="vertical-align: middle; font-size: 20pt;">
-  <h1>Clustering for epidemiology</h1>
   <ul>
-    <li>In public health, a cluster of cases in space and time implies a common source.</li>
-    <li>A <u>genetic</u> cluster of infections similarly suggests that they are related by recent and rapid transmission events.</li>
-    <li>Sequences can be easier to collect.</li>
-    <li>Genetic clustering requires measurable evolution on a similar time scale as transmission.</li>
-  </ul>
-  </td>
-  <td>
-    <img src="/img/broad-street.jpg" width="300px"/>
-    <small>
-    Brody et al. (2000) Map-making and myth-making in Broad Street: the London cholera epidemic, 1854.  Lancet 356; 64-68.
-    </small>
-  </td>
-</table>
-
-
----
-
-<table>
-  <tr>
-  <td style="vertical-align: middle; font-size: 20pt;">
-  <h1>Tuberculosis</h1>
-  <ul>
-    <li>TB is one of top 10 causes of death worldwide</li>
+    <li>Tuberculosis is one of top 10 causes of death worldwide</li>
     <li>Caused by lung infection by <i><a href="https://en.wikipedia.org/wiki/Mycobacterium_tuberculosis">Mycobacterium tuberculosis</a></i>.</li>
     <li>Clustering of whole-genome sequence data can idenfity high-risk groups and detect undiagnosed cases.</li>
   </ul>
@@ -470,6 +448,14 @@ Image credit: CM Fauquet <i>et al.</i> (2008) [Geminivirus strain demarcation an
     </small>
   </td>
 </table>
+
+---
+
+<img src="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41467-021-26044-x/MediaObjects/41467_2021_26044_Fig3_HTML.png" width="450px"/>
+
+<small><small>
+Image source: Y He <i>et al.</i> (2021) ClusterMap for multi-scale clustering analysis of spatial gene expression.  Nature Comm 12: 5909.
+</small></small>
 
 ---
 
