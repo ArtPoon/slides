@@ -18,6 +18,15 @@ Image source: https://commons.wikimedia.org/wiki/File:Ortholog_paralog_analog_(h
 
 ---
 
+# How do we compare sequences?
+
+* Sequences are not like numbers - we cannot just take an arithmetic difference of two sequences.
+* Instead, we have to extract [features](https://en.wikipedia.org/wiki/Feature_(machine_learning)) or [summary statistics](https://en.wikipedia.org/wiki/Summary_statistics) of each sequence.
+  * In machine learning, a feature is some measurable characteristic of a data object.
+  * Features should make it easier to make comparisons between sequences.
+
+---
+
 # Dot plots
 
 * A simple visualization tool for comparing two unaligned sequences.
@@ -86,7 +95,7 @@ Gao and Zhang (2006) [GC-Profile: a web-based tool for visualizing and analyzing
 | S | 1  | 0  | 1  | 1  |
 | T | 0  | 1  | 1  | 1  |
 
-* The dot (inner) product of these vectors gives a similarity measure:
+* The dot (inner) product of these vectors gives a measure of similarity:
 $$\begin{aligned}
 d &= (1\times 0) + (0\times 1) + (1\times 1) + (1\times 1)\\\\
   &= 2
