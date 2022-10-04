@@ -307,8 +307,54 @@ GGGATGCACTCGCTG
 # Hierarchical clustering
 
 * Another class of unsupervised, nonparametric clustering methods.
-* Hierarchical clustering requires (1) a set of distance/similarity measurements, and (2) criteria for linking similar groups.
-* Use these distances to construct a dendrogram (tree), *e.g.*, unweighted pair group method with arithmetic mean ([UPGMA](https://en.wikipedia.org/wiki/UPGMA)).
+  * Acts on a distance matrix $d$ relating observations.
+* Hierarchical clustering can be agglomerative or dissociative.
+* An agglomerative method starts with every item in its own cluster, and progressively merges clusters that are the most similar.
+  * Choosing which clusters to merge is determined by linkage criteria.
+
+---
+
+# Linkage criteria
+
+* Merging clusters updates the distance matrix (remove two rows and columns, add a new row and column).
+* Complete linkage clustering
+
+  $d(AB,X) = \max(d(A,X), d(B,X))$
+  * if least similar members are joined, then all other members join
+
+* Single linkage clustering,
+
+  $d(AB,X) = \min(d(A,X), d(B,X))$
+  * merged groups can have members that are highly dissimilar
+
+---
+
+# UPGMA
+
+* Unweighted pair group method with arithmetic mean, also known as average linkage clustering.
+
+* Every sequence starts out as a cluster of one ($n_{\scriptsize X}=1$).
+
+  1. Join clusters $X$, $Y$ with shortest *average* distance:
+  `$d(X,Y)=\sum_{x\in X} \sum_{y\in Y} d(x,y) / (n_X n_Y)$`
+
+  2. Replace $X$ and $Y$ with cluster $X\cup Y$, where:
+  `$$d(X\cup Y, Z) = \frac{n_{\scriptsize X} d(X,Z) + n_{\scriptsize Y} d(Y,Z)} {n_{\scriptsize X} + n_{\scriptsize Y}}$$`
+  3. Go to step 1 until only one cluster remains (the root).
+
+---
+
+# Dendrograms
+
+* The end result of hierarchical clustering is a tree or "dendrogram"
+* Lengths of branches connecting $x$ and $y$ to their "ancestor" are calculated by splitting the distance $d(x, y)$ in half.
+* We can extract clusters from this tree by "cutting" it at any height.
+
+<img src="/img/hclust.svg" width="1000px"/>
+
+<small>
+Source: Data from https://github.com/genomicsclass/tissuesGeneExpression
+</small>
 
 ---
 
