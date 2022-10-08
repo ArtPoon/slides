@@ -1,5 +1,5 @@
 # MBI 3100A
-## Building trees
+## Trees
 <img src="https://imgs.xkcd.com/comics/phylogenetic_tree.png"/>
 
 ---
@@ -38,6 +38,7 @@
 # Unscaled trees
 * Be very cautious of unscaled tree layouts
   * They make the tree look more resolved (fewer soft polytomies).
+  * This is a common ploy to mislead the audience!
 
 ![](/img/unscaled-tree.svg)
 
@@ -59,33 +60,6 @@
     </td>
   </tr>
 </table>
-
----
-
-# Rectangular/slanted layouts
-
-<small><small>
-Phylogeny of betacoronaviridae including SARS-CoV-2 samples from [Wu <i>et al.</i>](https://www.nature.com/articles/s41586-020-2008-3) (2020) Nature 579: 265-269.
-</small></small>
-<img src="/img/sarscov2-origin.jpg" height="450px"/>
-
----
-
-# Radial layouts
-
-<small><small>
-SARS-CoV-2 genomes in Ontario displayed by Auspice (Nextstrain) instance maintained by [Finlay Maguire](http://auspice.finlaymagui.re/ncov/north-america/canada/ontario)
-</small></small>
-<img src="/img/auspice.png" height="500px"/>
-
----
-
-# Unrooted layouts
-
-<small><small>
-Phylogeny summarizing variation in patient mortality by SARS-CoV-2 clade, from [Dumonteil <i>et al.</i>](https://www.mdpi.com/1999-4915/13/2/227) (2021) Viruses 13: 227.
-</small></small>
-<img src="https://www.mdpi.com/viruses/viruses-13-00227/article_deploy/html/images/viruses-13-00227-g001.png" height="450px"/>
 
 ---
 
@@ -220,35 +194,6 @@ Try clicking and dragging the root (yellow node) around.
 
 ---
 
-# Hierarchical clustering
-
-* Complete linkage clustering, $d(AB,X) = \max(d(A,X), d(B,X))$
-  * if least similar members are joined, then all other members join
-
-* Single linkage clustering,
-
-  $d(AB,X) = \min(d(A,X), d(B,X))$
-  * merged groups can have members that are highly dissimilar
-
-* Ward's method, $d(AB,X) = \sqrt{\sum_i (ab_i-x_i)^2}$
-  * minimize within-cluster variance
-
----
-
-# Unweighted Pair Group Method with Arithmetic mean
-
-* Every sequence starts out as a cluster of one ($n_{\scriptsize X}=1$).
-* Algorithm:
-  1. Join clusters $X$, $Y$ with minimum distance:
-
-     $$d(X,Y)=\sum_{x\in X} \sum_{y\in Y} d(x,y) / (n_X n_Y)$$
-  2. Replace $X$ and $Y$ with cluster $X\cup Y$, where:
-
-     $$d(X\cup Y, Z) = \frac{n_{\scriptsize X} d(X,Z) + n_{\scriptsize Y} d(Y,Z)} {n_{\scriptsize X} + n_{\scriptsize Y}}$$
-  3. Go to step 1 until only one cluster remains (the root).
-
----
-
 # Dendrograms
 
 * Preceding algorithms give us branching orders.
@@ -263,37 +208,14 @@ Image source: https://commons.wikimedia.org/wiki/File:UPGMA_Dendrogram_Hierarchi
 
 ---
 
-# Extracting clusters from dendrograms
+# UPGMA for phylogenetics
 
-* The output of hierarchical clustering is a tree, not clusters.
-  * It remains to "cut" the tree at some point to extract clusters.
-  * *e.g.*, cutting near the root tends to yield two large clusters.
-* Location of the cut point is a subjective decision.
-  * User-specified number of clusters
-* Some automated methods for selecting number of clusters
-  * "knee"/"elbow" method, plot merge distance with number of clusters
+* First used for building phylogenies by [Sokal and Michener](https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1558-5646.1957.tb02884.x) (1958)
+  * ... setting off a decade long war between [pheneticists](https://en.wikipedia.org/wiki/Phenetics) and [cladists](https://en.wikipedia.org/wiki/Cladistics)
+* Assumes a constant rate of evolution (molecular clock)
+* Assumes that every tip was sampled at the same time, or with negligible variation in times (ultrametric trees)
+* Performs poorly with variation in branch lengths.
 
----
-
-# Heatmaps
-
-<table>
-  <tr>
-    <td style="font-size: 20pt">
-      <ul>
-        <li>A popular method for <a href="https://en.wikipedia.org/wiki/Data_visualization">visualizing</a> a matrix of intensities, <i>e.g.</i>, gene expression.</li>
-        <li>Hierarchical clustering can be used to reorder rows/columns to bring together similar observations/variables.</li>
-        <li>Dendrograms can be displayed along respective axes.</li>
-      </ul>
-    </td>
-    <td width="50%">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Heatmap.png/600px-Heatmap.png"/>
-      <small>
-      Image source: <a href="https://commons.wikimedia.org/wiki/File:Heatmap.png">https://commons.wikimedia.org/wiki/File:Heatmap.png</a>, Public Domain.
-      </small>
-    </td>
-  </tr>
-</table>
 
 
 ---
@@ -394,6 +316,33 @@ Image source: https://commons.wikimedia.org/wiki/File:UPGMA_Dendrogram_Hierarchi
 * [RapidNJ](http://birc.au.dk/software/rapidnj/) - command-line program (source code)
 * [NINJA](http://nimbletwist.com/software/ninja/) - Java-based command-line program
 * [R package ape](https://rdrr.io/cran/ape/man/nj.html) - not recommended, slow
+
+---
+
+# Other methods for building trees
+
+* Maximum parsimony / minimum evolution
+  * Select the tree that minimizes the number of character state changes (substitutions), given the observed sequences.
+* Maximum likelihood
+  * Search for the tree that maximizes the probability of an evolutionary model, given the data.
+* Both approaches are [NP-hard](https://en.wikipedia.org/wiki/NP-hardness)
+
+---
+
+# Why build trees?
+
+* If you want to find an association between some genetic feature and a phenotype (*e.g.*, disease), you have to adjust for "identity by descent".
+  * Sequences may have the same mutation because they inherited it from a common ancestor.
+  * Failing to account for IBD can result in a high rate of [false positives](https://en.wikipedia.org/wiki/False_positives_and_false_negatives).
+
+---
+
+<img src="315_1583_f2.jpeg"/>
+
+---
+
+* Sometimes we're actually interested in the tree itself!
+  * A common ancestor in a tree of viruses can represent the
 
 ---
 
