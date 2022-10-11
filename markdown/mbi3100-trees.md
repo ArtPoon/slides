@@ -334,15 +334,69 @@ Image source: https://commons.wikimedia.org/wiki/File:UPGMA_Dendrogram_Hierarchi
 * If you want to find an association between some genetic feature and a phenotype (*e.g.*, disease), you have to adjust for "identity by descent".
   * Sequences may have the same mutation because they inherited it from a common ancestor.
   * Failing to account for IBD can result in a high rate of [false positives](https://en.wikipedia.org/wiki/False_positives_and_false_negatives).
+* It is common practice to [stratify human genome data](https://www.sciencedirect.com/science/article/pii/S0140673603125202) by ethnic groups when carrying out a population-level analysis.
 
 ---
 
-<img src="315_1583_f2.jpeg"/>
+![](https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fng1337/MediaObjects/41588_2004_Article_BFng1337_Fig1_HTML.gif)
+
+<small><small>
+Image source: J Marchini <i>et al.</i> (2004) The effects of human population structure on large genetic association studies.  <a href="https://www.nature.com/articles/ng1337">Nature Genetics 36: 512-517.</a>
+</small></small>
+
+---
+
+<table>
+<tr>
+  <td>
+    <h1 style="font-size: 24pt">Founder effects</h1>
+    <ul>
+      <li>When a group of individuals are share some common characteristic because they all related by a recent common ancestor.</li>
+      <li>In 2002, <a href="https://www.science.org/doi/full/10.1126/science.1069660">Moore <i>et al.</i></a> reported evidence of HIV-1 adaptation to the immune makeup of different human populations.</li>
+      <ul>
+      <li>Specific mutations in HIV-1 RT are observed more often in populations carrying <a href="https://en.wikipedia.org/wiki/Human_leukocyte_antigen">HLA</a> allele B51.</li>
+      </ul>
+      <li>The virus that "founded" an epidemic where the allele is common may happen to carry that mutation by chance.</li>
+    </ul>
+    <small><small>
+    Image source: Bhattacharya <i>et al.</i> (2007) <a href="https://www.science.org/doi/full/10.1126/science.1131528">Founder effects in the assessment of HIV polymorphisms and HLA allele associations.</a>  Science 315: 1583-1586.
+    </small></small>
+  </td>
+  <td width="40%">
+    <img src="/img/315_1583_f2.jpeg" height="550px"/>
+  </td>
+</tr>
+</table>
+
+---
+
+# How can we use the tree?
+
+* Map mutations to branches of the tree, then test for correlation between mutations and factors associated with that branch
+  * *e.g.*, the HLA genotype of the host associated with that branch
+* Felsenstein's [phylogenetic independent contrasts](https://www.journals.uchicago.edu/doi/abs/10.1086/284325): extract branches relating pairs of adjacent tips as independent observations.
+<img src="/img/contrasts.svg" height="225px"/>
 
 ---
 
 * Sometimes we're actually interested in the tree itself!
-  * A common ancestor in a tree of viruses can represent the
+  * A common ancestor in a tree of viruses can represent the [zoonotic](https://en.wikipedia.org/wiki/Zoonosis) origin of the epidemic.
+  * We can use other information to scale the tree in time, dating the origin.
+<img src="/img/bioko.png" height="300px"/>
+
+<small><small>
+Image source: M Worobey <i>et al.</i> (2010) Island biogeography reveals the deep history of SIV. <a href="https://www.science.org/doi/full/10.1126/science.1193550"/>Science 329: 1487</a>.
+</small></small>
+
+---
+
+# Phylodynamics
+
+<img src="/img/grenfell-table.png" width="600px"/>
+
+<small><small>
+Image source: Grenfell <i>et al.</i> Unifying the Epidemiological and Evolutionary Dynamics of Pathogens.  <a href="https://www.science.org/doi/10.1126/science.1090727">Science 303: 327-332</a>.
+</small></small>
 
 ---
 
