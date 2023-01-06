@@ -4,6 +4,54 @@
 
 ---
 
+# Schedule
+
+* Lectures on Mondays and Fridays at 9:30am in the [Arthur and Sonia Labatt Health Science Building](https://www.vreng.ca/western-university-arthur--sonia-labatt-health-sciences-building.html), [HSB9](https://wts.uwo.ca/ctg/classrooms/health_sciences_building/hsb_9.html).
+* Lab practicals on Wednesdays from 9:30am to 11:30am in the [Arthur and Sonia Labatt Health Science Building](https://www.vreng.ca/western-university-arthur--sonia-labatt-health-sciences-building.html), [Genlab HSB-14](https://wts.uwo.ca/genlabs/).
+* **All sessions in person**.
+* Lectures will be recorded (audio only).
+
+---
+
+# Learning objectives
+
+* Cluster virus sequences for [classification](https://en.wikipedia.org/wiki/Virus_classification) and outbreak detection.
+* Understand and apply different strategies for [tree-building](https://en.wikipedia.org/wiki/Computational_phylogenetics).
+* Detect sites under [positive selection](https://en.wikipedia.org/wiki/Directional_selection) in a virus genome.
+* Use [Bayesian methods](https://en.wikipedia.org/wiki/Bayesian_inference) to fit epidemic models to dated sequences.
+* Assemble genomes of unknown viruses from [metagenomic](https://en.wikipedia.org/wiki/Metagenomics) data.
+* Understand the [ethical challenges](https://en.wikipedia.org/wiki/Information_privacy) of bioinformatics and data sharing.
+
+---
+
+# Evaluation
+
+* This is an [essay course](https://www.uwo.ca/univsec/pdf/academic_policies/registration_progression_grad/coursenumbering.pdf)!
+
+* Three components:
+  * Computing lab assignments - 50%
+  * Project proposal (due February 18, 2023) - 15%
+  * Project final report (due April 10, 2023) - 35%
+
+* You are responsible for *independently* carrying out your own bioinformatic analysis and presenting your results as a short report.
+
+* [TurnItIn](https://elearningtoolkit.uwo.ca/tools/TurnItIn.html) *will* be used to assess written assignments.
+
+---
+
+# How to do well
+
+* Labs:
+  * This course has no prerequisites in computer science - you will not have to write any of your own code.
+  * *However*, you will need to become comfortable with the command line interface.
+  * Reviewing `Lab00.md` is *strongly recommended*.
+
+* Writing:
+  * Start writing your methods section first - it is the easiest to write.
+  * Next, go into your results by describing your analysis outputs.
+
+---
+
 # Genetic distances
 
 * How do we measure how similar two sequences are?
