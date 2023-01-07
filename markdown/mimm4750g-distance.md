@@ -52,6 +52,16 @@
 
 ---
 
+# Bioinformatics and infectious disease
+
+* Bioinformatics is the use of computers to manage and analyze biological data.
+  * New lab technologies can produce overwhelming amounts of data.
+  * Much of bioinformatics concerns genetic sequence data, although there are other important domains (structural data, imaging data).
+
+* Infectious diseases are 
+
+---
+
 # Genetic distances
 
 * How do we measure how similar two sequences are?
