@@ -58,7 +58,16 @@
   * New lab technologies can produce overwhelming amounts of data.
   * Much of bioinformatics concerns genetic sequence data, although there are other important domains (structural data, imaging data).
 
-* Infectious diseases are 
+* Infectious diseases (viruses, bacteria, and single-celled eukaryotes) are often characterized by sequence alone.
+
+---
+
+# Genetic sequences
+
+* A single infection can be represented by one sequence that is an average of the population.
+  * Alternatively, we can sequence many individual genomes from an infection with high-throughput methods.
+* A nucleotide sequence consists of `A`, `C`, `G` and `T`.
+  * Uncertain or missing bases are represented by other letters.  For example, `N` represents *any* base.
 
 ---
 
@@ -266,6 +275,6 @@ GGGATGCACTCGCTG
 
 # Further readings
 
-* [Consensus statement: Virus taxonomy in the age of metagenomics](https://www.nature.com/articles/nrmicro.2016.177)
-* [ICTV: Comments to proposed modification to code rule 3.21 (defining virus species)](https://talk.ictvonline.org/ictv1/f/general_ictv_discussions-20/3930/comments-to-proposed-modification-to-code-rule-3-21-defining-virus-species)
-* [Hanage *et al.* (2006) Sequences, sequence clusters and bacterial species](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1764932/)
+* [Bioinformatics of Infectious Diseases: Genetic diversity](https://artpoon.github.io/BioID/Clustering.html) - an online textbook (in progress)
+* [An extended IUPAC nomenclature code for polymorphic nucleic acids](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2865858/)
+* [Markov Chains explained visually](https://setosa.io/ev/markov-chains/) by Victor Powell
