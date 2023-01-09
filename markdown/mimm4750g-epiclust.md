@@ -1,6 +1,6 @@
 # MIMM4750G
 ## Clustering for epidemiology
-<img src="https://imgs.xkcd.com/comics/chat_systems.png" width="600px"/>
+<img src="https://imgs.xkcd.com/comics/everyones_an_epidemiologist.png" width="600px"/>
 
 ---
 
@@ -40,17 +40,6 @@
 * Clusters are often visualized as networks ([graphs](https://en.wikipedia.org/wiki/Network_theory))
   * Each node represents a sequence (infection).
   * Nodes are connected by [edges](https://en.wikipedia.org/wiki/Glossary_of_graph_theory_terms#edge) to indicate their distance is below threshold.
-
----
-
-<section data-state="tn93-slide">
-  <br/>
-  <div id="tn93" class="fig-container"
-       data-fig-id="fig-tn93"
-       data-file="/include/clustering.html"
-       style="width:800px; margin:0 auto; height:700px">
-  </div>
-</section>
 
 ---
 
