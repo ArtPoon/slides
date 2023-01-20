@@ -39,22 +39,33 @@
 # Distance-based methods
 
 * Building a tree can be viewed as a clustering problem!
-* We already know how to calculate genetic distances between pairs of sequences.
+* We've already talked about:
+  * how to calculate genetic distances between pairs of sequences
+  * how to use these distances to cluster sequences that are highly similar
 * Agglomerative (hierarchical) clustering means we group the most similar pair of sequences and progress from there.
 
 ---
 
-# Unweighted Pair Group Method with Arithmetic mean
+# UPGMA
 
+* Unweighted Pair Group Method with Arithmetic mean
 * Every sequence starts out as a cluster of one ($n_{\scriptsize X}=1$).
-* Algorithm:
-  1. Join clusters $X$, $Y$ with minimum distance:
+   1. Join clusters $X$, $Y$ with minimum distance:
+   `$$d(X,Y)=\sum_{x\in X} \sum_{y\in Y} d(x,y) / (n_X n_Y)$$`
+   2. Replace $X$ and $Y$ with cluster $X\cup Y$, where:
+   `$$d(X\cup Y, Z) = \frac{n_{\scriptsize X} d(X,Z) + n_{\scriptsize Y} d(Y,Z)} {n_{\scriptsize X} + n_{\scriptsize Y}}$$`
+   3. Go to step 1 until only one cluster remains (the root).
 
-     `$$d(X,Y)=\sum_{x\in X} \sum_{y\in Y} d(x,y) / (n_X n_Y)$$`
-  2. Replace $X$ and $Y$ with cluster $X\cup Y$, where:
+---
 
-     `$$d(X\cup Y, Z) = \frac{n_{\scriptsize X} d(X,Z) + n_{\scriptsize Y} d(Y,Z)} {n_{\scriptsize X} + n_{\scriptsize Y}}$$`
-  3. Go to step 1 until only one cluster remains (the root).
+# UPGMA
+
+* UPGMA produces rooted trees that are ultrametric.
+  * Every tip is the same distance from the root.
+  * Akin to assuming that sequences were sampled at the same time, and a constant rate of evolution (molecular clock).
+* Fast to compute!
+  * Occasionally used to quickly generate an initial tree that is "good enough"
+  * Less accurate than other methods.
 
 ---
 
@@ -62,53 +73,9 @@
 
 * Another distance-based clustering method for making trees
 * Start with a "star" phylogeny: every tip directly descended from the root
-* Add ancestral nodes that minimize the total branch length of the tree
-* NJ is a greedy heuristic algorithm!
+* Add a node ancestral to $i$ and $j$ that minimizes the total branch length of the tree
+* Remove rows and columns for $i$ and $j$ from the distance matrix, and update matrix with new row/column for node $ij$.
 
----
-
-# NJ algorithm
-
-<table>
-  <tr>
-    <td>
-      <ol>
-        <li>Calculate distance matrix $d_{ij}$</li>
-        <li>
-        For each node $i$, calculate $u_i=\sum_{j\ne i} d_{ij} / (n-2)$
-        <ul>
-          <li>The mean distance to every other node (almost).</li>
-        </ul>
-        </li>
-        <li>Find pair $i$ and $j$ that minimizes $d_{ij} - u_i - u_j$</li>
-        <ul>
-          <li>The shortest distance given what's typical for those nodes.</li>
-          <li>Nodes that are close to everybody else are not necessarily chosen.</li>
-        </ul>
-      </ol>
-    </td>
-    <td width="35%">
-      <img src="/img/nj-circles.svg" height="300px"/>
-    </td>
-  </tr>
-</table>
-
----
-
-# NJ algorithm (continued)
-
-4. Place new *internal* node $ij$ ancestral to $i$ and $j$.
-5. Calculate new distances from $ij$ to $i$, and from $ij$ to $j$:
-   $v_i = \frac{1}{2} d_{ij} + \frac{1}{2}(u_i - u_j)$
-
-   $v_j = \frac{1}{2} d_{ij} + \frac{1}{2}(u_j - u_i)$
-
-6. Calculate distances from $ij$ to all remaining tips:
-   $d_{(ij),k} = (d_{ik} + d_{jk} - d_{ij}) / 2 $
-
-7. Delete rows/columns $i$ and $j$ from $d$.
-
-8. Repeat until $d$ contains no more tip nodes.
 
 ---
 
