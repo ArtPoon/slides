@@ -7,8 +7,8 @@
 # Probability
 
 * What is the probability of getting 5 heads in 10 coin tosses?
-* Let the probability of heads is $p$ &mdash; this is a *parameter* (hypothesis).
-* Let the number of heads ($y=5$) and tosses ($N=10$) be our *data*.
+  * Let the probability of heads is $p$ &mdash; this is a *parameter* (hypothesis).
+  * Let the number of heads ($y=5$) and tosses ($N=10$) be our *data*.
 * As usual, let's make some assumptions:
   1. My coin tossing is truly random.
   2. The coin tosses are independent - one result does not influence another.
@@ -22,7 +22,7 @@
 
   $$P(N,y\;|\;p) = {N\choose y} p^y (1-p)^{(N-y)}$$
 
-* ("**Bi**nomial" indicates *two* and only two outcomes.)
+* ("<b>Bi</b>nomial" indicates *two* and only two outcomes.)
 * The probability distribution looks like this:
 
   ![](/img/binomial.svg)
@@ -48,13 +48,12 @@
 
 # Likelihood
 
-* This probability distribution
+* This probability distribution has two sets of variables:
 
-  $P(N,y\;|\;p) = {N\choose y} p^y (1-p)^{(N-y)}$
+`$$P(N,y\;|\;p) = {N\choose y} p^y (1-p)^{(N-y)}$$`
 
-   has two sets of variables:
-  1. Parameters that define the hypothesis (*p*).
-  2. Variables that comprise the data (*N*, *y*).
+1. Parameters that define the hypothesis (*p*).
+2. Variables that comprise the data (*N*, *y*).
 
 ---
 
@@ -71,9 +70,9 @@
 # Likelihood
 
 * The term *likelihood* is a signal that we using the PDF to measure the probability of the **hypothesis** given the **data**.
-* Since summing across parameters does not sum to 1, all that matters is the *relative* difference in likelihood.
-* Might as well drop factors independent of parameters, *e.g.*, ${N\choose y}$:
-  $$P(N,y\;|\;p) \propto p^y (1-p)^{(N-y)}$$
+  * Since summing across parameters does not sum to 1, all that matters is the *relative* difference in likelihood.
+* Drop factors independent of parameters, *e.g.*, `${N\choose y}$`:
+  `$$P(N,y\;|\;p) \propto p^y (1-p)^{(N-y)}$$`
 * Sometimes we replace the $P$ with $\mathcal{L}$, *e.g.,* $\mathcal{L}(p|N,y)$
 
 ---
@@ -96,7 +95,7 @@ $$\begin{align}
   \frac{d\log(\mathcal{L})}{dp} & \propto \frac{y}{p} + (-1)\frac{N-y}{1-p}
 \end{align}$$
 
-* If we set the left side to 0, some algebra gives us $\;\hat{p} = y/N$.
+* If we set the left side to 0, some algebra gives us `$\;\hat{p} = y/N$`.
 
 ---
 
@@ -109,7 +108,6 @@ $$P(\text{everything}) = P(\text{first thing}) \times P(\text{another thing})\\\
 * Taking the $\log$ of a very small value gives you a very negative number:
   $\log(3.45\times 10^{-73}) = -166.8503$
 * The log likelihood should never be greater than zero (although some programs rescale L to avoid [numerical overflow](https://en.wikipedia.org/wiki/Fixed-point_arithmetic#Precision_loss_and_overflow)).
-* The MLE is the log-likelihood that is the least negative.
 
 ---
 
@@ -161,7 +159,14 @@ $$`
 </ul>
 
 </td>
-<td width="45%"><img src="/img/transprob.png" width="500px"/></td>
+
+<td width="45%">
+<small>
+Calculating transition probabilities $P=\exp(Qt)$ for different values of <i>t</i>:
+</small>
+<img src="/img/transprob.png" width="500px"/>
+</td>
+
 </table>
 
 ---
@@ -253,9 +258,3 @@ Image credit: Marc Suchard (2005) <a href="https://doi.org/10.1534/genetics.103.
 * [RAxML](https://cme.h-its.org/exelixis/web/software/raxml/index.html) - one of the top ML programs.
 * [PhyML](http://www.atgc-montpellier.fr/phyml/) - also a contender for top ML program.
 * [MEGA](https://www.megasoftware.net/) - as usual, provides a nice GUI.
-
----
-
-# Suggested readings
-
-* [Felsenstein Phylogenetic Likelihood](https://link.springer.com/article/10.1007/s00239-020-09982-w)

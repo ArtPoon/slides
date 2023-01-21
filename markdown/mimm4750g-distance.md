@@ -183,38 +183,6 @@ GGGATGCACTCGCTG
 
 ---
 
-# Markov property
-
-* The Jukes-Cantor model describes a Markov process.
-* A process has the *Markov property* if the probability of state at time *t* depends only on the state at a previous time *and no further*.
-* *i.e.,* the system has no memory.
-* For example, [Snakes and Ladders](https://en.wikipedia.org/wiki/Snakes_and_Ladders) is a Markov process.
-
-> What is another example of a process with no memory? A process **with** memory?
-
----
-
-<section data-state="markov-slide">
-    <h1>Markov models</h1>
-    <ul>
-      <li>Jukes-Cantor is an example of a <i>continuous time Markov model</i>.</li>
-      <li>A system is in one of two or more discrete states.  After some random amount of time, it switches between states.</li>
-    </ul>
-    <center>
-    <div id="markov" class="fig-container"
-         data-fig-id="fig-markov"
-         data-file="/include/markov-chain.html"
-         style="height:300px">
-    </div>
-    <div></div>
-    </center>
-    <small><small><small>
-    Based on <a href="http://setosa.io/blog/2014/07/26/markov-chains/index.html"/>Markov Chains: A visual explanation by Victor Powell</a>
-    </small></small></small>
-</section>
-
----
-
 # Jukes-Cantor formula
 
 * Because of multiple hits, the actual number of mutations tends to be *greater* than the number of visible differences.

@@ -197,6 +197,11 @@ Image credit: R Lu <i>et al.</i> (Feb 2020).  Genomic characterisation and epide
 
 ---
 
-# Nextstrain: Real-time tracking of the pandemic
+# Evidence for multiple zoonotic origins of SARS-CoV-2
 
-<img src="/img/nextstrain-namer.png" height="500px"/>
+Probability of phylogenetic structures arising from a single introduction of SARS-CoV-2 in epidemic simulations.
+<img src="/img/science.abp8337-f2.jpg"/>
+
+<small><small>
+Image source: JE Pekar <i>et al.</i> (Jul 2022). The molecular epidemiology of multiple zoonotic origins of SARS-CoV-2.  Science 377: 960-966.
+</small></small>

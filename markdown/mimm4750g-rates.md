@@ -69,6 +69,9 @@ Simulations of allele frequency evolution in R.
     </td>
     <td width="35%">
       <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Markovkate_01.svg" width="300px"/>
+      <small>
+      Image source: <a href"https://commons.wikimedia.org/wiki/File:Markovkate_01.svg">Wikimedia Commons</a>
+      </small>
     </td>
   </tr>
 </table>
