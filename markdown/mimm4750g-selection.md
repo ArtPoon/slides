@@ -216,32 +216,6 @@ Image credit: D Enard <i>et al.</i> (2016) eLife 10.7554/eLife.12469
 
 ---
 
-# Detecting directional selection
-
-* Directional selection is transient, making it difficult to "see".
-  * When selection brings a specific variant from low to high frequency in the population, there is a local depletion of genetic variation.
-* This is called a "selective sweep".
-
-<img src="/img/selective-sweep.jpg" width="450px"/>
-
-<small><small>
-Figure from RD Hernandez <i>et al.</i> 2011, Science 331: 920.
-</small></small>
-
----
-
-# Selective sweeps
-
-* Methods look for parts of the genome with reduced variation, patterns in [linkage disequilibrium](https://en.wikipedia.org/wiki/Linkage_disequilibrium) or the [allele frequency distribution](https://en.wikipedia.org/wiki/Allele_frequency_spectrum).
-
-<img src="/img/40709_2017_64_Fig1_HTML.jpg" width="600px">
-
-<small><small>
-Image credit: Pavlidis and Alachiotis (2017) <a href="https://jbiolres.biomedcentral.com/articles/10.1186/s40709-017-0064-0">A survey of methods and tools to detect recent and strong positive selection</a>. J Biol Res 24: 7.
-</small></small>
-
----
-
 # Software
 
 * [PAML](http://abacus.gene.ucl.ac.uk/software/paml.html) - command-line only
