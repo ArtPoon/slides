@@ -5,12 +5,27 @@
 ---
 
 # Natural selection
+<table>
+  <tr>
+    <td>
+      <ul>
+        <li>Variation in fitness that is associated with variation in the environment.</li>
+        <li>Selection is responsible for the spread of drug resistance in pathogens.</li>
+        <li>Our adaptive immune systems exert tremendous selection on pathogens.</li>
+      </ul>
+    </td>
+    <td width="45%">
+    <small>
+    Emergence of pan-resistant HIV-1.  Patient clinical course and treatment.<br/><br/>
+    </small>
+      <img src="https://www.thelancet.com/cms/attachment/8b13392e-97c8-4d7f-b94a-f75d47417d97/gr1.jpg">
+    </td>
+  </tr>
+</table>
 
-* Variation in fitness that is associated with variation in the environment.
-* Selection is responsible for the spread of drug resistance in pathogens.
-  * Host adaptation: a mutant allele of the [Duffy blood-group antigen](https://en.wikipedia.org/wiki/Duffy_antigen_system) (Fy) that reduces risk of infection by *Plasmodium vivax* (vivax malaria) is [near fixation in sub-Saharan Africa](https://www.nature.com/articles/nrg3734).
-
-<img src="/img/vivax.jpg" width="500px"/>
+<small><small>
+Image credit: MC Puertas <i>et al.</i> (2020) Pan-resistant HIV-1 emergence in the era of integrase strand-transfer inhibitors: a case report.  <a href="https://www.thelancet.com/journals/lanmic/article/PIIS2666-5247%2820%2930006-9/fulltext">Lancet Microbe 1: E130</a>.
+</small></small>
 
 ---
 
@@ -33,7 +48,7 @@
 
 # How do detect selection?
 
-* Longitudinal data: track the frequencies of an allele over time.
+* **Longitudinal data:** track the frequencies of an allele over time.
   <table>
   <tr>
   <td><img src="/img/influenza-trajectory.png" width="350px"/></td>
@@ -44,8 +59,9 @@
     </td>
   </tr>
   </table>
-* What if we don't know which allele is under selection?  What if we don't have longitudinal data?
-* Cross-sectional (comparative) methods: infer selection by comparing genetic sequences sampled at about the same time.
+
+  * What if we don't know which allele is under selection?  What if we don't have longitudinal data?
+* **Cross-sectional (comparative) methods:** infer selection by comparing genetic sequences sampled at about the same time.
 <!--* More convenient, potentially more powerful.-->
 
 ---
@@ -75,7 +91,8 @@
 * The codon `ACG` encodes threonine (T).  It has 3 synonymous sites and 6 nonsynymous sites (*e.g.*, `ATG` for methionine).
   * Suppose we count 8 non-synonymous and 4 synonymous substitutions in the tree.
   * We observed over twice as many non-synonymous substitutions!  Is this evidence of strong diversifying selection at this codon?
-* The ratio dN/dS is $\frac{8}{6} / \frac{4}{3}$ = 1.  **Even though we observed more NS substitutions, this is neutral.**
+* The ratio dN/dS is $\frac{8}{6} / \frac{4}{3}$ = 1.  
+* **Even though we observed more NS substitutions, this is neutral.**
 
 ---
 
@@ -94,7 +111,8 @@ Table from Endo, Ikeo and Gojobori. 1996, Mol Biol Evol 13: 685.
 * In 1994, very similar models were proposed in two ground-breaking papers (in the same journal, next to each other [in the same issue](https://academic.oup.com/mbe/issue/11/5)).
   * There are 61 sense codons: $61\times60/2=1830$ rates.
   * These models enable us to specify a codon model using as few as *two* parameters.
-* The main parameter is called $\omega$ or $R$, depending who you ask.  It is simply the ratio of non-syn. and syn. rates (dN/dS).
+* The main parameter is called $\omega$ or $R$, depending who you ask.  
+  * It is simply the ratio of non-syn. and syn. rates (dN/dS).
 
 ---
 
@@ -119,9 +137,9 @@ Table from Endo, Ikeo and Gojobori. 1996, Mol Biol Evol 13: 685.
 # Site-specific selection
 
 * In the same year, Ziheng Yang described methods to allow dN/dS to change at different codon sites of a protein-coding gene.
-* This was a critical improvement because it is often not the *entire gene* that is under diversifying selection.
-* This allows us to pick out individual amino acids under strong selection, even if the rest of the gene is highly conserved.
-  * Implemented by Yang in 1997 into the software package [PAML](http://abacus.gene.ucl.ac.uk/software/paml.html) (Phylogenetic Analysis by Maximum Likelihood).
+  * This was a critical improvement because it is often not the *entire gene* that is under diversifying selection.
+  * This allows us to pick out individual amino acids under strong selection, even if the rest of the gene is highly conserved.
+* Implemented by Yang in 1997 into the software package [PAML](http://abacus.gene.ucl.ac.uk/software/paml.html) (Phylogenetic Analysis by Maximum Likelihood).
 
 ---
 
@@ -131,7 +149,7 @@ Table from Endo, Ikeo and Gojobori. 1996, Mol Biol Evol 13: 685.
     <h1>dN/dS in influenza A virus</h1>
     <ul>
     <li>Influenza A virus (IAV) <a href="https://en.wikipedia.org/wiki/Hemagglutinin_(influenza)">hemagglutinin</a> (HA) is responsible for binding host cell receptor.</li>
-    <li>HA binds <a href="https://en.wikipedia.org/wiki/Sialic_acid">sialic acids</a> in upper respiratory tract - name stems from clumping of blood cells.</li>
+    <ul><li>HA binds <a href="https://en.wikipedia.org/wiki/Sialic_acid">sialic acids</a> in upper respiratory tract &mdash; its name stems from clumping of blood cells.</li></ul>
     <li>Major target for antibody-mediated immune response.</li>
     <li>Specific amino acids in HA protein under strong selection.</li>
     </ul>
@@ -141,6 +159,28 @@ Table from Endo, Ikeo and Gojobori. 1996, Mol Biol Evol 13: 685.
     <small>
     Figure from Meyer and Wilke (2015) PLOS Pathog 11: e1004940.
     </small>
+  </td>
+</tr>
+</table>
+
+---
+
+<table>
+<tr>
+  <td style="font-size: 18pt; vertical-align:middle;">
+    <h1>Example: MERS-CoV spike protein</h1>
+    <ul>
+    <li>Middle East respiratory syndrome coronavirus, first described in Saudi Arabia in 2012.</li>
+    <li>Found at high prevalence in camels.</li>
+    <li>~40% mortality, limited human-to-human transmission.</li>
+    <li>Codons in spike protein under strong positive selection (magenta), close to residues involved in receptor binding (green).</li>
+    </ul>
+    <small>
+    Image credit: M Cotten <i>et al.</i> (2014) <a href="https://doi.org/10.1128/mBio.01062-13">Spread, Circulation, and Evolution of the Middle East Respiratory Syndrome Coronavirus</a>. mBio 5(1).
+    </small>
+  </td>
+  <td width="30%">
+    <img src="/img/mers-cov75.png"/>
   </td>
 </tr>
 </table>
@@ -173,29 +213,6 @@ Table from Endo, Ikeo and Gojobori. 1996, Mol Biol Evol 13: 685.
 
 ---
 
-# Example: MERS-CoV
-
-<table>
-<tr>
-  <td style="font-size: 18pt; vertical-align:middle;">
-    <ul>
-    <li>Middle East respiratory syndrome coronavirus, first described in Saudi Arabia in 2012.</li>
-    <li>Found at high prevalence in camels.</li>
-    <li>~40% mortality, limited human-to-human transmission.</li>
-    <li>Codons in spike protein under strong positive selection (magenta), close to residues involved in receptor binding (green).</li>
-    </ul>
-    <small>
-    Image credit: M Cotten <i>et al.</i> (2014) <a href="https://doi.org/10.1128/mBio.01062-13">Spread, Circulation, and Evolution of the Middle East Respiratory Syndrome Coronavirus</a>. mBio 5(1).
-    </small>
-  </td>
-  <td width="30%">
-    <img src="/img/mers-cov75.png"/>
-  </td>
-</tr>
-</table>
-
----
-
 # Episodic selection
 
 * The previous models assume that differences in dN/dS are constant over time.
@@ -222,4 +239,3 @@ Image credit: D Enard <i>et al.</i> (2016) eLife 10.7554/eLife.12469
 * [HyPhy](http://www.hyphy.org/) - both GUI and command-line
 * [Datamonkey](http://datamonkey.org/) - HyPhy on the web
 * [MEGA](https://www.megasoftware.net/) - GUI
-* [SWEEPFINDER2](http://degiorgiogroup.fau.edu/sf2.html) - command-line only
