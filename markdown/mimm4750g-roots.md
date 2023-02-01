@@ -97,11 +97,17 @@ Image credit: Steven M. Carr (Memorial University), https://www.mun.ca/biology/s
 
 * No additional information necessary!  Fast.
 * Assumes a constant rate of evolution. Requires sufficient divergence from root.
+* Does not use any information about *when* the sequences were sampled.
+  * Midpoint may be placed along branch to the most recent sequence.
 
-<img src="https://onlinelibrary.wiley.com/cms/asset/6d94e1de-09ce-491b-8b2e-e50b12470e36/jmv25731-fig-0002-m.jpg" width="500px"/>
+---
+
+Example: Early mid-point rooted tree of SARS-CoV-2
+
+<img src="/img/sc2-midpoint.png" width="800px"/>
 
 <small><small>
-Midpoint rooted tree of SARS-CoV-2 genomes from Li <i>et al.</i> (2020) [J Med Virol 92: 602-611](https://onlinelibrary.wiley.com/doi/full/10.1002/jmv.25731).
+Image source: Li <i>et al.</i> (2020) [J Med Virol 92: 602-611](https://onlinelibrary.wiley.com/doi/full/10.1002/jmv.25731).
 </small></small>
 
 ---
