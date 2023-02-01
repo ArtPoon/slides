@@ -203,14 +203,10 @@
 # Bootstrap trees
 
 * Go through the same process of building a tree from each alignment, *e.g.,* by neighbor-joining.
-  * The main cost of bootstrapping is the unavoidable cost of repeating the analysis!
-* The support value of an internal node $A$ is the frequency that the monophyletic clade rooted on $A$ appears in these trees.
-
-| Clade | Count | Support |
-|-------|-------|---------|
-| `((A,B),C)` | 79 | 0.79 |
-| `((A,C),B)` | 16 |  |
-| `((A,B),D)` | 5 |  |
+  * This is the unavoidable linear cost of bootstrapping!
+* Internal nodes are identified by the tips that descend from them.
+  * *e.g.*, subtrees `((A,B),C)`, `((B,C),A)` and `((A,C),B)` all count towards the frequency of node `ABC`.
+  * If these subtrees appear in 950 of 1000 bootstrap trees, then the support for `ABC` is 95%.
 
 ---
 
