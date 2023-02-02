@@ -221,7 +221,7 @@ Figure taken from an analysis of respiratory syncytial virus by C Agoti *et al.*
 # Non-reversible model rooting
 
 * Relax the assumption of time-reversibility ($P_{ij}(t)\pi_i = P_{ji}(t)\pi_j$)
-* Location of the root becomes another parametemo
+* Location of the root becomes another parameter of the model.
 * Does not work very well unless evolution is highly non-reversible ([Huelsenbeck *et al* 2002](https://academic.oup.com/sysbio/article/51/1/32/1631340)):
   * non-symmetric substitution rates
   * skewed nucleotide frequencies
