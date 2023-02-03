@@ -52,7 +52,7 @@ Try clicking and dragging the yellow node around.
 
 # Neighbor-joining trees are unrooted
 
-* Recall from a [previous lecture](http://localhost:8002/html/mimm4750g-L04-njoin.html#/) that neighbor-joining (NJ) progressively merges clusters (agglomerative clustering).
+* Recall from a [previous lecture](https://slides.filogeneti.ca/html/mimm4750g-L04-njoin.html#/) that neighbor-joining (NJ) progressively merges clusters (agglomerative clustering).
 * NJ stops when none of the clusters contain only one tip node.
 * Every internal node in the resulting tree has a degree of 3 edges.
 * There is no node that represents a root.
