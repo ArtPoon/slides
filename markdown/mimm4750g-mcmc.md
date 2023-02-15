@@ -207,10 +207,14 @@ Image credit: Mark Lai (2019). <a href="https://bookdown.org/marklhc/notes_bookd
 
 * Consider a chain sample of $N$ steps.
 * The ESS is the hypothetical number of truly random samples with the same estimation power as $N$.
-* The theoretical formula for ESS cannot be calculated in practice, so it is estimated; for example:
+* One way of defining the ESS is in terms of the autocorrelation at different lags:
 
-  `$$\hat{N}_{\mathrm{eff}} = \frac{N}{1 + 2\sum_{t=1}^{2m+1} \hat{\rho}_t}$$`
-  where $\hat{\rho}_t$ is the autocorrelation estimate with lag $t$.
+  `$$\hat{N}_{\mathrm{eff}} = \frac{N}{1 + 2\sum_{t=1}^{\infty} \rho_t}$$`
+  where $\rho_t$ is the autocorrelation estimate with lag $t$.
+
+<small><small>
+Source: Vehtari <i>et al.</i> (2021) Rank-Normalization, Folding, and Localization: An Improved R for Assessing Convergence of MCMC (with Discussion). Bayesian Analysis 16(2): 667-718.
+</small></small>
 
 ---
 
