@@ -4,33 +4,6 @@
 
 ---
 
-# Review: Markov chains
-
-* A Markov process or "chain" is a model of how a system changes state over time (or some other linear dimension).
-  * It is "Markov" if the probability of the next state depends only on the current state, and nothing else before.
-* A Markov chain is defined by transition probability or rate matrix, for discrete- and continuous-time processes, respectively.
-
----
-
-# A random walk is a Markov process
-
-![](https://upload.wikimedia.org/wikipedia/commons/8/85/Random_walk_2500_animated.gif)
-
-<small><small>
-Image source: Wikimedia Commons, <a href="https://commons.wikimedia.org/wiki/File:Random_walk_2500_animated.gif">Random walk 2500 animated</a>
-</small></small>
-
----
-
-# Review: Substitution models
-
-* A substitution is the replacement of one nucleotide or amino acid with another in a population.
-* We model the accumulation of substitutions with continuous-time Markov chains.
-  * A substitution model is defined by a transition rate matrix, which includes the stationary distribution of base frequencies.
-* The simplest model is the Jukes-Cantor (JC69), in which all rates and frequencies are equal.
-
----
-
 # Review: Likelihood
 
 * The likelihood is the probability of the data as we change the parameters of the model (hypothesis).
@@ -38,19 +11,6 @@ Image source: Wikimedia Commons, <a href="https://commons.wikimedia.org/wiki/Fil
 * To reconstruct a tree by maximum likelihood, we need to:
   1. Calculate the likelihood of a tree (given a substitution model).
   2. Explore the space of all possible trees.
-
----
-
-# Review: Calculating tree likelihood
-
-* Jointly estimate the tree (branching order, lengths) and model parameters (substitution rates, rate variation).
-* Starting from the tips, we calculate the likelihood at each branch:
-
-$$P_{ij}(t) = (1-e^{-r_{ij} t})\pi_j \textrm{, for  } i\ne j$$
-
-* Averaging over all possible ancestral states:
-
-$$P_{j}(t) = \sum_{i\in \{A,C,G,T\}} P_{ij}(t)$$
 
 ---
 
@@ -75,12 +35,6 @@ $$P_{j}(t) = \sum_{i\in \{A,C,G,T\}} P_{ij}(t)$$
 <small><small>
 Image source: Wikmedia Commons, <a href="https://commons.wikimedia.org/wiki/File:Overfitted_Data.png">Overfitted data</a>
 </small></small>
-
----
-
-# Examples of model misspecification
-
-* ???
 
 ---
 
@@ -198,6 +152,11 @@ $$w_i = \frac{\exp (-\Delta_i/2)}{\sum_j \exp(-\Delta_j/2)}$$
 * Exploring model space entails long running times
 * AIC is not statistically consistent
   * Increasing the amount of data does not make it certain that AIC selects the correct model.
+
+---
+
+# Bayes factor
+
 
 
 ---
