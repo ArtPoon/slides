@@ -1,4 +1,4 @@
-# MIMM4750G
+# MBI 4750G
 ## Model selection
 ![](/img/xkcd-curves-crop.png)
 
@@ -141,7 +141,7 @@ $$w_i = \frac{\exp (-\Delta_i/2)}{\sum_j \exp(-\Delta_j/2)}$$
 
 # Model averaging
 
-* If our objective is to estimate one or more parameters and no model is clearly better than the others,
+* If our objective is to estimate one or more parameters and no model is clearly better than the others, 
 
 ---
 
@@ -152,6 +152,11 @@ $$w_i = \frac{\exp (-\Delta_i/2)}{\sum_j \exp(-\Delta_j/2)}$$
 * Exploring model space entails long running times
 * AIC is not statistically consistent
   * Increasing the amount of data does not make it certain that AIC selects the correct model.
+
+---
+
+# Bayesian model averaging
+
 
 ---
 

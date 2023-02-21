@@ -5,15 +5,24 @@
 
 ---
 
+# What is ancestral reconstruction?
+
+* Reconstructing the past characteristics of lineages from what we can observe in the present.
+* This requires having some model of how characteristics evolve over time.
+  * Usually, we are reconstructing the characteristics of a common ancestor for which we have measured multiple descendants.
+* Having some estimate of past states can help us understand the origin of epidemics and adaptations.
+
+---
+
 # Maximum parsimony
 
 <table>
   <tr>
     <td style="vertical-align: middle;">
       <ul>
-        <li>Parsimony is the principle of selecting the simplest explanation/hypothesis</li>
+        <li>Parsimony is the principle of selecting the simplest explanation/hypothesis.</li>
         <li><i>Maximum parsimony</i> is attained by assigning ancestral states in the tree that minimize the number of changes required to explain the observed states.</li>
-        <li>Fitch's method first propagates states from tips to root, and then resolves ancestral states upwards from the root.</li>
+        <li><a href="https://en.wikipedia.org/wiki/Walter_M._Fitch">Fitch's</a> method first propagates states from tips to root, and then resolves ancestral states upwards from the root.</li>
       </ul>
     </td>
     <td width="30%">
@@ -30,9 +39,18 @@
 # Limitations of parsimony
 
 * Assumes that changes between all character states are equal.  Can be addressed with weighted parsimony method.
-* Principle of minimum evolution, by definition, is not robust to episodes of rapid evolution.
-* Implicitly assumes that the same amount of time has passed along every branch of the tree.
+* The model of minimum evolution is not robust to episodes of rapid evolution.
+  * Implicitly assumes that the same amount of time has passed along every branch of the tree.
 * No means of quantifying uncertainty of ancestral reconstruction.
+
+---
+
+# Review: Phylogenetic likelihood
+
+* The [maximum likelihood tree](https://slides.filogeneti.ca/html/mimm4750g-L06-likelihood.html#/11) is the tree with the highest probability of generating the data.
+* To compute likelihood, we need a model of evolution &mdash; a discrete-state, continuous-time [Markov chain](https://slides.filogeneti.ca/html/mimm4750g-L05-models.html#/2).
+* This model consists of a [transition rate matrix](https://slides.filogeneti.ca/html/mimm4750g-L05-models.html#/7), $Q$.
+* We can derive a matrix of transition probabilities given time $t$ by matrix exponentiation, $P(t)=\exp(Q t)$.
 
 ---
 
@@ -97,21 +115,40 @@
 
 ---
 
-# HIV vaccine design
+# Pros and cons of ML reconstruction
+
+* More accurate and robust than maximum parsimony
+  * Account for different substitution rates by fitting the model.
+  * Transition probabilities are adjusted for time (branch lengths).
+* Requires more computing power, especially for joint reconstruction.
+
+---
+
+# Bayesian methods
+
+* Reconstructing ancestral states is highly uncertain:
+  * We are not certain about the tree, or the model of evolution.
+  * The root is typically the furthest from our data.
+* Sampling ancestral states from the posterior distribution provides a 
+* Challenging for larger data sets.
+
+---
+
+# Example: HIV vaccine design
 
 <table>
   <tr>
     <td style="vertical-align: middle;">
       <ul>
         <li>HIV-1 is very diverse, with multiple subtypes that can be about 30% divergent in sequence.</li>
-        <li>Only a small number of variants can be incorporated into a vaccine.</li>
+        <li>Only a small number of variants can be incorporated into a accine.</li>
         <li>How do we choose which variants to use?</li>
         <li>Gaschen <i>et al</i>&ast; proposed two strategies: (1) consensus sequence, and (2) ancestral reconstruction.</li>
         <li>Ancestral sequence more likely to have actually existed.</li>
       </ul>
     </td>
     <td width="35%">
-      <img src="https://science.sciencemag.org/content/sci/299/5612/1515.3/F1.medium.gif"/>
+      <img src="/img/1515c-1.gif"/>
       <small>
       Image credit: D Nickle <i>et al.</i> (2003) Science 299: <a href="https://science.sciencemag.org/content/299/5612/1515.3"/>1515-1518</a>.
       </small>
@@ -119,38 +156,19 @@
   </tr>
 </table>
 
-&ast;B Gaschen <i>et al</i> (2002) Science 296: <a href="https://science.sciencemag.org/content/296/5577/2354.abstract">2354-2360</a>.
-
----
-
-# Ancestral adeno-associated virus
-
-* Adeno-associated viruses are ssDNA viruses that infect primates, including humans.
-* Since AAV infection is mild, they are used as viral vectors and genetic vaccination (SARS-CoV-2, HIV).
-
-<img src="https://ars.els-cdn.com/content/image/1-s2.0-S2211124715007597-fx1_lrg.jpg" height="300px"/>
-
 <small><small>
-Image credit: E Zinn <i>et al</i> (2015) <a href="https://www.sciencedirect.com/science/article/pii/S2211124715007597">In Silico Reconstruction of the Viral Evolutionary Lineage Yields a Potent Gene Therapy Vector</a>.  Cell Reports 12: 1056-1068.
+&ast;B Gaschen <i>et al</i> (2002) Diversity Considerations in HIV-1 Vaccine Selection.  Science 296: <a href="https://science.sciencemag.org/content/296/5577/2354.abstract">2354-2360</a>.
 </small></small>
 
 ---
 
-# Mapping substitutions to trees
-
-* If we can reconstruct ancestral states, then we can reconstruct substitution events by comparing states at adjacent nodes.
-* Simplest method is to assume no more than one substitution at a site occurs on a given branch.
-* More accurate methods account for uncertainty in ancestral states and multiple substitution events.
-
----
-
-# Example: hepatitis C virus
+# Example: Hepatitis C virus
 
 * HCV protease is encoded by the NS3 gene, and is targeted by the antiviral simeprevir.
-* The mutation Q80K is associated with reduced susceptibility to simeprevir, and is common in the USA.
+  * The mutation Q80K is associated with reduced susceptibility to simeprevir, and is common in the USA.
 * 96% of all infections with Q80K descend from a single common ancestor.
 
-<img height="200px" src="https://oup.silverchair-cdn.com/oup/backfile/Content_public/Journal/jid/211/8/10.1093_infdis_jiu613/2/jiu61301.png?Expires=1619136588&Signature=Wi-KKMTvpLIJgpHH4NATaRHYqZ558K93ErLaBPt7tGx-XM4Z6zS61Pm8Ff~VMdK9N1oqHpS7p0JdvZeZTSffGrgmdpzfsKZQuVjKOG-R2JZKBVQ5WyxP3t2EERorkfxGfcCbYdCuydltfrmAh5pvVkgv5KUAY1gtZDTnngI-JPea2oXVQKWKfobJ9zsl2pB2G4Dj5KPuB0kkYoiKwrmykWMawIf3ppDuXzs-hQAmsCEi5WDk4VoRvWPqj2lrLCH2D0AlZlXwJGNku4jMP6gPIY40yZvyJt0vnnrWRu-QCoIaLvcHxSdgx88mUlwvk-uwb~P81ETlyeqa5Bruxb7Z5Q__&Key-Pair-Id=APKAIE5G5CRDK6RD3PGA"/>
+<img height="200px" src="/img/q80k.png"/>
 
 <small><small>
 Image credit: RM McCloskey <i>et al.</i> (2014) J Infect Dis 211: <a href="https://academic.oup.com/jid/article/211/8/1288/916424">1288-1295</a>.
@@ -158,12 +176,32 @@ Image credit: RM McCloskey <i>et al.</i> (2014) J Infect Dis 211: <a href="https
 
 ---
 
+# Example: Is HIV-1 adapting to us?
+
+* Reconstructed ancestral HIV-1 proteins from "historic" samples (1979-1989) in North America.
+  * HIV-1 has diversified both genetically and functionally, but no evidence of adaptation to human populations.
+
+<img src="/img/hiv1-north-amer.png" width="450px"/>
+
+<small><small>
+Image credit: Cotton <i>et al.</i> (2014) PLOS Genetics 10(4): <a href="https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1004295">e1004295</a>.
+</small></small>
+
+---
+
+# Mapping mutations to the tree
+
+* If we can reconstruct ancestral states, then we can "map" substitution events to branches by comparing the inferred states on ancestral and descendant nodes.
+* The simplest method is to assume that no more than one substitution at a site occurs on a given branch.
+* [More accurate methods](https://pubmed.ncbi.nlm.nih.gov/12396587/) account for multiple substitution events, and the uncertainty in ancestral states.
+
+---
+
 # Mapping mutations to detect coevolution
 
-* Decades of interest in reconstructing protein structure from sequences.
 * Interactions may be detected from mutations at different sites tend to map to the same branches of the tree.
 
-<img height="200px" src="https://oup.silverchair-cdn.com/oup/backfile/Content_public/Journal/mbe/23/9/10.1093_molbev_msl037/2/m_molbiolevolmsl037f01_ht.jpeg?Expires=1619112862&Signature=4Mzl6TXoqDz-fSoREEm8RUEQvWb3RJpaPwPKspPm6gpfYWnWtZ1SIUs5~BsEVvexusPWdhJ7rRD71h3ASUYge1kmlzamHRWC1BQeU2l1DBwVMJ5Xp~-7E1Mx4Fw0JJJzL6NYWDzT96TDfFLaNNz-5he4965PYsGLnwAOgbeQmrLrCJUO0UUCxVupsjplA5KkAWGsPnteT64WTCgXOeTMP7vESqQAntPQ5qJbqXa1i5gxo1slVIPvOrTnXi0~tJPkiVx7e9YIRiykbjBaAlh1X1yHZ9s-XJWxnDkfarqSzaisXsoibWdBtOGwctr2xTycYcw48qQfNjFpwCp4ZKs7hg__&Key-Pair-Id=APKAIE5G5CRDK6RD3PGA"/>
+<img height="250px" src="/img/shapiro-epistasis.svg"/>
 
 <small><small>
 Image credit: Beth Shapiro <i>et al.</i> (2006) A Phylogenetic Method for Detecting Positive Epistasis in Gene Sequences and Its Application to RNA Virus Evolution.  Mol Biol Evol 23: <a href="https://academic.oup.com/mbe/article/23/9/1724/1014269">1724-1730</a>.
@@ -171,13 +209,26 @@ Image credit: Beth Shapiro <i>et al.</i> (2006) A Phylogenetic Method for Detect
 
 ---
 
-# Interactions in influenza A virus neuraminidase
+# Protein structures from co-evolving residues
+
+* Interacting residues tend to be in contact within the protein structure.
+* Protein structures can be reconstructed from analyzing sequences.
+
+<img src="/img/pone.0028766.g001.png" height="250px"/>
+
+<small><small>
+Image credit: Debora Marks <i>et al.</i> (2011) Protein 3D Structure Computed from Evolutionary Sequence Variation.  PLOS ONE 6(12): <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0028766">e28766</a>.
+</small></small>
+
+---
+
+# Example: Influenza A virus neuraminidase
 
 <table>
 <tr>
 <td>
 <ul>
-<li>Kryazhimskiy <i>et al.</i> modified this method to look for mutations at one site that tend to be followed by a mutation at another site, even if they happen on different branches.</i></li>
+<li>Kryazhimskiy <i>et al.</i> extended the mapping technique to look for mutations at one site that tend to be followed by a mutation at another site, even if they happen on different branches.</i></li>
 </ul>
 <img src="https://journals.plos.org/plosgenetics/article/figure/image?size=inline&id=info:doi/10.1371/journal.pgen.1001301.g001"/>
 </td>
@@ -202,63 +253,11 @@ Image credit: Kryazhimskiy <i>et al.</i> (2011)  PLOS Genetics 7: <a href="https
 
 ---
 
-# Discrete trait models
-
-* Adapt nucleotide Markov model to other characters like host species.
-* Usually assume equal transition rates between states (Mk model), but more advanced methods exist (*e.g.*, [variable selection](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000520), [gravity models](https://science.sciencemag.org/content/312/5772/447.full)).
-<img src="https://lukejharmon.github.io/pcm/images/figure7-3.png" height="300px"/>
-
-<small><small>
-Image credit: Luke Harmon, [Phylogenetic comparative methods](https://lukejharmon.github.io/pcm/chapter7_introdiscrete/).  CC-BY-4.0.
-</small></small>
-
----
-
-# Continuous trait models
-
-* If the character is continuous-valued (*e.g.*, GPS coordinates), then we might use a diffusion ([Brownian motion](https://en.wikipedia.org/wiki/Brownian_motion)) model instead.
-* Require assumptions about constant rate of dispersal, movement through obstacles (*e.g.*, over bodies of water).
-
-<center>
-<div id="crop">
-<img id="cropped" src="https://europepmc.org/articles/PMC3312803/bin/nihms331642f1.jpg"/>
-</div>
-</center>
-
-<small><small>
-Image credit: N Faria (2011), [Toward a quantitative understanding of viral phylogeography](https://www.sciencedirect.com/science/article/pii/S1879625711001222).  Curr Opin Virol 1: 423-429.
-</small></small>
-
----
-
-# Ancestral host ranges
-
-<table>
-  <tr>
-    <td style="vertical-align: middle;">
-      <ul>
-        <li>Bunyavirales is an order of (-)ssRNA viruses including species that can cause deadly hemorrhagic fever in humans.</li>
-        <li>Infect a diversity of animal and plant hosts, often transmitted by insects.</li>
-        <li>M Marklewitz <i>et al.</i> used maximum parsimony and ML methods to reconstruct host range as binary traits.</li>
-        <li>By augmenting their data with cell culture experiments, they were able to reject a vertebrate host origin, implying this switch occurred multiple times.</li>
-      </ul>
-    </td>
-    <td width="35%">
-      <img src="https://www.pnas.org/content/pnas/112/24/7536/F5.large.jpg" height="500px"/>
-      <small>
-      Image credit: M Marklewitz <i>et al.</i> (2015) Proc Natl Acad Sci USA 112: 7536-7541.
-      </small>
-    </td>
-  </tr>
-</table>
-
----
-
 # Pitfalls of ancestral reconstruction
 
 * More difficult to reconstruct at deeper nodes
 * Reconstruction tends to be biased towards the most common states.
-* Sampling bias - over-representation of some locations over others.
+  * Sampling bias: over-representation of some locations over others.
 * Assumes that both the alignment and (if fixed) tree are correct.
 
 
