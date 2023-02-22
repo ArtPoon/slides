@@ -129,7 +129,7 @@
 * Reconstructing ancestral states is highly uncertain:
   * We are not certain about the tree, or the model of evolution.
   * The root is typically the furthest from our data.
-* Sampling ancestral states from the posterior distribution provides a 
+* Sampling ancestral states from the posterior distribution is a better representation of the state of our knowledge.
 * Challenging for larger data sets.
 
 ---
@@ -141,9 +141,11 @@
     <td style="vertical-align: middle;">
       <ul>
         <li>HIV-1 is very diverse, with multiple subtypes that can be about 30% divergent in sequence.</li>
-        <li>Only a small number of variants can be incorporated into a accine.</li>
-        <li>How do we choose which variants to use?</li>
-        <li>Gaschen <i>et al</i>&ast; proposed two strategies: (1) consensus sequence, and (2) ancestral reconstruction.</li>
+        <ul>
+          <li>Only a small number of variants can be incorporated into a vaccine.</li>
+          <li>How do we choose which variants to use?</li>
+        </ul>
+        <li>Gaschen <i>et al</i> (2002) proposed two strategies: (1) consensus sequence, and (2) ancestral reconstruction.</li>
         <li>Ancestral sequence more likely to have actually existed.</li>
       </ul>
     </td>
@@ -157,7 +159,7 @@
 </table>
 
 <small><small>
-&ast;B Gaschen <i>et al</i> (2002) Diversity Considerations in HIV-1 Vaccine Selection.  Science 296: <a href="https://science.sciencemag.org/content/296/5577/2354.abstract">2354-2360</a>.
+B Gaschen <i>et al</i> (2002) Diversity Considerations in HIV-1 Vaccine Selection.  Science 296: <a href="https://science.sciencemag.org/content/296/5577/2354.abstract">2354-2360</a>.
 </small></small>
 
 ---
@@ -180,7 +182,6 @@ Image credit: RM McCloskey <i>et al.</i> (2014) J Infect Dis 211: <a href="https
 
 * Reconstructed ancestral HIV-1 proteins from "historic" samples (1979-1989) in North America.
   * HIV-1 has diversified both genetically and functionally, but no evidence of adaptation to human populations.
-
 <img src="/img/hiv1-north-amer.png" width="450px"/>
 
 <small><small>
@@ -192,6 +193,7 @@ Image credit: Cotton <i>et al.</i> (2014) PLOS Genetics 10(4): <a href="https://
 # Mapping mutations to the tree
 
 * If we can reconstruct ancestral states, then we can "map" substitution events to branches by comparing the inferred states on ancestral and descendant nodes.
+$$X \longrightarrow Y$$
 * The simplest method is to assume that no more than one substitution at a site occurs on a given branch.
 * [More accurate methods](https://pubmed.ncbi.nlm.nih.gov/12396587/) account for multiple substitution events, and the uncertainty in ancestral states.
 
@@ -260,6 +262,30 @@ Image credit: Kryazhimskiy <i>et al.</i> (2011)  PLOS Genetics 7: <a href="https
   * Sampling bias: over-representation of some locations over others.
 * Assumes that both the alignment and (if fixed) tree are correct.
 
+---
+
+# Experimental validation
+
+Randall *et al.* evolved a plasmid encoding a fluorescent protein to test ancestral reconstruction methods.
+
+<table>
+<tr>
+<td width="55%">
+  <img src="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fncomms12847/MediaObjects/41467_2016_Article_BFncomms12847_Fig1_HTML.jpg"/>
+  <small>
+  Phylogeny of evolving colours, labelled with numbers of non-syn. / synonymous substitutions.
+  <br/><br/>
+  Image credit: Randall <i>et al.</i> (2016)  Nat Comm 7: <a href="https://www.nature.com/articles/ncomms12847">12847</a>.
+  </small>
+</td>
+<td width="45%">
+  <small>
+  Most of the ancestral protein sequence was reconstructed accurately, with no significant differences among methods.
+  </small>
+  <img src="/img/randall.svg"/>
+</td>
+</tr>
+</table>
 
 ---
 
