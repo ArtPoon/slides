@@ -259,11 +259,22 @@ $$P(Y | X, s) \propto \exp( - (X - Y)^T S^{-1} (X - Y) )$$
 
 # Diffusion on trees
 
+<div style="font-size: 16pt; font-weight: 500">In this example, the dispersal rate is allowed to vary among branches of the tree:</div>
+<img src="/img/msab031f1.jpeg" width="600px"/>
+
+<small><small>
+Image credit: Dellcour <i>et al.</i> (2021) Relax, Keep Walking - A Practical Guide to Continuous Phylogeographic Inference with BEAST.  Mol Biol Evol 38: <a href="https://academic.oup.com/mbe/article/38/8/3486/6126413">3486-3493</a>.
+</small></small>
+
+---
+
+# Reconstruction of dispersal
+
 <table>
 <tr>
 <td>
   <ul>
-  <li>This equation enables us to calculate the probability of an ancestral state on a branch of length $t$.</li>
+  <li>If we can calculate the probability of migrating from $X$ to $Y$ on a branch of length $t$, we can reconstruct ancestral states.</li>
   <li>On the right, a simulated tree (solid black) has its root at location 0.</li>
   <li>Its descendants spread by random diffusion up to tips A-Z.</li>
   <li>The ancestral state reconstructions (white) have a very broad confidence interval (blue)!</li>
@@ -280,8 +291,17 @@ $$P(Y | X, s) \propto \exp( - (X - Y)^T S^{-1} (X - Y) )$$
 
 ---
 
-# Problems with continuous models
+# Pros and cons
 
-* Difficult to parameterize.
+* Inferred migration routes can reach unsampled areas.
+* More difficult to represent dispersal as a continuous process (*e.g.*, air travel).
+* Continuous data are not always available (*e.g.*, GPS coordinates)
+  * Must be estimated from discrete data, such as centroids.
 * Movement through obstacles (*e.g.*, over bodies of water).
 
+---
+
+# Suggested readings
+
+* [Toward a quantitative understanding of viral phylogeography](https://www.sciencedirect.com/science/article/pii/S1879625711001222)
+* [Relax, Keep Walking - A Practical Guide to Continuous Phylogeographic Inference with BEAST](https://academic.oup.com/mbe/article/38/8/3486/6126413)
