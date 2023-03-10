@@ -28,20 +28,23 @@
   * $N(t)$ is the size of the population at time $t$.
   * The birth rate is $\lambda_N = N(t)\lambda$.
   * The time between births is exponentially distributed with rate $\lambda_N$.
-![](/img/bdtree.svg)
-<small><small>
-A realization of a pure birth process using the `bdtree` function in R package `phytools`.
-</small></small>
 
----
-
-# Differences from the coalescent
-
-* Birth-death models are processes that move forward in time.
-* The number of tips is a random outcome.
-  * For the coalescent,  the number and times associated with tips are *data*.
-* For BD models, we have to model how infections are sampled from the population.
-  * The simplest model is that a given number $n$ is sampled at the same time.
+<table>
+<tr>
+<td width="50%">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Birth_process.svg"/>
+  <small>
+  Image source: <a href="https://commons.wikimedia.org/wiki/File:Birth_process.svg">Wikimedia Commons</a>
+  </small>
+</td>
+<td>
+  <img style="" src="/img/bdtree.svg"/>
+  <small>
+  A realization of a pure birth process using the `bdtree` function in R package `phytools`.
+  </small>
+</td>
+</tr>
+</table>
 
 ---
 
@@ -52,6 +55,21 @@ A realization of a pure birth process using the `bdtree` function in R package `
 $$\tau \sim (\lambda + \mu) e^{-(\lambda+\mu)\tau}$$
 * The probability that the next event is a birth is:
 $$\frac{\lambda}{\lambda+\mu}$$
+
+
+---
+
+# History
+
+* The birth-death model was first used to model the probability that a population would go extinct by chance ([Feller 1939](https://link.springer.com/article/10.1007/BF01602932)). <img src="https://upload.wikimedia.org/wikipedia/commons/2/28/BD-proces.png" width="500px"/>
+
+* Related to the Galton-Watson branching process (a discrete-time model): $X_{t+1} = \sum_{i=1}^{X_t} R_t^{(i)}$
+  * In the Victorian era, aristocrats were worried that their family names were going extinct.
+  * $R_t$ is the random number of children born to one individual in generation $t$.
+
+<small><small>
+Image source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:BD-proces.png)
+<small><small>
 
 ---
 
@@ -97,49 +115,18 @@ $$`
 # Stochastic growth
 
 * These differential equations have a closed form solution.  
-  * For the simplest case where we start with one lineage at $t=0$:
-
-`$$
-\begin{align*}
-p_0(t)&=\alpha & p_n(t) &= (1-\alpha)(1-\beta)\beta^{n-1}\\[6pt]
-\alpha &= \frac{ \epsilon (e^{rt}-1) }
-              { e^{rt} - \epsilon } &
-\beta &= \frac{\alpha}{\epsilon}\\[6pt]
-\epsilon &= \frac{\mu}{\lambda} & r &= \lambda - \mu\\
-\end{align*}
-$$`
-
-* $\alpha$ is the probability of going extinct before time $t$.
-
-<small><small>
-Source: Luke Harmon, <a href="https://lukejharmon.github.io/pcm/chapter10_birthdeath/">Phylogenetic comparative methods, chapter 10</a>.
-</small></small>
-
----
-
-Probability distributions for $\lambda=0.1$, $t=5.0$, and $\mu=0$ or $\mu=0.05$
+* Probability distributions for $\lambda=0.1$, $t=5.0$, and $\mu=0$ or $\mu=0.05$, starting with one lineage at $t=0$:
 
 ![](/img/bddists.svg)
-
-```R
-bddist <- function(t, n, lambda, mu) {
-  eps <- mu/lambda; r <- lambda-mu; ert <- exp(r*t)
-  alpha <- eps*(ert-1)/(ert-eps); beta <- (ert-1)/(ert-eps)
-  pn <- (1-alpha)*(1-beta)*beta^(1:n-1)
-  c(alpha, pn)
-}
-```
-
 
 ---
 
 # Tree probability
 
-* How do we calculate the probability of a tree under a birth-death model?
+* These distributions tell us the probability that $n$ lineages exist at time $t$
+  * They do *not* tell us how those lineages are related!
+* How do we calculate the probability of a __tree__ under a birth-death model?
 * We assume *complete sampling*: all $n$ lineages that have survived to the present day have been sampled.
-* Let the root of the tree, where a lineage splits into two (the first birth event), have time $t_1$.
-  * There are $n-1$ splits at times $t_1, t_2, \ldots, t_{n-1}$.
-  * We will measure time in reverse, so the most recent time is 0, and $t_{i-1} > t_{i}$.
 
 ---
 
@@ -177,11 +164,41 @@ bddist <- function(t, n, lambda, mu) {
 \end{align}
 $$`
 
-* For the case of complete sampling and constant rates $\mu$ and $\lambda$, these have a closed-form solution.
+---
+
+
+$$\frac{dD_N(t)}{dt} = -(\lambda+\mu)D_N(t) + 2\lambda E(t) D_N(t)$$
+
+<table>
+  <tr>
+    <td width="50%">
+      <ul>
+        <li>Suppose we start at some node $N$ and follow the branch $t$ units back in time.</li>
+        <li>Since this branch exists, we know the lineage did not go extinct ($-\mu$)</li>
+        <li>Since we do not encounter a node, we know the lineage did not speciate ($-\lambda$), or if it did, one of the two branches went extinct ($+2\lambda E(t)$)</li>
+      </ul>
+    </td>
+    <td width="40%">
+      <img src="/img/figure11-6.png"/>
+      <small>
+      Source: Luke Harmon, <a href="https://lukejharmon.github.io/pcm/chapter10_birthdeath/">Phylogenetic comparative methods, chapter 10</a>.
+      </small>
+    </td>
+  </tr>
+</table>
+
 
 ---
 
-# Tree probability (4)
+$$\frac{dE(t)}{dt} = \mu - (\mu+\lambda)E(t) + \lambda E(t)^2$$
+
+* There are three reasons a lineage might not survive to the present day:
+  1. it goes extinct in this time interval (at rate $\mu$)
+  2. it survives this time interval, but goes extinct later (at rate $-(\lambda+\mu)E(t)$)
+  3. it speciates in this time interval, but both descendants go extinct (at rate $\lambda E(t)^2$)
+
+---
+
 * When we reach a branching point, we combine probabilities:
 
 $$D_{N'}(t) = D_N(t) D_M(t) \lambda$$
@@ -197,6 +214,7 @@ Source: Luke Harmon, <a href="https://lukejharmon.github.io/pcm/chapter10_birthd
 
 # Incomplete sampling
 
+* For the case of complete sampling and constant rates $\mu$ and $\lambda$, $D_N(t)$ and $E_N(t)$ have  (scary!) closed-form solutions.
 
 <img src="https://lukejharmon.github.io/pcm/images/figure10-5.png" height="300px"/>
 
@@ -214,7 +232,17 @@ Source: Luke Harmon, <a href="https://lukejharmon.github.io/pcm/chapter10_birthd
 * If we don't account for incomplete sampling, then our estimates of $\mu$ and $\lambda$ will be biased.
 * If sampling of tips is completely at random, then we can just modify each $D_N(0)$ from $1$ to $1-\rho$.
   * $\rho$ is the "sampling probability" or "fraction".
-* $E(0)$ increases from $0$ to $\rho$ - failing to be sampled is the same as going extinct.
+* $E(0)$ increases from $0$ to $\rho$ &mdash; failing to be sampled is the same as going extinct.
+
+---
+
+# Differences from the coalescent
+
+* For the coalescent, the number and times associated with tips are data for estimating $N_e$.
+* Birth-death processes move forward in time &mdash; the number of tips is a random outcome.
+  * We have to model how infections are sampled from the population.
+  * The simplest model is that a given number $n$ is sampled at the same time.
+  * Tips are data for estimating both sampling rate and birth/death rates.
 
 ---
 
