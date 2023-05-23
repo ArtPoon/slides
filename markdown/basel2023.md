@@ -2,6 +2,7 @@
 ## Data-driven clustering for molecular epidemiology
 ### Art Poon, MSc PhD
 
+Western University, Canada
 <div style="color: black; font-size: 0.8em">
 Department of Pathology and Laboratory Medicine<br/>
 Department of Computer Science<br/>
@@ -120,16 +121,18 @@ Department of Microbiology and Immunology<br/>
   <ul>
     <li>In epidemiology, a cluster of cases in space and/or time implies a common source.</li>
     <li>The Broad street cholera outbreak (<i>right</i>) is often used as an early example of this application of clustering.</li>
-    <ul><li>Contrary to how this is taught, Snow apparently did not make use of physical maps until intervening on the outbreak (Brody <i>et al.</i> 2000).</li></ul>
+    <ul><li>Snow apparently did not make use of physical maps until intervening on the outbreak (Brody <i>et al.</i> 2000).</li></ul>
+    <li>Many scanning statistics have been developed for spatiotemporal clustering of disease.</li>
   </ul>
-    <p>
-    Brody et al. (2000) Map-making and myth-making in Broad Street: the London cholera epidemic, 1854.  Lancet 356; 64-68.
-    </p>
   </td>
   <td width="30%">
     <img src="/img/broad-street.jpg" width="250px"/>
   </td>
 </table>
+
+<small>
+    Brody et al. (2000) Map-making and myth-making in Broad Street: the London cholera epidemic, 1854.  Lancet 356; 64-68.
+</small>
 
 ---
 
@@ -138,6 +141,7 @@ Department of Microbiology and Immunology<br/>
 * A <u>genetic</u> cluster of infections similarly implies that cases are related by recent transmission events.
 * Sequences may be easier to collect.
   * Routine sequencing is standard of care for some viruses, *e.g.*, HIV-1.
+  * Spatial location may be unavailable or meaningless (transmission by intimate contact).
 * Genetic clustering requires measurable evolution on a similar time scale as transmission.
 
 ---
@@ -333,19 +337,181 @@ Chato, C., Kalish, M. L., & Poon, A. F. (2020). Public health in genetic spaces:
 
 ---
 
-## Pros and cons
+Optimal thresholds maximize the covariance among clusters between mean recency (diameter) and the number of new cases (dark)
+![](/img/maup-graphs.svg)
 
-* This provides a data-driven method to optimize clustering thresholds to the population at hand.
-* Better results can be obtained by substituting dates of sample collection with dates of HIV diagnosis.
-* We have yet to address the problem of how to partition *time* (years are not necessarily the best interval).
+---
+
+## Results and limitations
+
+* Optimal TN93 thresholds tend to be similar to those used in the literature (~0.015).
 * The method is sensitive to uneven sampling rates over time.
+  * We assume random sampling - what about outbreak investigations?
+* Better results can be obtained by substituting dates of sample collection with dates of HIV diagnosis.
+  * The latter metadata are more difficult to collect at a large scale.
+* How should we partition *time*?  Years are not necessarily the best interval.
 
 ---
 
-# Extension to phylogenetic clustering
+## Extension to clustering on trees
 
-
+* Phylogenetic clustering is older and more pervasive, but also more complicated!
+* Multiple criteria (branch length, bootstrap support)
+  * Different summary statistics on lengths, *e.g.*, mean, maximum (ClusterPicker).
+  * Different length definitions, *e.g.*, pendant, patristic.
+  * Subtrees (monophyletic) versus subset trees (paraphyletic), often not specified.
+* Pairwise distances are invariant &mdash; trees have to rebuilt with the addition of new sequences.
 
 ---
 
-# Most cases are not connected to clusters!
+<table>
+  <tr>
+    <td width="67%">
+      <ul>
+        <li>Graft new cases to the tree by maximum likelihood (pplacer, <a href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-11-538">Matsen <i>et al.</i> 2010</a>).</li>
+        <li>Eliminating bootstrap criterion consistently reduces information loss.</li>
+      </ul>
+    </td>
+    <td style="vertical-align: middle;">
+      <div class="avatar" style="height: 110px; width: 110px;">
+        <img src="/img/connor-thumb.jpeg">
+      </div>
+    </td>
+    <td style="vertical-align: middle;">
+      Connor Chato, MSc student<br/>
+      <small>now Public Health Agency of Canada</small>
+    </td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <td><img src="/img/GAICSt_Comp.svg"/></td>
+    <td><img src="/img/GAICTn_Comp.svg"/></td>
+  </tr>
+</table>
+
+<small>
+Chato, C., Feng, Y., Ruan, Y., Xing, H., Herbeck, J., Kalish, M., & Poon, A. F. (2022). Optimized phylogenetic clustering of HIV-1 sequence data for public health applications. PLOS Computational Biology, 18(11), e1010745.
+</small>
+
+---
+
+<table>
+  <tr>
+    <td>
+      <h4>The majority of new cases are not in clusters!</h4>
+      <ul>
+        <li>Since our objective is to predict the "location" of the next cases, this is a problem!</li>
+        <li>Relaxing the distance threshold to capture more new cases will cause the clusters to collapse into a single giant connected component.</li>
+      </ul>
+    </td>
+    <td width="55%">
+      <img src="/img/TreeClu-newcases.svg"/>
+    </td>
+  </tr>
+</table>
+
+<small>
+Chato, C., Feng, Y., Ruan, Y., Xing, H., Herbeck, J., Kalish, M., & Poon, A. F. (2022). Optimized phylogenetic clustering of HIV-1 sequence data for public health applications. PLOS Computational Biology, 18(11), e1010745.
+</small>
+
+---
+
+<table>
+  <tr>
+    <td>
+      <h2>Community detection</h2>
+      <ul>
+        <li>We don't have to restrict our definition of clusters to connected components!</li>
+        <li>We can partition components into clusters according to edge densities:</li>
+          <ul>
+            <li><i>i.e.</i>, network modularity (<a href="https://www.pnas.org/doi/10.1073/pnas.0601602103">Newman 2006</a>).</li>
+            <li>An abundance of community detection methods in the network science literature.</li>
+          </ul>
+        <li>Uncouples the problem of connecting new cases from the problem of separating known cases.</li>
+        
+      </ul>
+    </td>
+    <td width="35%" style="vertical-align: middle">
+      <img src="/img/431083_2_En_9_Fig4_HTML.jpeg"/>
+    </td>
+  </tr>
+</table>
+
+<small>
+Image credit: Watson, A. K., Lannes, R., Pathmanathan, J. S., M&eacute;heust, R., Karkar, S., Colson, P., ... & Bapteste, E. (2019). The methodology behind network thinking: graphs to analyze microbial complexity and evolution. Evolutionary genomics: Statistical and computational methods, 271-308.
+</small>
+
+---
+
+## Optimizing community detection
+
+<table>
+  <tr>
+    <td>
+      <ul>
+        <li>Applied the Markov clustering algorithm (MCL, <a href="https://doi.org/10.1137/040608635">van Dongen 2008</a>) to graphs induced by varying TN93 thresholds.</li>
+        <li>MCL simulates flow through the network to resolve edge-dense clusters.</li>
+        <li>We used the same $\Delta$AIC method to optimize the clustering parameters (<i>right</i>).</li>
+        <li>AIC was fairly robust to changing MCL parameters.</li>
+      </ul>
+    </td>
+    <td width="45%">
+      <img src="/img/tenn-deltaAIC.png">
+      <table>
+      <tr><td>
+      <div class="avatar" style="height: 110px; width: 110px">
+        <img src="/img/molly-thumb.jpeg">
+      </div>
+      </td><td>
+        Molly Liu<br/>
+        MSc graduate
+      </td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<br/>
+<small>
+van Dongen, Stijn, Graph clustering via a discrete uncoupling process, Siam Journal on Matrix Analysis and Applications 30-1, p121-141, 2008.
+</small>
+
+---
+
+## Dissolving the giant component
+![](/img/community-figure3.png)
+<br/>
+<small>
+Liu, M., Chao, C., & Poon, A. F. (2023). From components to communities: bringing network science to clustering for molecular epidemiology. Virus Evolution, vead026.
+</small>
+
+---
+
+## Concluding remarks
+
+* Community detection represents a wide avenue for further research.
+* Many model-based clustering methods have also been proposed:
+  * *e.g.*, [DM-PhyClus](https://github.com/villandre/DMphyClus) (Villandr&eacute; *et al.*, 2018); [MSBD](https://taming-the-beast.org/tutorials/MSBD-tutorial/) (Barrido-Sottani *et al.*, 2018); <br/>[clmp](https://shiny.filogeneti.ca/clmp/) (McCloskey and Poon, 2017).
+* Will these innovations ever be adopted by public health?
+
+> "Chato, Kalish, and Poon (2020) recommends tailoring transmission clustering thresholds to the local epidemic context [19]; however, the current HIV molecular surveillance program infrastructure in the US would likely be unable to facilitate the high level statistical analyses required to accomplish this."
+
+<br/>
+<small>
+Rich, Shannan N., et al. "Employing molecular phylodynamic methods to identify and forecast HIV transmission clusters in public health settings: A qualitative study." Viruses 12.9 (2020): 921.
+</small>
+
+---
+
+## Thanks!
+
+<table>
+<tr>
+  <td>
+    <img src="/img/cihr.png"/><br/>
+    <img src="/img/NSERC_RGB.png"/>
+  </td>
+  <td>
+  <img src="/img/lab-thumbnails.jpeg"/></td>
+</tr>
+</table>
