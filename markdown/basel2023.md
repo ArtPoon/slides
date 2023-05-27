@@ -378,8 +378,8 @@ Optimal thresholds maximize the covariance among clusters between mean recency (
       </div>
     </td>
     <td style="vertical-align: middle;">
-      Connor Chato, MSc student<br/>
-      <small>now Public Health Agency of Canada</small>
+      Connor Chato, MSc graduate<br/>
+      <small>Public Health Agency of Canada</small>
     </td>
   </tr>
 </table>
