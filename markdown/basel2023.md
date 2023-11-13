@@ -293,11 +293,11 @@ Chato, C., Kalish, M. L., & Poon, A. F. (2020). Public health in genetic spaces:
   <td>
     <ul>
     <li>We can add any number of individual-level predictors to this linear model.</li>
-    <li>The probability $\rho$ of an edge between $v$ and $u$ is: `$\log\left(\frac{\hat{\rho}}{1-\hat{\rho}}\right) = \alpha + \beta_0 \left(t_v-t_{u}\right)$`</li>
-
-    <li>This gives us an alternate model:</li>
-
+    <li>The probability $\rho$ of an edge between $v$ and $u$ is: 
+$\log\left(\frac{\hat{\rho}}{1-\hat{\rho}}\right) = \alpha + \beta_0 \left(t_v-t_{u}\right)$</li>
+    <li>This gives us an alternate model:
     `$$\hat{R'}(C_i) = \exp\left(\alpha +  \beta |C_i| + \beta_t \sum_{v\in C_i} \rho_v \right)$$`
+    </li>
     </ul>
   </td>
   <td width="45%">
@@ -429,7 +429,6 @@ Chato, C., Feng, Y., Ruan, Y., Xing, H., Herbeck, J., Kalish, M., & Poon, A. F. 
             <li>An abundance of community detection methods in the network science literature.</li>
           </ul>
         <li>Uncouples the problem of connecting new cases from the problem of separating known cases.</li>
-        
       </ul>
     </td>
     <td width="35%" style="vertical-align: middle">
