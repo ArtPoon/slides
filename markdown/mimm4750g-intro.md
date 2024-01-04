@@ -1,128 +1,89 @@
-# Bioinformatics of Infectious Diseases
-## What is bioinformatics?
-![](https://imgs.xkcd.com/comics/coronavirus_genome.png)
-
-<br/>
-<small><small><small>
-All original material released under a Creative Commons license (CC-BY-SA-4.0).
-</small></small></small>
+# MIMM4750g
+## Introduction
+![](https://imgs.xkcd.com/comics/university_website.png)
 
 ---
 
-# Course materials
+# Course description
 
-* All slides are available at http://slides.filogeneti.ca/html
-* Released under a [Creative Commons](https://creativecommons.org/) CC-BY-SA-4.0 license
-* To export a printable PDF, replace `.html#/` with `.html?print-pdf`
-
----
-
-# Course syllabus
-
-* Synchronous live lectures (M, F @9:30am)
-  * Zoom lectures will be recorded for subsequent review.
-* Synchronous live practicals (W @9:30am)
-  * Assistance provided by TA and instructor via Microsoft Teams.
-* Attendance to all live sessions is expected.
+* Instructors:
+  * Dr. Art Poon (apoon42@uwo.ca)
+  * Dr. Jennifer Guthrie (jennifer.guthrie@uwo.ca)
+* Teaching assistant:
+  * Sugitha Janarthanan
 
 ---
 
-# Topics
+# Schedule
 
-* What is bioinformatics?
-* Databases
-  * Genbank and BLAST
-* Sequence alignment
-  * short read mapping
-  * *de novo* assembly, pathogen discovery
-* Comparative genomics
-  * distances and clustering
-  * viral taxonomy, nomenclature
-
----
-
-# Topics (after Reading Week)
-
-* Building trees
-  * Distance methods
-  * Rooting trees
-  * Maximum likelihood and models of evolution
-* Detecting adaptation
-* Modeling epidemics
-  * Coalescent models
-  * Bayesian methods
-  * Compartmental models
-
----
-
-# Policy on deadlines
-
-* Any assignment will receive a **grade of zero** if it is submitted after the deadline, with the exception of academic accommodation and self-reported absences.
-
-* In the case of academic accommodation, the assignment must be submitted **within 48 hours** of the original deadline.
-
-* **There are no make-up labs.**   With accommodation, the total grade value of a missed lab with accommodation will be re-allocated to the next lab, or to the final project (in case of last assignment).  
+* Lectures 
+  * Mondays and Fridays (9:30am - 10:20am)
+* Labs: 
+  * Wednesdays (9:30am - 11:20am)
+  * **You are expected to attend all labs!**
+  * Check UWO Extranet for location
 
 ---
 
 # Evaluation
 
-* Lab assignments (50%)
-  * Practical application of topics covered in class on remote server or home desktop (via web apps)
+* There are 8 computing lab assignments on Wednesdays.
+* The remaining lab times are reserved for working on your project.
 
-* Draft report (15%)
-  * Proposal of independent project (&geq; 500 words).  
-  * Background, rationale, proposed data sources and methods.  
-
-* Independent project report (35%)
-  * Final report of project, written in form of a scientific paper (&geq; 2,000 words).
-  * Background, rationale, data sources and methods, results and discussion.
+| Assessment | Deadline | Weight |
+|----|---|---|
+| Computing lab assignments | | 35% |
+| Data report | February 2, 2024 | 15% |
+| Draft report | March 24, 2024 | 15% |
+| Final report | April 8, 2024 | 30% |
+| Participation | | 5% |
 
 ---
 
-# Evaluation
+# Independent project
 
-* No virtual proctoring will be used.
-* Written assignments will be submitted to Turnitin
-* Grading rubrics will be provided for both written assignments.
-* Late assignments *without illness self-reports* will be subject to a 10%/day penalty.
+* This is an [essay course](https://www.uwo.ca/univsec/pdf/academic_policies/registration_progression_grad/coursenumbering.pdf)!
+
+* Written assessments will be reports about an independent project.
+
+* You are responsible for *independently* collecting data, analyzing it using methods we learn in this course, and preparing a written report.
+
+* [TurnItIn](https://elearningtoolkit.uwo.ca/tools/TurnItIn.html) *will* be used to assess written assignments.
+
+---
+
+# Expectations about AI
+
+* Assessment will place greater weight on methods and results than introduction.
+* Analyses must be run on the course server (mbilabs-02.schulich.uwo.ca).
+* Your data and workflow on the server should be organized and documented.
+* Your reports must contain at least one figure.
+
+---
+
+# "I'm worried about coding"
+
+* This course has no prerequisites in computer science - you will not have to write any of your own code.
+* *However*, you will need to become comfortable with the command line interface.
+* Reviewing the **UNIX and Markdown guide and quick reference** is *strongly recommended*.
 
 ---
 
 # What is bioinformatics?
 
-* Bioinformatics is the use of computing and statistics to solve problems in biology.
-  * Automation, high performance computing
-  * Data curation and management
-  * Analysis of complex data (e.g., sequences)
-* Rapid growth driven by the widespread adoption of high-throughput technologies like next-generation sequencing.
+* Bioinformatics is the use of computers to manage and analyze biological data.
+* New lab technologies can produce overwhelming amounts of data.
+* Much of bioinformatics concerns genetic sequence data, although there are other important domains (structural data, imaging data).
 
 ---
 
-# The history of bioinformatics
+# Bioinformatics and infectious disease
 
-<a href="http://slides.filogeneti.ca/TimelineJS3/bioinfo.html" target="_blank" rel="noopener noreferrer">Link out to TimelineJS3</a>
-
----
-
-Upward trend of bioinformatics in high impact journals in medical sciences
-![](/img/bioinformatics-pubs.svg)
+* Infectious diseases (viruses, bacteria, and single-celled eukaryotes) are often characterized by sequence alone.
+* We can learn a lot about an infection by comparing its sequence to other sequences.
+* Reconstructing a tree connecting sequences to their common ancestors back in time can tell us about the origin and spread of an infectious disease.
 
 ---
 
-# Nextstrain
-![](/img/nextstrain-namer.png)
+# Public databases
 
----
-
-<center>
-<iframe width="100%" height="550" frameborder="0"
-  src="https://observablehq.com/embed/@spond/revised-sars-cov-2-analytics-page?cell=*"></iframe>
-</center>
-
----
-
-<center>
-<iframe src="https://coronavirus3d.org/" width="100%" height="550" frameborder="0">
-</iframe>
-</center>
