@@ -1,64 +1,7 @@
-# MIMM4750g
+# MBI 4750G
 ## Genetic distances
+
 ![](https://imgs.xkcd.com/comics/genetic_testing.png)
-
----
-
-# Schedule
-
-* Lectures on Mondays and Fridays at 9:30am in the [Arthur and Sonia Labatt Health Science Building](https://www.vreng.ca/western-university-arthur--sonia-labatt-health-sciences-building.html), [HSB9](https://wts.uwo.ca/ctg/classrooms/health_sciences_building/hsb_9.html).
-* Lab practicals on Wednesdays from 9:30am to 11:30am in the [Arthur and Sonia Labatt Health Science Building](https://www.vreng.ca/western-university-arthur--sonia-labatt-health-sciences-building.html), [Genlab HSB-14](https://wts.uwo.ca/genlabs/).
-* **All sessions in person**.
-* Lectures will be recorded (audio only).
-
----
-
-# Learning objectives
-
-* Cluster virus sequences for [classification](https://en.wikipedia.org/wiki/Virus_classification) and outbreak detection.
-* Understand and apply different strategies for [tree-building](https://en.wikipedia.org/wiki/Computational_phylogenetics).
-* Detect sites under [positive selection](https://en.wikipedia.org/wiki/Directional_selection) in a virus genome.
-* Use [Bayesian methods](https://en.wikipedia.org/wiki/Bayesian_inference) to fit epidemic models to dated sequences.
-* Assemble genomes of unknown viruses from [metagenomic](https://en.wikipedia.org/wiki/Metagenomics) data.
-* Understand the [ethical challenges](https://en.wikipedia.org/wiki/Information_privacy) of bioinformatics and data sharing.
-
----
-
-# Evaluation
-
-* This is an [essay course](https://www.uwo.ca/univsec/pdf/academic_policies/registration_progression_grad/coursenumbering.pdf)!
-
-* Three components:
-  * Computing lab assignments - 50%
-  * Project proposal (due February 18, 2023) - 15%
-  * Project final report (due April 10, 2023) - 35%
-
-* You are responsible for *independently* carrying out your own bioinformatic analysis and presenting your results as a short report.
-
-* [TurnItIn](https://elearningtoolkit.uwo.ca/tools/TurnItIn.html) *will* be used to assess written assignments.
-
----
-
-# How to do well
-
-* Labs:
-  * This course has no prerequisites in computer science - you will not have to write any of your own code.
-  * *However*, you will need to become comfortable with the command line interface.
-  * Reviewing `Lab00.md` is *strongly recommended*.
-
-* Writing:
-  * Start writing your methods section first - it is the easiest to write.
-  * Next, go into your results by describing your analysis outputs.
-
----
-
-# Bioinformatics and infectious disease
-
-* Bioinformatics is the use of computers to manage and analyze biological data.
-  * New lab technologies can produce overwhelming amounts of data.
-  * Much of bioinformatics concerns genetic sequence data, although there are other important domains (structural data, imaging data).
-
-* Infectious diseases (viruses, bacteria, and single-celled eukaryotes) are often characterized by sequence alone.
 
 ---
 
@@ -82,26 +25,6 @@
 
 ---
 
-# Genetic distances and the triangle inequality
-
-<table>
-  <tr>
-    <td>
-      <ul>
-      <li>A genetic distance does <i>not</i> have to satisfy the triangle inequality, <i>i.e.,</i></li>
-      $$d(x,z) \le d(x,y) + d(y,z)$$
-      <li>Suppose sequence $x=A$, $y=G$ and $z=C$.</li>
-      <li>Under what condition would the triangle inequality be violated?</li>
-      </ul>
-    </td>
-    <td width="50%">
-      <img src="/img/triangle-inequality.svg" width="400px"/>
-    </td>
-  </tr>
-</table>
-
----
-
 # Alignment-free methods
 
 * A $k$-mer is a substring of length $k$ characters.
@@ -121,14 +44,13 @@ Image credit: A Zielezinski <i>et al.</i> 2017, [Alignment-free sequence compari
 
 ---
 
-# Some examples of k-mer based distances
+# Pros and cons of alignment-free methods
 
-* Manhattan distance ($W = W_k(s) \cup W_k(t)$):
-$$d(s, t) = \sum_{w\in W} |f(s,w) - f(t,w)|$$
-* Euclidean distance:
-$$d(s, t) = \sqrt{\sum_{w\in W} (f(s,w) - f(t,w))^2}$$
-* Canberra distance:
-$$d(s, t) = \sum_{w\in W}\frac{|f(s,w) - f(t,w)|}{|f(s,w)|+|f(t,w)|}$$
+* Linear [time complexity](https://en.wikipedia.org/wiki/Time_complexity): we only have to calcaulte the quantities $W_k(s)$ and $f(s, w)$ once for each sequence $s$.
+  * Alignment is quadratic with the length of the two sequences $s$ and $t$.
+* There are nearly 100 different alignment-free methods - which one should we use?
+* By fragmenting a sequence down into "words", we lose information about where these features are.
+  * In fact, we can use alignment-free methods to compare completely unrelated sequences!
 
 ---
 
@@ -241,8 +163,134 @@ GGGATGCACTCGCTG
 
 ---
 
+# Distance clustering
+
+* A [cluster](https://en.wikipedia.org/wiki/Cluster_analysis) is a group of observations that are more similar to each other than observations outside the cluster.
+  * Since we often have only genetic sequences to work with, we tend to cluster infections by genetic distance.
+
+* Several applications of clustering for infectious diseases
+  * Defining a virus nomenclature (taxonomy)
+  * Finding population-level associations with transmission patterns (epidemiology)
+  * Detecting outbreaks (epidemiology)
+
+---
+
+# Pairwise clustering
+
+* Calculate a pairwise distance matrix for a set of sequences.
+  * We usually use a multiple sequence alignment, but this is not strictly necessary.
+* There are several ways to convert the distance matrix to clusters, *i.e.*, hierarchical clustering.
+* The most common method is [single linkage clustering](https://en.wikipedia.org/wiki/Single-linkage_clustering).
+  * Any pair of sequences with a distance $d(x,y)$ below a threshold $d_{\mathrm{max}}$ are assigned to the same cluster.
+
+---
+
+# Choosing thresholds
+
+* There is no general rule about how to select the threshold $d_{\mathrm{max}}$.
+* The number and sizes of clusters changes with different thresholds.
+  * As $d_{\mathrm{max}}\rightarrow 0$, every infection becomes a cluster of one.
+  * As $d_{\mathrm{max}}\rightarrow \infty$, all infections collapse into a single giant cluster.
+
+---
+
+<section data-state="tn93-slide">
+  <br/>
+  <div id="tn93" class="fig-container"
+       data-fig-id="fig-tn93"
+       data-file="/include/clustering.html"
+       style="width:800px; margin:0 auto; height:700px">
+  </div>
+</section>
+
+---
+
+# Virus taxonomy
+
+* Taxonomy is the classification of organisms into groups.
+* Virus taxonomy is complicated:
+  * Do not meet conventional species definitions (*e.g.*, reproductive isolation)
+  * Exchange genetic material with each other and the host genome.
+  * Often a virus is known only through its genome sequence.
+* Genetic clusters provide a framework for defining a virus taxonomy.
+
+---
+
+# Example: hepatitis C virus (HCV)
+
+* HCV is a positive-sense single-stranded RNA virus that can establish a persistent infection in humans.
+  * Infection can progress to severe liver disease.
+  * Mostly transmitted by injection.
+* Early studies found substantial variation (p-distances up to 35%) among infections.
+  * Simmonds (1995) wrote an early proposal to cluster HCV sequences into "genotypes" and "subtypes" based on genetic distances.
+
+---
+
+A histogram of p-distances among 76 HCV NS5 gene sequences from around the world.  Thresholds at 0.27 and 0.12 demarcate genotypes and subtypes, respectively.
+<img src="/img/hcv-dists.png" height="400px"/>
+
+<small><small>
+Image source: Peter Simmonds (1995) Variability of hepatitis C virus. Hepatology 21(2): 570-583.
+</small></small>
+
+---
+
+# HCV genotypes
+
+* This initial proposal eventually developed into a global consensus ([Simmonds et al. 2005](https://aasldpubs.onlinelibrary.wiley.com/doi/10.1002/hep.20819))
+  * Six genotypes (labelled 1-6) at p-distance threshold 30%.
+  * Varying number of subtypes within each genotype (*e.g.*, 1a, 1b) at threshold 20% to 25%.
+* Clinical significance: HCV genotypes responded differently to standard treatment at the time ([ribavirin](https://en.wikipedia.org/wiki/Ribavirin) and [pegylated interferon](https://en.wikipedia.org/wiki/Peginterferon_alfa-2a)).
+
+---
+
+# Current geographic distribution of HCV genotypes
+
+Genotype 4 is concentrated in central and north Africa; genotype 3 in central Asia.
+
+<img src="/img/hcv-global.png"/>
+
+<small><small>
+Image source: The Polaris Observatory HCV Collaborators (2017) Global prevalence and genotype distribution of hepatitis C virus infection in 2015: a modelling study. Lancet Gastroenterol Hepatol 2: 161-176.
+</small></small>
+
+---
+
+<table>
+  <tr>
+    <td style="vertical-align:middle; font-size: 24px;">
+      <h1>HIV groups and subtypes</h1>
+      <ul>
+        <li>Defining groupings within species (HIV-1)</li>
+        <li>Four HIV-1 groups (M-P) associated with different zoonotic events.</li>
+        <li>Group M is split into subtypes (A-J).</li>
+        <li>A and F are split into sub-subtypes (A1-A7, F1, F2).</li>    
+        </ul>
+        <small><small>
+        Image credit: N D&eacute;sir&eacute; <i>et al.</i> (2018) Characterization update of HIV-1 M subtypes diversity and proposal for subtypes A and D sub-subtypes reclassification. <a href="https://retrovirology.biomedcentral.com/articles/10.1186/s12977-018-0461-y">Retrovirology 15: 80</a>.
+        </small></small>
+    </td>
+    <td width="40%">
+      <img height="600px" src="https://media.springernature.com/full/springer-static/image/art%3A10.1186%2Fs12977-018-0461-y/MediaObjects/12977_2018_461_Fig1_HTML.png"/>
+    </td>
+  </tr>
+</table>
+
+---
+
+# Spread of HIV subtypes around the world
+<img src="/img/1-s2.0-S1473309910701869-gr2_lrg.jpg" height="500px"/>
+
+<small><small>
+Image source: Tebit and Arts (2011) Tracking a century of global expansion and evolution of HIV to drive understanding and to combat disease. Lancet Inf Dis 11: 45-56.
+</small></small>
+
+---
+
 # Further readings
 
+* [Consensus statement: Virus taxonomy in the age of metagenomics](https://www.nature.com/articles/nrmicro.2016.177)
+* [Hanage *et al.* (2006) Sequences, sequence clusters and bacterial species](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1764932/)
 * [Bioinformatics of Infectious Diseases: Genetic diversity](https://artpoon.github.io/BioID/Clustering.html) - an online textbook (in progress)
 * [An extended IUPAC nomenclature code for polymorphic nucleic acids](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2865858/)
-* [Markov Chains explained visually](https://setosa.io/ev/markov-chains/) by Victor Powell
+
