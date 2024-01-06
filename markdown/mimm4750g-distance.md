@@ -25,26 +25,6 @@
 
 ---
 
-# Genetic distances and the triangle inequality
-
-<table>
-  <tr>
-    <td>
-      <ul>
-      <li>A genetic distance does <i>not</i> have to satisfy the triangle inequality, <i>i.e.,</i></li>
-      $$d(x,z) \le d(x,y) + d(y,z)$$
-      <li>Suppose sequence $x=A$, $y=G$ and $z=C$.</li>
-      <li>Under what condition would the triangle inequality be violated?</li>
-      </ul>
-    </td>
-    <td width="50%">
-      <img src="/img/triangle-inequality.svg" width="400px"/>
-    </td>
-  </tr>
-</table>
-
----
-
 # Alignment-free methods
 
 * A $k$-mer is a substring of length $k$ characters.
@@ -64,14 +44,13 @@ Image credit: A Zielezinski <i>et al.</i> 2017, [Alignment-free sequence compari
 
 ---
 
-# Some examples of k-mer based distances
+# Pros and cons of alignment-free methods
 
-* Manhattan distance ($W = W_k(s) \cup W_k(t)$):
-$$d(s, t) = \sum_{w\in W} |f(s,w) - f(t,w)|$$
-* Euclidean distance:
-$$d(s, t) = \sqrt{\sum_{w\in W} (f(s,w) - f(t,w))^2}$$
-* Canberra distance:
-$$d(s, t) = \sum_{w\in W}\frac{|f(s,w) - f(t,w)|}{|f(s,w)|+|f(t,w)|}$$
+* Linear [time complexity](https://en.wikipedia.org/wiki/Time_complexity): we only have to calcaulte the quantities $W_k(s)$ and $f(s, w)$ once for each sequence $s$.
+  * Alignment is quadratic with the length of the two sequences $s$ and $t$.
+* There are nearly 100 different alignment-free methods - which one should we use?
+* By fragmenting a sequence down into "words", we lose information about where these features are.
+  * In fact, we can use alignment-free methods to compare completely unrelated sequences!
 
 ---
 
@@ -308,68 +287,10 @@ Image source: Tebit and Arts (2011) Tracking a century of global expansion and e
 
 ---
 
-# Viral nomenclature
-
-* Viral nomenclature is the assignment of viruses to taxonomic groups, and labelling those groups.
-  * The primary objective of viral nomenclature is stability.
-* There is no agreement on what to call groups below the species level.
-  * *e.g.*, serotypes, genotypes, subtypes, clades, strains, variants, isolates
-
----
-
-# Defining new virus species
-
-* The [International Committee on the Taxonomy of Viruses](https://talk.ictvonline.org/) allows the definition of a new virus species based on genetic clustering, although this remains controversial.
-
-> Unfortunately, in recent years, ICTV Study Groups [...] have created large number of species on the basis of a single criterion, namely a certain percentage of genome similarity between individual viruses.
-
----
-
-# Example: Geminiviruses
-
-* Circulate ssDNA viruses infecting plants - causes significant loss in crop yields.
-* In 2005, Fauquet and others proposed a distance threshold-based system for defining genera and species.
-
-<img src="/img/geminivirus.png" height="300px"/>
-
-<small><small>
-Image credit: CM Fauquet <i>et al.</i> (2008) [Geminivirus strain demarcation and nomenclature](https://link.springer.com/article/10.1007%2Fs00705-008-0037-6).  Arch Virol 153:783-821.
-</small></small>
-
----
-
-# Clustering bacteria
-
-<table>
-  <tr>
-    <td>
-      <ul>
-        <li>Bacterial genomes tend to be more fluid than viruses, with less conserved genes.</li>
-        <li>Calculating distances requires a conserved locus (<i>e.g.</i>, 16S rRNA) or set of "core" genes, <i>e.g.</i>, multi-locus sequence typing, MLST.</li>
-        <li>Gradually being replaced with whole genome methods that predict core and accessory loci (right)</li>
-      </ul>
-    </td>
-    <td width="50%">
-      <img src="https://poppunk.readthedocs.io/en/latest/_images/unconstrained_refine.png" width="500px">
-      <small>
-      Image source: <a href="https://poppunk.readthedocs.io/en/latest/model_fitting.html">PopPUNK documentation, Lees and Croucher (2020)</a>
-      </small>
-    </td>
-  </tr>
-</table>
-
----
-
 # Further readings
 
 * [Consensus statement: Virus taxonomy in the age of metagenomics](https://www.nature.com/articles/nrmicro.2016.177)
 * [Hanage *et al.* (2006) Sequences, sequence clusters and bacterial species](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1764932/)
-* [Viral taxonomy: The effect of metagenomics on understanding the diversity and evolution of viruses](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5623832/) by Philip Hunter.
-* ['A bloody mess': Confusion reigns over naming of new COVID variants](https://www.nature.com/articles/d41586-021-00097-w)
-
-
-# Further readings
-
 * [Bioinformatics of Infectious Diseases: Genetic diversity](https://artpoon.github.io/BioID/Clustering.html) - an online textbook (in progress)
 * [An extended IUPAC nomenclature code for polymorphic nucleic acids](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2865858/)
-* [Markov Chains explained visually](https://setosa.io/ev/markov-chains/) by Victor Powell
+
