@@ -256,37 +256,6 @@ Image source: The Polaris Observatory HCV Collaborators (2017) Global prevalence
 
 ---
 
-<table>
-  <tr>
-    <td style="vertical-align:middle; font-size: 24px;">
-      <h1>HIV groups and subtypes</h1>
-      <ul>
-        <li>Defining groupings within species (HIV-1)</li>
-        <li>Four HIV-1 groups (M-P) associated with different zoonotic events.</li>
-        <li>Group M is split into subtypes (A-J).</li>
-        <li>A and F are split into sub-subtypes (A1-A7, F1, F2).</li>    
-        </ul>
-        <small><small>
-        Image credit: N D&eacute;sir&eacute; <i>et al.</i> (2018) Characterization update of HIV-1 M subtypes diversity and proposal for subtypes A and D sub-subtypes reclassification. <a href="https://retrovirology.biomedcentral.com/articles/10.1186/s12977-018-0461-y">Retrovirology 15: 80</a>.
-        </small></small>
-    </td>
-    <td width="40%">
-      <img height="600px" src="https://media.springernature.com/full/springer-static/image/art%3A10.1186%2Fs12977-018-0461-y/MediaObjects/12977_2018_461_Fig1_HTML.png"/>
-    </td>
-  </tr>
-</table>
-
----
-
-# Spread of HIV subtypes around the world
-<img src="/img/1-s2.0-S1473309910701869-gr2_lrg.jpg" height="500px"/>
-
-<small><small>
-Image source: Tebit and Arts (2011) Tracking a century of global expansion and evolution of HIV to drive understanding and to combat disease. Lancet Inf Dis 11: 45-56.
-</small></small>
-
----
-
 # Further readings
 
 * [Consensus statement: Virus taxonomy in the age of metagenomics](https://www.nature.com/articles/nrmicro.2016.177)
