@@ -4,6 +4,45 @@
 
 ---
 
+# Probability and inference
+
+* When our model of some biological or epidemiological process is simple enough, we may be able to calculate the probability distribution.
+* This is the probability of the *data* given the *hypothesis*.
+* **But we already know the data!** What we want to learn about is the hypothesis!
+
+---
+
+# Likelihood
+
+* This probability distribution has two sets of variables:
+
+`$$P(N,y\;|\;p) = {N\choose y} p^y (1-p)^{(N-y)}$$`
+
+1. Parameters that define the hypothesis (*p*).
+2. Variables that comprise the data (*N*, *y*).
+
+---
+
+<section data-state="bin3d-slide">
+    <div id="bin3d" class="fig-container"
+         data-fig-id="fig-bin3d"
+         data-file="/include/binomial3d.html"
+         style="height:900px">
+    </div>
+</section>
+
+---
+
+# Likelihood
+
+* The term *likelihood* is a signal that we using the PDF to measure the probability of the **hypothesis** given the **data**.
+  * Since summing across parameters does not sum to 1, all that matters is the *relative* difference in likelihood.
+* Drop factors independent of parameters, *e.g.*, `${N\choose y}$`:
+  `$$P(N,y\;|\;p) \propto p^y (1-p)^{(N-y)}$$`
+* Sometimes we replace the $P$ with $\mathcal{L}$, *e.g.,* $\mathcal{L}(p|N,y)$
+
+---
+
 # Maximum likelihood
 
 * Trying to learn about the world by determining parameter values that maximize the likelihood of the model, given the data.
@@ -35,6 +74,10 @@ $$P(\text{everything}) = P(\text{first thing}) \times P(\text{another thing})\\\
 * Taking the $\log$ of a very small value gives you a very negative number:
   $\log(3.45\times 10^{-73}) = -166.8503$
 * The log likelihood should never be greater than zero (although some programs rescale L to avoid [numerical overflow](https://en.wikipedia.org/wiki/Fixed-point_arithmetic#Precision_loss_and_overflow)).
+
+---
+
+# Search heuristics
 
 ---
 
