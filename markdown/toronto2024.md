@@ -103,13 +103,14 @@ Yirrell, DL, et al. "Molecular investigation into outbreak of HIV in a Scottish 
 
 ---
 
-# Which threshold should we use?
-
-  <div id="tn93" class="fig-container"
-       data-fig-id="fig-tn93"
-       data-file="/include/clustering.html"
-       style="width:800px; margin:0 auto; height:600px">
-  </div>
+<div id="tn93" class="fig-container"
+      data-fig-id="fig-tn93"
+      data-file="/include/clustering.html"
+      style="width:800px; margin:0 auto; height:600px">
+</div>
+<div style="text-align: center;">
+Which threshold should we use?
+</div>
 
 ---
 
