@@ -65,10 +65,10 @@ body {
   word-wrap: break-word; }
 
 .reveal h1 {
-  font-size: 0.8em;
+  font-size: 1.7em;
   line-height: 0;
   color: #4F2683;
-  font-weight: 500;
+  font-weight: 300;
   text-shadow: none;
 }
 
@@ -271,7 +271,7 @@ body {
 .reveal small {
   display: inline-block;
   font-size: 0.8em;
-  font-weight: 300;
+  font-weight: 500;
   line-height: 1.2em;
   vertical-align: top;
 }
