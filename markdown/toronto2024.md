@@ -1,8 +1,9 @@
-# University of Toronto, 2024
+University of Toronto, 2024
 ## Redrawing borders: The model-based optimization of molecular clusters
 ### Art Poon, MSc PhD
 
-Western University, Canada
+<img src="/img/UWO_Logo.svg" style="float: right; height: 80px"/>
+
 <div style="color: black; font-size: 0.8em">
 Department of Pathology and Laboratory Medicine<br/>
 Department of Computer Science<br/>
@@ -11,109 +12,27 @@ Department of Microbiology and Immunology<br/>
 
 ---
 
-<table>
-<tr>
-<td>
-  <table>
-  <tr>
-    <td width="250px">
-      <h4>Roux-Cil Ferreira</h4>
-      <h5>Postdoctoral Associate</h5>
-      <small>Bayesian analysis of virus dynamics in the latent HIV reservoir.</small>
-    </td>
-    <td>
-      <div class="avatar">
-      <img src="/img/ferreira.jpg"/>
-      </div>
-    </td>
-  </tr>
-  <tr>
-    <td colspan=2>
-      <img src="/img/all-iupm-mle.interval.png" height="250px"/>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <h4>Amjad Khan<h4/>
-      <h5>Postdoctoral Associate</h5>
-      <small>
-        Mathematical modeling of defective HIV provirus dynamics.
-      </small>
-    </td>
-    <td>
-      <div class="avatar">
-      <img src="/img/Amjad.jpg"/>
-      </div>
-    </td>
-  </tr>
-  </table>
-</td>
-<td>
-  <table>
-    <tr>
-      <td width="300px">
-        <h4>Abayomi Olabode</h4>
-        <h5>Research Associate</h5>
-        <small>
-        Dynamic stochastic blockmodeling of HIV recombination.
-        SARS-CoV-2 wastewater monitoring.
-        </small>
-      </td>
-      <td>
-        <div class="avatar">
-        <img src="/img/abayomi.jpeg" height="120px"/>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="2"><img src="/img/hiv-dynsbm.svg" width="300px"/></td>
-    </tr>
-  </table>
-</td>
-</tr>
 
-</table>
+Western University is located on the traditional lands of the Anishinaabek, Haudenosaunee, L&#363;naap&eacute;ewak and Attawandaron peoples.
+
+
+<img src="/img/native-land2.png" width=700/>
+
+<small><small>
+Image credit: Native Land Digital, https://native-land.ca
+</small></small>
 
 ---
 
-<table>
-<tr>
-  <td width="300px">
-    <h4>Laura Mu&ntilde;oz Baena</h4>
-    <h5>PhD candidate</h5>
-    <small>Evolution of overlapping reading frames in virus genomes. Data visualization.</small>
-  </td>
-  <td>
-    <div class="avatar">
-    <img src="/img/laura.png"/>
-    </div>
-  </td>
-  <td width="300px">
-    <h4>Erin Brintnell<h4/>
-    <h5>MSc candidate</h5>
-    <small>
-      Rapid phylodynamic inference for SARS-CoV-2 trees.
-    </small>
-  </td>
-  <td>
-    <div class="avatar">
-    <img src="/img/ErinBrintnell2.jpg"/>
-    </div>
-  </td>
-</tr>
-<tr>
-  <td colspan=2>
-    <img src="/img/frameshift.png" height="300px"/>
-  </td>
-      <td colspan=2>
-    <img src="/img/hunepi.png" height="300px"/>
-  </td>
-</tr>
-</table>
+![](/img/randomxy.svg)
+
+<div style="text-align: center;">
+Clusters are not real.
+</div>
 
 ---
 
-## Clustering and epidemiology
+# Clusters and epidemiology
 
 <table>
   <tr>
@@ -121,65 +40,76 @@ Department of Microbiology and Immunology<br/>
   <ul>
     <li>In epidemiology, a cluster of cases in space and/or time implies a common source.</li>
     <li>The Broad street cholera outbreak (<i>right</i>) is often used as an early example of this application of clustering.</li>
-    <ul><li>Snow apparently did not make use of physical maps until intervening on the outbreak (Brody <i>et al.</i> 2000).</li></ul>
     <li>Many scanning statistics have been developed for spatiotemporal clustering of disease.</li>
   </ul>
   </td>
   <td width="30%">
-    <img src="/img/broad-street.jpg" width="250px"/>
+    <img src="/img/broad-street.jpg" width="300px"/>
   </td>
 </table>
 
 <small>
-    Brody et al. (2000) Map-making and myth-making in Broad Street: the London cholera epidemic, 1854.  Lancet 356; 64-68.
+Brody et al. (2000) Map-making and myth-making in Broad Street: the London cholera epidemic, 1854.  Lancet 356; 64-68.
 </small>
 
 ---
 
-## Genetic clusters
+# Genetic clusters
 
 * A <u>genetic</u> cluster of infections similarly implies that cases are related by recent transmission events.
 * Sequences may be easier to collect.
   * Routine sequencing is standard of care for some viruses, *e.g.*, HIV-1.
-  * Spatial location may be unavailable or meaningless (transmission by intimate contact).
+  * Spatial location may be unavailable or meaningless (*e.g.*, transmission by intimate contact; long asymptomatic period).
 * Genetic clustering requires measurable evolution on a similar time scale as transmission.
 
 ---
 
-<table>
+# Building genetic clusters
+
+* Genetic clusters are generally extracted from sequence data in two ways:
+
+<table style="border-spacing: 1em; border-collapse: separate;">
 <tr>
-<td>
-  <h2>Building genetic clusters</h2>
-  <ul>
-    <li>Genetic clusters are generally extracted from sequence data in two ways:</li>
-    <ol>
-      <li>from a pairwise distance matrix (hierarchical clustering)</li>
-      <li>from distances in a phylogenetic tree</li>
-    </ol>
-    <li>(<i>right</i>) Pairwise distances between HIV-1 sequences from unrelated individuals and tranmsission pairs (Wolfs <i>et al.</i>, 1992).</li>
-    <li>Early association with forensic investigation of HIV-1 transmission (<i>e.g.</i>, <a href="https://www.science.org/doi/pdf/10.1126/science.256.5060.1165">Ou <i>et al.</i>, 1992</a>).</li>
-  </ul>
-</td>
-<td style="vertical-align: middle;" width="40%">
-  <img src="/img/wolfs1992.png"/>
-</td>
+  <td style="text-align: center; font-weight: 500;">
+  Pairwise distances
+  </td>
+  <td style="text-align: center; font-weight: 500;">
+  Phylogenetic distances
+  </td>
+</tr>
+<tr>
+  <td>
+    <img src="/img/wolfs-beeswarm.svg"/> 
+  </td>
+  <td>
+    <img src="/img/glenochil-rotate.png"/>
+  </td>
+</tr>
+<tr>
+  <td>
+    <small>Pairwise distances between HIV-1 sequences from unrelated individuals and transmission pairs (related).</small>
+  </td>
+  <td>
+    <small>Excerpt from a maximum likelihood phylogeny of HIV-1 gag sequences including inmates of a Scottish prison.</small>
+  </td>
 </tr>
 </table>
 
-<small>
-Wolfs, Tom FW, et al. "HIV-1 genomic RNA diversification following sexual and parenteral virus transmission." Virology 189.1 (1992): 103-110.
-</small>
+<small><small>
+Sources: Wolfs, TFW, et al. "HIV-1 genomic RNA diversification following sexual and parenteral virus transmission." Virology 189.1 (1992): 103-110.<br/>
+Yirrell, DL, et al. "Molecular investigation into outbreak of HIV in a Scottish prison." Brit Med J 314 (1997): 1446.
+</small></small>
+
 
 ---
 
-<section data-state="tn93-slide">
-  <br/>
+# Which threshold should we use?
+
   <div id="tn93" class="fig-container"
        data-fig-id="fig-tn93"
        data-file="/include/clustering.html"
-       style="width:800px; margin:0 auto; height:700px">
+       style="width:800px; margin:0 auto; height:600px">
   </div>
-</section>
 
 ---
 
