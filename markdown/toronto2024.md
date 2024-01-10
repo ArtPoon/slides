@@ -1,5 +1,5 @@
 University of Toronto, 2024
-## Redrawing borders: The model-based optimization of molecular clusters
+## Redrawing boundaries: The model-based optimization of molecular clusters
 ### Art Poon, MSc PhD
 
 <img src="/img/UWO_Logo.svg" style="float: right; height: 80px"/>
@@ -12,9 +12,7 @@ Department of Microbiology and Immunology<br/>
 
 ---
 
-
 Western University is located on the traditional lands of the Anishinaabek, Haudenosaunee, L&#363;naap&eacute;ewak and Attawandaron peoples.
-
 
 <img src="/img/native-land2.png" width=700/>
 
@@ -48,9 +46,9 @@ Clusters are not real.
   </td>
 </table>
 
-<small>
+<small><small>
 Brody et al. (2000) Map-making and myth-making in Broad Street: the London cholera epidemic, 1854.  Lancet 356; 64-68.
-</small>
+</small></small>
 
 ---
 
@@ -68,12 +66,12 @@ Brody et al. (2000) Map-making and myth-making in Broad Street: the London chole
 
 * Genetic clusters are generally extracted from sequence data in two ways:
 
-<table style="border-spacing: 1em; border-collapse: separate;">
+<table>
 <tr>
-  <td style="text-align: center; font-weight: 500;">
+  <td style="text-align: center; font-weight: 700;">
   Pairwise distances
   </td>
-  <td style="text-align: center; font-weight: 500;">
+  <td style="text-align: center; font-weight: 700;">
   Phylogenetic distances
   </td>
 </tr>
@@ -87,26 +85,52 @@ Brody et al. (2000) Map-making and myth-making in Broad Street: the London chole
 </tr>
 <tr>
   <td>
-    <small>Pairwise distances between HIV-1 sequences from unrelated individuals and transmission pairs (related).</small>
+    <small>Pairwise distances between HIV-1 sequences from transmission pairs and unrelated individuals (derived from Wolfs et al. 1992).</small>
   </td>
   <td>
-    <small>Excerpt from a maximum likelihood phylogeny of HIV-1 gag sequences including inmates of a Scottish prison.</small>
+    <small>Excerpt from a maximum likelihood phylogeny of HIV-1 <i>gag</i> sequences including inmates of a Scottish prison.</small>
   </td>
 </tr>
 </table>
+<br/>
 
 <small><small>
 Sources: Wolfs, TFW, et al. "HIV-1 genomic RNA diversification following sexual and parenteral virus transmission." Virology 189.1 (1992): 103-110.<br/>
 Yirrell, DL, et al. "Molecular investigation into outbreak of HIV in a Scottish prison." Brit Med J 314 (1997): 1446.
 </small></small>
 
+---
+
+# Characterizing transmission risk
+
+* 
+
+---
+
+# Guiding public health actions
+<img src="/img/1-s2.0-S2352301816000461-gr4_lrg.jpg" height="450px" style="padding: 1em;"/>
+
+<small><small>
+Poon, AFY, et al. "Near real-time monitoring of HIV transmission hotspots from routine HIV genotyping: an implementation case study." The Lancet HIV 3.5 (2016): e231-e238.
+</small></small>
+
+---
+
+# Cluster growth
+* Clusters can be prioritized on the basis of predicted growth.
+  * [US CDC guidelines](https://www.cdc.gov/hiv/pdf/funding/announcements/ps18-1802/CDC-HIV-PS18-1802-AttachmentE-Detecting-Investigating-and-Responding-to-HIV-Transmission-Clusters.pdf): investigate clusters with 5 or more new cases in the past 12 months.
+* Cluster growth has been modelled as a binomial outcome ([Wertheim *et al.* 2018](https://academic.oup.com/jid/article/218/12/1943/5053881); [Billock *et al.* 2019](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6692892/)).
+<img src="/img/cluster-growth.svg" height="200px"/>
+<div style="text-align: center; font-size: 16pt;">
+In this example, clusters 1 and 2 are "growing", and cluster 3 is not.
+</div>
 
 ---
 
 <div id="tn93" class="fig-container"
       data-fig-id="fig-tn93"
       data-file="/include/clustering.html"
-      style="width:800px; margin:0 auto; height:600px">
+      style="width:800px; margin:0 auto; height:600px; border-width: 0;">
 </div>
 <div style="text-align: center;">
 Which threshold should we use?
@@ -114,55 +138,19 @@ Which threshold should we use?
 
 ---
 
-## Unresolved issues
+# Choosing thresholds
 
-* What is the correct threshold for extracting clusters?
-  * TN93 < 1.5% is the default HIV-TRACE threshold.
-* Different applications may require different thresholds!
-  * Reconstructing who infected whom?
-  * Prioritizing public health actions?
-  * Inferring the transmission risk structure of populations? ("in cluster" versus "out of cluster"; [Villandre *et al.* 2016](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0148459))
-* What is the most appropriate clustering method?
-
-<small>
-Villandre, Luc, et al. "Assessment of overlap of phylogenetic transmission clusters and communities in simple sexual contact networks: applications to HIV-1." PloS one 11.2 (2016): e0148459.
-</small>
+* Different thresholds may be required for different settings.
 
 ---
 
-## Guiding public health actions
-
-<img src="/img/1-s2.0-S2352301816000461-gr4_lrg.jpg" height="450px"/>
-
-<small>
-Poon, Art FY, et al. "Near real-time monitoring of HIV transmission hotspots from routine HIV genotyping: an implementation case study." The lancet HIV 3.5 (2016): e231-e238.
-</small>
-
----
-
-<section data-background-image="/img/big-graph.png"
-         data-background-size="800px">
-</section>
-
----
-
-## Cluster growth
-* Clusters can be prioritized on the basis of predicted growth.
-  * [US CDC guidelines](https://www.cdc.gov/hiv/pdf/funding/announcements/ps18-1802/CDC-HIV-PS18-1802-AttachmentE-Detecting-Investigating-and-Responding-to-HIV-Transmission-Clusters.pdf): investigate clusters (connected components of graph induced by TN93<0.5%) with 5 or more new cases in the past 12 months.
-* The number of cases in a given time period has been modelled as a binomial outcome (one or more cases; [Wertheim *et al.* 2018](https://academic.oup.com/jid/article/218/12/1943/5053881); [Billock *et al.* 2019](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6692892/)).
-* In this example, clusters 1 and 2 are "growing", and cluster 3 is not.
-
-<img src="/img/cluster-growth.svg" height="200px"/>
-
----
-
-## Modifiable areal unit problem (MAUP)
+# Modifiable areal unit problem (MAUP)
 
 <table>
   <tr>
     <td>
       <ul>
-        <li>The problem of finding an optimal clustering threshold is analogous to the MAUP:</li>
+        <li>An analogous problem from spatial statistics:</li>
         <ul>
           <li>Observations are distributed in a continuous space.</li>
           <li>Grouped into "areal units" by the investigator.</li>
@@ -177,9 +165,9 @@ Poon, Art FY, et al. "Near real-time monitoring of HIV transmission hotspots fro
   </tr>
 </table>
 
-<small>
-Wang, Yaqi, and Qian Di. "Modifiable areal unit problem and environmental factors of COVID-19 outbreak." Science of the Total Environment 740 (2020): 139984.
-</small>
+<small><small>
+Wang, Yaqi and Qian Di. "Modifiable areal unit problem and environmental factors of COVID-19 outbreak." Science of the Total Environment 740 (2020): 139984.
+</small></small>
 
 ---
 
