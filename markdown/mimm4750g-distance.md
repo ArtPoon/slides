@@ -46,19 +46,19 @@ Image credit: A Zielezinski <i>et al.</i> 2017, [Alignment-free sequence compari
 
 # Pros and cons of alignment-free methods
 
-* Linear [time complexity](https://en.wikipedia.org/wiki/Time_complexity): we only have to calcaulte the quantities $W_k(s)$ and $f(s, w)$ once for each sequence $s$.
+* Linear [time complexity](https://en.wikipedia.org/wiki/Time_complexity): we only have to calculate the quantities $W_k(s)$ and $f(s, w)$ once for each sequence $s$.
   * Alignment is quadratic with the length of the two sequences $s$ and $t$.
 * There are nearly 100 different alignment-free methods - which one should we use?
-* By fragmenting a sequence down into "words", we lose information about where these features are.
+* By breaking a sequence down into "words", we lose information about where these features are.
   * In fact, we can use alignment-free methods to compare completely unrelated sequences!
 
 ---
 
 # Aligned sequences
 
-* If we can align sequences, we can make biologically meaningful comparisons.
+* If we can align sequences, we can make more biologically meaningful comparisons.
   * Which parts of the gene/genome are more variable? more conserved?
-  * Which sequences are more closely related than others?
+  * Are there parts of a sequence that was inserted?  deleted?
 * It is far easier to measure similarity when the sequences are aligned.
 
 ```
