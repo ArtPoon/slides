@@ -48,22 +48,21 @@ Simulations of allele frequency evolution in R.
 
 ---
 
-# State transitions
+# Review: State transitions
 
 <table>
   <tr>
     <td>
       <ul>
-        <li>A discrete-time Markov chain is defined by a matrix of transition probabilities between states, $P$:</li>
-      </ul>
-      $$\begin{matrix}
+        <li>A discrete-time Markov chain is defined by a matrix of transition probabilities between states, $P$:
+        </li>
+$$\begin{matrix}
       & & \textrm{to} \\
       & & E & A\\
       \hline
       \textrm{from} & E & 0.3 & 0.7\\
                     & A & 0.4 & 0.6\\
       \end{matrix}$$
-      <ul>
         <li>Note each row must sum to one.</li>
       </ul>
     </td>
@@ -95,7 +94,7 @@ Simulations of allele frequency evolution in R.
 $$`
 
 $$
-0.3\pi_E + 0.4(1-\pi_E) = \pi_E
+0.3\pi_E + 0.4(1-\pi_E) = \pi_E\\\\[6pt]
 \pi_E = 0.4/1.1 = 0.\overline{36}
 $$
 
@@ -154,12 +153,26 @@ $$ \begin{pmatrix}
 
 # Rates into probabilities
 
-* To convert this rate matrix into the probability that $X$ transitions into $Y$ after time $t$, we have to use *matrix exponentiation*.
+* To convert this rate matrix into the probability that $X$ transitions into $Y$ after time $t$, we have to use [matrix exponentiation](https://en.wikipedia.org/wiki/Matrix_exponential).
 * This is a computationally costly operation that accounts for all possible transitions that may occur in time $t$.
 * For a rate matrix $Q$, the probability matrix is:
+$$P(t) = \exp(Q t)$$
 
-  $$P(t) = \exp(Q t)$$
-* Note that rate is confounded by time!
+---
+
+Values of $\exp(Q t)$ for Jukes-Cantor matrix:
+
+![](/img/expm.svg)
+
+---
+
+# Confounding rate and time
+
+* Note that this formula contains the product $\mu \times t$, where $\mu$ is the overall substitution rate, and $t$ is time.
+* The same transition probabilities can be obtained by increasing either $\mu$ or $t$.
+  * *i.e.*, was it slower, or did less time pass?
+* To break this confounding, we need an additional source of information about $\mu$ or $t$ &mdash; more on this later!
+
 
 ---
 
@@ -178,6 +191,7 @@ $$\begin{matrix}
   \end{pmatrix}\mu
 \end{matrix}$$
 
+> Do we expect $\kappa < 1$ or $\kappa > 1$?
 
 ---
 
@@ -200,7 +214,7 @@ $$\begin{matrix}
 
 * PAUP* was a popular commercial software package for reconstructing phylogenies.
 * It used a six-digit number ($abcdef$) to represent any kind of time-reversible nucleotide substitution model:
-* *e.g.,* HKY85 becomes `010010`.
+  * *e.g.,* HKY85 becomes `010010`.
 * This scheme is still used by other software, such as HyPhy and PhyML.
 
 > What is the PAUP* model string for TN93?
@@ -263,23 +277,6 @@ $$\begin{matrix}
 * Another non-parametric approach to model rate variation is to add a probability $p$ that a site does not evolve at all.
   * This approach is analogous to a zero-inflated statistical distributions, *e.g.*, [zero-inflated Poisson](https://en.wikipedia.org/wiki/Zero-inflated_model).
   * Distinguishing between *structural* (deterministic) and *sampling* (by chance) zeroes.
-
----
-
-# Hidden Markov models
-
-* The previous methods assumes all sites are [independent and identically distributed](https://en.wikipedia.org/wiki/Independent_and_identically_distributed_random_variables).
-* One more approach to modelling rate variation is to fit a second discrete-state Markov model where sites along the sequence belong to one of $k$ rate classes.
-  * These rate class assignments cannot be directly observed &mdash; it is a [latent variable](https://en.wikipedia.org/wiki/Latent_variable).
-* The hidden Markov model (HMM) causes a sequence to transition from one rate class to another in a "smoothed" fashion.
-
----
-
-![](/img/felsenstein-hmm.svg)
-
-<small><small>
-Image source: Felsenstein J, Churchill GA. Molecular biology and evolution. 1996 Jan 1;13(1):93-104.
-</small></small>
 
 ---
 
