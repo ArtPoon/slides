@@ -95,15 +95,36 @@ Brody et al. (2000) Map-making and myth-making in Broad Street: the London chole
 <br/>
 
 <small><small>
-Sources: Wolfs, TFW, et al. "HIV-1 genomic RNA diversification following sexual and parenteral virus transmission." Virology 189.1 (1992): 103-110.<br/>
+Wolfs, TFW, et al. "HIV-1 genomic RNA diversification following sexual and parenteral virus transmission." Virology 189.1 (1992): 103-110.<br/>
 Yirrell, DL, et al. "Molecular investigation into outbreak of HIV in a Scottish prison." Brit Med J 314 (1997): 1446.
 </small></small>
 
 ---
 
-# Characterizing transmission risk
+<table>
+  <tr>
+    <td>
+      <h1>Identifying risk factors</h1>
+      <ul>
+        <li>Clusters of highly similar sequences may reflect transmission outbreaks.</li>
+        <li>Less time between transmission events implies less evolution.</li>
+        <li>A sequence in a cluster of one is considered "non-clustered".</li>
+        <li>The placement of sequences in clusters is frequently analyzed by logistic regression.</li>
+      </ul>
+    </td>
+    <td width="50%">
+      <img src="/img/jid-poon-2013-f3.svg"/>
+      <small><small>
+      Effects of various factors on the log odds of appearing in a cluster in a phylogeny of HIV-1 <i>pol</i> sequences in British Columbia, Canada.
+      </small></small>
+    </td>
+  </tr>
+</table>
+<br/>
 
-* 
+<small><small>
+Poon, Art FY, et al. "The impact of clinical, demographic and risk factors on rates of HIV transmission: a population-based phylogenetic analysis in British Columbia, Canada." The Journal of infectious diseases 211.6 (2015): 926-935.
+</small></small>
 
 ---
 
@@ -140,7 +161,15 @@ Which threshold should we use?
 
 # Choosing thresholds
 
-* Different thresholds may be required for different settings.
+* Sampling has an enormous impact on the clustering threshold!
+  * Higher prevalence requires relaxed thresholds (lower chance of sampling closely-related infections).
+  * Variation in sampling rates among groups can create spurious clustering.
+
+<img src="/img/MMPP2.svg" height="300px"/>
+
+<small><small>
+Adapted from McCloskey and Poon (2017) "A model-based clustering method to detect infectious disease transmission outbreaks from sequence variation."  PLOS Comput Biol 13(11): e1005868.
+</small></small>
 
 ---
 
