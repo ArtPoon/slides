@@ -178,37 +178,43 @@ Poon, AFY, et al. "Near real-time monitoring of HIV transmission hotspots from r
       style="width:800px; margin:0 auto; height:600px; border-width: 0;">
 </div>
 
+<div style="font-weight:900; font-size:24pt;">
+The clustering threshold can be whatever we want.
+</div>
+
 ---
 
-# Sampling has an enormous impact on the clustering threshold!
+<div style="text-align: center; font-weight: 900; font-size: 48pt; line-height: 1em;">
+We cannot use the same clustering threshold in all contexts
+</div>
+
+* Sequences can be similar **not only** because less time has passed between transmissions, **but also because those infections were quickly diagnosed!**
+
+* We are less likely to sample closely-related infections in a generalized epidemic.
+
 * Higher prevalence requires relaxed thresholds (lower chance of sampling closely-related infections).
-* Variation in sampling rates among groups can create spurious clustering.
 
-<img src="/img/MMPP2.svg" height="300px"/>
-
-<small><small>
-Adapted from McCloskey and Poon (2017) "A model-based clustering method to detect infectious disease transmission outbreaks from sequence variation."  PLOS Comput Biol 13(11): e1005868.
-</small></small>
 
 ---
-
-# Modifiable areal unit problem (MAUP)
 
 <table>
   <tr>
     <td>
+      <h1>This problem has an analogy in spatial statistics</h1>
       <ul>
-        <li>An analogous problem from spatial statistics:</li>
+        <li>The modifiable areal unit problem:</li>
         <ul>
           <li>Observations are distributed in a continuous space.</li>
           <li>Grouped into "areal units" by the investigator.</li>
           <li>Results of a statistical test are contingent on this grouping.</li>
         </ul>
-        <li>(<i>right</i>) Example of the MAUP for a statistical association between COVID-19 mortality and atmospheric NO<sub>2</sub> (Wang and Di 2020).</li>
       </ul>
     </td>
     <td width="45%">
       <img src="/img/sarscov2-noxide-maup.svg"/>
+      <small>
+      An rxample of the MAUP for a statistical association between COVID-19 mortality and atmospheric NO<sub>2</sub>.
+      </small>
     </td>
   </tr>
 </table>
