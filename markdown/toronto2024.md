@@ -33,18 +33,19 @@ Clusters are not real.
 <section data-background-image="/img/broad-street-band.jpg" 
 data-background-size="contain" data-background-position="top">
 
-<!-- yes I know this is a brutal hack -->
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-<ul style="list-style-type: none;">
-<li>In epidemiology, a cluster of cases in **space** and **time** implies a common source.</li>
+<div style="position: fixed; bottom: 12pt;">
+  <ul style="list-style-type: none;">
+    <li>In epidemiology, a cluster of cases in <b>space</b> and <b>time</b> implies a common source.</li>
+    <li>The Broad street cholera outbreak is often used as an early example of this application of clustering.</li>
+  </ul>
+  <br/><br/>
 
-<li>The Broad street cholera outbreak is often used as an early example of this application of clustering.</li>
-</br>
-</ul>
-
-<div style="font-size: 13pt; font-weight: 500; color: #4F2683;">
-Brody et al. (2000) Map-making and myth-making in Broad Street: the London cholera epidemic, 1854.  Lancet 356; 64-68.
+  <div style="font-size: 13pt; font-weight: 500; color: #4F2683;">
+  Brody et al. (2000) Map-making and myth-making in Broad Street: the London cholera epidemic, 1854.  Lancet 356; 64-68.
+  </div>
 </div>
+
+
 
 
 </section>
@@ -66,17 +67,21 @@ Brody et al. (2000) Map-making and myth-making in Broad Street: the London chole
   <td>
     <h1>One way to make clusters is from pairwise distances</h1>
     <ul>
-      <li>Epidemiologically-linked infections (<i>e.g.</i>, transmission pairs) tend to have shorter genetic distances (<b>top</b>).</li>
-      <li>The pairwise distances define a <i>graph</i> or <i>network</i>.
+      <li>Epidemiologically-linked infections (<i>e.g.</i>, transmission pairs) tend to have shorter genetic distances (<b>A</b>).</li>
+      <li>The pairwise distances define a <i>graph</i> where:
         <ul>
           <li>each node represents an sequence</li> 
           <li>an edge is drawn between two sequences with a distance below some threshold.</li>
         </ul>
-      <li>By convention, a <i><u>connected component</u></i> of two or more nodes is a cluster (<b>bottom</b>).</li>
+      <li>By convention, a <i><u>connected component</u></i> of two or more nodes is a cluster (<b>B</b>).</li>
     </ul>
   <td width="40%">
-    <img src="/img/wolfs-beeswarm.svg"/> 
-    <img src="/img/connected-components.png"/> 
+    <table>
+      <tr><td>A</td></tr>
+      <tr><td><img src="/img/wolfs-beeswarm.svg"/></td></tr>
+      <tr><td>B</td></tr>
+      <tr><td><img src="/img/connected-components.png"/></td></tr>
+    </table>
   </td>
 </tr>
 </table>
@@ -161,10 +166,10 @@ In this example, clusters 1 and 2 are "growing", and cluster 3 is not.
 
 ---
 
-<div style="text-align: center; font-weight: 900; font-size: 18pt;">
+<div style="font-weight: 300; font-size: 24pt; color: #4F2683;">
 When a rapidly growing cluster triggered a public health response in BC, Canada
 </div>
-<img src="/img/1-s2.0-S2352301816000461-gr4_lrg.jpg" height="500px" style="padding: 1em;"/>
+<img src="/img/1-s2.0-S2352301816000461-gr4_lrg.jpg" height="500px" style="padding: 0em;"/>
 
 <small><small>
 Poon, AFY, et al. "Near real-time monitoring of HIV transmission hotspots from routine HIV genotyping: an implementation case study." The Lancet HIV 3.5 (2016): e231-e238.
@@ -172,15 +177,17 @@ Poon, AFY, et al. "Near real-time monitoring of HIV transmission hotspots from r
 
 ---
 
+<div style="text-align: center; font-weight:900; font-size:24pt;">
+The clustering threshold can be whatever we want.
+</div>
+
+
 <div id="tn93" class="fig-container"
       data-fig-id="fig-tn93"
       data-file="/include/clustering-full.html"
       style="width:800px; margin:0 auto; height:600px; border-width: 0;">
 </div>
 
-<div style="font-weight:900; font-size:24pt;">
-The clustering threshold can be whatever we want.
-</div>
 
 ---
 
@@ -188,24 +195,22 @@ The clustering threshold can be whatever we want.
 We cannot use the same clustering threshold in all contexts
 </div>
 
-* Sequences can be similar **not only** because less time has passed between transmissions, **but also because those infections were quickly diagnosed!**
-
-* We are less likely to sample closely-related infections in a generalized epidemic.
-
-* Higher prevalence requires relaxed thresholds (lower chance of sampling closely-related infections).
-
+<ul>
+  <li>Sequences can be similar <u>not only</u> because less time has passed between transmissions, <b>but also because those infections were quickly diagnosed!</b></li>
+  <li>We are less likely to sample closely-related infections in a generalized epidemic &mdash; requiring a relaxed threshold.</li>
+</ul>
 
 ---
 
 <table>
   <tr>
     <td>
-      <h1>This problem has an analogy in spatial statistics</h1>
+      <h1>There is a similar problem in spatial statistics</h1>
       <ul>
-        <li>The modifiable areal unit problem:</li>
+        <li>The modifiable areal unit problem (MAUP):</li>
         <ul>
           <li>Observations are distributed in a continuous space.</li>
-          <li>Grouped into "areal units" by the investigator.</li>
+          <li>These need to be assigned to groups for analysis ("areal units").</li>
           <li>Results of a statistical test are contingent on this grouping.</li>
         </ul>
       </ul>
