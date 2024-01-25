@@ -45,9 +45,6 @@ data-background-size="contain" data-background-position="top">
   </div>
 </div>
 
-
-
-
 </section>
 
 ---
@@ -181,7 +178,6 @@ Poon, AFY, et al. "Near real-time monitoring of HIV transmission hotspots from r
 The clustering threshold can be whatever we want.
 </div>
 
-
 <div id="tn93" class="fig-container"
       data-fig-id="fig-tn93"
       data-file="/include/clustering-full.html"
@@ -205,7 +201,7 @@ We cannot use the same clustering threshold in all contexts
 <table>
   <tr>
     <td>
-      <h1>There is a similar problem in spatial statistics</h1>
+      <h1>A similar problem exists in spatial statistics</h1>
       <ul>
         <li>The modifiable areal unit problem (MAUP):</li>
         <ul>
@@ -213,13 +209,11 @@ We cannot use the same clustering threshold in all contexts
           <li>These need to be assigned to groups for analysis ("areal units").</li>
           <li>Results of a statistical test are contingent on this grouping.</li>
         </ul>
+        <li><i>e.g.</i>, Varying associations between COVID-19 mortality and air pollution (<b>right</b>).</li>
       </ul>
     </td>
-    <td width="45%">
-      <img src="/img/sarscov2-noxide-maup.svg"/>
-      <small>
-      An rxample of the MAUP for a statistical association between COVID-19 mortality and atmospheric NO<sub>2</sub>.
-      </small>
+    <td width="50%">
+      <img src="/img/sarscov2-noxide-maup.png"/>
     </td>
   </tr>
 </table>
@@ -230,137 +224,97 @@ Wang, Yaqi and Qian Di. "Modifiable areal unit problem and environmental factors
 
 ---
 
-<table>
-  <tr>
-    <td>
-      <h2>Data collection</h2>
-      <ul>
-        <li>Obtained published, anonymized HIV-1 <i>pol</i> sequences from three sites, sampled over 7+ years.</li>
-        <li>Most recent year of sampling held out as "new cases".</li>
-        <li>(<i>right</i>) Number of new cases joining clusters (lines) increases with TN93 threshold, but the number of growing clusters (points) starts to decline.</li>
-      </ul>
-    </td>
-    <td width="45%" style="vertical-align: middle;">
-      <img src="/img/maup-growth.svg"/>
-    </td>
-  </tr>
-</table>
+# Poisson regression
 
-<small>
-Chato, C., Kalish, M. L., & Poon, A. F. (2020). Public health in genetic spaces: a statistical framework to optimize cluster-based outbreak detection. Virus evolution, 6(1), veaa011.
-</small>
+* Let the expected number of new cases in cluster $C_i$ be:
+$$\hat{R}(C_i) = \exp\left(\alpha +  \beta \sum_{v\in C_i}{w(v)} \right)$$
+where $w(v)$ is the weight of an individual case (vertex, $v$).
+* If every known case is equally likely to be connected to a new case, then $w(v)=1$ for all $v$.
+* This gives us a **null model**, $\hat{R}(C_i) = \exp(\alpha + \beta|C_i|)$, where $|C_i|$ is the current cluster size.
 
 ---
-
-## Predicting the number of new cases
-
-* Let the expected number of new cases adjacent to the $i$-th cluster be:
-
-`$$\hat{R}(C_i) = \exp\left(\alpha +  \beta \sum_{v\in C_i}{w(v)} \right)$$`
-
-* where $w(v)$ is the weight of an individual case (vertex, $v$).
-* If every known case is equally likely to be adjacent to a new case, *i.e.*, $w(v)=1$ $\;\forall v$, then $R(C_i)$ is only affected by cluster size, $|C_i|$.
-* We make this Poisson regression our null model.
-
----
-
-## Adding case recency
-
-<table>
-  <tr>
-  <td>
-    <ul>
-    <li>We can add any number of individual-level predictors to this linear model.</li>
-    <li>The probability $\rho$ of an edge between $v$ and $u$ is: `$\log\left(\frac{\hat{\rho}}{1-\hat{\rho}}\right) = \alpha + \beta_0 \left(t_v-t_{u}\right)$`</li>
-
-    <li>This gives us an alternate model:</li>
-
-    `$$\hat{R'}(C_i) = \exp\left(\alpha +  \beta |C_i| + \beta_t \sum_{v\in C_i} \rho_v \right)$$`
-    </ul>
-  </td>
-  <td width="45%">
-    <img src="/img/decay_tn_met.svg"/>
-  </td>
-  </tr>
-</table>
-
-<br/>
-<small>
-Chato, C., Kalish, M. L., & Poon, A. F. (2020). Public health in genetic spaces: a statistical framework to optimize cluster-based outbreak detection. Virus evolution, 6(1), veaa011.
-</small>
-
----
-
-## Tuning clusters by model selection
 
 <table>
   <tr>
     <td>
+      <h1>We can place greater weight on the more recent cases</h1>
       <ul>
-      <li>We propose that the optimal clustering threshold is determined by minimizing the relative information loss from adding predictor variables.</li>
-      <li>Use AIC to quantify information loss - hence, the best clustering maximizes the difference in AICs.</li>
-      <li>This idea was inspired by Nakaya (2000), who described a similar method for mortality rates in Tokyo.</li>
+        <li>A known case $v$ is more likely to be connected to a new case if $v$ was sampled more recently (<b>right</b>).</li>
+        <li>Fit a logistic regression to the probability of an edge from $u$ to $v$, given sampling times $t_u$ and $t_v$:</li>
+        $$\log\left(\frac{\hat{w}_v}{1-\hat{w}_v}\right) = \alpha + \beta \left(t_v-t_{u}\right)$$
+        <li>Substituting these weights into the Poisson regression gives us an <b>alternate model</b>.</li>
       </ul>
     </td>
-    <td width="45%">
+    <td style="vertical-align: middle;" width="40%">
+      <img src="/img/decay_tn_met.svg"/>
+      <small><small>
+      Log-linear plots of the frequency of edges between cases separated by different time lags.
+      Obtained from HIV-1 <i>pol</i> sequence data sets.
+      </small></small>
+    </td>
+  </tr>
+</table>
+
+<small><small>
+Chato, C., Kalish, M. L., & Poon, A. F. (2020). Public health in genetic spaces: a statistical framework to optimize cluster-based outbreak detection. Virus evolution, 6(1), veaa011.
+</small></small>
+
+---
+
+<table>
+  <tr>
+    <td>
+      <h1>An optimal threshold maximizes the difference in AIC between models</h1>
+      <ul>
+      <li>Increasing $\Delta$AIC reduces the relative information loss from adding case recency as a predictor variable.</li>
+      <li>Inspired by Nakaya (2000), who described a similar method for mortality rates in Tokyo.</li>
+      <li>The optimal thresholds are much higher than the setting recommended by the US CDC (0.005)</li>
+      </ul>
+    </td>
+    <td width="40%">
       <img src="/img/gaic.svg"/>
+      <small><small>
+      TN93 = Tamura-Nei (1993) genetic distance.
+      </small></small>
     </td>
   </tr>
 </table>
 
-<small>
+<small><small>
 Nakaya, T. (2000). An information statistical approach to the modifiable areal unit problem in incidence rate maps. Environment and Planning A, 32(1), 91-109.<br/>
 Chato, C., Kalish, M. L., & Poon, A. F. (2020). Public health in genetic spaces: a statistical framework to optimize cluster-based outbreak detection. Virus evolution, 6(1), veaa011.
-</small>
+</small></small>
 
 ---
 
-Optimal thresholds maximize the covariance among clusters between mean recency (diameter) and the number of new cases (dark)
-![](/img/maup-graphs.svg)
+<section data-background-image="/img/maup-graphs.svg" data-background-size="contain">
+</section>
 
 ---
 
-## Results and limitations
-
-* Optimal TN93 thresholds tend to be similar to those used in the literature (~0.015).
-* The method is sensitive to uneven sampling rates over time.
-  * We assume random sampling - what about outbreak investigations?
-* Better results can be obtained by substituting dates of sample collection with dates of HIV diagnosis.
-  * The latter metadata are more difficult to collect at a large scale.
-* How should we partition *time*?  Years are not necessarily the best interval.
-
----
-
-## Extension to clustering on trees
+# Can we extend this method to clustering trees?
 
 * Phylogenetic clustering is older and more pervasive, but also more complicated!
-* Multiple criteria (branch length, bootstrap support)
-  * Different summary statistics on lengths, *e.g.*, mean, maximum (ClusterPicker).
-  * Different length definitions, *e.g.*, pendant, patristic.
-  * Subtrees (monophyletic) versus subset trees (paraphyletic), often not specified.
-* Pairwise distances are invariant &mdash; trees have to rebuilt with the addition of new sequences.
+  * Different summary statistics on lengths, *e.g.*, mean of subtree.
+  * Different length definitions, *e.g.*, tip-to-tip path or one branch?
+  * Monophyletic or paraphyletic?
+* Rebuilding trees is too unstable!
+  * We can graft new tips to an existing tree by maximum likelihood (pplacer, Matsen *et al* 2010).
+
+<small><small>
+Matsen FA, Kodner RB, Armbrust EV. pplacer: linear time maximum-likelihood and Bayesian phylogenetic placement of sequences onto a fixed reference tree. BMC bioinformatics. 2010;11(1):538.
+</small></small>
 
 ---
 
-<table>
-  <tr>
-    <td width="67%">
-      <ul>
-        <li>Graft new cases to the tree by maximum likelihood (pplacer, <a href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-11-538">Matsen <i>et al.</i> 2010</a>).</li>
-        <li>Eliminating bootstrap criterion consistently reduces information loss.</li>
-      </ul>
-    </td>
-    <td style="vertical-align: middle;">
-      <div class="avatar" style="height: 110px; width: 110px;">
-        <img src="/img/connor-thumb.jpeg">
-      </div>
-    </td>
-    <td style="vertical-align: middle;">
-      Connor Chato, MSc graduate<br/>
-      <small>Public Health Agency of Canada</small>
-    </td>
-  </tr>
-</table>
+# We need a stricter definition of clusters in trees
+
+![](/img/simplified-cluex.png)
+
+---
+
+# Model selection identifies optimal clustering parameters for trees as well
+
 <table>
   <tr>
     <td><img src="/img/GAICSt_Comp.svg"/></td>
@@ -368,120 +322,57 @@ Optimal thresholds maximize the covariance among clusters between mean recency (
   </tr>
 </table>
 
-<small>
+<small><small>
 Chato, C., Feng, Y., Ruan, Y., Xing, H., Herbeck, J., Kalish, M., & Poon, A. F. (2022). Optimized phylogenetic clustering of HIV-1 sequence data for public health applications. PLOS Computational Biology, 18(11), e1010745.
-</small>
+</small></small>
 
 ---
 
 <table>
   <tr>
     <td>
-      <h4>The majority of new cases are not in clusters!</h4>
+      <h1>Clusters don't necessarily have to be components</h1>
       <ul>
-        <li>Since our objective is to predict the "location" of the next cases, this is a problem!</li>
-        <li>Relaxing the distance threshold to capture more new cases will cause the clusters to collapse into a single giant connected component.</li>
-      </ul>
-    </td>
-    <td width="55%">
-      <img src="/img/TreeClu-newcases.svg"/>
-    </td>
-  </tr>
-</table>
-
-<small>
-Chato, C., Feng, Y., Ruan, Y., Xing, H., Herbeck, J., Kalish, M., & Poon, A. F. (2022). Optimized phylogenetic clustering of HIV-1 sequence data for public health applications. PLOS Computational Biology, 18(11), e1010745.
-</small>
-
----
-
-<table>
-  <tr>
-    <td>
-      <h2>Community detection</h2>
-      <ul>
-        <li>We don't have to restrict our definition of clusters to connected components!</li>
-        <li>We can partition components into clusters according to edge densities:</li>
-          <ul>
-            <li><i>i.e.</i>, network modularity (<a href="https://www.pnas.org/doi/10.1073/pnas.0601602103">Newman 2006</a>).</li>
-            <li>An abundance of community detection methods in the network science literature.</li>
-          </ul>
-        <li>Uncouples the problem of connecting new cases from the problem of separating known cases.</li>
-        
+        <li>A connected component is a subgraph in which every pair of nodes is connected by a path of edges.</li>
+        <li>Components are fragile &mdash; a single new case can cause two components to merge into one!</li>
+        <li>We can partition components into clusters according to edge densities, <i>i.e.</i>, network modularity (<a href="https://www.pnas.org/doi/10.1073/pnas.0601602103">Newman 2006</a>).</li>
       </ul>
     </td>
     <td width="35%" style="vertical-align: middle">
-      <img src="/img/431083_2_En_9_Fig4_HTML.jpeg"/>
+      <img src="/img/431083_2_En_9_Fig4_HTML.png"/>
+      <small><small>
+      A network component coloured by the Louvain algorithm for maximizing modularity.
+      </small></small>
     </td>
   </tr>
 </table>
+<br/>
 
-<small>
+<small><small>
 Image credit: Watson, A. K., Lannes, R., Pathmanathan, J. S., M&eacute;heust, R., Karkar, S., Colson, P., ... & Bapteste, E. (2019). The methodology behind network thinking: graphs to analyze microbial complexity and evolution. Evolutionary genomics: Statistical and computational methods, 271-308.
-</small>
+</small></small>
 
 ---
 
-## Optimizing community detection
+# Breaking up a giant component
 
-<table>
-  <tr>
-    <td>
-      <ul>
-        <li>Applied the Markov clustering algorithm (MCL, <a href="https://doi.org/10.1137/040608635">van Dongen 2008</a>) to graphs induced by varying TN93 thresholds.</li>
-        <li>MCL simulates flow through the network to resolve edge-dense clusters.</li>
-        <li>We used the same $\Delta$AIC method to optimize the clustering parameters (<i>right</i>).</li>
-        <li>AIC was fairly robust to changing MCL parameters.</li>
-      </ul>
-    </td>
-    <td width="45%">
-      <img src="/img/tenn-deltaAIC.png">
-      <table>
-      <tr><td>
-      <div class="avatar" style="height: 110px; width: 110px">
-        <img src="/img/molly-thumb.jpeg">
-      </div>
-      </td><td>
-        Molly Liu<br/>
-        MSc graduate
-      </td></tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<br/>
-<small>
-van Dongen, Stijn, Graph clustering via a discrete uncoupling process, Siam Journal on Matrix Analysis and Applications 30-1, p121-141, 2008.
-</small>
-
----
-
-## Dissolving the giant component
+Results from applying Markov clustering (MCL) to a large component at an optimized cutoff of TN93 < 0.028.
 ![](/img/community-figure3.png)
-<br/>
-<small>
+
+<small><small>
 Liu, M., Chao, C., & Poon, A. F. (2023). From components to communities: bringing network science to clustering for molecular epidemiology. Virus Evolution, vead026.
-</small>
+</small></small>
 
 ---
 
-## Concluding remarks
+# We use arbitrary clustering thresholds for many areas of biology
 
-* Community detection represents a wide avenue for further research.
-* Many model-based clustering methods have also been proposed:
-  * *e.g.*, [DM-PhyClus](https://github.com/villandre/DMphyClus) (Villandr&eacute; *et al.*, 2018); [MSBD](https://taming-the-beast.org/tutorials/MSBD-tutorial/) (Barrido-Sottani *et al.*, 2018); <br/>[clmp](https://shiny.filogeneti.ca/clmp/) (McCloskey and Poon, 2017).
-* Will these innovations ever be adopted by public health?
-
-> "Chato, Kalish, and Poon (2020) recommends tailoring transmission clustering thresholds to the local epidemic context [19]; however, the current HIV molecular surveillance program infrastructure in the US would likely be unable to facilitate the high level statistical analyses required to accomplish this."
-
-<br/>
-<small>
-Rich, Shannan N., et al. "Employing molecular phylodynamic methods to identify and forecast HIV transmission clusters in public health settings: A qualitative study." Viruses 12.9 (2020): 921.
-</small>
+* Biological species are essentially clusters, especially for viruses and bacteria.
+* We use clusters to label cell types in gene expression data sets.
 
 ---
 
-## Thanks!
+# Thanks!
 
 <table>
 <tr>
@@ -490,6 +381,7 @@ Rich, Shannan N., et al. "Employing molecular phylodynamic methods to identify a
     <img src="/img/NSERC_RGB.png"/>
   </td>
   <td>
-  <img src="/img/lab-thumbnails.jpeg"/></td>
+    <img src="/img/lab-thumbnails.jpeg" width="400px"/>
+  </td>
 </tr>
 </table>
