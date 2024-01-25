@@ -30,31 +30,31 @@ Clusters are not real.
 
 ---
 
-# Clusters and epidemiology
+<section data-background-image="/img/broad-street-band.jpg" 
+data-background-size="contain" data-background-position="top">
 
-<table>
-  <tr>
-  <td style="vertical-align: middle; font-size: 20pt;">
-  <ul>
-    <li>In epidemiology, a cluster of cases in space and/or time implies a common source.</li>
-    <li>The Broad street cholera outbreak (<i>right</i>) is often used as an early example of this application of clustering.</li>
-    <li>Many scanning statistics have been developed for spatiotemporal clustering of disease.</li>
+<div style="position: fixed; bottom: 12pt;">
+  <ul style="list-style-type: none;">
+    <li>In epidemiology, a cluster of cases in <b>space</b> and <b>time</b> implies a common source.</li>
+    <li>The Broad street cholera outbreak is often used as an early example of this application of clustering.</li>
   </ul>
-  </td>
-  <td width="30%">
-    <img src="/img/broad-street.jpg" width="300px"/>
-  </td>
-</table>
+  <br/><br/>
 
-<small><small>
-Brody et al. (2000) Map-making and myth-making in Broad Street: the London cholera epidemic, 1854.  Lancet 356; 64-68.
-</small></small>
+  <div style="font-size: 13pt; font-weight: 500; color: #4F2683;">
+  Brody et al. (2000) Map-making and myth-making in Broad Street: the London cholera epidemic, 1854.  Lancet 356; 64-68.
+  </div>
+</div>
+
+
+
+
+</section>
 
 ---
 
-# Genetic clusters
+# A genetic cluster is a group of sequences more similar to each other than to any other sequence
 
-* A <u>genetic</u> cluster of infections similarly implies that cases are related by recent transmission events.
+* A genetic cluster of infections similarly implies that cases are related by recent transmission events.
 * Sequences may be easier to collect.
   * Routine sequencing is standard of care for some viruses, *e.g.*, HIV-1.
   * Spatial location may be unavailable or meaningless (*e.g.*, transmission by intimate contact; long asymptomatic period).
@@ -62,53 +62,114 @@ Brody et al. (2000) Map-making and myth-making in Broad Street: the London chole
 
 ---
 
-# Building genetic clusters
-
-* Genetic clusters are generally extracted from sequence data in two ways:
-
 <table>
 <tr>
-  <td style="text-align: center; font-weight: 700;">
-  Pairwise distances
-  </td>
-  <td style="text-align: center; font-weight: 700;">
-  Phylogenetic distances
-  </td>
-</tr>
-<tr>
   <td>
-    <img src="/img/wolfs-beeswarm.svg"/> 
-  </td>
-  <td>
-    <img src="/img/glenochil-rotate.png"/>
-  </td>
-</tr>
-<tr>
-  <td>
-    <small>Pairwise distances between HIV-1 sequences from transmission pairs and unrelated individuals (derived from Wolfs et al. 1992).</small>
-  </td>
-  <td>
-    <small>Excerpt from a maximum likelihood phylogeny of HIV-1 <i>gag</i> sequences including inmates of a Scottish prison.</small>
+    <h1>One way to make clusters is from pairwise distances</h1>
+    <ul>
+      <li>Epidemiologically-linked infections (<i>e.g.</i>, transmission pairs) tend to have shorter genetic distances (<b>A</b>).</li>
+      <li>The pairwise distances define a <i>graph</i> where:
+        <ul>
+          <li>each node represents an sequence</li> 
+          <li>an edge is drawn between two sequences with a distance below some threshold.</li>
+        </ul>
+      <li>By convention, a <i><u>connected component</u></i> of two or more nodes is a cluster (<b>B</b>).</li>
+    </ul>
+  <td width="40%">
+    <table>
+      <tr><td>A</td></tr>
+      <tr><td><img src="/img/wolfs-beeswarm.svg"/></td></tr>
+      <tr><td>B</td></tr>
+      <tr><td><img src="/img/connected-components.png"/></td></tr>
+    </table>
   </td>
 </tr>
 </table>
 <br/>
 
 <small><small>
-Sources: Wolfs, TFW, et al. "HIV-1 genomic RNA diversification following sexual and parenteral virus transmission." Virology 189.1 (1992): 103-110.<br/>
-Yirrell, DL, et al. "Molecular investigation into outbreak of HIV in a Scottish prison." Brit Med J 314 (1997): 1446.
+Wolfs, TFW, et al. "HIV-1 genomic RNA diversification following sexual and parenteral virus transmission." Virology 189.1 (1992): 103-110.<br/>
 </small></small>
 
 ---
 
-# Characterizing transmission risk
+<table>
+<tr>
+  <td>
+    <h1>We can also look for clusters of sequences in a tree</h1>
+    <ul>
+      <li>A phylogenetic tree models how populations (infections) are related by common ancestors.</li>
+      <li>Clusters can be defined by:</li>
+        <ul>
+          <li>the mean tip-to-tip distance within a subtree/clade</li> 
+          <li>the bootstrap support (reproducibility) of the subtree</li>
+        </ul>
+      <li>A longer history of use than pairwise distance clustering.</li>
+      <li>Building a tree is more computationally intensive &mdash; pairwise distances are invariant.</li>
+    </ul>
+  <td width="35%">
+    <img src="/img/glenochil-crop.png"/> 
+    <small>
+    Excerpt from a maximum likelihood phylogeny of HIV-1 <i>gag</i> sequences, including inmates of a Scottish prison.
+    </small>
+  </td>
+</tr>
+</table>
+<br/>
 
-* 
+<small><small>
+Yirrell, DL, et al. "Molecular investigation into outbreak of HIV in a Scottish prison." Brit Med J 314 (1997): 1446.<br/>
+</small></small>
 
 ---
 
-# Guiding public health actions
-<img src="/img/1-s2.0-S2352301816000461-gr4_lrg.jpg" height="450px" style="padding: 1em;"/>
+<h1>Clusters may identify transmission risk factors</h1>
+<table>
+  <tr>
+    <td>
+      <ul>
+        <li>Clustering implies less time between transmission events &mdash; less time for evolution.</li>
+        <li>A component of one sequence is considered "non-clustered".</li>
+        <li>Whether or not a sequence is assigned to a cluster becomes a binomial outcome.</li>
+        <ul>
+          <li><i>e.g.</i>, increasing viral load is significantly associated with a greater odds of being in a cluster.</li>
+        </ul>
+      </ul>
+    </td>
+    <td width="50%">
+      <img src="/img/jid-poon-2013-f3.svg"/>
+      <small>
+      <div style="color: #4F2683; font-size: 13pt; text-align: center;">
+      Results of multiple logistic regression for clusters in a phylogeny of <i>n</i>=27,296 HIV-1 <i>pol</i> sequences from British Columbia, Canada (Poon <i>et al.</i>, 2015).
+      </div>
+      </small>
+    </td>
+  </tr>
+</table>
+<br/>
+
+<small><small>
+Poon, Art FY, et al. "The impact of clinical, demographic and risk factors on rates of HIV transmission: a population-based phylogenetic analysis in British Columbia, Canada." The Journal of infectious diseases 211.6 (2015): 926-935.
+</small></small>
+
+---
+
+# We can prioritize fast "growing" clusters
+
+* *e.g.*, The US Centers for Disease Control and Prevention [recommends](https://www.cdc.gov/hiv/pdf/funding/announcements/ps18-1802/CDC-HIV-PS18-1802-AttachmentE-Detecting-Investigating-and-Responding-to-HIV-Transmission-Clusters.pdf) investigating clusters with 5 or more new cases in the past 12 months.
+* Cluster growth has been modelled as a binomial outcome ([Wertheim *et al.* 2018](https://academic.oup.com/jid/article/218/12/1943/5053881); [Billock *et al.* 2019](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6692892/)).
+<img src="/img/cluster-growth.svg" height="200px"/>
+<div style="text-align: center; font-size: 16pt;">
+In this example, clusters 1 and 2 are "growing", and cluster 3 is not.
+</div>
+
+
+---
+
+<div style="font-weight: 300; font-size: 24pt; color: #4F2683;">
+When a rapidly growing cluster triggered a public health response in BC, Canada
+</div>
+<img src="/img/1-s2.0-S2352301816000461-gr4_lrg.jpg" height="500px" style="padding: 0em;"/>
 
 <small><small>
 Poon, AFY, et al. "Near real-time monitoring of HIV transmission hotspots from routine HIV genotyping: an implementation case study." The Lancet HIV 3.5 (2016): e231-e238.
@@ -116,51 +177,49 @@ Poon, AFY, et al. "Near real-time monitoring of HIV transmission hotspots from r
 
 ---
 
-# Cluster growth
-* Clusters can be prioritized on the basis of predicted growth.
-  * [US CDC guidelines](https://www.cdc.gov/hiv/pdf/funding/announcements/ps18-1802/CDC-HIV-PS18-1802-AttachmentE-Detecting-Investigating-and-Responding-to-HIV-Transmission-Clusters.pdf): investigate clusters with 5 or more new cases in the past 12 months.
-* Cluster growth has been modelled as a binomial outcome ([Wertheim *et al.* 2018](https://academic.oup.com/jid/article/218/12/1943/5053881); [Billock *et al.* 2019](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6692892/)).
-<img src="/img/cluster-growth.svg" height="200px"/>
-<div style="text-align: center; font-size: 16pt;">
-In this example, clusters 1 and 2 are "growing", and cluster 3 is not.
+<div style="text-align: center; font-weight:900; font-size:24pt;">
+The clustering threshold can be whatever we want.
 </div>
 
----
 
 <div id="tn93" class="fig-container"
       data-fig-id="fig-tn93"
-      data-file="/include/clustering.html"
+      data-file="/include/clustering-full.html"
       style="width:800px; margin:0 auto; height:600px; border-width: 0;">
 </div>
-<div style="text-align: center;">
-Which threshold should we use?
+
+
+---
+
+<div style="text-align: center; font-weight: 900; font-size: 48pt; line-height: 1em;">
+We cannot use the same clustering threshold in all contexts
 </div>
 
+<ul>
+  <li>Sequences can be similar <u>not only</u> because less time has passed between transmissions, <b>but also because those infections were quickly diagnosed!</b></li>
+  <li>We are less likely to sample closely-related infections in a generalized epidemic &mdash; requiring a relaxed threshold.</li>
+</ul>
+
 ---
-
-# Choosing thresholds
-
-* Different thresholds may be required for different settings.
-
----
-
-# Modifiable areal unit problem (MAUP)
 
 <table>
   <tr>
     <td>
+      <h1>There is a similar problem in spatial statistics</h1>
       <ul>
-        <li>An analogous problem from spatial statistics:</li>
+        <li>The modifiable areal unit problem (MAUP):</li>
         <ul>
           <li>Observations are distributed in a continuous space.</li>
-          <li>Grouped into "areal units" by the investigator.</li>
+          <li>These need to be assigned to groups for analysis ("areal units").</li>
           <li>Results of a statistical test are contingent on this grouping.</li>
         </ul>
-        <li>(<i>right</i>) Example of the MAUP for a statistical association between COVID-19 mortality and atmospheric NO<sub>2</sub> (Wang and Di 2020).</li>
       </ul>
     </td>
     <td width="45%">
       <img src="/img/sarscov2-noxide-maup.svg"/>
+      <small>
+      An rxample of the MAUP for a statistical association between COVID-19 mortality and atmospheric NO<sub>2</sub>.
+      </small>
     </td>
   </tr>
 </table>
