@@ -213,7 +213,7 @@ We cannot use the same clustering threshold in all contexts
       </ul>
     </td>
     <td width="50%">
-      <img src="/img/sarscov2-noxide-maup.png"/>
+      <img src="/img/sarscov2-noxide-maup2.png"/>
     </td>
   </tr>
 </table>
@@ -266,8 +266,8 @@ Chato, C., Kalish, M. L., & Poon, A. F. (2020). Public health in genetic spaces:
     <td>
       <h1>An optimal threshold maximizes the difference in AIC between models</h1>
       <ul>
+      <li>Borrowing an idea from spatial epidemiology (Nakaya, 2000).</li>
       <li>Increasing $\Delta$AIC reduces the relative information loss from adding case recency as a predictor variable.</li>
-      <li>Inspired by Nakaya (2000), who described a similar method for mortality rates in Tokyo.</li>
       <li>The optimal thresholds are much higher than the setting recommended by the US CDC (0.005)</li>
       </ul>
     </td>
@@ -334,14 +334,18 @@ Chato, C., Feng, Y., Ruan, Y., Xing, H., Herbeck, J., Kalish, M., & Poon, A. F. 
       <h1>Clusters don't necessarily have to be components</h1>
       <ul>
         <li>A connected component is a subgraph in which every pair of nodes is connected by a path of edges.</li>
-        <li>Components are fragile &mdash; a single new case can cause two components to merge into one!</li>
-        <li>We can partition components into clusters according to edge densities, <i>i.e.</i>, network modularity (<a href="https://www.pnas.org/doi/10.1073/pnas.0601602103">Newman 2006</a>).</li>
+        <li>Components are fragile &mdash; a single new case can cause two components to merge into one (<b>top</b>)</li>
+        <li>We can partition components into clusters according to edge densities, <i>i.e.</i>, network modularity (<a href="https://www.pnas.org/doi/10.1073/pnas.0601602103">Newman 2006</a>, <b>bottom</b>).</li>
       </ul>
     </td>
     <td width="35%" style="vertical-align: middle">
+      <img src="/img/barbell.svg">
+      <small><small>
+      A "barbell" cluster created by the fusion of two components.
+      </small></small>
       <img src="/img/431083_2_En_9_Fig4_HTML.png"/>
       <small><small>
-      A network component coloured by the Louvain algorithm for maximizing modularity.
+      A component partitioned into communities (colours) by the Louvain method.
       </small></small>
     </td>
   </tr>
