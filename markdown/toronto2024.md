@@ -298,7 +298,7 @@ Chato, C., Kalish, M. L., & Poon, A. F. (2020). Public health in genetic spaces:
   * Different summary statistics on lengths, *e.g.*, mean of subtree.
   * Different length definitions, *e.g.*, tip-to-tip path or one branch?
   * Monophyletic or paraphyletic?
-* Rebuilding trees is too unstable!
+* Rebuilding trees is too unstable!  Seldom used for tracking clusters.
   * We can graft new tips to an existing tree by maximum likelihood (pplacer, Matsen *et al* 2010).
 
 <small><small>
@@ -307,7 +307,7 @@ Matsen FA, Kodner RB, Armbrust EV. pplacer: linear time maximum-likelihood and B
 
 ---
 
-# We need a stricter definition of clusters in trees
+# We need to define cluster growth in trees
 
 ![](/img/simplified-cluex.png)
 
