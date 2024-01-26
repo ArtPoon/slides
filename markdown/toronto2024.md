@@ -67,7 +67,7 @@ data-background-size="contain" data-background-position="top">
       <li>Epidemiologically-linked infections (<i>e.g.</i>, transmission pairs) tend to have shorter genetic distances (<b>A</b>).</li>
       <li>The pairwise distances define a <i>graph</i> where:
         <ul>
-          <li>each node represents an sequence</li> 
+          <li>each node represents a sequence</li> 
           <li>an edge is drawn between two sequences with a distance below some threshold.</li>
         </ul>
       <li>By convention, a <i><u>connected component</u></i> of two or more nodes is a cluster (<b>B</b>).</li>
@@ -77,7 +77,7 @@ data-background-size="contain" data-background-position="top">
       <tr><td>A</td></tr>
       <tr><td><img src="/img/wolfs-beeswarm.svg"/></td></tr>
       <tr><td>B</td></tr>
-      <tr><td><img src="/img/connected-components.png"/></td></tr>
+      <tr><td><img src="/img/connected-components2.svg"/></td></tr>
     </table>
   </td>
 </tr>
@@ -106,9 +106,9 @@ Wolfs, TFW, et al. "HIV-1 genomic RNA diversification following sexual and paren
     </ul>
   <td width="35%">
     <img src="/img/glenochil-crop.png"/> 
-    <small>
+    <small><small>
     Excerpt from a maximum likelihood phylogeny of HIV-1 <i>gag</i> sequences, including inmates of a Scottish prison.
-    </small>
+    </small></small>
   </td>
 </tr>
 </table>
@@ -134,10 +134,10 @@ Yirrell, DL, et al. "Molecular investigation into outbreak of HIV in a Scottish 
       </ul>
     </td>
     <td width="50%">
-      <img src="/img/jid-poon-2013-f3.svg"/>
+      <img src="/img/jid-poon-2013-f3.rev.svg"/>
       <small>
       <div style="color: #4F2683; font-size: 13pt; text-align: center;">
-      Results of multiple logistic regression for clusters in a phylogeny of <i>n</i>=27,296 HIV-1 <i>pol</i> sequences from British Columbia, Canada (Poon <i>et al.</i>, 2015).
+      Multiple logistic regression of clustering in a phylogeny of <i>n</i>=27,296 HIV-1 <i>pol</i> sequences from BC, Canada (Poon <i>et al.</i>, 2015).
       </div>
       </small>
     </td>
@@ -166,7 +166,7 @@ In this example, clusters 1 and 2 are "growing", and cluster 3 is not.
 <div style="font-weight: 300; font-size: 24pt; color: #4F2683;">
 When a rapidly growing cluster triggered a public health response in BC, Canada
 </div>
-<img src="/img/1-s2.0-S2352301816000461-gr4_lrg.jpg" height="500px" style="padding: 0em;"/>
+<img src="/img/real-time-hiv.png" height="500px" style="padding: 0em;"/>
 
 <small><small>
 Poon, AFY, et al. "Near real-time monitoring of HIV transmission hotspots from routine HIV genotyping: an implementation case study." The Lancet HIV 3.5 (2016): e231-e238.
@@ -241,7 +241,7 @@ where $w(v)$ is the weight of an individual case (vertex, $v$).
       <ul>
         <li>A known case $v$ is more likely to be connected to a new case if $v$ was sampled more recently (<b>right</b>).</li>
         <li>Fit a logistic regression to the probability of an edge from $u$ to $v$, given sampling times $t_u$ and $t_v$:</li>
-        $$\log\left(\frac{\hat{w}_v}{1-\hat{w}_v}\right) = \alpha + \beta \left(t_v-t_{u}\right)$$
+        `$$\log\left(\frac{\hat{w}_v}{1-\hat{w}_v}\right) = \alpha + \beta \left(t_v-t_{u}\right)$$`
         <li>Substituting these weights into the Poisson regression gives us an <b>alternate model</b>.</li>
       </ul>
     </td>
