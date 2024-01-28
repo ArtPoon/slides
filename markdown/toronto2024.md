@@ -384,14 +384,15 @@ Liu, M., Chao, C., & Poon, A. F. (2023). From components to communities: bringin
     <td><img src="https://hbctraining.github.io/scRNA-seq/img/SC_umap.png"/></td>
   </tr>
   <tr>
-    <td>Biological species are essentially clusters.</td>
+    <td>Biological species are essentially clusters, especially bacteria and viruses.</td>
     <td>We use clustering to label cell types from gene expression data.</td>
   </tr>
 </table>
+<br/>
 
 <small><small>
-Image credits: [Megaselia species complex](https://entomologytoday.org/2022/05/17/molecular-data-dark-taxa-megaselia-sulphurizona-fly-complex), photo by Dr. Brian Brown;<br/>
-Plot from a single-cell RNA-seq clustering tutorial using Seurat by the [Harvard Chan BIoinformatics Core](https://hbctraining.github.io/scRNA-seq/lessons/07_SC_clustering_cells_SCT.html).
+Image credits: <a href="https://entomologytoday.org/2022/05/17/molecular-data-dark-taxa-megaselia-sulphurizona-fly-complex">Megaselia species complex</a>, photo by Dr. Brian Brown;<br/>
+Plot from a single-cell RNA-seq clustering tutorial using Seurat by the <a href="https://hbctraining.github.io/scRNA-seq/lessons/07_SC_clustering_cells_SCT.html">Harvard Chan BIoinformatics Core</a>.
 </small></small>
 
 ---
@@ -417,6 +418,9 @@ Plot from a single-cell RNA-seq clustering tutorial using Seurat by the [Harvard
           <td colspan="2"><img src="/img/hiv-dynsbm.svg" width="350px"/></td>
         </tr>
       </table>
+      <small><small><small>
+      Olabode, Abayomi S., et al. "Revisiting the recombinant history of HIV-1 group M with dynamic network community detection." Proceedings of the National Academy of Sciences 119.19 (2022): e2108815119.
+      </small></small></small>
     </td>
     <td width="50%">
       <table>
@@ -437,6 +441,9 @@ Plot from a single-cell RNA-seq clustering tutorial using Seurat by the [Harvard
           <td colspan="2"><img src="/img/adenoviridae_analysis_crop.svg" width="275px"/></td>
         </tr>
       </table>
+      <small><small><small>
+      Mu&ntilde;oz-Baena, Laura, and Art FY Poon. "Using networks to analyze and visualize the distribution of overlapping genes in virus genomes." PLoS pathogens 18.2 (2022): e1010331.
+      </small></small></small>
     </td>
   </tr>
 </table>
