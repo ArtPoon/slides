@@ -4,30 +4,46 @@
 
 ---
 
+# Parameters and variables
+
+* Recall that this is the binomial distribution:
+
+`$$P(N,y\;|\;p) = {N\choose y} p^y (1-p)^{(N-y)}$$`
+
+* **Parameters** ($p$) define the hypothesis, something we cannot directly observe.
+* **Variables** ($N, y$) comprise the data, things that we have measured.
+
+---
+
 # Probability and inference
 
-* When our model of some biological or epidemiological process is simple enough, we may be able to calculate the probability distribution.
-* This is the probability of the *data* given the *hypothesis*.
-* **But we already know the data!** What we want to learn about is the hypothesis!
+* When we are taught about probability distributions, we are shown how to calculate the probabilities of different outcomes (data), for given parameters (hypothesis).
+
+* *e.g.*, the probabilities for $y={0, 1, \ldots, 10}$ and $N=10$, given $p=0.5$:
+![](/img/binomial.svg)
+
+* **But we already have the data!** What we want to learn about is the hypothesis!
 
 ---
 
 # Likelihood
 
-* This probability distribution has two sets of variables:
-
-`$$P(N,y\;|\;p) = {N\choose y} p^y (1-p)^{(N-y)}$$`
-
-1. Parameters that define the hypothesis (*p*).
-2. Variables that comprise the data (*N*, *y*).
+* What are the parameters that are the most likely to have produced our data?
+  * Instead of changing the data, we need to look at how the probability of our data changes with varying parameters.
+* We have to change how we think about probability: 
+<div id="bin3d" class="fig-container"
+      data-fig-id="fig-bin3d"
+      data-file="/include/binomial3d.html"
+      style="height:300px">
+</div>
 
 ---
 
-<section data-state="bin3d-slide">
-    <div id="bin3d" class="fig-container"
-         data-fig-id="fig-bin3d"
-         data-file="/include/binomial3d.html"
-         style="height:900px">
+<section data-state="seeing-slide">
+    <div id="seeing" class="fig-container"
+         data-fig-id="fig-seeing"
+         data-file="https://seeing-theory.brown.edu/bayesian-inference/index.html#section2"
+         style="height:800px">
     </div>
 </section>
 
@@ -74,10 +90,6 @@ $$P(\text{everything}) = P(\text{first thing}) \times P(\text{another thing})\\\
 * Taking the $\log$ of a very small value gives you a very negative number:
   $\log(3.45\times 10^{-73}) = -166.8503$
 * The log likelihood should never be greater than zero (although some programs rescale L to avoid [numerical overflow](https://en.wikipedia.org/wiki/Fixed-point_arithmetic#Precision_loss_and_overflow)).
-
----
-
-# Search heuristics
 
 ---
 
@@ -190,10 +202,19 @@ Image source: Wikimedia Commons, <a href="https://commons.wikimedia.org/wiki/Fil
 
 ---
 
-# Other strategies
+# Random restarts
 
-* Random restarts - begin searches at different parameter combinations to sample different peaks.
+* Where we end up with a heuristic search will depend on where we start!
+* Begin searches at different parameter combinations to sample different peaks.
 * Starting with a pretty good guess: many ML-based tree reconstruction programs will initiate the search at a distance-based tree (such as NJ).
+
+---
+
+# Moving through tree space
+
+* It is fairly intuitive how we explore a numerical space, but how do we move from one tree to another?
+* Is tree A closer to tree B or C?
+![](/img/comparing-trees.svg)
 
 ---
 
