@@ -241,7 +241,7 @@ where $w(v)$ is the weight of an individual case (vertex, $v$).
       <ul>
         <li>A known case $v$ is more likely to be connected to a new case if $v$ was sampled more recently (<b>right</b>).</li>
         <li>Fit a logistic regression to the probability of an edge from $u$ to $v$, given sampling times $t_u$ and $t_v$:</li>
-        `$$\log\left(\frac{\hat{w}_v}{1-\hat{w}_v}\right) = \alpha + \beta \left(t_v-t_{u}\right)$$`
+$$\log\left(\frac{\hat{w}_v}{1-\hat{w}_v}\right) = \alpha + \beta \left(t_v-t_{u}\right)$$
         <li>Substituting these weights into the Poisson regression gives us an <b>alternate model</b>.</li>
       </ul>
     </td>
@@ -311,6 +311,10 @@ Matsen FA, Kodner RB, Armbrust EV. pplacer: linear time maximum-likelihood and B
 
 ![](/img/simplified-cluex.png)
 
+<small><small>
+Chato, C., Feng, Y., Ruan, Y., Xing, H., Herbeck, J., Kalish, M., & Poon, A. F. (2022). Optimized phylogenetic clustering of HIV-1 sequence data for public health applications. PLOS Computational Biology, 18(11), e1010745.
+</small></small>
+
 ---
 
 # Model selection identifies optimal clustering parameters for trees as well
@@ -360,7 +364,10 @@ Image credit: Watson, A. K., Lannes, R., Pathmanathan, J. S., M&eacute;heust, R.
 
 # Breaking up a giant component
 
+<div style="font-size: 18pt; line-height: 1em;">
 Results from applying Markov clustering (MCL) to a large component at an optimized cutoff of TN93 < 0.028.
+</div>
+
 ![](/img/community-figure3.png)
 
 <small><small>
@@ -371,8 +378,69 @@ Liu, M., Chao, C., & Poon, A. F. (2023). From components to communities: bringin
 
 # We use arbitrary clustering thresholds for many areas of biology
 
-* Biological species are essentially clusters, especially for viruses and bacteria.
-* We use clusters to label cell types in gene expression data sets.
+<table>
+  <tr>
+    <td><img src="/img/megaselia-fly-specimens.png"/></td>
+    <td><img src="https://hbctraining.github.io/scRNA-seq/img/SC_umap.png"/></td>
+  </tr>
+  <tr>
+    <td>Biological species are essentially clusters.</td>
+    <td>We use clustering to label cell types from gene expression data.</td>
+  </tr>
+</table>
+
+<small><small>
+Image credits: [Megaselia species complex](https://entomologytoday.org/2022/05/17/molecular-data-dark-taxa-megaselia-sulphurizona-fly-complex), photo by Dr. Brian Brown;<br/>
+Plot from a single-cell RNA-seq clustering tutorial using Seurat by the [Harvard Chan BIoinformatics Core](https://hbctraining.github.io/scRNA-seq/lessons/07_SC_clustering_cells_SCT.html).
+</small></small>
+
+---
+
+<table>
+  <tr>
+    <td>
+      <table>
+        <tr>
+          <td width="300px">
+            Dynamic stochastic blockmodeling of HIV recombination.<br/>
+            <small>
+            Dr. Abayomi Olabode
+            </small>
+          </td>
+          <td>
+            <div class="avatar">
+            <img src="/img/abayomi.jpeg" height="110px"/>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"><img src="/img/hiv-dynsbm.svg" width="350px"/></td>
+        </tr>
+      </table>
+    </td>
+    <td width="50%">
+      <table>
+        <tr>
+          <td width="300px">
+            Evolution of virus genomes.<br/>
+            <small>
+            Dr. Laura Munoz Baena
+            </small>
+          </td>
+          <td>
+            <div class="avatar">
+            <img src="/img/laura.png" height="120px"/>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"><img src="/img/adenoviridae_analysis_crop.svg" width="275px"/></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
 
 ---
 
@@ -381,10 +449,11 @@ Liu, M., Chao, C., & Poon, A. F. (2023). From components to communities: bringin
 <table>
 <tr>
   <td>
-    <img src="/img/cihr.png"/><br/>
-    <img src="/img/NSERC_RGB.png"/>
+    <img src="/img/cihr.png" width="250px"/><br/>
+    <img src="/img/NSERC_RGB.png" width="230px"/>
+    <img src="/img/NIH_NIAID.jpg" width="180px"/>
   </td>
-  <td>
+  <td style="vertical-align: middle;">
     <img src="/img/lab-thumbnails.jpeg" width="400px"/>
   </td>
 </tr>
