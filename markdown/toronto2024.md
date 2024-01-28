@@ -428,7 +428,7 @@ Plot from a single-cell RNA-seq clustering tutorial using Seurat by the <a href=
           <td width="300px">
             Evolution of virus genomes.<br/>
             <small>
-            Dr. Laura Munoz Baena
+            Dr. Laura Mu&ntilde;oz Baena
             </small>
           </td>
           <td>
