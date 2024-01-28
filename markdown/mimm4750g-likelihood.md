@@ -1,5 +1,5 @@
 # MIMM4750G
-## Maximum likelihood trees
+## Likelihood
 ![](https://imgs.xkcd.com/comics/prediction.png)
 
 ---
