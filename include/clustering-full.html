@@ -64,18 +64,28 @@ button {
   stroke-width: 2px;
 }
 
+#graph-svg {
+  width: 100%;
+  height: 90%;
+}
+
+#slider-svg {
+  width: 100%;
+  height: 50px;
+}
+
 </style>
 
 
-<svg id="graph-svg" width="800" height="600"></svg>
-<svg id="slider-svg" width="800" height="50"></svg>
-
+<svg id="graph-svg"></svg>
+<svg id="slider-svg"></svg>
 
 <script src="/js/d3.v4.min.js"></script>
 <script src="/js/jquery-3.2.1.min.js"></script>
 
 <script>
 
+function updateSVG() {
 // trying to size SVG to parent
 // console.log(document.body.offsetWidth);
 
@@ -84,10 +94,11 @@ var graph, store;
 
 //	svg selection and sizing
 var svg = d3.select("svg#graph-svg"),
-    width = +svg.attr("width"),
-    height = +svg.attr("height"),
+    width = document.getElementById('graph-svg').clientWidth,
+    height = document.getElementById('graph-svg').clientHeight,
     radius = 10;
 
+svg.selectAll('*').remove();
 //	d3 color scales
 var color = d3.scaleOrdinal(d3.schemeCategory10);
 
@@ -95,14 +106,19 @@ var link = svg.append("g").selectAll(".link"),
     node = svg.append("g").selectAll(".node");
 
 
+var strength = 0.1;
+if (width > 1180 && height > 80) {
+  strength = 0.05;
+}
+
 //	force simulation initialization
-const forceX = d3.forceX(width / 2).strength(0.1);
-const forceY = d3.forceY(height / 2).strength(0.1);
+const forceX = d3.forceX(width / 2).strength(strength);
+const forceY = d3.forceY(height / 2).strength(strength);
 
 var simulation = d3.forceSimulation()
 	.force("link", d3.forceLink()
 		.id(function(d) { return d.id; })
-		.distance(function(d) { return d.weight; }).strength(0.1)
+		.distance(function(d) { return d.weight; }).strength(strength)
 		)
 	.force("charge", d3.forceManyBody()
 		.strength(function(d) { return -300;})
@@ -248,8 +264,9 @@ var cutoff = 0.0;
 
 var svg2 = d3.select("svg#slider-svg"),
     margin = {right: 50, left: 50},
-    width2 = +svg2.attr("width") - margin.left - margin.right,
-    height2 = +svg2.attr("height");
+    width2 = document.getElementById('slider-svg').clientWidth - margin.left - margin.right,
+    height2 = document.getElementById('slider-svg').clientHeight;
+svg2.selectAll('*').remove();
 
 var x = d3.scaleLinear()
     .domain([0, 0.02])
@@ -302,6 +319,8 @@ function move(h) {
   filter();
   update();
 }
+}
 
+window.addEventListener('resize', updateSVG);
+updateSVG();
 </script>
-
