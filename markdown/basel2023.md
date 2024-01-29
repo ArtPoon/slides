@@ -25,7 +25,7 @@ Department of Microbiology and Immunology<br/>
       <div class="avatar">
       <img src="/img/ferreira.jpg"/>
       </div>
-    </td>
+    </td> 
   </tr>
   <tr>
     <td colspan=2>
