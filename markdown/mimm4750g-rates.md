@@ -77,31 +77,6 @@ $$\begin{matrix}
 
 ---
 
-# Stationary distributions
-
-* The stationary distribution is a probability vector $\pi$ such that $\pi P = \pi$ and $\sum\pi = 1$.
-
-`$$
-\begin{pmatrix}
-\pi_E & \pi_A \\
-\end{pmatrix}
-\begin{pmatrix}
-0.3 & 0.7 \\
-0.4 & 0.6 \\
-\end{pmatrix} = \begin{pmatrix}
-0.3\pi_E+0.4\pi_A & 0.7\pi_E+0.6\pi_A \\
-\end{pmatrix}
-$$`
-
-$$
-0.3\pi_E + 0.4(1-\pi_E) = \pi_E\\\\[6pt]
-\pi_E = 0.4/1.1 = 0.\overline{36}
-$$
-
-<img src="/img/stationary-prob.svg" height="300px"/>
-
----
-
 # Continuous-time Markov chains
 
 * If we assume that all substitution rates are constant over time, then the time between substitution events (waiting time) is [exponentially distributed](https://en.wikipedia.org/wiki/Exponential_distribution).
