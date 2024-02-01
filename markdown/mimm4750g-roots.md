@@ -1,7 +1,7 @@
 # MIMM4750G
 ## Roots
 
-![](https://imgs.xkcd.com/comics/authorization.png)
+![](https://imgs.xkcd.com/comics/dendrochronology.png)
 
 ---
 
