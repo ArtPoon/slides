@@ -121,142 +121,180 @@ $$`
 
 ---
 
-# Tree probability
+# Birth-death models describe tree shape
 
 * These distributions tell us the probability that $n$ lineages exist at time $t$
   * They do *not* tell us how those lineages are related!
-* How do we calculate the probability of a __tree__ under a birth-death model?
-* We assume *complete sampling*: all $n$ lineages that have survived to the present day have been sampled.
+* To calculate the probability of a particular tree, we can start by assumping **complete sampling**:
+  * All $n$ lineages that have survived to the present day have been sampled.
+  * Some other lineages may have gone extinct before sampling.
+* It is also easier to assume that all lineages are sampled at the same time (**contemporaneous sampling**).
 
 ---
 
-# Tree probability (2)
+# Serial sampling
+
+* For infectious diseases, sequences are at different points in time.
+  * The difference between sampling times is not negligible, relative to the molecular clock.
+  * *e.g.*, an HIV-1 lineage gains about 2 substitutions per month, on average.
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Viral_Phylodynamics_Flutree.svg" height="250px"/>
+
+<small><small>
+A phylogeny of influenza A virus (H3N2) infections sampled between 1968 and 2002.
+Source: Trevor Bedford, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Viral_Phylodynamics_Flutree.svg).
+</small></small>
+
+---
+
+# Serial sampling
+
+<table>
+  <tr>
+    <td style="font-size: 18pt">
+      <ul>
+        <li>The birth-death model with incomplete sampling was extended by <a href="https://en.wikipedia.org/wiki/Tanja_Stadler"/>Dr. Tanja Stadler</a> (right) in 2010.</li>
+        <li>Any lineage can become sampled at a constant rate, $\psi$.</li>
+        <li>A sampled lineage immediately goes extinct, not leaving any descendants.</li>
+        <li>$\psi$ is different from the sampling probability $\rho$, which was only applied to tips at present.</li>
+      </ul>
+    </td>
+    <td width="30%">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/ETH-BIB-Stadler%2C_Tanja_%281981-%29-Portr_17419.jpg"/>
+      <small>
+      Image source: <a href="https://commons.wikimedia.org/wiki/File:ETH-BIB-Stadler,_Tanja_(1981-)-Portr_17419.jpg">Wikimedia Commons</a>.
+      </small>
+    </td>
+  </tr>
+</table>
+
+---
+
+# Birth-death skylines
+
+* Extended the serial sampling model to allow varying birth and death rates over time.
+* Like the coalescent skyline, the tree is partitioned into $m$ time intervals.
+  * Each interval has its own rate of birth ($\lambda_i$), death ($\mu_i$) and sampling ($\psi_i$).
+
+<img src="/img/stadler-kuhnert-fig4.png" height="200px"/>
+
+<small><small>
+Image source: Stadler, Kuhnert <i>et al.</i> (2013) <a href="https://www.pnas.org/doi/10.1073/pnas.1207965110">Proc Natl Acad Sci 110(1):228</a>.
+</small></small>
+
+---
+
+<table>
+  <tr>
+    <td style="font-size: 18pt;">
+      <h1>Effective reproduction number</h1>
+      <ul>
+        <li>Like the coalescent skyline, the number of time intervals must be specified by the user.</li>
+        <li>Birth-death skylines are estimated with equal time intervals.</li>
+        <li>
+        The effective reproduction number is a function of these rates:
+        $$R_e = \frac{\lambda}{\mu+\psi}$$
+        </li>
+        <li>$R_e(t)$ is the expected number of transmissions from a single infected individual at time $t$.</li>
+      </ul>
+      <small><small>
+      Image source: Stadler, K&uuml;hnert <i>et al.</i> (2013) <a href="https://www.pnas.org/doi/10.1073/pnas.1207965110">Proc Natl Acad Sci 110(1):228</a>.
+      </small></small>
+    </td>
+    <td width="33%">
+      <img src="/img/stadler-kuhnert-fig2.png"/>
+      Birth-death skyline for HIV-1 in the UK.
+    </td>
+  </tr>
+</table>
+
+---
+
+# Birth-death SIR
+
+<table>
+  <tr>
+    <td>
+    <img src="https://royalsocietypublishing.org/cms/asset/ad72f3d7-f349-403a-a02b-ad086db3e062/rsif20131106f02.jpg" height="250px"/>
+      <li>The BD skyline allows $\lambda$ and $\mu$ to vary freely over time, as though shaped by changes in behaviour.</li>
+      <li>Dr. Denise K&uuml;hnert introduced a birth-death model where these rates are controlled by the SIR model.</li>
+    </td>
+    <td style="vertical-align: middle;">
+      <img src="https://groupleaders.mpdl.mpg.de/wp-content/uploads/2021/07/256-316.jpg" height="200px"/>
+      <small>
+      Image source: Max Planck Digital Library.
+      </small>
+    </td>
+  </tr>
+</table>
+
+<small><small>
+Image source: K&uuml;hnert <i>et al.</i> (2014) <a href="https://royalsocietypublishing.org/doi/full/10.1098/rsif.2013.1106"/>Journal of the Royal Society Interface 11: 20131106</a>.
+</small></small>
+
+---
+
+# Advantages over the standard coalescent
+
+* The BDSIR model is directly linked to epidemiological parameters.
+  * A coalescent skyline can recover shifts in $N_e$, but not whether those changes are due to changes in birth (transmission) or death (recovery).
+* The birth-death process is stochastic.
+  * The coalescent uses deterministic growth models, although stochastic versions exist.
+* Birth-death models can more naturally handle selection (differences in growth rates).
+* Birth-death models do not assume small sample sizes.
+
+---
+
+# Limitations of birth-death models
+
+* The birth-death model with serial-sampling assumes that sampled infections are never transmitted onwards.
+  * This assumption is relaxed by the skyline model (varying $\psi_i$).
+* Some parameters of BD models are confounded
+  * There are an infinite number of parameter combinations with equal support, even with unlimited data.
+
+<img src="/img/bd-congruence.png" width="550px"/>
+
+<small><small>
+Image source: Louca <i>et al.</i> (2021) <a href="https://academic.oup.com/mbe/article/38/9/4010/6278301">Mol Biol Evol 38(9): 4010</a>.
+</small></small>
+
+---
+
+# Phylodynamics
+
+* Phylodynamics is the reconstruction of epidemiological and immunological dynamics from the shape of a phylogenetic tree relating infections.
+
+<img src="/img/grenfell-trees.png" height="300px"/>
+
+<small><small>
+Image source: Grenfell <i>et al.</i> (2004) Unifying the epidemiological and evolutionary dynamics of pathogens. <a href="https://www.science.org/doi/full/10.1126/science.1090727">Science 303: 327-332</a>.
+</small></small>
+
+---
+
+<img src="/img/grenfell-table.png" height="500px"/>
+
+<small><small>
+Image source: Grenfell <i>et al.</i> (2004) Unifying the epidemiological and evolutionary dynamics of pathogens. <a href="https://www.science.org/doi/full/10.1126/science.1090727">Science 303: 327-332</a>.
+</small></small>
+
+---
+
+# Modern phylodynamics
 
 <table>
   <tr>
     <td>
       <ul>
-        <li>Let $D_N(t)$ be the probability that a lineage at some time $t$ in the past is ancestral to a present-day subtree (clade) $N$.</li>
-        <li>Let $E(t)$ be the probability that a lineage at time $t$ leaves no descendants in the present day.</li>
-        <li>Start at the tips of the tree and calculate $D_N(t)$ and $E(t)$, moving back towards the root.</li>
+        <li>Presently, the term "phylodynamics" is applied to any study of infectious diseases that uses a phylogeny to estimate epidemiological parameters.</li>
+        <li>It does not <i>have</i> to involve coalescent or birth-death models</li>
+        <li>It does not <i>have</i> to involve Bayesian inference</li>
+        <li>BUT these are very common methods in phylodynamics</li>
       </ul>
     </td>
-    <td width="40%">
-      <img src="/img/figure11-5.png"/>
-      $D_N(t)=1$ for sampled tips.
-      <small>
-      Source: Luke Harmon, <a href="https://lukejharmon.github.io/pcm/chapter10_birthdeath/">Phylogenetic comparative methods, chapter 10</a>.
-      </small>
-    </td>
-  </tr>
-</table>
-
----
-
-# Tree probability (3)
-
-* We use differential equations to solve for how $D_N(t)$ and $E(t)$ change as we move along a branch back in time:
-
-`$$
-\begin{align}
-\frac{dD_N(t)}{dt} &= -(\lambda+\mu)D_N(t) + 2\lambda E(t) D_N(t)\\[6pt]
-\frac{dE(t)}{dt} &= \mu - (\mu+\lambda)E(t) + \lambda E(t)^2\\
-\end{align}
-$$`
-
----
-
-
-$$\frac{dD_N(t)}{dt} = -(\lambda+\mu)D_N(t) + 2\lambda E(t) D_N(t)$$
-
-<table>
-  <tr>
     <td width="50%">
-      <ul>
-        <li>Suppose we start at some node $N$ and follow the branch $t$ units back in time.</li>
-        <li>Since this branch exists, we know the lineage did not go extinct ($-\mu$)</li>
-        <li>Since we do not encounter a node, we know the lineage did not speciate ($-\lambda$), or if it did, one of the two branches went extinct ($+2\lambda E(t)$)</li>
-      </ul>
-    </td>
-    <td width="40%">
-      <img src="/img/figure11-6.png"/>
-      <small>
-      Source: Luke Harmon, <a href="https://lukejharmon.github.io/pcm/chapter10_birthdeath/">Phylogenetic comparative methods, chapter 10</a>.
-      </small>
+      <img src="/img/phylodynamics-refs.svg">
     </td>
   </tr>
 </table>
 
-
----
-
-$$\frac{dE(t)}{dt} = \mu - (\mu+\lambda)E(t) + \lambda E(t)^2$$
-
-* There are three reasons a lineage might not survive to the present day:
-  1. it goes extinct in this time interval (at rate $\mu$)
-  2. it survives this time interval, but goes extinct later (at rate $-(\lambda+\mu)E(t)$)
-  3. it speciates in this time interval, but both descendants go extinct (at rate $\lambda E(t)^2$)
-
----
-
-* When we reach a branching point, we combine probabilities:
-
-$$D_{N'}(t) = D_N(t) D_M(t) \lambda$$
-
-* To calculate the joint probability of the tree, we multiply across all $2n-2$ nodes (branches) of the tree.
-<img src="https://lukejharmon.github.io/pcm/images/figure11-7.png" height="250px"/>
-
-<small><small>
-Source: Luke Harmon, <a href="https://lukejharmon.github.io/pcm/chapter10_birthdeath/">Phylogenetic comparative methods, chapter 10</a>.
-</small></small>
-
----
-
-# Incomplete sampling
-
-* For the case of complete sampling and constant rates $\mu$ and $\lambda$, $D_N(t)$ and $E_N(t)$ have  (scary!) closed-form solutions.
-
-<img src="https://lukejharmon.github.io/pcm/images/figure10-5.png" height="300px"/>
-
-* In complete sampling, extinct lineages (A) cannot be sampled (B).
-* Sampling is almost always incomplete (C).
-
-<small><small>
-Source: Luke Harmon, <a href="https://lukejharmon.github.io/pcm/chapter10_birthdeath/">Phylogenetic comparative methods, chapter 10</a>.
-</small></small>
-
----
-
-# Incomplete sampling (2)
-
-* If we don't account for incomplete sampling, then our estimates of $\mu$ and $\lambda$ will be biased.
-* If sampling of tips is completely at random, then we can just modify each $D_N(0)$ from $1$ to $1-\rho$.
-  * $\rho$ is the "sampling probability" or "fraction".
-* $E(0)$ increases from $0$ to $\rho$ &mdash; failing to be sampled is the same as going extinct.
-
----
-
-# Differences from the coalescent
-
-* For the coalescent, the number and times associated with tips are data for estimating $N_e$.
-* Birth-death processes move forward in time &mdash; the number of tips is a random outcome.
-  * We have to model how infections are sampled from the population.
-  * The simplest model is that a given number $n$ is sampled at the same time.
-  * Tips are data for estimating both sampling rate and birth/death rates.
-
----
-
-# Birth-death models for infectious diseases
-
-* There needed to be further improvements to the birth-death model before it could be used for infectious diseases.
-* The current model assumes that all tips are sampled at a single time point.
-  * Infections are sampled at different points in time (serial sampling).
-* We assume that birth and death rates are constant over time.
-  * Birth and death rates change with the number of infected and susceptible hosts.
-
----
-
-# Suggested readings
-
-* [Phylogenetic Comparative Methods](https://lukejharmon.github.io/pcm) (online textbook), Luke Harmon
-* [Bayesian evolutionary analysis with BEAST 2](https://ocul-uwo.primo.exlibrisgroup.com/permalink/01OCUL_UWO/r0c2m8/alma991045009498005163), Drummond and Bouckaert, eds.
