@@ -124,12 +124,12 @@
 
 ---
 
-# Bayesian methods
+# Resampling ancestral states
 
 * Reconstructing ancestral states is highly uncertain:
   * We are not certain about the tree, or the model of evolution.
   * The root is typically the furthest from our data.
-* Sampling ancestral states from the posterior distribution is a better representation of the state of our knowledge.
+* Sampling multiple ancestral states from the probability distributions at each ancestral node is a better representation of the state of our knowledge.
 * Challenging for larger data sets.
 
 ---
@@ -294,4 +294,4 @@ Randall *et al.* evolved a plasmid encoding a fluorescent protein to test ancest
 * [HyPhy](http://hyphy.org) - joint ML, custom models
 * *ace* function in R package [ape](https://cran.r-project.org/web/packages/ape/index.html) - marginal ML
 * [MEGA](https://www.megasoftware.net/) - maximum parsimony, ML
-* [BEAST](https://beast.community/) - Bayesian methods, including phylogeography
+* [BEAST](https://beast.community/) - Bayesian methods, including phylogeography (more on this later!)
