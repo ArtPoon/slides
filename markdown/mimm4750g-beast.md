@@ -16,7 +16,7 @@
 
 # Bringing it all together
 
-* Trees ([lecture 6](http://slides.filogeneti.ca/html/mimm4750g-06-likelihood.html#/)); substitution models ([lecture 5](http://slides.filogeneti.ca/html/mimm4750g-L05-models.html#/)); molecular clocks ([lecture 10](http://slides.filogeneti.ca/html/mimm4750g-L10-clocks.html#/)); Bayesian inference ([lectures 11](http://slides.filogeneti.ca/html/mimm4750g-L11-bayes.html#/) and [12](http://slides.filogeneti.ca/html/mimm4750g-L12-mcmc.html#/)); coalescent tree priors ([lectures 13](http://slides.filogeneti.ca/html/mimm4750g-L13-coalescent.html#/) and [14](http://slides.filogeneti.ca/html/mimm4750g-L14-demographic.html#/)).
+* Likelihood and trees ([lecture 7](https://slides.filogeneti.ca/html/mbi4750-L07-likelihood.html#/)); substitution models ([lecture 6](https://slides.filogeneti.ca/html/mbi4750-L06-models.html#/)); molecular clocks ([lecture 10](https://slides.filogeneti.ca/html/mbi4750-L10-clocks.html#/)); Bayesian inference ([lectures 12](https://slides.filogeneti.ca/html/mbi4750-L12-bayes.html#/) and [13](http://slides.filogeneti.ca/html/mbi4750-L13-mcmc.html#/)); coalescent tree priors ([lectures 15](http://slides.filogeneti.ca/html/mbi4750-L15-coalescent.html#/) and [16](http://slides.filogeneti.ca/html/mbi4750-L16-demographic.html#/)).
 
 ![](/img/duPlessis.png)
 
@@ -240,7 +240,7 @@ UpDownOperator(strictClockUpDownOperator.c:RSV2_1)          0.78031        706  
 </tr>
 <tr>
   <td><img src="https://taming-the-beast.org/tutorials/CoupledMCMC-Tutorial/figures/Tracer.png" height="250px"/></td>
-  <td><img src="https://taming-the-beast.org/tutorials/Troubleshooting/figures/tracer_run3.png" height="250px"/></td>
+  <td><img src="https://taming-the-beast.org/tutorials/Troubleshooting-convergence-issues/figures/tracer_run2.png" height="250px"/></td>
 </tr>
 </table>
 
