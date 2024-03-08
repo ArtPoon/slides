@@ -137,35 +137,34 @@ Image source: Wikimedia Commons, <a href="https://commons.wikimedia.org/wiki/Fil
 
 ---
 
-# "Classic" skyline (1)
-
-* Calculate internal node heights, $t_i$, and internode distances, $g_i = t_i-t_{i-1}$
-
-<img src="/img/rcoal.svg" height="350px"/>
-
----
-
-# "Classic" skyline (2)
-
 <table>
 <tr>
   <td>
-    <ul>
-      <li>Rescale internode distances: $M_i = g_i {i\choose 2}$</li>
-      <li>Each $M_i$ estimates the harmonic mean of $N_e(t) \mu$ over the respective interval</li>
-      <li>Estimate includes mutation rate $\mu$ because the tree is built from sequence divergence, not directly measuring time.</li>
-      <li>In this example, $N_e \mu=1$</li>
-    </ul>
+  <h1>"Classic" skyline</h1>
+  <ul>
+  <li>Calculate internode distances from internal node heights, $g_i = t_i-t_{i-1}$</li>
+  <img src="/img/rcoal1.svg" width=350/>
+  <li>Rescale internode distances: 
+  $$M_i = g_i {i\choose 2}$$
+  </li>
+  <li>
+  Each rescaled distance is an estimator of coalescence rate ($\lambda=1/N$).
+  </li>
+  <ul>
   </td>
-  <td width="45%">
-    <img src="/img/classic-skyline.svg"/>
-  </td>
+<td width="45%">
+  <img src="/img/classic-skyline.svg"/>
+  <small>
+  (above) Classic skyline for a tree simulated under $N\mu=1$.
+  Because the branch lengths are measured in expected substitutions ($\mu t$) instead of time $t$, 
+  </small>
+</td>
 </tr>
 </table>
 
 ---
 
-# Application to HIV-1
+# Example: Application to HIV-1
 
 * Analysis implies subtype B expanded more recently than subtype A - this is now well established.
 * Must know substitution rate $\mu$ to map dynamics to time (for HIV-1, $\mu = 0.003$/site/year).
@@ -179,7 +178,7 @@ Image source: Pybus <i>et al.</i> (2000). An integrated framework for the infere
 
 ---
 
-# Generalized skylines (1)
+# Generalized skylines
 
 * The classic skyline plot is noisy because of random variation, esp. for short time intervals.
 * The generalized skyline pools intervals together to give more robust estimates.
@@ -213,16 +212,6 @@ $$M_{n,k} = \frac{n(n-k)}{2k} \sum_{j=n}^{n-k+1} g_j $$
 
 ---
 
-# Smooth skylines
-
-* Population sizes do not actually jump between values over time.
-* Let $A=\\{a_1, a_2, \ldots, a_m\\}$ be the number of coalescent events in $m$ intervals.
-* Let $N=\\{N_1, N_2, \ldots, N_m\\}$ be the effective population size in each interval.
-* The smooth skyline assumes each population size is drawn from an exponential distribution centered on the previous size:
-$$N_j \sim \exp(N_{j-1})$$
-
----
-
 <table>
 <tr>
   <td style="font-size:22pt;">
@@ -246,7 +235,7 @@ Image source: Drummond <i>et al.</i> (2005).  Bayesian coalescent inference of p
 ---
 
 
-# Hepatitis C virus in Egypt
+# Example: Hepatitis C virus in Egypt
 
 * About 15% of adult population infected by HCV genotype 4
 * Coalescent reconstructed found epidemic growth associated with massive public health campaign against snail fever.
@@ -257,7 +246,7 @@ Image source: Drummond <i>et al.</i> (2005).  Bayesian coalescent inference of p
 
 ---
 
-# Neolithic expansion of human tuberculosis
+# Example: Neolithic expansion of human tuberculosis
 
 <img src="/img/comas-MTBC.png" width="700px"/>
 
