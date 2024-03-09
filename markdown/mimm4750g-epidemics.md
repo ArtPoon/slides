@@ -43,23 +43,23 @@ Dearlove and Wilson (2013).  Coalescent inference for infectious disease: meta-a
 * A population is divided into compartments that each represent a different state
   * *e.g.*, I = infected, S = susceptible
   * Individuals move from one compartment to another over time to change states.
-  * Individuals within a compartment are indistinguishable from one another.
+  * Individuals within a compartment are indistinguishable from one another ([mass action](https://en.wikipedia.org/wiki/Law_of_mass_action)).
 * Compartmental models are often described by systems of differental equations.
 
 ---
 
-# Mass action
+# The SI model
 
 * Let the total population size be $N=S+I$.
 * Let the number of new infections per unit time is:
 $$\beta N \times \frac{S}{N} \times I = \beta S I$$
-  * $\beta N$ is the number of contacts an individual makes in a unit time (mass action incidence).
-  * $S/N$ is the probability that they come into contact with a susceptible individual.
+  * $\beta N$ is the number of contacts (potential transmissions) an individual makes in a unit time.
+  * $S/N$ is the probability that they come into contact with a susceptible individual, leading to transmission.
   * $I$ is the number of infected individuals.
 
 ---
 
-# The SI model
+# The SI model (2)
 
 * The number of susceptible individuals decays at rate:
 $$\frac{dS}{dt} = -\beta S I$$
@@ -114,25 +114,30 @@ $$\frac{dI}{dt} = \beta S I$$
 * Let's rewrite the second equation as:
 $$\frac{dI}{dt} = (\beta S-\gamma)I$$
 
-* This implies that the number of infections increases ($dI/dt>0$) when $S>\gamma/\beta$.
-* If we start with a single infection ($I_0=1$), then the initial rate of increase is simply $\beta S_0 - \alpha$.
+* This implies that the number of infections increases ($dI/dt>0$) when:
+$$
+\begin{aligned}
+\beta S I - \gamma I &> 0\\\\
+\beta S I &> \gamma I\\\\
+\frac{\beta S}{\gamma} &> 1
+\end{aligned}
+$$
 
 ---
 
 # The basic reproduction number
 
-* Let $R_0=\beta S_0/\alpha$ (not the same $R$ as the removed compartment).
-  * If $R_0>1$, then $\beta S_0 > \alpha$ and $dI/dt>0$, and vice versa.
-* If the epidemic starts from a single infection (index case, $I_0=1$), then $S_0 \approx N$, and $R_0 = \frac{\beta N}{\alpha}$.
-* Recall $\beta N$ is the number of contacts per individual per unit time.
-  * $1/\alpha$ is the mean duration from infection to removal.
-  * Expected number of secondary infections from the index case.
+* Suppose an epidemic starts from a single infection (index case, $I_0=1$):
+$$R_0 = \frac{\beta S_0}{\gamma} = \frac{\beta (N-1)}{\gamma} \approx \frac{\beta N}{\gamma}$$
+  * $\beta N$ is the number of contacts per individual per unit time.
+  * $1/\gamma$ is the mean duration from infection to removal.
+* $R_0$ is the expected number of secondary infections from the index case.
 
 ---
 
 # $R_0$ is context dependent
 
-* Note that $R_0$ contains the population size ($N$ or $S_0$).
+* Note that $R_0$ is proportional to the population size ($N$ or $S_0$).
   * It is not an immutable quantity of the pathogen.
   * The number of contacts depends on cultural practices, population density.
 
@@ -149,7 +154,7 @@ Image source: FM Guerra <i>et al.</i> (2017) The basic reproduction number (R0) 
 * The number of contacts with susceptible individuals varies over time.
 * $R_t$ or $R_e$ is the expected number of infections from an infected individual at time $t$.
 * If $\beta$ and $\gamma$ do not vary over time, then:
-$$R(t) = \frac{S(t)}{S(0)} R_0$$
+$$R(t) = \frac{\beta S(t)}{\gamma} = \frac{S(t)}{S(0)} R_0$$
 
 <small><small>
 Source: Nishiura and Chowell (2009) The effective reproduction number as a prelude to statistical estimation of time-dependent epidemic trends.  In: <a href="https://link.springer.com/chapter/10.1007/978-90-481-2313-1_5">Mathematical and Statistical Estimation Approaches in Epidemiology</a>, pp. 103-121.
@@ -160,24 +165,27 @@ Source: Nishiura and Chowell (2009) The effective reproduction number as a prelu
 # The SIS model
 
 * Instead of being removed from the population, infected individuals return to a susceptible state with no immunity.
-$$\begin{align*}
-\frac{dS}{dt} &= -\beta S I + \gamma I\\\\[6pt]
-\frac{dI}{dt} &= \beta S I - \gamma I
-\end{align*}
 $$
-* $dI/dt$ can be written in as a logistic function:
-$$\frac{dI}{dt} = (\beta N + \gamma) I \left(1 - \frac{I}{N-\frac{\gamma}{\beta}}\right)$$
+\frac{dS}{dt} = -\beta S I + \gamma I
+\hspace{2em}
+\frac{dI}{dt} = \beta S I - \gamma I
+$$
+* $dI/dt$ can be written as a logistic function:
+$$
+\frac{dI}{dt} = (\beta N + \gamma) I \left(1 - \frac{I}{N-(\gamma/\beta)}\right)
+$$
+* with an equilibrium ($dI/dt=0$) at $I = N-\gamma/\beta$
 
 ---
 
-# SEIR
+# The SEIR model
 
 * A person can be infected but not infectious, *i.e.*, will not transmit their infection on to others.
   * The time between infection and becoming infectious is the *latent period* (*e.g.*, for SARS-CoV-2 this is about 3 to 5 days).
 * We can add an "exposed" compartment to represent individuals in this state:
 $$\begin{align*}
-\frac{dS}{dt} = -\beta S I &\hspace{1em}  \frac{dE}{dt} = \beta S I - \kappa E\\\\[6pt]
-\frac{dI}{dt} = \kappa E - \gamma I & \hspace{1em} \frac{dR}{dt} = \gamma I
+\frac{dS}{dt} = -\beta S I &\hspace{3em}  \frac{dE}{dt} = \beta S I - \kappa E\\\\[12pt]
+\frac{dI}{dt} = \kappa E - \gamma I & \hspace{3em} \frac{dR}{dt} = \gamma I
 \end{align*}$$
 
 ---
@@ -192,6 +200,7 @@ $$\begin{align*}
 
 ---
 
+# Example
 A flow chart of a compartmental model for SARS-CoV-2 infection dynamics
 
 ![](https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/41419416-551e-41f2-8960-df67c0c9e13d/gr1_lrg.jpg)
