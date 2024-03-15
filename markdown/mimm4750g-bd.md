@@ -298,3 +298,7 @@ Image source: Grenfell <i>et al.</i> (2004) Unifying the epidemiological and evo
   </tr>
 </table>
 
+---
+
+![](https://imgs.xkcd.com/comics/adjective_foods.png)
+
