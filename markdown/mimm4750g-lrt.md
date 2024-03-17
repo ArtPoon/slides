@@ -4,26 +4,26 @@
 
 ---
 
-# Why does the model matter?
+# We are fitting many different models
 
-* There are an enormous number of possible time-reversible models of nucleotide substitution.
-* Using the wrong model (*model misspecification*) can bias estimates of other model parameters, *e.g.,* reconstructing the correct tree.
-* The process of figuring out which model is best supported by the data is called *model selection*.
+* Substitution models are continuous-time Markov chains of how nucleotide sequences evolve.
+* Demographic models describe how the size of a population changes over time &mdash; this changes the coalescence rate.
+* Compartmental models describe how an epidemic spreads over time &mdash; this can be related to birth-death models.
+* Which models should we use?
 
 ---
 
 # Model selection
 
-* We want to choose the model that has the best fit to the data.
+* The process of figuring out which model is best supported by the data is called *model selection*.
 * Adding parameters to the model improves the fit.
-  * If we add too many parameters, we over-fit the data.
-  * The model cannot be applied to other data.
+  * If we add too many parameters, we over-fit the data and the model is not relevant to other data.
   * We need to justify additional parameters!
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/6/68/Overfitted_Data.png" width="300px"/>
 
 <small><small>
-Image source: Wikmedia Commons, <a href="https://commons.wikimedia.org/wiki/File:Overfitted_Data.png">Overfitted data</a>
+Image source: Wikimedia Commons, <a href="https://commons.wikimedia.org/wiki/File:Overfitted_Data.png">Overfitted data</a>
 </small></small>
 
 ---
@@ -31,10 +31,10 @@ Image source: Wikmedia Commons, <a href="https://commons.wikimedia.org/wiki/File
 # Likelihood ratio test
 
 * The *likelihood ratio test* (LRT) is a method of model selection that applies when one model is a special case of another.
-  * *e.g.,* the JC69 model is a special case of HKY85 where $\kappa=1$.
+  * *e.g.,* the F81 model is a special case of HKY85 where $\kappa=1$.
 * If the likelihood of model 1 (less complex) is $L_1$ and model 2 (more complex) is $L_2$, then this test statistic:
   $$-2\log\left(\frac{L_1}{L_2}\right) = -2(\log L_1 - \log L_2)$$
-  follows a $\chi^2_k$ distribution.
+  follows a $\chi^2_k$ distribution ($L_2 \ge L_1$).
 * $k$ is the difference in the number of parameters.
 
 ---
@@ -51,39 +51,19 @@ plot(x, dchisq(x, df=1), type='l', ylab='Probability density',
 
 ---
 
-# Nested models
-
-* LRT requires that the models are *nested* - one model must be a special case of another.
-* For example, HKY85 is a special case of TN93, where `$r_{AG}=r_{CT}$`.
-* What if we want to select between models that are *not* nested?
-* This is a basis for *hypothesis testing* - "Do the data support the addition of this parameter?"
-> Briefly describe a biological problem where the LRT would be useful.
-
----
-
 # Stepwise methods
 
 * A hierarchical method of model selection when there are multiple predictor variables.
-  * Forward selection starts from null model and adds most significant term.
-  * Backward selection starts from full model and subtracts least significant term.
+  * Forward selection starts from a [null model](https://en.wikipedia.org/wiki/Null_model) and adds most significant term.
+  * Backward selection starts from full model (all predictors) and subtracts least significant term.
 * Each step can be subjected to a likelihood ratio test.
 * Need to adjust for multiple comparisons (multiple testing).
 
 ---
 
-# Multiple testing
-
-* A *p* value represents the probability of obtaining the observed data given the null hypothesis is true.
-  * It is the probability of getting the result by chance.
-* If we do [20 experiments](https://xkcd.com/882/), on average one of them will be significant at $\alpha=0.05$.
-* A [Bonferroni correction](https://en.wikipedia.org/wiki/Bonferroni_correction) divides $\alpha$ by the number of tests.
-  * Assumes tests are independent.
-
----
-
 # MODELTEST
 
-<img src="/img/modeltest.png" width="600px"/>
+<img src="/img/modeltest.png" width="650px"/>
 
 * Hierarchical testing of 24 different substitution models with 4-5 tests ($\alpha=0.01$).
 
