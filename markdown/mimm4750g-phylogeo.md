@@ -28,20 +28,6 @@ Eyre-Walker, A. (1998). Problems with parsimony in sequences of biased base comp
 
 ---
 
-# Maximum parsimony
-
-* Since MP does not rely on a model of evolution, we can reconstruct whatever character states we want to.
-* Dispersal-vicariance analysis (DIVA, Ronquist 1996) weights events differently.
-  * Vicariance is the split of an ancestral range into two areas, with no cost.
-
-<img src="/img/dispersal-vicariance.svg"/>
-
-<small><small>
-Ronquist F. Dispersal-vicariance analysis: a new approach to the quantification of historical biogeography. Systematic biology. 1997 Mar 1;46(1):195-203.
-</small></small>
-
----
-
 # Discrete migration models
 
 * Partition the geographic range into discrete regions.
@@ -117,54 +103,30 @@ McCloskey <i>et al.</i> (2014) Global Origin and Transmission of Hepatitis C Vir
 
 # Host species as discrete states
 
-* Host populations may be accurately represented by discrete states.
-* Some pathogens are short-lived outside of the host and unlikely to be transmitted from the environment.
-  * *e.g.*, HIV-1 is transmitted by direct, intimate exchange of contaminated bodily fluids (blood, semen).
-* Other pathogens are seldom transmitted between different host species because of host-specific adaptation.
+* Pathogens tend to infect specific host species because they are adapted to that host's environment.
+* A [host switch](https://en.wikipedia.org/wiki/Host_switch) occurs when a pathogen moves from one host species to another.
+* Current host species may be accurately represented by discrete states that evolve over time.
+  * Thus, we can reconstruct the "migration" of a pathogen to new host species with the same "mugration" models!
 
 ---
-
-# Example: Host insect orders for fungal pathogen *Beauveria*
 
 <table>
 <tr>
 <td style="vertical-align: middle">
+<h3>Host switches by fungal pathogen <i>Beauveria</i></h3>
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Beauveria_bassiana_16552.jpg/1280px-Beauveria_bassiana_16552.jpg" width="400px"/>
+
 <small>
 Cicada killed by <i>Beauveria</i> infection.  <a href="https://en.wikipedia.org/wiki/Beauveria#/media/File:Beauveria_bassiana_16552.jpg">Wikimedia Commons</a>.
+
+Right: Kobmoo <i>et al.</i> (2022) Reconstruction of ancestral host association showed host expansion and specialization in local Beauveria species.  Mycological Progress 21: 215-219.
 </small>
+
 </td>
-<td>
+<td width="50%">
 <img src="https://media.springernature.com/full/springer-static/image/art%3A10.1007%2Fs11557-021-01761-1/MediaObjects/11557_2021_1761_Fig1_HTML.png" width="450px"/>
 </td>
 </tr>
-</table>
-
-<small><small>
-Image credit: Kobmoo <i>et al.</i> (2022) Reconstruction of ancestral host association showed host expansion and specialization in local Beauveria species.  Mycological Progress 21: 215-219.
-</small></small>
-
----
-
-# Example: Bunyavirales
-
-<table>
-  <tr>
-    <td style="vertical-align: middle;">
-      <ul>
-        <li>Bunyavirales is an order of (-)ssRNA viruses including species that can cause deadly hemorrhagic fever in humans.</li>
-        <li>Infect a diversity of animal and plant hosts, often transmitted by insects.</li>
-        <li>M Marklewitz <i>et al.</i> used maximum parsimony and ML methods to reconstruct host range as binary traits.</li>
-        <li>By augmenting their data with cell culture experiments, they were able to reject a vertebrate host origin, implying this switch occurred multiple times.</li>
-      </ul>
-    </td>
-    <td width="45%">
-      <img src="/img/bunyavirales-host.png"/>
-      <small>
-      Image credit: M Marklewitz <i>et al.</i> (2015) Proc Natl Acad Sci USA 112: 7536-7541.
-      </small>
-    </td>
-  </tr>
 </table>
 
 ---
@@ -204,12 +166,11 @@ Image credit: Lemey <i>et al.</i> (2009) Bayesian Phylogeography Finds Its Roots
 
 # Regression modeling of migration rates
 
-* Lemey *et al.* (2014) later extended the BSSVS method to further reduce the number of migration rate parameters.
-* Each non-zero rate is some function of a much smaller number of predictor variables:
-$$\log(\Lambda_{ij}) = \sum_{k=1}^{P} \delta_k \beta_k X_{ijk} + \epsilon$$
-where $\delta_k=0$ if the rate from $i$ to $j$ is zero.
+* Lemey *et al.* (2014) later extended the BSSVS method to make every migration rate a function of a small number of predictor varaibles:
+$$\Lambda_{ij} = \exp\left(\sum_{k=1}^{P} \delta_k \beta_k X_{ijk} + \epsilon \right)$$
+where $\delta_k=1$ or $0$ turns the $k$-th predictor on and off.
 
-* $X_{ij}$ can be any characteristic of sites $i$ and $j$, such as geographic distance or population sizes.
+* $X_{ijk}$ is the $k$-th characteristic of sites $i$ and $j$, such as geographic distance or joint population size.
 
 <small><small>
 Image credit: Lemey <i>et al.</i> (2014) Unifying viral genetics and human transportation data to predict the global transmission dynamics of human influenza H3N2.  PLOS Pathog 10: <a href="https://journals.plos.org/plospathogens/article?id=10.1371/journal.ppat.1003932">e1003932</a>.
@@ -228,32 +189,13 @@ Image credit: Dudas <i>et al.</i> (2017) Virus genomes reveal factors that sprea
 
 ---
 
-# Example: Spread of SARS-CoV-2 VOCs in Africa
-
-<div style="font-size: 16pt; font-weight: 500">(A) Time-scaled ML phylogeny.  (B-D) Summary of mugration reconstruction of viral spread.</div>
-<img src="/img/science.abj4336-f2.jpg" height="500px"/>
-
-<small><small>
-Image credit: Wilkinson <i>et al.</i> (2021) A year of genomic surveillance reveals how the SARS-CoV-2 pandemic unfolded in Africa.  Science 374: <a href="https://www.science.org/doi/full/10.1126/science.abj4336">423-431</a>.
-</small></small>
-
----
-
 # Continuous migration models
 
 * Since space is a continuous characteristic, why not use a continuous-state model of migration?
-* Diffusion ([Brownian motion](https://en.wikipedia.org/wiki/Brownian_motion)) models assume a constant rate of random dispersal.
+* Diffusion ([Brownian motion](https://en.wikipedia.org/wiki/Brownian_motion)) models assume a constant rate of random dispersal, $\sigma$.
+* A particle's location after time $\Delta t$ is normally distributed with its last location as mean, and standard deviation $\sigma \Delta t$.
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/c/c2/Brownian_motion_large.gif"/>
-
----
-
-# Brownian diffusion
-
-* The probability of ending up at location $Y$ at time $t$, given that it starts at $X$ at time $s$, is described by a multivariate normal distribution centered on $X_s$:
-$$P(Y | X, s) \propto \exp( - (X - Y)^T S^{-1} (X - Y) )$$
-  where $S$ is a matrix containing $\sigma \times (t-s)$.
-* These diffusion rates ($\sigma$) must be estimated from the data.
 
 ---
 
