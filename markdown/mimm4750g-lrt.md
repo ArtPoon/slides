@@ -39,7 +39,7 @@ Image source: Wikimedia Commons, <a href="https://commons.wikimedia.org/wiki/Fil
 
 ---
 
-# $\chi^2$-squared distribution
+# $\chi^2$ distribution
 
 <img src="/img/dchisq.png" width="400px"/>
 
@@ -96,18 +96,6 @@ where $\hat\theta$ are the maximum likelihood estimates of model parameters.
 
 ---
 
-# AICc
-
-* The AIC is approximately unbiased for large sample size and small numbers of variables.
-* The corrected Akaike information criterion (AICc) was proposed by Hurvich and Tsai (1989) to deal with small samples ([Cavanaugh (1997)](https://www.sciencedirect.com/science/article/pii/S0167715296001289)):
-$$\text{AICc} = n \log \hat\sigma_n^2 + \frac{n(n+k)}{n-k-2}$$
-
-  where $k$ is the number of parameters, $n$ is the sample size, and:
-
-$$\hat\sigma_n^2 = \frac{1}{n}\sum_i (y_i-\hat\beta x_i)^2$$
-
----
-
 # Akaike weights
 
 * The difference in AIC between model $i$ and the best model:
@@ -149,26 +137,32 @@ JC69 (model 0) was never sampled in 5,000,000 iterations.
 
 # Bayesian model selection
 
-* An odds is a ratio of two probabilities.
+* We cannot just compare posterior traces because $P(D|M)$ for a given model $M$ is proportional to our prior belief $P(M)$.
 * A Bayes factor is the ratio of the posterior odds against the prior odds for two models:
 $$\mathrm{BF} = \frac{P(M_1|D)}{P(M_2|D)} \Big/ \frac{P(M_1)}{P(M_2)}$$
 
-<img src="https://taming-the-beast.org/tutorials/NS-tutorial/figures/BFs.png" height="133px"/>
+| Bayes Factor | Evidence against $H_0$ |
+|--------------|------------------------|
+| 1 to 3 | Not worth more than a bare mention |
+| 3 to 20 | Positive |
+| 20 to 150 | Strong |
+| >150 | Very strong |
 
 <small><small>
-Image source: Kass, R. E., & Raftery, A. E. (1995). Bayes factors. Journal of the American Statistical Association, 90(430), 773–795.
+Source: Kass and Raftery (1995).  Bayes factors.  J Amer Stat Assoc 90(430): 773-795.
 </small></small>
 
 ---
 
 # Marginal likelihood
 
-* Using Bayes' rule, we can rewrite the Bayes factor as $\mathrm{BF} = P(D|M_1) / P(D|M_2)$
+* Using Bayes' rule, we can rewrite the Bayes factor as: 
+$$\mathrm{BF} = P(D|M_1) / P(D|M_2)$$
 * Each model $M$ has some unknown parameters $\theta$. 
 * The marginal likelihood of data $D$ given model $M$ is:
-$$P(D|M) = \int_\theta P(D|M,\theta) P(\theta|M)$$
+$$P(D|M) = \int_{\theta|M} P(D|M,\theta) P(\theta|M)$$
 
-  * In other words, it is the likelihood of the data averaged over the entire prior distribution of $\theta$!
+* In other words, it is the average likelihood of the data over the entire **prior** distribution of $\theta$ given model $M$!
 
 ---
 
@@ -176,37 +170,26 @@ $$P(D|M) = \int_\theta P(D|M,\theta) P(\theta|M)$$
 
 * The exact marginal likelihood is very difficult to compute.
 * The alternative is to average over some sample of $P(D|M, \theta)$.
-* MCMC already generates a random sample of $\theta$ from the posterior distribution.
-* This can be used for what is called the harmonic mean estimator (HWE):
+* MCMC already generates a random sample of $\theta$ from the **posterior** distribution.
+* This can be used for what is called the harmonic mean estimator (HME):
 `$$P(D|M) \approx \frac{1}{N} \sum_{i=1}^N \frac{1}{P(D|M,\theta_i)},\;\mathrm{for}\; \theta_i \sim P(M|D)$$`
 
 ---
 
-# Problems with HWE
+# Problems with HME
 
-* Remember, we need to average likelihoods for $\theta$ sampled from the prior $P(M)$, not the posterior!
-* If the posterior is very different from the prior, then the HWE is a bad estimate.
-* Why not just sample $\theta$ from the prior distribution?
-  * The prior distribution is usually very broad 
-  * A random sample from the prior is unlikely to include $\theta$ from regions of high likelihood.
+* Remember, we need to average likelihoods for $\theta$ sampled from the prior $P(\theta|M)$, not the posterior!
+* A random sample from the posterior skews towards high likelihoods, causing HME to overestimate $P(D|\theta, M)$.
+* A random sample from the prior is easier to generate, but it is unlikely to include $\theta$ from regions of high likelihood, underestimating $P(D|\theta, M)$.
 
 ---
 
-# Path and stepping-stone sampling
+# Path/stepping-stone sampling
 
-* Current estimators use "power posteriors": `$\;q_\beta(\theta) = P(D|\theta,M)^\beta P(\theta|M)$`
-  * $\beta$ is some value between 0 and 1, where $q_{0} = P(\theta|M)$.
-  * Concentrate samples in regions of higher likelihood.
-<table>
-  <tr>
-    <td><img src="/img/revbayes-stepping.png" height="300px"></td>
-    <td><img src="/img/baele-path-sampling.png" height="270px"></td>
-  </tr>
-</table>
-<small><small>
-Image credits: (left) H&ouml;hna <i>et al.</i> (2019) <a href="https://revbayes.github.io/tutorials/model_selection_bayes_factors/bf_intro.html">RevBayes tutorial</a>; 
-(right) Guy Baele (2016) <a href="https://si.biostat.washington.edu/sites/default/files/modules//2016_SISMID_13_10.pdf">Bayesian model testing</a>, lecture notes.
-</small></small>
+* Recall that MCMC samplers (*e.g.*, Metropolis-Hastings) decide whether to accept a proposed step by the ratio of posterior probabilities.
+* A "power posterior" modifies the posterior probability by a tuning parameter $\beta$:
+$$q_\beta(\theta) = P(D|\theta,M)^\beta P(\theta|M)$$ 
+* By running multiple chains for different values of $\beta$ between 0 and 1, we can balance between prior and posterior samples of marginal likelihood.
 
 ---
 
