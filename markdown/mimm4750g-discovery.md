@@ -1,6 +1,6 @@
 # MIMM4750G
 ## Pathogen discovery
-![](https://what-if.xkcd.com/imgs/a/80/virus_mountain.png)
+![](https://imgs.xkcd.com/comics/common_cold_viruses.png)
 
 ---
 
@@ -28,19 +28,19 @@ Image credit: C Rinke <i>et al.</i> (2013) <a href="https://doi.org/10.1038/natu
 
 ---
 
-# Novel genomes
+# Discovery of new virus species
 
 <table>
   <tr>
     <td style="font-size: 20pt">
       <ul>
         <li><i>de novo</i> assembly of NGS data can potentially reconstruct the genome of a completely unknown pathogen.</li>
-        <li>Can identify novel pathogen in cases of idiopathic disease.</li>
-        <li>(right) Annual numbers of novel animal virus species reported in PubMed.</li>
+        <li>Can identify novel pathogen in cases of <a href="https://en.wikipedia.org/wiki/Idiopathic_disease">idiopathic disease</a>.</li>
+        <li>(right) Number of new non-human virus species with complete genome sequences in Genbank</li>
       <ul>
     </td>
     <td width="50%">
-      <img src="https://journals.plos.org/plosone/article/figure/image?download&size=large&id=info:doi/10.1371/journal.pone.0129059.g001" width="500px"/>
+      <img src="/img/new-virus-species.svg" width="500px"/>
     </td>
   </tr>
 </table>
@@ -100,35 +100,10 @@ Example from A Morgulis <i>et al.</i> (2006) <a href="https://doi.org/10.1089/cm
 
 ---
 
-# crAssphage
+# *de novo* assembly
 
-* A previously unidentified bacteriophage (~97kbp circular DNA genome) found in majority of published human faecal metagenomic data.
-  * Majority of proteins encoded by predicted ORFs had no homologous matches in Genbank.
-  * The first virus to be named after bioinformatics software (cross-assembly, crAss).
-
-<table><tr>
-<td><img src="https://sciences.sdsu.edu/wp-content/uploads/2019/07/crAss_phage_edwards.jpg" width="300px"/></td>
-<td><small>Image credit: Robert Edwards, San Diego State University.</small></td>
-</tr></table>
-
----
-
-# Dandenong virus
-
-* 3 patients who received organ transplants from one donor died of febrile illness 4-6 weeks after.
-  * Samples screened for HHV1-8, lyssavirus, IAV, IBV, RSV, picornavirus, adenovirus, human parainfluenza virus, flavivirus, and many more.
-  * Total RNA from recipient samples was amplified with random primers and processed by NGS.
-  * Contigs obtained after subtraction of human DNA and __*de novo* assembly__ were similar to Old World arenaviruses.
-
-<small><small>
-G Palacios <i>et al.</i> (2008). A New Arenavirus in a Cluster of Fatal Transplant-Associated Diseases. <a href="http://doi.org/10.1056/NEJMoa073785">N Eng J Med 358: 991</a>.
-</small></small>
-
----
-
-# What is *de novo* assembly?
-
-* Combine short reads that seem to overlap so they form a longer sequence.
+* For discovery, there is no reference genome to align (map) reads to.
+* Assembly is combining short reads that seem to overlap so they form a longer sequence.
 * A *contig* is a contiguous (uninterrupted) run of nucleotides that is formed from the assembly of short reads.
 
 <!--* Some methods attempt to further assemble contigs into *scaffolds*.-->
@@ -200,6 +175,65 @@ Locate midpoint along concatenated array of contigs (N50=60):
 
 <small><small>
 Image credit: E Videvall <i>et al.</i> https://www.molecularecologist.com/2017/03/whats-n50/
+</small></small>
+
+---
+
+# Example: crAssphage
+
+* A previously unidentified bacteriophage (~97kbp circular DNA genome) found in majority of published human faecal metagenomic data.
+  * Majority of proteins encoded by predicted ORFs had no homologous matches in Genbank.
+  * The first virus to be named after bioinformatics software (cross-assembly, crAss).
+
+<table><tr>
+<td><img src="https://sciences.sdsu.edu/wp-content/uploads/2019/07/crAss_phage_edwards.jpg" width="300px"/></td>
+<td><small>Image credit: Robert Edwards, San Diego State University.</small></td>
+</tr></table>
+
+---
+
+<table>
+<tr>
+  <td>
+  <h1>Case study: Dandenong virus</h1>
+  <ul>
+  <li>3 patients died of febrile illness 4-6 weeks after receiving organ transplants from a deceased donor.</li>
+  <li>Samples screened for HHV1-8, lyssavirus, IAV, IBV, RSV, picornavirus, adenovirus, human parainfluenza virus, flavivirus, and many more.</li>
+  <li>Total RNA from recipient samples was amplified with random primers and processed by NGS.</li>
+  <li>Contigs obtained after subtraction of human DNA and <i>de novo</i> assembly were similar to Old World arenaviruses.</li>
+  <small><small>
+G Palacios <i>et al.</i> (2008). A New Arenavirus in a Cluster of Fatal Transplant-Associated Diseases. <a href="http://doi.org/10.1056/NEJMoa073785">N Eng J Med 358: 991</a>.
+</small></small>
+  </ul>
+  </d>
+  <td width="35%">
+    <img src="https://live-production.wcms.abc-cdn.net.au/96b79beab72b0685eb9f6d752d5e511d?src"/>
+    <img src="https://live-production.wcms.abc-cdn.net.au/0f3dd15ef7d921ec2b0f932f763fd151?src"/>
+    <small><small>
+    Image source: Humyara Mahbub and Olivia Willis for the podcast <a href="https://www.abc.net.au/news/health/2020-10-11/nobody-knew-karens-donor-kidney-was-carrying-a-rare-virus/12743548">Patient Zero</a>. 
+    </small></small>
+  </td>
+</tr>
+</table>
+
+
+---
+
+# The SEA-PHAGES program
+
+* Science Education Alliance - Phage Hunters Advancing Genomics and Evolutionary Science
+* A [two-semester course](https://seaphages.org/) run by the University of Pittsburgh and the Howard Hughes Medical Institute
+* Students collect soil samples, filter and spread their sample on a plate with bacteria and look for plaques.
+* After sequencing and annotating the genome and obtaining electron microscopy, the student gets to name the new species.
+  * Names include BillDoor, PhatLouie, TinaFeyge, and GuyFagieri
+
+---
+
+2019 "Baby Pictures"
+![](https://hhmi.cas.lehigh.edu/sites/hhmi.cas2.lehigh.edu/files/Slide1.JPG)
+
+<small><small>
+Image source: Lehigh University, https://hhmi.cas.lehigh.edu/galleries-seaphages
 </small></small>
 
 ---
