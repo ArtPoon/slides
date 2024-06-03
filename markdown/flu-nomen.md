@@ -27,7 +27,11 @@ Image credit: ViralZone, Swiss-Prot group, SIB Swiss Institute of Bioinformatics
 # IAV subtypes
 
 * HA and NA are partitioned into 18 and 11 subtypes, respectively.
-  * Provisional subtype H19 was described in 2023 from a partial HA sequence isolated from a diving duck in Kazakhstan.
+* Historically, subtypes were defined by antigenic characteristics, *e.g.*, double immuno-diffusion assays.
+
+<img src="/img/schild.png">
+
+* Provisional subtype H19 was described in 2023 from a partial HA sequence isolated from a diving duck in Kazakhstan.
 
 
 ---
