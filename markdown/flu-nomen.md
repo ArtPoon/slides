@@ -27,12 +27,52 @@ Image credit: ViralZone, Swiss-Prot group, SIB Swiss Institute of Bioinformatics
 # IAV subtypes
 
 * HA and NA are partitioned into 18 and 11 subtypes, respectively.
-* Historically, subtypes were defined by antigenic characteristics, *e.g.*, double immuno-diffusion assays.
+* Historically, subtypes were defined by antigenic characteristics, *e.g.*, double immunodiffusion (DID/IDD) assays.
 
+Photos of IDD gel plates from Schild *et al.* (1980) where sera is deposited in central well and purified virus in the surrounding wells.  Precipitate is caused by antigen binding.
 <img src="/img/schild.png">
 
-* Provisional subtype H19 was described in 2023 from a partial HA sequence isolated from a diving duck in Kazakhstan.
+<small><small>
+Schild, G. C., Newman, R. W., Webster, R. G., Major, D., & Hinshaw, V. S. (1980). Antigenic analysis of influenza A virus surface antigens: considerations for the nomenclature of influenza virus. Comparative immunology, microbiology and infectious diseases, 3(1-2), 5-18.
+</small></small>
 
+---
+
+![](/img/iav-subtypes.svg)
+
+---
+
+<div style="text-align: center; font-weight: 900; font-size: 48pt; line-height: 1em;">
+Can we recapitulate this taxonomy of IAV subtypes from genomic sequences alone?
+</div>
+
+<ul>
+  <li>This is a different problem than classifying with respect to serologically-defined reference genomes.</li>
+  <li>Can the other segments also be clustered into subtypes?</li>
+</ul>
+
+---
+
+# Data collection
+
+* Downloaded all available (~1.1M) IAV protein sequences from NCBI Genbank (June 6, 2023)
+* Filtered for:
+  * Incomplete or misannotated sequences
+  * Proteins from alternate open reading frames (PB1-F2, PA-X)
+  * More than 10% ambiguous residues
+* Concatenated non-overlapping portions of M1-M2 and NS1-NS2(NEP)
+* Aligned with MAFFT, inspected in AliView and built trees with FastTree.
+
+---
+
+![](/img/treeplots.png)
+
+Midpoint-rooted ML trees for unique HA ($n=66,864$) and NA ($n=52,146$) sequences, coloured by serotype annotations.
+
+---
+
+Missing serotype annotations were inferred by each sequence's nearest-neighbour in the phylogeny.  Sequences from the most common HnNn serotypes were disproportionately less likely to be unlabeled.
+<img src="/img/iav-infer-subtype.svg" width="100%"/>
 
 ---
 
