@@ -41,10 +41,10 @@ Image credit: ViralZone, Swiss-Prot group, SIB Swiss Institute of Bioinformatics
 <table>
 <tr>
   <td>
-    <img src="/img/cihr.png"/><br/>
-    <img src="/img/NSERC_RGB.png"/>
+    <img src="/img/cihr.png" width=250/><br/>
+    <img src="/img/NSERC_RGB.png" width=200/>
   </td>
   <td>
-  <img src="/img/lab-thumbnails.jpeg"/></td>
+  <img src="/img/lab-thumbnails.jpeg" width=400/></td>
 </tr>
 </table>
