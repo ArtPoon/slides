@@ -71,8 +71,38 @@ Midpoint-rooted ML trees for unique HA ($n=66,864$) and NA ($n=52,146$) sequence
 
 ---
 
-Missing serotype annotations were inferred by each sequence's nearest-neighbour in the phylogeny.  Sequences from the most common HnNn serotypes were disproportionately less likely to be unlabeled.
+Sequences from the most common HnNn serotypes were disproportionately less likely to be unlabeled (inferred from nearest neighbours in tree).
 <img src="/img/iav-infer-subtype.svg" width="100%"/>
+
+---
+
+# Adapting clade definitions
+
+* Clades within an IAV subtype are defined at nodes on the basis of (1) bootstrap support, (2) mean distance between clades, and (3) mean distance within clade.
+  * Bootstrap support and the length of the branch associated with the node tend to be highly correlated.
+* I calculated the mean patristic distance ($y_i$), and the distance from $i$ to its closest 'sibling' node ($v_i$) by postorder traversal of nodes ($i$).
+  * Labeled this approach as "nodewise clustering".
+
+---
+
+There is no configuration of nodewise clusters that match the defined HA subtypes.
+
+![](/img/flu-subtree-results.svg)
+
+---
+
+# Edgewise clustering
+
+1. initialize subtree list $S$ with input tree
+2. for each subtree $s$ in $S$
+   * locate longest internal branch $b_s$ in $s$
+   * if length of $b_s$ exceeds cutoff
+     - remove $b_s$ to yield new subtrees $s_1$ and $s_2$
+     - for each new subtree, remove the node associated with $b_s$ and merge the branches
+     - append $s_1$ and $s_2$ to new list $S'$
+   * otherwise append $s$ to new list $S'$
+3. replace $S$ with $S'$
+
 
 ---
 

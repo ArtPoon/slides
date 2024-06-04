@@ -166,10 +166,11 @@ body {
 .reveal ol ol,
 .reveal ol ul {
   display: block;
-  margin-left: 1em;
+  margin: 0 0 0 1em;
    font-size: 0.9em;
-   line-height: 1.1;
+   line-height: 0;
   }
+
 
 .reveal dt {
   font-weight: bold; }
