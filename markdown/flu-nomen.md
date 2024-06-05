@@ -91,18 +91,64 @@ There is no configuration of nodewise clusters that match the defined HA subtype
 
 ---
 
+# Problems with nodewise clustering
+
+* An increasing number of sequences fall outside of subtrees (unclassified) with decreasing patristic distance ($y$) threshold.
+* Increasing $y$ results in subtrees comprising multiple serotypes.
+* More challenging to locate an optimum with two or more parameters.
+* There must be an easier way!
+
+---
+
 # Edgewise clustering
 
-1. initialize subtree list $S$ with input tree
-2. for each subtree $s$ in $S$
-   * locate longest internal branch $b_s$ in $s$
-   * if length of $b_s$ exceeds cutoff
-     - remove $b_s$ to yield new subtrees $s_1$ and $s_2$
-     - for each new subtree, remove the node associated with $b_s$ and merge the branches
-     - append $s_1$ and $s_2$ to new list $S'$
-   * otherwise append $s$ to new list $S'$
-3. replace $S$ with $S'$
+![](/img/edgewise.svg)
 
+---
+
+Edgewise clustering results for HA
+<table>
+  <tr>
+    <td><img src="/img/chainsaw-ha.svg" width=500/></td>
+    <td><img src="/img/chainsaw-ha-table.svg" width=400/></td>
+  </tr>
+</table>
+
+---
+
+Edgewise clustering results for NA
+<table>
+  <tr>
+    <td><img src="/img/chainsaw-na.svg" width=500/></td>
+    <td><img src="/img/chainsaw-na-table.svg" width=400/></td>
+  </tr>
+</table>
+
+---
+
+# Do we need to revise the subtype taxonomy?
+
+* A subtree in both HA and NA trees consists of only two infections.
+  * Divergent H9N2 genomes isolated from bats in Egypt (Kandeil *et al.* 2019) and South Africa (Rademan *et al.* 2023).
+* This analysis supports merging H7 with H15, and H13 with H16.
+  * Consistent with previous work reporting mean amino acid identities of 80% and 81%, respectively.
+  * Other subtypes tend to have identities around 50%.
+
+---
+
+Edgewise clustering only supports about 4-5 subtrees &mdash; (1) equine H7N7, (2)  H9N2 in bats, (3) H17N10, (4) H18N11, and (5) everything else.
+
+![](/img/chainsaw-others.svg)
+
+---
+
+# Why go molecular?
+
+* The number of published IAV genome sequences is growing exponentially.
+  * More sampling from non-human, non-domesticated host species likely to uncover more unclassifiable genomes.
+  * RNA from environmental and metagenomic samples cannot be serotyped.
+* A molecular taxonomy can be more transparent and reproducible.
+  * https://github.com/PoonLab/fluclades
 
 ---
 
