@@ -148,7 +148,19 @@ Edgewise clustering only supports about 4-5 subtrees &mdash; (1) equine H7N7, (2
   * More sampling from non-human, non-domesticated host species likely to uncover more unclassifiable genomes.
   * RNA from environmental and metagenomic samples cannot be serotyped.
 * A molecular taxonomy can be more transparent and reproducible.
-  * https://github.com/PoonLab/fluclades
+
+<table><tr>
+  <td>
+    <img style="padding: 0;" src="https://upload.wikimedia.org/wikipedia/commons/c/c2/GitHub_Invertocat_Logo.svg" width=50/>
+  </td>
+  <td style="padding-left: 0; vertical-align: middle; font-size: 32pt;">
+    <a style="color: SteelBlue;" href="https://github.com/PoonLab/fluclades">PoonLab/fluclades</a>
+  </td>
+</tr></table>
+
+<a href="https://zenodo.org/records/8119571">
+    <img src="https://zenodo.org/badge/DOI/10.5281/zenodo.8119571.svg" width=300/>
+</a>
 
 ---
 
