@@ -117,31 +117,44 @@ Image source: Cory Doctorow, <a href="https://commons.wikimedia.org/wiki/File:Pu
 
 ---
 
-# Substrings
+# Efficient overlap detection
 
-* Immediately looking for the largest matching sub-string between two strings is time-consuming.
-* Instead, we can check if a short *prefix* of one string occurs somewhere in the second string.
-* Requiring the suffix to match
+* Searching for common [substrings](https://en.wikipedia.org/wiki/Substring) of length $k$ between two strings $(X$ and $Y)$ is time-consuming for large $k$!
+* Instead, see if [suffix](https://en.wikipedia.org/wiki/Suffix) of length $l<k$ in $X$ occurs in $Y$.
+  * If a match is found, extend to the left to verify if entire $k$-[prefix](https://en.wikipedia.org/wiki/Prefix) of $Y$ matches (below $l=3$, $k=6$):
 
-<img src="/img/prefix-match.svg"/>
+<img src="https://nekrut.github.io/BMMB554/img/find_overlap.png" width=650/>
+
+<small><small>
+Image source: Anton Nekrutenko, https://nekrut.github.io/BMMB554/lecture8/
+</small></small>
 
 ---
 
 # Data structures
 
 * The problem of matching substrings can be made more efficient by converting the strings into a specialized data structure.
-* Two major categories of assembly algorithms/data structures:
+* A data structure is a system for storing and retrieving information.
+  * For example, a linked list is a sequence of nodes that store values and references to the next node:
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Singly-linked-list.svg"/>
+
+* Two major categories of data structures for assembly:
   1. Overlap graphs
-  2. de Bruijn graphs - memory efficient, scales better with data size.
+  2. de Bruijn graphs
+
+<small><small>
+Image source: <a href="https://commons.wikimedia.org/wiki/File:Singly-linked-list.svg">WikiMedia Commons</a>, public domain
+</small></small>
 
 ---
 
 # What is a graph?
 
-* A graph can be thought of as a data structure where objects are represented by *nodes*.
+* A [graph](https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)) is a data structure where objects are represented by *nodes*.
 * Relations between nodes are represented by connections or *edges*.
-* Edges may be directed (arrows) or undirected.
-
+  * Edges may be directed (arrows) or undirected.
+* Graphs have many applications in bioinformatics, and indeed in all science.
 <img width="300px" src="/img/graph.svg"/>
 
 
@@ -150,22 +163,79 @@ Image source: Cory Doctorow, <a href="https://commons.wikimedia.org/wiki/File:Pu
 # Overlap graph
 
 * The presence or absence of an overlap between any two reads can be represented by an edge in a graph.
-* Consider the following string:
+* For example, consider the following "genome" string:
 ```
 to_every_thing_turn_turn_turn_there_is_a_season
 ```
-* Set the prefix search length to $l=3$.
-* `o_every` has a 3-prefix `o_e` that appears at position 1 of `to_ever`.
-* The longest match has a length 6 (`o_ever`).
+* Suppose we have an even distribution of reads of length 7 in steps of 1, *i.e.*, `to_ever`, `o_every`, ...
+* Set the prefix search length to $l=3$ and $k=6$:
+  * `o_every` has a 3-prefix `o_e` that appears at position 1 of `to_ever`.
+  * This match can be extended to maximum length 6 (`o_ever`).
 
-<small>
-Source: This example was developed by Ben Langmead.
-</small>
+<small><small>
+Source: Ben Langmead, https://www.cs.jhu.edu/~langmea/resources/lecture_notes/assembly_olc.pdf.
+</small></small>
+
+---
+
+# Building an overlap graph
+
+* Let each node represent a read.
+* Draw an edge between nodes if there exists an overlap of length at least $l$ and up to $k$.
+* Direct each edge so that:
+  * it originates from the node with matching suffix, and
+  * terminates at node with matching prefix.
+
+<img src="/img/o_every.svg" width=400/>
+
+---
+
+The start of this overlap graph is not too difficult to read...
+
+![](/img/langmead1.svg)
+
+---
+
+... but the entire graph gets pretty gnarly!
+
+![](/img/langmead-full.svg)
+
+---
+
+# Simplifying the graph
+
+* Why does the graph explode?  It is because of the repeating motif `_turn`.
+<img src="/img/overlap-gnarl.png" width=300/>
+* We can simplify this graph by removing edges that skip one or two nodes in a chain, *i.e.*, transitive edges:
+<img src="/img/transitive-edges.svg" width=500/>
+
+---
+
+# Extracting contigs
+* Removing transitive edges simplifies the graph tremendously!
+
+* However, the graph still contains a cycle that will induce an endless path ("turns, turns, turns, turns, ...")
+![](/img/turnsturnsturns.svg)
+
+* We convert the simple paths in the graph into *contigs*:
+
+![](/img/graph-to-contigs.svg)
+
+---
+
+# Problems with overlap graphs
+
+* The graph is immense.  
+  * We must allocate a node for every read in the data set.
+  * Modern datasets contain millions of reads!
+  * The number of edges grows rapidly with the number of nodes.
+* Algorithms for building and interpreting overlap graphs are inefficient.
 
 ---
 
 # de Bruijn graphs
 
+* Memory efficient, scale better with data size.
 * Assume every possible *k*-mer in the genome is sequenced exactly once
 * A de Bruijn graph connects "words" that differ by a single letter.
 * For each *k*-mer, split it into two (*k*-1)-mers.
@@ -258,6 +328,16 @@ Not a complete list!
 
 ---
 
+# Which assembler should we use?
+
+* An open competition to benchmark different assemblers on simulated or real data.
+  * [Assemblathon 1](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3227110/) was held 2011 and used simulated data.
+  * [Assemblathon 2](https://academic.oup.com/gigascience/article/2/1/2047-217X-2-10/2656129) was held 2013 and used real data (a [budgie](https://en.wikipedia.org/wiki/Budgerigar), a [cichlid](https://en.wikipedia.org/wiki/Zebra_mbuna), and a [boa constrictor](https://en.wikipedia.org/wiki/Boa_constrictor).
+  * [Assemblathon 3](https://assemblathon.org/post/58945403634/thoughts-on-assemblathon-3) pending.
+* "Don't trust the results of a single assembly."
+
+---
+
 <img src="https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1006994.g001&type=large" height="300px"/>
 
 * A *contig* is a contiguous nucleotide sequence produced from overlapping reads.
@@ -302,16 +382,6 @@ Image credit: E Videvall <i>et al.</i> https://www.molecularecologist.com/2017/0
 
 ---
 
-# Which assembler should we use?
-
-* An open competition to benchmark different assemblers on simulated or real data.
-  * [Assemblathon 1](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3227110/) was held 2011 and used simulated data.
-  * [Assemblathon 2](https://academic.oup.com/gigascience/article/2/1/2047-217X-2-10/2656129) was held 2013 and used real data (a [budgie](https://en.wikipedia.org/wiki/Budgerigar), a [cichlid](https://en.wikipedia.org/wiki/Zebra_mbuna), and a [boa constrictor](https://en.wikipedia.org/wiki/Boa_constrictor).
-  * [Assemblathon 3](https://assemblathon.org/post/58945403634/thoughts-on-assemblathon-3) pending.
-* "Don't trust the results of a single assembly."
-
----
-
 # Viruses are difficult
 
 * Assembly algorithms were generally designed for human genomes.
@@ -340,7 +410,7 @@ From CJ Castro <i>et al.</i> (2020). <a href="https://bmcgenomics.biomedcentral.
 
 ---
 
-# Pros and cons
+# Assembly vs. mapping
 
 * Mapping is the alignment of each sequence to a reference genome (more next week!)
   * Generally faster and easier than *de novo* assembly.
