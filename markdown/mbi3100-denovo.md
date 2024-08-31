@@ -338,6 +338,8 @@ Not a complete list!
 
 ---
 
+# Contigs and scaffolds 
+
 <img src="https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1006994.g001&type=large" height="300px"/>
 
 * A *contig* is a contiguous nucleotide sequence produced from overlapping reads.
@@ -379,6 +381,15 @@ Image credit: E Videvall <i>et al.</i> https://www.molecularecologist.com/2017/0
 <small><small>
 Image credit: E Videvall <i>et al.</i> https://www.molecularecologist.com/2017/03/whats-n50/
 </small></small>
+
+---
+
+# Trimming adapters
+
+* Illumina adapters are short nucleotide sequences (oligos) that are used in the construction of the sequencing library
+* If the DNA fragment is shorter than the read, then the sequence may "read-through" to the adapter on the other end.
+* Adapter contamination: many genomes in Genbank are contaminated with adapter sequences that were not removed by the authors.
+  * *e.g.*, the [carp genome](http://www.opiniomics.org/we-need-to-stop-making-this-simple-fcking-mistake/) is littered with adapter seqeunces
 
 ---
 

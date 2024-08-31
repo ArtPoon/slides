@@ -1,133 +1,38 @@
 # MIMM4750G
 ## Short-read mapping
-![](https://imgs.xkcd.com/comics/making_hash_browns.png)
-<small>"Making hash browns"</small>
-
----
-
-# Next-generation sequencing (NGS)
-
-* NGS is a catch-all term for technology that performs sequencing reactions on a very large scale.
-* NGS platforms generate gigabytes or [terabytes](https://en.wikipedia.org/wiki/Terabyte) of sequence data in a day.
-  * An [Illumina NovaSeq 6000](https://www.illumina.com/systems/sequencing-platforms/novaseq/specifications.html) system can produce 6TB in one run.
-* Recent growth in bioinformatics has largely been driven by the need to process and analyze NGS data.
-
----
-
-# Whole-genome sequencing
-
-* NGS platforms are converging towards $10 per Gbp.
-* Bacterial genomes range from about 100 kbp to nearly 20 Mbp
-* May be cheaper to randomly shear template and use NGS for "shotgun" sequencing.
-* More information than targeted gene marker sequencing (*e.g.*, variable number tandem repeat sequencing in *M. tuberculosis*).
-
-![](/img/shotgun.svg)
-
----
-
-# Deep sequencing
-
-* Sequence a specific region of the genome from thousands of copies in the pathogen population.
-* Useful to measure the frequency of some variant in the infection.
-* Can yield a sequence alignment for reconstructing within-host evolution.
-
-![](/img/deepseq.svg)
-
----
-
-# NGS databases
-
-* Storing and distributing NGS data created a unique problem for those maintaining pubilc databases of conventional sequences.
-* NCBI created the Short Read Archive (now the *Sequence* Read Archive).
-  * As of April 10, 2019, the NCBI SRA held over 26 petabytes of data - about 6,500 4TB hard drives.
-* Partnership with [EMBL-EBI](https://www.ebi.ac.uk/) European Nucleotide Archive and the [National Institute of Genetics](http://www.nig.ac.jp/nig/) DNA Data Bank of Japan.
-
----
-
-# NGS data formats
-
-* FASTQ is like an expanded version of FASTA
-
-```
-@SRR6318672.2 2 length=251
-GGATAAAATGATACCCGCTTTTTTGATCACGCCCATTTCTAGCCAGATCGCTGGTAAAGTCATCGCGCAAGTGGAGAGCGATATTTTCGCTCACATGGGAAAAGTCGTTTTAATCCCCAAAGGCTCTAAAGTCATAGGCTACTACAGCAACAACAACAAAATGGGCGAATACCGCTTGGATATTGTATGGAGTCGCATCATCACTCCCCATGGGATTAATATCATGCTCACTAACGCTAAGGGGGCGGATA
-+SRR6318672.2 2 length=251
-BCCCCFFFFFFFGGGGGGGGGGHGGGHHHHGHGGGHHHHHHHGHHHHHHHGGGGHHHHGHHHHHGGGGGGGHHGHHHGHGGHGGHHHHGGGHGGHHHHHHGHHHHHGGGGGHHHHHHGHGHHFHGHHHHHHHHHHHFFHGHHGHHHHHHHHHHHHHHHHGGHHHHHGGGGGGHDFGGGG0CCGHH:GGGFGGGGGGGDDGGGGGFGGGGGGGGGGFFFFFFFFFFFFFFFFFFFFFFFFFFEE@AC=;FF?
-```
-
-* Row 1 has `@` prefix contains sequence label.
-* Row 2 contains nucleotide sequence.
-* Row 3 has `+` prefix and sometimes repeats label.
-* Row 4 contains quality scores.
-
----
-
-# Quality scores
-
-* A quality score is a log-transform of the estimated probability ($P$) of an incorrect base call.
-
-$$Q = -10 \times \log_{10} P$$
-
-* So if the error probability is 0.01 (1%), then $\log_{10} (0.01) = -2$, and $Q=20$.
-
-> What is the estimated error probability for Q=40?
-
----
-
-# Encoding quality scores
-
-* FASTQ uses ASCII encoding to convert quality scores from numbers to single characters.
-
-```
-!"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJ
-|                         |    |         |
-0........................26...31........41
-```
-
-* This saves a lot of space and makes it easier to see how scores relate to different bases:
-
-```
-GGATAAA
-+
-BCCCCFF
-33 34 34 34 34 36 36
-```
-
----
-
-# Data compression
-
-* FASTQ files are often stored in a `gzip` format.
-* `gzip` is a UNIX (GNU) compression/decompression program.
-  * This program essentially replaces repeating sequences in the data with an instruction to copy forward the first instance.
-* Generally reduces a FASTQ file down about 3-fold.
-* Some programs can process the gzipped FASTQs!
-
----
-
-# Trimming adapters
-
-* Illumina adapters are short nucleotide sequences (oligos) that are used in the construction of the sequencing library
-* If the DNA fragment is shorter than the read, then the sequence may "read-through" to the adapter on the other end.
-* Adapter contamination: many genomes in Genbank are contaminated with adapter sequences that were not removed by the authors.
-  * *e.g.*, the [carp genome](http://www.opiniomics.org/we-need-to-stop-making-this-simple-fcking-mistake/) is littered with adapter seqeunces
+![](https://imgs.xkcd.com/comics/moving_sidewalks.png)
 
 ---
 
 # NGS and alignment
 
+* Next-generation sequencing generates billions of sequences (reads).
 * The computing time of pairwise alignment is about $O(mn)$ where $m$ and $n$ are the sequence lengths.
 * The development of NGS platforms created a huge challenge for existing alignment methods &mdash; too much data!
   * Local alignment (*e.g.*, Smith-Waterman) is way too slow!
+  * BLAST is still too slow!
 * **New alignment programs were needed.**
 
 ---
+
+# Short read mapping
+
+* Mapping breaks the alignment problem into two parts:
+  1. Rapidly determine *where* a read should map in a reference genome.
+  2. If we find a good location, do a local pairwise alignment.
+* A read might not necessarily come from a known reference genome.
+* Method has to tolerate sequencing errors.
+
+![](/img/lost-read.svg)
+
+---
+
 
 # Exact string matching
 
 * Locate a substring of length $L$ in the reference genome that is exactly the same as a substring in the query sequence.
   * If $L$ is too short, then a substring will have many non-unique locations.
-  * If $L$ is too long, then we are unlikely to find a match.
+  * If $L$ is too long, then we are unlikely to find a match (*i.e.*, sequencing error, mutations).
 * A naive approach would be to build an index of every substring in the genome, and then do a linear search for the first exact match.
 
 ---
@@ -138,6 +43,7 @@ BCCCCFF
   * The index will be larger than the genome(s).
   * Although it can take a long time to build an index, we can use it as many times as we want!
 * Common data structures include [suffix trees](https://en.wikipedia.org/wiki/Suffix_tree) and the [Burrows-Wheeler transform](https://en.wikipedia.org/wiki/Burrows%E2%80%93Wheeler_transform) (BWT).
+  * This approach is similar to BLAST.
 
 ---
 
@@ -313,48 +219,6 @@ SRR5261740.4	16	chr7	142247517	2	24S96M173S	*	0	0	GGGAGACTCCAGCACCTGTGTGATCTGCCC
 
 ---
 
-# NGS and alignment
-
-* Next-generation sequencing generates millions of reads.
-* The computing time of pairwise alignment is about $O(mn)$ where $m$ and $n$ are the sequence lengths.
-* The development of NGS platforms created a huge challenge for existing alignment methods &mdash; too much data!
-  * Local alignment (*e.g.*, Smith-Waterman) is way too slow!
-  * BLAST is still too slow!
-* **New alignment programs were needed.**
-
----
-
-# Short read mapping
-
-* Mapping breaks the alignment problem into two parts:
-  1. Rapidly determine *where* a read should map in a reference genome.
-  2. If we find a good location, do a local pairwise alignment.
-* A read might not necessarily come from a known reference genome.
-* Method has to tolerate sequencing errors.
-
-![](/img/lost-read.svg)
-
----
-
-# Exact string matching
-
-* Locate a substring of length $L$ in the reference genome that is exactly the same as a substring in the query sequence.
-  * If $L$ is too short, then a substring will have many non-unique locations.
-  * If $L$ is too long, then we are unlikely to find a match.
-* A naive approach would be to build an index of every substring in the genome, and then do a linear search for the first exact match.
-
----
-
-# Indexed matching
-
-* Instead of exhaustively searching the entire genome, an *index* is a data structure derived from the genome that makes searching more efficient.
-  * The index will be larger than the genome(s).
-  * Although it can take a long time to build an index, we can use it as many times as we want!
-* Common data structures include [suffix trees](https://en.wikipedia.org/wiki/Suffix_tree) and the [Burrows-Wheeler transform](https://en.wikipedia.org/wiki/Burrows%E2%80%93Wheeler_transform) (BWT).
-  * This approach is similar to BLAST.
-
----
-
 # Short read mappers
 
 <table>
@@ -375,6 +239,20 @@ SRR5261740.4	16	chr7	142247517	2	24S96M173S	*	0	0	GGGAGACTCCAGCACCTGTGTGATCTGCCC
 <small><small>
 Image source: NA Fonseca <i>et al.</i> (2012) <a href="https://academic.oup.com/bioinformatics/article/28/24/3169/245777">Tools for mapping high-throughput sequencing data.</a> Bioinformatics 28: 3169.
 </small></small>
+
+---
+
+# Applications of mapping
+
+---
+
+# Deep sequencing
+
+* Sequence a specific region of the genome from thousands of copies in the pathogen population.
+* Useful to measure the frequency of some variant in the infection.
+* Can yield a sequence alignment for reconstructing within-host evolution.
+
+![](/img/deepseq.svg)
 
 ---
 
