@@ -32,12 +32,81 @@
 
 * Locate a substring of length $L$ in the reference genome that is exactly the same as a substring in the query sequence.
   * If $L$ is too short, then a substring will have many non-unique locations.
-  * If $L$ is too long, then we are unlikely to find a match (*i.e.*, sequencing error, mutations).
-* A naive approach would be to build an index of every substring in the genome, and then do a linear search for the first exact match.
+  * If $L$ is too long, then we are unlikely to find a match because of sequencing errors or mutations.
+* Even if we optimize $L$, searching for every possible substring in both the read and the genome will take a long time!
 
 ---
 
-# Indexed matching
+# Indexing
+
+* The number of reference genomes is always much smaller than the number of reads.
+  * A lot of redundant work in searching for substrings in the reference.
+* Build a data structure called an index for every substring in the genome.
+* An index is like a dictionary where you "look up" a word ($k$-mer) to retrieve its definition (location in the genom).
+  * Also known as an [associative array](https://en.wikipedia.org/wiki/Associative_array) of key-value pairs.
+
+---
+
+# Looking up keys
+* A naive approach would be to do a linear search for each $k$-mer.
+  * Like searching for a word in the dictionary from the first page...
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/0/0a/A_medical_dictionary_for_nurses_%281914%29.jpg" width=250/>
+
+* It would be more efficient if the key tells you exactly where to look in the index.
+  * *e.g.*, a textbook index is in alphabetical order, so you can skip to the section with the same first letter.
+
+
+---
+
+# Hash tables
+
+* A [hash function](https://en.wikipedia.org/wiki/Hash_function) converts a $k$-mer into a nearly unique integer that we use to directly retrieve a value from the index (hash table).
+  * *e.g.*, BLAST builds a hash table of k-mers in the query sequence.
+* For NGS data, there are too many query sequences!
+  * Instead, we build a hash table of the reference genome ([Kent 2002](https://genome.cshlp.org/content/12/4/656.full)).
+
+![](/img/hash-table.svg)
+
+---
+
+# Pros and cons of hash tables
+
+* Not space efficient - a hash table will take up much more space (RAM / storage) than the reference genome.
+  * Hash table may largely comprise empty slots.
+* Smaller $k$ values increase the probability of a collision (multiple words have the same hash value).
+
+---
+
+# Tries
+
+<table>
+  <tr>
+    <td width="50%">
+      <ul>
+        <li>A trie (pronounced "try", also known as a prefix tree) is a tree-like data structure that represents one or more strings.</li>
+        <li>Each directed edge represents a character from an alphabet (set of all characters, $\Sigma$).</li>
+        <li>Each string can be spelled out by tracing a path from the root to one of the tips.</li>
+      </ul>
+    </td>
+    <td>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/Trie_example.svg"/>
+    </td>
+  </tr>
+</table>
+
+---
+
+# Tries versus hash tables
+
+* Tries do not require a hash function
+  * Hash functions may be time-consuming to compute
+
+
+
+---
+
+# Pros and cons of indices
 
 * Instead of exhaustively searching the entire genome, an *index* is a data structure derived from the genome that makes searching more efficient.
   * The index will be larger than the genome(s).
