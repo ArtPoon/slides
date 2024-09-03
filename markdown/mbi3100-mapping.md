@@ -37,13 +37,13 @@
 
 ---
 
-# Indexing
+# Pros and cons of indices
 
-* The number of reference genomes is always much smaller than the number of reads.
-  * A lot of redundant work in searching for substrings in the reference.
-* Build a data structure called an index for every substring in the genome.
-* An index is like a dictionary where you "look up" a word ($k$-mer) to retrieve its definition (location in the genom).
-  * Also known as an [associative array](https://en.wikipedia.org/wiki/Associative_array) of key-value pairs.
+* Instead of exhaustively searching the entire genome, an *index* is a data structure derived from the genome that makes searching more efficient.
+  * Like a dictionary where you "look up" a word to retrieve its definition.
+  * The index will be larger than the genome(s).
+  * Although it can take a long time to build an index, we can use it as many times as we want!
+* Common data structures include [hash tables](https://en.wikipedia.org/wiki/Hash_table) and [suffix trees](https://en.wikipedia.org/wiki/Suffix_tree).
 
 ---
 
@@ -55,7 +55,6 @@
 
 * It would be more efficient if the key tells you exactly where to look in the index.
   * *e.g.*, a textbook index is in alphabetical order, so you can skip to the section with the same first letter.
-
 
 ---
 
@@ -82,7 +81,7 @@
 
 <table>
   <tr>
-    <td width="50%">
+    <td width="55%">
       <ul>
         <li>A trie (pronounced "try", also known as a prefix tree) is a tree-like data structure that represents one or more strings.</li>
         <li>Each directed edge represents a character from an alphabet (set of all characters, $\Sigma$).</li>
@@ -91,34 +90,88 @@
     </td>
     <td>
       <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/Trie_example.svg"/>
+      <small>
+      This trie stores integers keyed by multiple strings, including `tea` and `inn`.  Source: <a href="https://commons.wikimedia.org/wiki/File:Trie_example.svg">Wikimedia Commons</a>, public domain.
+      </small>
     </td>
   </tr>
 </table>
 
 ---
 
-# Tries versus hash tables
+# Pros and cons of tries
 
 * Tries do not require a hash function
   * Hash functions may be time-consuming to compute
 
-
-
----
-
-# Pros and cons of indices
-
-* Instead of exhaustively searching the entire genome, an *index* is a data structure derived from the genome that makes searching more efficient.
-  * The index will be larger than the genome(s).
-  * Although it can take a long time to build an index, we can use it as many times as we want!
-* Common data structures include [suffix trees](https://en.wikipedia.org/wiki/Suffix_tree) and the [Burrows-Wheeler transform](https://en.wikipedia.org/wiki/Burrows%E2%80%93Wheeler_transform) (BWT).
-  * This approach is similar to BLAST.
+* Easy to look up whether a trie contains a string.
+  * Starting at the root, proceed toward tips by selecting the next character edge.  
+  * If edge is not present, then trie does not contain the string.
 
 ---
 
-# Building an index
+# Suffix tries
 
-* `bowtie2-build` constructs the BWT table from one or more reference sequences
+* Storing multiple full strings is *not* what we are trying to do!
+  * We want a rapid lookup for *any* substring of one string (the reference genome).
+* A suffix trie is a trie that holds all suffixes of one string.
+  * $X$ is a substring of $Y$ $\iff$ $X$ is a prefix of a suffix of $Y$.
+* We need to add a special character (`$`) to the end of the strong to prevent any suffix from being the prefix of another suffix.
+![](/img/pompompurin.svg)
+
+---
+
+<table>
+  <tr>
+    <td width="55%">
+      <h1>Operations on suffix tries</h1>
+      <ul>
+        <li>Each path from the root to a tip represents a suffix of the string <code>T=abaaba$</code></li>
+        <li>If there is no edge for the next character in a substring, then it is not in <code>T</code>.</li>
+        <li>The number of tips that descend from a node = the number of times the substring induced by that node appears in T.</li>
+      </ul>
+      <small>
+      Source: Ben Langmead, <a href="https://www.cs.jhu.edu/~langmea/resources/lecture_notes/07_tries_and_suffix_tries_v2.pdf">Tries & Suffix Tries</a>.
+      </small>
+    </td>
+    <td>
+      <img src="/img/abaaba.svg"/>
+    </td>
+  </tr>
+</table>
+
+---
+
+# Burrows-Wheeler transform (BWT)
+
+* Tries take up a lot of memory for genome sequences!
+* The BWT is a reversible transformation of a string that makes it easier to compress:
+  1. Generate all "rotations" of the string as a matrix.
+  2. Sort rows in [lexicographic order](https://en.wikipedia.org/wiki/Lexicographic_order).
+  3. Extract the last column.
+
+<img src="https://media.springernature.com/full/springer-static/image/art%3A10.1186%2Fs13015-021-00204-6/MediaObjects/13015_2021_204_Fig1_HTML.png" width=350/>
+
+<small><small>
+Image source: Anderson and Wheeler. <a href="https://almob.biomedcentral.com/articles/10.1186/s13015-021-00204-6"/>An optimized FM-index library for nucleotide and amino acid search.</a> Algorithms for Molecular Biology 16: 25 (CC BY 4.0).
+</small></small>
+
+---
+
+# FM Index
+
+* Ferragina and Manzini (2000) showed that the BWT provides a highly compact index for a string T.
+  * FM index for the human genome required only about 1.3 GB of RAM.
+* Resembles the functionality of a trie:
+  * Count the number of occurrences of substring S.
+  * Locate these occurrences in the original string.
+* First implemented for NGS in [bowtie](https://bowtie-bio.sourceforge.net/index.shtml) ([Langmead et al. 2009](https://link.springer.com/article/10.1186/Gb-2009-10-3-R25)) and [BWA](https://github.com/lh3/bwa) ([Li and Durbin, 2009](https://academic.oup.com/bioinformatics/article/25/14/1754/225615)).
+
+---
+
+# Using bowtie2
+
+* `bowtie2-build` constructs the FM index from one or more reference sequences
 
 ```
 art@Kestrel:~$ bowtie2-build -q -f Zika-reference.fa zika
@@ -166,13 +219,13 @@ art@Kestrel:~$ bowtie2 -x zika -1 Zika-envelope.n1E4.R1.fastq.gz -2 Zika-envelop
 * Note that we could only map 21 out of 20000 reads - that sucks!
 * Viruses (and sometimes bacteria) evolve so rapidly that there can be many genetic differences between a sample and the reference.
 * Most mappers can only handle 1-2 differences between a read and the reference!
-* We can ask the mapper to *locally* align the read so that runs of mismatched bases at the 5' or 3' ends are not penalized.
+* We can ask the mapper to *locally* align the read so that runs of mismatched bases at the 5' or 3' ends are not penalized (soft clipping).
 
 ---
 
 # Soft clipping
 
-* To allow soft clipping (local alignment) in `bowtie2`, we use the &#8209;&#8209;`local` option:
+* Ignore bases at the ends of a read that do not align to the reference genome:
 
 ```
 art@Kestrel:~$ bowtie2 -x zika -1 Zika-envelope.n1E4.R1.fastq.gz -2 Zika-envelope.n1E4.R2.fastq.gz -S local.sam --local
@@ -272,6 +325,24 @@ SRR5261740.4	16	chr7	142247517	2	24S96M173S	*	0	0	GGGAGACTCCAGCACCTGTGTGATCTGCCC
 
 ---
 
+# Bitwise flags
+
+* Encoding many pieces of information with a single integer
+
+| Bit | Description | Bit | Description |
+|-----|-------------|-----|-------------|
+| 1   | Read is paired | 64  | Is read 1 |
+| 2   | Read is mapped in proper pair | 128 | Is read 2 |
+| 4   | Read 1 is unmapped | 256 | Secondary alignment |
+| 8   | Read 2 is unmapped | 512 | Fails quality checks |
+| 16  | Read 1 is reverse-complement | 1024 | PCR / optical duplicate |
+| 32  | Read 2 is reverse-complement | 2048 | Supplementary alignment |
+
+* *e.g.*, 147 = 128 + 16 + 2 + 1 = `000010010011`
+  * Read is paired and mapped in proper pair; it is read 2, and read 1 is the reverse-complement.
+
+---
+
 # CIGAR
 
 * Compact Idiosyncratic Gapped Alignment Report
@@ -295,7 +366,7 @@ SRR5261740.4	16	chr7	142247517	2	24S96M173S	*	0	0	GGGAGACTCCAGCACCTGTGTGATCTGCCC
 <td>
   <ul>
     <li>Explosion in number of mappers ~2007-2013.</li>
-    <li>Popular programs include <a href="https://github.com/lh3/bwa">BWA</a> and <a href="https://github.com/BenLangmead/bowtie2">Bowtie</a>.</li>
+    <li>More recent mappers adapted to handle longer reads, <i>e.g.</i>, <a href="https://github.com/lh3/minimap2">minimap2</a> (from same developers as BWA).</li>
     <li>Some recent programs focus on specific applications of NGS, <i>e.g.,</i> <a href="https://pachterlab.github.io/kallisto/">Kallisto</a> for <i>RNA-seq</i></li>
   </ul>
 </td>
@@ -313,15 +384,44 @@ Image source: NA Fonseca <i>et al.</i> (2012) <a href="https://academic.oup.com/
 
 # Applications of mapping
 
+* NGS is not just about generating whole genome sequences!
+  * Deep sequencing
+  * Metagenomics (environmental DNA, microbiomes)
+  * Transcriptomics, epigenomics (RNA-seq, ChIP-seq, ATAC-seq)
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Next_generation_sequencing_slide.jpg/800px-Next_generation_sequencing_slide.jpg" width=300/>
+
+<small><small>
+Image source: Illumina HiSeq X10 flowcell. <a href="https://commons.wikimedia.org/wiki/File:Next_generation_sequencing_slide.jpg">Wikimedia Commons</a> (CC BY 3.0).
+</small></small>
+
 ---
 
 # Deep sequencing
 
-* Sequence a specific region of the genome from thousands of copies in the pathogen population.
-* Useful to measure the frequency of some variant in the infection.
-* Can yield a sequence alignment for reconstructing within-host evolution.
+* Sequence a specific region of the genome from thousands of copies in a population.
+  * *e.g.*, a diverse virus population, tumour cell population
+* Useful to detect a rare mutation or measure the frequencies of different mutations in the population.
+* Can yield a sequence alignment for reconstructing within-host evolution (phylogeny).
 
-![](/img/deepseq.svg)
+<img src="/img/deep-seq.svg" height=180/>
+
+---
+
+# Metagenomics
+
+* Analysis of samples containing genomes from different species.
+* Early work focused on a single gene shared by all organisms of interest, *e.g.*, [16S rRNA](https://en.wikipedia.org/wiki/16S_ribosomal_RNA) for bacteria (but is this really -genomics?).
+* Requires a good database of reference genes/genomes.
+
+<img src="/img/metagenomics.svg" width=500/>
+
+---
+
+# Transcriptomics
+
+* Measuring the expression levels of different genes in the genome.
+* Identifying and quantifying alternate splicing of RNA transcripts from the same gene.
 
 ---
 
@@ -330,9 +430,10 @@ Image source: NA Fonseca <i>et al.</i> (2012) <a href="https://academic.oup.com/
 
 ---
 
-# Further reading
+# Resources
 
 * [Proposed closure of the NCBI SRA (later cancelled)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3129670/)
 * [The history of the FASTQ format](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2847217/)
 * [Short Read Mapping: An Algorithmic Tour](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5425171/)
 * [Quinlan lab samtools Tutorial](http://quinlanlab.org/tutorials/samtools/samtools.html)
+* [Ben Langmead's lecture on suffix trees](https://www.cs.jhu.edu/~langmea/resources/lecture_notes/07_tries_and_suffix_tries_v2.pdf)
