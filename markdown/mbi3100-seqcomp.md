@@ -168,7 +168,7 @@ Image credit: A Zielezinski <i>et al.</i> 2019, [Benchmarking of alignment-free 
 $$M_{ij} \propto \frac{A_{ij}}{n_j}$$
 where $n_j$ is the total number of $j$ residues.
 
-* diagonal entries are set so that each column sums to one (left stochastic matrix).
+* diagonal entries are set so that each column sums to one.
 
 ---
 
@@ -269,12 +269,13 @@ Image source: [A Primer for Computational Biology](https://open.oregonstate.educ
 
 ---
 
-# Word search
+# Initial seed
 
-* The original BLAST algorithm<sup>1</sup> attempts to find *high-scoring segment pairs* (HSP).
-* The HSP is the set of equal-length segments from 2 sequences that maximizes the total similarity score.
-* BLAST constructs an index (*i.e.*, [hash table](https://en.wikipedia.org/wiki/Hash_table)) of all "words" of length $k$ (k-mers).
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Hash_table_3_1_1_0_1_0_0_SP.svg/315px-Hash_table_3_1_1_0_1_0_0_SP.svg.png)
+* The BLAST database stores a [hash table](https://en.wikipedia.org/wiki/Hash_table)) of $k$-mers for sequences in its database.
+  * For protein sequences, BLAST defaults to $k=5$.
+* A hash function converts data (like the query sequence) to a simpler value (often an integer).
+  * We can use this value to directly look-up records in the database.
+* This initial matching $k$-mer is the *seed*.
 
 <small><small>
 $^1$SF Altschul <i>et al.</i> (1990). <a href="https://www.sciencedirect.com/science/article/pii/S0022283605803602">Basic local alignment search tool</a>.  J Mol Biol 215: 403.
@@ -282,11 +283,13 @@ $^1$SF Altschul <i>et al.</i> (1990). <a href="https://www.sciencedirect.com/sci
 
 ---
 
-# Building the HSP
+# Second seed
 
-* BLAST scans the database for high-scoring words (3-mers for proteins).
-  * From one pair of high-scoring words (*hit*), search left and right for a second hit within some maximum distance $A$.
-  * Require 2 hits to trigger a gap-free *extension* (incorporate flanking residues into candidate alignment).
+* The initial seeds retrieve a subset of candidate sequences from the database.
+* Next we search for a second matching $k$-mer that is within a distance $A$ of the seed.
+  * If we do not find a second match, then we discard this candidate.
+* If the candidate sequence has two matching $k$-mers ("hits"), then the BLAST algorithm performs a gap-free extension XXXXXXXXXXXXX
+ (incorporate flanking residues into candidate alignment).
 
 <img src="/img/Neighbor_HSP.jpg" width="400px"/>
 
@@ -366,16 +369,6 @@ between Its Spike Protein Insertions and HIV‑1.  [J Proteo Res 19, 1351-1360](
 
 ---
 
-# Further readings
+# Key points
 
-
-* [Where did the BLOSUM62 alignment score matrix come from?](https://www.nature.com/articles/nbt0804-1035)
-* [BLAST Command Line Applications User Manual](https://www.ncbi.nlm.nih.gov/books/NBK279684/)
-
-* [The Statistics of Sequence Similarity Scores](https://www.ncbi.nlm.nih.gov/BLAST/tutorial/Altschul-1.html)
-
-* [Selecting the Right Similarity-Scoring Matrix](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3848038/)
-
-* [Oregon State University Open Textbook: A Primer for Computational Biology](https://open.oregonstate.education/computationalbiology/chapter/command-line-blast/)
-
-* [Database resources of the National Center for Biotechnology Information](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4702911/)
+* 
