@@ -200,7 +200,6 @@ ORIGIN
 
 ---
 
-
 # Next-generation sequencing (NGS)
 
 * NGS is a catch-all term for technology that performs sequencing reactions on a very large scale.
@@ -253,9 +252,8 @@ total 2.1G
 * NCBI requires users to use its own open-source software to download data
 * https://github.com/ncbi/sra-tools
 * `fasterq-dump` uses multi-threading and file caching to make downloads faster
-* originally only available for Linux and macOS - recently made available for [Windows](https://github.com/ncbi/sra-tools/wiki/01.-Downloading-SRA-Toolkit).
-
-
+* Originally only available for Linux and macOS
+  * Recently made available for [Windows](https://github.com/ncbi/sra-tools/wiki/01.-Downloading-SRA-Toolkit).
 
 ---
 
@@ -331,6 +329,17 @@ BCCCCFF
 * `I` becomes $73-33=40$, which gives us the $Q$ score.
 
 > What is the character for encoding Q=35?
+
+---
+
+
+# Data compression
+
+* FASTQ files are often stored in a `gzip` format.
+* `gzip` is a UNIX (GNU) compression/decompression program.
+  * This program essentially replaces repeating sequences in the data with an instruction to copy forward the first instance.
+* Generally reduces a FASTQ file down about 3-fold.
+* Some programs can process the gzipped FASTQs!
 
 ---
 
