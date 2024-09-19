@@ -163,19 +163,43 @@ Image credit: A Zielezinski <i>et al.</i> 2019, [Benchmarking of alignment-free 
 
 # PAM matrices
 
-* accepted point mutations (abbreviated as PAM)
-* calculate probability that $i$ mutates to $j$ ($M_{ij}$) from observed mutation counts ($A_{ij}$):
+* Accepted point mutations (abbreviated as PAM)
+* Calculate probability that $i$ mutates to $j$ ($M_{ij}$) from observed mutation counts ($A_{ij}$):
 $$M_{ij} \propto \frac{A_{ij}}{n_j}$$
 where $n_j$ is the total number of $j$ residues.
 
-* diagonal entries are set so that each column sums to one.
+* Diagonal entries are set so that each column sums to one.
+  * *i.e.*, $M_{ii}$ is the probability that we stay in $i$, given that we start with $i$.
 
 ---
 
-PAM250 matrix: 250 mutations per 100 amino acids (scaled from PAM1).
-<img src="/img/pam250.png" height="350px"/>
+# Simulating evolution
 
->Is glutamic acid (E) closer to cysteine (C) or aspartic acid (D)?
+* $M_{ij}$ = probability that $i$ becomes $j$ 
+  * after enough time passes for an average 1 AA substitution at 100 AA sites.
+  * this equals one unit of "PAM" time.
+* Adjust for longer time by matrix-multiplication of $M$:
+
+<img src="/img/pam250.svg" height=250/>
+
+---
+
+Raising $M$ to the power of 250 yields PAM250 (250 AA subn's at 100 sites).  Only about 1 in 5 sites remain unchanged.
+
+<table>
+<tr>
+  <td>PAM1</td>
+  <td>PAM250</td>
+</tr>
+<tr style="background-color: white;">
+  <td style="padding: 0;"><img src="/img/pam1-squares.svg" width=400/></td>
+  <td style="padding: 0;"><img src="/img/pam250-squares.svg" width=400/></td>
+</tr>
+</table>
+
+<small><small>
+Data from Dayhoff M, Schwartz R, Orcutt B. 22 a model of evolutionary change in proteins. Atlas of protein sequence and structure. 1978;5:345-52..
+</small></small>
 
 ---
 
@@ -283,19 +307,12 @@ $^1$SF Altschul <i>et al.</i> (1990). <a href="https://www.sciencedirect.com/sci
 
 ---
 
-# Second seed
+# Gap-free extension
 
-* The initial seeds retrieve a subset of candidate sequences from the database.
-* Next we search for a second matching $k$-mer that is within a distance $A$ of the seed.
-  * If we do not find a second match, then we discard this candidate.
-* If the candidate sequence has two matching $k$-mers ("hits"), then the BLAST algorithm performs a gap-free extension XXXXXXXXXXXXX
- (incorporate flanking residues into candidate alignment).
+* If we have a match then the BLAST algorithm attempts a "gap-free extension".
+![](/img/gap-free-extension.svg)
 
-<img src="/img/Neighbor_HSP.jpg" width="400px"/>
-
-<small><small>
-Image source: https://commons.wikimedia.org/wiki/File:Neighbor_HSP.jpg, Creative Commons license
-</small></small>
+* Calculates the total score 
 
 ---
 
