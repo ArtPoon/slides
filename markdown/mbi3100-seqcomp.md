@@ -21,7 +21,7 @@ Image source: https://commons.wikimedia.org/wiki/File:Ortholog_paralog_analog_(h
 # How do we compare sequences?
 
 * Sequences are not like numbers - we cannot just take an arithmetic difference of two sequences.
-* Instead, we have to extract [features](https://en.wikipedia.org/wiki/Feature_(machine_learning)) or [summary statistics](https://en.wikipedia.org/wiki/Summary_statistics) of each sequence.
+* Instead, we have to extract [features](https://en.wikipedia.org/wiki/Feature_(machine_learning) (*i.e.*, [summary statistics](https://en.wikipedia.org/wiki/Summary_statistics)) of each sequence.
   * In machine learning, a feature is some measurable characteristic of a data object.
   * Features should make it easier to make comparisons between sequences.
 
@@ -146,27 +146,21 @@ Image credit: A Zielezinski <i>et al.</i> 2019, [Benchmarking of alignment-free 
 
 # Calculating scores
 
-* [Dayhoff](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5037978/) pioneered the concept of quantifying amino acid substitution rates by comparing protein sequences.
-  * Dayhoff *et al.* (1978) mapped 1,572 AA substitutions to trees relating protein sequences in the *Atlas* with <15% divergence.
-
-|       |  A  | R  | N   | D   | C | Q  |
-|-------|-----|----|-----|-----|---|----|
-| A Ala |     |    |     |     |   |    |
-| R Arg | 30  |    |     |     |   |    |
-| N Asn | 109 | 17 |     |     |   |    |
-| D Asp | 154 | 0  | 532 |     |   |    |
-| C Cys | 33  | 10 | 0   | 0   |   |    |
-| Q Gln | 93  | 120 | 50 | 76  | 0 |    |
-| E Glu | 266 | 0  | 94  | 831 | 0 | 422 |
+* [Dayhoff](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5037978/) *et al.* (1978) pioneered the concept of quantifying amino acid substitution rates by comparing protein sequences.
+* Built trees relating sets of protein sequences with <15% divergence.
+  * Reconstructing ancestral sequences in the tree identified amino acid changes.
+<img src="/img/dayhoff-tree.png" width=330/>
+<small><small>
+Image source: Dayhoff M, Schwartz R, Orcutt B. A model of evolutionary change in proteins. Atlas of protein sequence and structure. 1978;5:345-52
+</small></small>
 
 ---
 
 # PAM matrices
 
-* Accepted point mutations (abbreviated as PAM)
-* Calculate probability that $i$ mutates to $j$ ($M_{ij}$) from observed mutation counts ($A_{ij}$):
-$$M_{ij} \propto \frac{A_{ij}}{n_j}$$
-where $n_j$ is the total number of $j$ residues.
+* Record the reconstructed substitutions as the accepted point mutation matrix, $A_{ij}$.
+* From `$A_{ij}$`, Dayhoff *et al.* (1978) calculated the probability $M_{ij}$ that $i$ mutates to $j$ after some time.
+  * Note this probability will change with different amounts of time.
 
 * Diagonal entries are set so that each column sums to one.
   * *i.e.*, $M_{ii}$ is the probability that we stay in $i$, given that we start with $i$.
@@ -198,7 +192,7 @@ Raising $M$ to the power of 250 yields PAM250 (250 AA subn's at 100 sites).  Onl
 </table>
 
 <small><small>
-Data from Dayhoff M, Schwartz R, Orcutt B. 22 a model of evolutionary change in proteins. Atlas of protein sequence and structure. 1978;5:345-52..
+Data from Dayhoff M, Schwartz R, Orcutt B. A model of evolutionary change in proteins. Atlas of protein sequence and structure. 1978;5:345-52.
 </small></small>
 
 ---
@@ -227,8 +221,10 @@ Data from Dayhoff M, Schwartz R, Orcutt B. 22 a model of evolutionary change in 
 
 * The observed frequency of aligned pairs of tryptophan (W) is $q_{\scriptsize W,W}=0.0065$.
 * The observed frequency of W alone is $p_{\scriptsize W}=0.013$.
-* What is $s_{WW}$ if we set $\lambda = 2.88$?  Round to one decimal place (*i.e.,* `xy.z`).
-* Now do the same for leucine ($q_{\scriptsize L,L}=0.0371$, $p_L=0.099$)
+* If we set $\lambda = 2.88$, we get:
+$$s(W,W) = 2.88 \times \log\left( \frac{0.0065}{0.013^2} \right) \approx 10.5$$
+* This $s$ value is very high (BLOSUM62 diagonals mostly 4 to 7).
+  * Even though we don't see W aligned to W very often, it happens much more than we expect given W's are so rare (low $p_{\scriptsize W}$).
 
 <small><small>
 Example from SR Eddy (2004), Nature Biotechnol 22(8):1035.
@@ -240,8 +236,9 @@ Example from SR Eddy (2004), Nature Biotechnol 22(8):1035.
 
 * Like PAM, there are several BLOSUM matrices for different levels of evolutionary divergence.
 * Unlike PAM, each BLOSUM matrix is derived from its own alignment, rather than being extrapolated from one data-derived matrix.
-* BLOSUM62 derived from a "trusted" alignment of protein segments of <62% identity
-* Considered to be comparable to PAM250.
+  * Used more sequence data than Dayhoff *et al.*
+* BLOSUM62 derived from a "trusted" alignment of protein segments of <62% identity.
+  * Considered to be comparable to PAM250.
 
 ---
 
@@ -264,9 +261,11 @@ $$
 
 # Searching a sequence database
 
-* How do we query a database with a nucleotide or protein sequence?
+* How do we search a database with a nucleotide or protein sequence?
+  * The input sequence is our *query*.
+  * A matching sequence in the database is the *subject*.
 * An unknown species has no keywords to search by.
-* One approach would be to *align* the sequence against every other sequence in the database, and take whatever aligns best.
+* One approach would be to align our query sequence against every sequence in the database, and take whatever aligns best.
 * This would take too long!  (More on alignment later.)
 
 ---
@@ -296,23 +295,34 @@ Image source: [A Primer for Computational Biology](https://open.oregonstate.educ
 # Initial seed
 
 * The BLAST database stores a [hash table](https://en.wikipedia.org/wiki/Hash_table)) of $k$-mers for sequences in its database.
-  * For protein sequences, BLAST defaults to $k=5$.
+  * Command line `blastp` defaults to $k=3$, but online version defaults to $k=5$.
 * A hash function converts data (like the query sequence) to a simpler value (often an integer).
   * We can use this value to directly look-up records in the database.
 * This initial matching $k$-mer is the *seed*.
+  * We can also require two seeds within a distance $A$ (gapped BLAST, [Altschul *et al*, 1997](https://academic.oup.com/nar/article/25/17/3389/1061651)).
 
-<small><small>
-$^1$SF Altschul <i>et al.</i> (1990). <a href="https://www.sciencedirect.com/science/article/pii/S0022283605803602">Basic local alignment search tool</a>.  J Mol Biol 215: 403.
-</small></small>
+---
+
+# Scoring seeds
+
+* Suppose we find an exact match for the seed `MHR` in the database.
+  * Using [BLOSUM62](https://www.ncbi.nlm.nih.gov/IEB/ToolBox/C_DOC/lxr/source/data/BLOSUM62), the score $S$ is 5 + 8 + 5 = 18.
+* We want to include near-matches, so we include hits in the database with a score greater than some threshold $T$.
+  * For example, `MHK` has $S=5 + 8 + 2 = 15$
+  * `MHF` has $S = 5 + 8 + (-3) = 10$.  If $T>10$ then we reject `MHF`.
+* Together, the seed from query and a fragment of equal length from subject with $S>T$ form a *high scoring segment pair* (HSP).
 
 ---
 
 # Gap-free extension
 
-* If we have a match then the BLAST algorithm attempts a "gap-free extension".
+* If we have one or two HSPs, then the BLAST algorithm attempts a "gap-free extension".
 ![](/img/gap-free-extension.svg)
 
-* Calculates the total score 
+* BLAST stops extension when:
+  1. The cumulative score drops by some amount away from its highest value;
+  2. the cumulative score becomes zero or less, or;
+  3. we reach the end of the subject or query sequence.
 
 ---
 
@@ -320,7 +330,7 @@ $^1$SF Altschul <i>et al.</i> (1990). <a href="https://www.sciencedirect.com/sci
 
 * If the gap-free extension retains a high enough score, BLAST calculates a *gapped extension* (tolerate indels).
 * Gapped extension (pairwise alignment) is very time consuming.
-  * two-hit method is designed to minimize the number carried out.
+  * Seeding and gap-free extension steps are designed to minimize the number of alignments.
 * Only high scoring gapped extensions are reported.
 * Clearly, *scoring* plays an important role in BLAST searches.
 
@@ -336,7 +346,8 @@ $^1$SF Altschul <i>et al.</i> (1990). <a href="https://www.sciencedirect.com/sci
         <li>The expected number of HSPs with score $\ge S$:
           $$E=Kmn e^{-\lambda S}$$
           where $m$ and $n$ are the sequence lengths.</li>
-        <li>$K$ and $\lambda$ are pre-defined parameters that depend on the BLOSUM matrix.</li>
+        <li>In other words, $E$ is the expected number of false positives!</li>
+        <li>$K$ and $\lambda$ are pre-defined parameters that were measured in simulation experiments.</li>
       </ul>
     </td>
     <td>
@@ -388,4 +399,8 @@ between Its Spike Protein Insertions and HIV‑1.  [J Proteo Res 19, 1351-1360](
 
 # Key points
 
-* 
+* Dot plots enable us to visually compare two sequences, identify rearrangements.
+* $k$-mers are "words" we extract as features of a sequence that are easier to compare.
+* A score matrix quantifies how likely one residue will be replaced by another.
+  * Sequences with typical differences are more similar.
+* The BLAST algorithm speeds up 
