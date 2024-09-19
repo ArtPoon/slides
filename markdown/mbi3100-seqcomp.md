@@ -206,12 +206,12 @@ Data from Dayhoff M, Schwartz R, Orcutt B. A model of evolutionary change in pro
 
 ---
 
-# Log-odds
+# Calculating BLOSUM
 
-* Frequency of amino acid $a$ is $p_a$.
-* If an aligned pair of AAs $a$ and $b$ are [independent](https://en.wikipedia.org/wiki/Independence_(probability_theory)), then their probability is $p_a\times p_b$.
-* Ratio of the *observed* probability ($q_{a,b}$) to this expectation is the *odds*.
-* Taking the log of the odds gives us the log-odds:
+* Overall frequency of amino acid $a$ in alignment is $p_a$.
+  * If all amino acids are distributed at random, then the expected probability of an aligned pair ($a, b$) is $p_a\times p_b$.
+* The observed probability ($q_{a,b}$) is the frequency that two sequences sampled at random contain the aligned pair ($a, b$).
+* A ratio of probabilities is the *odds*.  BLOSUM is based on log-odds:
   $$s(a,b)= \lambda\log\frac{q_{a,b}}{p_a p_b}$$
   where $\lambda$ is used to round $s$ to nice integers.
 
@@ -221,10 +221,10 @@ Data from Dayhoff M, Schwartz R, Orcutt B. A model of evolutionary change in pro
 
 * The observed frequency of aligned pairs of tryptophan (W) is $q_{\scriptsize W,W}=0.0065$.
 * The observed frequency of W alone is $p_{\scriptsize W}=0.013$.
-* If we set $\lambda = 2.88$, we get:
+* Given $\lambda = 2.88$, we get:
 $$s(W,W) = 2.88 \times \log\left( \frac{0.0065}{0.013^2} \right) \approx 10.5$$
-* This $s$ value is very high (BLOSUM62 diagonals mostly 4 to 7).
-  * Even though we don't see W aligned to W very often, it happens much more than we expect given W's are so rare (low $p_{\scriptsize W}$).
+* This $s$ value is the highest in the BLOSUM62 matrix!
+  * Though we don't often see the aligned pair (W, W), it happens much more than we expect given W's are so rare (low $p_{\scriptsize W}$).
 
 <small><small>
 Example from SR Eddy (2004), Nature Biotechnol 22(8):1035.
@@ -232,7 +232,7 @@ Example from SR Eddy (2004), Nature Biotechnol 22(8):1035.
 
 ---
 
-# BLOSUM62
+# PAM versus BLOSUM
 
 * Like PAM, there are several BLOSUM matrices for different levels of evolutionary divergence.
 * Unlike PAM, each BLOSUM matrix is derived from its own alignment, rather than being extrapolated from one data-derived matrix.
@@ -266,7 +266,7 @@ $$
   * A matching sequence in the database is the *subject*.
 * An unknown species has no keywords to search by.
 * One approach would be to align our query sequence against every sequence in the database, and take whatever aligns best.
-* This would take too long!  (More on alignment later.)
+  * This would take too long!  (More on alignment later.)
 
 ---
 
@@ -309,7 +309,7 @@ Image source: [A Primer for Computational Biology](https://open.oregonstate.educ
   * Using [BLOSUM62](https://www.ncbi.nlm.nih.gov/IEB/ToolBox/C_DOC/lxr/source/data/BLOSUM62), the score $S$ is 5 + 8 + 5 = 18.
 * We want to include near-matches, so we include hits in the database with a score greater than some threshold $T$.
   * For example, `MHK` has $S=5 + 8 + 2 = 15$
-  * `MHF` has $S = 5 + 8 + (-3) = 10$.  If $T>10$ then we reject `MHF`.
+  * `MHF` has $S = 5 + 8 + (-3) = 10$.  If $T=10$, reject `MHF`.
 * Together, the seed from query and a fragment of equal length from subject with $S>T$ form a *high scoring segment pair* (HSP).
 
 ---
@@ -340,29 +340,31 @@ Image source: [A Primer for Computational Biology](https://open.oregonstate.educ
 
 <table>
   <tr>
-    <td>
+    <td width="50%">
       <ul>
         <li>Recall BLAST searches for high-scoring sequence pairs (HSP).</li>
         <li>The expected number of HSPs with score $\ge S$:
           $$E=Kmn e^{-\lambda S}$$
-          where $m$ and $n$ are the sequence lengths.</li>
+          where $m$, $n$ are sequence lengths.</li>
         <li>In other words, $E$ is the expected number of false positives!</li>
         <li>$K$ and $\lambda$ are pre-defined parameters that were measured in simulation experiments.</li>
       </ul>
     </td>
     <td>
       <img src="/img/Altschul.png"/>
+      <br/>
+      <small>
+      Image credit: SF Altschul <i>et al.</i> (1990). <a href="https://www.sciencedirect.com/science/article/pii/S0022283605803602">Basic local alignment search tool</a>.  J Mol Biol 215: 403.
+      </small>
     </td>
   </tr>
 </table>
 
-<small><small>
-Image credit: SF Altschul <i>et al.</i> (1990). <a href="https://www.sciencedirect.com/science/article/pii/S0022283605803602">Basic local alignment search tool</a>.  J Mol Biol 215: 403.
-</small></small>
+
 
 ---
 
-# BLAST and SARS-CoV-2
+# Case study: BLAST and SARS-CoV-2
 
 * The complete genome of SARS-CoV-2 was [released to the public](https://virological.org/t/novel-2019-coronavirus-genome/319) on January 10, 2021.
 * High level of similarity to SARS-like coronaviruses isolated from bats (Bat-SL-CoVZC).
@@ -374,17 +376,17 @@ Image credit: R Lu <i>et al.</i> (2020) Genomic characterisation and epidemiolog
 
 ---
 
-# Getting it wrong
-
 * On January 31, 2020, a preprint<sup>1</sup> was posted to <i>bioRxiv</i> (since withdrawn) claiming to have found "uncanny similarity" of SARS-CoV-2 to HIV using BLAST.
-![](https://www.biorxiv.org/content/biorxiv/early/2020/01/31/2020.01.30.927871/T1.medium.gif)
+<img src="/img/conspiracy.svg" height=300/>
 * Fueled conspiracy theories that SARS-CoV-2 had been intentionally manufactured in a laboratory.
 
 <small><small>
-<sup>1</sup> Pradhan <i>et al.</i> (2020). Uncanny similarity of unique inserts in the 2019-nCoV spike protein to HIV-1 gp120 and Gag.  <i>bioRxiv</i>, https://doi.org/10.1101/2020.01.30.927871.
+<sup>1</sup> Pradhan <i>et al.</i> (2020). Uncanny similarity of unique inserts in the 2019-nCoV spike protein to HIV-1 gp120 and Gag.  <i>bioRxiv</i> (withdrawn), https://doi.org/10.1101/2020.01.30.927871.
 </small></small>
 
 ---
+
+Notably, the authors did not report E-values.  Another group (Zheng et al., 2020) repeated the search to find the following:
 
 <img src="/img/blast-results.png" height="350px"/>
 
@@ -392,7 +394,7 @@ Image credit: R Lu <i>et al.</i> (2020) Genomic characterisation and epidemiolog
 
 <small><small>
 Source: C Zheng <i>et al.</i> (2020) Protein Structure and Sequence Reanalysis of 2019-nCoV Genome Refutes Snakes as Its Intermediate Host and the Unique Similarity
-between Its Spike Protein Insertions and HIV‑1.  [J Proteo Res 19, 1351-1360](https://pubs.acs.org/doi/abs/10.1021/acs.jproteome.0c00129).
+between Its Spike Protein Insertions and HIV-1.  [J Proteo Res 19, 1351-1360](https://pubs.acs.org/doi/abs/10.1021/acs.jproteome.0c00129).
 </small></small>
 
 ---
@@ -403,4 +405,4 @@ between Its Spike Protein Insertions and HIV‑1.  [J Proteo Res 19, 1351-1360](
 * $k$-mers are "words" we extract as features of a sequence that are easier to compare.
 * A score matrix quantifies how likely one residue will be replaced by another.
   * Sequences with typical differences are more similar.
-* The BLAST algorithm speeds up 
+* The BLAST algorithm speeds up database searches by eliminating most candidates by k-mer filtering and scoring thresholds.
