@@ -1,7 +1,7 @@
 # MBI3100A
 ## Sequence alignment
 
-![](https://imgs.xkcd.com/comics/here_to_help.png)
+![](https://imgs.xkcd.com/comics/coronavirus_genome.png)
 
 ---
 
@@ -97,7 +97,8 @@ Aligned HCV sequences
 
 ---
 
-# Scoring an alignment
+
+# Scoring a nucleotide alignment
 
 <center>
 <tt>
@@ -113,6 +114,23 @@ ACTGATC<br/>
 
 ---
 
+# Scoring a protein alignment
+
+<center>
+<tt>
+-ASGTVQL<br/>
+VASR--QM
+</tt>
+</center>
+
+* Let's use the BLOSUM62 matrix, a gap open penalty of `-3` and an extend penalty of `-1`, ignoring terminal gaps.
+* The scores are: 
+`0 + 4 + 4 + (-2) + (-3-1) + 5 + 2`
+for a total score of 9.
+
+
+---
+
 # Pairwise alignment
 
 * There are several heuristic algorithms that have been developed to find the optimal alignment of two sequences.
@@ -122,9 +140,108 @@ ACTGATC<br/>
 
 ---
 
+# Dynamic programming
+
+* Needleman-Wunsch and Smith-Waterman are [dynamic programming](https://en.wikipedia.org/wiki/Dynamic_programming) algorithms:
+  * A complex problem can be broken down into a sequence of much smaller, simpler *recursive* problems.
+* "Recursive" means that the problems are nested within each other.  Solving one is part of solving another.
+* Retrieving the solutions to problems nested within the next problem saves work!
+
+---
+
+# The F matrix
+
+* The basis of the NW algorithm is the $F$ matrix.
+* We label columns of $F$ with one sequence, and label its rows with a second sequence.
+  * We add a special character `*` to the left of both sequences to represent their starts.
+* Any path from the lower-right corner of $F$ to the upper-left corner represents an alignment.
+  * Moving diagonally (up-left) means matching residues in both sequences.
+  * Moving up or to the left adds a gap to the corresponding sequence.
+
+---
+
+<table>
+  <tr>
+    <td width="50%">
+      <h1>Populating the F matrix</h1>
+      <ul>
+      <li>We start with $F(0,0)=0$.</li>
+      <li>Other entries in $F$ are calculated from the entries above, to the left, or diagonally up and left.</li>
+      $$
+      F(i,j)= \max \left\{ 
+        \begin{array}{l}
+          F(i-1,j-1) + s(x_i, y_j),\\
+          F(i-1,j)-d,\\
+          F(i, j-1)-d\\
+        \end{array}
+        \right.
+      $$
+      <li>$s(x, y)$ comes from a score matrix, <i>e.g.</i>, BLOSUM</li>
+      <li>$d$ is a gap penalty</li>
+      </ul>
+    </td>
+    <td>
+      <img src="/img/dynamicprogram.png"/>
+    </td>
+  </tr>
+</table>
+
+---
+
+# Traceback
+
+
+* For every element $F(i, j)$, we keep track of which step gave the maximum value, *i.e.*, $(i-1, j)$, $(i-1, j-1)$ or $(i, j-1)$.
+  * If two or more steps gave the same maximum value, we store multiple pointers. 
+* A path from the lower-right corner to the upper-left corner that follows these stored steps is an optimal alignment.
+  * As we move along the path, we add up the alignment score.
+
+<small><small>
+The following JavaScript was modified from <a href="https://github.com/drdrsh">Mostafa Abdelraouf</a> excellent implementation of the NW algorithm.
+</small></small>
+
+---
+
+<section data-state="needleman">
+    <center>
+    <div id="needleman" class="fig-container"
+         data-fig-id="fig-needleman"
+         data-file="/include/needleman.html"
+         style="height:650px">
+    </div>
+    </center>
+</section>
+
+---
+
+# Ambiguous alignments
+
+* Sometimes there is more than one alignment with the same maximal score, *e.g.*. 
+```
+ACGTAACGT   ACGTAACGT
+ACGT-ACGT   ACGTA-CGT
+```
+* The only difference in the above example is where we place the `A` - on the left or the right side of the gap.
+* One case where it matters how you place such bases is when you are working with codon (protein-coding) sequences:
+```
+ACG CAA CGT   ACG CAA CGT
+ACG C-- -GT   ACG --- CGT
+```
+
+---
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Boardwalk_in_Pelee.JPG/1024px-Boardwalk_in_Pelee.JPG)
+<small><small>
+Image source: Boardwalk in Point Pelee National Park, <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Boardwalk_in_Pelee.JPG/1024px-Boardwalk_in_Pelee.JPG">Wikimedia Commons</a>, public domain.
+</small></small>
+
+---
+
 # Multiple sequence alignment
 
 * It is not trivial to extend pairwise alignment to more than two sequences.
+* Suppose we have three sequences: `ACGT`, `AGT` and `ACAGT`.
+* There are three pairwise alignments of three sequences:
 
 ```
 1 AC-GT   1 ACGT   1 ACGT
@@ -219,3 +336,15 @@ ACTGATC<br/>
 * Usually the terminal regions are trimmed off.
 
 ---
+
+<section data-background="#333" style="color:white">
+
+<h1 style="color:white">Key points</h1>
+
+* Homologous sequences can be aligned by adding gaps that represent insertions or deletions.
+* Optimal alignment is defined by match/mismatch scoring and penalizing gaps.
+* Most alignment programs use a dynamic programming algorithm to find the optimal alignment.
+* Multiple sequence alignment requires a guide tree to determine the order of alignment.
+* Always look at your data!
+
+</section>
