@@ -197,7 +197,7 @@ for a total score of 9.
   * As we move along the path, we add up the alignment score.
 
 <small><small>
-The following JavaScript was modified from <a href="https://github.com/drdrsh">Mostafa Abdelraouf</a> excellent implementation of the NW algorithm.
+The following JavaScript was modified from <a href="https://github.com/drdrsh">Mostafa Abdelraouf's</a> excellent implementation of the NW algorithm.
 </small></small>
 
 ---
