@@ -20,3 +20,12 @@ plot(mouse$x, mouse$y, bg=pal[as.integer(mouse$group)], pch=21, col='black',
 require(mclust)
 
 fit <- Mclust(mouse[,1:2])
+
+
+wcss <- sapply(1:10, function(k) kmeans(mouse[,1:2], centers=k)$tot.withinss)
+
+pdf("~/slides/img/elbow-method.pdf", width=5, height=5)
+par(mar=c(5,5,1,1))
+plot(1:10, wcss, type='b', bty='n', xlab="Number of clusters", 
+     ylab="Total within-cluster sum-of-squares")
+dev.off()

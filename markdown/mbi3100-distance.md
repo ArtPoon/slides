@@ -49,33 +49,37 @@ Variable (V) regions along dinoflagellate 18S rRNA sequences.  From J-S Ki 2011.
 
 <table>
   <tr>
-    <td width="50%">
+    <td width="60%">
       <ul>
       <li>
         The concept of entropy comes from <a href="https://en.wikipedia.org/wiki/Information_theory">information theory</a>.
       </li>
       <li>
         For each site, we calculate:
-        $$S = -\sum_i p_i \log p_i$$
+        $$H = -\sum_i p_i \log p_i$$
         where $p_i$ is the frequency of the $i$-th residue at that site.
       </li>
-      <li>Entropy is highest when residues appear at equal frequency.</li>
+      <li>Entropy is highest when residues appear at equal frequency (no information).</li>
     </td>
-    <td width="50%">
+    <td>
       <img src="/img/entropy.png"/>
+      <small>
+      A plot of entropy for two possible states.
+      </small>
     </td>
   </tr>
 </table>
 
 ---
 
-# Diversity: polymorphisms
+# Diversity: Population, sequence-level measures
 
-* Frequency of polymorphic sites
-* Mean nucleotide or amino acid entropy - calculate entropy at each site, and then take the average: $\bar{S} = \sum_{j=1}^L S_j / L $
+* The number of segregating sites (polymorphisms), $S$.
+  * Increases with sequence length, sample size.
+* Mean nucleotide or amino acid entropy, $\bar{H} = \sum_{j=1}^L H_j / L $
 
 * Nucleotide diversity ($\pi$): the average number of differences between two randomly sampled sequences
-`$$\pi = \frac{2\sum_{i=1}^{n-1} \sum_{j=i+1}^{n} \pi_{ij}}{n(n-1)}$$`
+`$$\pi = \sum_{i=1}^{n-1} \sum_{j=i+1}^{n} \pi_{ij} \Big/ {n \choose 2}$$`
 
 ---
 
@@ -86,9 +90,9 @@ Variable (V) regions along dinoflagellate 18S rRNA sequences.  From J-S Ki 2011.
 * A "sliding window" takes the average of a statistic for a given window size and step size.
 <img src="http://1.bp.blogspot.com/-eSp1w_oJsBc/U0NmHgWv76I/AAAAAAAAAzU/XyFsegtRKrU/s1600/Screen+Shot+2014-04-07+at+9.59.13+PM.png" height="200px">
 
-<small>
+<small><small>
 Image source: http://coleoguy.blogspot.com/2014/04/sliding-window-analysis.html
-</small>
+</small></small>
 
 ---
 
@@ -164,9 +168,10 @@ GGGATGCACTCGCTG
     </div>
     <div></div>
     </center>
-    <small><small><small>
-    Based on <a href="http://setosa.io/blog/2014/07/26/markov-chains/index.html"/>Markov Chains: A visual explanation by Victor Powell</a>
-    </small></small></small>
+
+<small><small>
+Based on <a href="http://setosa.io/blog/2014/07/26/markov-chains/index.html"/>Markov Chains: A visual explanation by Victor Powell</a>
+</small></small>
 </section>
 
 ---
@@ -205,14 +210,16 @@ GGGATGCACTCGCTG
 
 ---
 
+<img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/TobermoryGrotto105a.jpg" height=600/>
+
+---
+
 # Clustering
 
 * A cluster is a subset (group) of objects that are more similar to each other than objects outside the cluster.
   * Similarity is just the opposite of distance!
 * Clustering is subjective.  Our brains are wired to see patterns where none exist.
 ![](/img/random.png)
-
-
 
 ---
 
@@ -236,11 +243,14 @@ GGGATGCACTCGCTG
 <td style="font-size: 28px;">
 <ul>
 <li>Terms associated with machine learning.</li>
-<li><i>Supervised</i> clustering means that you have assigned some data to clusters yourself, and leave the rest to the machine.</li>
+<li><i>Supervised</i> clustering implies that you have assigned some data to clusters yourself, and leave the rest to the machine.</li>
+  <ul>
+  <li>If no new clusters, then this is basically classification.</li>
+  </ul>
 <li><i>Unsupervised</i> clustering means that the machine has to figure it all out itself.</li>
 </ul>
 </td>
-<td width="40%">
+<td width="35%">
 <img src="https://imgs.xkcd.com/comics/machine_learning.png"/>
 </td>
 </tr>
@@ -271,6 +281,9 @@ GGGATGCACTCGCTG
         <li>(bottom) A k-means clustering of <i>mouse</i> with $k$ set to the true value.</li>
         </ul>
       </ul>
+      <small>
+      Plots were generated in R using the `mouse` dataset from the <a href="https://github.com/elki-project/elki">ELKI project</a>.
+      </small>
     </td>
     <td width="33%">
       <img src="/img/kmeans-actual.png" width="450px"/>
@@ -288,7 +301,7 @@ GGGATGCACTCGCTG
       <ul>
         <li>An unsupervised parametric method</li>
         <li>Find the assignments of each data point to one of $k$ Gaussian distributions.</li>
-        <li>Also find the mean and variance of each Gaussian that maximizes likelihood.</li>
+        <li>Also find the mean and variance parameters of each Gaussian that maximizes likelihood.</li>
         <li>Method can determine for itself the optimal number of clusters.</li>
         <ul>
           <li>(bottom) Gaussian mixture model applied to <i>mouse</i> data.</li>
@@ -308,9 +321,11 @@ GGGATGCACTCGCTG
 
 * Another class of unsupervised, nonparametric clustering methods.
   * Acts on a distance matrix $d$ relating observations.
-* Hierarchical clustering can be agglomerative or dissociative.
-* An agglomerative method starts with every item in its own cluster, and progressively merges clusters that are the most similar.
+* Hierarchical clustering can be agglomerative or divisive.
+* An *agglomerative* method starts with every item in its own cluster, and progressively merges clusters that are the most similar.
   * Choosing which clusters to merge is determined by linkage criteria.
+* A *divisive* method starts with all items in one cluster, and progressively splits clusters in two.
+
 
 ---
 
@@ -331,7 +346,7 @@ GGGATGCACTCGCTG
 
 # UPGMA
 
-* Unweighted pair group method with arithmetic mean, also known as average linkage clustering.
+* Unweighted pair group method with arithmetic mean, also known as **average linkage clustering**.
 
 * Every sequence starts out as a cluster of one ($n_{\scriptsize X}=1$).
 
@@ -365,8 +380,30 @@ Source: Gene expression data from M Love and R Irizarry, https://github.com/geno
   * *e.g.*, cutting near the root tends to yield two large clusters.
 * Location of the cut point is a subjective decision.
   * User-specified number of clusters
-* Some automated methods for selecting number of clusters
-  * "knee"/"elbow" method, plot merge distance with number of clusters
+
+---
+
+# Choosing the number of clusters
+
+<table>
+  <tr>
+    <td>
+      <ul>
+        <li>For example, the elbow method uses the diminishing returns of "unexplained variance" with increasing number of clusters, $k$</li>
+        <li>For each $k$, calculate the total within-cluster sum-of-squares (WCSS):</li>
+        $$\sum_{i=1}^k \sum_{j\in {C_i}} (x_j - \bar{x}_i)^2$$
+        <li>Subjectively choose point where increasing $k$ does not yield a sufficient reduction in total WCSS.</li>
+      </ul>
+    </td>
+    <td width="40%">
+      <img src="/img/elbow-method.svg"/>
+      <small>
+      Plot of total WCSS against number of centers for k-means clustering of mouse dataset in R.
+      </small>
+    </td>
+  </tr>
+</table>
+
 
 ---
 
@@ -392,7 +429,7 @@ Source: Gene expression data from M Love and R Irizarry, https://github.com/geno
 
 ---
 
-# From trees to networks
+# Clustering on networks
 
 * Remember a *genetic distance* is used to quantify the difference between two sequences.
   * *e.g.*, Jukes-Cantor (JC69)
@@ -413,15 +450,9 @@ Source: Gene expression data from M Love and R Irizarry, https://github.com/geno
 
 ---
 
-# Defining new virus species
+# Applications of clustering: defining species
 
 * The [International Committee on the Taxonomy of Viruses](https://talk.ictvonline.org/) allows the definition of a new virus species based on genetic clustering, although this remains controversial.
-
-> Unfortunately, in recent years, ICTV Study Groups [...] have created large number of species on the basis of a single criterion, namely a certain percentage of genome similarity between individual viruses.
-
----
-
-# Demarcating virus species
 
 <img src="/img/geminivirus.png" height="300px"/>
 
@@ -431,7 +462,7 @@ Image credit: CM Fauquet <i>et al.</i> (2008) [Geminivirus strain demarcation an
 
 ---
 
-<h1>Epidemic structure from clustering</h1>
+<h1>Applications of clustering: disease prevention</h1>
 <table>
   <tr>
   <td style="vertical-align: middle; font-size: 20pt;">
@@ -451,6 +482,8 @@ Image credit: CM Fauquet <i>et al.</i> (2008) [Geminivirus strain demarcation an
 
 ---
 
+# Applications of clustering: defining cell types
+
 <img src="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41467-021-26044-x/MediaObjects/41467_2021_26044_Fig3_HTML.png" width="450px"/>
 
 <small><small>
@@ -459,9 +492,16 @@ Image source: Y He <i>et al.</i> (2021) ClusterMap for multi-scale clustering an
 
 ---
 
-# Suggested readings
+<section data-background="#333" style="color:white">
 
-* [PH525x series - Biomedical Data Science - Clustering and heatmaps](https://genomicsclass.github.io/book/pages/clustering_and_heatmaps.html)
-* [How does gene expression clustering work?](https://www.nature.com/articles/nbt1205-1499)
-* [Consensus statement: Virus taxonomy in the age of metagenomics](https://www.nature.com/articles/nrmicro.2016.177)
-* [Detecting and Responding to HIV Transmission Clusters: A Guide for Health Departments](https://www.cdc.gov/hiv/pdf/funding/announcements/ps18-1802/CDC-HIV-PS18-1802-AttachmentE-Detecting-Investigating-and-Responding-to-HIV-Transmission-Clusters.pdf), US CDC.
+<h1 style="color:white">Key points</h1>
+
+* Genetic diversity can be measured by calculating statistics at each site, and then averaging over parts or the length of the alignment.
+
+* A genetic distance maps two sequences to a non-negative number.
+  * Better genetic distances correct for multiple hits.
+
+* There are non-parametric and parametric methods for unsupervised clustering.
+* Hierarchical clustering converts a distance matrix into a tree that represents the order in which objects are merged into clusters.
+
+</section>
