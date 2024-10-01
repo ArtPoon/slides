@@ -344,6 +344,12 @@ Based on <a href="http://setosa.io/blog/2014/07/26/markov-chains/index.html"/>Ma
 
 ---
 
+# Example
+
+
+
+---
+
 # UPGMA
 
 * Unweighted pair group method with arithmetic mean, also known as **average linkage clustering**.
@@ -448,38 +454,6 @@ Source: Gene expression data from M Love and R Irizarry, https://github.com/geno
          style="width:800px; margin:0 auto; height:700px">
     </div>
 </section>
-
----
-
-# Applications of clustering: defining species
-
-* The [International Committee on the Taxonomy of Viruses](https://talk.ictvonline.org/) allows the definition of a new virus species based on genetic clustering, although this remains controversial.
-
-<img src="/img/geminivirus.png" height="300px"/>
-
-<small><small>
-Image credit: CM Fauquet <i>et al.</i> (2008) [Geminivirus strain demarcation and nomenclature](https://link.springer.com/article/10.1007%2Fs00705-008-0037-6).  Arch Virol 153:783-821.
-</small></small>
-
----
-
-<h1>Applications of clustering: disease prevention</h1>
-<table>
-  <tr>
-  <td style="vertical-align: middle; font-size: 20pt;">
-  <ul>
-    <li>Tuberculosis is one of top 10 causes of death worldwide</li>
-    <li>Caused by lung infection by <i><a href="https://en.wikipedia.org/wiki/Mycobacterium_tuberculosis">Mycobacterium tuberculosis</a></i>.</li>
-    <li>Clustering of whole-genome sequence data can idenfity high-risk groups and detect undiagnosed cases.</li>
-  </ul>
-  </td>
-  <td width="50%">
-    <img src="/img/1-s2.0-S1473309912702773-gr4_lrg.png" width="450px"/>
-    <small>
-    Cluster diagram by TM Walker <i>et al.</i> (2013) Lancet Inf Dis 13: 137.
-    </small>
-  </td>
-</table>
 
 ---
 
