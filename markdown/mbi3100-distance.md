@@ -379,7 +379,8 @@ Source: Gene expression data from M Love and R Irizarry, https://github.com/geno
   * It remains to "cut" the tree at some point to extract clusters.
   * *e.g.*, cutting near the root tends to yield two large clusters.
 * Location of the cut point is a subjective decision.
-  * User-specified number of clusters
+
+<img src="/img/hclust-cut.svg">
 
 ---
 
