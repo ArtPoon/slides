@@ -344,24 +344,31 @@ Based on <a href="http://setosa.io/blog/2014/07/26/markov-chains/index.html"/>Ma
 
 ---
 
-# Example
+# In-class example: Single-linkage hierarchical clustering
 
+|   |  A |  B |  C |  D |  E |
+|---|---:|---:|---:|---:|---:|
+| A |  0 |  7 |  8 | 11 | 13 |
+| B |    |  0 |  4 |  8 | 10 |
+| C |    |    |  0 |  9 |  8 |
+| D |    |    |    |  0 |  5 |
+| E |    |    |    |    |  0 |
 
+* starts with $(A), (B), (C), (D), (E)$
+* next $(A), (B, C), (D), (E)$
+* finished with $((A, (B, C)), (D, E))$
 
 ---
 
-# UPGMA
+# Unweighted pair group method with arithmetic mean
 
-* Unweighted pair group method with arithmetic mean, also known as **average linkage clustering**.
+* UPGMA, also known as **average linkage clustering**.
 
-* Every sequence starts out as a cluster of one ($n_{\scriptsize X}=1$).
-
-  1. Join clusters $X$, $Y$ with shortest *average* distance:
-  `$d(X,Y)=\sum_{x\in X} \sum_{y\in Y} d(x,y) / (n_X n_Y)$`
-
-  2. Replace $X$ and $Y$ with cluster $X\cup Y$, where:
-  `$$d(X\cup Y, Z) = \frac{n_{\scriptsize X} d(X,Z) + n_{\scriptsize Y} d(Y,Z)} {n_{\scriptsize X} + n_{\scriptsize Y}}$$`
-  3. Go to step 1 until only one cluster remains (the root).
+1. Join clusters $X$, $Y$ with shortest *average* distance:
+$$d(X,Y)=\sum_{x\in X} \sum_{y\in Y} d(x,y) / (n_X n_Y)$$
+2. Replace $X$ and $Y$ with cluster $X\cup Y$, where:
+$$d(X\cup Y, Z) = \frac{n_{\scriptsize X} d(X,Z) + n_{\scriptsize Y} d(Y,Z)} {n_{\scriptsize X} + n_{\scriptsize Y}}$$
+3. Go to step 1 until only one cluster remains (the root).
 
 ---
 
@@ -454,16 +461,6 @@ Source: Gene expression data from M Love and R Irizarry, https://github.com/geno
          style="width:800px; margin:0 auto; height:700px">
     </div>
 </section>
-
----
-
-# Applications of clustering: defining cell types
-
-<img src="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41467-021-26044-x/MediaObjects/41467_2021_26044_Fig3_HTML.png" width="450px"/>
-
-<small><small>
-Image source: Y He <i>et al.</i> (2021) ClusterMap for multi-scale clustering analysis of spatial gene expression.  Nature Comm 12: 5909.
-</small></small>
 
 ---
 
