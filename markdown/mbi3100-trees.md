@@ -104,13 +104,13 @@ Try clicking and dragging the root (yellow node) around.
       <li>A <i>polyphyletic</i> clade does not contain the common ancestor of the descendants.</li>
     </ul>
     </td>
-    <td><img src="/img/clades.png" width="400px"/></td>
+    <td width="40%"><img src="/img/clades.png"/></td>
   </tr>
 </table>
 
 ---
 
-# Pathogenic proteobacteria are polyphyletic
+# Example: Pathogenic proteobacteria
 
 <table>
 <tr>
@@ -229,51 +229,6 @@ Image source: https://commons.wikimedia.org/wiki/File:UPGMA_Dendrogram_Hierarchi
 
 ---
 
-# NJ algorithm
-
-<table>
-  <tr>
-    <td>
-      <ol>
-        <li>Calculate distance matrix $d_{ij}$</li>
-        <li>
-        For each node $i$, calculate $u_i=\sum_{j\ne i} d_{ij} / (n-2)$
-        <ul>
-          <li>The mean distance to every other node (almost).</li>
-        </ul>
-        </li>
-        <li>Find pair $i$ and $j$ that minimizes $d_{ij} - u_i - u_j$</li>
-        <ul>
-          <li>The shortest distance given what's typical for those nodes.</li>
-          <li>Nodes that are close to everybody else are not necessarily chosen.</li>
-        </ul>
-      </ol>
-    </td>
-    <td width="35%">
-      <img src="/img/nj-circles.svg" height="300px"/>
-    </td>
-  </tr>
-</table>
-
----
-
-# NJ algorithm (continued)
-
-4. Place new *internal* node $ij$ ancestral to $i$ and $j$.
-5. Calculate new distances from $ij$ to $i$, and from $ij$ to $j$:
-   $v_i = \frac{1}{2} d_{ij} + \frac{1}{2}(u_i - u_j)$
-
-   $v_j = \frac{1}{2} d_{ij} + \frac{1}{2}(u_j - u_i)$
-
-6. Calculate distances from $ij$ to all remaining tips:
-   $d_{(ij),k} = (d_{ik} + d_{jk} - d_{ij}) / 2 $
-
-7. Delete rows/columns $i$ and $j$ from $d$.
-
-8. Repeat until $d$ contains no more tip nodes.
-
----
-
 <section data-state="nj-slide">
     <h1>Neighbor-joining</h1>
     <br/>
@@ -307,25 +262,39 @@ Image source: https://commons.wikimedia.org/wiki/File:UPGMA_Dendrogram_Hierarchi
   * Common practice is to set these to zero length.
 * Distance-based methods do not handle rate variation as well.
 
+---
+
+# Maximum parsimony
+
+* Select the tree that minimizes the number of character state changes (substitutions), given the observed sequences.
+  * Also known as minimum evolution.
+* Not statistically consistent: under some conditions, MP will always give the wrong answer, even with unlimited data.
+* Still favoured for morphological character evolution (fossil records).
 
 ---
 
-# Software for NJ
+# Maximum likelihood
 
-* [MEGA](https://www.megasoftware.net/) - cross-platform GUI application
-* [RapidNJ](http://birc.au.dk/software/rapidnj/) - command-line program (source code)
-* [NINJA](http://nimbletwist.com/software/ninja/) - Java-based command-line program
-* [R package ape](https://rdrr.io/cran/ape/man/nj.html) - not recommended, slow
+* Search the space of all possible trees for one that maximizes the probability of an evolutionary model, given the data.
+  * Requires one or more methods of moving from one tree to another.
+* Statistically consistent: will converge to correct answer with enough data.
+* Sensitive to model misspecification.
+* More feasible with increasingly powerful computers.
 
 ---
 
-# Other methods for building trees
+# Software for building trees
 
-* Maximum parsimony / minimum evolution
-  * Select the tree that minimizes the number of character state changes (substitutions), given the observed sequences.
-* Maximum likelihood
-  * Search for the tree that maximizes the probability of an evolutionary model, given the data.
-* Both approaches are [NP-hard](https://en.wikipedia.org/wiki/NP-hardness)
+| Name  | Methods | Notes |
+|-------|---------|-------|
+| [MEGA](https://www.megasoftware.net/) | NJ, MP, ML | Cross-platform GUI application |
+| [RapidNJ](http://birc.au.dk/software/rapidnj/) | NJ | Command-line program |
+| [NINJA](http://nimbletwist.com/software/ninja/) | NJ | Java-based command-line program |
+| [R package ape](https://rdrr.io/cran/ape/man/nj.html) | NJ | not recommended, slow |
+| [FastTree](http://www.microbesonline.org/fasttree/) | ML | Approximate maximum likelihood |
+| [IQ-TREE](http://www.iqtree.org/) | ML | More recent implementation of ML |
+| [RAxML](https://cme.h-its.org/exelixis/web/software/raxml/) | ML | Popular ML program |
+| [PhyML](http://www.atgc-montpellier.fr/phyml/) | ML | Yet another ML program |
 
 ---
 
@@ -335,14 +304,6 @@ Image source: https://commons.wikimedia.org/wiki/File:UPGMA_Dendrogram_Hierarchi
   * Sequences may have the same mutation because they inherited it from a common ancestor.
   * Failing to account for IBD can result in a high rate of [false positives](https://en.wikipedia.org/wiki/False_positives_and_false_negatives).
 * It is common practice to [stratify human genome data](https://www.sciencedirect.com/science/article/pii/S0140673603125202) by ethnic groups when carrying out a population-level analysis.
-
----
-
-![](https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fng1337/MediaObjects/41588_2004_Article_BFng1337_Fig1_HTML.gif)
-
-<small><small>
-Image source: J Marchini <i>et al.</i> (2004) The effects of human population structure on large genetic association studies.  <a href="https://www.nature.com/articles/ng1337">Nature Genetics 36: 512-517.</a>
-</small></small>
 
 ---
 
@@ -392,11 +353,9 @@ Image source: M Worobey <i>et al.</i> (2010) Island biogeography reveals the dee
 
 # Phylodynamics
 
-<img src="/img/grenfell-table.png" width="600px"/>
+* The study of how trees relating infections of a pathogen are shaped by immunological and epidemiological forces.
 
-<small><small>
-Image source: Grenfell <i>et al.</i> Unifying the Epidemiological and Evolutionary Dynamics of Pathogens.  <a href="https://www.science.org/doi/10.1126/science.1090727">Science 303: 327-332</a>.
-</small></small>
+ADD FIGURE HCV EGYPT SKYLINE AND TREE
 
 ---
 
