@@ -256,11 +256,12 @@ Image source: https://commons.wikimedia.org/wiki/File:UPGMA_Dendrogram_Hierarchi
 
 # Limitations of NJ
 
-* Need to store a potentially massive distance matrix (increases with $N^2$ for $N$ sequences).
-* Ambiguous about how to resolve ties (step 3).
-* NJ can assign negative branch lengths, *e.g.*, $u_j > d_{ij} + u_i$
+* Need to store a potentially massive distance matrix ($O(N^2)$ for $N$ sequences).
+* NJ can assign negative branch lengths
+  * NJ assumes the tree is additive, *i.e.*, `$d_{XY} = d_{AX} + d_{AY}$` where A is ancestral to X and Y.
   * Common practice is to set these to zero length.
 * Distance-based methods do not handle rate variation as well.
+  * A distance only stores information about a pair of sequences.
 
 ---
 
@@ -337,6 +338,15 @@ Image source: https://commons.wikimedia.org/wiki/File:UPGMA_Dendrogram_Hierarchi
   * *e.g.*, the HLA genotype of the host associated with that branch
 * Felsenstein's [phylogenetic independent contrasts](https://www.journals.uchicago.edu/doi/abs/10.1086/284325): extract branches relating pairs of adjacent tips as independent observations.
 <img src="/img/contrasts.svg" height="225px"/>
+
+---
+
+# Fitting evolutionary models
+
+* Sometimes we need to use a tree to estimate parameters of a model of evolution.
+* We can measure selection on protein-coding genes by comparing rates of non-synonmous (amino acid altering) and synonymous (silent) substitutions.
+  * These rates are usually labelled as $dN$ and $dS$, respectively.
+* $dN/dS < 1$ implies that selection is removing amino acid changes ("purifying selection"). 
 
 ---
 
