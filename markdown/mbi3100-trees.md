@@ -216,7 +216,13 @@ Image source: https://commons.wikimedia.org/wiki/File:UPGMA_Dendrogram_Hierarchi
 * Assumes that every tip was sampled at the same time, or with negligible variation in times (ultrametric trees)
 * Performs poorly with variation in branch lengths.
 
+---
 
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Algonquin_Provincial_Park_%2849076463778%29.jpg/2560px-Algonquin_Provincial_Park_%2849076463778%29.jpg"/>
+
+<small><small>
+Image credit: Algonquin Provincial Park, David Zhang (CC BY-SA 2.0).
+</small></small>
 
 ---
 
@@ -273,13 +279,13 @@ Image source: https://commons.wikimedia.org/wiki/File:UPGMA_Dendrogram_Hierarchi
 
 ---
 
-# Maximum likelihood
+# Likelhood-based methods
 
 * Search the space of all possible trees for one that maximizes the probability of an evolutionary model, given the data.
-  * Requires one or more methods of moving from one tree to another.
+  * The resulting tree is the *maximum likelihood* estimate.
 * Statistically consistent: will converge to correct answer with enough data.
-* Sensitive to model misspecification.
-* More feasible with increasingly powerful computers.
+* We can also generate a random sample of trees from the posterior probability distribution (Bayesian inference).
+  * More feasible with increasingly powerful computers.
 
 ---
 
@@ -295,6 +301,8 @@ Image source: https://commons.wikimedia.org/wiki/File:UPGMA_Dendrogram_Hierarchi
 | [IQ-TREE](http://www.iqtree.org/) | ML | More recent implementation of ML |
 | [RAxML](https://cme.h-its.org/exelixis/web/software/raxml/) | ML | Popular ML program |
 | [PhyML](http://www.atgc-montpellier.fr/phyml/) | ML | Yet another ML program |
+| [MrBayes](https://nbisweden.github.io/MrBayes/) | Bayes | A well-known Bayesian program |
+
 
 ---
 
@@ -303,7 +311,7 @@ Image source: https://commons.wikimedia.org/wiki/File:UPGMA_Dendrogram_Hierarchi
 * If you want to find an association between some genetic feature and a phenotype (*e.g.*, disease), you have to adjust for "identity by descent".
   * Sequences may have the same mutation because they inherited it from a common ancestor.
   * Failing to account for IBD can result in a high rate of [false positives](https://en.wikipedia.org/wiki/False_positives_and_false_negatives).
-* It is common practice to [stratify human genome data](https://www.sciencedirect.com/science/article/pii/S0140673603125202) by ethnic groups when carrying out a population-level analysis.
+* *e.g.*, It is common practice to [stratify human genome data](https://www.sciencedirect.com/science/article/pii/S0140673603125202) by ethnic groups when carrying out a population-level analysis.
 
 ---
 
@@ -353,15 +361,37 @@ Image source: M Worobey <i>et al.</i> (2010) Island biogeography reveals the dee
 
 # Phylodynamics
 
-* The study of how trees relating infections of a pathogen are shaped by immunological and epidemiological forces.
+* The trees of different infectious diseases tend to have characteristic shapes - why?
+* [Grenfell *et al.* (2004)](https://www.science.org/doi/10.1126/science.1090727) proposed that these trees were shaped by epidemiology and immunology.
 
-ADD FIGURE HCV EGYPT SKYLINE AND TREE
+<img src="/img/grenfell-trees.png" width=750/>
+
+<small><small>
+Image source: Grenfell BT, Pybus OG, Gog JR, Wood JL, Daly JM, Mumford JA, Holmes EC. Unifying the epidemiological and evolutionary dynamics of pathogens. science. 2004 Jan 16;303(5656):327-32.
+</small></small>
 
 ---
 
-# Further readings
+# Reconstructing the spread of HCV in Egypt
 
-* [Clustering of High Throughput Gene Expression Data](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3491664/)
-* [Neighbor-joining revealed](https://academic.oup.com/mbe/article/23/11/1997/1322446)
-* [Prospects for inferring very large phylogenies by using the neighbor-joining method](https://www.pnas.org/content/101/30/11030.short)
-* [Felsenstein, The Newick tree format](https://evolution.genetics.washington.edu/phylip/newicktree.html)
+<small>
+A phylodynamic analysis of HCV sequences showing evidence of a rapid spread of infection from the 1930s to 1950s, coinciding with a massive public health campaign to eradicate snail fever.
+</small>
+
+<img src="/img/hcv-mcctree.png" width=600/>
+
+
+---
+
+<section data-background="#333" style="color:white">
+
+<h1 style="color:white">Key points</h1>
+
+* A phylogeny is a tree relating observed sequences to their common ancestors (nodes).
+  * The length of a branch in the tree may (but not always) represent time.
+  * The root represents the earliest point in time.
+* There is an enormous number of trees that can relate even a small number of sequences.
+  * Molecular phylogenies are usually reconstructed by neighbor-joining or maximum likelihood.
+* If you want to learn more about phylodynamics, take MBI 4750G!
+
+</section>
