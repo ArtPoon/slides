@@ -95,8 +95,8 @@ Try clicking and dragging the root (yellow node) around.
     <td style="font-size: 18pt;">
     <ul>
       <li>A clade is a set of descendants of an ancestral node.</li>
-      <li>A <i>monophyletic</i> clade contains <b>all</b> the descendants of the node.</li>
-      <li>A <i>paraphyletic</i> clade contains only some of the descendants.</li>
+      <li>A <i>monophyletic</i> clade contains an ancestral node and <b>all</b> of its descendants.</li>
+      <li>A <i>paraphyletic</i> clade contains an ancestral node and only some of the descendants.</li>
       <ul>
       <li>Birds are a monophyletic clade.</li>
       <li>Reptiles are a paraphyletic clade that contains birds.</li>
