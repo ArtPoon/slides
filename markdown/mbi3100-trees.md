@@ -4,6 +4,7 @@
 
 ---
 
+### Anatomy of trees
 # What is a phylogeny?
 
 * A tree-based hypothesis about how populations are related by common ancestors.
@@ -13,6 +14,7 @@
 
 ---
 
+### Anatomy of trees
 # Nodes
 
 * A node represents a common ancestor of one or more descendants.
@@ -23,6 +25,7 @@
 
 ---
 
+### Anatomy of trees
 # Branches
 
 * A branch connects a descendant node to its immediate ancestral node.
@@ -35,6 +38,7 @@
 
 ---
 
+### Anatomy of trees
 # Unscaled trees
 * Be very cautious of unscaled tree layouts
   * They make the tree look more resolved (fewer soft polytomies).
@@ -44,6 +48,7 @@
 
 ---
 
+### Anatomy of trees
 # Tree layouts
 
 <table>
@@ -63,6 +68,7 @@
 
 ---
 
+### Anatomy of trees
 # Phylogenies can be rooted or unrooted.
 * The root is a hypothesis about what point on the tree represents the earliest
 time.
@@ -72,6 +78,7 @@ time.
 
 ---
 
+### Anatomy of trees
 Try clicking and dragging the root (yellow node) around.
 
 <iframe style="width: 1000px; height: 500px" src="/include/rooting.html">
@@ -79,8 +86,9 @@ Try clicking and dragging the root (yellow node) around.
 
 ---
 
+### Anatomy of trees
 # Outgroup rooting
-
+* One of several ways for rooting a tree.
 * An *outgroup* is a species or infection that is not closely related to the sample set.
 * We place the root at the point where the branch leading to the outgroup intersects the tree.
   * If the outgroup is too *close*, then the root is too influenced by sampling bias (our choice of outgroup).
@@ -88,6 +96,7 @@ Try clicking and dragging the root (yellow node) around.
 
 ---
 
+### Anatomy of trees
 # Clades
 
 <table>
@@ -110,6 +119,7 @@ Try clicking and dragging the root (yellow node) around.
 
 ---
 
+### Anatomy of trees
 # Example: Pathogenic proteobacteria
 
 <table>
@@ -130,6 +140,7 @@ Try clicking and dragging the root (yellow node) around.
 
 ---
 
+### Anatomy of trees
 # Writing trees
 
 * How do we record a tree into a plain text file?
@@ -140,6 +151,7 @@ Try clicking and dragging the root (yellow node) around.
 
 ---
 
+### Anatomy of trees
 # Newick tree strings
 
 <table>
@@ -148,25 +160,26 @@ Try clicking and dragging the root (yellow node) around.
       <ul>
         <li>The Newick&ast; format uses parentheses to represent the nested structure of trees.</li>
         <li>The tree to the right is written as:
-          <code>(((t1:0.15,t2:0.20):0.49,(t3:0.93,t5:0.55):0.03):0.57,t4:0.94);</code>
+          <code>(((t1:0.15,t2:0.20):0.49,(t3:0.93,t5:0.55):0.03):0.57,</code>
+          <code>t4:0.94);</code>
         </li>
         <li>Nodes that directly descend from a common ancestor are separated by commas: <code>(t1,t2)</code></li>
         <li>The length of the branch terminating in node <code>t1</code> is prefixed by a colon: <code>t1:0.15</code></li>
         <li>Internal nodes can be labeled, <i>e.g.,</i>: <code>(t1:0.15,t2:0.20)ancestor:0.49</code></li>
       </ul>
     </td>
-    <td width="35%">
-      <img src="/img/newick-tree.svg" height="350px"/>
+    <td width="37%">
+      <img src="/img/newick-tree.svg" width=550/>
+      <small>
+      &ast; The format is named after <a href="https://www.newicks.com/">Newick's Lobster House</a>, where it was developed and the scientists had dinner.
+      </small>
     </td>
   </tr>
 </table>
 
-<small><small>
-&ast; The format is named after [Newick's Lobster House](https://www.newicks.com/), where it was developed and the authors had dinner.
-</small></small>
-
 ---
 
+### Building trees
 # Distance-based methods
 
 * Building a tree can be viewed as a clustering problem!
@@ -177,6 +190,7 @@ Try clicking and dragging the root (yellow node) around.
 
 ---
 
+### Building trees
 # Dendrograms
 
 * Preceding algorithms give us branching orders.
@@ -191,6 +205,7 @@ Image source: https://commons.wikimedia.org/wiki/File:UPGMA_Dendrogram_Hierarchi
 
 ---
 
+### Building trees
 # UPGMA for phylogenetics
 
 * First used for building phylogenies by [Sokal and Michener](https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1558-5646.1957.tb02884.x) (1958)
@@ -201,14 +216,15 @@ Image source: https://commons.wikimedia.org/wiki/File:UPGMA_Dendrogram_Hierarchi
 
 ---
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Algonquin_Provincial_Park_%2849076463778%29.jpg/2560px-Algonquin_Provincial_Park_%2849076463778%29.jpg"/>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/A_view_from_the_Centennial_Ridges_Trail_in_Algonquin_Provincial_Park_%28Ontario%2C_Canada%29.jpg/2560px-A_view_from_the_Centennial_Ridges_Trail_in_Algonquin_Provincial_Park_%28Ontario%2C_Canada%29.jpg"/>
 
 <small><small>
-Image credit: Algonquin Provincial Park, David Zhang (CC BY-SA 2.0).
+Image credit: <a href="https://commons.wikimedia.org/wiki/File:A_view_from_the_Centennial_Ridges_Trail_in_Algonquin_Provincial_Park_(Ontario,_Canada).jpg">A view from the Centennial Ridges Trail in Algonquin Provincial Park</a>, Maksim Sokolov (CC BY-SA 4.0).
 </small></small>
 
 ---
 
+### Building trees
 # Neighbor-joining trees
 
 * Another agglomerative, distance-based clustering method.
@@ -218,8 +234,9 @@ Image credit: Algonquin Provincial Park, David Zhang (CC BY-SA 2.0).
 
 ---
 
+### Building trees
 <section data-state="nj-slide">
-    <h1>Neighbor-joining</h1>
+    Neighbor-joining with JavaScript
     <br/>
     <div id="nj" class="fig-container"
          data-fig-id="fig-nj"
@@ -230,6 +247,7 @@ Image credit: Algonquin Provincial Park, David Zhang (CC BY-SA 2.0).
 
 ---
 
+### Building trees
 # Why use NJ?
 
 * Neighbor-joining is provably&ast; [consistent](https://en.wikipedia.org/wiki/Consistency_(statistics)) &mdash; as you add more data, it converges to the true answer.
@@ -243,6 +261,7 @@ Image credit: Algonquin Provincial Park, David Zhang (CC BY-SA 2.0).
 
 ---
 
+### Building trees
 # Limitations of NJ
 
 * Need to store a potentially massive distance matrix ($O(N^2)$ for $N$ sequences).
@@ -255,20 +274,22 @@ Image credit: Algonquin Provincial Park, David Zhang (CC BY-SA 2.0).
 ---
 
 <section data-state="numtrees-slide">
-    <h1>How many trees?</h1>
-    <ul>
-      <li>There are an enormous number of possible trees relating even a small number of species!</li>
-      <li>Any method searching for an optimal tree" is <a href="https://en.wikipedia.org/wiki/NP-hardness">NP-hard</a>.</li>
-    </ul>
-    <div id="howmany" class="fig-container"
-         data-fig-id="fig-howmany"
-         data-file="/include/numtrees.html"
-         style="height:200px;">
-    </div>
+  <h3>Building trees</h3>
+  <h1>How many trees?</h1>
+  <ul>
+    <li>There are an enormous number of possible trees relating even a small number of species!</li>
+    <li>Any method searching for an optimal tree" is <a href="https://en.wikipedia.org/wiki/NP-hardness">NP-hard</a>.</li>
+  </ul>
+  <div id="howmany" class="fig-container"
+        data-fig-id="fig-howmany"
+        data-file="/include/numtrees.html"
+        style="height:200px;">
+  </div>
 </section>
 
 ---
 
+### Building trees
 # Maximum parsimony (MP)
 
 * Select the tree that minimizes the number of character state changes (substitutions), given the observed sequences.
@@ -278,6 +299,7 @@ Image credit: Algonquin Provincial Park, David Zhang (CC BY-SA 2.0).
 
 ---
 
+### Building trees
 # Likelhood-based methods
 
 * Search the space of all possible trees for one that maximizes the probability of an evolutionary model, given the data.
@@ -288,6 +310,7 @@ Image credit: Algonquin Provincial Park, David Zhang (CC BY-SA 2.0).
 
 ---
 
+### Building trees
 # Software for building trees
 
 | Name  | Methods | Notes |
@@ -305,41 +328,43 @@ Image credit: Algonquin Provincial Park, David Zhang (CC BY-SA 2.0).
 
 ---
 
+### Using trees
 # Why build trees?
 
-* If you want to find an association between some genetic feature and a phenotype (*e.g.*, disease), you have to adjust for "identity by descent" (IBD).
+* Genetic sequences are not independent observations.
+* If you want to find an association between some genetic feature and a phenotype (*e.g.*, disease risk), you have to adjust for *identity by descent* (IBD).
   * Sequences may have the same mutation because they inherited it from a common ancestor.
-  * Failing to account for IBD can result in a high rate of [false positives](https://en.wikipedia.org/wiki/False_positives_and_false_negatives).
-* *e.g.*, It is common practice to [stratify human genome data](https://www.sciencedirect.com/science/article/pii/S0140673603125202) by ethnic groups when carrying out a population-level analysis.
+* Failing to account for IBD can result in a high rate of [false positives](https://en.wikipedia.org/wiki/False_positives_and_false_negatives).
+  * *e.g.*, It is common practice to [stratify human genome data](https://www.sciencedirect.com/science/article/pii/S0140673603125202) by ethnic groups when carrying out a population-level analysis.
 
 ---
 
-# Using trees: Identity by descent in HIV
-
 <table>
 <tr>
-  <td>    
+  <td>
+    <h3>Using trees</h3>
+    <h1>Identity by descent in HIV</h1>
     <ul>
-      <li>When a group of individuals are share some common characteristic because they all related by a recent common ancestor.</li>
       <li>In 2002, <a href="https://www.science.org/doi/full/10.1126/science.1069660">Moore <i>et al.</i></a> reported evidence of HIV-1 adaptation to the immune makeup of different human populations.</li>
-      <ul>
-      <li>Specific mutations in HIV-1 RT are observed more often in populations carrying <a href="https://en.wikipedia.org/wiki/Human_leukocyte_antigen">HLA</a> allele B51.</li>
-      </ul>
+      <li>The <a href="https://en.wikipedia.org/wiki/Human_leukocyte_antigen">human leukocyte antigen</a> (HLA) molecules present foreign peptides on the surface of the cell, inducing lysis.</li>
+      <li>Specific mutations in HIV-1 were observed more often in populations carrying certain HLA alleles.</li>
       <li>The virus that "founded" an epidemic where the allele is common may happen to carry that mutation by chance.</li>
     </ul>
-    <small><small>
+    <small>
     Image source: Bhattacharya <i>et al.</i> (2007) <a href="https://www.science.org/doi/full/10.1126/science.1131528">Founder effects in the assessment of HIV polymorphisms and HLA allele associations.</a>  Science 315: 1583-1586.
-    </small></small>
+    </small>
   </td>
-  <td width="40%">
-    <img src="/img/315_1583_f2.jpeg" height="550px"/>
+  <td width="30%">
+    <img src="/img/bhattacharya.png"/>
+    <br/>
   </td>
 </tr>
 </table>
 
 ---
 
-# Using trees: Measuring selection
+### Using trees
+# Measuring selection
 
 * Sometimes we need to use a tree to estimate parameters of a model of evolution.
 * We can measure selection on protein-coding genes by comparing rates of non-synonmous (amino acid altering) and synonymous (silent) substitutions.
@@ -348,24 +373,25 @@ Image credit: Algonquin Provincial Park, David Zhang (CC BY-SA 2.0).
 
 ---
 
-# Using trees: Dating ancestors
+### Using trees
+# Dating ancestors
 
 * A common ancestor in a tree of viruses can represent the [zoonotic](https://en.wikipedia.org/wiki/Zoonosis) origin of the epidemic.
 * We can use other information to scale the tree in time, dating the origin.
-<img src="/img/bioko.png" height="350px"/>
-
+<img src="/img/bioko.png" height="330px"/>
 <small><small>
 Image source: M Worobey <i>et al.</i> (2010) Island biogeography reveals the deep history of SIV. <a href="https://www.science.org/doi/full/10.1126/science.1193550"/>Science 329: 1487</a>.
 </small></small>
 
 ---
 
-# Using trees: Phylodynamics
+### Using trees
+# Phylodynamics
 
 * The trees of different infectious diseases tend to have characteristic shapes - why?
 * [Grenfell *et al.* (2004)](https://www.science.org/doi/10.1126/science.1090727) proposed that these trees were shaped by epidemiology and immunology.
 
-<img src="/img/grenfell-trees.png" width=750/>
+<img src="/img/grenfell-trees.png" width=650/>
 
 <small><small>
 Image source: Grenfell BT, Pybus OG, Gog JR, Wood JL, Daly JM, Mumford JA, Holmes EC. Unifying the epidemiological and evolutionary dynamics of pathogens. science. 2004 Jan 16;303(5656):327-32.
@@ -373,11 +399,12 @@ Image source: Grenfell BT, Pybus OG, Gog JR, Wood JL, Daly JM, Mumford JA, Holme
 
 ---
 
+### Using trees
 # Reconstructing the spread of HCV in Egypt
 
-<small>
+<div style="font-weight: normal; font-size: 16pt;">
 A phylodynamic analysis of HCV sequences showing evidence of a rapid spread of infection from the 1930s to 1950s, coinciding with a massive public health campaign to eradicate snail fever.
-</small>
+</div>
 
 <img src="/img/hcv-mcctree.png" width=600/>
 
