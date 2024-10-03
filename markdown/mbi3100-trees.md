@@ -167,23 +167,6 @@ Try clicking and dragging the root (yellow node) around.
 
 ---
 
-<section data-state="numtrees-slide">
-    <h1>How many trees?</h1>
-    <ul>
-      <li>There are an enormous number of possible trees relating even a small number of species!</li>
-    </ul>
-    <div id="howmany" class="fig-container"
-         data-fig-id="fig-howmany"
-         data-file="/include/numtrees.html"
-         style="height:200px;">
-    </div>
-    <blockquote>
-    Why are there always more possible rooted trees than unrooted trees?
-    </blockquote>
-</section>
-
----
-
 # Distance-based methods
 
 * Building a tree can be viewed as a clustering problem!
@@ -271,7 +254,22 @@ Image credit: Algonquin Provincial Park, David Zhang (CC BY-SA 2.0).
 
 ---
 
-# Maximum parsimony
+<section data-state="numtrees-slide">
+    <h1>How many trees?</h1>
+    <ul>
+      <li>There are an enormous number of possible trees relating even a small number of species!</li>
+      <li>Any method searching for an optimal tree" is <a href="https://en.wikipedia.org/wiki/NP-hardness">NP-hard</a>.</li>
+    </ul>
+    <div id="howmany" class="fig-container"
+         data-fig-id="fig-howmany"
+         data-file="/include/numtrees.html"
+         style="height:200px;">
+    </div>
+</section>
+
+---
+
+# Maximum parsimony (MP)
 
 * Select the tree that minimizes the number of character state changes (substitutions), given the observed sequences.
   * Also known as minimum evolution.
@@ -283,9 +281,9 @@ Image credit: Algonquin Provincial Park, David Zhang (CC BY-SA 2.0).
 # Likelhood-based methods
 
 * Search the space of all possible trees for one that maximizes the probability of an evolutionary model, given the data.
-  * The resulting tree is the *maximum likelihood* estimate.
+  * The resulting estimate is a **maximum likelihood tree**.
 * Statistically consistent: will converge to correct answer with enough data.
-* We can also generate a random sample of trees from the posterior probability distribution (Bayesian inference).
+* We can also generate a random sample of trees with both high likelihood and accordance with our [prior belief](https://en.wikipedia.org/wiki/Prior_probability) (Bayesian inference).
   * More feasible with increasingly powerful computers.
 
 ---
@@ -309,17 +307,18 @@ Image credit: Algonquin Provincial Park, David Zhang (CC BY-SA 2.0).
 
 # Why build trees?
 
-* If you want to find an association between some genetic feature and a phenotype (*e.g.*, disease), you have to adjust for "identity by descent".
+* If you want to find an association between some genetic feature and a phenotype (*e.g.*, disease), you have to adjust for "identity by descent" (IBD).
   * Sequences may have the same mutation because they inherited it from a common ancestor.
   * Failing to account for IBD can result in a high rate of [false positives](https://en.wikipedia.org/wiki/False_positives_and_false_negatives).
 * *e.g.*, It is common practice to [stratify human genome data](https://www.sciencedirect.com/science/article/pii/S0140673603125202) by ethnic groups when carrying out a population-level analysis.
 
 ---
 
+# Using trees: Identity by descent in HIV
+
 <table>
 <tr>
-  <td>
-    <h1 style="font-size: 24pt">Founder effects</h1>
+  <td>    
     <ul>
       <li>When a group of individuals are share some common characteristic because they all related by a recent common ancestor.</li>
       <li>In 2002, <a href="https://www.science.org/doi/full/10.1126/science.1069660">Moore <i>et al.</i></a> reported evidence of HIV-1 adaptation to the immune makeup of different human populations.</li>
@@ -340,16 +339,7 @@ Image credit: Algonquin Provincial Park, David Zhang (CC BY-SA 2.0).
 
 ---
 
-# How can we use the tree?
-
-* Map mutations to branches of the tree, then test for correlation between mutations and factors associated with that branch
-  * *e.g.*, the HLA genotype of the host associated with that branch
-* Felsenstein's [phylogenetic independent contrasts](https://www.journals.uchicago.edu/doi/abs/10.1086/284325): extract branches relating pairs of adjacent tips as independent observations.
-<img src="/img/contrasts.svg" height="225px"/>
-
----
-
-# Fitting evolutionary models
+# Using trees: Measuring selection
 
 * Sometimes we need to use a tree to estimate parameters of a model of evolution.
 * We can measure selection on protein-coding genes by comparing rates of non-synonmous (amino acid altering) and synonymous (silent) substitutions.
@@ -358,10 +348,11 @@ Image credit: Algonquin Provincial Park, David Zhang (CC BY-SA 2.0).
 
 ---
 
-* Sometimes we're actually interested in the tree itself!
-  * A common ancestor in a tree of viruses can represent the [zoonotic](https://en.wikipedia.org/wiki/Zoonosis) origin of the epidemic.
-  * We can use other information to scale the tree in time, dating the origin.
-<img src="/img/bioko.png" height="300px"/>
+# Using trees: Dating ancestors
+
+* A common ancestor in a tree of viruses can represent the [zoonotic](https://en.wikipedia.org/wiki/Zoonosis) origin of the epidemic.
+* We can use other information to scale the tree in time, dating the origin.
+<img src="/img/bioko.png" height="350px"/>
 
 <small><small>
 Image source: M Worobey <i>et al.</i> (2010) Island biogeography reveals the deep history of SIV. <a href="https://www.science.org/doi/full/10.1126/science.1193550"/>Science 329: 1487</a>.
@@ -369,7 +360,7 @@ Image source: M Worobey <i>et al.</i> (2010) Island biogeography reveals the dee
 
 ---
 
-# Phylodynamics
+# Using trees: Phylodynamics
 
 * The trees of different infectious diseases tend to have characteristic shapes - why?
 * [Grenfell *et al.* (2004)](https://www.science.org/doi/10.1126/science.1090727) proposed that these trees were shaped by epidemiology and immunology.

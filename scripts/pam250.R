@@ -9,8 +9,8 @@ par(mar=c(0.5,5,5,0.5))
 plot(0:20, 0:20, type='n', xaxt='n', yaxt='n', xlab='', 
      ylab='Descendant', bty='n')
 title(main="Ancestral", line=3, font.main=1, cex.main=1)
-axis(side=3, at=1:20-0.5, label=names(pam), cex.axis=0.67)
-axis(side=2, at=rev(1:20-0.5), label=names(pam), cex.axis=0.67, las=2)
+axis(side=3, at=1:20-0.5, label=names(pam), cex.axis=0.6)
+axis(side=2, at=rev(1:20-0.5), label=names(pam), cex.axis=0.6, las=2)
 
 for (i in 1:20) {
   for (j in 1:20) {
@@ -35,8 +35,8 @@ par(mar=c(0.5,5,5,0.5))
 plot(0:20, 0:20, type='n', xaxt='n', yaxt='n', xlab='', 
      ylab='Descendant', bty='n')
 title(main="Ancestral", line=3, font.main=1, cex.main=1)
-axis(side=3, at=1:20-0.5, label=names(pam), cex.axis=0.67)
-axis(side=2, at=rev(1:20-0.5), label=names(pam), cex.axis=0.67, las=2)
+axis(side=3, at=1:20-0.5, label=names(pam), cex.axis=0.6)
+axis(side=2, at=rev(1:20-0.5), label=names(pam), cex.axis=0.6, las=2)
 
 for (i in 1:20) {
   for (j in 1:20) {
