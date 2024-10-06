@@ -31,10 +31,8 @@
 * A branch connects a descendant node to its immediate ancestral node.
 * A <u>terminal</u> branch ends at a tip (observed).
 * An <u>internal</u> branch connects unobserved ancestors.
-* The length of a branch *may* represent:
-  * genetic distance
-  * elapsed time
-  * nothing at all (unscaled trees)
+* The length of a branch is usually measured in units of *expected substitutions per site*.
+  * Remember the observed number of substitutions tends to underestimate the number that have actually occurred, due to multiple hits!
 
 ---
 
