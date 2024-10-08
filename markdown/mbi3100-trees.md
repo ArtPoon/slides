@@ -298,7 +298,7 @@ Image credit: <a href="https://commons.wikimedia.org/wiki/File:A_view_from_the_C
 ---
 
 ### Building trees
-# Likelhood-based methods
+# Likelihood-based methods
 
 * Search the space of all possible trees for one that maximizes the probability of an evolutionary model, given the data.
   * The resulting estimate is a **maximum likelihood tree**.
