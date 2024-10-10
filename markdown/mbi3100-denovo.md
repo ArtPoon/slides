@@ -233,6 +233,14 @@ The start of this overlap graph is not too difficult to read...
 
 ---
 
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Long_point_beach_ontario.jpg/2560px-Long_point_beach_ontario.jpg" width=800/>
+
+<small><small>
+Image source:  Long Point Beach, Ontario.  <a href="https://commons.wikimedia.org/wiki/File:Long_point_beach_ontario.jpg">Anthony J, Flickr</a> (CC BY 2.0).
+</small></small>
+
+---
+
 # de Bruijn graphs
 
 * Memory efficient, scale better with data size.
@@ -343,8 +351,8 @@ Not a complete list!
 <img src="https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1006994.g001&type=large" height="300px"/>
 
 * A *contig* is a contiguous nucleotide sequence produced from overlapping reads.
-* A *scaffold* is an arrangement of contigs based on mate-pairs that span the gap between adjacent contigs.
-* These outputs are generally written in a FASTA format.
+* A *scaffold* is an arrangement of contigs based on other information, such as mate-pairs that span the gap between adjacent contigs.
+  * These outputs are generally written in a FASTA format.
 
 <small><small>
 Image credit: Ghurye and Pop (2019). [Modern technologies and algorithms for scaffolding assembled genomes](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1006994).  PLOS Comput Biol 15: e1006994.
@@ -433,10 +441,16 @@ From CJ Castro <i>et al.</i> (2020). <a href="https://bmcgenomics.biomedcentral.
 
 ---
 
-# Further readings
 
-* [De novo assembly of short sequence reads](https://academic.oup.com/bib/article/11/5/457/1746253) by K Paszkiewicz and DJ Studholme (2010), Briefings in Bioinformatics 11
-* [Ben Langmead's lecture materials](http://www.langmead-lab.org/teaching-materials/)
-* [What's N50?](https://www.molecularecologist.com/2017/03/29/whats-n50/)
-* [The effect of variant interference on de novo assembly for viral deep sequencing](https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-020-06801-w)
+<section data-background="#333" style="color:white">
 
+<h1 style="color:white">Key points</h1>
+
+* Sequence reads are assembled by finding reads that overlap.
+* Assembly programs use specialized data structures that make it more efficient to store and retrieve overlaps.
+  * Overlap graphs connect reads with overlaps of length $\ge l$.
+  * deBruijn graphs connect reads of length $L$ with overlaps of length $L-1$.
+* There are several statistics for measuring assembly quality, such as N50 and L50.
+* Adapter contamination and excess diversity can interfere with assembly.
+
+</section>
