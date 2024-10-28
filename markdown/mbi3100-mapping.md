@@ -15,6 +15,29 @@
 
 ---
 
+# Short read mappers
+
+<table>
+<tr>
+<td>
+  <ul>
+    <li>Explosion in number of mappers ~2007-2013.</li>
+    <li>More recent mappers adapted to handle longer reads, <i>e.g.</i>, <a href="https://github.com/lh3/minimap2">minimap2</a> (from same developers as BWA).</li>
+    <li>Some recent programs focus on specific applications of NGS, <i>e.g.,</i> <a href="https://pachterlab.github.io/kallisto/">Kallisto</a> for <i>RNA-seq</i></li>
+  </ul>
+</td>
+<td width="50%">
+  <img src="/img/mappers.jpg" height="400px"/>
+</td>
+</tr>
+</table>
+
+<small><small>
+Image source: NA Fonseca <i>et al.</i> (2012) <a href="https://academic.oup.com/bioinformatics/article/28/24/3169/245777">Tools for mapping high-throughput sequencing data.</a> Bioinformatics 28: 3169.
+</small></small>
+
+---
+
 # Short read mapping
 
 * Mapping breaks the alignment problem into two parts:
@@ -161,8 +184,8 @@ Image source: Anderson and Wheeler. <a href="https://almob.biomedcentral.com/art
 # FM Index
 
 * Ferragina and Manzini (2000) showed that the BWT provides a highly compact index for a string T.
-  * FM index for the human genome required only about 1.3 GB of RAM.
-* Resembles the functionality of a trie:
+  * FM index for the human genome (~3B nt) required only about 1.3 GB of RAM.
+* An FM index retains the functionality of a trie:
   * Count the number of occurrences of substring S.
   * Locate these occurrences in the original string.
 * First implemented for NGS in [bowtie](https://bowtie-bio.sourceforge.net/index.shtml) ([Langmead et al. 2009](https://link.springer.com/article/10.1186/Gb-2009-10-3-R25)) and [BWA](https://github.com/lh3/bwa) ([Li and Durbin, 2009](https://academic.oup.com/bioinformatics/article/25/14/1754/225615)).
@@ -214,7 +237,15 @@ art@Kestrel:~$ bowtie2 -x zika -1 Zika-envelope.n1E4.R1.fastq.gz -2 Zika-envelop
 
 ---
 
-# Coping with pathogen diversity
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Tews_Falls%2C_Autumn_-_panoramio.jpg/2560px-Tews_Falls%2C_Autumn_-_panoramio.jpg" width=850/>
+
+<small><small>
+Image source: Tews Falls, Hamilton, Ontario. <a href="https://commons.wikimedia.org/wiki/File:Tews_Falls,_Autumn_-_panoramio.jpg">Eric Marshall (CC BY 3.0 Unported)</a>.
+</small></small>
+
+---
+
+# Coping with genetic variation
 
 * Note that we could only map 21 out of 20000 reads - that sucks!
 * Viruses (and sometimes bacteria) evolve so rapidly that there can be many genetic differences between a sample and the reference.
@@ -292,8 +323,9 @@ art@Kestrel:~$ bowtie2 -x adapted -1 Zika-envelope.n1E4.R1.fastq.gz -2 Zika-enve
 # SAM format
 
 * The SAM (Sequence Alignment/Map) format has become a standard output format for programs that align NGS reads to reference genomes.
-* It is a tabular, tab-separated data format.
-* Comments at top of file prefixed with `@`
+  * It is a tabular, tab-separated data format.
+  * Comments at top of file prefixed with `@`
+  * BAM is a compressed binary version of the SAM file.
 
 ```
 @HD	VN:1.0	SO:unsorted
@@ -302,7 +334,6 @@ art@Kestrel:~$ bowtie2 -x adapted -1 Zika-envelope.n1E4.R1.fastq.gz -2 Zika-enve
 SRR5261740.1	16	chr7	142247517	2	168S96M31S	*	0	0	TTCTCCACCTTGGAGATCCAGCGCACAGAGCAGGGGGACTCGGCCATGTATCTCTGTGCCAGCACCACAGTCGCTCCTGAAAAACTGTTTTTTGGCAGTGGAACCCAGCTCTCTGTCTTGGAGGACCTGAACAACGTGTTCCCCGGGAGACTCCAGTATCTGCGTGATCTGCCCCCAGGAGACACAGGGCCATCCAGCAGAGGAGGCTGGTGCCCATGGCAGGGTCAGGGCAGGATGGGAGCTTTACCAGATCAGGGTCACTGTCCCCATGTACTCTGCGTTGATACCACTGCTT	GHHHGHHGHGHHHHHHHGGGGGHHHHHHHHEGGHHHHGGGGHHHHHHHHHHHFHHHHGGHHHGHHHHGGGGGGGHHHGHGHHHHHHGFHHHHHHHHHHHHHGHGHHHGGHHHHHHHHHHHHHHFHHHGGGGGGGGGGBBBBBBAHHHHHHHHHHHHHHGGGHGHHHHGGGGGGGHHHHHHHHHHHHHHGGHHHHHHHHHHHHHHGHHHGGHHHHHHHHHHHHHHHHHHHHHHHHHHGHHHHHGHHHHHHHHGHHHGHHHHGGGGGHHHHHHHHGGGGGGGGGGFFFBFFFBBBBB	AS:i:143	XS:i:136	XN:i:0	XM:i:7	XO:i:0	XG:i:0	NM:i:7	MD:Z:13G8T0G0C12C12A3A41	YT:Z:UU
 SRR5261740.2	0	chr7	142493746	0	31S103M163S	*	0	0	AAGCAGTGGTATCAACGCAGAGTACATGGGGGGAGAGGGGTGGGTACTGGAGAAGACCAGCCCCTTCGCCAAACAGCCTTACAAAGACATCCAGCTCTAAGGAGCTCAAAACATCCTGAGGACAGTGCCTGGAGAGGACCTGAACAAGGTGGGGAACACCTTGTTCAGGTCCTCTCCAGGCACTGTCCTCAGGATGTTTTGAGCTCCTTAGAGCTGGATGTCTTTGTAAGGCTGTTTGGCGAAGGGGCTGGTCTTCTCCAGTACCCACCCCTCTCCCCCCATGTACTCTGCGTTGAT	CCCCCFFFFFFFGGGGGGGGGGHHHHHHHHGGGGGGGGGGGGGGGHHHHHHHHHHHHHHHHGGGHHHHGGGGHHHHHHHHHHHHGHHHHHHHHHHHHHHHHHGHHHHHHHHHGGGGGGGGGGGGGFGGGGGGGGGGGGGGGFFFFFFFF;BCCCCFCFGGGGGGGGGGGHHGHHHHHHHHHHHHHHHHHGHHHHHHHHHHHGGHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHGHGGGGGGGGGGGHHHHHHHHHHHHHHHHGGGGGGHHHHGGGGHHHHHHHHHGGGGGHH	AS:i:206	XS:i:206	XN:i:0	XM:i:0	XO:i:0	XG:i:0	NM:i:0	MD:Z:103	YT:Z:UU
 SRR5261740.3	0	chr7	142493746	0	176S103M17S	*	0	0	GGGGAACACCTTGTTCAGGTCCTCTCCAGGCACTGTCCTCAGGATGTTTTGAGCTCCTTAGAGCTGGATGTCTTTGTAAGGCTGTTTGGCGAAGGGGCTGGTCTTCTCCAGTACCCACCCCTCTCCCCCCATGTACTCTGCGTTGAAGCAGTGGTATCAACGCAGAGTACATGGGGGGAGAGGGGTGGGTACTGGAGAAGACCAGCCCCTTCGCCAAACAGCCTTACAAAGACATCCAGCTCTAAGGAGCTCAAAACATCCTGAGGACAGTGCCTGGAGAGGACCTGAACAAGGTG	BBBBBBBGGEGGGGGGGHFGGHFHHHHHGGHHHFHGHHHHEHHFHHHHGHHGFGHHHHHHHGHEBGGGGGAEGHHFHHHGHHHHHHHHGHGGGGFGEFEEDGHGHHFBHHFFFGHHGGGGGGDHHHHGGGGHHHDBFFFGBCDGCCCCCCFFFFFFFGGGGGGGGCGHHHHHHHHGGGGGGFGGGGGGGFHHHHHHHHHEHHHHGGGGGHHHHGGGGFHHHHGHHHHHGFHGHHHHHHHHHGHHHGGGHHHFHHBGGGGGGGGGGGGEGGGGGGGGGGGGGGF?EFFFFFFFFF:B	AS:i:206	XS:i:206	XN:i:0	XM:i:0	XO:i:0	XG:i:0	NM:i:0	MD:Z:103	YT:Z:UU
-SRR5261740.4	16	chr7	142247517	2	24S96M173S	*	0	0	GGGAGACTCCAGCACCTGTGTGATCTGCCCCCAGGAGGCACAGGGCTGCCCAGCAGAGGAGCCTGGTGCCCATGACAGAGTCAGGGCAGGATGGGAGCTTTACCAGATCAGGGTCACTGTCCCATGTACTCTGCGTTGATACCACTGCTTACTCTGAAGATCCAGCGCACAGAGCGGGGGGACTCAGCCGTGTATCTCTGTGCCAGCAGCCCCACGGGGACTAGCTACAATGAGCAGTTCTTCGGGCCAGGGACACGGCTCACCGTGCTCGAGGACCTGAAAAAGGTGTTCCC	HHHHGGFHBHHGG@/GGHHGHHHGGCEEEAHHHEHHHHHHFHGHEGHEGHHGHHHHHGHHHGHHEGFHGHHHHHHFHHGHFEHHHHHHHHGHGHHHFFHHHHHHHHHHHHHHHHFFCGHHHHHGFHEFGGEEAEFGGGFFFBCFC1AA1AGFHGHHHHHHAGGGGGGHHHHGFGGGGHHHHHHHGGGGGHHHHHHHHHHHHGGHHGGGGGGGGGGGHHHHHHHHHHHHHHHHHHHHHGGGGGGHHHHHHHHHHGGGGGFGGGGGHGGGGGFHHHHHGGGGGFGGGGFBFBCCC	AS:i:192	XS:i:143	XN:i:0	XM:i:0	XO:i:0	XG:i:0	NM:i:0	MD:Z:96	YT:Z:UU
 ```
 
 ---
@@ -348,37 +379,19 @@ SRR5261740.4	16	chr7	142247517	2	24S96M173S	*	0	0	GGGAGACTCCAGCACCTGTGTGATCTGCCC
 * Compact Idiosyncratic Gapped Alignment Report
 * A string representation of how the read aligns to the reference
 
-| Token | Description |
-|-------|-------------|
-| M     | Matched     |
-| I     | Insertion   |
-| D     | Deletion    |
-| S     | Soft clip   |
+| Token | Description | Token | Description |
+|-------|-------------|-------|-------------|
+| M     | Matched     | D     | Deletion (gap in reference)   |
+| I     | Insertion (gap in query)   | S     | Soft clip   |
 
-* For example, `5S45M3I89M1S` means a 5nt soft clip, 45nt match, 3nt insertion, 89nt match, and 1nt soft clip.
 
----
+* For example, `5S45M3I89M1S` means a 5nt soft clip, 45nt match, 3nt insertion, 89nt match, and a 1nt soft clip.
 
-# Short read mappers
-
-<table>
-<tr>
-<td>
-  <ul>
-    <li>Explosion in number of mappers ~2007-2013.</li>
-    <li>More recent mappers adapted to handle longer reads, <i>e.g.</i>, <a href="https://github.com/lh3/minimap2">minimap2</a> (from same developers as BWA).</li>
-    <li>Some recent programs focus on specific applications of NGS, <i>e.g.,</i> <a href="https://pachterlab.github.io/kallisto/">Kallisto</a> for <i>RNA-seq</i></li>
-  </ul>
-</td>
-<td width="50%">
-  <img src="/img/mappers.jpg" height="400px"/>
-</td>
-</tr>
-</table>
-
-<small><small>
-Image source: NA Fonseca <i>et al.</i> (2012) <a href="https://academic.oup.com/bioinformatics/article/28/24/3169/245777">Tools for mapping high-throughput sequencing data.</a> Bioinformatics 28: 3169.
-</small></small>
+Write the CIGAR string for the following query:
+```
+reference   CATG--TACTGTGAC
+query       --TACCTAC--TAAC
+```
 
 ---
 
@@ -421,19 +434,34 @@ Image source: Illumina HiSeq X10 flowcell. <a href="https://commons.wikimedia.or
 # Transcriptomics
 
 * Measuring the expression levels of different genes in the genome.
-* Identifying and quantifying alternate splicing of RNA transcripts from the same gene.
+* This used to be with microarrays, in which a plate is spotted with oligos.
+  * Labeled RNA transcripts bind to oligos by specific base-pairing.
+  * Limited to the number of oligos one can fit on a plate.
+* NGS enables one to directly sequence the RNA transcripts.
+  * Can and quantify alternate splicing of transcripts from the same gene.
 
 ---
 
 # From sequences to count data
 
+* These methodologies convert sequence data to numbers.
+  * Metagenomics measures the relative abundance of species.
+  * Transcriptomics measures the relative expression of genes.
+  * Epigenomics measures the relative abundnace of epigenetic modifications.
+  * ChIP-seq measures protein binding (*e.g.*, a transcription factor) to different parts of a genome.
+  * ATAC-seq measures relative levels of chromatin accessibility.
+  * Deep sequencing measures the relative abundance of mutations.
+
 
 ---
 
-# Resources
+<section data-background="#333" style="color:white">
 
-* [Proposed closure of the NCBI SRA (later cancelled)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3129670/)
-* [The history of the FASTQ format](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2847217/)
-* [Short Read Mapping: An Algorithmic Tour](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5425171/)
-* [Quinlan lab samtools Tutorial](http://quinlanlab.org/tutorials/samtools/samtools.html)
-* [Ben Langmead's lecture on suffix trees](https://www.cs.jhu.edu/~langmea/resources/lecture_notes/07_tries_and_suffix_tries_v2.pdf)
+<h1 style="color:white">Key points</h1>
+
+* Reference-based mapping is the problem of determining whether a substring occurs in the reference genome, and if so, where.
+* An index is a compact representation of the reference that makes it faster to look up substrings.
+* Mappers can only tolerate a limited amount of divergence from the reference.
+* Mapping outputs are usually written in a tabular format called the Sequence Alignment Map (SAM) format.
+
+</section>
