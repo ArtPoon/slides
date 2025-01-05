@@ -1,4 +1,4 @@
-# MIMM4750G
+# MBI 4750G
 ## Clustering for epidemiology
 <img src="https://imgs.xkcd.com/comics/everyones_an_epidemiologist.png" width="600px"/>
 
