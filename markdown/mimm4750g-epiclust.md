@@ -203,7 +203,8 @@ Image credit: Wikipedia, <a href="https://en.wikipedia.org/wiki/Logistic_regress
 
 ---
 
-<img src="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6887514/bin/nihms-1059399-f0003.jpg" height="500px"/>
+<img src="/img/nihms-1059399-f3.svg" height="500px"/>
+
 
 <small><small>
 Image credit: M Ragonnet-Cronin <i>et al.</i> (2019) <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6887514/">HIV Transmission Networks Among Transgender Women in Los Angeles County: network analysis of surveillance data</a>. Lancet HIV 6: e164-e172.
@@ -232,8 +233,13 @@ Image credit: M Ragonnet-Cronin <i>et al.</i> (2019) <a href="https://www.ncbi.n
 
 ---
 
-# Suggested readings
+<section data-background="#333" style="color:white">
 
-* [Defining HIV-1 transmission clusters based on sequence data](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5482559/)
-* [Impacts and shortcomings of genetic clustering methods for infectious disease outbreaks](https://academic.oup.com/ve/article/2/2/vew031/2742100)
-* [Detecting and Responding to HIV Transmission Clusters: A Guide for Health Departments](https://www.cdc.gov/hiv/pdf/funding/announcements/ps18-1802/CDC-HIV-PS18-1802-AttachmentE-Detecting-Investigating-and-Responding-to-HIV-Transmission-Clusters.pdf), US CDC.
+<h1 style="color:white">Key points</h1>
+
+* A genetic cluster of infections may be related by recent, rapid transmission events.
+* Genetic clusters are often identified as connected components in a network (graph).
+* Assuming that a cluster represents higher transmission rates, many studies use logistic regression to look for risk factors associated with clusters.
+* Genetic clusters have also been used as forensic evidence in criminal HIV transmission cases.
+
+</section>
