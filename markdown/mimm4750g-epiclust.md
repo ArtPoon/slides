@@ -239,7 +239,7 @@ Image credit: M Ragonnet-Cronin <i>et al.</i> (2019) <a href="https://www.ncbi.n
 
 * A genetic cluster of infections may be related by recent, rapid transmission events.
 * Genetic clusters are often identified as connected components in a network (graph).
-* Assuming that a cluster represents higher transmission rates, many studies use logistic regression to look for risk factors associated with clusters.
+* Assuming that clusters mean higher transmission rates, many studies use logistic regression to look for risk factors associated with clusters.
 * Genetic clusters have also been used as forensic evidence in criminal HIV transmission cases.
 
 </section>
