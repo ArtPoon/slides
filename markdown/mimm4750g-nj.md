@@ -1,4 +1,4 @@
-# MIMM4750G
+# MBI 4750G
 ## Distance-based trees
 <img src="https://imgs.xkcd.com/comics/herpetology.png"/>
 
@@ -120,6 +120,7 @@
 <img src="/img/variation-among-sites.png"/>
 
 * These methods cannot detect variation among sites because there is no way of storing information about where differences were observed.
+  * Remember, a genetic distance maps a pair of sequences to a single number.
 * As we will see later, likelihood methods can fit a model of rate variation to the entire alignment, not just pairs of sequences.
 
 ---
@@ -130,6 +131,7 @@
 * [RapidNJ](http://birc.au.dk/software/rapidnj/) - command-line program (source code)
 * [NINJA](http://nimbletwist.com/software/ninja/) - Java-based command-line program
 * [R package ape](https://rdrr.io/cran/ape/man/nj.html) - not recommended, slow
+* [DecentTree](https://github.com/iqtree/decenttree) - a more recent implementation of distance-based tree reconstruction methods.
 
 ---
 
@@ -219,8 +221,13 @@
 
 ---
 
-# Further readings
+<section data-background="#333" style="color:white">
 
-* [Neighbor-joining revealed](https://academic.oup.com/mbe/article/23/11/1997/1322446)
-* [Prospects for inferring very large phylogenies by using the neighbor-joining method](https://www.pnas.org/content/101/30/11030.short)
-* [Felsenstein, The Newick tree format](https://evolution.genetics.washington.edu/phylip/newicktree.html)
+<h1 style="color:white">Key points</h1>
+
+* A tree is a hypothesis about how populations are related by common ancestors.
+* UPGMA is a hierarchical clustering method that yields a rooted, ultrametric tree.
+* Neighbor-joining is another distance-based method that is more robust to variation in rates of evolution.
+* Uncertainty about parts of a reconstructed tree can be measured by bootstrap sampling.
+
+</section>
