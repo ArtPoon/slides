@@ -11,6 +11,7 @@
   * Alternatively, we can sequence many individual genomes from an infection with high-throughput methods.
 * A nucleotide sequence consists of `A`, `C`, `G` and `T`.
   * Uncertain or missing bases are represented by other letters.  For example, `N` represents *any* base.
+* Sequences are easier to compare when they are *aligned*, such that [homologous](https://en.wikipedia.org/wiki/Homology_(biology)) nucleotides occupy the same horizontal position.
 
 ---
 
@@ -22,50 +23,6 @@
 	* $d(x,y) \ge 0$ for all $x,y\in \Omega$
 	* If $x=y$, then $d(x,y)=0$
 	* $d(x,y) = d(y,x)$ (symmetry)
-
----
-
-# Alignment-free methods
-
-* A $k$-mer is a substring of length $k$ characters.
-  * For example, `GGGTT` has the following 2-mers: `GG`, `GT` and `TT`.
-* Map a sequence to a "feature space" of all possible k-mers for given k.
-  * Let $W_k(s)$ represent the set of all k-mers in sequence $s$.
-  * Let $f(s, w)$ represent the frequency of k-mer $w\in W_k(s)$.
-* We can compare two sequences by comparing their frequency distributions $f(s, w)$ and $f(t, w)$.
-
----
-
-<img src="https://media.springernature.com/full/springer-static/image/art%3A10.1186%2Fs13059-017-1319-7/MediaObjects/13059_2017_1319_Fig1_HTML.gif" width="600px"/>
-
-<small><small>
-Image credit: A Zielezinski <i>et al.</i> 2017, [Alignment-free sequence comparison: benefits, applications, and tools]((https://genomebiology.biomedcentral.com/articles/10.1186/s13059-017-1319-7)).  <i>Genome Biol</i> 18:186.
-</small></small>
-
----
-
-# Pros and cons of alignment-free methods
-
-* Linear [time complexity](https://en.wikipedia.org/wiki/Time_complexity): we only have to calculate the quantities $W_k(s)$ and $f(s, w)$ once for each sequence $s$.
-  * Alignment is quadratic with the length of the two sequences $s$ and $t$.
-* There are nearly 100 different alignment-free methods - which one should we use?
-* By breaking a sequence down into "words", we lose information about where these features are.
-  * In fact, we can use alignment-free methods to compare completely unrelated sequences!
-
----
-
-# Aligned sequences
-
-* If we can align sequences, we can make more biologically meaningful comparisons.
-  * Which parts of the gene/genome are more variable? more conserved?
-  * Are there parts of a sequence that was inserted?  deleted?
-* It is far easier to measure similarity when the sequences are aligned.
-
-```
-GGGTTGCGCTCGTTG    GGGTTGCGCTCGTTG
-|| |        |      ||| ||| |||| ||
-GGTTGCGCTCGTTGA    GGGATGCACTCGCTG
-```
 
 ---
 
@@ -152,14 +109,6 @@ GGGATGCACTCGCTG
   * The [Actinobacteria](https://en.wikipedia.org/wiki/Actinobacteria) (including *Streptomyces*) are also known as "high G+C [Gram-positive bacteria](https://en.wikipedia.org/wiki/Gram-positive_bacteria)".
 * Transition/transversion bias is ubiquitous.
 * TN93 is the most realistic distance for which a [closed-form expression](https://en.wikipedia.org/wiki/Closed-form_expression) exists.
-
----
-
-# Software for calculating distances
-
-* [MEGA](https://www.megasoftware.net/) - user-friendly software for sequence analysis.
-* `dist.dna` function in the *R* package `ape`
-* [tn93](https://github.com/veg/tn93) - a very fast TN93 calculator in C++
 
 ---
 
@@ -256,10 +205,13 @@ Image source: The Polaris Observatory HCV Collaborators (2017) Global prevalence
 
 ---
 
-# Further readings
+<section data-background="#333" style="color:white">
 
-* [Consensus statement: Virus taxonomy in the age of metagenomics](https://www.nature.com/articles/nrmicro.2016.177)
-* [Hanage *et al.* (2006) Sequences, sequence clusters and bacterial species](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1764932/)
-* [Bioinformatics of Infectious Diseases: Genetic diversity](https://artpoon.github.io/BioID/Clustering.html) - an online textbook (in progress)
-* [An extended IUPAC nomenclature code for polymorphic nucleic acids](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2865858/)
+<h1 style="color:white">Key points</h1>
 
+* A genetic distance is a function takes two sequences as input and produces a non-negative number.
+* The Jukes-Cantor distance corrects for the problem of multiple hits.
+* Distances can be used to cluster sequences, with several applications for epidemiology.
+* For example, hepatitis C virus genomes are clustered into six genotypes at a distance threshold of 30%.
+
+</section>
