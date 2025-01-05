@@ -1,4 +1,4 @@
-# MIMM4750G
+# MBI 4750G
 ## Probability and likelihood
 <img src="https://imgs.xkcd.com/comics/increased_risk.png" width="250px"/>
 
@@ -365,7 +365,14 @@ Two replicate simulations (blue and red) of this Markov chain, keeping track of 
 
 ---
 
-# Suggested readings
 
-* Seeing Theory, Chapter 3: Probability Distributions: https://seeing-theory.brown.edu/probability-distributions/index.html
-* Polanski and Kimmel, Probability and Statistics sections 2.1 to 2.3
+<section data-background="#333" style="color:white">
+
+<h1 style="color:white">Key points</h1>
+
+* A probability distribution can be discrete or continuous.
+* The Poisson distribution describes the probability that $Y$ events occur within time $t$ at rate $\lambda$.
+* A random walk is a model describing a path resulting from a series of random steps in some space.
+* A Markov chain is type of stochastic process in which the probability of the next change depends only on the current state.
+
+</section>
