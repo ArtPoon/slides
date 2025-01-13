@@ -159,10 +159,10 @@ $$\begin{matrix}
  & \begin{matrix}A\hspace{1ex} & C \hspace{1ex} & G \hspace{1ex} & T \hspace{1ex} \end{matrix} \\\\
 \begin{matrix}A\\\\C\\\\G\\\\T\end{matrix} &
   \begin{pmatrix}
-    \ast & \kappa \pi_C & \pi_G & \kappa\pi_T\\\\
-    \kappa\pi_A & \ast & \kappa\pi_G & \pi_T\\\\
-    \pi_A & \kappa\pi_C & \ast & \kappa\pi_T\\\\
-    \kappa\pi_A & \pi_C & \kappa\pi_G & \ast
+    \ast & \pi_C & \kappa\pi_G & \pi_T\\\\
+    \pi_A & \ast & \pi_G & \kappa\pi_T\\\\
+    \kappa\pi_A & \pi_C & \ast & \pi_T\\\\
+    \pi_A & \kappa\pi_C & \pi_G & \ast
   \end{pmatrix}\mu
 \end{matrix}$$
 
@@ -265,9 +265,13 @@ $$\begin{matrix}
 
 ---
 
-# Suggested readings
+<section data-background="#333" style="color:white">
 
-* [Equiprobable discrete models of site-specific substitution rates underestimate the extent of rate variability](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7051046/)
-* [IQ-TREE substitution models documentation](http://www.iqtree.org/doc/Substitution-Models)
-* [First Links in the Markov Chain](https://www.americanscientist.org/article/first-links-in-the-markov-chain), American Scientist
-* [Understanding Continuous-Time Markov Models](https://revbayes.github.io/tutorials/dice/#:~:text=In%20a%20continuous%2Dtime%20Markov,process%20in%20the%20Q%20matrix.), RevBayes documentation
+<h1 style="color:white">Key points</h1>
+
+* A **mutation** is the first appearance of a genetic change; a **substitution** occurs when a mutation spreads to all members of the population.
+* Molecular evolution is usually modeled as a **continuous-time Markov chain** with an instantaneous rate matrix, $Q$.
+* There are several "named" models where some rates in $Q$ are constrained to be equal.
+* Variation in rates across sites can be modeled with parametric or non-parametric methods.
+
+</section>
