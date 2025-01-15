@@ -29,13 +29,8 @@
 # Likelihood
 
 * What are the parameters that are the most likely to have produced our data?
-  * Instead of changing the data, we need to look at how the probability of our data changes with varying parameters.
-* We have to change how we think about probability: 
-<div id="bin3d" class="fig-container"
-      data-fig-id="fig-bin3d"
-      data-file="/include/binomial3d.html"
-      style="height:300px">
-</div>
+* Instead of changing the data, we need to look at how the probability of our data changes with varying parameters.
+* We have to change how we think about probability...
 
 ---
 
@@ -51,7 +46,7 @@
 
 # Likelihood
 
-* The term *likelihood* is a signal that we using the PDF to measure the probability of the **hypothesis** given the **data**.
+* The term *likelihood* is a signal that we using the PDF to consider the probability of the data for different parameter values (hypotheses).
   * Since summing across parameters does not sum to 1, all that matters is the *relative* difference in likelihood.
 * Drop factors independent of parameters, *e.g.*, `${N\choose y}$`:
   `$$P(N,y\;|\;p) \propto p^y (1-p)^{(N-y)}$$`
@@ -242,10 +237,13 @@ Image credit: Marc Suchard (2005) <a href="https://doi.org/10.1534/genetics.103.
 
 ---
 
-# Software
+<section data-background="#333" style="color:white">
 
-* [IQ-Tree](http://www.iqtree.org/) - cutting edge; attempts to select best model before building tree.
-* [FastTree2](http://www.microbesonline.org/fasttree/) - fast and approximate, usually very close to other ML programs.
-* [RAxML](https://cme.h-its.org/exelixis/web/software/raxml/index.html) - one of the top ML programs.
-* [PhyML](http://www.atgc-montpellier.fr/phyml/) - also a contender for top ML program.
-* [MEGA](https://www.megasoftware.net/) - as usual, provides a nice GUI.
+<h1 style="color:white">Key points</h1>
+
+* A genetic distance is a function takes two sequences as input and produces a non-negative number.
+* The Jukes-Cantor distance corrects for the problem of multiple hits.
+* Distances can be used to cluster sequences, with several applications for epidemiology.
+* For example, hepatitis C virus genomes are clustered into six genotypes at a distance threshold of 30%.
+
+</section>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="648" height="216" viewBox="0 0 648 216">
-</svg>
+<defs>
 <g>
 <g id="glyph-0-0">
 <path d="M 1.1875 -11.40625 L 10.375 -11.40625 L 10.375 0 L 1.1875 0 Z M 8.953125 -1.421875 L 8.953125 -9.984375 L 2.609375 -9.984375 L 2.609375 -1.421875 Z M 8.953125 -1.421875 "/>
