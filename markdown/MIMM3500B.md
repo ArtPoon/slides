@@ -12,10 +12,9 @@ Department of Computer Science<br/>
 
 ---
 
-# Where do new pathogens come from?
+# Emerging infectious diseases
 
 * HIV-1: origin about 1920 in central Africa
-* Zika virus: first isolated 1947 in east Africa
 * Ebola virus: first isolated in 1976; [western Africa outbreak](https://en.wikipedia.org/wiki/Western_African_Ebola_virus_epidemic) in 2014
 * SARS-CoV-2: ongoing, first isolated December 2020.
 
@@ -33,11 +32,17 @@ Image credit: Gustavo Basso, WikiMedia Commons (CC BY-SA 4.0)
 * Address these questions in a data-driven, quantitative framework.
   * Conspiracy theories are not science.
 * We usually don't have samples from the start of an outbreak.
-* Use evolutionary methods to extrapolate from current genetic samples back in time.
+  * Sometimes we don't even have samples for decades after the origin!
 
 ---
 
-# Phylogenies
+<div style="text-align: center; font-weight: 900; font-size: 48pt; line-height: 1em;">
+We can use phylogenetic methods to extrapolate from current genetic samples back in time.
+</div>
+
+---
+
+# What are phylogenies?
 
 * A phylogeny is a tree-based model of how populations are related by their common ancestors.
 * Each infection is represented by a tip **nodes** in the tree.
@@ -76,9 +81,6 @@ Figure from Worobey <i>et al.</i> (2004), depicting SIVcpz sampling sites
 </tr>
 </table>
 
-
-
-
 ---
 
 The *root* represents the earliest time point in the tree.
@@ -99,7 +101,12 @@ One way to estimate the position of the root is to fit a molecular clock model t
 
 ---
 
-<img src="/img/worobey.png" width=700px></img>
+Early findings on the rapid global spread of SARS-CoV-2 (left) and estimated origin date and rate of evolution (right)
+<img src="/img/rambaut-virological.png" height=500/>
+
+<small><small>
+Image credit: Andrew Rambaut (6 Mar 2020) <a href="https://virological.org/t/phylodynamic-analysis-176-genomes-6-mar-2020/356">Phylogenetic analysis of nCoV-2019 genomes</a>.  https://virological.org
+</small></small>
 
 ---
 
@@ -136,74 +143,29 @@ One way to estimate the position of the root is to fit a molecular clock model t
 
 ---
 
-<img src="/img/HCV-Joy.png" width="700px"/>
+<img src="/img/HCV-Joy.png" width="650px"/>
 
 <small>Figure from Joy *et al.* Lancet Inf Dis 16(6): 698-702.</small>
 
 ---
 
-# Socioeconomic causes
+# Mapping trees to space
 
-* Analysis suggests that most baby boomers became infected when they were infants, not as young adults
-* Shifts the health care burden from individuals to public agencies.
-
-<img src="/img/marginalized.png" width="650px"/>
-
-<small>Figure from Edlin (2011) Nature 474: 518-519.</small>
-
----
-
-# What could have driven the 2014 Ebola outbreak?
-
-* Past outbreaks associated with unusually dry conditions following the rainy season*
-* Close contact with potential host species (fruit bats), bushmeat; environmental disruption from development.
-* Dramatic population growth, urbanization in affected regions.
-* Sustained armed conflict from 1989 to 2004; massive numbers of displaced refugees<sup>&dagger;</sup>
-
-<small><small>
-&ast; Pinzon <i>et al.</i> (2004) Am J Trop Med Hyg 71: 664-674.<br/>
-&dagger; Alexander <i>et al.</i> (2015) PLOS Neglect Trop Dis 9(6): e0003652
-</small></small>
+* We can use information on *when* infections were sampled to date the root of the tree.
+  * The root is not necessarily the origin, but it is close!
+* If we know *where* infections were sampled, then we may be able to place the root in space.
+  * Requires a sufficiently accurate model of how lineages moved over time.
+* This is known as *phylogeography*.
 
 ---
 
-# Phylogenetic reconstruction of EBOV outbreak
-
-<video data-autoplay data-src="/img/ebola.mp4" type="video/mp4"></video>
-<small><small>Supplementary video, Dudas <i>et al.</i> 2017, Nature 544.</small></small>
-
----
-
-# Factors that spread and sustained EBOV epidemic
+# A more detailed look into the history of HIV-1
 
 <table>
 <tr>
-<td width="60%">
-<ul>
-  <li>Only 5% of virus dispersals involved movement over 232 km.</li>
-  <li>Strongly associated with population size - urbanization.</li>
-  <li>No association with any of 17 vernacular languages (cultural links).</li>
-  <li>Regions with more rainfall tended to have larger outbreaks.</li>
-</ul>
-</td>
-<td>
-  <img src="https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fnature22040/MediaObjects/41586_2017_Article_BFnature22040_Fig7_ESM.jpg" width="350px"/>
-  <small><small>Dudas <i>et al.</i> 2017, Nature 544.</small></small>
-</td>
-</tr>
-</table>
-
----
-
-# Why has HIV-1 spread?
-
-<table>
-<tr>
-
 <td width="50%"><ul>
-<li>SIV-cpz (simian immunodeficiency virus, chimpanzee) has crossed over into human populations multiple times</li>
-<li>Why did this particular strain originate the global pandemic?</li>
-<li>Urbanization: "founding of colonial administrative and trading centres"</li>
+<li>Phylogeography confirmed Kinshasa as the most likely "epicenter" for HIV-1 group M.</li>
+<li>Dispersal from Kinshasa was predominately along transportation networks (waterways, railways) to other urban centers.</li>
 </ul></td>
 
 <td><img src="/img/faria.png"/></td>
@@ -215,15 +177,23 @@ One way to estimate the position of the root is to fit a molecular clock model t
 
 ---
 
+# Phylogeography of the 2014 Ebola outbreak
 
+<video data-autoplay data-src="/img/ebola.mp4" type="video/mp4"></video>
+
+<small><small>Supplementary video, Dudas <i>et al.</i> 2017, Nature 544.</small></small>
 
 ---
 
-# Evidence for multiple zoonotic origins of SARS-CoV-2
 
-Probability of phylogenetic structures arising from a single introduction of SARS-CoV-2 in epidemic simulations.
-<img src="/img/science.abp8337-f2.jpg"/>
+<section data-background="#333" style="color:white">
 
-<small><small>
-Image source: JE Pekar <i>et al.</i> (Jul 2022). The molecular epidemiology of multiple zoonotic origins of SARS-CoV-2.  Science 377: 960-966.
-</small></small>
+<h1 style="color:white">Key points</h1>
+
+* A phylogeny is a tree that links populations in the present day to their ancestors in the past.
+* We can use phylogenies to extrapolate back in time to the origin of an epidemic.
+  * We can reconstruct the *When*, *Where*, and *Why* of an emerging infectious disease.
+* This requires an interdisciplinary understanding of statistics, computer programming, evolution and epidemiology
+  * or just take MBI 4750G!
+
+</section>
