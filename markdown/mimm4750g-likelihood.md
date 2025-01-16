@@ -28,9 +28,27 @@
 
 # Likelihood
 
-* What are the parameters that are the most likely to have produced our data?
-* Instead of changing the data, we need to look at how the probability of our data changes with varying parameters.
-* We have to change how we think about probability...
+<table>
+  <tr>
+    <td width="60%">
+    <ul>
+      <li>What are the parameters that are the most likely to have produced our data?</li>
+      <li>Instead of changing the data, we need to look at how the probability of our data changes with varying parameters.</li>
+      <li>We have to change how we think about probability...</li>
+    </ul>
+    </td>
+    <td>
+    <div id="bin3d" class="fig-container"
+      data-fig-id="fig-bin3d"
+      data-file="/include/binomial3d.html"
+      style="height:300px">
+    </div>
+    <small>
+    An interactive animation of the binomial distribution for N=10 and 10 values of p.
+    </small>
+    </td>
+  </tr>
+</table>
 
 ---
 
@@ -88,8 +106,9 @@ $$P(\text{everything}) = P(\text{first thing}) \times P(\text{another thing})\\\
 
 ---
 
-# ML tree reconstruction
+# How does this apply to trees?
 
+* As long as we have a model of evolution that gives us the probability of some outcome, we can use the data to calculate likelihoods.
 * For reconstructing trees, the parameters include:
   * the distribution of branches relating the sequences
   * the lengths of those branches
@@ -148,39 +167,22 @@ Calculating transition probabilities $P=\exp(Qt)$ for different values of <i>t</
 
 ---
 
-# Felsenstein's pruning algorithm
-
-<table>
-  <tr>
-  <td>
-  <ul>
-    <li>We don't know the ancestral state, so we have to sum over all possibilities throughout the entire tree.</li>
-    <li>This would require a lot of calculations, but we can use <a href="https://en.wikipedia.org/wiki/Dynamic_programming">dynamic programming</a> to store results.</li>
-    <li>Start from the tips, work our way down &mdash; <a href="https://en.wikipedia.org/wiki/Tree_traversal"/>post-order traversal</a>.</li>
-    <li>All calculations above the node can be retrieved from storage.</li>
-  </ul>
-  </td>
-  <td><img src="/img/pruning.png" width="500px"/></td>
-  </tr>
-</table>
-
----
-
 # Stationary frequencies
 
 * There must be some ancestor below the root, but we don't know what it is.
 * We assume the probabilities of nucleotides at the root follow a *stationary distribution* (result after an infinite amount of evolution).
   * These frequencies are usually represented by `$(\pi_A, \pi_C, \pi_G, \pi_T)$`.
-* Set to the observed frequencies in the alignment, or estimate from the data.
+  * Think of this as a distribution from which we draw an *initial state* at the root.
+* We can set $\pi$ to the observed frequencies in the alignment, or estimate from the data.
 
 ---
 
 # Maximum likelihood heuristics
 
+* We cannot solve the MLE because the space of trees is not [continuously differentiable](https://en.wikipedia.org/wiki/Differentiable_function).
 * As long as we can calculate the likelihood for a specific set of parameters, we can search parameter space for the MLE (*optimization*).
   * This is a [heuristic search method](https://en.wikipedia.org/wiki/Heuristic_(computer_science)) &mdash; a relatively simple method for solving a problem that is not guaranteed to be right.
 * For phylogenies, this requires a way to move through the space of trees.
-* First proposed by [Joe Felsenstein](https://en.wikipedia.org/wiki/Joseph_Felsenstein).
 
 ---
 
@@ -209,7 +211,8 @@ Image source: Wikimedia Commons, <a href="https://commons.wikimedia.org/wiki/Fil
 
 * It is fairly intuitive how we explore a numerical space, but how do we move from one tree to another?
 * Is tree A closer to tree B or C?
-![](/img/comparing-trees.svg)
+
+<img src="/img/comparing-trees.png" width=700/>
 
 ---
 
@@ -241,9 +244,9 @@ Image credit: Marc Suchard (2005) <a href="https://doi.org/10.1534/genetics.103.
 
 <h1 style="color:white">Key points</h1>
 
-* A genetic distance is a function takes two sequences as input and produces a non-negative number.
-* The Jukes-Cantor distance corrects for the problem of multiple hits.
-* Distances can be used to cluster sequences, with several applications for epidemiology.
-* For example, hepatitis C virus genomes are clustered into six genotypes at a distance threshold of 30%.
+* The maximum likelihood estimate is the set of parameter values for which a model has the highest probability of producing the data.
+* Likelihoods are usually computed as log values to avoid numerical underflow.
+* We can compute the likelihood of a tree if we have a transition rate matrix $Q$ and stationary distribution $\pi$.
+* We search for the ML tree by traversing different trees via rearrangements.
 
 </section>
