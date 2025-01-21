@@ -1,4 +1,4 @@
-# MIMM4750G
+# MBI 4750G
 ## Substitution models
 ![](https://imgs.xkcd.com/comics/evolving.png)
 
@@ -14,6 +14,47 @@ Simulations of allele frequency evolution in R.
 </small></small>
 
 ---
+
+# Review: Discrete-time Markov chains
+
+* **Markov property**: the probability of being in state $X$ at time $t$ depends *only* on its previous state and no others (memoryless).
+
+* The state space is **discrete** if the system can only assume one out of a finite number of values.
+
+* A Markov chain describes a sequence of states over time.
+* In a **discrete-time** Markov chain, state transitions occur only at regular time intervals.
+
+---
+
+# Review: Transition probabilities
+
+<table>
+  <tr>
+    <td>
+      <ul>
+        <li>A discrete-time Markov chain is defined by a matrix of transition probabilities between states, $P$:
+        </li>
+$$\begin{matrix}
+      & & \textrm{from} \\
+      & & E & A\\
+      \hline
+      \textrm{to} & E & 0.3 & 0.4\\
+                    & A & 0.7 & 0.6\\
+      \end{matrix}$$
+        <li>Note each column must sum to one.</li>
+      </ul>
+    </td>
+    <td width="35%">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Markovkate_01.svg" width="300px"/>
+      <small>
+      Image source: <a href"https://commons.wikimedia.org/wiki/File:Markovkate_01.svg">Wikimedia Commons</a>
+      </small>
+    </td>
+  </tr>
+</table>
+
+---
+
 
 <section data-state="markov-slide">
     <h1>Modeling evolution</h1>
@@ -35,52 +76,12 @@ Simulations of allele frequency evolution in R.
 
 ---
 
-# Markov chains
-
-* **Markov property**: the probability of being in state $X$ at time $t$ depends *only* on its previous state and no others (memoryless).
-
-* The state space is **discrete** if the system can only assume one out of a finite number of values.
-
-* A Markov chain describes a sequence of states over time.
-  * In a **discrete-time** Markov chain, state transitions occur only at regular time intervals.
-  * In a **continuous-time** Markov chain, state transitions can occur at any time.
-<li>Constant rate of evolution - exponential waiting times.</li>
-
----
-
-# Review: State transitions
-
-<table>
-  <tr>
-    <td>
-      <ul>
-        <li>A discrete-time Markov chain is defined by a matrix of transition probabilities between states, $P$:
-        </li>
-$$\begin{matrix}
-      & & \textrm{to} \\
-      & & E & A\\
-      \hline
-      \textrm{from} & E & 0.3 & 0.7\\
-                    & A & 0.4 & 0.6\\
-      \end{matrix}$$
-        <li>Note each row must sum to one.</li>
-      </ul>
-    </td>
-    <td width="35%">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Markovkate_01.svg" width="300px"/>
-      <small>
-      Image source: <a href"https://commons.wikimedia.org/wiki/File:Markovkate_01.svg">Wikimedia Commons</a>
-      </small>
-    </td>
-  </tr>
-</table>
-
----
-
 # Continuous-time Markov chains
 
+* In a **continuous-time** Markov chain (CTMC), state transitions can occur at any point in time.
+
 * If we assume that all substitution rates are constant over time, then the time between substitution events (waiting time) is [exponentially distributed](https://en.wikipedia.org/wiki/Exponential_distribution).
-<img src="https://upload.wikimedia.org/wikipedia/commons/0/02/Exponential_probability_density.svg" width="300px"/>
+
 
 <small>
 Outcome of exponential waiting times for 20 events:
@@ -92,12 +93,12 @@ Outcome of exponential waiting times for 20 events:
 # Rate matrices
 
 * Unlike discrete-time Markov chains, we do not have fixed state transition probabilities.
-* The probability of moving from state $X$ to $Y$ depends on how much time has elapsed between observations.
+  * The probability of moving from state $X$ to $Y$ depends on how much time has elapsed between observations.
+  * In a CTMC, different amounts of time elapse between events!
 * Instead, we use a matrix of instantaneous rates:
 
 `$$\begin{matrix}
-& & \textrm{to} \\
-& & E & A\\
+& \text{to:} & E & A\\
 \hline
 \textrm{from} & E & -0.02 & 0.02\\
               & A & 0.05 & -0.05\\

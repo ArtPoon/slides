@@ -1,4 +1,4 @@
-# MIMM4750G
+# MBI 4750G
 ## Likelihood
 ![](https://imgs.xkcd.com/comics/prediction.png)
 

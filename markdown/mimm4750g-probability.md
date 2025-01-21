@@ -1,5 +1,5 @@
 # MBI 4750G
-## Probability and likelihood
+## Probability and Markov chains
 <img src="https://imgs.xkcd.com/comics/increased_risk.png" width="250px"/>
 
 ---
@@ -230,7 +230,7 @@ Source: https://blogs.lshtm.ac.uk/library/2015/03/27/karl-pearson-and-sir-ronald
 <table>
 <tr>
   <td style="vertical-align: middle;">
-    <h1>Markov chains</h1>
+    <h1>Discrete-time Markov chains</h1>
     <ul>
       <li>
       The next step in the random walk ($X_{t+1}$) depends only on the current state $X_t$.  
@@ -242,29 +242,18 @@ Source: https://blogs.lshtm.ac.uk/library/2015/03/27/karl-pearson-and-sir-ronald
       This characteristic is called the <a href="https://en.wikipedia.org/wiki/Markov_property">Markov property</a>, and stochastic processes with this property are called <i>Markov chains</i>.
       </li>
       <li>
-      <i>Snakes and Ladders</i> and <i>Candy Land</i> are examples of games with the Markov property.
+      The random walk is a <i>discrete-time</i> Markov chain because the system is updated at constant time intervals.
       </li>
     </ul>
   </td>
   <td width="40%">
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Snakes_and_Ladders.jpg/638px-Snakes_and_Ladders.jpg"/>
     <small><small>
-    A game of Snakes and Ladders, which originated in India as <i>gyan chaupar</i>, <i>jnana bagi</i> or  <i>moksha patam</i> to teach about ethics and perseverance. (Source: <a href="https://commons.wikimedia.org/wiki/File:Snakes_and_Ladders.jpg">Wikimedia Commons</a>)
+    A game of Snakes and Ladders, which originated in India as <i>gyan chaupar</i>, <i>jnana bagi</i> or  <i>moksha patam</i> has the Markov property. (Source: <a href="https://commons.wikimedia.org/wiki/File:Snakes_and_Ladders.jpg">Wikimedia Commons</a>)
     </small></small>
   </td>
 </tr>
 </table>
-
----
-
-# Conditional probability
-
-* What does it mean for $X_{t+1}$ to *depend on* $X_{t}$?
-* The probability that $X_{t+1}=6$ is zero if $X_{t}=6$, and is $0.5$ if $X_{t}=5$.
-* We can write this as:
-$$P(X_{t+1}=x|X_{t}=x\pm 1)=0.5$$
-* The pipe character (`|`) is shorthand for "given that" or "conditional on".
-
 
 ---
 
@@ -275,28 +264,24 @@ $$P(X_{t+1}=x|X_{t}=x\pm 1)=0.5$$
       <ul>
         <li> If the Markov chain can only take a finite number of states, then we can write the probabilities of transitions between states as a matrix:
         $$\begin{matrix}
-        & & \textrm{to} \\
-        & & E & A\\
+        & \text{to:} & E & A\\
         \hline
-        \textrm{from} & E & 0.3 & 0.7\\
+        \raisebox{-1em}{\textrm{from:}} & E & 0.3 & 0.7\\
                       & A & 0.4 & 0.6\\
         \end{matrix}$$
         </li>
-        <li>Note each row must sum to one - the chain must go <i>somewhere</i>.</li>
-        <li>While it is possible to write this matrix for <i>Snakes and Ladders</i>, it would be very large!  Every square would have its own row and column.</li>
+        <li>Note each row* must sum to one &mdash; the chain must go <i>somewhere</i>.</li>
+        <li>This matrix is often denoted as $P$ because it contains transition probabilities.</li>
       </ul>
+      <small><small>
+      *Alternatively, we can have each column sum to one, but we are going to follow convention.
+      </small></small>
     </td>
-    <td width="30%">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Markovkate_01.svg" width="250px"/>
+    <td width="35%">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Markovkate_01.svg" width="300px"/>
       
       <small><small>
       Source: <a href"https://commons.wikimedia.org/wiki/File:Markovkate_01.svg">Wikimedia Commons</a>
-      </small></small>
-      
-      <img src="/img/chutes-and-ladders.png"/>
-      
-      <small><small>
-      Source: <a href="https://web.mit.edu/18.06/www/Spring17/Chutes-and-Ladders.pdf">Chutes-and-ladders, MIT.</a>
       </small></small>
     </td>
   </tr>
@@ -306,65 +291,64 @@ $$P(X_{t+1}=x|X_{t}=x\pm 1)=0.5$$
 
 # Stationary distributions
 
+* The transition matrix $P$ tells us how to move from one state to another, but what if we don't know our starting state?
 * Suppose we track the frequencies that different states occur in the Markov chain.
-* For some Markov chains, these frequencies will converge to an equilibrium called the [stationary distribution](https://en.wikipedia.org/wiki/Discrete-time_Markov_chain#Stationary_distributions).
-* If we know this distribution, then we can predict what state the chain is in at any point in time *without any other information*.
-> Why does a random walk have no stationary distribution?
+  * For some Markov chains, these frequencies will converge to an equilibrium called the [stationary distribution](https://en.wikipedia.org/wiki/Discrete-time_Markov_chain#Stationary_distributions).
+* If we have no other information, then the stationary distribution represents our best guess about the initial state.
 
 ---
 
+# Stationary distributions (2)
 * More formally, the stationary distribution is a probability vector $\pi$ such that $\pi P = \pi$ and $\sum\pi = 1$.
+* Let's solve for the stationary distribution:
 
 `$$
+\begin{pmatrix}
+\pi_E & \pi_A \\
+\end{pmatrix} = 
 \begin{pmatrix}
 \pi_E & \pi_A \\
 \end{pmatrix}
 \begin{pmatrix}
 0.3 & 0.7 \\
 0.4 & 0.6 \\
-\end{pmatrix} = \begin{pmatrix}
+\end{pmatrix}\\[6pt]
+\hspace{9.2em} = \begin{pmatrix}
 0.3\pi_E+0.4\pi_A & 0.7\pi_E+0.6\pi_A \\
 \end{pmatrix}
 $$`
 
 `$$
-0.3\pi_E + 0.4(1-\pi_E) = \pi_E\\[6pt]
-\pi_E = 0.4/1.1 = 0.\overline{36}
+\pi_E + \pi_A = 1 \implies 0.3\pi_E + 0.4(1-\pi_E) = \pi_E\\[6pt]
+\pi_E = 0.4/1.1 = 0.\overline{36}\\
+\pi_A = 1 - 0.\overline{36} = 0.\overline{63}
 $$`
 
-<table width="60%">
+---
+
+# Simulation
+
+<table>
 <tr>
-<td width="40%" style="vertical-align: middle; text-align: right; font-size: 16pt;">
-Two replicate simulations (blue and red) of this Markov chain, keeping track of the frequency of being in state $A$.
+<td>
+  <ul>
+  <li>Simulating a discrete-time Markov chain is as simple as sampling from the transition probabilities.</li>
+  
+  <li>For example, if we start in $A$, then the probability that the next step is $E$ is 0.4.
+
+  <li>If we track the frequency that the chain was ever in state $A$, then that frequency will eventually converge to $\pi_A$.</li>
+  </ul>
 </td>
-<td width="60%">
-<img src="/img/stationary-prob.svg"/>
+<td width="55%">
+  <img src="/img/stationary-prob.svg"/>
+  <small>
+  This plot displays replicate simulations (blue and red), tracking the overall frequency of being in state <i>A</i>.  The solid line represents $\pi$<sub>A</sub>=0.63.
+  </small>
 </td>
 </tr>
 </table>
 
 ---
-
-# Continuous time Markov chains
-
-* The random walk described above is a *discrete time* Markov process.
-  * This system transitions from one state to another in discrete steps (from $t$ to $t+1$).
-* What if we want to model a Markov process in real time?
-* Assume that events happen at a constant rate $\lambda$.
-  * The time between successive events follows an *exponential distribution* with rate $\lambda$.
-  * The number of events in a time interval $\Delta t$ follows a *Poisson distribution* with rate $\lambda \Delta t$.
-
----
-
-# CTMCs and bioinformatics
-
-* Continuous time Markov chains play an important role in bioinformatics - for example, we use CTMCs to model molecular evolution.
-* We assume the Markov chain moves between four states: A, C, G and T.
-* We assume that each site in a nucleotide sequence follows its own Markov chain.
-* More on this later!
-
----
-
 
 <section data-background="#333" style="color:white">
 
