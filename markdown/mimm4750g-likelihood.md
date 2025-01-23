@@ -120,11 +120,9 @@ $$P(\text{everything}) = P(\text{first thing}) \times P(\text{another thing})\\\
 # Branch likelihood
 
 * Suppose the ancestor and descendant on either side of a branch are separated by time $t$.
-* Given matrix of instantaneous rates $Q$, the transition probability from $X$ to $Y$ after $t$ is calculated by the matrix exponential:
-
-$$P=\exp(Qt)$$
-
-* This is the same calculation used to solve the Jukes-Cantor model.
+* Given matrix of instantaneous rates $Q$, the transition probability from $X$ to $Y$ after $t$ is calculated by the matrix exponential, $P=\exp(Qt)$
+  * Starting from the tips, we know $Y$ and can sum over all possible values for $X$.
+  * When we get down to the root, $X$ is drawn from the stationary distribution $\pi$.
 
 ---
 
@@ -164,16 +162,6 @@ Calculating transition probabilities $P=\exp(Qt)$ for different values of <i>t</
 </td>
 
 </table>
-
----
-
-# Stationary frequencies
-
-* There must be some ancestor below the root, but we don't know what it is.
-* We assume the probabilities of nucleotides at the root follow a *stationary distribution* (result after an infinite amount of evolution).
-  * These frequencies are usually represented by `$(\pi_A, \pi_C, \pi_G, \pi_T)$`.
-  * Think of this as a distribution from which we draw an *initial state* at the root.
-* We can set $\pi$ to the observed frequencies in the alignment, or estimate from the data.
 
 ---
 

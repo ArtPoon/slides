@@ -14,7 +14,7 @@
         <li>Our adaptive immune systems exert tremendous selection on pathogens.</li>
       </ul>
     </td>
-    <td width="45%">
+    <td width="50%">
     <small>
     Emergence of pan-resistant HIV-1.  Patient clinical course and treatment.<br/><br/>
     </small>
@@ -48,21 +48,25 @@ Image credit: MC Puertas <i>et al.</i> (2020) Pan-resistant HIV-1 emergence in t
 
 # How do detect selection?
 
-* **Longitudinal data:** track the frequencies of an allele over time.
-  <table>
-  <tr>
-  <td><img src="/img/influenza-trajectory.png" width="350px"/></td>
-  <td width="40%" style="vertical-align:middle">
-    <small>Trajectory of `I161N` mutation in influenza A virus HA.
-    Figure from Illingworth and Mustonen (2012) PLOS Pathog 8: e1003091.
-    <small>
-    </td>
-  </tr>
-  </table>
-
-  * What if we don't know which allele is under selection?  What if we don't have longitudinal data?
-* **Cross-sectional (comparative) methods:** infer selection by comparing genetic sequences sampled at about the same time.
-<!--* More convenient, potentially more powerful.-->
+<table>
+<tr>
+  <td>
+    <ul>
+    <li><b>Longitudinal data:</b> track the frequencies of an allele over time.</li>
+    <li>Fit a simple logistic growth (S-shaped) model to the frequency trajectory.</li>
+    <li>What if we don't know which allele is under selection?  What if we don't have longitudinal data?</li>
+    <li><b>Cross-sectional (comparative) methods:</b> infer selection by comparing genetic sequences sampled at about the same time.</li>
+    </ul>
+  </td>
+  <td width="45%" style="vertical-align:middle">
+    <img src="/img/duotang-selection.png"/>
+    <small><small>
+    Estimates of selective advantage for SARS-CoV-2 variants in Canada
+    Figure from the Canadian Coronavirus Variants Rapid Response Network <a href="https://covarr-net.github.io/duotang/duotang.html">Duotang notebook.</a>
+    </small></small>
+  </td>
+</tr>
+</table>
 
 ---
 
@@ -98,7 +102,7 @@ Image credit: MC Puertas <i>et al.</i> (2020) Pan-resistant HIV-1 emergence in t
 
 <!--* Major histocompatibility complex (MHC) antigen recognition site , $dN > dS$ driven by host-pathogen arms race$^1$.-->
 A majority of the first examples of genes under positive selection came from viruses and bacteria:
-<img src="/img/EndoTable.png" width="600px"/>
+<img src="/img/EndoTable.png" width="80%"/>
 
 <small><small>
 Table from Endo, Ikeo and Gojobori. 1996, Mol Biol Evol 13: 685.
@@ -173,43 +177,27 @@ Table from Endo, Ikeo and Gojobori. 1996, Mol Biol Evol 13: 685.
     <li>Middle East respiratory syndrome coronavirus, first described in Saudi Arabia in 2012.</li>
     <li>Found at high prevalence in camels.</li>
     <li>~40% mortality, limited human-to-human transmission.</li>
-    <li>Codons in spike protein under strong positive selection (magenta), close to residues involved in receptor binding (green).</li>
+    <li>Codons in spike protein under strong positive selection (magenta), close to residues involved in binding (green) the receptor DPP4.</li>
     </ul>
-    <small>
-    Image credit: M Cotten <i>et al.</i> (2014) <a href="https://doi.org/10.1128/mBio.01062-13">Spread, Circulation, and Evolution of the Middle East Respiratory Syndrome Coronavirus</a>. mBio 5(1).
-    </small>
   </td>
-  <td width="30%">
-    <img src="/img/mers-cov75.png"/>
+  <td width="40%">
+    <img src="/img/mbo001141746sf01.png"/>
+    <small><small>
+    Image credit: M Cotten <i>et al.</i> (2014) <a href="https://doi.org/10.1128/mBio.01062-13">Spread, Circulation, and Evolution of the Middle East Respiratory Syndrome Coronavirus</a>. mBio 5(1).
+    </small></small>
   </td>
 </tr>
 </table>
 
 ---
 
-# Random-effects likelihood
+# Site-specific selection (2)
 
 * Yang allows dN/dS ($\omega$) to vary among sites by assuming that these values followed a [gamma distribution](https://en.wikipedia.org/wiki/Gamma_distribution).
   * Recall the gamma distribution is a *continuous* probability density function for values greater than zero, ideal for rates.
-* To make easier to compute, Yang split the gamma distribution up into 5 rate categories of equal area (probability).
-* This approach is still used for many models, and gamma is represented by a `G` or the symbol $\Gamma$.
-
----
-
-# Fixed-effects likelihood
-
-* Also proposed by Yang, a [fixed-effects model](https://en.wikipedia.org/wiki/Fixed_effects_model) attempts to assign each codon site to one of multiple categories, each with its own estimated dN/dS rate.
-* [Random-effects models](https://en.wikipedia.org/wiki/Random_effects_model) tend to have greater power (fewer parameters) but less flexible.
-* Fixed-effects models tend to model rate variation more accurately (more flexible) but may require more data than REL.
-
----
-
-# Counting methods
-
-* [Suzuki and Gojobori (1999)](https://academic.oup.com/mbe/article/16/10/1315/2925367) described a non-parametric "counting" method to measure selection.
-  * Reconstruct what substitutions occured on each branch by parsimony or maximum likelihood.
-  * Use a binomial test to identify sites with significantly more NS substitutions than expected.
-* **All three types of methods basically give you the same results if you have enough data.**
+  * To make easier to compute, Yang split the gamma distribution up into 5 rate categories of equal area (probability).
+* This approach (random effects likelihood, REL) is still used for many models, and gamma is represented by a `G` or the symbol $\Gamma$.
+* There are other methods to handle variation in dN/dS among sites, but they are all about the same if you have enough data!
 
 ---
 
@@ -233,9 +221,13 @@ Image credit: D Enard <i>et al.</i> (2016) eLife 10.7554/eLife.12469
 
 ---
 
-# Software
+<section data-background="#333" style="color:white">
 
-* [PAML](http://abacus.gene.ucl.ac.uk/software/paml.html) - command-line only
-* [HyPhy](http://www.hyphy.org/) - both GUI and command-line
-* [Datamonkey](http://datamonkey.org/) - HyPhy on the web
-* [MEGA](https://www.megasoftware.net/) - GUI
+<h1 style="color:white">Key points</h1>
+
+* Most genes are under purifying selection, removing any mutations away from the adapted genotype.
+* Diversifying selection means sustained change because of varying environments.
+* We can detect selection acting on protein-coding genes by comparing non-synonymous and synonymous substitution rates.
+* Detecting site-specific selection requires a model of variation in rates.
+
+</section>

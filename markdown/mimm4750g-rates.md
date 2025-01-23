@@ -26,40 +26,11 @@ Simulations of allele frequency evolution in R.
 
 ---
 
-# Review: Transition probabilities
-
-<table>
-  <tr>
-    <td>
-      <ul>
-        <li>A discrete-time Markov chain is defined by a matrix of transition probabilities between states, $P$:
-        </li>
-$$\begin{matrix}
-      & & \textrm{from} \\
-      & & E & A\\
-      \hline
-      \textrm{to} & E & 0.3 & 0.4\\
-                    & A & 0.7 & 0.6\\
-      \end{matrix}$$
-        <li>Note each column must sum to one.</li>
-      </ul>
-    </td>
-    <td width="35%">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Markovkate_01.svg" width="300px"/>
-      <small>
-      Image source: <a href"https://commons.wikimedia.org/wiki/File:Markovkate_01.svg">Wikimedia Commons</a>
-      </small>
-    </td>
-  </tr>
-</table>
-
----
-
 
 <section data-state="markov-slide">
     <h1>Modeling evolution</h1>
     <ul>
-      <li>Sequence evolution is often modelled as a discrete-state, continuous-time Markov chain.</li>
+      <li>Sequence evolution is often modelled as a discrete-state, <b>continuous-time</b> Markov chain.</li>
     </ul>
     <center>
     <div id="markov" class="fig-container"
@@ -186,17 +157,6 @@ $$\begin{matrix}
 
 ---
 
-# Model specification
-
-* PAUP* was a popular commercial software package for reconstructing phylogenies.
-* It used a six-digit number ($abcdef$) to represent any kind of time-reversible nucleotide substitution model:
-  * *e.g.,* HKY85 becomes `010010`.
-* This scheme is still used by other software, such as HyPhy and PhyML.
-
-> What is the PAUP* model string for TN93?
-
----
-
 # Time reversible models
 
 * If a model is time reversible, then the probability of a transition from state $X$ to $Y$ in time $t$ is the same as going from $Y$ to $X$ in the same time.
@@ -243,7 +203,6 @@ $$\begin{matrix}
   * Thus, each additional class adds two parameters ([Mannino *et al.*, 2020](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0229493)).
 
 * This "general discrete distribution" is more flexible, *e.g.*, allowing for bimodal rate distributions.
-
 
 ---
 
