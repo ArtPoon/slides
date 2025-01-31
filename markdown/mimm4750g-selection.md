@@ -34,7 +34,17 @@ Image credit: MC Puertas <i>et al.</i> (2020) Pan-resistant HIV-1 emergence in t
 * **Positive selection:** a specific genetic variant has a selective advantage and increases in frequency.
 
 * **Negative (purifying) selection:** once the favored genetic variant has been "fixed" in the population, selection continues to remove all other variants.
-* Most sites are under purifying selection ("*if it ain't broke..*")
+* Most sites are under purifying selection:
+
+<blockquote>
+<div style="font-style: normal; font-size: 16pt; font-weight: 500;">
+"Like every other creature on the face of the earth, Godfrey was, by birthright, a stupendous badass, albeit in the somewhat narrow technical sense that he could trace his ancestry back up a long line of slightly less highly evolved stupendous badasses"
+</div>
+</blockquote>
+
+<small><small>
+Neal Stephenson, <i>Cryptonomicon</i> (1999).
+</small></small>
 
 ---
 

@@ -63,9 +63,8 @@ Try clicking and dragging the yellow node around.
 
 * Most substitution models that we fit to aligned sequences in order to build trees are *time reversible*:
 $$P_{ij}(t)\pi_j = P_{ji}(t)\pi_i$$
-* This is a convenient property because:
-  * the [likelihood of the tree](https://slides.filogeneti.ca/html/mimm4750g-L06-likelihood.html#/11) is unaffected by the placement of the root (Felsenstein's "pulley principle");
-  * we can compute this likelihood by iterating down from the tips.
+* This is a convenient property because the likelihood of the tree is unaffected by the placement of the root.
+* It is possible to use a non-reversible model to determine optimal placement of the root, but this requires skewed substitution rates!
 
 ---
 
@@ -169,18 +168,6 @@ Image credit: Edrdige and van der Hoek (2020) <a href="https://journals.plos.org
 
 # Origin of HIV-1
 
-* This concept was first used to estimate the origin date of HIV-1.
-
-  <img src="/img/li-tanimura-sharp.png" width="600px"/>
-
-<small><small>
-Tree from Li, Tanimura and Sharp (1988) Mol Biol Evol 5: 313.
-</small></small>
-
----
-
-# Origin of HIV-1
-
 <small>
 Estimate of HIV-1 origin by root-to-tip regression (left) compares favourably to cutting-edge estimates decades later (right).
 </small>
@@ -193,16 +180,6 @@ Estimate of HIV-1 origin by root-to-tip regression (left) compares favourably to
 
 <small><small>
 Figures from B Korber <i>et al.</i> (2000) <a href="https://science.sciencemag.org/content/288/5472/1789.abstract">Timing the ancestor of the HIV-1 pandemic strains.</a>  Science 288; M Bletsa <i>et al.</i> (2019) <a href="https://academic.oup.com/ve/article/5/2/vez036/5561482">Divergence dating using mixed effects clock modelling: An application to HIV-1</a>. Virus Evol 5: vez036.
-</small></small>
-
----
-
-<img src="/img/inca-rtt.png" width="400px"/>
-
-> In the "root to tip" plot above, which letters correspond to: (i) $t$; (2) $\mu t$; (3) $\mu$, (4) time of the root?
-
-<small><small>
-Figure taken from an analysis of respiratory syncytial virus by C Agoti *et al.* 2014, Emerg Infect Dis 20: 957.
 </small></small>
 
 ---
@@ -242,7 +219,14 @@ Phylogeny. <a href="https://academic.oup.com/mbe/advance-article/doi/10.1093/mol
 
 ---
 
-# Suggested readings
 
-* ["Rooting trees, methods for": In Encyclopedia of Evolutionary Biology](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7149615/)
-* [Assessing Uncertainty in the Rooting of the SARS-CoV-2 Phylogeny](https://academic.oup.com/mbe/advance-article/doi/10.1093/molbev/msaa316/6028993)
+<section data-background="#333" style="color:white">
+
+<h1 style="color:white">Key points</h1>
+
+* The root is a hypothesis about the earliest point in time in a tree.
+* Trees reconstructed by NJ or ML methods are generally unrooted.
+* Simple methods like midpoint or outgroup rooting are easy but sensitive to bad assumptions.
+* 
+
+</section>
