@@ -139,22 +139,23 @@ Image credit: Edrdige and van der Hoek (2020) <a href="https://journals.plos.org
 
 ---
 
+<h1>Root-to-tip regression</h1>
+
 <table>
   <tr>
-    <td style="vertical-align:middle">
-      <h1>Root-to-tip regression</h1>
+    <td style="vertical-align:middle">      
       <ul>
         <li>Assume the rate of evolution is constant over time, and fast enough for measurable evolution over months/years of sampling.</li>
         <li>Divergence from the root (total branch length) should increase linearly with time.</li>
         <li>The "best" root should give the cleanest (positive) linear trend.</li>
         <li>(<i>right</i>) Phylogeny and root-to-tip plot for Ebolavirus isolates from 2013-2016 epidemic in West Africa.</li>
       </ul>
-      <small>
-      Image credit: Holmes <i>et al.</i> (2016) Nature 538. https://doi.org/10.1038/nature19790
-      </small>
     </td>
-    <td width="35%">
-      <img src="/img/nature19790.png" width="300px"/>
+    <td width="40%">
+      <img src="/img/nature19790.png"/>
+      <small>
+      Image credit: Holmes <i>et al.</i> (2016) <a href="https://doi.org/10.1038/nature19790">Nature 538: 193-200</a>. 
+      </small>
     </td>
   </tr>
 </table>
@@ -226,7 +227,8 @@ Phylogeny. <a href="https://academic.oup.com/mbe/advance-article/doi/10.1093/mol
 
 * The root is a hypothesis about the earliest point in time in a tree.
 * Trees reconstructed by NJ or ML methods are generally unrooted.
+  * Trees are often depicted as though they are rooted when they are not!
 * Simple methods like midpoint or outgroup rooting are easy but sensitive to bad assumptions.
-* 
+* Root-to-tip regression enables us to locate the root if sequences are sampled at different times.
 
 </section>
