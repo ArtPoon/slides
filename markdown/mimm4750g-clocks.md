@@ -1,4 +1,4 @@
-# MIMM4750G
+# MBI 4750G
 ## Molecular clocks
 
 ![](https://imgs.xkcd.com/comics/estimating_time.png)
@@ -264,8 +264,14 @@ Image credit: Worobey <i>et al.</i> (2014) Nature 508. https://doi.org/10.1038/n
 
 ---
 
-# Further readings
+<section data-background="#333" style="color:white">
 
-* [Molecular-clock methods for estimating evolutionary rates and timescales](https://onlinelibrary.wiley.com/doi/full/10.1111/mec.12953)
-* [A synchronized global sweep of the internal genes of modern avian influenza virus](https://www.nature.com/articles/nature13016)
-* [The Horse Flu Epidemic That Brought 19th-Century America to a Stop](https://www.smithsonianmag.com/history/how-horse-flu-epidemic-brought-19th-century-america-stop-180976453/)
+<h1 style="color:white">Key points</h1>
+
+* The molecular clock is a hypothesis that molecular evolution has a constant rate.
+  * The clock does not "tick" like a metronome!
+* Trees reconstructed by NJ or ML methods have branch lengths measured in expected substitutions (evolutionary time).
+  * We cannot estimate anything about time without knowing the substitution rate, and vice versa.
+* There are several ways of allowing the rate of evolution to change over time (relaxing the clock).
+
+</section>
