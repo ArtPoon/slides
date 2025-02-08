@@ -1,7 +1,14 @@
-# MIMM4750G
-## Ancestral reconstruction
-
-<img src="https://imgs.xkcd.com/comics/birds_and_dinosaurs.png" height="450px">
+<table>
+<tr>
+<td style="vertical-align: middle;">
+<h1>MBI 4750G</h1>
+<h2>Ancestral reconstruction</h2>
+</td>
+<td width="45%">
+<img src="/img/birds_and_dinosaurs.png" width="100%">
+</td>
+</tr>
+</table>
 
 ---
 
@@ -124,16 +131,6 @@
 
 ---
 
-# Resampling ancestral states
-
-* Reconstructing ancestral states is highly uncertain:
-  * We are not certain about the tree, or the model of evolution.
-  * The root is typically the furthest from our data.
-* Sampling multiple ancestral states from the probability distributions at each ancestral node is a better representation of the state of our knowledge.
-* Challenging for larger data sets.
-
----
-
 # Example: HIV vaccine design
 
 <table>
@@ -224,43 +221,23 @@ Image credit: Debora Marks <i>et al.</i> (2011) Protein 3D Structure Computed fr
 
 ---
 
-# Example: Influenza A virus neuraminidase
-
-<table>
-<tr>
-<td>
-<ul>
-<li>Kryazhimskiy <i>et al.</i> extended the mapping technique to look for mutations at one site that tend to be followed by a mutation at another site, even if they happen on different branches.</i></li>
-</ul>
-<img src="https://journals.plos.org/plosgenetics/article/figure/image?size=inline&id=info:doi/10.1371/journal.pgen.1001301.g001"/>
-</td>
-<td width="50%">
-<img height="500px" src="/img/pgen.1001301.g003.png"/>
-</td>
-</tr>
-</table>
-
-<small><small>
-Image credit: Kryazhimskiy <i>et al.</i> (2011)  PLOS Genetics 7: <a href="https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1001301">e1001301</a>.
-</small></small>
-
----
-
 # Reconstructing other character states
 
 * If we are willing to assume that other characters evolve along a tree like genetic sequences, then we can reconstruct any ancestral state:
   * Reconstructing ancestral host species / host ranges
-  * Phylogeography - reconstructing the geospatial location of ancestral lineages.
+  * **Phylogeography** - reconstructing the geospatial location of ancestral lineages (more on this later!).
 * Requires a model of character "evolution".
 
 ---
 
 # Pitfalls of ancestral reconstruction
 
-* More difficult to reconstruct at deeper nodes
+* Assumes that both the alignment, tree and model of evolution are all correct.
+* More difficult to reconstruct at deeper nodes.
+  * This can be ameliorated by sampling many reconstructions from the probability distribution at each node.
 * Reconstruction tends to be biased towards the most common states.
   * Sampling bias: over-representation of some locations over others.
-* Assumes that both the alignment and (if fixed) tree are correct.
+
 
 ---
 
@@ -289,9 +266,12 @@ Randall *et al.* evolved a plasmid encoding a fluorescent protein to test ancest
 
 ---
 
-# Software
+<section data-background="#333" style="color:white">
 
-* [HyPhy](http://hyphy.org) - joint ML, custom models
-* *ace* function in R package [ape](https://cran.r-project.org/web/packages/ape/index.html) - marginal ML
-* [MEGA](https://www.megasoftware.net/) - maximum parsimony, ML
-* [BEAST](https://beast.community/) - Bayesian methods, including phylogeography (more on this later!)
+<h1 style="color:white">Key points</h1>
+
+* Ancestral reconstruction can be performed by maximum parsimony (least changes) or (marginal or joint) maximum likelihood.
+* We can map mutations to the tree by assuming any difference between ancestral and descendant nodes of a branch involves only one mutation.
+* Ancestral reconstruction is more uncertain as we go further back in time, and is sensitive to sampling bias.
+
+</section>
