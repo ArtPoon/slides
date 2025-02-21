@@ -1,7 +1,7 @@
 # MIMM4750G
 ## Markov chain Monte Carlo
 
-![](https://imgs.xkcd.com/comics/walking_into_things.png)
+![](https://imgs.xkcd.com/comics/technical_analysis.png)
 
 ---
 
@@ -93,7 +93,7 @@
 * [Importance sampling](https://en.wikipedia.org/wiki/Importance_sampling) draws points from a proposal distribution that (hopefully) concentrates our efforts in the more useful regions of $\theta$.
 * Difficult to choose the right proposal distribution!
 
-<img src="https://i.stack.imgur.com/XGyXh.png" width="550px"/>
+<img src="/img/importance-sampling.svg" width="800px"/>
 
 <small><small>
 Image credit: Wojciech Jarosz, <a href="https://www.cs.dartmouth.edu/~wjarosz/publications/dissertation/appendixA.pdf">Dissertation Appendix A</a>, and <a href="https://computergraphics.stackexchange.com/a/4994">this StackExchange post</a>.
@@ -136,7 +136,7 @@ Image credit: Wojciech Jarosz, <a href="https://www.cs.dartmouth.edu/~wjarosz/pu
 # Metropolis-Hastings sampling
 
 * Remember that $P(D)$ is a difficult integral to deal with.
-* What if we consider the ratio of $P(H|D)$ for two hypotheses, $H$ and $H'$?  Then $P(D)$ cancels out!
+  * What if we consider the ratio of $P(H|D)$ for two hypotheses, $H$ and $H'$?  Then $P(D)$ cancels out!
 * M-H sampling is a random walk over the space of model parameters $(H)$.
 * We *propose* a new set of parameters $H'$, and then decide whether to accept this proposal.
 
@@ -188,8 +188,14 @@ Figure from Poon <i>et al.</i> (2018) Retrovirology 15:47.
 # Burn-in and thinning
 
 * What if the random walk starts in an awful part of parameter space?
-* We don't want this to affect the sample, so we throw out the first part of the walk (chain).
+  * We don't want this to affect the sample, so we throw out the first part of the walk (chain).
 * To reduce auto-correlation the sample, we only keep a small number of samples taken from equal intervals along the chain (thinning).
+
+![](https://upload.wikimedia.org/wikipedia/commons/5/51/Shiprock_wikivoyage_banner.jpg)
+
+<small><small>
+Image credit: Derived from <a href="https://commons.wikimedia.org/wiki/File:2004-05-06_14D_-_Shiprock,_NM.jpg"><i>Shiprock as seen from a distance</i> by user Transity</a>.  Wikimedia Commons (CC-SA 3.0 Unported).
+</small></small>
 
 ---
 
@@ -230,7 +236,15 @@ Source: Vehtari <i>et al.</i> (2021) Rank-Normalization, Folding, and Localizati
 
 ---
 
-# Suggested ~~readings~~ web apps!
 
-* [bayes.js: A Small Library for Doing MCMC in the Browser](https://www.sumsar.net/blog/2015/12/bayes-js-a-small-library-for-doing-mcmc-in-the-browser/) - Features intuitive JavaScript animations for the MCMC trace and histograms.
-* [The Markov-chain Monte Carlo Interactive Gallery](https://chi-feng.github.io/mcmc-demo/app.html?algorithm=RandomWalkMH&target=banana) - A nice animated web interface for learning different MCMC sampling algorithms!
+<section data-background="#333" style="color:white">
+
+<h1 style="color:white">Key points</h1>
+
+* The posterior probability distribution $P(\theta|D)$ represents our state of knowledge after seeing the data.
+  * Since we cannot write an exact solution for $P(\theta|D)$, the next best thing is to generate a random sample from it.
+* *Monte Carlo* refers to any method for solving a problem by simulation.
+  * Markov chain Monte Carlo (MCMC) generates a random sample by simulating a random walk.
+* An MCMC sample has *converged* when it represents a random sample from $P(\theta|D)$.
+
+</section>
