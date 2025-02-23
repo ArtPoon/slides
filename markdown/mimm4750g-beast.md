@@ -14,52 +14,57 @@
 
 ---
 
-# Bringing it all together
-
-* Likelihood and trees ([lecture 7](https://slides.filogeneti.ca/html/mbi4750-L07-likelihood.html#/)); substitution models ([lecture 6](https://slides.filogeneti.ca/html/mbi4750-L06-models.html#/)); molecular clocks ([lecture 10](https://slides.filogeneti.ca/html/mbi4750-L10-clocks.html#/)); Bayesian inference ([lectures 12](https://slides.filogeneti.ca/html/mbi4750-L12-bayes.html#/) and [13](http://slides.filogeneti.ca/html/mbi4750-L13-mcmc.html#/)); coalescent tree priors ([lectures 15](http://slides.filogeneti.ca/html/mbi4750-L15-coalescent.html#/) and [16](http://slides.filogeneti.ca/html/mbi4750-L16-demographic.html#/)).
-
-![](/img/duPlessis.png)
-
-<small>Image credit: Louis duPlessis, [Taming the BEAST lectures](https://github.com/Taming-the-BEAST/Taming-the-BEAST-2019-Eh-Lectures)</small>
-
----
-
 # BEAST
 
 <img src="https://beast.community/images/beast-banner.png" width="600px"/>
 
 * Primarily developed by Alexei Drummond and Andrew Rambaut in the <a href="https://en.wikipedia.org/wiki/Java_(programming_language)">Java programming language</a>.
 * BEAST has become one of the most influential software packages in infectious disease research in the last decade.
-* Over 10,000 citations, including over 40 Nature papers and over 20 Science papers since 2007.
+* Over 14,000 citations, including over 40 Nature papers and over 20 Science papers since 2007.
 
 ---
 
+#### BEAST
 # BEAST 1 and BEAST 2
 
-<img src="https://static.wikia.nocookie.net/seuss/images/d/d3/Thing1-and-thing2.jpg" height="120px"/>
+<table style="font-size: 18pt;">
+<tr>
+<td>
+  <ul>
+  <li>BEAST was forked into two separate projects (<a href="https://www.beast2.org/features/">comparison</a>)</li>
+    <ul>
+      <li>BEAST 1 (https://beast.community/) remains affiliated with the Rambaut lab at U. Edinburgh.</li>
+      <li>BEAST 2 (https://www.beast2.org) is affiliated with the Drummond lab in U. Auckland</li>
+    </ul>
+  <li>BEAST 2 places more emphasis on modular development</li>
+    <ul>
+      <li>Customized models contributed by community.</li>
+      <li>Introduced a package management system.</li>
+    </ul>
+  </ul>
+</td>
+<td style="vertical-align: middle;">
+  <img src="https://static.wikia.nocookie.net/seuss/images/d/d3/Thing1-and-thing2.jpg"/>
+</td>
+</tr>
+</table>
 
-* BEAST was forked into two separate projects ([comparison](https://www.beast2.org/features/))
-  * BEAST 1 (https://beast.community/) remains affiliated with the Rambaut lab at U. Edinburgh.
-  * BEAST 2 (https://www.beast2.org) is affiliated with the Drummond lab in U. Auckland
-* BEAST 2 places more emphasis on modular development
-  * Customized models contributed by community.
-  * Introduced a package management system.
 
 ---
 
+#### BEAST
 # Basic workflow
+1. Generate a multiple sequence alignment with another program such as MAFFT.
+2. Generate an XML file from sequences and model settings with BEAUti.
+3. Run the analysis with input XML in BEAST.
+4. Post-processing BEAST logs with Tracer, FigTree, and others.
 
-* Generate a multiple sequence alignment with another program such as MAFFT.
-  * Sequences may be labelled with collection dates.
-* Generate an XML file from sequences and model settings with BEAUti.
-* Run the analysis with input XML in BEAST.
-* Post-processing BEAST logs with Tracer, FigTree, and others.
-
-![](/img/beast-workflow.png)
+<img src="/img/beast-workflow.png" height=150px/>
 
 
 ---
 
+#### BEAST
 # Running BEAST
 
 * [BEAGLE](https://github.com/beagle-dev/beagle-lib) is a C/C++ [library](https://en.wikipedia.org/wiki/Library_(computing)) &mdash; a collection of functions that can be called from other programs.
@@ -70,22 +75,7 @@
 
 ---
 
-Testing whether BEAGLE does indeed make the analysis faster, even on a single CPU.
-
-```
-Failed to load BEAGLE library: no hmsbeagle-jni in java.library.path:
-Total calculation time: 22.351 seconds
-End likelihood: -1977.496625044903
-```
-
-```
-Using BEAGLE version: 3.1.2 resource 0: CPU
-Total calculation time: 14.925 seconds
-End likelihood: -1978.2260570343312
-```
-
----
-
+#### BEAST
 # BEAST runs on XML
 
 * XML stands for [eXtensible Markup Language](https://en.wikipedia.org/wiki/XML)
@@ -105,9 +95,7 @@ End likelihood: -1978.2260570343312
 
 ---
 
-
-# BEAUti
-
+### BEAUti
 * It is not very convenient to manually write XML files.
 * Most users run BEAUti (Bayesian Evolutionary Analysis Utility) to generate an XML from an alignment.
 
@@ -115,7 +103,8 @@ End likelihood: -1978.2260570343312
 
 ---
 
-# BEAST workflow
+#### BEAUti
+# Configuring models in BEAST
 
 * Generate a starting tree
 * Calculate the prior probability of the starting tree
@@ -128,6 +117,7 @@ End likelihood: -1978.2260570343312
 
 ---
 
+#### BEAUti
 # Starting tree
 
 * Initializing a chain sample with a decent tree can speed up convergence.
@@ -136,10 +126,11 @@ End likelihood: -1978.2260570343312
   * an UPGMA or NJ tree
   * a random coalescent tree
 
-<img src="https://www.beast2.org/images/BEAUTIViewStartinTree.png" height="250px"/>
+<img src="https://www.beast2.org/images/BEAUTIViewStartinTree.png" height="200px"/>
 
 ---
 
+#### BEAUti
 # Tree priors
 
 * A large number of different tree priors are implemented in BEAST:
@@ -156,13 +147,21 @@ End likelihood: -1978.2260570343312
 |  | Serial sampling | &#10003; | &#10003; |
 |  | Serial skyline | &#10003; |  |
 |  | SIR | &#10003; |  |
+| Source: https://www.beast2.org/features/ |  |  |  |
+
+<blockquote style="padding: 0;">
+<p style="font-size: 18pt; text-align: center;">
+Why shouldn't we just use an uninformative uniform tree prior?
+</o>
+</blockquote>
 
 <small><small>
-Source: https://www.beast2.org/features/
+
 <small><small>
 
 ---
 
+#### BEAUti
 # Substitution models
 
 * For nucleotide data, BEAST2 supports JC69, HKY, TN93, and GTR
@@ -173,6 +172,7 @@ Source: https://www.beast2.org/features/
 
 ---
 
+#### BEAUti
 # Tip dates
 
 * Sample collection dates are data!
@@ -185,16 +185,7 @@ Source: https://www.beast2.org/features/
 
 ---
 
-# Regular expressions
-
-* A regular expression (regex) is a string that represents one or more other strings.
-  * Similar to UNIX wildcards (where `*` can represent one or more of any character)
-* `.` represents any one character; `.+` represents one or more of anything.
-* `([0-9]+)` captures any sequence of digits as a group.
-* This has always been a buggy feature.
-
----
-
+#### BEAUti
 # Clock models
 
 * A molecular clock model links sample collection dates (data) to our likelihood calculation.
@@ -206,33 +197,49 @@ Source: https://www.beast2.org/features/
 
 ---
 
+#### BEAUti
 # Operator analysis
 
 * At the end of a BEAST run, it will print an operator analysis:
 
-```
-Operator                                                     Tuning    #accept    #reject      Pr(m)  Pr(acc|m)
-ScaleOperator(StrictClockRateScaler.c:RSV2_1)               0.77915      16614      55345    0.03589    0.23088
-UpDownOperator(strictClockUpDownOperator.c:RSV2_1)          0.78031        706      70870    0.03589    0.00986 Try setting scaleFactor to about 0.883
-```
+<pre class="code-wrapper" style="width: 100%; margin: 0;"><code class="hljs" style="font-size: 12pt;">Operator                                             Tuning   #accept  #reject    Pr(m)  Pr(acc|m)
+ScaleOperator(StrictClockRateScaler.c:RSV2_1)        0.77915    16614    55345  0.03589    0.23088
+UpDownOperator(strictClockUpDownOperator.c:RSV2_1)   0.78031      706    70870  0.03589    0.00986
+  Try setting scaleFactor to about 0.883
+</code></pre>
 
 * An operator is an MCMC proposal that changes one or more model parameters.
-* `Tuning` is a weight that determines how often that operator is used.
+  * `Tuning` is a weight that determines the probability that operator is used, `Pr(m)`.
+  * `Pr(acc|m)` = `#accept` / (`#accept` + `#reject`).
 
 ---
 
+#### BEAUti
 # Tuning operators
 
-* If the probability of accepting a proposal is too low, the chain will fail to converge.
-* If the acceptance probability is too high, the proposal is probably taking very small steps and the chain will fail to converge.
+* If the probability of accepting a proposal **Pr(acc|m)** is too low, the chain will fail to converge.
+* If **Pr(acc|m)** is too high, the proposal is probably taking very small steps and the chain will fail to converge.
 * We can adjust a faultly proposal with the BEAUti Operator panel:
 ![](/img/operators.png)
 
 ---
 
-# Fuzzy caterpillars
+#### Tracer
+# BEAST outputs
 
-* Visually inspecting a trace is a legitimate quality control step!
+* BEAST generates several output files, including:
+  * A `.log` file that is a tab-separated table of parameter values sampled in the chain.
+  * A `.trees` file that records a chain sample of trees in the [NEXUS format](https://en.wikipedia.org/wiki/Nexus_file).
+* The log file can be viewed in **Tracer**.
+* The tree file can be viewed in **FigTree**, but it is usually processed first in **Tracer** or **TreeAnnotator**.
+
+---
+
+#### Tracer
+# Checking BEAST outputs
+
+* Visually inspecting chain samples over time (a trace plot) is an important quality control step!
+  * A "fuzzy caterpillar" is consistent with convergence, but it is not proof!
 
 <table>
 <tr>
@@ -250,8 +257,15 @@ Image sources: Taming the BEAST workshop, <a href="https://taming-the-beast.org/
 
 ---
 
-# Suggested readings
 
-* BEAST has a large user community with many resources online!
-* You can find a large list of online tutorials [here](https://www.beast2.org/tutorials/)
-* [Taming the BEAST](https://taming-the-beast.org/) workshops and tutorials
+<section data-background="#333" style="color:white">
+
+<h1 style="color:white">Key points</h1>
+
+* BEAST is the leading software package for dated tree analyses and phylodynamics.
+* The primary input for BEAST is an XML file that combines the data and model settings.
+  * XML is difficult to write by hand, so most people use the BEAUti app.
+* After running the XML with BEAST, the output log can be viewed in Tracer.
+
+
+</section>
