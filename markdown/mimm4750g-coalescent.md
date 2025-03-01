@@ -1,4 +1,4 @@
-# MIMM4750G
+# MBI 4750G
 ## The coalescent
 <img src="https://imgs.xkcd.com/comics/strengths_and_weaknesses.png" width="800px"/>
 
@@ -13,18 +13,19 @@
 ---
 
 <section data-state="numtrees-slide">
-    <h1>How many trees?</h1>
-    <ul>
-      <li>There are an enormous number of possible trees relating even a small number of species!</li>
-    </ul>
-    <div id="howmany" class="fig-container"
-         data-fig-id="fig-howmany"
-         data-file="/include/numtrees.html"
-         style="height:200px;">
-    </div>
-    <blockquote>
-    Why are there always more possible rooted trees than unrooted trees?
-    </blockquote>
+  <h1>How many trees?</h1>
+  <ul>
+    <li>There are an enormous number of possible trees relating even a small number of species!</li>
+  </ul>
+  <div id="howmany" class="fig-container"
+        data-fig-id="fig-howmany"
+        data-file="/include/numtrees.html"
+        style="height:200px;">
+  </div>
+
+  <blockquote style="font-style: normal; font-weight: 500; padding: 24px;">
+  Why are there always more possible rooted trees than unrooted trees?
+  </blockquote>
 </section>
 
 ---
@@ -60,8 +61,16 @@
 
 ---
 
+# The coalescent
+
+* To make things simple, assume everyone has one and only one ancestor (pathogens!).
+* The probability that two *randomly sampled* individuals have a common ancestor in the previous generation is $1/N$
+  * $N$ is the population size.
+* Every individual is equally likely to be the ancestor.
+
+---
+
 <section data-state="coalescent-slide">
-    <h1>The coalescent</h1>
     <div id="coalescent" class="fig-container"
          data-fig-id="fig-coalescent"
          data-file="/include/coaltrace.html"
@@ -72,16 +81,7 @@
 
 ---
 
-# The coalescent
-
-* To make things simple, assume everyone has one and only one ancestor (pathogens!).
-* The probability that two *randomly sampled* individuals have a common ancestor in the previous generation is $1/N$
-  * $N$ is the population size.
-* Every individual is equally likely to be the ancestor.
-
----
-
-# Geometric distribution
+# Review: Geometric distribution
 
 * The expected number of generations we go back is described by a [geometric distribution](https://en.wikipedia.org/wiki/Geometric_distribution):
   $$P(t) = (1-p)^{t-1} p$$
@@ -96,7 +96,7 @@
 # Mean time to ancestor
 
 * The mean for the geometric distribution is simply $1/p$.
-* Since $p=1/N$, we expect to go $N$ generations until we reach the common ancestor of two random individuals.
+  * Since $p=1/N$, we expect to go $N$ generations until we reach the common ancestor of two random individuals.
 * *We can learn something about the entire population from sampling a much smaller number of individuals.*
 * The model assumes that only one coalescent event can occur per generation!
   * Compatible with small sample size relative to population.
@@ -107,7 +107,7 @@
 
 <table>
   <tr>
-    <td style="font-size: 22pt">
+    <td style="font-size: 20pt">
       <ul>
         <li>If we sample $n$ individuals at random, then there are
         $${n\choose 2} = \frac{n!}{(n-2)!2!} = \frac{n(n-1)}{2} \text{ pairs.}$$
@@ -223,8 +223,16 @@ $$P(T, \Theta|D) = \frac{P(D |T,\Theta)\color{red}{P(T,\Theta)}}{P(D)} = \frac{P
 
 ---
 
-# Suggested readings
 
-* [Bayesian Evolutionary Analysis with BEAST](https://www-cambridge-org.proxy1.lib.uwo.ca/core/books/bayesian-evolutionary-analysis-with-beast/81F5894F05E87F13C688ADB00178EE00) - book, requires UWO credentials to access.
-* [Viral phylodynamics](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1002947) - an accessible review article that includes a section on coalescent theory.
-* [Stochastic or deterministic: what is the effective population size of HIV-1?](https://www.sciencedirect.com/science/article/pii/S0966842X06002332)
+<section data-background="#333" style="color:white">
+
+<h1 style="color:white">Key points</h1>
+
+* A tree prior is a probability distribution on an enormous space of all possible trees.
+* The coalescent is a model of how individuals sampled from a population share common ancestors in the past.
+  * Because the coalescent defines a probability for any tree, it can be used as a tree prior.
+* The time to common ancestors depends more on the total population size ($N$) than the sample size ($n$).
+  * The effective population size $N_e$ is the size if every assumption of the coalescent is true.
+
+
+</section>
