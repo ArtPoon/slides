@@ -123,7 +123,7 @@ Image source: Nee <i>et al.</i> (1995) Inferring population history from molecul
 # The skyline model
 
 * The rate of coalescence changes as we switch from one population size to another over time.
-* The piecewise linear model is called a "skyline" because it resembles a city skyline.
+  * The piecewise linear model is called a "skyline" because it resembles a city skyline.
 
 <table><tr>
 <td><img src="/img/skyline.png" width="300px"/></td>
@@ -137,7 +137,7 @@ Image source: Wikimedia Commons, <a href="https://commons.wikimedia.org/wiki/Fil
 
 ---
 
-<table>
+<table style="font-size: 16pt;">
 <tr>
   <td>
   <h1>"Classic" skyline</h1>
@@ -166,7 +166,7 @@ Image source: Wikimedia Commons, <a href="https://commons.wikimedia.org/wiki/Fil
 
 # Example: Application to HIV-1
 
-* Analysis implies subtype B expanded more recently than subtype A - this is now well established.
+* Analysis implies subtype B expanded more recently than subtype A &mdash; this is now well established.
 * Must know substitution rate $\mu$ to map dynamics to time (for HIV-1, $\mu = 0.003$/site/year).
 
 
@@ -181,8 +181,8 @@ Image source: Pybus <i>et al.</i> (2000). An integrated framework for the infere
 # Generalized skylines
 
 * The classic skyline plot is noisy because of random variation, esp. for short time intervals.
-* The generalized skyline pools intervals together to give more robust estimates.
-* Consider a composite time interval starting with $n$ lineages, and spanning $k$ coalescent events.  Then the estimated population size is:
+  * The generalized skyline pools intervals together to give more robust estimates.
+* Consider a composite time interval starting with $n$ lineages, and spanning $k$ coalescent events &mdash; the estimated population size is:
 $$M_{n,k} = \frac{n(n-k)}{2k} \sum_{j=n}^{n-k+1} g_j $$
   * If $k=1$ then we recover $M_n = g_n {n\choose 2}$
 
@@ -250,11 +250,20 @@ Image source: Drummond <i>et al.</i> (2005).  Bayesian coalescent inference of p
 
 <img src="/img/comas-MTBC.png" width="700px"/>
 
-<small>I Comas *et al.* 2013. Out-of-Africa migration and Neolithic co-expansion of *Mycobacterium tuberculosis* with modern humans. Nature Genetics 45: 1176-1182.</small>
+<small><small>
+Comas <i>et al.</i> 2013. Out-of-Africa migration and Neolithic co-expansion of *Mycobacterium tuberculosis* with modern humans. Nature Genetics 45: 1176-1182.
+</small></small>
 
 ---
 
-# Suggested readings
+<section data-background="#333" style="color:white">
 
-* [Nature Education - How Populations Grow: The Exponential and Logistic Equations](https://www.nature.com/scitable/knowledge/library/how-populations-grow-the-exponential-and-logistic-13240157/)
-* [Taming the BEAST tutorial on Skyline plots](https://taming-the-beast.org/tutorials/Skyline-plots/)
+<h1 style="color:white">Key points</h1>
+
+* The original Kingman's coalescent model assumes that population size is constant.
+* There are two ways of relaxing this assumption: parametric and non-parametric.
+  * Exponential growth is an example of a parametric model.
+* A skyline model is a non-parametric approach that estimates multiple values of $N_e$ for different time intervals.
+  * We can average a posterior sample of skylines to produce a smooth Bayesian skyline.
+
+</section>
