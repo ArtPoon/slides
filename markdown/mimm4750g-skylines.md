@@ -34,6 +34,7 @@
 
 ---
 
+#### Parametric models
 # Exponential growth and decay
 
 * Every individual produces offspring at a rate $r$.
@@ -44,6 +45,7 @@ $$N_e(t) = N_e(0)\exp(r t) $$
 
 ---
 
+#### Parametric models
 # Logistic growth
 
 * Every individual produces offspring at rate $r$ that decelerates with increasing $N_e$ to a carrying capacity, $N(t)\xrightarrow{t\rightarrow \infty} K$:
@@ -58,7 +60,8 @@ Image source: Wikimedia Commons, <a href="https://commons.wikimedia.org/wiki/Fil
 
 ---
 
-# Calculating the tree prior
+#### Parametric models
+# Averaging the coalescent rate
 
 * Recall the waiting time ($\tau_k$) to the next coalescence among $k$ lineages is exponentially distributed for constant $N_e$:
 $$f(\tau_k)=\lambda_k \exp(-\lambda_k \tau_k),\\; \lambda_k = \frac{{k\choose 2}}{N}$$
@@ -69,12 +72,15 @@ $$f(\tau_k) = \Lambda_k(\tau_k) \exp\left( -\int_0^{\tau_k} \Lambda_k(s) ds  \ri
 
 ---
 
+#### Parametric models
 # Population dynamics and tree shapes
 
-* A constant size population (left) will tend to have longer branches towards the root.
-* An exponentially growing population (right) should have a "star-like" tree with shorter branches closer to the root.
+<ul style="font-size: 18pt;">
+<li>A constant size population (left) will tend to have longer branches towards the root.</li>
+<li>An exponentially growing population (right) should have a "star-like" tree with shorter branches closer to the root.</li>
+</ul>
 
-<img src="/img/coalescent.png" width="500px"/>
+<img src="/img/coalescent.png" width="450px"/>
 
 ---
 
@@ -142,21 +148,20 @@ Image source: Wikimedia Commons, <a href="https://commons.wikimedia.org/wiki/Fil
   <td>
   <h1>"Classic" skyline</h1>
   <ul>
-  <li>Calculate internode distances from internal node heights, $g_i = t_i-t_{i-1}$</li>
-  <img src="/img/rcoal1.svg" width=350/>
-  <li>Rescale internode distances: 
-  $$M_i = g_i {i\choose 2}$$
-  </li>
-  <li>
-  Each rescaled distance is an estimator of coalescence rate ($\lambda=1/N$).
-  </li>
+    <li>Calculate internode distances from internal node heights, $g_i = t_i-t_{i-1}$</li>
+    <img src="/img/rcoal1.svg" width=350/>
+    <li>Assume $g_i\sim \exp(\lambda_i)$, where $\lambda_i=\frac{1}{N_i}$</li>
+    <li>
+    Each rescaled distance is an estimator of population size:
+    $$E[g_i] = \frac{N_i}{{i\choose 2}} \implies \hat{N_i} = g_i {i\choose 2}$$
+    </li>
   <ul>
   </td>
-<td width="45%">
+<td style="vertical-align: middle;" width="40%">
   <img src="/img/classic-skyline.svg"/>
   <small>
-  (above) Classic skyline for a tree simulated under $N\mu=1$.
-  Because the branch lengths are measured in expected substitutions ($\mu t$) instead of time $t$, 
+  Classic skyline for a tree simulated under constant $N\mu=1$.
+  Branch lengths are measured in expected substitutions ($\mu t$) instead of chronological time $t$.
   </small>
 </td>
 </tr>
@@ -183,8 +188,8 @@ Image source: Pybus <i>et al.</i> (2000). An integrated framework for the infere
 * The classic skyline plot is noisy because of random variation, esp. for short time intervals.
   * The generalized skyline pools intervals together to give more robust estimates.
 * Consider a composite time interval starting with $n$ lineages, and spanning $k$ coalescent events &mdash; the estimated population size is:
-$$M_{n,k} = \frac{n(n-k)}{2k} \sum_{j=n}^{n-k+1} g_j $$
-  * If $k=1$ then we recover $M_n = g_n {n\choose 2}$
+$$N_{n,k} = \frac{n(n-k)}{2k} \sum_{j=n}^{n-k+1} g_j $$
+  * If $k=1$ then we recover $N_n = g_n {n\choose 2}$
 
 ---
 
@@ -193,12 +198,12 @@ $$M_{n,k} = \frac{n(n-k)}{2k} \sum_{j=n}^{n-k+1} g_j $$
   <td style="font-size:22pt;">
     <h1>How do we pool the intervals?</h1>
     <ul>
+      <li>Let $\epsilon$ be the minimum interval length.</li>
       <li>If $g_i$ is less than some threshold $\epsilon>0$, then we merge it with the next intervals until the total length exceeds $\epsilon$.</li>
       <ul>
-        <li>If $\epsilon$ is too big, then we will average out the population dynamics.</li>
-        <li>If $\epsilon$ is too small, then we are back where we started.</li>
+      <li>If $\epsilon$ is too big, then we will average out the population dynamics.</li>
+      <li>If $\epsilon$ is too small, then we are back where we started.</li>
       </ul>
-      <li>Use model selection (<i>e.g.</i>, AICc) to select $\epsilon$.</li>
     </ul>
   </td>
   <td width="40%">

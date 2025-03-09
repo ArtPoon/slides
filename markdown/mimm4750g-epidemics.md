@@ -9,17 +9,8 @@
 
 * The growth or decline of a population can be described as a function of time $t$.
 * For example, exponential growth is described by:
-$$N(t) = N(0)\exp(r t)$$
+$$\frac{dN}{dt} = r N \hspace{2em} N(t) = N(0)\exp(r t)$$
 * This is a deterministic model - we predict that $N$ at time $t$ is *exactly* $N(0)\exp(r t)$.
-
----
-
-# Differential equations
-
-* The formula for exponential growth is the solution of a [differential equation]():
-$$\frac{dN}{dt} = r N$$
-
-* This equation represents a constant rate of growth $r$ per individual.
 
 ---
 
@@ -107,6 +98,10 @@ $$\frac{dI}{dt} = \beta S I$$
 </tr>
 </table>
 
+<small><small>
+Image source: <a href="Wikimedia Commons">https://commons.wikimedia.org/wiki/File:SIR_trajectory.png</a>, CC-BY-SA 4.0.
+</small></small>
+
 ---
 
 # The basic reproduction number
@@ -117,7 +112,7 @@ $$\frac{dI}{dt} = (\beta S-\gamma)I$$
 * This implies that the number of infections increases ($dI/dt>0$) when:
 $$
 \begin{aligned}
-\beta S I - \gamma I &> 0\\\\
+(\beta S - \gamma) I &> 0 \\\\
 \beta S I &> \gamma I\\\\
 \frac{\beta S}{\gamma} &> 1
 \end{aligned}
@@ -139,7 +134,7 @@ $$R_0 = \frac{\beta S_0}{\gamma} = \frac{\beta (N-1)}{\gamma} \approx \frac{\bet
 
 * Note that $R_0$ is proportional to the population size ($N$ or $S_0$).
   * It is not an immutable quantity of the pathogen.
-  * The number of contacts depends on cultural practices, population density.
+  * $S_0$ and $\beta$ depend on cultural practices, population density, vaccination rates.
 
 <img height="250px" src="https://ars.els-cdn.com/content/image/1-s2.0-S1473309917303079-gr4.jpg"/>
 
@@ -152,9 +147,9 @@ Image source: FM Guerra <i>et al.</i> (2017) The basic reproduction number (R0) 
 # Effective reproduction number
 
 * The number of contacts with susceptible individuals varies over time.
-* $R_t$ or $R_e$ is the expected number of infections from an infected individual at time $t$.
+* $R_t$ (or $R_e$) is the expected number of infections from an infected individual at time $t$.
 * If $\beta$ and $\gamma$ do not vary over time, then:
-$$R(t) = \frac{\beta S(t)}{\gamma} = \frac{S(t)}{S(0)} R_0$$
+$$R_t = \frac{\beta S_t}{\gamma} \hspace{1em} \overset{R_0=\frac{\beta S_0}{\gamma}} {\Longrightarrow} \hspace{1em} R_t = \frac{S_t}{S_0} R_0$$
 
 <small><small>
 Source: Nishiura and Chowell (2009) The effective reproduction number as a prelude to statistical estimation of time-dependent epidemic trends.  In: <a href="https://link.springer.com/chapter/10.1007/978-90-481-2313-1_5">Mathematical and Statistical Estimation Approaches in Epidemiology</a>, pp. 103-121.
@@ -170,11 +165,13 @@ $$
 \hspace{2em}
 \frac{dI}{dt} = \beta S I - \gamma I
 $$
-* $dI/dt$ can be written as a logistic function:
+* $dI/dt$ can be written in a logistic form* by substituting $S=N-I$:
 $$
 \frac{dI}{dt} = (\beta N + \gamma) I \left(1 - \frac{I}{N-(\gamma/\beta)}\right)
 $$
-* with an equilibrium ($dI/dt=0$) at $I = N-\gamma/\beta$
+with $r=\beta N+\gamma$ and $K=N-(\gamma/\beta)$.
+
+$^\ast \text{remember}, \frac{dN}{dt} = rN(1-\frac{N}{K})$
 
 ---
 
@@ -221,10 +218,14 @@ Image source: Z Du <i>et al. (2021) </i>Comparative cost-effectiveness of SARS-C
 
 ---
 
-# Suggested readings
+<section data-background="#333" style="color:white">
 
-* [Calculus Volume 1: OpenStax](https://opentextbc.ca/calculusv1openstax/chapter/exponential-growth-and-decay/)
-* [Simple Compartmental Models for Disease Transmission](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7316089/)
-* [JAMA Guide to Statistics and Methods: Modeling Epidemics With Compartmental Models](https://jamanetwork.com/journals/jama/fullarticle/2766672)
-* [Complexity of the Basic Reproduction Number (R0)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6302597/)
-* [Coalescent inference for infectious disease: meta-analysis of hepatitis C](https://royalsocietypublishing.org/doi/full/10.1098/rstb.2012.0314)
+<h1 style="color:white">Key points</h1>
+
+* Compartmental models are the fundamental framework for modeling epidemics.
+  * The population is divided into compartments according to the state of each compartment's members, *e.g.*, infected.
+* $R_0$ is the expected number of secondary infections from the index case.
+  * It can be described in terms of the SIR model.
+  * The *effective* reproduction number $R_e$ recognizes that $R_0$ changes over time.
+
+</section>
