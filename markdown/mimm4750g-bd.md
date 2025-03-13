@@ -59,7 +59,6 @@ $$\frac{\lambda}{\lambda+\mu}$$
 
 ---
 
-# History
 
 * The birth-death model was first used to model the probability that a population would go extinct by chance ([Feller 1939](https://link.springer.com/article/10.1007/BF01602932)). <img src="https://upload.wikimedia.org/wikipedia/commons/2/28/BD-proces.png" width="500px"/>
 
@@ -125,7 +124,7 @@ $$`
 
 * These distributions tell us the probability that $n$ lineages exist at time $t$
   * They do *not* tell us how those lineages are related!
-* To calculate the probability of a particular tree, we can start by assumping **complete sampling**:
+* To calculate the probability of a particular tree, we can start by assuming **complete sampling**:
   * All $n$ lineages that have survived to the present day have been sampled.
   * Some other lineages may have gone extinct before sampling.
 * It is also easier to assume that all lineages are sampled at the same time (**contemporaneous sampling**).
@@ -215,7 +214,7 @@ Image source: Stadler, Kuhnert <i>et al.</i> (2013) <a href="https://www.pnas.or
 <table>
   <tr>
     <td>
-    <img src="https://royalsocietypublishing.org/cms/asset/ad72f3d7-f349-403a-a02b-ad086db3e062/rsif20131106f02.jpg" height="250px"/>
+    <img src="/img/rsif20131106f02.jpg" height="300px"/>
       <li>The BD skyline allows $\lambda$ and $\mu$ to vary freely over time, as though shaped by changes in behaviour.</li>
       <li>Dr. Denise K&uuml;hnert introduced a birth-death model where these rates are controlled by the SIR model.</li>
     </td>
@@ -239,7 +238,7 @@ Image source: K&uuml;hnert <i>et al.</i> (2014) <a href="https://royalsocietypub
 * The BDSIR model is directly linked to epidemiological parameters.
   * A coalescent skyline can recover shifts in $N_e$, but not whether those changes are due to changes in birth (transmission) or death (recovery).
 * The birth-death process is stochastic.
-  * The coalescent uses deterministic growth models, although stochastic versions exist.
+  * The coalescent uses deterministic growth models (although stochastic versions have recently been developed).
 * Birth-death models can more naturally handle selection (differences in growth rates).
 * Birth-death models do not assume small sample sizes.
 
@@ -286,19 +285,34 @@ Image source: Grenfell <i>et al.</i> (2004) Unifying the epidemiological and evo
   <tr>
     <td>
       <ul>
-        <li>Presently, the term "phylodynamics" is applied to any study of infectious diseases that uses a phylogeny to estimate epidemiological parameters.</li>
+        <li>Presently, the term "phylodynamics" is applied to any study of infectious diseases that uses tree shape to estimate epidemiological parameters.</li>
+          <ul>
+          <li>Some articles mistakenly use the term for anything that involves a tree.</li>
+          </ul>
         <li>It does not <i>have</i> to involve coalescent or birth-death models</li>
         <li>It does not <i>have</i> to involve Bayesian inference</li>
         <li>BUT these are very common methods in phylodynamics</li>
       </ul>
     </td>
-    <td width="50%">
+    <td width="40%">
       <img src="/img/phylodynamics-refs.svg">
+      <small>
+      Number of articles using the term "phylodynamic" per year, using the Google Scholar or NCBI PubMed databases.
+      </small>
     </td>
   </tr>
 </table>
 
 ---
 
-![](https://imgs.xkcd.com/comics/adjective_foods.png)
+<section data-background="#333" style="color:white">
 
+<h1 style="color:white">Key points</h1>
+
+* The birth-death model describes how the number of lineages changes over (forward) time.
+  * All lineages that have not gone extinct are sampled at the same time (contemporaneous).
+* The serial birth-death model assumes that lineages are sampled at a constant rate over time.
+* Birth-death models offer another way to estimate epidemiological parameters from trees (phylodynamics).
+  * They are more interpretable than coalescent models and do not assume small sample size, but can be difficult to fit to data.
+
+</section>
