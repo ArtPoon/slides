@@ -253,8 +253,10 @@ $$R = \frac{P(D|\theta',M)^\beta P(\theta'|M)}{P(D|\theta,M)^\beta P(\theta|M)}$
 
 <h1 style="color:white">Key points</h1>
 
-* The likelihood ratio test can be used if one model is a special case of the other.
-* If the models are not nested, we can use the Akaike information criterion (AIC).
-
+* The likelihood ratio test (LRT) can be used if one model is a special case of the other.
+* If models are not nested, we use the Akaike information criterion (AIC).
+* Model selection is very challenging for Bayesian methods because we are working with sampled distributions.
+  * Reversible-jump MCMC samples different models.
+  * Bayes factor is the Bayesian version of LRT, but we need to calculate marginal likelihoods (hard!)
 
 </section>
