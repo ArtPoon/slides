@@ -10,10 +10,10 @@
 * Reconstructing ancestral states requires a model of evolution.
   * We already calculate the probabilities of different ancestral states when computing the likelihood of a tree.
 * Maximum-likelihood and Bayesian methods tend to be more accurate than maximum parsimony.
-  * For example, MP methods are biased when one or more character states (*e.g.*, nucleotides) are predominant.
+  * For example, MP methods are biased when one or more character states (*e.g.*, nucleotides) are predominant*.
 
 <small><small>
-Eyre-Walker, A. (1998). Problems with parsimony in sequences of biased base composition. Journal of Molecular Evolution, 47, 686-690.
+*Eyre-Walker, A. (1998). Problems with parsimony in sequences of biased base composition. Journal of Molecular Evolution, 47, 686-690.
 </small></small>
 
 ---
@@ -69,15 +69,17 @@ Eyre-Walker, A. (1998). Problems with parsimony in sequences of biased base comp
 
 <table>
   <tr>
-    <td style="vertical-align: middle">
+    <td style="vertical-align: middle; font-size: 18pt;">
       <h1>Example: NO<sub>2</sub> and COVID-19</h1>
       <ul>
         <li>Several studies reported an association between atmospheric NO<sub>2</sub> (nitrogen dioxide, an air pollutant) and COVID-19 mortality.</li>
         <li>You can obtain positive, negative, or non-significant associations depending on how you partition the geographic area.</li>
       </ul>
-      <small>
-      Image credit: Wang and Di (2020) Modifiable areal unit problem and environmental factors of COVID-19 outbreak.  Science of the Total Environment 740: <a href="https://www.sciencedirect.com/science/article/pii/S004896972033504X">139984</a>.
-      </small>
+      <small><small>
+      Image credit: Wang and Di (2020) Modifiable areal unit problem and environmental factors of COVID-19 outbreak.  Science of the Total Environment 740: <a href="https://www.sciencedirect.com/science/article/pii/S004896972033504X">139984</a>.<br/>
+      <br/>
+      Note this journal was recently suspended from Web of Science indexing due to concerns about the quality of published content.
+      </small></small>
     </td>
     <td width="45%">
       <img src="https://ars.els-cdn.com/content/image/1-s2.0-S004896972033504X-gr3_lrg.jpg"/>
@@ -133,11 +135,14 @@ Right: Kobmoo <i>et al.</i> (2022) Reconstruction of ancestral host association 
 
 # Limitations of discrete migration models
 
-* The modifiable areal unit problem - our results will change with different maps.
+* The modifiable areal unit problem.
+  * Our results will change with different partitions of space into discrete regions.
  
-* We cannot model a new location &mdash; if we sampled infections from two regions, we cannot reconstruct their ancestor in a third, intermediate location.
+* We cannot model a new location.
+  * If we sampled infections from two regions, we cannot reconstruct their ancestor in a third, intermediate location.
 
 * The number of rate parameters quadratically with the number of regions!
+  * This is really a problem if we let every pair of regions have their own migration rate.
 
 ---
 
@@ -145,7 +150,9 @@ Right: Kobmoo <i>et al.</i> (2022) Reconstruction of ancestral host association 
 
 * The number of migration rate parameters can be reduced by adding a probability that any of the rates is zero.
   * *i.e.*, what is the smallest number of non-zero migration rates that can explain the data?
-* This method (Bayesian stochastic search variable selection, Lemey *et al.*, 2009) makes it feasible to reconstruct the ancestral location among a large number of sites!
+  * Similar to adding an invariant site class for handling rate variation.
+* This method (stochastic search variable selection, SSVS) makes it feasible to reconstruct the ancestral location among a large number of sites!
+  * First applied to phylogeography by Lemey *et al.*, 2009.
 
 <small><small>
 Lemey <i>et al.</i> (2009) Bayesian Phylogeography Finds Its Roots.  PLOS Comput Biol 5(9): <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000520">e1000520</a>.
@@ -155,7 +162,9 @@ Lemey <i>et al.</i> (2009) Bayesian Phylogeography Finds Its Roots.  PLOS Comput
 
 # Example: The spread of influenza A virus H5N1
 
+<div style="font-size: 16pt; font-weight: 500;">
 Phylogenies for hemagglutinin (HA) and neuraminidase (NA) genes, coloured by observed and estimated locations
+</div>
 <img src="/img/pcbi.1000520.g001.png">
 
 <small><small>
@@ -166,7 +175,7 @@ Image credit: Lemey <i>et al.</i> (2009) Bayesian Phylogeography Finds Its Roots
 
 # Regression modeling of migration rates
 
-* Lemey *et al.* (2014) later extended the BSSVS method to make every migration rate a function of a small number of predictor varaibles:
+* Lemey *et al.* (2014) later extended the SSVS method to make every migration rate $\Lambda_{ij}$ into a function of a small number of predictor variables:
 $$\Lambda_{ij} = \exp\left(\sum_{k=1}^{P} \delta_k \beta_k X_{ijk} + \epsilon \right)$$
 where $\delta_k=1$ or $0$ turns the $k$-th predictor on and off.
 
@@ -178,10 +187,12 @@ Image credit: Lemey <i>et al.</i> (2014) Unifying viral genetics and human trans
 
 ---
 
-# Example: Spread of Ebola in 56 regions of West Africa
+<div style="font-size: 16pt; font-weight: 500;">
+Example: Spread of Ebola among 56 regions of West Africa (Guinea, Sierra Leone, Liberia)
+</div>
 
-<div style="font-size: 16pt; font-weight: 500">Early dispersal events in Guinea (green), Sierra Leone (blue) and Liberia (red)</div>
-<img src="/img/41586_2017_Article_BFnature22040_Fig1_HTML.jpg" height="500px">
+<video data-autoplay data-src="/img/ebola.mp4" type="video/mp4"></video>
+
 
 <small><small>
 Image credit: Dudas <i>et al.</i> (2017) Virus genomes reveal factors that spread and sustained the Ebola epidemic.  Nature 544: <a href="https://www.nature.com/articles/nature22040">309-315</a>.
@@ -214,7 +225,7 @@ Image credit: Dellcour <i>et al.</i> (2021) Relax, Keep Walking - A Practical Gu
 
 <table>
 <tr>
-<td>
+<td style="font-size: 18pt;">
   <ul>
   <li>If we can calculate the probability of migrating from $X$ to $Y$ on a branch of length $t$, we can reconstruct ancestral states.</li>
   <li>On the right, a simulated tree (solid black) has its root at location 0.</li>
@@ -235,15 +246,22 @@ Image credit: Dellcour <i>et al.</i> (2021) Relax, Keep Walking - A Practical Gu
 
 # Pros and cons
 
-* Inferred migration routes can reach unsampled areas.
-* More difficult to represent dispersal as a continuous process (*e.g.*, air travel).
+* Inferred migration routes can reach unsampled areas in a continuous-space model.
+* More difficult to represent human dispersal as a continuous process (*e.g.*, air travel).
 * Continuous data are not always available (*e.g.*, GPS coordinates)
   * Must be estimated from discrete data, such as centroids.
 * Movement through obstacles (*e.g.*, over bodies of water).
 
 ---
 
-# Suggested readings
+<section data-background="#333" style="color:white">
 
-* [Toward a quantitative understanding of viral phylogeography](https://www.sciencedirect.com/science/article/pii/S1879625711001222)
-* [Relax, Keep Walking - A Practical Guide to Continuous Phylogeographic Inference with BEAST](https://academic.oup.com/mbe/article/38/8/3486/6126413)
+<h1 style="color:white">Key points</h1>
+
+* Phylogeography is the ancestral reconstruction of spatial locations.
+* Discrete phylogeography is easy to implement if we treat locations like nucleotides.
+  * But regions are often arbitrary constructs!
+  * Handling many discrete regions requires some way of constraining rate parameters (*e.g.*, SVSS, regression).
+* Continuous phylogeography use diffusion to model how lineages move over time.
+
+</section>
