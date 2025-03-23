@@ -46,7 +46,7 @@ Image credit: C Rinke <i>et al.</i> (2013) <a href="https://doi.org/10.1038/natu
 </table>
 
 <small><small>
-Image credit: GM Daly <i>et al.</i> (2015) <a href="https://doi.org/10.1371/journal.pone.0129059">PLOS ONE 10: e0129059</a>.
+Plot based on a figure from GM Daly <i>et al.</i> (2015) <a href="https://doi.org/10.1371/journal.pone.0129059">PLOS ONE 10: e0129059</a>, extended with new data.
 </small></small>
 
 ---
@@ -111,15 +111,6 @@ Example from A Morgulis <i>et al.</i> (2006) <a href="https://doi.org/10.1089/cm
 
 ---
 
-# Pros and cons
-
-* Reference *mapping* is generally faster and easier than *de novo* assembly, but needs a good reference.
-* Mapping better suited for variant detection.
-* *de novo* assembly is better suited for discovering new genomes, where no suitable reference exists.
-* Hybrid methods use both *de novo* assembly and mapping to re-assemble local contigs.
-
----
-
 # Finding overlaps
 
 * This requires that we compare every pair of pieces!
@@ -127,16 +118,6 @@ Example from A Morgulis <i>et al.</i> (2006) <a href="https://doi.org/10.1089/cm
 * Made even more difficult if we want to tolerate *inexact* matches (sequencing error or polymorphism)!
 
 <img src="/img/contig2.png" width="500px"/>
-
----
-
-# Substrings
-
-* Immediately looking for the largest matching sub-string between two strings is time-consuming.
-* Instead, we can check if a short *prefix* of one string occurs somewhere in the second string.
-* Requiring the suffix to match
-
-<img src="/img/prefix-match.svg"/>
 
 ---
 
@@ -179,6 +160,15 @@ Image credit: E Videvall <i>et al.</i> https://www.molecularecologist.com/2017/0
 
 ---
 
+# Pros and cons of *de novo* assembly
+
+* Reference *mapping* is generally faster and easier than *de novo* assembly, but needs a good reference.
+* Mapping better suited for variant detection.
+* *de novo* assembly is better suited for discovering new genomes, where no suitable reference exists.
+* Hybrid methods use both *de novo* assembly and mapping to re-assemble local contigs.
+
+---
+
 # Example: crAssphage
 
 * A previously unidentified bacteriophage (~97kbp circular DNA genome) found in majority of published human faecal metagenomic data.
@@ -194,17 +184,16 @@ Image credit: E Videvall <i>et al.</i> https://www.molecularecologist.com/2017/0
 
 <table>
 <tr>
-  <td>
+  <td style="font-size: 18pt;">
   <h1>Case study: Dandenong virus</h1>
   <ul>
   <li>3 patients died of febrile illness 4-6 weeks after receiving organ transplants from a deceased donor.</li>
   <li>Samples screened for HHV1-8, lyssavirus, IAV, IBV, RSV, picornavirus, adenovirus, human parainfluenza virus, flavivirus, and many more.</li>
   <li>Total RNA from recipient samples was amplified with random primers and processed by NGS.</li>
-  <li>Contigs obtained after subtraction of human DNA and <i>de novo</i> assembly were similar to Old World arenaviruses.</li>
+  </ul>
   <small><small>
 G Palacios <i>et al.</i> (2008). A New Arenavirus in a Cluster of Fatal Transplant-Associated Diseases. <a href="http://doi.org/10.1056/NEJMoa073785">N Eng J Med 358: 991</a>.
 </small></small>
-  </ul>
   </d>
   <td width="35%">
     <img src="https://live-production.wcms.abc-cdn.net.au/96b79beab72b0685eb9f6d752d5e511d?src"/>
@@ -216,6 +205,13 @@ G Palacios <i>et al.</i> (2008). A New Arenavirus in a Cluster of Fatal Transpla
 </tr>
 </table>
 
+---
+
+<div style="font-weight: 500; font-size: 18pt;">
+Contigs obtained after subtraction of human DNA and <i>de novo</i> assembly were similar to Old World arenaviruses
+</div>
+
+<img src="https://filogeneti.ca/img/dandenong.png"/>
 
 ---
 
@@ -223,9 +219,13 @@ G Palacios <i>et al.</i> (2008). A New Arenavirus in a Cluster of Fatal Transpla
 
 * Science Education Alliance - Phage Hunters Advancing Genomics and Evolutionary Science
 * A [two-semester course](https://seaphages.org/) run by the University of Pittsburgh and the Howard Hughes Medical Institute
+  * Taught at multiple universities, including [McGill](https://www.mcgill.ca/microimm/students/undergraduate-studies/courses/mimm-390)!
 * Students collect soil samples, filter and spread their sample on a plate with bacteria and look for plaques.
-* After sequencing and annotating the genome and obtaining electron microscopy, the student gets to name the new species.
-  * Names include BillDoor, PhatLouie, TinaFeyge, and GuyFagieri
+* After sequencing and annotating the genome and obtaining electron microscopy, the student gets to name the new virus*.
+
+<small><small>
+&ast; 28,256 names (as of March 23, 2025) including BillDoor, PhatLouie, TinaFeyge, and GuyFagieri (https://phagesdb.org/phages/)
+</small></small>
 
 ---
 
@@ -238,10 +238,15 @@ Image source: Lehigh University, https://hhmi.cas.lehigh.edu/galleries-seaphages
 
 ---
 
-# Further readings
+<section data-background="#333" style="color:white">
 
-* [Viral pathogen discovery](https://www.sciencedirect.com/science/article/pii/S1369527413000684)
-* [Experimental determination of translational start sites resolves uncertainties in genomic open reading frame predictions - application to Mycobacterium tuberculosis](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2897130/)
-* [A highly abundant bacteriophage discovered in the unknown sequences of human faecal metagenomes](https://www.nature.com/articles/ncomms5498)
-* [The Perils of Pathogen Discovery: Origin of a Novel Parvovirus-Like Hybrid Genome Traced to Nucleic Acid Extraction Spin Columns](https://jvi.asm.org/content/87/22/11966.short)
+<h1 style="color:white">Key points</h1>
+
+* There is a tremendous amount of environmental DNA and RNA sequencing underway.
+  * This has led to an ongoing explosion in the discovery of new viruses!
+* Reconstructing the genome of a novel virus often requires *de novo* assembly
+  * Assembly means piecing together reads without a reference.
+* This is a time of rapid discovery!
+
+</section>
 
