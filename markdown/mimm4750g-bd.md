@@ -309,10 +309,16 @@ Image source: Grenfell <i>et al.</i> (2004) Unifying the epidemiological and evo
 
 <h1 style="color:white">Key points</h1>
 
-* The birth-death model describes how the number of lineages changes over (forward) time.
-  * All lineages that have not gone extinct are sampled at the same time (contemporaneous).
-* The serial birth-death model assumes that lineages are sampled at a constant rate over time.
-* Birth-death models offer another way to estimate epidemiological parameters from trees (phylodynamics).
-  * They are more interpretable than coalescent models and do not assume small sample size, but can be difficult to fit to data.
+<ul>
+<li>The birth-death model describes how the number of lineages changes over (forward) time.</li>
+  <uL>
+  <li>All lineages that have not gone extinct are sampled at the same time (contemporaneous).</li>
+  </ul>
+<li>The serial birth-death model assumes that lineages are sampled at a constant rate over time.</li>
+<li>* Birth-death models offer another way to estimate epidemiological parameters from trees (phylodynamics).</li>
+  <ul>
+  <li>They are more interpretable than coalescent models and do not assume small sample size, but can be difficult to fit to data.</li>
+  </ul>
+</ul>
 
 </section>
