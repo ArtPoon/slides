@@ -135,11 +135,21 @@ JC69 (model 0) was never sampled in 5,000,000 iterations.
 
 ---
 
-# Bayesian model selection
+# Marginal likelihood
 
-* We cannot just compare posterior traces because $P(D|M)$ for a given model $M$ is proportional to our prior belief $P(M)$.
-* A Bayes factor is the ratio of the posterior odds against the prior odds for two models:
-$$\mathrm{BF} = \frac{P(M_1|D)}{P(M_2|D)} \Big/ \frac{P(M_1)}{P(M_2)}$$
+* A Bayesian version of the likelihood ratio test (LRT), except it is a ratio of marginal likelihoods.
+* The marginal likelihood (*i.e.*, model evidence) is the probability of data $D$ given model $M$:
+$$P(D|M) = \int_{\theta|M} P(D|M,\theta) P(\theta|M)$$
+* $P(\theta|M)$ is our prior belief about the parameters given the model.
+* $P(D|M,\theta)$ is the likelihood of the data given the model and a specific set of parameter values.
+
+---
+
+# Bayes factor
+
+* The Bayes factor is: 
+   $$BF = \frac{P(D|M_1)}{P(D|M_2)}$$
+* Unlike the LRT, the BF does not have a theoretical null distribution that we can use to determine significance.
 
 | Bayes Factor | Evidence against $H_0$ |
 |--------------|------------------------|
@@ -154,48 +164,99 @@ Source: Kass and Raftery (1995).  Bayes factors.  J Amer Stat Assoc 90(430): 773
 
 ---
 
-# Marginal likelihood
+# How do we calculate the Bayes factor?
 
-* Using Bayes' rule, we can rewrite the Bayes factor as: 
-$$\mathrm{BF} = P(D|M_1) / P(D|M_2)$$
-* Each model $M$ has some unknown parameters $\theta$. 
-* The marginal likelihood of data $D$ given model $M$ is:
-$$P(D|M) = \int_{\theta|M} P(D|M,\theta) P(\theta|M)$$
+* The exact marginal likelihood is often very difficult integral to solve.
+  * Since we are integrating over a probability, we are calculating an expected value, *i.e.*, a mean.
+* Why not average over a relatively small random sample of $P(D|M, \theta)$ instead?
+* MCMC already generates a random sample of $\theta$ (**yay!**), but it's from the <u>posterior</u> distribution $P(\theta,M|D)$, not the prior $P(\theta|M)$.
 
-* In other words, it is the average likelihood of the data over the entire **prior** distribution of $\theta$ given model $M$!
+<center>
+What if we just ignore this fact for now?
+</center>
+
+---
+
+# Importance sampling
+
+* Instead of integrating, we want to calculate the mean:
+$$E[P(D|\theta)] = \frac{1}{N} \sum_{i=1}^{N} P(D|\theta) P(\theta)$$
+* If we draw points at random from another distribution $g(\theta)$, we can calculate a weighted mean using weights $P(\theta_i) / g(\theta_i)$ and normalize:
+$$E[P(D|\theta)] = \frac{
+  \frac{1}{n}\sum_{i=1}^{N} P(D|\theta_i) P(\theta) g(\theta_i)^{-1}
+}{
+  \frac{1}{n}\sum_{i=1}^{N} P(\theta) g(\theta_i)^{-1}
+}$$
 
 ---
 
 # Harmonic mean estimator
 
-* The exact marginal likelihood is very difficult to compute.
-* The alternative is to average over some sample of $P(D|M, \theta)$.
-* MCMC already generates a random sample of $\theta$ from the **posterior** distribution.
-* This can be used for what is called the harmonic mean estimator (HME):
-`$$P(D|M) \approx \frac{1}{N} \sum_{i=1}^N \frac{1}{P(D|M,\theta_i)},\;\mathrm{for}\; \theta_i \sim P(M|D)$$`
+* If we are drawing points from the posterior distribution, then $g(\theta) = P(D|\theta) P(\theta)$, which means:
+$$E[P(D|\theta)] = \frac{
+  \frac{1}{n}\sum_{i=1}^{N} \frac{P(D|\theta)P(\theta)}{P(D|\theta) P(\theta)}
+}{
+  \frac{1}{n}\sum_{i=1}^{N} \frac{P(\theta)}{P(D|\theta) P(\theta)}
+} = \frac{1}{\frac{1}{n}\sum_{i=1}^{N} \frac{1}{P(D|\theta)}}$$
+
+* This is the harmonic mean &mdash; the reciprocal of the arithmetic mean of reciprocal values:
+$$\frac{1}{H[x]} = \frac{1}{N} \sum_{i=1}^{N} \frac{1}{x_i}$$
+
+<small><small>
+Derivation from <a href="https://phylo.bio.ku.edu/slides/HolderAustinSteppingstone.pdf">lecture slides</a> by Mark T. Holder, Paul O. Lewis, David L. Swofford, and David Bryant.
+</small></small>
 
 ---
 
 # Problems with HME
 
-* Remember, we need to average likelihoods for $\theta$ sampled from the prior $P(\theta|M)$, not the posterior!
 * A random sample from the posterior skews towards high likelihoods, causing HME to overestimate $P(D|\theta, M)$.
 * A random sample from the prior is easier to generate, but it is unlikely to include $\theta$ from regions of high likelihood, underestimating $P(D|\theta, M)$.
+  * This gets worse if we use an uninformative prior, or a really bad one!
+* If the posterior is concentrated in a very small region of parameter space, then we are in big trouble.
+
+---
+
+# Example with the beta-binomial
+
+<table>
+  <tr>
+    <td style="font-size: 18pt;">
+      <ul>
+      <li>Suppose our prior is Beta(10,1) and our data is 5 heads in 10 tosses.</li>
+      <li>The true marginal likelihood is about 0.011</li>
+      <li>A sample from the prior: $\{0.872, 0.898, 0.925, 0.931, 0.969\}$<br/>
+       has an arithmetic mean likelihood = 0.0013</li>
+      <li>A sample from the posterior: $\{0.587, 0.665, 0.73, 0.757, 0.82\}$<br/>
+       has a harmonic mean likelihood = 0.05</li>
+      </ul>
+    </td>
+    <td width="45%">
+      <img src="/img/marginal-likelihood.svg" width="100%"/>
+    <td>
+  </tr>
+</table>
 
 ---
 
 # Path/stepping-stone sampling
 
-* Recall that MCMC samplers (*e.g.*, Metropolis-Hastings) decide whether to accept a proposed step by the ratio of posterior probabilities.
+* Recall that MCMC decides whether to accept a proposed step by the ratio of posterior probabilities.
 * A "power posterior" modifies the posterior probability by a tuning parameter $\beta$:
-$$q_\beta(\theta) = P(D|\theta,M)^\beta P(\theta|M)$$ 
+$$R = \frac{P(D|\theta',M)^\beta P(\theta'|M)}{P(D|\theta,M)^\beta P(\theta|M)}$$ 
 * By running multiple chains for different values of $\beta$ between 0 and 1, we can balance between prior and posterior samples of marginal likelihood.
 
 ---
 
-# Suggested readings
 
-* [The likelihood ratio test: The theory - from "Linear Mixed Models in Linguistics and Psychology: A Comprehensive Introduction"](https://vasishth.github.io/Freq_CogSci/the-likelihood-ratio-test-the-theory.html)
-* [Hirotogu Akaike's 90th Birthday - Google Doodle](https://www.google.com/doodles/hirotugu-akaikes-90th-birthday)
-* [RevBayes, General Introduction to Model selection](https://revbayes.github.io/tutorials/model_selection_bayes_factors/bf_intro.html)
-* [Bayesian Model Testing, Guy Baele](https://si.biostat.washington.edu/sites/default/files/modules//2016_SISMID_13_10.pdf)
+<section data-background="#333" style="color:white">
+
+<h1 style="color:white">Key points</h1>
+
+* The likelihood ratio test (LRT) can be used if one model is a special case of the other.
+* If models are not nested, we use the Akaike information criterion (AIC).
+* Model selection is very challenging for Bayesian methods because we are working with sampled distributions.
+  * Reversible-jump MCMC samples different models.
+  * Bayes factor is the Bayesian version of LRT, but we need to calculate marginal likelihoods (hard!)
+
+</section>
