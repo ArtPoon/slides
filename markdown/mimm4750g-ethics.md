@@ -20,8 +20,8 @@
 * Access to data is the fundamental resource of bioinformatics.
 * An enormous amount of data is available in the public domain.
   * An even larger amount of data is not.
-* The [GISAID](https://www.gisaid.org/) novel coronavirus database presently holds nearly 10 million genome sequences (March 2022).
-  * [Genbank](https://www.ncbi.nlm.nih.gov/genbank/sars-cov-2-seqs/) has about 4.3 million genomes.
+* The [GISAID](https://www.gisaid.org/) novel coronavirus database presently holds about 17 million genome sequences (March 2025).
+  * [Genbank](https://www.ncbi.nlm.nih.gov/genbank/sars-cov-2-seqs/) has about 9 million genomes.
 
 ---
 
@@ -126,6 +126,8 @@ Source: Gymrek <i>et al.</i> (2013) Identifying personal genomes by surname infe
 * Source attribution is the reconstruction of the transmission of infectious disease from a specific individual, population or location.
   * *i.e.*, who infected whom.
 * Identification of sources places the burden of responsibility for onward transmission of disease.
+* Benefits: More accurate estimation of transmission sources (*e.g.*, farms, factories),  epidemiological parameters.  
+* Costs: Loss of privacy; stigmatization, blame and criminal prosecution.
 
 ---
 
@@ -198,21 +200,48 @@ Image credit: Poon <i>et al.</i> (2016) <a href="https://doi.org/10.1016/S2352-3
 | Role | Costs | Benefits |
 |------|-------|----------|
 | Individual | Potential loss of privacy | No direct benefit |
-|   | Elevated exposure to criminal prosecution? |  |
+|   | Criminal prosecution |  |
 | Clinical lab | Resources to generate data | No direct benefit |
 |              | Exposure to subpeonas, litigation |   |
 | Scientist    |   | Development of methods |
 |              |   | Publication |
-| Public health | Learning curve | Cost-effective deployment of resources |
-|               | Misinterpretation |  |
+| Public health | Learning curve | Targeted intervention |
+|               | Misinterpretation | More accurate models |
 | Community | Stigmatization | Reduced transmission? |
 
 ---
 
-# Further reading
+Delays from sample collection to submission of H5N1 genomes to the GISAID database:
 
-* [Global Alliance for Genomics & Health](https://www.ga4gh.org/genomic-data-toolkit/regulatory-ethics-toolkit/)
-* [Genomics and data science: an application within an umbrella](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1724-1)
-* [Critics decry access, transparency issues with key trove of coronavirus sequences](https://www.sciencemag.org/news/2021/03/critics-decry-access-transparency-issues-key-trove-coronavirus-sequences)
-* [A large-scale analysis of bioinformatics code on GitHub](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6209220/)
-* [Critiqued coronavirus simulation gets thumbs up from code-checking efforts](https://www.nature.com/articles/d41586-020-01685-y)
+<img src="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41587-025-02636-6/MediaObjects/41587_2025_2636_Fig1_HTML.png" width=700/>
+
+<small><small>
+Image source: Otto and Edgerton (2025) <a href="https://www.nature.com/articles/s41587-025-02636-6">Nature Biotechnol</a>.
+</small></small>
+
+---
+
+# A new model for data sharing
+
+* Pathoplexus (https://pathoplexus.org/) is a new, open-source database that is run by an elected executive board of "wet lab" scientists from five continents.
+  * Currently holds genomes of Ebola virus, Mpox, and two other viruses.
+* Scientists who deposit data get to set terms of access (open or restricted).
+  * Access restrictions apply for up to one year.
+  * Restricted-access data require user to (1) include a submitter as an author, or (2) create a DOI and cite in manuscript.
+
+---
+
+<section data-background="#333" style="color:white">
+
+<h1 style="color:white">Key points</h1>
+
+* Bioinformatics is about working with data.
+* Collecting genomic data takes time, money and willingness to provide samples, *e.g.*, patients.
+  * The people who know how to analyze data and produce high-impact publications are not always the ones who collected the data.
+  * This conflict can lead to long delays in releasing important data.
+* For HIV-1, sequence data has been used to criminally prosecute people.
+  * It has also been used to guide public health prevention efforts in real time.
+
+</section>
+
+
