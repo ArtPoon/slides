@@ -5,6 +5,15 @@
 
 ---
 
+# Dayhoff and *The Atlas*
+
+* Margaret Dayhoff and Richard Eck develop new computational methods to compile and analyze a protein sequence database.
+  * Dayhoff petitioned researchers to donate protein sequence data in exchange for a copy of *The Atlas*, which is copyrighted material.
+* Unable to obtain sufficient grant support, Dayhoff adopts a commercial model to maintain the database.
+  * *The Atlas* is succeeded by Genbank, which operates under an open access model.
+
+---
+
 # Writing code
 
 * There is a wide spectrum of bioinformaticists.  
@@ -27,19 +36,19 @@
 
 ---
 
-# Code repositories
-
 <table>
   <tr>
     <td style="font-size: 20pt; vertical-align: middle">
+      <h1>Code repositories</h1>
       <ul>
         <li>An online repository is a website for sharing source code.</li>
         <li>Often integrated with a <a href="https://en.wikipedia.org/wiki/Version_control">version control</a> system.</li>
-        <li><a href="https://about.gitlab.com/">GitLab</a> become a popular alternative to <a href="https://github.com/">GitHub</a> when the latter was acquired by MicroSoft.</li>
+        <li><a href="https://about.gitlab.com/">GitLab</a> emerged as an alternative to <a href="https://github.com/">GitHub</a> when the latter was acquired by MicroSoft</li>
+        <li>Adoption of GitLab in bioinformatics still well behind GitHub, *e.g.*, 8 versus 331  mentions in the journal *Bioinformatics* since Jan 2024.
       </ul>
     </td>
-    <td width="55%">
-      <img src="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6209220/bin/pone.0205898.g001.jpg"/>
+    <td width="45%">
+      <img src="https://filogeneti.ca/img/pone.0205898.g001-edit.png" width="100%"/>
       <br/>
       <small>
       Image credit: PH Russell <i>et al.</i> (2018) <a href="https://dx.doi.org/10.1371%2Fjournal.pone.0205898"/>PLOS ONE 13: e0205898</a>.
@@ -52,7 +61,7 @@
 
 # Restrictive licensing
 
-* Many bioinformatic programs are distributed only as web applications (closed source).
+* Many bioinformatic programs are distributed only as (closed source) binaries or web applications.
 * Limited processing capability for public use.
   * *e.g.*, some protein structural predictors can only be accessed through web forms
 * Bioinformatic software distributed under a commercial license:
@@ -118,7 +127,7 @@
 </table>
 
 <small><small>
-Source:
+Source: https://darlinglab.org/blog/2015/03/23/not-so-fast-fasttree.html
 </small></small>
 
 ---
@@ -128,7 +137,7 @@ Source:
 <img src="https://github.com/cov-lineages/pangolin/blob/master/docs/logo.png?raw=true" height="150px"/>
 
 * [Pangolin](https://github.com/cov-lineages/pangolin) is an open-source program for classifying SARS-CoV-2 genomes into different "lineages"
-* The repository has been forked by 85 users, many of whom have contributed additional features
+* The repository has been forked by 107 users, many of whom have contributed additional features
   * Automated updates of lineage definitions ([#124](https://github.com/cov-lineages/pangolin/pull/124))
   * Faster, memory efficient execution ([#91](https://github.com/cov-lineages/pangolin/pull/91))
 
@@ -159,7 +168,7 @@ Source:
   * Projected over 2 million US deaths without intervention.
 * Source code was not released.
   * After widespread criticism, analysis found the code "a buggy mess" but reproducible ([Chawla 2020](https://www.nature.com/articles/d41586-020-01685-y)).
-* Now a highly active GitHub repository.
+* Now a highly active GitHub repository (https://github.com/mrc-ide/covid-sim)
 
 ---
 
@@ -191,18 +200,13 @@ Image source: Chasapi <i>et al.</i> (2020) The bioinformatics wealth of nations.
 
 ---
 
-# Dayhoff and *The Atlas*
+<section data-background="#333" style="color:white">
 
-* Dayhoff and Eck develop new computational methods to compile and analyze a protein sequence database.
-  * Dayhoff petitioned researchers to donate protein sequence data in exchange for a copy of *The Atlas*, which is copyrighted material.
-* Unable to obtain sufficient grant support, Dayhoff adopts a commercial model to maintain the database.
-  * *The Atlas* is succeeded by Genbank, which operates under an open access model.
+<h1 style="color:white">Key points</h1>
 
----
-
-# Further reading
-
-* [A large-scale analysis of bioinformatics code on GitHub](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6209220/)
-* [Critiqued coronavirus simulation gets thumbs up from code-checking efforts](https://www.nature.com/articles/d41586-020-01685-y)
-* [The bioinformatics wealth of nations](https://academic.oup.com/bioinformatics/article/36/9/2963/5780280)
-* [Bioinformatics in Africa: The Rise of Ghana?](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004308)
+<ul>
+<li>Open source has been a very successful model in bioinformatics, driving rapid and widespread adoption of some projects.</li>
+<li>Code sharing sites are a common feature of bioinformatics research articles.</li>
+<li>The majority of open source projects are abandonware.</li>
+</ul>
+</section>
