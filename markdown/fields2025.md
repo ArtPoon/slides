@@ -4,11 +4,11 @@
 <td>
 Fields Workshop on Mathematical Ecology
 <div style="font-size: 2.5em; line-height: 1.1; color: #4F2683;">Recombination: the elephant in the room of viral phylodynamics</div>
-<div style="font-size: 1.5em; line-height: 3; font-weight: 500;">Art Poon</div>
+<div style="font-size: 1.5em; line-height: 2.5; font-weight: 500;">Art Poon</div>
 
 Departments of Pathology and Laboratory Medicine; Computer Science; Microbiology and Immunology<br/>
 
-<div style="font-size: 1.2em; color: #4F2683; font-weight: 500;">
+<div style="font-size: 1.2em; line-height: 2; color: #4F2683; font-weight: 500;">
 Western University
 </div>
 
@@ -96,7 +96,7 @@ Image credit: Native Land Digital, https://native-land.ca
 
 ---
 
-# Recombination is the exchange of genetic material between genomes
+## Recombination is the exchange of genetic material between genomes
 
 ![](/img/recombination.svg)
 
@@ -146,13 +146,23 @@ Image credit: Native Land Digital, https://native-land.ca
 ---
 
 # Simulation methods
-
-* Used [ReMASTER](https://tgvaughan.github.io/remaster/) (BEAST2, v2.7.2; Vaughan 2024) to simulate trees under the BDSIR model.
-* Two sets of parameters determined by fitting BDSIR to data, with priors informed by literature:
-  1. "HIV-like" model
-  2. "SARS-CoV-2-like" model
-* Used [Pyvolve](https://github.com/sjspielman/pyvolve) (v1.1.0, Spielman and Wilke 2015) to simulate an alignment from the tree.
-  * Calibrated on real data (substitution biases, base frequencies, nucleotide entropy).
+<table>
+<tr>
+  <td>
+    <ul>
+      <li>Used <a href="https://tgvaughan.github.io/remaster/">ReMASTER</a> (BEAST2, v2.7.2; Vaughan 2024) to simulate trees under the BDSIR model.</li>
+      <li>Two sets of parameters ("HIV-like" and "SARS-like") determined by fitting BDSIR to data, with priors informed by literature.</li>
+      <li>Used <a href="https://github.com/sjspielman/pyvolve">Pyvolve</a> (v1.1.0, Spielman and Wilke 2015) to simulate an alignment from the tree, calibrated on real data.</li>
+    </ul>
+  </td>
+  <td width="25%">
+    <img src="https://filogeneti.ca/img/wwang.jpeg"/>
+    <div style="font-size: 0.8em;">
+    Analysis by William Wang, undergraduate thesis student.
+    </div>
+  </td>
+</tr>
+</table>
 
 ---
 
@@ -192,9 +202,11 @@ Image credit: Native Land Digital, https://native-land.ca
 
 ---
 
-## Recombination causes BEAST2 to overestimate R0, with diminishing returns
+## Recombination causes BEAST2* to overestimate R0, with diminishing returns
 
-![](/img/recombR0-results.svg)
+<img src="/img/recombR0-results.svg" width=80%/>
+
+### *phylodynamics serial with narrow prior on `becomeUninfectiousRate` - chains run for 1e8 steps, extended to 2e8 if failure to converge. 
 
 ---
 
@@ -203,6 +215,7 @@ Image credit: Native Land Digital, https://native-land.ca
 * Many of the simulated breakpoints are inconsequential, *e.g.*:
   * exchange of terminal branches
   * short interval between breakpoints
+* *i.e.*, the sort of recombination that is most visible to us may be in the minority
 * Time scale of ~20 years for HIV-like data, ~200 days for SARS-like data.
 
 ---
@@ -214,7 +227,7 @@ Image credit: Native Land Digital, https://native-land.ca
   2. Genetic divergence between parental lineages
   3. Co-infection of the same host cell
   4. Recombination of co-infecting genomes
-* We only really have good empirical data on (4)
+* We only really have good empirical (*in vitro*) data on (4)
 
 ### *Keep an eye out for recent work by Nicola M&uuml;ller and colleagues..
 
@@ -230,9 +243,74 @@ Image credit: Native Land Digital, https://native-land.ca
 
 ---
 
-# Recombination in segmented viruses
+# Recombination in segmented viruses occurs by exchange of entire segments between genomes
+* Influenza A virus has eight genome segments &mdash; recombination within segments is rare ([Boni *et al* 2010](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0010434)).
+* Reassortment plays an important role in IAV adaptation (antigenic shift).
 
-* 
+![](/img/reassortment.svg)
+
+---
+
+## Reassortment in IAV is often detected by phylogenetic discordance
+
+![](/img/tanglegram.svg)
+
+---
+
+# How reliable is this approach for detecting reassortment?
+
+<table>
+<tr>
+  <td>
+    <ul>
+      <li>Individual reassortment events can be reconstructed as SPR edits between trees.</li>
+      <li>Some studies employing such methods have reported enormous numbers of reassortment events, <i>e.g.</i>, <a href="https://www.frontiersin.org/journals/microbiology/articles/10.3389/fmicb.2021.793500/full"/>Gong <i>et al.</i> (2021)</a> reported 1,927 events.</li>
+      <li>However, phylogenetic discordance can also be induced by error in reconstructing the actual tree.</li>
+    </ul>
+  </td>
+  <td width="25%">
+    <img src="https://filogeneti.ca/img/hcastelan.jpeg"/>
+    <div style="font-size: 0.8em;">
+    Analysis by Hugo Castel&aacute;n S&aacute;nchez, postdoctoral associate.
+    </div>
+  </td>
+</tr>
+</table>
+
+
+---
+
+# Simulation methods
+
+* Retrieved 11,795 complete H5Nx genomes from avian hosts from NCBI Genbank and GISAID databases.
+* Generated five replicate samples of $n=214$ genomes and reconstructed ML trees for each segment.
+* Used Pyvolve to simulate alignments along the segment 4 (HA) tree for all other segments (rescaled to match observed variation).
+* Reconstructed ML trees from the simulated alignments.
+
+## Any SPRs detected in these trees must be false positives!
+
+---
+
+## The number of SPRs on simulated trees are similar to real trees!
+<img src="/img/hfive-barplots.svg" width="75%"/>
+
+---
+
+## False SPRs tend to involve smaller subtrees than SPRs from real data
+<img src="/img/hfive-ntips.svg" width="67%"/>
+
+---
+
+## False SPRs tend to travel a shorter distance in the tree
+
+<img src="/img/hfive-siblings.svg" width="67%"/>
+
+---
+
+# Detecting recombination
+
+
+
 
 ---
 
