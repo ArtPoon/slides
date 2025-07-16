@@ -88,7 +88,11 @@ Image credit: Native Land Digital, https://native-land.ca
 # $R_0$ and phylodynamics
 
 * Phylodynamic methods are increasingly used to estimate $R_0$ from genetic sequence data.
+<img src="https://virological.org/uploads/default/original/1X/8f21f08be4ef14d94441e26c058332e72536ea53.png" height=220/>
+
 * Higher $R_0$ should be associated with a greater concentration of internal node times near root.
+
+### Image source: TG Vaughan et al. (2020) Phylodynamic Analyses of outbreaks in China, Italy, Washington State (USA), and the Diamond Princess. https://virological.org
 
 ---
 
@@ -109,9 +113,7 @@ Image credit: Native Land Digital, https://native-land.ca
 * About 0.1 to 0.4 reassortment events occur per lineage per year in influenza viruses (M&uuml;ller *et al* 2020).
   * Reassortment is a form of recombination involving the exchange of entire genome segments.
 
-<div style="color: black; font-size: 0.6em">
-Image source: https://www.hiv.lanl.gov/components/sequence/HIV/crfdb/crfs.comp
-</div>
+### Image source: https://www.hiv.lanl.gov/components/sequence/HIV/crfdb/crfs.comp
 
 ---
 
@@ -125,12 +127,51 @@ Image source: https://www.hiv.lanl.gov/components/sequence/HIV/crfdb/crfs.comp
 
 ![](/img/ancestral-recomb-graph.svg)
 
+Resolving trees from an ARG is analogous to the subtree-prune-regraft operation.
+
 ---
 
 # Phylodynamic studies seldom account for recombination
 
 * If we are reconstructing a single tree from the sequence alignment, then we are essentially averaging over multiple trees.
-* It is widely known in the evolutionary biology literature that recombination tends to make this average tree more "star-like".
+* It is widely known in the evolutionary biology literature that recombination tends to make this average tree more "star-like", *e.g.*, Schierup and Hein (2000).
+  * In the extreme case, every site evolves independently.
+* Is phylodynamic estimation of $R_0$ confounded by recombination?
+
+---
+
+# Simulation methods
+
+* Used [ReMASTER](https://tgvaughan.github.io/remaster/) (BEAST2, v2.7.2; Vaughan 2024) to simulate trees under the BDSIR model.
+* Two sets of parameters determined by fitting BDSIR to data, with priors informed by literature:
+  1. "HIV-like" model
+  2. "SARS-CoV-2-like" model
+* Used [Pyvolve](https://github.com/sjspielman/pyvolve) (v1.1.0, Spielman and Wilke 2015) to simulate an alignment from the tree.
+
+---
+
+# Baseline tests
+
+<table>
+  <tr>
+  <td>
+    <ul>
+      <li>Fit BDSIR model in BEAST2 to simulated alignments.</li>
+      <li>Set a narrow prior on $\gamma$ (<tt>becomeUninfectious</tt> rate) to address parameter identifiability issue, <i>i.e.</i>, <a href="https://academic.oup.com/mbe/article/38/9/4010/6278301">Louca <i>et al.</i> 2021</a>.</li>
+      <li>Evaluated five combinations of model parameters (colours) and five replicates of one set of parameters (squares).</li>
+    </ul>
+  </td>
+  <td width="45%">
+    <img src="/img/recombR0-tests.svg" width=400/>
+  </td>
+  </tr>
+</table>
+
+---
+
+# Adding recombination
+
+* Given $B$ breakpoints distr, we progressively apply subtree-prune-regraft (SPR) operations to the input tree 
 
 ---
 

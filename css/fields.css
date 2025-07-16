@@ -107,8 +107,8 @@ body {
 
 .reveal tt{
   font-family: monospace;
-  font-size: 1.1em;
-  color: grey;
+  font-size: 0.9em;
+  color: black;
 }
 
 /* Ensure certain elements are never larger than the slide itself */
