@@ -117,19 +117,19 @@ Image credit: Native Land Digital, https://native-land.ca
 
 ---
 
-# Recombination creates phylogenetic discordance between different intervals of the genome
+## Recombination creates phylogenetic discordance between different intervals of the genome
 
 ![](/img/phylo-discord.svg)
 
 ---
 
-# Discordant phylogenies can be represented jointly as an ancestral recombination graph
+## Discordant phylogenies can be represented jointly as an ancestral recombination graph
 
 <img src="/img/ancestral-recomb-graph.svg" width=80%/>
 
 ---
 
-# Resolving trees from an ARG is analogous to a subtree-prune-regraft operation
+## Resolving trees from an ARG is analogous to a subtree-prune-regraft operation
 
 ![](/img/5692f1-linear.png)
 
@@ -186,7 +186,53 @@ Image credit: Native Land Digital, https://native-land.ca
 
 ---
 
+## Trees become more star-like with increasing recombination
 
+![](/img/recombR0-trees.svg)
+
+---
+
+## Recombination causes BEAST2 to overestimate R0, with diminishing returns
+
+![](/img/recombR0-results.svg)
+
+---
+
+# Is B=100 a realistic amount of recombination?
+
+* Many of the simulated breakpoints are inconsequential, *e.g.*:
+  * exchange of terminal branches
+  * short interval between breakpoints
+* Time scale of ~20 years for HIV-like data, ~200 days for SARS-like data.
+
+---
+
+# Recombination is complicated
+
+* Several things need to occur for recombination to affect tree shape:
+  1. Superinfection: transmission to an infected individual*
+  2. Genetic divergence between parental lineages
+  3. Co-infection of the same host cell
+  4. Recombination of co-infecting genomes
+* We only really have good empirical data on (4)
+
+### *Keep an eye out for recent work by Nicola M&uuml;ller and colleagues..
+
+---
+
+## Recombination may be a serious problem for phylodynamics.
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/a/ac/Baba.2.jpg" height=300/>
+
+## How much recombination is there in our data?
+
+### Image source: Elefant Baba der Madame Lecerf (1824, [public domain](https://commons.wikimedia.org/wiki/File:Baba.2.jpg)).
+
+---
+
+# Recombination in segmented viruses
+
+* 
 
 ---
 
