@@ -125,9 +125,14 @@ Image credit: Native Land Digital, https://native-land.ca
 
 # Discordant phylogenies can be represented jointly as an ancestral recombination graph
 
-![](/img/ancestral-recomb-graph.svg)
+<img src="/img/ancestral-recomb-graph.svg" width=80%/>
 
-Resolving trees from an ARG is analogous to the subtree-prune-regraft operation.
+---
+
+# Resolving trees from an ARG is analogous to a subtree-prune-regraft operation
+
+![](/img/5692f1-linear.png)
+
 
 ---
 
@@ -147,6 +152,7 @@ Resolving trees from an ARG is analogous to the subtree-prune-regraft operation.
   1. "HIV-like" model
   2. "SARS-CoV-2-like" model
 * Used [Pyvolve](https://github.com/sjspielman/pyvolve) (v1.1.0, Spielman and Wilke 2015) to simulate an alignment from the tree.
+  * Calibrated on real data (substitution biases, base frequencies, nucleotide entropy).
 
 ---
 
@@ -171,7 +177,16 @@ Resolving trees from an ARG is analogous to the subtree-prune-regraft operation.
 
 # Adding recombination
 
-* Given $B$ breakpoints distr, we progressively apply subtree-prune-regraft (SPR) operations to the input tree 
+1. Assume $B$ breakpoints are distributed uniformly at random across the alignment.
+2. Assign the simulated tree to the leftmost interval.
+3. At each breakpoint, apply a subtree-prune-regraft (SPR) operation to a random point in the preceding tree.
+  * This assumes that parental lineages are always sampled!
+4. Simulate alignments for every tree.
+5. Combine intervals to generate the recombinant alignment.
+
+---
+
+
 
 ---
 
