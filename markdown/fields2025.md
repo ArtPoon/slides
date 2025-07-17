@@ -355,6 +355,7 @@ GARD analysis of SIV and HIV reference genomes.
         <li>A $K\times K$ matrix of edge probabilities ($\pi$) between blocks $i$ and $j$</li>
       </ul>
       <li>Typically, $\pi$ is set so that edges are more common within blocks than between blocks.</li>
+      <li>In a *dynamic* SBM, </li>
     </ul>
   </td>
   <td width="40%">
