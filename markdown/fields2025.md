@@ -125,7 +125,7 @@ Image credit: Native Land Digital, https://native-land.ca
 
 ## Discordant phylogenies can be represented jointly as an ancestral recombination graph
 
-<img src="/img/ancestral-recomb-graph.svg" width=80%/>
+<img src="/img/ancestral-recomb-graph.svg" width=75%/>
 
 ---
 
@@ -269,7 +269,7 @@ Image credit: Native Land Digital, https://native-land.ca
     </ul>
   </td>
   <td width="25%">
-    <img src="https://filogeneti.ca/img/hcastelan.jpeg"/>
+    <img src="https://filogeneti.ca/img/hcastelan.jpeg" width=170/>
     <div style="font-size: 0.8em;">
     Analysis by Hugo Castel&aacute;n S&aacute;nchez, postdoctoral associate.
     </div>
@@ -351,11 +351,11 @@ GARD analysis of SIV and HIV reference genomes.
     <ul>
       <li>A stochastic block model comprises:</li>
       <ul>
-        <li>A block partition ${B_1, B_2, \ldots, B_K}$ on $n$ nodes</li>
+        <li>A partition of $n$ nodes into $K$ blocks or communities, ${B_1, B_2, \ldots, B_K}$</li>
         <li>A $K\times K$ matrix of edge probabilities ($\pi$) between blocks $i$ and $j$</li>
       </ul>
       <li>Typically, $\pi$ is set so that edges are more common within blocks than between blocks.</li>
-      <li>In a *dynamic* SBM, </li>
+      <li>In a <i>dynamic</i> SBM, we add a rate matrix $Q$ for nodes to transition between blocks over time.</li>
     </ul>
   </td>
   <td width="40%">
@@ -369,6 +369,42 @@ GARD analysis of SIV and HIV reference genomes.
 
 ---
 
+<table>
+<tr>
+  <td>
+    <h1>DSBMs applied to recombination detection</h1>
+    <ul>
+      <li>Recombination is analogous to a transition between communities.</li>
+      <li>Curated a representative sample of the global diversity of HIV-1 genomes ($n=525$)</li>
+      <li>Generated networks from 82 windows of the alignment by applying an adaptive threshold to the Tamura-Nei (1993) distance matrices.</li>
+    </ul>
+    <table>
+    <tr>
+    <td>Study by Abayomi Olabode, postdoctoral associate; published in Proc Natl Acad Sci (Olabode <i>et al.</i> 2022).</td>
+    <td width="33%"><img src="https://filogeneti.ca/img/aolabode.jpeg" height=150/></td>
+    </tr>
+    </table>
+  </td>
+  <td width="33%">
+    <img src="/img/pnas.2108815119fig02.jpg" height=550/>
+  </td>
+</tr>
+</table>
+
+---
+
+# Ongoing work
+
+* The implementation of DSBMs in the *R* package *dynsbm* uses expectation-maximization to generate point estimates for model parameters.
+  * DSBM output is difficult to interpret.
+  * Does not quantify uncertainty in estimates.
+  * Not designed for recombination, where transitions between clusters can involve multiple genomes.
+* We are implementing a Bayesian version in *R* that will (hopefully) address these issues.
+
+---
+
+
+
 # Thanks!
 
 <table>
@@ -376,10 +412,12 @@ GARD analysis of SIV and HIV reference genomes.
   <td>
     <img src="/img/cihr.png" width="250px"/><br/>
     <img src="/img/NSERC_RGB.png" width="230px"/>
-    <img src="/img/NIH_NIAID.jpg" width="180px"/>
+    <img src="/img/NIH_NIAID.jpg" width="50px"/>
   </td>
   <td style="vertical-align: middle;">
-    <img src="/img/lab-thumbnails.jpeg" width="400px"/>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b3/Elephant_with_a_saxophone_for_trunk_at_Claudes_Chalet.jpg" width="800px"/>
   </td>
 </tr>
 </table>
+
+### Image source: Elephant with a saxophone for trunk at Claudes Chalet. [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Elephant_with_a_saxophone_for_trunk_at_Claudes_Chalet.jpg)
