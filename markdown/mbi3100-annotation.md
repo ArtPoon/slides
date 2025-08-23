@@ -100,8 +100,103 @@ Source: Lincoln Stein, "Genome Annotation: From Sequence to Biology", Nature Rev
 
 ---
 
+<table style="font-size: 20pt;">
+  <tr>
+    <td style="vertical-align: middle;">
+      <h3>Nucleotide-level annotation</h3>
+      <h1>What kinds of features are there?</h1>
+      <ul>
+        <li>Non-coding RNAs (tRNAs, rRNAs, [lncRNAs](https://en.wikipedia.org/wiki/Long_non-coding_RNA), ...)</li>
+        <li>Transcription factor binding sites</li>
+        <li>Repetitive elements (microsatellites) and duplications</li>
+        <li>Protein-coding genes</li>
+      </ul>
+    </td>
+    <td width="40%">
+      <img src="/img/genome-annot.png"/>
+      <small>
+      Circular diagram summarizing the distribution of various nucleotide-level features in the <i>Arthrobacter arilaitensis</i> genome.
+      </small>
+    </td>
+  </tr>
+</table>
+
+<small>
+Source: Monnet *et al.* (2011) The Arthrobacter arilaitensis Re117 Genome Sequence Reveals Its Genetic Adaptation to the Surface of Cheese. [PLOS ONE 5(11):e15489]().
+</small>
+
+
+---
+
 ### Nucleotide-level annotation
-# Gene finding
+# Non-coding RNAs
+
+* Transfer RNAs (tRNAs) link codons in mRNA to specific amino acids during translation
+  * Several tRNA prediction tools are available, *e.g.*, [tRNAscan-SE](https://pubmed.ncbi.nlm.nih.gov/34417604/), [ARAGORN](https://academic.oup.com/nar/article/32/1/11/1194008)
+* Ribosomal RNAs (rRNAs) are the predominant form of cellular RNA
+  * Need to be removed from transcriptomic data, often one of the first steps.
+  * rRNA annotation/filtering programs include [RNAmmer](https://academic.oup.com/nar/article/35/9/3100/2401119) and [RiboDetector](https://academic.oup.com/nar/article/50/10/e60/6533611)
+
+---
+
+### Nucleotide-level annotation
+# Non-coding RNAs
+
+<table style="font-size: 20pt;">
+  <tr>
+    <td style="vertical-align: middle;">
+      <ul>
+        <li>RNA sequencing (RNA-seq) has revealed an enormous number of non-coding RNAs</li>
+        <li>Non-coding RNAs are more difficult to identify tha protein-coding genes, which have distinctive characteristics (start/stop codons, codon usage biases).</li>
+        <li>Many detection programs are family-specific, <i>only tRNAs</i></li>
+        <li></li>
+      </ul>
+    </td>
+    <td width="45%">
+      <img src="/img/annurev-genom-121119-083418-f2.png"/>
+      <br/>
+      <small>
+      Timeline of gene annotation in the Ensembl/GENCODE database, showing the discovery of small RNAs and lncRNAs.  IG/TR = immunoglobulin/T-cell receptor.
+      </small>
+    </td>
+  </tr>
+</table>
+
+<small>
+Source: Zerbino, Frankish and Flicek (2020) Progress, Challenges, and Surprises in Annotating the Human Genome.  [Annu Rev Genome Hum Genet 21: 55-79](https://www.annualreviews.org/content/journals/10.1146/annurev-genom-121119-083418).
+</small>
+
+---
+
+### Nucleotide-level annotation
+# Transcription factor binding sites
+
+---
+
+### Nucleotide-level annotation
+# Repetitive elements
+
+* Variable number tandem repeats (VNTRs): *e.g.*, [microsatellites](https://en.wikipedia.org/wiki/Microsatellite)
+
+* About 44% of the human genome is associated with repetitive elements.
+* Repeats can cause problems for genome assembly from short reads
+
+
+---
+
+### Nucleotide-level annotation
+# How many genes are there?
+
+* We tend to fixate on protein-coding genes.
+* The number of genes in the human genome was thought to be as high as 100,000 in the early years of the Human Genome Project.
+* Estimates fell rapidly to around 20,000 genes with more analysis.
+  * Current estimates are actually lower than the number estimated for the mouse genome using the same models!
+* Despite decades of research, we still do not have a definitive number - why?
+
+---
+
+### Nucleotide-level annotation
+# Gene finding is hard: Genome length
 
 * In smaller genomes (*e.g.*, prokaryotes, viruses), finding genes can be reduced to looking for long open reading frames (ORFs).
   * We assume an open reading frame consists of start and stop codons.
@@ -118,9 +213,63 @@ Source: Lincoln Stein, "Genome Annotation: From Sequence to Biology", Nature Rev
 ---
 
 ### Nucleotide-level annotation
-# Gene finding: Splicing
+# Gene finding is hard: Splicing
 
-* Gene finding in longer genomes is also complicated by 
+* Gene finding in longer genomes is also complicated by splicing.
+* [Splicing](https://en.wikipedia.org/wiki/RNA_splicing) is the conversion of precursor mRNA to mature transcript by removing introns.
+  * An intron may induce a frameshift if it is not removed from the transcript.
+  * Introns can be several thousand nucleotides in length!
+  * Imaging doing a [word search](https://en.wikipedia.org/wiki/Word_search) when any number of random letters can be placed within each word.
+* [Alternative splicing](https://en.wikipedia.org/wiki/Alternative_splicing) means that more than one protein can be derived from the same gene.
+
+---
+
+### Nucleotide-level annotation
+# Gene finding is hard: Pseudogenes
+
+* Pseudogenes are usually duplicate, redundant copies of an ancestral gene.
+  * Eventually the copy accumulates so many mutations that it no longer encodes a functional protein.
+* Because they are derived from actual genes, pseudogenes are a source of false positives.
+* In some cases, a pseudogene *regains* novel functionality.
+  * Many pseudogenes display organ-specific transcription levels.
+
+---
+
+# Gene finding: software
+
+* There are MANY computer programs that have been developed for gene finding:
+
+| Program | Published  | Program | Published | 
+|---------|------------|---------|-----------|
+| GENSCAN | 1997       | Fgenes | 1995 | 
+| Genie | 1996         | HMMGene | 1997 |
+| GeneMark.hmm | 1999  | GlimmerM, Exonomy, Unveil | 2003 |
+| Grail | 1991         | AUGUSTUS | 2018 |
+| HEXON | 1994         | Helixer | 2020 | 
+| MZEF | 1997         | Tiberius | 2024 | 
+
+* The majority of these have used hidden Markov models (HMMs)
+
+---
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Sunset_On_Rock_Lake_-_panoramio.jpg/2560px-Sunset_On_Rock_Lake_-_panoramio.jpg"/>
+
+<small>
+Sunset on Rock Lake in Algonquin Provincial Park, [Eric Raymond Lanning](https://commons.wikimedia.org/wiki/File:Sunset_On_Rock_Lake_-_panoramio.jpg)
+</small>
+
+---
+
+# Remember Markov models?
+
+* A stochastic process is a model that describes the probability that a system is in some state $X$ at time $t$.
+  * It has the Markov property if that probability depends *only* on its state at a previous time $s<t$.
+  * The board game [Candy Land](https://en.wikipedia.org/wiki/Candy_Land) has the Markov property.
+* We last talked about Markov models in our lecture on genetic distances.
+
+---
+
+# Profile HMM
 
 ---
 
