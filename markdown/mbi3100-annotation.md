@@ -147,9 +147,7 @@ Source: Monnet *et al.* (2011) The Arthrobacter arilaitensis Re117 Genome Sequen
     <td style="vertical-align: middle;">
       <ul>
         <li>RNA sequencing (RNA-seq) has revealed an enormous number of non-coding RNAs</li>
-        <li>Non-coding RNAs are more difficult to identify tha protein-coding genes, which have distinctive characteristics (start/stop codons, codon usage biases).</li>
-        <li>Many detection programs are family-specific, <i>only tRNAs</i></li>
-        <li></li>
+        <li>Non-coding RNAs are more difficult to identify than protein-coding genes, which have distinctive characteristics (start/stop codons, codon usage biases).</li>
       </ul>
     </td>
     <td width="45%">
@@ -171,18 +169,46 @@ Source: Zerbino, Frankish and Flicek (2020) Progress, Challenges, and Surprises 
 ### Nucleotide-level annotation
 # Transcription factor binding sites
 
+* Transcription factors (TFs) are proteins that bind to DNA to modulate gene expression.
+* Locations of TF binding sites are determined experimentally
+  * [TRANSFAC](https://genexplain.com/about-transfac-basic/) is a proprietary<sup>&dagger;</sup> database of eukaryotic TF binding profiles.
+  * [JASPAR](https://jaspar.elixir.no/) is an open access database of eukaryotic TF binding profiles with a [RESTful API](https://aws.amazon.com/what-is/restful-api/) and Pythonic interface.
+
+<small>
+<sup>&dagger;</sup> $2590 per year subscription fee for students
+</small>
+
 ---
 
 ### Nucleotide-level annotation
-# Repetitive elements
+# Regulatory regions
 
-* Variable number tandem repeats (VNTRs): *e.g.*, [microsatellites](https://en.wikipedia.org/wiki/Microsatellite)
-
-* About 44% of the human genome is associated with repetitive elements.
-* Repeats can cause problems for genome assembly from short reads
-
+* 
 
 ---
+
+### Nucleotide-level annotation
+# Repetitive elements: Satellites
+
+* About half of the human genome is associated with repetitive elements ([Stein 2001](https://www.nature.com/articles/35080529)).
+* Variable number tandem repeats (VNTRs)
+  * microsatellites are repeats of 1-6 nucleotides ([Ellegrin 2004](https://www.nature.com/articles/nrg1348))
+  * minisatellites are longer repeats of 7 to 100 nucleotides
+* Repeats are a primary cause of assembly error, such that many regions in the human genome have yet to be sequenced ([de Bustos 2016](https://www.nature.com/articles/srep36665)).
+
+---
+
+### Nucleotide-level annotation
+# Repetitive elements: Transposable elements
+
+* [Transposable elements](https://en.wikipedia.org/wiki/Transposable_element) (TEs) are sequences that can change their location in the genome.
+  * Retrotransposons are transcribed to RNA, reverse-transcribed back to DNA and integrated back into the genome.
+  * DNA transposons are enzymatically excised and then re-inserted elsewhere in the genome.
+* Many programs identify TEs by homology (*e.g.*, [RepeatMaster](https://www.repeatmasker.org/)) or structural (*e.g.*, [LTRharvest](https://www.zbh.uni-hamburg.de/forschung/gi/software/ltrharvest.html)) similarity to a database of known TEs.
+
+---
+
+
 
 ### Nucleotide-level annotation
 # How many genes are there?
