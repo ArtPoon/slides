@@ -214,6 +214,17 @@ Source: Zerbino, Frankish and Flicek (2020) Progress, Challenges, and Surprises 
 ---
 
 ### Nucleotide-level annotation
+# How hard is it to find genes?
+
+* *Ab initio* gene prediction from analyzing DNA is still far from perfect!
+  * *Ab initio* means that the program attempts to predict features without comparing the data to other sources.
+* A recent benchmark study ([Scalzitti 2020](https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-020-6707-9)) compared five widely-used gene prediction programs.
+  * Tested on a large set of 1,793 eukaryotic protein-coding genes from 147 species.
+  * Programs attained a sensitivity of 40%-75% and speciicity of 40%-55%.
+
+---
+
+### Nucleotide-level annotation
 # Gene finding is hard: Genome length
 
 * In smaller genomes (*e.g.*, prokaryotes, viruses), finding genes can be reduced to looking for long open reading frames (ORFs).
@@ -273,7 +284,7 @@ Source: Zerbino, Frankish and Flicek (2020) Progress, Challenges, and Surprises 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Sunset_On_Rock_Lake_-_panoramio.jpg/2560px-Sunset_On_Rock_Lake_-_panoramio.jpg"/>
 
 <small>
-Sunset on Rock Lake in Algonquin Provincial Park, [Eric Raymond Lanning](https://commons.wikimedia.org/wiki/File:Sunset_On_Rock_Lake_-_panoramio.jpg)
+Sunset on Rock Lake in Algonquin Provincial Park, <a href="https://commons.wikimedia.org/wiki/File:Sunset_On_Rock_Lake_-_panoramio.jpg">Eric Raymond Lanning</a> (CC BY 3.0).
 </small>
 
 ---
@@ -349,13 +360,90 @@ hmm.sim <- function(n, p01, p10, e0, e1) {
 
 ---
 
-# How do we solve it?
-
-
+<table>
+  <tr>
+    <td style="font-size:20pt; vertical-align: middle;">
+      <h1>Probabilities of hidden states</h1>
+      <ul>
+        <li>If we know all the parameters of the model, <i>e.g. $Q$</i>, then we can 
+        calculate the probability of a given set of states.</li>
+        <li>Because of the Markov property, we can calculate the probability at one time point independently of the others (<i>right</i>).</li>
+        <li>However, the hidden states are unknowns by definition!</li>
+      </ul>
+    </td>
+    <td width="40%">
+      <img src="/img/solving-hmm.svg"/>
+    </td>
+  </tr>
+</table>
 
 ---
 
-# Profile HMM
+In this example, the true sequence of hidden states (top) has a higher log-likelihood than a system that stays in hidden state 0:
+
+![](/img/hmm-logL.svg)
+
+---
+
+# How do we solve it?
+
+* The [Viterbi](https://en.wikipedia.org/wiki/Andrew_Viterbi) algorithm is a dynamic programming algorithm to calculate the most likely sequence (of length `T`) of `N` hidden states, given a sequence of observed states $\\{x_{t=1\ldots T}\\}$.
+* Requires the model parameters, *i.e.*, initial, transition and emission probabilities.
+
+<small>Abbreviated pseudocode for the Viterbi algorithm</small>
+<pre><code data-trim class="language-Python">
+for each state i from 1..N do  # initialization step
+    V[i,1] = pi[i] * emit[i][obs[1]]
+
+for each step t from 2..T do  # recursion step
+    for each state i from 1..N do
+        V[i,t] = max{j=1..N; V(j,t-1) * q(j,i) * P(x_t | i)}
+        # also store info for tracing the best path here
+
+bestpath = argmax{i=1..N; V[i,T]}  # termination
+</code></pre>
+
+---
+
+# Baum-Welch algorithm
+
+* A method to solve for the unknown parameters of an HMM, *i.e.*, $\Theta=\\{\pi, Q, P\\}$.
+* Uses the [expectation-maximization algorithm](https://en.wikipedia.org/wiki/Expectation%E2%80%93maximization_algorithm), an approach that alternates between:
+  1. solving for the best states for hidden variables, given the current $\Theta$, and;
+  2. using those states to obtain better estimates for $\Theta$
+* For HMMs, we use the Viterbi algorithm for step (1).
+
+---
+
+# Training HMMs
+
+* The Baum-Welch algorithm is an [unsupervised](https://en.wikipedia.org/wiki/Unsupervised_learning) learning method - we do not know what the hidden states are.
+  * This is useful when dealing with novel genomes and/or features.
+* We can take a [supervised](https://en.wikipedia.org/wiki/Supervised_learning) approach if we provide labeled training data, *i.e.*, where the locations of genes are specified.
+  * This requires a very well-characterized genome with experimental validation.
+  * We will have problems if the genes are different than those in the test data.
+
+---
+
+# Relating HMMs back to gene finding
+
+GeneMark.hmm was a free, popular program for gene prediction using the following HMM:
+
+<img src="/img/GeneMark-hmm.svg" height="70%"/>
+
+<small>
+Modified from Figure 1 in Lukashin and Borodovsky (1998) <a href="https://academic.oup.com/nar/article/26/4/1107/2902172">Nucl Acids Res 26(4): 1107-1115</a> (CC BY).
+</small>
+
+---
+
+# Genome annotation projects
+
+* [RefSeqGene](https://www.ncbi.nlm.nih.gov/refseq/rsg/) is a subset of the NCBI Reference Sequence (RefSeq) project with the mission of annotating genomes with well-characterized genes as reference standards.
+  * Establishes conventions for numbering gene exons and introns.
+
+* The [GENCODE]() project endeavours to "identify and classify all gene features in the human and mouse genomes"
+  * All project data is open access and can be accessed by FTP or using a web-based [genome browser](https://en.wikipedia.org/wiki/Genome_browser).
 
 ---
 
