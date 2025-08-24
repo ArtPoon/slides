@@ -22,7 +22,7 @@
 ---
 
 <div style="text-align: center; font-weight: 500; font-size: 48px;">
-**Genome annotation** is the process of analytically labelling biologically significant features in the DNA sequence, which places these data into the context of our understanding of biological processes.
+<b>Genome annotation</b> is the process of analytically labelling biologically significant features in the DNA sequence, which places these data into the context of our understanding of biological processes.
 </div>
 
 ---
@@ -32,13 +32,13 @@
     <td style="vertical-align: middle; font-size: 20pt;">
       <h1>Levels of genome annotation</h1>
       <ul>
-        <li>Nucleotide-level: annotation of features in nucleotide sequence, such as genes.</li>
-        <li>Protein-level: identify and characterize the proteins encoded by the genome.</li>
-        <li>Process-level: determine how genes and proteins interact to produce cell growth, development, metabolism, *et cetera*.</li>
+        <li><b>Nucleotide-level</b>: annotation of features in nucleotide sequence, such as genes.</li>
+        <li><b>Protein-level</b>: identify and characterize the proteins encoded by the genome.</li>
+        <li><b>Process-level</b>: determine how genes and proteins interact to produce cell growth, development, metabolism, <i>et cetera</i>.</li>
       </ul>
       <small>
-Source: Lincoln Stein, "Genome Annotation: From Sequence to Biology", Nature Reviews 2001
-</small>
+      Source: Lincoln Stein, "Genome Annotation: From Sequence to Biology", Nature Reviews 2001
+      </small>
     </td>
     <td width="40%">
       <img src="/img/35080529-f1.png"/>
@@ -106,7 +106,7 @@ Source: Lincoln Stein, "Genome Annotation: From Sequence to Biology", Nature Rev
       <h3>Nucleotide-level annotation</h3>
       <h1>What kinds of features are there?</h1>
       <ul>
-        <li>Non-coding RNAs (tRNAs, rRNAs, [lncRNAs](https://en.wikipedia.org/wiki/Long_non-coding_RNA), ...)</li>
+        <li>Non-coding RNAs (tRNAs, rRNAs, <a href="https://en.wikipedia.org/wiki/Long_non-coding_RNA">lncRNAs</a>, ...)</li>
         <li>Transcription factor binding sites</li>
         <li>Repetitive elements (microsatellites) and duplications</li>
         <li>Protein-coding genes</li>
@@ -120,9 +120,8 @@ Source: Lincoln Stein, "Genome Annotation: From Sequence to Biology", Nature Rev
     </td>
   </tr>
 </table>
-
 <small>
-Source: Monnet *et al.* (2011) The Arthrobacter arilaitensis Re117 Genome Sequence Reveals Its Genetic Adaptation to the Surface of Cheese. [PLOS ONE 5(11):e15489]().
+Source: Monnet <i>et al.</i> (2011) The Arthrobacter arilaitensis Re117 Genome Sequence Reveals Its Genetic Adaptation to the Surface of Cheese. <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0015489">PLOS ONE 5(11):e15489</a>.
 </small>
 
 
@@ -161,7 +160,7 @@ Source: Monnet *et al.* (2011) The Arthrobacter arilaitensis Re117 Genome Sequen
 </table>
 
 <small>
-Source: Zerbino, Frankish and Flicek (2020) Progress, Challenges, and Surprises in Annotating the Human Genome.  [Annu Rev Genome Hum Genet 21: 55-79](https://www.annualreviews.org/content/journals/10.1146/annurev-genom-121119-083418).
+Source: Zerbino, Frankish and Flicek (2020) Progress, Challenges, and Surprises in Annotating the Human Genome.  <a href="https://www.annualreviews.org/content/journals/10.1146/annurev-genom-121119-083418">Annu Rev Genome Hum Genet 21: 55-79</a>.
 </small>
 
 ---
@@ -177,13 +176,6 @@ Source: Zerbino, Frankish and Flicek (2020) Progress, Challenges, and Surprises 
 <small>
 <sup>&dagger;</sup> $2590 per year subscription fee for students
 </small>
-
----
-
-### Nucleotide-level annotation
-# Regulatory regions
-
-* 
 
 ---
 
@@ -286,12 +278,80 @@ Sunset on Rock Lake in Algonquin Provincial Park, [Eric Raymond Lanning](https:/
 
 ---
 
+# How do we identify the unseeable?
+
+* A genome sequence is a long string of letters:
+
+`AGCTTGGACTGTGATGCTAGTGCGAGCAGCGTTGCTAGTCCCGGCTGATGTC`
+
+* Usually, a feature has no characteristics that *unambiguously* reveal its presence.
+  * *e.g.*, a protein-coding gene is generally flanked by start (`ATG`) and stop (`TAA/TAG/TGA`) codons, but those can appear anywhere!
+* We need to have some kind of model for the *probability* that a feature is there.
+
+---
+
+# What are hidden Markov models?
+
+* A majority of genome annotations programs for identifying nucleotide-level features have used hidden Markov models (HMMs).
+  * You may have noticed that many program names contain the abbreviation "HMM"
+* A hidden Markov model is a machine learning method from the field of [natural language processing](https://en.wikipedia.org/wiki/Natural_language_processing).
+  * NLP is the study of making computers "understand" a language that does not follow consistent rules.
+
+---
+
 # Remember Markov models?
 
 * A stochastic process is a model that describes the probability that a system is in some state $X$ at time $t$.
   * It has the Markov property if that probability depends *only* on its state at a previous time $s<t$.
   * The board game [Candy Land](https://en.wikipedia.org/wiki/Candy_Land) has the Markov property.
-* We last talked about Markov models in our lecture on genetic distances.
+* We last talked about Markov models in our [lecture](https://slides.filogeneti.ca/html/mbi3100-L05-distances.html#/11) on genetic distances.
+* HMMs have the Markov property.
+
+---
+
+# Latent states
+
+* HMMs are "hidden" because they are models of states that cannot be directly observed.
+  * A variable with hidden states is as [latent variable](https://en.wikipedia.org/wiki/Latent_and_observable_variables).
+  * Happiness cannot be directly measured, but it exists and can be modeled as a hidden state.
+* An HMM assumes that latent states have different probabilities of *emitting* observable states. 
+
+---
+
+# Example
+
+* Imagine we have a machine that drops blue or red balls at random $(p_0=0.5)$ as it moves along a track.
+* Sometimes $(q_{01}=0.2)$ the mechanism gets stuck and it rarely drops blue $(p_1=0.9)$.
+  * It also gets unstuck with probability $q_{10}=0.1$.
+* Suppose that the state of the mechanism is hidden to us (it is sealed inside the machine).
+  * Can we deduce the hidden state at any time, given the sequence of balls it has dropped?
+
+---
+
+![](/img/hmm-machine.svg)
+
+<pre><code data-trim class="language-R">
+hmm.sim <- function(n, p01, p10, e0, e1) {
+  h <- rep(NA, n+1); h[1] <- 0  # initialize hidden state vector
+  v <- rep(NA, n)  # visible states
+  for (i in 2:(n+1)) {
+    p <- ifelse(h[i-1]==0, p01, p10)
+    h[i] <- h[i-1]  # propagate hidden state, unless...
+    if (runif(1) < p) {
+      h[i] <- (h[i-1]+1)%%2  # hidden state transition
+    }
+    # emit visible state
+    v[i-1] <- rbinom(1, size=1, prob=ifelse(h[i]==0, e0, e1))
+  }
+  return(cbind(h[2:(n+1)], v))
+}
+</code></pre>
+
+---
+
+# How do we solve it?
+
+
 
 ---
 

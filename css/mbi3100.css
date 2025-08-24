@@ -209,7 +209,7 @@ body {
   overflow: auto;
   max-height: 450px;
   word-wrap: normal;
-  font-size: 1.3em;
+  font-size: 0.9em;
   line-height: 1.2em;
 }
 
@@ -288,7 +288,8 @@ body {
 
 .reveal small {
   display: inline-block;
-  font-size: 0.7em;
+  font-size: 0.6em;
+  font-weight: 500;
   line-height: 1.2em;
   vertical-align: bottom;
   color: #777;
