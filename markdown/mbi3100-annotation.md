@@ -9,6 +9,7 @@
 * Last lecture, we talked about how computers can be used to assemble sequence fragments (reads) into the original genome.
 * Genomes can range from thousands to billions of nucleotides in length.
   * The Human Genome Project took 13 years to sequence 3B nt.
+* The development of new sequencing technologies has accelerated the sequencing of other genomes, *e.g.*, *Arabidopsis thaliana* (2000), mouse (2002), rice (2005), zebrafish (2013), wheat (2018).
 
 ---
 
@@ -200,15 +201,12 @@ Source: Zerbino, Frankish and Flicek (2020) Progress, Challenges, and Surprises 
 
 ---
 
-
-
 ### Nucleotide-level annotation
 # How many genes are there?
-
 * We tend to fixate on protein-coding genes.
 * The number of genes in the human genome was thought to be as high as 100,000 in the early years of the Human Genome Project.
-* Estimates fell rapidly to around 20,000 genes with more analysis.
-  * Current estimates are actually lower than the number estimated for the mouse genome using the same models!
+  - Estimates fell rapidly to around 20,000 genes with more analysis.
+  - Current estimates are actually lower than the number estimated for the mouse genome using the same models!
 * Despite decades of research, we still do not have a definitive number - why?
 
 ---
@@ -451,6 +449,10 @@ Modified from Figure 1 in Lukashin and Borodovsky (1998) <a href="https://academ
 
 <h1 style="color:white">Key points</h1>
 
-* test
+* Annotation is a time-consuming process that is necessary to make a genome sequence useful.
+* Many kinds of features can be identified at the nucleotide level, including protein-coding genes and non-coding RNAs.
+  * The majority of transcribed genes in the annotated human genome are non-coding.
+* Many gene finding programs have used hidden Markov models.
+  * The presence or absence of a protein-coding gene can be represented by a sequence of latent states.
 
 </section>
