@@ -141,8 +141,8 @@ TAATTACTGTCGTTGACAGGACACGAGTAACTCGTCTATCTTCTGCAGGCTGCTTACGGTTTCGTCCGTG
 
 # Genbank format
 
-* A very complex format that contains a diverse amount of information:
-
+* A complex format that contains diverse information.
+  * `LOCUS` was unique identifier that hinted at the organism and gene product, *e.g.*, `GHCAB` = [*Gossypium hirsutum*](https://en.wikipedia.org/wiki/Gossypium_hirsutum) *cab* gene.
 ```
 LOCUS       KT001281                 265 bp    DNA     linear   VRL 29-JUL-2015
 DEFINITION  Hepatitis B virus isolate 306 polymerase (P) gene, partial cds.
@@ -343,6 +343,14 @@ BCCCCFF
 
 ---
 
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Wind_Turbines_and_Farmland_-_Autumn_on_Manitoulin_Island_-_Ontario_-_Canada_%2853073575988%29.jpg/2560px-Wind_Turbines_and_Farmland_-_Autumn_on_Manitoulin_Island_-_Ontario_-_Canada_%2853073575988%29.jpg" height="75%"/>
+
+<small>
+Wind turbines and farmland - autumn on Manitoulin Island (Tony Webster, <a href="https://commons.wikimedia.org/wiki/File:Wind_Turbines_and_Farmland_-_Autumn_on_Manitoulin_Island_-_Ontario_-_Canada_(53073575988).jpg">CC-BY 2.0</a>)
+</small>
+
+---
+
 # Converting between file formats
 
 * One of the fundamental tasks in bioinformatics is the conversion of data from one format to another.
@@ -438,9 +446,9 @@ for($i=1;$i<@lines;$i++) #The 1st line is header
 }
 ```
 
-<small><small>
+<small>
 Source: no longer available online.
-</small></small>
+</small>
 
 ---
 
@@ -475,13 +483,14 @@ for line in handle:
 
 ---
 
-# Suggested readings
+<section data-background="#333" style="color:white">
 
-* [Forum thread on the origin of FASTA](https://www.biostars.org/p/214943/)
-* [Sample GenBank record](https://www.ncbi.nlm.nih.gov/genbank/samplerecord/)
-* [How Perl Saved the Human Genome Project](https://web.archive.org/web/20070202101624/http://www.bioperl.org/wiki/How_Perl_saved_human_genome)
-* [Proposed closure of the NCBI SRA (later cancelled)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3129670/)
-* [The history of the FASTQ format](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2847217/)
-* [Quinlan lab *samtools* Tutorial](http://quinlanlab.org/tutorials/samtools/samtools.html)
+<h1 style="color:white">Key points</h1>
 
+* A file format is a set of rules that a computer can follow to read and write data consistently.
+* Many formats used in bioinformatics originated from programs that are no longer in use.
+  * *e.g.*, PHRED scores are commonly used to store the error probability of a base call.
+* Scripting languages play an important role in enabling scientists to quickly feed data from one program to another (*e.g.*, converting formats) and automating tasks.
+  * Perl was replaced by Python over time.
 
+</section>
