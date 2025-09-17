@@ -12,9 +12,9 @@
 * Some sequences are more similar to each other because they are copies of a common ancestor &mdash; they are [homologous](https://en.wikipedia.org/wiki/Sequence_homology).
 * **How do we figure out whether one sequence is homologous to another?**
 
-<small><small>
-Image source: https://commons.wikimedia.org/wiki/File:Ortholog_paralog_analog_(homologs).svg,  Creative Commons
-</small></small>
+<small>
+Image source: <a href="https://commons.wikimedia.org/wiki/File:Ortholog_paralog_analog_(homologs).svg">Thomas Shafee</a>, CC BY-SA 4.0.
+</small>
 
 ---
 
@@ -55,9 +55,9 @@ Dot plots revealing genome rearrangements between strains of *Salmonella enteric
 
 ![](/img/zmr0030420660004.jpeg)
 
-<small><small>
+<small>
 Image credit: H Br&uuml;ssow <i>et al.</i> 2004, Microbiol Mol Biol Rev, [68(3) 560-602](https://mmbr.asm.org/content/68/3/560).
-</small></small>
+</small>
 
 ---
 
@@ -79,9 +79,9 @@ Image credit: H Br&uuml;ssow <i>et al.</i> 2004, Microbiol Mol Biol Rev, [68(3) 
   * $\frac{C+G}{A+C+G+T}$
   * can identify regions of horizontal transfer<sup>1</sup> between genomes with divergent GC content.
 
-<small><small>
+<small>
 Gao and Zhang (2006) [GC-Profile: a web-based tool for visualizing and analyzing the variation of GC content in genomic sequences](https://academic.oup.com/nar/article/34/suppl_2/W686/2505479).  Nucl Acid Res 34: W686.
-</small></small>
+</small>
 
 ---
 
@@ -107,9 +107,9 @@ d &= (1\times 0) + (0\times 1) + (1\times 1) + (1\times 1)\\\\
 
 <img src="https://media.springernature.com/full/springer-static/image/art%3A10.1186%2Fs13059-017-1319-7/MediaObjects/13059_2017_1319_Fig1_HTML.gif" height="500px"/>
 
-<small><small>
-Image credit: A Zielezinski <i>et al.</i> 2017, [Alignment-free sequence comparison: benefits, applications, and tools]((https://genomebiology.biomedcentral.com/articles/10.1186/s13059-017-1319-7)).  <i>Genome Biol</i> 18:186.
-</small></small>
+<small>
+Image credit: A Zielezinski <i>et al.</i> 2017, Alignment-free sequence comparison: benefits, applications, and tools.  <a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-017-1319-7"><i>Genome Biol</i> 18:186</a>.
+</small>
 
 ---
 
@@ -117,9 +117,9 @@ There are many alignment-free methods, mostly k-mer based
 
 <img src="/img/alignment-free.png" height="500px"/>
 
-<small><small>
-Image credit: A Zielezinski <i>et al.</i> 2019, [Benchmarking of alignment-free sequence comparison methods](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1755-7). <i>Genome Biol</i> 20:144.
-</small></small>
+<small>
+Image credit: A Zielezinski <i>et al.</i> 2019, Benchmarking of alignment-free sequence comparison methods. <a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1755-7"><i>Genome Biol</i> 20:144</a>.
+</small>
 
 ---
 
@@ -147,12 +147,19 @@ Image credit: A Zielezinski <i>et al.</i> 2019, [Benchmarking of alignment-free 
 # Calculating scores
 
 * [Dayhoff](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5037978/) *et al.* (1978) pioneered the concept of quantifying amino acid substitution rates by comparing protein sequences.
-* Built trees relating sets of protein sequences with <15% divergence.
+  * Built trees relating sets of protein sequences with <15% divergence.
   * Reconstructing ancestral sequences in the tree identified amino acid changes.
-<img src="/img/dayhoff-tree.png" width=330/>
-<small><small>
-Image source: Dayhoff M, Schwartz R, Orcutt B. A model of evolutionary change in proteins. Atlas of protein sequence and structure. 1978;5:345-52
-</small></small>
+
+<table>
+<tr>
+<td><img src="/img/dayhoff-tree.png" height=230/></td>
+<td><img src="https://upload.wikimedia.org/wikipedia/en/e/e5/Photo_of_Margaret_Oakley_Dayhoff.jpg" height=230/></td>
+</tr>
+</table>
+
+<small>
+Image sources: (left) Dayhoff M, Schwartz R, Orcutt B. A model of evolutionary change in proteins. Atlas of protein sequence and structure. 1978;5:345-52. (right) Photo of Margaret Oakley Dayhoff, &copy; <a href="https://en.wikipedia.org/wiki/File:Photo_of_Margaret_Oakley_Dayhoff.jpg">Ruth Dayhoff</a>.
+</small>
 
 ---
 
@@ -191,9 +198,9 @@ Raising $M$ to the power of 250 yields PAM250 (250 AA subn's at 100 sites).  Onl
 </tr>
 </table>
 
-<small><small>
+<small>
 Data from Dayhoff M, Schwartz R, Orcutt B. A model of evolutionary change in proteins. Atlas of protein sequence and structure. 1978;5:345-52.
-</small></small>
+</small>
 
 ---
 
@@ -203,6 +210,12 @@ Data from Dayhoff M, Schwartz R, Orcutt B. A model of evolutionary change in pro
 * Calculated from the (no longer maintained) [BLOCKS database](https://academic.oup.com/nar/article/24/1/197/2359962) of local alignments of highly conserved regions of proteins.
 * PAM is based on mutations mapped to a phylogeny.
 * BLOSUM is based on [odds ratios](https://en.wikipedia.org/wiki/Odds_ratio) of AAs in an alignment.
+
+<img src="https://i0.wp.com/drgeraldstein.blog/wp-content/uploads/2015/03/img_0176.jpg?ssl=1" width=300/>
+
+<small>
+Image source: <a href="https://drgeraldstein.blog/2015/03/08/a-man-with-the-key-to-happiness/">Gerald Stein</a>.  Steve and Jorja Henikoff, Aleta and Gerald Stein.
+</small>
 
 ---
 
@@ -259,6 +272,14 @@ $$
 
 ---
 
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Sandbanks%2C_Ontario%2C_Canada.jpg/2560px-Sandbanks%2C_Ontario%2C_Canada.jpg" width="85%"/>
+
+<small>
+Image source: Sandbanks in Prince Edward County, Ontario. <a href="https://commons.wikimedia.org/wiki/File:Sandbanks,_Ontario,_Canada.jpg">Shawn M. Kent</a>, CC BY-SA 4.0.
+</small>
+
+---
+
 # Searching a sequence database
 
 * How do we search a database with a nucleotide or protein sequence?
@@ -276,6 +297,7 @@ $$
   * Developed by Stephen Altschul, Warren Gish and David Lipman at the NCBI.
   * Maintained by the NCBI at https://blast.ncbi.nlm.nih.gov/Blast.cgi
 * Local similarity = search for conserved intervals.
+  * In other words, we don't require the sequences to align along their entire length.
 * This requires some way to measure the similarity of unaligned  sequences.
 
 ---
@@ -294,7 +316,7 @@ Image source: [A Primer for Computational Biology](https://open.oregonstate.educ
 
 # Initial seed
 
-* The BLAST database stores a [hash table](https://en.wikipedia.org/wiki/Hash_table)) of $k$-mers for sequences in its database.
+* The BLAST database stores a [hash table](https://en.wikipedia.org/wiki/Hash_table) of $k$-mers for sequences in its database.
   * Command line `blastp` defaults to $k=3$, but online version defaults to $k=5$.
 * A hash function converts data (like the query sequence) to a simpler value (often an integer).
   * We can use this value to directly look-up records in the database.
@@ -353,9 +375,9 @@ Image source: [A Primer for Computational Biology](https://open.oregonstate.educ
     <td>
       <img src="/img/Altschul.png"/>
       <br/>
-      <small>
+      <div style="font-size: 12pt">
       Image credit: SF Altschul <i>et al.</i> (1990). <a href="https://www.sciencedirect.com/science/article/pii/S0022283605803602">Basic local alignment search tool</a>.  J Mol Biol 215: 403.
-      </small>
+      </div>
     </td>
   </tr>
 </table>
@@ -370,9 +392,9 @@ Image source: [A Primer for Computational Biology](https://open.oregonstate.educ
 * High level of similarity to SARS-like coronaviruses isolated from bats (Bat-SL-CoVZC).
 <img src="/img/sarscov2-blast.png" height="300px"/>
 
-<small><small>
+<small>
 Image credit: R Lu <i>et al.</i> (2020) Genomic characterisation and epidemiology of 2019 novel coronavirus: implications for virus origins and receptor binding. <i>Lancet</i> [395(10224): 565-574](https://www.sciencedirect.com/science/article/pii/S0140673620302518).
-</small></small>
+</small>
 
 ---
 
@@ -380,9 +402,9 @@ Image credit: R Lu <i>et al.</i> (2020) Genomic characterisation and epidemiolog
 <img src="/img/conspiracy.svg" height=300/>
 * Fueled conspiracy theories that SARS-CoV-2 had been intentionally manufactured in a laboratory.
 
-<small><small>
+<small>
 <sup>1</sup> Pradhan <i>et al.</i> (2020). Uncanny similarity of unique inserts in the 2019-nCoV spike protein to HIV-1 gp120 and Gag.  <i>bioRxiv</i> (withdrawn), https://doi.org/10.1101/2020.01.30.927871.
-</small></small>
+</small>
 
 ---
 
@@ -392,17 +414,21 @@ Notably, the authors did not report E-values.  Another group (Zheng et al., 2020
 
 > What does an E-value of 224 mean?
 
-<small><small>
+<small>
 Source: C Zheng <i>et al.</i> (2020) Protein Structure and Sequence Reanalysis of 2019-nCoV Genome Refutes Snakes as Its Intermediate Host and the Unique Similarity
-between Its Spike Protein Insertions and HIV-1.  [J Proteo Res 19, 1351-1360](https://pubs.acs.org/doi/abs/10.1021/acs.jproteome.0c00129).
-</small></small>
+between Its Spike Protein Insertions and HIV-1.  <a href="https://pubs.acs.org/doi/abs/10.1021/acs.jproteome.0c00129"><i>J Proteo Res</i> 19, 1351-1360</a>.
+</small>
 
 ---
 
-# Key points
+<section data-background="#333" style="color:white">
+
+<h1 style="color:white">Key points</h1>
 
 * Dot plots enable us to visually compare two sequences, identify rearrangements.
 * $k$-mers are "words" we extract as features of a sequence that are easier to compare.
 * A score matrix quantifies how likely one residue will be replaced by another.
   * Sequences with typical differences are more similar.
 * The BLAST algorithm speeds up database searches by eliminating most candidates by k-mer filtering and scoring thresholds.
+
+</section>
