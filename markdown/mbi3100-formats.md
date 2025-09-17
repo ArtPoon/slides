@@ -230,6 +230,16 @@ ORIGIN
 
 ---
 
+# SRA Toolkit
+
+* NCBI requires users to use its own open-source software to download data
+* https://github.com/ncbi/sra-tools
+* `fasterq-dump` uses multi-threading and file caching to make downloads faster
+* Originally only available for Linux and macOS
+  * Recently made available for [Windows](https://github.com/ncbi/sra-tools/wiki/01.-Downloading-SRA-Toolkit).
+
+---
+
 # fasterq-dump
 
 Using `fasterq-dump` to retrieve a WGS data set of *Helicobacter pylori*.
@@ -247,13 +257,11 @@ total 2.1G
 
 ---
 
-# SRA Toolkit
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Wind_Turbines_and_Farmland_-_Autumn_on_Manitoulin_Island_-_Ontario_-_Canada_%2853073575988%29.jpg/2560px-Wind_Turbines_and_Farmland_-_Autumn_on_Manitoulin_Island_-_Ontario_-_Canada_%2853073575988%29.jpg" height="75%"/>
 
-* NCBI requires users to use its own open-source software to download data
-* https://github.com/ncbi/sra-tools
-* `fasterq-dump` uses multi-threading and file caching to make downloads faster
-* Originally only available for Linux and macOS
-  * Recently made available for [Windows](https://github.com/ncbi/sra-tools/wiki/01.-Downloading-SRA-Toolkit).
+<small>
+Wind turbines and farmland - autumn on Manitoulin Island (Tony Webster, <a href="https://commons.wikimedia.org/wiki/File:Wind_Turbines_and_Farmland_-_Autumn_on_Manitoulin_Island_-_Ontario_-_Canada_(53073575988).jpg">CC-BY 2.0</a>)
+</small>
 
 ---
 
@@ -343,19 +351,19 @@ BCCCCFF
 
 ---
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Wind_Turbines_and_Farmland_-_Autumn_on_Manitoulin_Island_-_Ontario_-_Canada_%2853073575988%29.jpg/2560px-Wind_Turbines_and_Farmland_-_Autumn_on_Manitoulin_Island_-_Ontario_-_Canada_%2853073575988%29.jpg" height="75%"/>
-
-<small>
-Wind turbines and farmland - autumn on Manitoulin Island (Tony Webster, <a href="https://commons.wikimedia.org/wiki/File:Wind_Turbines_and_Farmland_-_Autumn_on_Manitoulin_Island_-_Ontario_-_Canada_(53073575988).jpg">CC-BY 2.0</a>)
-</small>
-
----
-
 # Converting between file formats
 
 * One of the fundamental tasks in bioinformatics is the conversion of data from one format to another.
 * Different programs write data to files in different formats, even when the data contain the same information.
 * Converting formats is often a required step to feed the output of one program as input for another (building *pipelines*).
+
+---
+
+<img src="https://insaflu.readthedocs.io/en/latest/_images/INSaFLU_TELEVIR_WORKFLOW.png" width="60%"/>
+
+<small>
+Bioinformatic pipeline for the <a href="https://insaflu.readthedocs.io/en/latest/bioinformatics_pipeline.html">INSaFLU metagenomic virus detection platform</a>. &copy; 2023 Victor Borges.
+</small>
 
 ---
 
