@@ -107,14 +107,16 @@ ACTGATC<br/>
 </tt>
 </center>
 
-* There are two gaps in this example.  If we are using affine scoring (open `-2` and extend `-1`) then the total penalty is `-2 + (-3)`.
-  * If we ignore terminal gaps, then the penalty is `-3`.
-* There are three matches (`+3`) and one mismatch (`-1`)
-* The alignment score is `-3`.
+* There are two gaps in this example.  If we are using affine scoring (open $-2$ and extend $-1$) then the total gap penalty is: $(-2)+(-2-1) = -5$.
+  * If we ignore terminal gaps, then the gap penalty is $-3$.
+* There are three matches ($+3$) and one mismatch ($-1$)
+* The alignment score is $3-1-5=-3$.
 
 ---
 
 # Scoring a protein alignment
+
+* Things get a little more interesting with protein sequences:
 
 <center>
 <tt>
@@ -123,9 +125,9 @@ VASR--QM
 </tt>
 </center>
 
-* Let's use the BLOSUM62 matrix, a gap open penalty of `-3` and an extend penalty of `-1`, ignoring terminal gaps.
+* Let's use the [BLOSUM62](https://www.ncbi.nlm.nih.gov/IEB/ToolBox/C_DOC/lxr/source/data/BLOSUM62) matrix, a gap open penalty of $-3$ and an extend penalty of $-1$, ignoring terminal gaps.
 * The scores are: 
-`0 + 4 + 4 + (-2) + (-3-1) + 5 + 2`
+$0 + 4 + 4 + (-2) + (-3-1) + 5 + 2$
 for a total score of 9.
 
 
@@ -194,11 +196,12 @@ for a total score of 9.
 * For every element $F(i, j)$, we keep track of which step gave the maximum value, *i.e.*, $(i-1, j)$, $(i-1, j-1)$ or $(i, j-1)$.
   * If two or more steps gave the same maximum value, we store multiple pointers. 
 * A path from the lower-right corner to the upper-left corner that follows these stored steps is an optimal alignment.
-  * As we move along the path, we add up the alignment score.
+  * Remember, any path through the F matrix induces an alignment.
+  * We calculate the alignment score for the optimal path alignment as usual.
 
-<small><small>
+<small>
 The following JavaScript was modified from <a href="https://github.com/drdrsh">Mostafa Abdelraouf's</a> excellent implementation of the NW algorithm.
-</small></small>
+</small>
 
 ---
 
@@ -261,6 +264,7 @@ Image source: Boardwalk in Point Pelee National Park, <a href="https://upload.wi
   2. Align a sequence to group of sequences.
   3. Align two groups of sequences.
 
+* To calculate the alignment score of two groups, average over all pairs between groups.
 * Preserve all gaps as we proceed down to the root.
 
 ---
@@ -318,7 +322,7 @@ Image source: Boardwalk in Point Pelee National Park, <a href="https://upload.wi
 
 * Isolated stretch of mismatched residues in one sequence (HCV reference 4d, DQ516083)
 * Rapid evolution in one lineage unlikely.
-* May represent a double frameshift mutation - in this case, there is a dropout of `T` calls in nucleotide sequence.
+* May represent a [pair of compensatory frameshift mutations](https://academic.oup.com/mbe/article/39/3/msac031/6524633) (but in this case, there was a dropout of `T` calls).
 
 ---
 
