@@ -102,6 +102,16 @@
   * *e.g.*, copy-number variants (CNVs).
   * Any feature that can be annotated at the nucleotide level.
 
+
+---
+
+# GWAS is not whole-genome
+
+* GWAS generally involves the targeted genotyping of specific, pre-selected variants using microarrays.
+* Whole-exome (WES) and whole-genome sequencing (WGS) studies aim to capture all genetic variation.
+  * Strictly speaking, both WES and WGS studies are *also* GWAS, although the term "GWAS" in the literature usually refers to studies of common variants assayed by microarrays, and sometimes considered separately from WGS and WES.
+* Currently, GWAS studies are still more common.
+
 ---
 
 # Selecting the study population
@@ -111,6 +121,14 @@
   * [Genetic Association Study (GAS) Power Calculator](https://csg.sph.umich.edu/abecasis/gas_power_calculator/)
   * [Genetic Power Calculator](https://zzz.bwh.harvard.edu/gpc/).
 * Assembling a sufficiently large data set to run a well-powered GWAS requires major investments of time and money.
+
+---
+
+# Existing cohorts
+* The majority of GWAS are conducted using pre-existing large cohorts with genomic and phenotypic data.
+* The NCBI database of Genotypes and Phenotypes (dbGaP) archives public and controlled-access data from human studies.
+* *e.g.*, the [GIANT consortium](https://giant-consortium.web.broadinstitute.org/index.php/GIANT_consortium) (Genetic Investigation of ANthropometric Traits) is the largest GWAS ([5.4 million people as of 2022](https://www.broadinstitute.org/news/largest-genome-wide-association-study-ever-uncovers-nearly-all-genetic-variants-linked-height)) 
+  * Recently published results on variants associated with human height.
 
 ---
 
@@ -130,10 +148,18 @@
 # PED file
 
 * A `.ped` file is a plain text format for storing sample pedigree information and genotype calls.
-* One line per sample, fields are whitespace (space/tab) delimited.
-* The first six fields store (1) family ID, (2) individual ID, (3) paternal ID, (4) maternal ID, (5) sex (1=male, 2=female, other), and (6) phenotype (case/control).
-* The remaining fields store two values for every variant, *e.g.*:
-`CH18526 NA18526 0 0 2 1 A A G G T T C C G G T T`
+  * One line per sample, fields are whitespace (space/tab) delimited.
+
+| Position | Field | Value (example) |
+|---|----|----|
+| 1 | Family ID | `CH18526` |
+| 2 | Individual ID | `NA18526` |
+| 3 | Parental ID | `0` (unknown) |
+| 4 | Maternal ID | `0` |
+| 5 | Sex | `1` (male), `2` (female) |
+| 6 | Phenotype | `1` (unaffected, control); `2` (affected, case); `0` (missing) |
+
+* The remaining fields store two values for every variant, *e.g.*, `A A`
 
 ---
 
@@ -147,32 +173,98 @@
 
 ---
 
-
-
----
-
 # Analyzing the data
 
-* [PLINK](https://www.cog-genomics.org/plink/) is a free, open-source program for GWAS analysis
-
-
-
-
----
-
-
-
----
-
-# Existing cohorts
-* The majority of GWAS are conducted using pre-existing large cohorts with genomic and phenotypic data.
-* The NCBI database of Genotypes and Phenotypes (dbGaP) archives public and controlled-access data from human studies.
-* The Framingham Study 
-* GIANT is the largest GWAS (5.4 million people) that recently published results on variants associated with human height.
+* [PLINK](https://www.cog-genomics.org/plink/) is a popular free, open-source (C/C++) command-line program for GWAS analysis and quality control.
+* In a typical workflow, PLINK is used to:
+  * Convert `.map` and `.ped` files into smaller binary `.bim` and `.bed` files
+  * Generate statistics on allele frequencies and missing data
+  * Run a basic association analysis on the phenotype for all variants
+  * Cluster individuals by genetic similarity
+  * Analyze family-based (pedigree) data
 
 ---
 
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Waterfall_in_Upper_Queen%27s_Park%2C_Stratford%2C_Ontario%2C_2025-08-04_04.jpg/2560px-Waterfall_in_Upper_Queen%27s_Park%2C_Stratford%2C_Ontario%2C_2025-08-04_04.jpg" width="80%"/>
 
+<small>
+Image source: Waterfall in Upper Queen's Park, Stratford, Ontario, 2025-08-04. <a href="https://commons.wikimedia.org/wiki/File:Waterfall_in_Upper_Queen%27s_Park,_Stratford,_Ontario,_2025-08-04_04.jpg">Chris Woodrich</a> CC BY-SA 4.0.
+</small>
+
+---
+
+# Quality control
+
+* Generating reliable results from GWAS requires careful QC steps, such as:
+  * Removing rare variants (lack of statistical power)
+  * Filtering variants that are missing from too many individuals in the cohort
+  * Identifying and removing genotyping errors
+  * Ensuring that phenotypes are well matched with genetic data, *e.g.*, is self-reported sex consistent with sex chromosomes?
+
+---
+
+# Imputation
+* After quality control, variants usually undergo phasing
+  * Phasing: Estimating whether sequenced variants belong to the maternally- or paternally-inherited chromosome
+* Missing variants can be imputed (assigned a value that is consistent with other data) using a *haplotype reference panel*
+  * [1000 Genomes Project](https://www.internationalgenome.org/) - a public catalogue of common human genetic variation using samples from consenting, healthy donors.
+  * [TOPMed Imputation Server](https://imputation.biodatacatalyst.nhlbi.nih.gov/#!) - a free genotype imputation service provided by the NIH.
+
+---
+
+# Adjusting for common ancestry
+
+* If there are study participants from diverse backgrounds, then you may get false positive associations.
+  * Suppose there are two major ethnic groups in your data &mdash; one group with a much higher exposure to some unmeasured environmental risk factor.
+  * Your data will support associations with polymorphisms that separate the ethnic groups but have nothing to do with the phenotype!
+* Standard statistical tests assume that your observations are independent.
+  * People who share recent common ancestry tend to be *identical by descent* (IBD).
+
+---
+
+<table>
+<tr>
+  <td style="font-size: 20pt;">
+    <h3>Common ancestry</h3>
+    <h1>STRUCTURE</h1>
+    <ul>
+      <li>A Bayesian method for probabilistically assigning individuals to source populations (ancestries).</li>
+      <li>The user must specify the number of clusters ($K$) <i>a priori</i>.</li>
+      <li>The coloured barplot produced by STRUCTURE became a "de-facto standard" feature of GWAS analyses.</li>
+      <li><a href="https://rajanil.github.io/fastStructure/">fastStructure</a> is a successor to STRUCTURE for larger datasets.</li>
+    </ul>
+    <small>
+    Image source: <a href="https://commons.wikimedia.org/wiki/File:Rosenberg_1048people_993markers.jpg">NA Rosenberg <i>et al.</i> (2005) PLoS Genet 1(6): e70.</a> CC-BY 2.5 Generic.
+    </small>
+  </td>
+  <td width="30%">
+    <div style="height: 500px; overflow: hidden;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Rosenberg_1048people_993markers.jpg" style="max-height: unset; height: 800px; margin: 0 0 0 0; padding: 0; border: unset;"/>
+    </div>
+  </td>
+</tr>
+</table>
+
+---
+
+<table style="font-size: 18pt;">
+<tr>
+  <td>
+    <h3>Common ancestry</h3>
+    <h1>Principal components analysis</h1>
+    <ul>
+      <li>PCA maps the data to a lower dimensional space where the components are uncorrelated, while preserving as much of the original information as possible.</li>
+      <li>Provides a way of estimating the number of clusters to feed into STRUCTURE.</li>
+    </ul>
+  </td>
+  <td width="50%">
+    <img src="/img/europe-pca.svg"/>
+    <small>
+    Image source: Novembre <i>et al.</i> (2008) Genes mirror geography within Europe. <a href="https://www.nature.com/articles/nature07331">Nature 456: 98-101</a>.
+    </small>
+  </td>
+</tr>
+</table>
 
 ---
 
@@ -217,10 +309,32 @@ $$\mathbf{y} = \frac{e^{\mathbf{W}\mathbf{b} + g \mathbf{x} + \mathbf{e}}}{1+e^{
 
 ---
 
+# Adjusting for multiple comparisons
+
+* The key challenge to analyzing GWAS data is that we are running an enormous number of statistical tests!
+
+
+
+---
+
 # Interpreting associations: Linkage
 
-* A variant may be associated with a trait because it is located near another variant that is actually responsible.
-* Linkage disequilibrium (LD) is the departure from expected genotype frequencies because  
+* A variant may be associated with a trait because it is located near another variant that is actually responsible (causal).
+  * Variants that are physically located in close proximity in the genome (chromosome) are in *linkage*.
+* The fact that variants are linked to other variants is the fundamental basis of the HapMap project.
+  * Remember, a *haplotype* is a set of variants that tend to be inherited together because they are located close to each other in the chromosome.
+
+---
+
+# Measuring linkage
+
+* Linkage disequilibrium (LD) is the departure from expected genotype frequencies when loci are transmitted independently.
+* LD can be measured with the statistic $D = P_{ij} - p_{i} q_{j}$
+  * $p_i$ ($q_j$) is the frequency of allele $i$ ($j$) at locus 1 (2).
+  * $P_{12}$ is the frequency of the genotype carrying these alleles at the respective loci
+* The *expected* genotype frequency without linkage is $p_{i} q_{j}$.
+  * Linkage causes $D$ to depart away from zero.
+  * In practice, $D$ is adjusted to remove the effects of $p$ and $q$.
 
 ---
 
