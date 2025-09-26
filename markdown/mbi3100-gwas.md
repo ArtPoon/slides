@@ -31,6 +31,20 @@
 
 ---
 
+# Challenges in finding genetic associations
+
+* Individual variants often confer very little risk.
+  * There are very few examples of common variants that have a large effect.
+* Genetic variants are often associated with many other traits (pleiotropy)
+* Causal variants can be physically linked with non-causal variants.
+* Associations may be confounded by common ancestry, environment.
+
+<div style="text-align: center; padding: 30px 100px 0 100px;" width="30%">
+Finding variants that are a direct biological cause of some disease is very difficult!
+</div>
+
+---
+
 # Genetic variants
 
 * In the pre-human genome era (before 2001), studies were generally limited to variants that could be readily measured by PCR:
@@ -42,6 +56,7 @@
 
 ---
 
+### Genetic variants
 # Common and rare variants
 
 * Declaring a variant as common or rare is population-specific and cannot be generalized across populations.
@@ -109,11 +124,13 @@
 
 * GWAS generally involves the targeted genotyping of specific, pre-selected variants using microarrays.
 * Whole-exome (WES) and whole-genome sequencing (WGS) studies aim to capture all genetic variation.
-  * Strictly speaking, both WES and WGS studies are *also* GWAS, although the term "GWAS" in the literature usually refers to studies of common variants assayed by microarrays, and sometimes considered separately from WGS and WES.
+  * Strictly speaking, both WES and WGS studies are *also* GWAS
+  * "GWAS" usually refers to studies of common variants assayed by microarrays, and sometimes considered separately from WGS and WES.
 * Currently, GWAS studies are still more common.
 
 ---
 
+### Obtaining data
 # Selecting the study population
 
 * GWAS generally requires very large sample sizes to identify reproducible, genome-wide significant associations.
@@ -124,6 +141,7 @@
 
 ---
 
+### Obtaining data
 # Existing cohorts
 * The majority of GWAS are conducted using pre-existing large cohorts with genomic and phenotypic data.
 * The NCBI database of Genotypes and Phenotypes (dbGaP) archives public and controlled-access data from human studies.
@@ -145,6 +163,7 @@
 
 ---
 
+### Inputting data
 # PED file
 
 * A `.ped` file is a plain text format for storing sample pedigree information and genotype calls.
@@ -163,6 +182,7 @@
 
 ---
 
+### Inputting data
 # MAP file
 
 * Each line of the MAP file describes one variant, and must contain exactly four columns:
@@ -170,6 +190,52 @@
   2. reference SNP number in the NCBI dbSNP database, *e.g.*, `rs555896`
   3. genetic distance (in [morgans](https://en.wikipedia.org/wiki/Centimorgan), a measure of genetic linkage)
   4. base-pair position in reference sequence
+
+---
+
+### Inputting data
+# Example - HapMap3
+
+SNP genotype data from 1,115 samples collected by the Wellcome Trust Sanger Institute and the Broad Institute:
+
+<table>
+<tr>
+  <td width="500px">
+  PED file (704Mb compressed, truncated from lines about 5,961,708 characters long):
+  <pre><code class="hljs subunit">
+  Y072    NA19152       0       0 2 0 C C  C C  T T  C C  A G
+  Y043    NA19139 NA19138 NA19137 1 0 C C  C C  T T  C C  A G
+  Y028    NA18912       0       0 2 0 C C  C C  T T  C C  A A 
+  Y056    NA19160       0       0 1 0 C C  C C  T T  C C  A A 
+  1341    NA07055       0       0 2 0 C C  C C  T T  C C  G G 
+  1454    NA12814       0       0 1 0 C C  C C  T T  C C  A A 
+  1334    NA10847 NA12146 NA12239 2 0 C C  C C  T T  C C  A G
+  NA18532 NA18532       0       0 2 0 C C  C C  T T  C C  A A 
+  NA18561 NA18561       0       0 1 0 C C  C C  T T  C C  G G 
+  NA18942 NA18942       0       0 2 0 C C  C C  T T  C C  G G 
+  </code></pre>
+  </td>
+  <td width="300px">
+  MAP file (11Mb compressed):
+  <pre><code class="hljs subunit">
+  1 rs10458597 0 554484
+  1 rs2185539 0 556738
+  1 rs6681105 0 581938
+  1 rs11240767 0 718814
+  1 rs12564807 0 724325
+  1 rs3131972 0 742584
+  1 rs3131969 0 744045
+  1 rs1048488 0 750775
+  1 rs12562034 0 758311
+  1 rs4040617 0 769185
+  </code></pre>
+  </td>
+</tr>
+</table>
+
+<small>
+Source: https://www.broadinstitute.org/medical-and-population-genetics/hapmap-3
+</small>
 
 ---
 
@@ -247,17 +313,18 @@ Image source: Waterfall in Upper Queen's Park, Stratford, Ontario, 2025-08-04. <
 
 ---
 
+### Common ancestry
+# Principal component analysis
+
 <table style="font-size: 18pt;">
 <tr>
   <td>
-    <h3>Common ancestry</h3>
-    <h1>Principal components analysis</h1>
     <ul>
-      <li>PCA maps the data to a lower dimensional space where the components are uncorrelated, while preserving as much of the original information as possible.</li>
+      <li><a href="https://en.wikipedia.org/wiki/Principal_component_analysis">PCA</a> maps the data to a lower dimensional space where the components are uncorrelated, while preserving as much of the original information as possible.</li>
       <li>Provides a way of estimating the number of clusters to feed into STRUCTURE.</li>
     </ul>
   </td>
-  <td width="50%">
+  <td width="60%">
     <img src="/img/europe-pca.svg"/>
     <small>
     Image source: Novembre <i>et al.</i> (2008) Genes mirror geography within Europe. <a href="https://www.nature.com/articles/nature07331">Nature 456: 98-101</a>.
@@ -268,6 +335,7 @@ Image source: Waterfall in Upper Queen's Park, Stratford, Ontario, 2025-08-04. <
 
 ---
 
+### Association tests
 # Single marker regression
 
 * Let $\mathbf{y}$ be a continuous phenotype (*e.g.*, blood pressure) and $\mathbf{x}$ be the presence/absence of a genetic variant.
@@ -279,6 +347,7 @@ $$\mathbf{y}=g \mathbf{x} + \mathbf{e}$$
 
 ---
 
+### Association tests
 # Encoding genotypes
 
 * $x$ is binary if we are working with a haploid organism or virus, where an individual has a single copy of the genome.
@@ -289,6 +358,7 @@ $$\mathbf{y}=g \mathbf{x} + \mathbf{e}$$
 
 ---
 
+### Association tests
 # Adding covariates
 
 * The previous model assumes that every individual in the population is identical with respect to anything that might affect trait $\mathbf{y}$.
@@ -299,6 +369,7 @@ $$\mathbf{y}= \mathbf{W}\mathbf{b} + g \mathbf{x} + \mathbf{e}$$
 
 ---
 
+### Association tests
 # Logistic regression
 
 * If the phenotype is binary (*e.g.*, case-control studies), then we need to use logistic regression.
@@ -309,10 +380,11 @@ $$\mathbf{y} = \frac{e^{\mathbf{W}\mathbf{b} + g \mathbf{x} + \mathbf{e}}}{1+e^{
 
 ---
 
+### Interpreting associations
 # Adjusting for multiple comparisons
 
 * The key challenge to analyzing GWAS data is that we are running an enormous number of statistical tests!
-
+  * If our significance level is $\alpha=0.05$ and we run 100 tests, then we can expect 5 of those tests to be significant.
 
 
 ---
@@ -326,6 +398,7 @@ $$\mathbf{y} = \frac{e^{\mathbf{W}\mathbf{b} + g \mathbf{x} + \mathbf{e}}}{1+e^{
 
 ---
 
+### Interpretating associations
 # Measuring linkage
 
 * Linkage disequilibrium (LD) is the departure from expected genotype frequencies when loci are transmitted independently.
@@ -338,7 +411,8 @@ $$\mathbf{y} = \frac{e^{\mathbf{W}\mathbf{b} + g \mathbf{x} + \mathbf{e}}}{1+e^{
 
 ---
 
-# Interpreting associations: Pleiotropy
+### Interpreting associations
+# Pleiotropy
 
 * A variant exhibits *pleiotropy* if it affects more than one trait.
 ![](/img/shooshtari-pleiotropy.svg)
@@ -349,7 +423,7 @@ Image source: Shooshtari <i>et al.</i> (2017) Integrative Genetic and Epigenetic
 
 ---
 
-# Interpreting associations: 
+### Interpreting associations
 
 * Cases and controls should be matched by ancestry to avoid confounding.
   * If a particular ancestry is over-represented in the case group, the association will be confounded with other genetic or environmental factors.
