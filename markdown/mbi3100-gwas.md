@@ -70,7 +70,7 @@ Finding variants that are a direct biological cause of some disease is very diff
 
 * The [International<sup>&dagger;</sup> HapMap Project](https://www.genome.gov/10001688/international-hapmap-project) was launched in October 2002 with the mission of creating a public database of common variants in the human genome.
   * Made possible by the completion of the first draft human genome in 2001.
-  * A [haplotype](https://en.wikipedia.org/wiki/Haplotype) is a run of alleles that tend to be inherited together due to linkage.
+  * A [haplotype](https://en.wikipedia.org/wiki/Haplotype) (haploid genotype) is the set of alleles that were inherited from one parent.
 * Over one million SNPs were identified from 269 DNA samples when the database was published in 2005.
   * They discovered most variation in human genomes could be reduced to about 250,000 to 500,000 marker SNPs.
 
@@ -275,16 +275,16 @@ Image source: Waterfall in Upper Queen's Park, Stratford, Ontario, 2025-08-04. <
 * Missing variants can be imputed (assigned a value that is consistent with other data) using a *haplotype reference panel*
   * [1000 Genomes Project](https://www.internationalgenome.org/) - a public catalogue of common human genetic variation using samples from consenting, healthy donors.
   * [TOPMed Imputation Server](https://imputation.biodatacatalyst.nhlbi.nih.gov/#!) - a free genotype imputation service provided by the NIH.
+  * Several programs are available, *e.g.*, [SHAPEIT-IMPUTE2](https://mathgen.stats.ox.ac.uk/impute/impute_v2.html), [minimac4](https://github.com/statgen/Minimac4)
 
 ---
 
 # Adjusting for common ancestry
 
 * If there are study participants from diverse backgrounds, then you may get false positive associations.
-  * Suppose there are two major ethnic groups in your data &mdash; one group with a much higher exposure to some unmeasured environmental risk factor.
-  * Your data will support associations with polymorphisms that separate the ethnic groups but have nothing to do with the phenotype!
+  * Cases and controls should be matched by ancestry to avoid confounding.
+  * If a particular ethnic group is over-represented in the case group, the association will be [confounded](https://en.wikipedia.org/wiki/Confounding) by other genetic and environmental factors!
 * Standard statistical tests assume that your observations are independent.
-  * People who share recent common ancestry tend to be *identical by descent* (IBD).
 
 ---
 
@@ -294,10 +294,12 @@ Image source: Waterfall in Upper Queen's Park, Stratford, Ontario, 2025-08-04. <
     <h3>Common ancestry</h3>
     <h1>STRUCTURE</h1>
     <ul>
-      <li>A Bayesian method for probabilistically assigning individuals to source populations (ancestries).</li>
-      <li>The user must specify the number of clusters ($K$) <i>a priori</i>.</li>
-      <li>The coloured barplot produced by STRUCTURE became a "de-facto standard" feature of GWAS analyses.</li>
-      <li><a href="https://rajanil.github.io/fastStructure/">fastStructure</a> is a successor to STRUCTURE for larger datasets.</li>
+      <li>A Bayesian method for assigning individuals to source populations (ancestries).</li>
+        <ul>
+          <li>The user must specify the number of clusters $(K)$ <i>a priori</i>.</li>
+          <li>The coloured barplot produced by STRUCTURE became a "de-facto standard" feature of GWAS analyses.</li>
+        </ul>
+      <li>Can add cluster membership as a <a href="https://en.wikipedia.org/wiki/Dependent_and_independent_variables#Synonyms">covariate</a> in association test.</li>
     </ul>
     <small>
     Image source: <a href="https://commons.wikimedia.org/wiki/File:Rosenberg_1048people_993markers.jpg">NA Rosenberg <i>et al.</i> (2005) PLoS Genet 1(6): e70.</a> CC-BY 2.5 Generic.
@@ -324,7 +326,7 @@ Image source: Waterfall in Upper Queen's Park, Stratford, Ontario, 2025-08-04. <
       <li>Provides a way of estimating the number of clusters to feed into STRUCTURE.</li>
     </ul>
   </td>
-  <td width="60%">
+  <td width="55%">
     <img src="/img/europe-pca.svg"/>
     <small>
     Image source: Novembre <i>et al.</i> (2008) Genes mirror geography within Europe. <a href="https://www.nature.com/articles/nature07331">Nature 456: 98-101</a>.
@@ -362,10 +364,10 @@ $$\mathbf{y}=g \mathbf{x} + \mathbf{e}$$
 # Adding covariates
 
 * The previous model assumes that every individual in the population is identical with respect to anything that might affect trait $\mathbf{y}$.
-* Suppose we measure several characteristics that could also affect $\mathbf{y}$, *e.g.*, age, height, smoking.
+  * Suppose we measure several characteristics that could also affect $\mathbf{y}$, *e.g.*, age, height, smoking, ancestry cluster.
 * These measurements are collected into a matrix $\mathbf{W}$ with a row for each individual, and a column for each characteristic.
 $$\mathbf{y}= \mathbf{W}\mathbf{b} + g \mathbf{x} + \mathbf{e}$$
-  where $\mathbf{b}$ is a vector of covariate effects.
+  where $\mathbf{b}$ is a vector of covariate effects, $g$ is the effect of $\mathbf{x}$ on $\mathbf{y}$, and $\mathbf{e}$ is residual (unexplained) variation in $y$.
 
 ---
 
@@ -381,55 +383,90 @@ $$\mathbf{y} = \frac{e^{\mathbf{W}\mathbf{b} + g \mathbf{x} + \mathbf{e}}}{1+e^{
 ---
 
 ### Interpreting associations
-# Adjusting for multiple comparisons
-
-* The key challenge to analyzing GWAS data is that we are running an enormous number of statistical tests!
-  * If our significance level is $\alpha=0.05$ and we run 100 tests, then we can expect 5 of those tests to be significant.
-
-
----
-
-# Interpreting associations: Linkage
+# Linkage
 
 * A variant may be associated with a trait because it is located near another variant that is actually responsible (causal).
   * Variants that are physically located in close proximity in the genome (chromosome) are in *linkage*.
 * The fact that variants are linked to other variants is the fundamental basis of the HapMap project.
-  * Remember, a *haplotype* is a set of variants that tend to be inherited together because they are located close to each other in the chromosome.
+  * Human diversity on a chromosome can be broken down into a series of discrete haplotype blocks.
 
 ---
 
 ### Interpretating associations
 # Measuring linkage
 
-* Linkage disequilibrium (LD) is the departure from expected genotype frequencies when loci are transmitted independently.
+* Linkage disequilibrium (LD) is the departure from expected haplotype frequencies when loci are transmitted independently.
 * LD can be measured with the statistic $D = P_{ij} - p_{i} q_{j}$
   * $p_i$ ($q_j$) is the frequency of allele $i$ ($j$) at locus 1 (2).
-  * $P_{12}$ is the frequency of the genotype carrying these alleles at the respective loci
-* The *expected* genotype frequency without linkage is $p_{i} q_{j}$.
+  * $P_{ij}$ is the observed frequency of the haplotype with these alleles.
+* The *expected* haplotype frequency without linkage is $p_{i} q_{j}$.
   * Linkage causes $D$ to depart away from zero.
   * In practice, $D$ is adjusted to remove the effects of $p$ and $q$.
 
 ---
 
 ### Interpreting associations
-# Pleiotropy
+# Haploview
 
-* A variant exhibits *pleiotropy* if it affects more than one trait.
-![](/img/shooshtari-pleiotropy.svg)
+* A Java application by the [Broad Institute](https://en.wikipedia.org/wiki/Broad_Institute) for haplotype analysis.
+* Calculates LD for every pair of SNPs on chromosome (triangular plot) and defines blocks.
+
+<img src="/img/pone.0133003.g001.png" height="300px"/>
 
 <small>
-Image source: Shooshtari <i>et al.</i> (2017) Integrative Genetic and Epigenetic Analysis Uncovers Regulatory Mechanisms of Autoimmune Disease.  <a href="https://www.cell.com/ajhg/fulltext/S0002-9297(17)30236-7">Am J Hum Genet 101(1): 75-86</a>.
+Image source: Tsang <i>et al.</i> (2015) Glioma Association and Balancing Selection of ZFPM2.  <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0133003">PLOS ONE 10(7): e0133003.</a> (CC BY 4.0).
 </small>
 
 ---
 
 ### Interpreting associations
+# Adjusting for multiple comparisons
 
-* Cases and controls should be matched by ancestry to avoid confounding.
-  * If a particular ancestry is over-represented in the case group, the association will be confounded with other genetic or environmental factors.
-  * *e.g.*, 
-* Genetic associations may differ across ancestries, *e.g.*, European, African or Asian
-* 
+* The key challenge to analyzing GWAS data is that we are running an enormous number of statistical tests!
+  * If our significance level is $\alpha=0.05$ and we run 100 tests, then we can expect 5 of those tests to be [significant](https://xkcd.com/882/).
+* [Bonferroni correction](https://en.wikipedia.org/wiki/Bonferroni_correction): $\alpha = 0.05/N$ ($N$ is number of tests).
+  * The Affymetrix GeneChip has ~1 million probes ($\alpha=5\times 10^{-8}$).
+  * Variants in linkage tend to be transmitted together (non-independent)
+  * Can use the number of [LD blocks](https://pmc.ncbi.nlm.nih.gov/articles/PMC3023815/) as the number of tests.
+
+---
+
+<table>
+<tr>
+<td>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Manhattan_plot_from_a_GWAS_of_kidney_stone_disease.png/1280px-Manhattan_plot_from_a_GWAS_of_kidney_stone_disease.png" height="250px"/>
+</td>
+<td style="font-size: 14pt; vertical-align: middle" width="33%">
+  <b>Manhattan plot from a GWAS of kidney stone disease.</b><br/>
+  Image source: Howles <i>et al.</i> (2019) Genetic variants of calcium and vitamin D metabolism in kidney stone disease.  <i>Nature Comm</i> 10: 5175.  (CC-BY 4.0)
+</td>
+</tr>
+</table>
+
+* A [Manhattan plot](https://en.wikipedia.org/wiki/Manhattan_plot) summarizes associations between the trait and SNPs across the entire genome.
+  * Negative $\log_{10}$ $P$ values are plotted against the $y$ axis.
+  * Physican locations of SNPs on chromosomes are plotted against the $x$ axis.
+  * A horizontal line across the plot usually represents a threshold value.
+
+---
+
+* A [quantile-quantile plot](https://en.wikipedia.org/wiki/Q%E2%80%93Q_plot) compares observed against expected [quantiles](https://en.wikipedia.org/wiki/Quantile) of the distributions of $-\log_{10} P$ values.
+  * We assume $P$-values are uniformly distributed between 0 and 1.
+  * An excess number of significant $P$-values suggests failure to control for population structure.
+
+<table width="80%">
+<tr>
+  <td><img src="/img/Wang-QQplot-MethMolBiol2481.svg" height="330px"/></td>
+  <td style="vertical-align: middle" width="50%">
+  <b>Q-Q plot for four different models applied to maize GWAS data.</b><br/>  
+  MLM (yellow) suggests lack of power.  GLM (red) is inflated.  FarmCPU (green) and Blink (blue) are closer to ideal.
+  </br>
+  <div style="font-size: 10pt;">
+  Image source: Wang <i>et al.</i> (2022) Genome-Wide Association Studies, Methods in Molecular Biology vol. 2481. &copy; the Authors.
+  </div>
+  </td>
+</tr>
+</table>
 
 ---
 
@@ -437,10 +474,10 @@ Image source: Shooshtari <i>et al.</i> (2017) Integrative Genetic and Epigenetic
 
 <h1 style="color:white">Key points</h1>
 
-* Annotation is a time-consuming process that is necessary to make a genome sequence useful.
-* Many kinds of features can be identified at the nucleotide level, including protein-coding genes and non-coding RNAs.
-  * The majority of transcribed genes in the annotated human genome are non-coding.
-* Many gene finding programs have used hidden Markov models.
-  * The presence or absence of a protein-coding gene can be represented by a sequence of latent states.
+* GWAS is the simultaneous screening of 1,000's of common variants to test for associations between variants and phenotypes (*e.g.*, disease).
+  * Each common variant represents a set of physically linked alleles in the genome (haplotype).
+* The sample population may be structured by ancestry, which can cause false positives.
+  * Structure can be identified by PCA or programs like STRUCTURE.
+* Association tests are usually performed by regression, using a log-link function if the trait is binary.
 
 </section>
