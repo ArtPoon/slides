@@ -27,25 +27,24 @@ GGTTGCGCTCGTTGA    GGGATGCACTCGCTG
 
 <img src="https://media.springernature.com/full/springer-static/image/art%3A10.1007%2Fs10811-011-9730-z/MediaObjects/10811_2011_9730_Fig1_HTML.gif" width="600px"/>
 
-<small><small>
+<small>
 Variable (V) regions along dinoflagellate 18S rRNA sequences.  From J-S Ki 2011. [J Applied Pathol 24: 1035-1043](https://link.springer.com/article/10.1007/s10811-011-9730-z).
-</small></small>
+</small>
 
 ---
 
-# Diversity
+# Several ways to measure sequence diversity.
+* Fraction of polymorphic sites.
+  * Convention is to label a site as [polymorphic](https://en.wikipedia.org/wiki/Gene_polymorphism) if MAF is greater than 1% and less than 5%.
+* Sequence entropy (defined next slide)
+* [Minor allele frequency](https://academic.oup.com/aje/article/172/8/869/277182) (MAF): the frequency of the *second*-most common residue
 
-* There are several ways to measure sequence diversity.
-  * Fraction of polymorphic sites - what counts as a polymorphism?
-  * [Minor allele frequency](https://academic.oup.com/aje/article/172/8/869/277182) (MAF): the frequency of the *second*-most common residue
-  <img src="/img/MAF.png" width="500px"/>
-  * Sequence entropy
-
-* Convention is to label a site as [polymorphic](https://en.wikipedia.org/wiki/Gene_polymorphism) if MAF is greater than 1% and less than 5%.
+<img src="/img/MAF.png" width="500px"/>
 
 ---
 
-# Diversity: Sequence entropy
+### Measuring diversity
+# Sequence entropy
 
 <table>
   <tr>
@@ -90,9 +89,9 @@ Variable (V) regions along dinoflagellate 18S rRNA sequences.  From J-S Ki 2011.
 * A "sliding window" takes the average of a statistic for a given window size and step size.
 <img src="http://1.bp.blogspot.com/-eSp1w_oJsBc/U0NmHgWv76I/AAAAAAAAAzU/XyFsegtRKrU/s1600/Screen+Shot+2014-04-07+at+9.59.13+PM.png" height="200px">
 
-<small><small>
+<small>
 Image source: http://coleoguy.blogspot.com/2014/04/sliding-window-analysis.html
-</small></small>
+</small>
 
 ---
 
@@ -141,6 +140,15 @@ GGGATGCACTCGCTG
   4. The frequency of every residue is the same.
 * These define the *Jukes-Cantor* model.
 
+<table width="60%">
+<tr>
+<td><img src="https://media.springernature.com/relative-r300-703_m1050/springer-static/image/art%3A10.1038%2F44990/MediaObjects/41586_1999_Article_BF44990_Figa_HTML.gif" height="150px"/></td>
+<td style="font-size: 10pt;" width="65%">
+<a href="https://en.wikipedia.org/wiki/Thomas_H._Jukes">Thomas Hughes Jukes</a> (1906-1999) completed a PhD in Biochemistry at U. Toronto and was an early contributor to the neutral theory of molecular evolution.  He is credited with discovering the economic benefits of massive antibiotic use in livestock.  He was a regular a columnist for <i>Nature</i>, taking strong positions on controversies surrounding creationism (against), peach seeds as a cancer remedy (against), the environmental impact of DDT (pro-DDT), and the benefits of mass intake of vitamin C (against). (Photo credit: UC Berkeley)
+</td>
+</tr>
+</table>
+
 ---
 
 # Markov property
@@ -169,9 +177,9 @@ GGGATGCACTCGCTG
     <div></div>
     </center>
 
-<small><small>
+<small>
 Based on <a href="http://setosa.io/blog/2014/07/26/markov-chains/index.html"/>Markov Chains: A visual explanation by Victor Powell</a>
-</small></small>
+</small>
 </section>
 
 ---
@@ -210,7 +218,11 @@ Based on <a href="http://setosa.io/blog/2014/07/26/markov-chains/index.html"/>Ma
 
 ---
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/TobermoryGrotto105a.jpg" height=600/>
+<img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/TobermoryGrotto105a.jpg" height=500/>
+
+<small>
+Image source: The Grotto, Tobermory (Ontario). <a href="https://commons.wikimedia.org/wiki/File:TobermoryGrotto105a.jpg">Wikimedia Commons</a> CC BY-SA 4.0.
+</small>
 
 ---
 
@@ -364,11 +376,13 @@ Based on <a href="http://setosa.io/blog/2014/07/26/markov-chains/index.html"/>Ma
 
 * UPGMA, also known as **average linkage clustering**.
 
-1. Join clusters $X$, $Y$ with shortest *average* distance:
-$$d(X,Y)=\sum_{x\in X} \sum_{y\in Y} d(x,y) / (n_X n_Y)$$
-2. Replace $X$ and $Y$ with cluster $X\cup Y$, where:
-$$d(X\cup Y, Z) = \frac{n_{\scriptsize X} d(X,Z) + n_{\scriptsize Y} d(Y,Z)} {n_{\scriptsize X} + n_{\scriptsize Y}}$$
-3. Go to step 1 until only one cluster remains (the root).
+  1. Join clusters $X$, $Y$ with shortest *average* distance:
+`$$d(X,Y)=\sum_{x\in X} \sum_{y\in Y} d(x,y) / (n_X n_Y)$$`
+
+  2. Replace $X$ and $Y$ with cluster $X\cup Y$, where:
+`$$d(X\cup Y, Z) = \frac{n_{\scriptsize X} d(X,Z) + n_{\scriptsize Y} d(Y,Z)} {n_{\scriptsize X} + n_{\scriptsize Y}}$$`
+
+  3. Go to step 1 until only one cluster remains (the root).
 
 ---
 
@@ -379,9 +393,9 @@ $$d(X\cup Y, Z) = \frac{n_{\scriptsize X} d(X,Z) + n_{\scriptsize Y} d(Y,Z)} {n_
 
 <img src="/img/hclust.svg" width="1000px"/>
 
-<small><small>
+<small>
 Source: Gene expression data from M Love and R Irizarry, https://github.com/genomicsclass/tissuesGeneExpression
-</small></small>
+</small>
 
 ---
 
@@ -405,7 +419,7 @@ Source: Gene expression data from M Love and R Irizarry, https://github.com/geno
       <ul>
         <li>For example, the elbow method uses the diminishing returns of "unexplained variance" with increasing number of clusters, $k$</li>
         <li>For each $k$, calculate the total within-cluster sum-of-squares (WCSS):</li>
-        $$\sum_{i=1}^k \sum_{j\in {C_i}} (x_j - \bar{x}_i)^2$$
+        `$\sum_{i=1}^k \sum_{j\in {C_i}} (x_j - \bar{x}_i)^2$`
         <li>Subjectively choose point where increasing $k$ does not yield a sufficient reduction in total WCSS.</li>
       </ul>
     </td>
@@ -468,12 +482,12 @@ Source: Gene expression data from M Love and R Irizarry, https://github.com/geno
 
 <h1 style="color:white">Key points</h1>
 
-* Genetic diversity can be measured by calculating statistics at each site, and then averaging over parts or the length of the alignment.
-
-* A genetic distance maps two sequences to a non-negative number.
-  * Better genetic distances correct for multiple hits.
-
-* There are non-parametric and parametric methods for unsupervised clustering.
-* Hierarchical clustering converts a distance matrix into a tree that represents the order in which objects are merged into clusters.
+<ul>
+<li>Genetic diversity can be measured by calculating statistics at each site, and then averaging over parts or the length of the alignment.</li>
+<li>A genetic distance maps two sequences to a non-negative number.</li>
+  <ul><li>Better genetic distances correct for multiple hits.</li></ul>
+<li>There are non-parametric and parametric methods for unsupervised clustering.</li>
+<li>Hierarchical clustering converts a distance matrix into a tree that represents the order in which objects are merged into clusters.</li>
+</ul>
 
 </section>
