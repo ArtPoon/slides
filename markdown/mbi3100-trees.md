@@ -197,9 +197,9 @@ Try clicking and dragging the root (yellow node) around.
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/UPGMA_Dendrogram_Hierarchical.svg/800px-UPGMA_Dendrogram_Hierarchical.svg.png" height="250px"/>
 
-<small><small>
+<small>
 Image source: https://commons.wikimedia.org/wiki/File:UPGMA_Dendrogram_Hierarchical.svg, Creative Commons
-</small></small>
+</small>
 
 ---
 
@@ -214,11 +214,11 @@ Image source: https://commons.wikimedia.org/wiki/File:UPGMA_Dendrogram_Hierarchi
 
 ---
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/A_view_from_the_Centennial_Ridges_Trail_in_Algonquin_Provincial_Park_%28Ontario%2C_Canada%29.jpg/2560px-A_view_from_the_Centennial_Ridges_Trail_in_Algonquin_Provincial_Park_%28Ontario%2C_Canada%29.jpg"/>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/A_view_from_the_Centennial_Ridges_Trail_in_Algonquin_Provincial_Park_%28Ontario%2C_Canada%29.jpg/2560px-A_view_from_the_Centennial_Ridges_Trail_in_Algonquin_Provincial_Park_%28Ontario%2C_Canada%29.jpg" height="550px"/>
 
-<small><small>
+<small>
 Image credit: <a href="https://commons.wikimedia.org/wiki/File:A_view_from_the_Centennial_Ridges_Trail_in_Algonquin_Provincial_Park_(Ontario,_Canada).jpg">A view from the Centennial Ridges Trail in Algonquin Provincial Park</a>, Maksim Sokolov (CC BY-SA 4.0).
-</small></small>
+</small>
 
 ---
 
@@ -248,21 +248,21 @@ Image credit: <a href="https://commons.wikimedia.org/wiki/File:A_view_from_the_C
 ### Building trees
 # Why use NJ?
 
-* Neighbor-joining is provably&ast; [consistent](https://en.wikipedia.org/wiki/Consistency_(statistics)) &mdash; as you add more data, it converges to the true answer.
+* Neighbor-joining is provably&ast; [statistically consistent](https://en.wikipedia.org/wiki/Consistency_(statistics) &mdash; as you add more data, it converges to the true answer.
 * Unlike UPGMA, NJ is robust to changing rates of evolution.
 * Distance-based methods are faster than likelihood-based methods.
   * Well suited to enormous data sets.
 
-<small><small>
+<small>
 &ast; Gascuel O. (1997). [Concerning the NJ algorithm and its unweighted version](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.4.1112&rep=rep1&type=pdf).  Mathematical hierarchies and biology (AMS).
-</small></small>
+</small>
 
 ---
 
 ### Building trees
 # Limitations of NJ
 
-* Need to store a potentially massive distance matrix ($O(N^2)$ for $N$ sequences).
+* Need to store a potentially massive distance matrix &mdash; $O(N^2)$ for $N$ sequences.
 * NJ can assign negative branch lengths
   * NJ assumes the tree is additive, *i.e.*, `$d_{XY} = d_{AX} + d_{AY}$` where A is ancestral to X and Y.
   * Common practice is to set these to zero length.
@@ -377,9 +377,9 @@ Image credit: <a href="https://commons.wikimedia.org/wiki/File:A_view_from_the_C
 * A common ancestor in a tree of viruses can represent the [zoonotic](https://en.wikipedia.org/wiki/Zoonosis) origin of the epidemic.
 * We can use other information to scale the tree in time, dating the origin.
 <img src="/img/bioko.png" height="330px"/>
-<small><small>
+<small>
 Image source: M Worobey <i>et al.</i> (2010) Island biogeography reveals the deep history of SIV. <a href="https://www.science.org/doi/full/10.1126/science.1193550"/>Science 329: 1487</a>.
-</small></small>
+</small>
 
 ---
 
@@ -388,12 +388,10 @@ Image source: M Worobey <i>et al.</i> (2010) Island biogeography reveals the dee
 
 * The trees of different infectious diseases tend to have characteristic shapes - why?
 * [Grenfell *et al.* (2004)](https://www.science.org/doi/10.1126/science.1090727) proposed that these trees were shaped by epidemiology and immunology.
-
 <img src="/img/grenfell-trees.png" width=650/>
-
-<small><small>
+<small>
 Image source: Grenfell BT, Pybus OG, Gog JR, Wood JL, Daly JM, Mumford JA, Holmes EC. Unifying the epidemiological and evolutionary dynamics of pathogens. science. 2004 Jan 16;303(5656):327-32.
-</small></small>
+</small>
 
 ---
 
@@ -406,18 +404,21 @@ A phylodynamic analysis of HCV sequences showing evidence of a rapid spread of i
 
 <img src="/img/hcv-mcctree.png" width=600/>
 
-
 ---
 
 <section data-background="#333" style="color:white">
 
 <h1 style="color:white">Key points</h1>
-
-* A phylogeny is a tree relating observed sequences to their common ancestors (nodes).
-  * The length of a branch in the tree may (but not always) represent time.
-  * The root represents the earliest point in time.
-* There is an enormous number of trees that can relate even a small number of sequences.
-  * Molecular phylogenies are usually reconstructed by neighbor-joining or maximum likelihood.
-* If you want to learn more about phylodynamics, take MBI 4750G!
-
+<ul>
+<li>A phylogeny is a tree relating observed sequences to their common ancestors (nodes).</li>
+  <ul>
+  <li>The length of a branch in the tree may (but not always) represent time.</li>
+  <li>The root represents the earliest point in time.</li>
+  </ul>
+<li>There is an enormous number of trees that can relate even a small number of sequences.</li>
+  <ul>
+  <li>Molecular phylogenies are usually reconstructed by neighbor-joining or maximum likelihood.</li>
+  </ul>
+<li>If you want to learn more about phylodynamics, take MBI 4750G!</li>
+</ul>
 </section>
