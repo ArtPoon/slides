@@ -341,7 +341,7 @@ Not a complete list!
 * An open competition to benchmark different assemblers on simulated or real data.
   * [Assemblathon 1](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3227110/) was held 2011 and used simulated data.
   * [Assemblathon 2](https://academic.oup.com/gigascience/article/2/1/2047-217X-2-10/2656129) was held 2013 and used real data (a [budgie](https://en.wikipedia.org/wiki/Budgerigar), a [cichlid](https://en.wikipedia.org/wiki/Zebra_mbuna), and a [boa constrictor](https://en.wikipedia.org/wiki/Boa_constrictor).
-  * [Assemblathon 3](https://assemblathon.org/post/58945403634/thoughts-on-assemblathon-3) pending.
+  * "Assemblathon 3" was discussed in 2013, but probably won't happen (also the domain name was lost).
 * "Don't trust the results of a single assembly."
 
 ---
