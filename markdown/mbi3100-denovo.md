@@ -52,11 +52,12 @@
 
 <table>
   <tr>
-    <td width="50%">
+    <td width="55%">
       <h1>Shotgun sequencing and the HGP</h1>
       <ul>
         <li>Both public and private efforts used shotgun sequencing.</li>
         <li>Nucleic acid is randomly fragmented into pieces prior to sequencing.</li>
+        <ul><li>The public consortium worked from ordered genome segments (b), which provided better information at a slower pace.</li></ul>
         <li>Sequences must be computationally assembled to recreate the original sequence.</li>
       </ul>
       <small>
@@ -92,7 +93,7 @@
 
 ---
 
-# What is assembly?
+# What is *de novo* assembly?
 
 * Imagine a room full of millions of puzzle pieces, where:
   * Some pieces are missing, while others are duplicates or come from another set.
@@ -101,9 +102,9 @@
 
 ![](/img/Puzzle_pieces.jpg)
 
-<small><small>
+<small>
 Image source: Cory Doctorow, <a href="https://commons.wikimedia.org/wiki/File:Puzzle_pieces.jpg">Wikimedia Commons</a>, CC BY-SA 2.0.
-</small></small>
+</small>
 
 ---
 
@@ -125,9 +126,9 @@ Image source: Cory Doctorow, <a href="https://commons.wikimedia.org/wiki/File:Pu
 
 <img src="https://nekrut.github.io/BMMB554/img/find_overlap.png" width=650/>
 
-<small><small>
+<small>
 Image source: Anton Nekrutenko, https://nekrut.github.io/BMMB554/lecture8/
-</small></small>
+</small>
 
 ---
 
@@ -139,19 +140,17 @@ Image source: Anton Nekrutenko, https://nekrut.github.io/BMMB554/lecture8/
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Singly-linked-list.svg"/>
 
-* Two major categories of data structures for assembly:
-  1. Overlap graphs
-  2. de Bruijn graphs
+* Two major categories of data structures for assembly are (1) overlap graphs and (2) de Bruijn graphs
 
-<small><small>
+<small>
 Image source: <a href="https://commons.wikimedia.org/wiki/File:Singly-linked-list.svg">WikiMedia Commons</a>, public domain
-</small></small>
+</small>
 
 ---
 
 # What is a graph?
 
-* A [graph](https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)) is a data structure where objects are represented by *nodes*.
+* A <a href="https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)">graph</a> is a data structure where objects are represented by *nodes*.
 * Relations between nodes are represented by connections or *edges*.
   * Edges may be directed (arrows) or undirected.
 * Graphs have many applications in bioinformatics, and indeed in all science.
@@ -172,9 +171,9 @@ to_every_thing_turn_turn_turn_there_is_a_season
   * `o_every` has a 3-prefix `o_e` that appears at position 1 of `to_ever`.
   * This match can be extended to maximum length 6 (`o_ever`).
 
-<small><small>
+<small>
 Source: Ben Langmead, https://www.cs.jhu.edu/~langmea/resources/lecture_notes/assembly_olc.pdf.
-</small></small>
+</small>
 
 ---
 
@@ -235,9 +234,9 @@ The start of this overlap graph is not too difficult to read...
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Long_point_beach_ontario.jpg/2560px-Long_point_beach_ontario.jpg" width=800/>
 
-<small><small>
+<small>
 Image source:  Long Point Beach, Ontario.  <a href="https://commons.wikimedia.org/wiki/File:Long_point_beach_ontario.jpg">Anthony J, Flickr</a> (CC BY 2.0).
-</small></small>
+</small>
 
 ---
 
@@ -348,15 +347,15 @@ Not a complete list!
 
 # Contigs and scaffolds 
 
-<img src="https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1006994.g001&type=large" height="300px"/>
+<img src="https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1006994.g001&type=large" height="250px"/>
 
 * A *contig* is a contiguous nucleotide sequence produced from overlapping reads.
 * A *scaffold* is an arrangement of contigs based on other information, such as mate-pairs that span the gap between adjacent contigs.
   * These outputs are generally written in a FASTA format.
 
-<small><small>
+<small>
 Image credit: Ghurye and Pop (2019). [Modern technologies and algorithms for scaffolding assembled genomes](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1006994).  PLOS Comput Biol 15: e1006994.
-</small></small>
+</small>
 
 ---
 
@@ -371,9 +370,9 @@ Sort contigs by lengths in decreasing order:
 Locate midpoint along concatenated array of contigs (N50=60):
 <img src="https://i0.wp.com/www.molecularecologist.com/wp-content/uploads/2017/03/Figure1b.jpg" height="100px"/>
 
-<small><small>
-Image credit: E Videvall <i>et al.</i> https://www.molecularecologist.com/2017/03/whats-n50/
-</small></small>
+<small>
+Image credit: Elin Videvall <i>et al.</i> https://www.molecularecologist.com/2017/03/whats-n50/
+</small>
 
 ---
 
@@ -386,9 +385,9 @@ Image credit: E Videvall <i>et al.</i> https://www.molecularecologist.com/2017/0
 
 <img src="https://i2.wp.com/www.molecularecologist.com/wp-content/uploads/2017/03/Figure3.jpg" height="100px"/>
 
-<small><small>
+<small>
 Image credit: E Videvall <i>et al.</i> https://www.molecularecologist.com/2017/03/whats-n50/
-</small></small>
+</small>
 
 ---
 
@@ -423,9 +422,9 @@ VD = variant distinction; VI = variant interference; VS = variant singularity.
 <img src="https://media.springernature.com/full/springer-static/image/art%3A10.1186%2Fs12864-020-06801-w/MediaObjects/12864_2020_6801_Fig3_HTML.png" height="400px"/>
 </center>
 
-<small><small>
+<small>
 From CJ Castro <i>et al.</i> (2020). <a href="https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-020-06801-w">The effect of variant interference on de novo assembly for viral deep sequencing</a>.  BMC Genomics 21:421.
-</small></small>
+</small>
 
 ---
 
@@ -446,11 +445,15 @@ From CJ Castro <i>et al.</i> (2020). <a href="https://bmcgenomics.biomedcentral.
 
 <h1 style="color:white">Key points</h1>
 
-* Sequence reads are assembled by finding reads that overlap.
-* Assembly programs use specialized data structures that make it more efficient to store and retrieve overlaps.
-  * Overlap graphs connect reads with overlaps of length $\ge l$.
-  * deBruijn graphs connect reads of length $L$ with overlaps of length $L-1$.
-* There are several statistics for measuring assembly quality, such as N50 and L50.
-* Adapter contamination and excess diversity can interfere with assembly.
+<ul>
+<li>Sequence reads are assembled by finding reads that overlap.</li>
+<li>Assembly programs use specialized data structures that make it more efficient to store and retrieve overlaps.</li>
+  <ul>
+  <li>Overlap graphs connect reads with overlaps of length $\ge l$.</li>
+  <li>deBruijn graphs connect reads of length $L$ with overlaps of length $L-1$.</li>
+  </ul>
+<li>There are several statistics for measuring assembly quality, such as N50 and L50.</li>
+<li>Adapter contamination and excess diversity can interfere with assembly.</li>
+</ul>
 
 </section>
