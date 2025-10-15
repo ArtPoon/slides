@@ -354,7 +354,7 @@ Not a complete list!
   * These outputs are generally written in a FASTA format.
 
 <small>
-Image credit: Ghurye and Pop (2019). [Modern technologies and algorithms for scaffolding assembled genomes](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1006994).  PLOS Comput Biol 15: e1006994.
+Image credit: Ghurye and Pop (2019). Modern technologies and algorithms for scaffolding assembled genomes.  <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1006994">PLOS Comput Biol 15: e1006994</a>.
 </small>
 
 ---
