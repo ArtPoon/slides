@@ -122,7 +122,8 @@ Image source: Cory Doctorow, <a href="https://commons.wikimedia.org/wiki/File:Pu
 
 * Searching for common [substrings](https://en.wikipedia.org/wiki/Substring) of length $k$ between two strings $(X$ and $Y)$ is time-consuming for large $k$!
 * Instead, see if [suffix](https://en.wikipedia.org/wiki/Suffix) of length $l<k$ in $X$ occurs in $Y$.
-  * If a match is found, extend to the left to verify if entire $k$-[prefix](https://en.wikipedia.org/wiki/Prefix) of $Y$ matches (below $l=3$, $k=6$):
+  * If a match is found, extend to the left to verify if entire $k$-[prefix](https://en.wikipedia.org/wiki/Prefix) of $Y$ matches (below $l=3$, $k\le 6$):
+  * Alternatively, search for the $l$-prefix first and then the $k$-suffix.
 
 <img src="https://nekrut.github.io/BMMB554/img/find_overlap.png" width=650/>
 
@@ -167,7 +168,7 @@ Image source: <a href="https://commons.wikimedia.org/wiki/File:Singly-linked-lis
 to_every_thing_turn_turn_turn_there_is_a_season
 ```
 * Suppose we have an even distribution of reads of length 7 in steps of 1, *i.e.*, `to_ever`, `o_every`, ...
-* Set the prefix search length to $l=3$ and $k=6$:
+* Set the prefix search length to $l=3$ and $l<k\le 6$:
   * `o_every` has a 3-prefix `o_e` that appears at position 1 of `to_ever`.
   * This match can be extended to maximum length 6 (`o_ever`).
 
@@ -192,6 +193,10 @@ Source: Ben Langmead, https://www.cs.jhu.edu/~langmea/resources/lecture_notes/as
 The start of this overlap graph is not too difficult to read...
 
 ![](/img/langmead1.svg)
+
+<small>
+Note we are omitting edges with an overlap length of $3$.
+</small>
 
 ---
 
