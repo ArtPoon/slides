@@ -187,7 +187,8 @@ Source: Zerbino, Frankish and Flicek (2020) Progress, Challenges, and Surprises 
 * Variable number tandem repeats (VNTRs)
   * microsatellites are repeats of 1-6 nucleotides ([Ellegrin 2004](https://www.nature.com/articles/nrg1348))
   * minisatellites are longer repeats of 7 to 100 nucleotides
-* Repeats are a primary cause of assembly error, such that many regions in the human genome have yet to be sequenced ([de Bustos 2016](https://www.nature.com/articles/srep36665)).
+* Repeats are a primary cause of assembly error
+  * A truly complete ('telomere-to-telomere') human genome was not available until 2022 ([Nurk et al. 2022](https://www.science.org/doi/10.1126/science.abj6987)), two decades after the HGP.
 
 ---
 
