@@ -122,7 +122,8 @@ Image source: Cory Doctorow, <a href="https://commons.wikimedia.org/wiki/File:Pu
 
 * Searching for common [substrings](https://en.wikipedia.org/wiki/Substring) of length $k$ between two strings $(X$ and $Y)$ is time-consuming for large $k$!
 * Instead, see if [suffix](https://en.wikipedia.org/wiki/Suffix) of length $l<k$ in $X$ occurs in $Y$.
-  * If a match is found, extend to the left to verify if entire $k$-[prefix](https://en.wikipedia.org/wiki/Prefix) of $Y$ matches (below $l=3$, $k=6$):
+  * If a match is found, extend to the left to verify if entire $k$-[prefix](https://en.wikipedia.org/wiki/Prefix) of $Y$ matches (below $l=3$, $k\le 6$):
+  * Alternatively, search for the $l$-prefix first and then the $k$-suffix.
 
 <img src="https://nekrut.github.io/BMMB554/img/find_overlap.png" width=650/>
 
@@ -167,7 +168,7 @@ Image source: <a href="https://commons.wikimedia.org/wiki/File:Singly-linked-lis
 to_every_thing_turn_turn_turn_there_is_a_season
 ```
 * Suppose we have an even distribution of reads of length 7 in steps of 1, *i.e.*, `to_ever`, `o_every`, ...
-* Set the prefix search length to $l=3$ and $k=6$:
+* Set the prefix search length to $l=3$ and $l<k\le 6$:
   * `o_every` has a 3-prefix `o_e` that appears at position 1 of `to_ever`.
   * This match can be extended to maximum length 6 (`o_ever`).
 
@@ -192,6 +193,10 @@ Source: Ben Langmead, https://www.cs.jhu.edu/~langmea/resources/lecture_notes/as
 The start of this overlap graph is not too difficult to read...
 
 ![](/img/langmead1.svg)
+
+<small>
+Note we are omitting edges with an overlap length of $3$.
+</small>
 
 ---
 
@@ -340,7 +345,7 @@ Not a complete list!
 * An open competition to benchmark different assemblers on simulated or real data.
   * [Assemblathon 1](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3227110/) was held 2011 and used simulated data.
   * [Assemblathon 2](https://academic.oup.com/gigascience/article/2/1/2047-217X-2-10/2656129) was held 2013 and used real data (a [budgie](https://en.wikipedia.org/wiki/Budgerigar), a [cichlid](https://en.wikipedia.org/wiki/Zebra_mbuna), and a [boa constrictor](https://en.wikipedia.org/wiki/Boa_constrictor).
-  * [Assemblathon 3](https://assemblathon.org/post/58945403634/thoughts-on-assemblathon-3) pending.
+  * "Assemblathon 3" was discussed in 2013, but probably won't happen (also the domain name was lost).
 * "Don't trust the results of a single assembly."
 
 ---
@@ -354,7 +359,7 @@ Not a complete list!
   * These outputs are generally written in a FASTA format.
 
 <small>
-Image credit: Ghurye and Pop (2019). [Modern technologies and algorithms for scaffolding assembled genomes](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1006994).  PLOS Comput Biol 15: e1006994.
+Image credit: Ghurye and Pop (2019). Modern technologies and algorithms for scaffolding assembled genomes.  <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1006994">PLOS Comput Biol 15: e1006994</a>.
 </small>
 
 ---
