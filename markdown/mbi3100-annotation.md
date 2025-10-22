@@ -51,15 +51,36 @@
 
 # Process-level annotation
 
-* Requires a widely-accepted classification scheme to describe protein functions shared by different species.
+* Requires a widely-accepted classification scheme to describe protein functions **shared by different species**.
 * The Gene Ontology (GO) consortium was formed by three model organism databases:
   * the [*Saccharomyces* Genome Database](https://www.yeastgenome.org/)
   * [FlyBase](https://flybase.org/)<sup>&dagger;</sup>
   * the [Mouse Genome Database](https://www.informatics.jax.org/)
-* GO created a hierarchical vocabulary for describing the function of eukaryotic genes.
+* GO provides a "structured, precisely defined, common, controlled vocabulary for describing the roles of genes and gene products in any organism" ([Ashburner et al. 2000](https://pmc.ncbi.nlm.nih.gov/articles/PMC3037419/)).
 
 <small>
 <sup>&dagger;</sup> A database for Drosophila genetics - recently discontinued due to US government cuts.
+</small>
+
+---
+
+# What is an ontology?
+
+* In information science, an ontology is "a fixed universe of discourse in which each element is precisely defined" ([Schuurman and Leszczynski 2008](https://pmc.ncbi.nlm.nih.gov/articles/PMC2735951)).
+  * Includes relations between entities, *e.g.*, a chromosome may consist of DNA, but DNA cannot consist of chromosomes.
+* A *formal* ontology is a model of entities and relations that can be used by a computer to perform tasks.
+  * This makes it feasible to automate the tasks of populating a biological database and annotating genomes.*
+
+<small>
+*This also leads to some fun entries in the GO database, <i>e.g.</i>, <a href="https://www.ebi.ac.uk/QuickGO/term/GO:0071626">mastication</a>: "The process of biting and mashing food with the teeth prior to swallowing.": <tt> mastication --[Never in Taxon]-> Bacteria</tt>
+</small>
+
+---
+
+<img src="/img/gene-ontology.png" height=500/>
+
+<small>
+Image source: Modified from QuickGO, https://www.ebi.ac.uk/QuickGO/term/GO:0060887
 </small>
 
 ---
@@ -82,6 +103,9 @@
     <h1>Mapping</h1>
     <ul>
     <li><i>Mapping</i> is the search for features previously identified by non-sequencing methods, such as <a href="https://en.wikipedia.org/wiki/Cytogenetics">cytogenetics</a> or <a href="https://en.wikipedia.org/wiki/Gene_mapping">genetic mapping</a>.</li>
+      <ul>
+      <li>A genetic linkage map estimates the physical distance between loci based on recombination.</li>
+      </ul>
     <li>These known features serve as landmarks or reference points for subsequent work.</li>
     </ul>
   </td>
@@ -219,7 +243,7 @@ Source: Zerbino, Frankish and Flicek (2020) Progress, Challenges, and Surprises 
   * *Ab initio* means that the program attempts to predict features without comparing the data to other sources.
 * A recent benchmark study ([Scalzitti 2020](https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-020-6707-9)) compared five widely-used gene prediction programs.
   * Tested on a large set of 1,793 eukaryotic protein-coding genes from 147 species.
-  * Programs attained a sensitivity of 40%-75% and speciicity of 40%-55%.
+  * Programs attained a [sensitivity](https://en.wikipedia.org/wiki/Sensitivity_and_specificity) (TPR) of 40%-75% and [specificity](https://en.wikipedia.org/wiki/Sensitivity_and_specificity) (TNR) of 40%-55%.
 
 ---
 
@@ -258,8 +282,12 @@ Source: Zerbino, Frankish and Flicek (2020) Progress, Challenges, and Surprises 
 * Pseudogenes are usually duplicate, redundant copies of an ancestral gene.
   * Eventually the copy accumulates so many mutations that it no longer encodes a functional protein.
 * Because they are derived from actual genes, pseudogenes are a source of false positives.
-* In some cases, a pseudogene *regains* novel functionality.
-  * Many pseudogenes display organ-specific transcription levels.
+* In some cases, a pseudogene *regains* novel functionality<sup>1</sup>.
+  * Many pseudogenes display organ-specific transcription levels<sup>2</sup>.
+
+<small>
+[1] <a href="https://www.nature.com/articles/s41576-019-0196-1">Cheetham et al. (2020) Nat Rev Genet</a>; [2] <a href="https://www.nature.com/articles/s41467-020-17157-w">Sisu et al. (2020) Nat Comm</a>.
+</small>
 
 ---
 
