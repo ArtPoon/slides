@@ -84,19 +84,10 @@ Image source: NA Fonseca <i>et al.</i> (2012) <a href="https://academic.oup.com/
 # Hash tables
 
 * A [hash function](https://en.wikipedia.org/wiki/Hash_function) converts a $k$-mer into a nearly unique integer that we use to directly retrieve a value from the index (hash table).
-  * *e.g.*, BLAST builds a hash table of k-mers in the query sequence.
-* For NGS data, there are too many query sequences!
-  * Instead, we build a hash table of the reference genome ([Kent 2002](https://genome.cshlp.org/content/12/4/656.full)).
-
+  * *e.g.*, BLAST builds a hash table of k-mers from database sequences.
+* Hash tables will take up much more space (RAM / storage) than the reference genome.
+  * The table will be very sparse, with many unused slots.
 ![](/img/hash-table.svg)
-
----
-
-# Pros and cons of hash tables
-
-* Not space efficient - a hash table will take up much more space (RAM / storage) than the reference genome.
-  * Hash table may largely comprise empty slots.
-* Smaller $k$ values increase the probability of a collision (multiple words have the same hash value).
 
 ---
 
@@ -106,6 +97,7 @@ Image source: NA Fonseca <i>et al.</i> (2012) <a href="https://academic.oup.com/
   <tr>
     <td width="55%">
       <ul>
+        <li>Develop a custom data structure to compactly store all strings in a database.</li>
         <li>A trie (pronounced "try", also known as a prefix tree) is a tree-like data structure that represents one or more strings.</li>
         <li>Each directed edge represents a character from an alphabet (set of all characters, $\Sigma$).</li>
         <li>Each string can be spelled out by tracing a path from the root to one of the tips.</li>
@@ -114,7 +106,7 @@ Image source: NA Fonseca <i>et al.</i> (2012) <a href="https://academic.oup.com/
     <td>
       <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/Trie_example.svg"/>
       <small>
-      This trie stores integers keyed by multiple strings, including `tea` and `inn`.  Source: <a href="https://commons.wikimedia.org/wiki/File:Trie_example.svg">Wikimedia Commons</a>, public domain.
+      This trie stores arbitrary integers keyed by multiple strings, including `tea` and `inn`.  Source: <a href="https://commons.wikimedia.org/wiki/File:Trie_example.svg">Wikimedia Commons</a>, public domain.
       </small>
     </td>
   </tr>
@@ -126,7 +118,7 @@ Image source: NA Fonseca <i>et al.</i> (2012) <a href="https://academic.oup.com/
 
 * Tries do not require a hash function
   * Hash functions may be time-consuming to compute
-
+  * [Hash collisions](https://en.wikipedia.org/wiki/Hash_collision) (inputs mapped to the same key) are no longer a concern.
 * Easy to look up whether a trie contains a string.
   * Starting at the root, proceed toward tips by selecting the next character edge.  
   * If edge is not present, then trie does not contain the string.
@@ -145,8 +137,8 @@ Image source: NA Fonseca <i>et al.</i> (2012) <a href="https://academic.oup.com/
 ---
 
 <table>
-  <tr>
-    <td width="55%">
+  <tr style="font-size: 18pt;">
+    <td width="55%" style="vertical-align: middle;">
       <h1>Operations on suffix tries</h1>
       <ul>
         <li>Each path from the root to a tip represents a suffix of the string <code>T=abaaba$</code></li>
@@ -158,7 +150,7 @@ Image source: NA Fonseca <i>et al.</i> (2012) <a href="https://academic.oup.com/
       </small>
     </td>
     <td>
-      <img src="/img/abaaba.svg"/>
+      <img src="/img/abaaba.svg" width="100%"/>
     </td>
   </tr>
 </table>
@@ -167,17 +159,16 @@ Image source: NA Fonseca <i>et al.</i> (2012) <a href="https://academic.oup.com/
 
 # Burrows-Wheeler transform (BWT)
 
-* Tries take up a lot of memory for genome sequences!
+* Tries take up a lot of memory for genome sequences &mdash; a suffix trie grows $O(L^4)$ with string length $L$.
 * The BWT is a reversible transformation of a string that makes it easier to compress:
   1. Generate all "rotations" of the string as a matrix.
-  2. Sort rows in [lexicographic order](https://en.wikipedia.org/wiki/Lexicographic_order).
+  2. Sort rows in [lexicographic order](https://en.wikipedia.org/wiki/Lexicographic_order) (`$` [$\prec$](https://en.wikipedia.org/wiki/Ordered_set_operators) `a`).
   3. Extract the last column.
-
 <img src="https://media.springernature.com/full/springer-static/image/art%3A10.1186%2Fs13015-021-00204-6/MediaObjects/13015_2021_204_Fig1_HTML.png" width=350/>
 
-<small><small>
+<small>
 Image source: Anderson and Wheeler. <a href="https://almob.biomedcentral.com/articles/10.1186/s13015-021-00204-6"/>An optimized FM-index library for nucleotide and amino acid search.</a> Algorithms for Molecular Biology 16: 25 (CC BY 4.0).
-</small></small>
+</small>
 
 ---
 
@@ -239,9 +230,9 @@ art@Kestrel:~$ bowtie2 -x zika -1 Zika-envelope.n1E4.R1.fastq.gz -2 Zika-envelop
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Tews_Falls%2C_Autumn_-_panoramio.jpg/2560px-Tews_Falls%2C_Autumn_-_panoramio.jpg" width=850/>
 
-<small><small>
+<small>
 Image source: Tews Falls, Hamilton, Ontario. <a href="https://commons.wikimedia.org/wiki/File:Tews_Falls,_Autumn_-_panoramio.jpg">Eric Marshall (CC BY 3.0 Unported)</a>.
-</small></small>
+</small>
 
 ---
 
@@ -424,8 +415,10 @@ Image source: Illumina HiSeq X10 flowcell. <a href="https://commons.wikimedia.or
 # Metagenomics
 
 * Analysis of samples containing genomes from different species.
-* Early work focused on a single gene shared by all organisms of interest, *e.g.*, [16S rRNA](https://en.wikipedia.org/wiki/16S_ribosomal_RNA) for bacteria (but is this really -genomics?).
-* Requires a good database of reference genes/genomes.
+* Early work focused on a single gene shared by all organisms of interest, *e.g.*, [16S rRNA](https://en.wikipedia.org/wiki/16S_ribosomal_RNA) for bacteria.
+  * This is [metabarcoding](https://en.wikipedia.org/wiki/Metabarcoding), although many 16S studies will use the "metagenomics".
+* Metagenomics uses random shearing and shotgun sequencing of all DNA in the sample.
+  * Requires a good database of reference genes/genomes.
 
 <img src="/img/metagenomics.svg" width=500/>
 
