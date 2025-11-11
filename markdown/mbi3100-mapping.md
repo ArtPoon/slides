@@ -1,6 +1,6 @@
 # MIMM4750G
 ## Short-read mapping
-![](https://imgs.xkcd.com/comics/moving_sidewalks.png)
+![](https://imgs.xkcd.com/comics/sitting_in_a_tree.png)
 
 ---
 
@@ -32,9 +32,9 @@
 </tr>
 </table>
 
-<small><small>
+<small>
 Image source: NA Fonseca <i>et al.</i> (2012) <a href="https://academic.oup.com/bioinformatics/article/28/24/3169/245777">Tools for mapping high-throughput sequencing data.</a> Bioinformatics 28: 3169.
-</small></small>
+</small>
 
 ---
 
