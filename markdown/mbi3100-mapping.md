@@ -1,4 +1,4 @@
-# MIMM4750G
+# MBI 3100A
 ## Short-read mapping
 ![](https://imgs.xkcd.com/comics/sitting_in_a_tree.png)
 

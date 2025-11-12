@@ -1,4 +1,4 @@
-# MIMM4750G
+# MBI 3100A
 ## de novo assembly
 ![](https://imgs.xkcd.com/comics/word_puzzles.png)
 

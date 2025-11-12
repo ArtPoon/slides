@@ -1,4 +1,4 @@
-# MIMM4750G
+# MBI 3100A
 ## Genome annotation
 ![](https://imgs.xkcd.com/comics/lungfish.png)
 
