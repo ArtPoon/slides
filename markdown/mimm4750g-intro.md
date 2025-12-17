@@ -10,7 +10,7 @@
   * Dr. Art Poon (apoon42@uwo.ca)
   * Office hours by appointment (arrange by e-mail!)
 * Teaching assistant:
-  * Sugitha Janarthanan (sjanarth@uwo.ca)
+  * Paula Magbor (pmagbor3@uwo.ca)
 
 ---
 
@@ -28,16 +28,16 @@
 
 # Evaluation
 
-* There are 8 computing lab assignments on Wednesdays.
+* There are 9 computing lab assignments on Wednesdays.
 * The remaining lab times are reserved for working on your project.
 
 | Assessment | Deadline | Weight |
 |----|---|---|
 | Computing lab assignments | | 35% |
-| Data report | February 7, 2025 | 15% |
-| Draft report | March 14, 2025 | 15% |
-| Final report | April 4, 2025 | 30% |
-| Quizzes | | 5% |
+| Data report | February 6, 2026 (72h flex) | 15% |
+| Draft report | March 13, 2026 (72h flex) | 15% |
+| Final report | April 6, 2026 (72h flex) | 30% |
+| Quizzes and participation | | 5% |
 
 ---
 
