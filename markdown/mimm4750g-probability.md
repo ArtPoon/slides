@@ -63,33 +63,37 @@
 
 <table>
 <tr>
-  <td style="vertical-align: middle;">
+  <td style="vertical-align: middle; font-size: 18pt;">
     <h1>Poisson distribution</h1>
     <ul>
       <li>The Poisson distribution describes the probability that $y$ events occur given a constant rate $\lambda$.</li>
       <li>It is a special case of the binomial distribution when $N$ is large and $p$ is small.</li>
+      <ul>
       <li>It was famously used to explain the number of accidental deaths by horse kicks in the Prussian army.</li>
+      </ul>
       <li>Its formula looks like this:
 $$P(y) = \frac{\lambda^y \exp(-\lambda)}{y!}$$</li>
     </ul>
+    <small><small>
+Image credit: Prussian Bosnian Corps, in summer uniforms around 1760. Public Domain, <a href="https://commons.wikimedia.org/wiki/File:Preu%C3%9Fisches_bosniaken_korps.jpg">Wikimedia Commons</a>
+</small></small>
   </td>
   <td width="35%">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/d/de/Husaren_V%C3%B6lkerschlacht_bei_Leipzig.jpg"/>
-    <br/>
     <img src="/img/dpoisson.svg">
+    <div style="overflow: hidden;">
+    <img style=" margin: -100px 0 0 0;" src="https://upload.wikimedia.org/wikipedia/commons/5/5b/Preu%C3%9Fisches_bosniaken_korps.jpg">
+    </div>
   </td>
 </tr>
 </table>
 
-<small><small>
-Image credit: Wikimedia Commons
-</small></small>
+
 
 ---
 
 <table>
 <tr>
-  <td style="vertical-align: middle;">
+  <td style="vertical-align: middle; font-size: 18pt;">
     <h1>Geometric and exponential distributions</h1>
     <ul>
       <li>
@@ -117,11 +121,11 @@ Image credit: Wikimedia Commons
 
 <table>
 <tr>
-  <td style="vertical-align: middle;">
+  <td style="vertical-align: middle; font-size: 18pt;">
     <h1>Gaussian (normal) distribution</h1>
     <ul>
       <li>
-      The Gaussian distribution describes a continuous outcome ($X$) with mean $\mu$ and standard deviation $\sigma$:
+      The Gaussian distribution describes a continuous outcome ($X$) with mean $\mu$ and standard deviation $\sigma$
 $$P(X) = \frac{1}{\sqrt{2\pi}\sigma} \exp\left(-\frac{(X-\mu)^2}{2\sigma^2}\right)$$
       </li>
       <li>
@@ -144,7 +148,7 @@ $$P(X) = \frac{1}{\sqrt{2\pi}\sigma} \exp\left(-\frac{(X-\mu)^2}{2\sigma^2}\righ
 
 <table>
 <tr>
-  <td style="vertical-align: middle;">
+  <td style="vertical-align: middle; font-size: 18pt;">
     <h1>Gamma distribution</h1>
     <ul>
       <li>
@@ -197,7 +201,7 @@ $$
 
 <table>
 <tr>
-  <td style="vertical-align: middle;">
+  <td style="vertical-align: middle; font-size: 18pt;">
     <h1>Random walks and infectious diseases</h1>
     <ul>
       <li>
@@ -207,9 +211,11 @@ $$
       <li>
       However, Pearson was originally working on the problem at the request of <a href="https://en.wikipedia.org/wiki/Ronald_Ross">Sir Ronald Ross</a>.
       </li>
+      <ul>
       <li>
       Ross was a Nobel laurate for establishing that mosquitoes are the vector of malaria, and was modeling the spread of mosquitoes.
       </li>
+      </ul>
     </ul>
   </td>
   <td width="40%">
@@ -229,7 +235,7 @@ Source: https://blogs.lshtm.ac.uk/library/2015/03/27/karl-pearson-and-sir-ronald
 
 <table>
 <tr>
-  <td style="vertical-align: middle;">
+  <td style="vertical-align: middle; font-size: 18pt;">
     <h1>Discrete-time Markov chains</h1>
     <ul>
       <li>
@@ -248,9 +254,9 @@ Source: https://blogs.lshtm.ac.uk/library/2015/03/27/karl-pearson-and-sir-ronald
   </td>
   <td width="40%">
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Snakes_and_Ladders.jpg/638px-Snakes_and_Ladders.jpg"/>
-    <small><small>
+    <small>
     A game of Snakes and Ladders, which originated in India as <i>gyan chaupar</i>, <i>jnana bagi</i> or  <i>moksha patam</i> has the Markov property. (Source: <a href="https://commons.wikimedia.org/wiki/File:Snakes_and_Ladders.jpg">Wikimedia Commons</a>)
-    </small></small>
+    </small>
   </td>
 </tr>
 </table>
@@ -259,7 +265,7 @@ Source: https://blogs.lshtm.ac.uk/library/2015/03/27/karl-pearson-and-sir-ronald
 
 <table>
   <tr>
-    <td>
+    <td style="font-size: 18pt;">
       <h1>Transition matrices</h1>
       <ul>
         <li> If the Markov chain can only take a finite number of states, then we can write the probabilities of transitions between states as a matrix:
@@ -277,12 +283,11 @@ Source: https://blogs.lshtm.ac.uk/library/2015/03/27/karl-pearson-and-sir-ronald
       *Alternatively, we can have each column sum to one, but we are going to follow convention.
       </small></small>
     </td>
-    <td width="35%">
+    <td style="vertical-align: middle;" width="35%">
       <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Markovkate_01.svg" width="300px"/>
-      
-      <small><small>
+      <small>
       Source: <a href"https://commons.wikimedia.org/wiki/File:Markovkate_01.svg">Wikimedia Commons</a>
-      </small></small>
+      </small>
     </td>
   </tr>
 </table>
@@ -330,7 +335,7 @@ $$`
 
 <table>
 <tr>
-<td>
+<td style="font-size: 18pt;">
   <ul>
   <li>Simulating a discrete-time Markov chain is as simple as sampling from the transition probabilities.</li>
   
