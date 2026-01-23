@@ -9,9 +9,9 @@
 * A substitution occurs when a new mutation appears *and* increases in frequency until it is established in the population.
 * **Individuals do not evolve, populations do.**
 ![](/img/fixation.png)
-<small><small>
+<small>
 Simulations of allele frequency evolution in R.
-</small></small>
+</small>
 
 ---
 
@@ -40,9 +40,9 @@ Simulations of allele frequency evolution in R.
     </div>
     <div></div>
     </center>
-    <small><small>
+    <small>
     Based on JavaScript by <a href="http://setosa.io/blog/2014/07/26/markov-chains/index.html">Victor Powell</a>.
-    </small></small>
+    </small>
 </section>
 
 ---
@@ -177,18 +177,23 @@ $$\begin{matrix}
 
 # Parametric methods
 
-
-<table>
+<table style="font-size: 18pt;">
   <tr>
     <td>
       <ul>
         <li>A parametric method uses a distribution function to model rate variation.</li>
+        <ul>
         <li><i>e.g.</i>, <a href="https://en.wikipedia.org/wiki/Ziheng_Yang">Ziheng Yang</a> used a <a href="https://en.wikipedia.org/wiki/Gamma_distribution">gamma distribution</a>, which is a flexible, continuous distribution over the range $(+0, \infty)$.</li>
+        </ul>
         <li>The gamma distribution has two parameters ($\alpha$ and $\beta$), but is usually simplified to $\alpha=\beta$.</li>
         <li>It is split into $k$ intervals of equal area (probability), where $k$ is often set to 4.</li>
     </td>
     <td width="40%">
       <img src="/img/discgamma.png" width="350px"/>
+      <small>
+      A gamma distribution with $\alpha=2$ and $\beta=2$, cut into four rate categories.
+      Midpoints are labeled on the $x$-axis.  A dashed line is drawn at the baseline (unmodified) rate.
+      </small>
     </td>
   </tr>
 </table>
