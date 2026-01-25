@@ -52,16 +52,6 @@
 
 ---
 
-<section data-state="seeing-slide">
-    <div id="seeing" class="fig-container"
-         data-fig-id="fig-seeing"
-         data-file="https://seeing-theory.brown.edu/bayesian-inference/index.html#section2"
-         style="height:800px">
-    </div>
-</section>
-
----
-
 # Likelihood
 
 * The term *likelihood* is a signal that we using the PDF to consider the probability of the data for different parameter values (hypotheses).
