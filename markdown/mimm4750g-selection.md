@@ -23,9 +23,9 @@
   </tr>
 </table>
 
-<small><small>
+<small>
 Image credit: MC Puertas <i>et al.</i> (2020) Pan-resistant HIV-1 emergence in the era of integrase strand-transfer inhibitors: a case report.  <a href="https://www.thelancet.com/journals/lanmic/article/PIIS2666-5247%2820%2930006-9/fulltext">Lancet Microbe 1: E130</a>.
-</small></small>
+</small>
 
 ---
 
@@ -42,9 +42,9 @@ Image credit: MC Puertas <i>et al.</i> (2020) Pan-resistant HIV-1 emergence in t
 </div>
 </blockquote>
 
-<small><small>
+<small>
 Neal Stephenson, <i>Cryptonomicon</i> (1999).
-</small></small>
+</small>
 
 ---
 
@@ -70,10 +70,10 @@ Neal Stephenson, <i>Cryptonomicon</i> (1999).
   </td>
   <td width="45%" style="vertical-align:middle">
     <img src="/img/duotang-selection.png"/>
-    <small><small>
+    <small>
     Estimates of selective advantage for SARS-CoV-2 variants in Canada
     Figure from the Canadian Coronavirus Variants Rapid Response Network <a href="https://covarr-net.github.io/duotang/duotang.html">Duotang notebook.</a>
-    </small></small>
+    </small>
   </td>
 </tr>
 </table>
@@ -114,10 +114,10 @@ Neal Stephenson, <i>Cryptonomicon</i> (1999).
 A majority of the first examples of genes under positive selection came from viruses and bacteria:
 <img src="/img/EndoTable.png" width="80%"/>
 
-<small><small>
+<small>
 Table from Endo, Ikeo and Gojobori. 1996, Mol Biol Evol 13: 685.
 <!--$^1$ Hughes and Nei 1989, Genetics 86.-->
-</small></small>
+</small>
 
 ---
 
@@ -135,6 +135,7 @@ Table from Endo, Ikeo and Gojobori. 1996, Mol Biol Evol 13: 685.
 1. There is never more than one nucleotide substitution within a codon at a time (*e.g.*, no simultaneous mutations).
 2. The codon context has no effect on nucleotide substitution rates.
 3. The dN/dS ratio does not care what amino acid is encoded by the codon, only whether the amino acid is *changed*.
+4. (GY94 only) dS is always 1.
 
 ---
 
@@ -192,9 +193,9 @@ Table from Endo, Ikeo and Gojobori. 1996, Mol Biol Evol 13: 685.
   </td>
   <td width="40%">
     <img src="/img/mbo001141746sf01.png"/>
-    <small><small>
+    <small>
     Image credit: M Cotten <i>et al.</i> (2014) <a href="https://doi.org/10.1128/mBio.01062-13">Spread, Circulation, and Evolution of the Middle East Respiratory Syndrome Coronavirus</a>. mBio 5(1).
-    </small></small>
+    </small>
   </td>
 </tr>
 </table>
@@ -225,9 +226,9 @@ Table from Endo, Ikeo and Gojobori. 1996, Mol Biol Evol 13: 685.
 
 Patterns of adaptation to coronaviruses in aminopeptidase N receptor. (left) Tree of 84 mammalian species, highlighting branches with episodic selection. (right) Structural model of AMPEP.
 
-<small><small>
+<small>
 Image credit: D Enard <i>et al.</i> (2016) eLife 10.7554/eLife.12469
-</small></small>
+</small>
 
 ---
 
