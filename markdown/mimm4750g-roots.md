@@ -44,15 +44,15 @@ This won't work if the left/inner node is a polytomy!
 Unrooted and rooted trees relating Ebola virus sequences
 <iframe style="width: 1000px; height: 500px" src="/include/rooting.html">
 </iframe>
-<small><small>
+<small>
 Try clicking and dragging the yellow node around.
-</small></small>
+</small>
 
 ---
 
 # Neighbor-joining trees are unrooted
 
-* Recall from a [previous lecture](https://slides.filogeneti.ca/html/mimm4750g-L04-njoin.html#/) that neighbor-joining (NJ) progressively merges clusters (agglomerative clustering).
+* Recall from a [previous lecture](https://slides.filogeneti.ca/html/mbi4750-L04-njoin.html#/) that neighbor-joining (NJ) progressively merges clusters (agglomerative clustering).
 * NJ stops when none of the clusters contain only one tip node.
 * Every internal node in the resulting tree has a degree of 3 edges.
 * There is no node that represents a root.
@@ -86,9 +86,9 @@ $$P_{ij}(t)\pi_j = P_{ji}(t)\pi_i$$
 
 <img src="https://www.mun.ca/biology/scarr/Panda_problem_midpoint_rooting.jpg" width="400px"/>
 
-<small><small>
+<small>
 Image credit: Steven M. Carr (Memorial University), https://www.mun.ca/biology/scarr/Panda_midpoint_rooting.html
-</small></small>
+</small>
 
 ---
 
@@ -105,9 +105,9 @@ Example: Early mid-point rooted tree of SARS-CoV-2
 
 <img src="/img/sc2-midpoint.png" width="800px"/>
 
-<small><small>
-Image source: Li <i>et al.</i> (2020) [J Med Virol 92: 602-611](https://onlinelibrary.wiley.com/doi/full/10.1002/jmv.25731).
-</small></small>
+<small>
+Image source: Li <i>et al.</i> (2020) <a href="https://onlinelibrary.wiley.com/doi/full/10.1002/jmv.25731">J Med Virol 92: 602-611</a>.
+</small>
 
 ---
 
@@ -133,9 +133,9 @@ Image source: Li <i>et al.</i> (2020) [J Med Virol 92: 602-611](https://onlineli
 
 <img src="https://journals.plos.org/plosntds/article/file?id=10.1371/journal.pntd.0008856.g001&type=large" width="550px"/>
 
-<small><small>
+<small>
 Image credit: Edrdige and van der Hoek (2020) <a href="https://journals.plos.org/plosntds/article?id=10.1371/journal.pntd.0008856">Emerging orthobunyaviruses associated with CNS disease</a>.
-</small></small>
+</small>
 
 ---
 
@@ -179,9 +179,9 @@ Estimate of HIV-1 origin by root-to-tip regression (left) compares favourably to
 </tr>
 </table>
 
-<small><small>
+<small>
 Figures from B Korber <i>et al.</i> (2000) <a href="https://science.sciencemag.org/content/288/5472/1789.abstract">Timing the ancestor of the HIV-1 pandemic strains.</a>  Science 288; M Bletsa <i>et al.</i> (2019) <a href="https://academic.oup.com/ve/article/5/2/vez036/5561482">Divergence dating using mixed effects clock modelling: An application to HIV-1</a>. Virus Evol 5: vez036.
-</small></small>
+</small>
 
 ---
 
@@ -213,10 +213,10 @@ Clock-based methods tend to root on B clade, outgroup rooting tends to root on A
 </small>
 <img src="/img/sc2-rooting.png" height="500px">
 
-<small><small>
+<small>
 Figure from L Pipes <i>et al.</i> (2020) Assessing Uncertainty in the Rooting of the SARS-CoV-2
 Phylogeny. <a href="https://academic.oup.com/mbe/advance-article/doi/10.1093/molbev/msaa316/6028993">Mol Biol Evol</a>, msaa316.
-</small></small>
+</small>
 
 ---
 
