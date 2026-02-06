@@ -70,8 +70,8 @@
   <td width="35%">
     <img src="/img/m_1243fig1.jpeg"/>
   <small>
-  Motoo Kimura and James F. Crow
-  <small>Image credit: Museum of Genetics, Federal University of Rio Grande do Sul, Brazil</small>
+  Motoo Kimura and James F. Crow<br/>
+  Image credit: Museum of Genetics, Federal University of Rio Grande do Sul, Brazil
   </small>
   </td>
   </tr>
@@ -91,8 +91,8 @@
   <td width="55%">
     <img src="/img/EBOV_cds_mb_path.jpg"/>
   <small>
-  Root-to-tip regression of a Bayesian tree for concatenated coding regions of Ebola virus.
-  <small>Image credit: Dudas and Rambaut (2014) PLOS Currents Outbreaks</small>
+  Root-to-tip regression of a Bayesian tree for concatenated coding regions of Ebola virus.<br/>
+  Image credit: Dudas and Rambaut (2014) PLOS Currents Outbreaks
   </small>
   </td>
   </tr>
@@ -140,15 +140,6 @@
 
 ---
 
-# Separation of SIV at end of last ice age
-<img src="/img/bioko.png" width="750px"/>
-
-<small><small>
-M Worobey <i>et al.</i> (2010) Science 329. doi://10.1126/science.1193550
-</small></small>
-
----
-
 # Relaxing the clock
 
 * Relax the strict clock by modeling how the rate changes along branches of the tree.
@@ -161,6 +152,7 @@ M Worobey <i>et al.</i> (2010) Science 329. doi://10.1126/science.1193550
 
 ---
 
+### Relaxed clocks
 # Autocorrelated clocks
 
 * The clock rate is an evolving characteristic along the tree.
@@ -170,12 +162,13 @@ $$\mu_i \sim \mathcal{N}(\mu_j, \sigma^2 t)$$
 
 <img src="/img/autocorrelated-clock.png" width="300px"/>
 
-<small><small>
+<small>
 Image credit: S Ho and S Duchene (2014) Molecular Ecology, doi: 10.1111/mec.12953
-</small></small>
+</small>
 
 ---
 
+### Relaxed clocks
 # Uncorrelated clocks
 
 * The clock rate of each branch is sampled from a continuous probability distribution, with parameters to estimate:
@@ -195,17 +188,18 @@ Image credit: S Ho and S Duchene (2014) Molecular Ecology, doi: 10.1111/mec.1295
 </tr>
 </table>
 
-<small><small>
+<small>
 Source: WikiMedia Commons (CC-SA 3.0).
-</small></small>
+</small>
 
 ---
 
+### Relaxed clocks
 # Discrete multi-rate clocks
 
 <table>
 <tr>
-<td>
+<td style="font-size: 20pt;">
   <ul>
     <li>A discrete clock model assumes there are $k$ rate categories and tries to assign each branch to one of them.</li>
     <li>Essentially an uncorrelated clock model without a parametric distribution &mdash; category rates are estimated from data.</li>
@@ -213,23 +207,21 @@ Source: WikiMedia Commons (CC-SA 3.0).
 </td>
 <td width="50%">
 <img src="/img/discrete-clock.png"/>
-
-  <small>
-  Image credit: S Ho and S Duchene (2014) Molecular Ecology, doi: 10.1111/mec.12953
-  </small>
-
+<small>
+Image credit: S Ho and S Duchene (2014) Molecular Ecology, doi: 10.1111/mec.12953
+</small>
 </td>
 </tr>
 </table>
 
 ---
 
+### Relaxed clocks
 # Local multi-rate clocks
-
 
 <table>
 <tr>
-<td>
+<td style="font-size: 20pt;">
   <ul>
     <li>A local clock model assumes there are $k$ rate categories that are clustered in different parts of the tree.</li>
     <li>The local clock was developed by Anne Yoder and Ziheng Yang&ast; to accommodate different evolutionary rates in mtDNA among mammalian species.</li>
@@ -247,12 +239,13 @@ Image credit: S Ho and S Duchene (2014) Molecular Ecology, doi: 10.1111/mec.1295
 </tr>
 </table>
 
-<small><small>
+<small>
 &ast; Yoder and Yang (2000) Mol Biol Evol 17: 1081, https://doi.org/10.1093/oxfordjournals.molbev.a026389
-</small></small>
+</small>
 
 ---
 
+### Examples
 # The origin of avian influenza virus
 
 Using a host-specific local clock, origin precedes equine influenza outbreak.
@@ -261,6 +254,18 @@ Using a host-specific local clock, origin precedes equine influenza outbreak.
 <small><small>
 Image credit: Worobey <i>et al.</i> (2014) Nature 508. https://doi.org/10.1038/nature13016
 </small></small>
+
+---
+
+### Examples
+# Separation of SIV at end of last ice age
+
+In rare cases, we can fix internal nodes with geological or fossil data.
+<img src="/img/bioko.png" width="650px"/>
+
+<small>
+M Worobey <i>et al.</i> (2010) Science 329. doi://10.1126/science.1193550
+</small>
 
 ---
 
