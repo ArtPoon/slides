@@ -20,7 +20,7 @@
 
 * Primarily developed by Alexei Drummond and Andrew Rambaut in the <a href="https://en.wikipedia.org/wiki/Java_(programming_language)">Java programming language</a>.
 * BEAST has become one of the most influential software packages in infectious disease research in the last decade.
-* Over 14,000 citations, including over 40 Nature papers and over 20 Science papers since 2007.
+* Over 20,000 citations, including over 50 Nature papers and over 25 Science papers since 2007.
 
 ---
 
@@ -95,7 +95,7 @@
 
 ---
 
-### BEAUti
+# BEAUti
 * It is not very convenient to manually write XML files.
 * Most users run BEAUti (Bayesian Evolutionary Analysis Utility) to generate an XML from an alignment.
 
@@ -131,9 +131,7 @@
 ---
 
 #### BEAUti
-# Tree priors
-
-* A large number of different tree priors are implemented in BEAST:
+# Tree priors in BEAST
 
 |  |  | BEAST 1 | BEAST 2 |
 |---|--|---------|---------|
@@ -147,7 +145,6 @@
 |  | Serial sampling | &#10003; | &#10003; |
 |  | Serial skyline | &#10003; |  |
 |  | SIR | &#10003; |  |
-| Source: https://www.beast2.org/features/ |  |  |  |
 
 <blockquote style="padding: 0;">
 <p style="font-size: 18pt; text-align: center;">
@@ -155,9 +152,9 @@ Why shouldn't we just use an uninformative uniform tree prior?
 </o>
 </blockquote>
 
-<small><small>
-
-<small><small>
+<small>
+Source: https://www.beast2.org/features/
+<small>
 
 ---
 
@@ -181,7 +178,7 @@ Why shouldn't we just use an uninformative uniform tree prior?
   * automatically from sequence names using:
     * splitting on a delimiter (*e.g.*, underscores)
     * pattern matching (regular expressions)
-    * importing from a headerless tab-delimited file
+  * importing from a headerless tab-delimited file
 
 ---
 
@@ -240,6 +237,7 @@ UpDownOperator(strictClockUpDownOperator.c:RSV2_1)   0.78031      706    70870  
 
 * Visually inspecting chain samples over time (a trace plot) is an important quality control step!
   * A "fuzzy caterpillar" is consistent with convergence, but it is not proof!
+  * By convention, we want effective sample size (ESS) $\ge$ 200
 
 <table>
 <tr>
@@ -251,9 +249,9 @@ UpDownOperator(strictClockUpDownOperator.c:RSV2_1)   0.78031      706    70870  
 </tr>
 </table>
 
-<small><small>
+<small>
 Image sources: Taming the BEAST workshop, <a href="https://taming-the-beast.org/tutorials/Troubleshooting/">Troubleshooting</a> and <a href="https://taming-the-beast.org/tutorials/CoupledMCMC-Tutorial/">Coupled MCMC</a> tutorials.  
-</small></small>
+</small>
 
 ---
 
