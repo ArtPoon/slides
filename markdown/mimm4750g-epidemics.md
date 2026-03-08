@@ -23,9 +23,9 @@ $$\frac{dN}{dt} = r N \hspace{2em} N(t) = N(0)\exp(r t)$$
   * population dynamics within a host are negligible;
   * hosts do not become co-infected (infected more than once from different sources)
 
-<small><small>
+<small>
 Dearlove and Wilson (2013).  Coalescent inference for infectious disease: meta-analysis of hepatitis C.  <a href="https://royalsocietypublishing.org/doi/full/10.1098/rstb.2012.0314">Phil Trans Roy Soc B 368: 20120314</a>.
-</small></small>
+</small>
 
 ---
 
@@ -94,13 +94,12 @@ $$\frac{dI}{dt} = \beta S I$$
 </td>
 <td width="60%">
   <img src="https://upload.wikimedia.org/wikipedia/commons/a/ac/SIR_trajectory.png"/>
+  <small>
+Source: <a href="Wikimedia Commons">https://commons.wikimedia.org/wiki/File:SIR_trajectory.png</a>, CC-BY-SA 4.0.
+</small>
 </td>
 </tr>
 </table>
-
-<small><small>
-Image source: <a href="Wikimedia Commons">https://commons.wikimedia.org/wiki/File:SIR_trajectory.png</a>, CC-BY-SA 4.0.
-</small></small>
 
 ---
 
@@ -138,9 +137,9 @@ $$R_0 = \frac{\beta S_0}{\gamma} = \frac{\beta (N-1)}{\gamma} \approx \frac{\bet
 
 <img height="250px" src="https://ars.els-cdn.com/content/image/1-s2.0-S1473309917303079-gr4.jpg"/>
 
-<small><small>
+<small>
 Image source: FM Guerra <i>et al.</i> (2017) The basic reproduction number (R0) of measles: a systematic review.  <a href="https://www.sciencedirect.com/science/article/pii/S1473309917303079">Lancet Inf Dis 17: e420</a>
-</small></small>
+</small>
 
 ---
 
@@ -151,9 +150,9 @@ Image source: FM Guerra <i>et al.</i> (2017) The basic reproduction number (R0) 
 * If $\beta$ and $\gamma$ do not vary over time, then:
 $$R_t = \frac{\beta S_t}{\gamma} \hspace{1em} \overset{R_0=\frac{\beta S_0}{\gamma}} {\Longrightarrow} \hspace{1em} R_t = \frac{S_t}{S_0} R_0$$
 
-<small><small>
+<small>
 Source: Nishiura and Chowell (2009) The effective reproduction number as a prelude to statistical estimation of time-dependent epidemic trends.  In: <a href="https://link.springer.com/chapter/10.1007/978-90-481-2313-1_5">Mathematical and Statistical Estimation Approaches in Epidemiology</a>, pp. 103-121.
-</small></small>
+</small>
 
 ---
 
@@ -202,9 +201,9 @@ A flow chart of a compartmental model for SARS-CoV-2 infection dynamics
 
 ![](https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/41419416-551e-41f2-8960-df67c0c9e13d/gr1_lrg.jpg)
 
-<small><small>
+<small>
 Image source: Z Du <i>et al. (2021) </i>Comparative cost-effectiveness of SARS-CoV-2 testing strategies in the USA: a modelling study. <a href="https://doi.org/10.1016/S2468-2667(21)00002-5">Lancet Public Health 6: E184</a>.
-</small></small>
+</small>
 
 ---
 
