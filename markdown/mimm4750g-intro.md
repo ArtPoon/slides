@@ -10,7 +10,7 @@
   * Dr. Art Poon (apoon42@uwo.ca)
   * Office hours by appointment (arrange by e-mail!)
 * Teaching assistant:
-  * Sugitha Janarthanan (sjanarth@uwo.ca)
+  * Paula Magbor (pmagbor3@uwo.ca)
 
 ---
 
@@ -28,16 +28,16 @@
 
 # Evaluation
 
-* There are 8 computing lab assignments on Wednesdays.
+* There are 9 computing lab assignments on Wednesdays.
 * The remaining lab times are reserved for working on your project.
 
 | Assessment | Deadline | Weight |
 |----|---|---|
 | Computing lab assignments | | 35% |
-| Data report | February 7, 2025 | 15% |
-| Draft report | March 14, 2025 | 15% |
-| Final report | April 4, 2025 | 30% |
-| Quizzes | | 5% |
+| Data report | February 6, 2026 (72h flex) | 15% |
+| Draft report | March 13, 2026 (72h flex) | 15% |
+| Final report | April 6, 2026 (72h flex) | 30% |
+| Quizzes and participation | | 5% |
 
 ---
 
@@ -54,17 +54,18 @@
 
 ---
 
-# Expectations about AI
+# Course policy on AI
 
 <table>
   <tr>
     <td style="font-size: 20pt;">
+    <ul>
+      <li>Use of generative AI for lab assignments or your project is <u>prohibited</u>.</li>
       <ul>
-      <li>Assessments will place greater weight on methods and results than introduction.</li>
-      <li>Analyses must be run on the course server.</li>
-      <li>Your data and workflow on the server should be organized and documented.</li>
-      <li>Your reports must contain at least one figure.</li>
+        <li>If you are relying on AI, then you have resigned yourself to being replaced by a computer.</li>
       </ul>
+      <li>This course <i>will</i> teach you many of the concepts underlying deep learning (<i>e.g.</i>, maximum likelihood, MCMC, Bayesian inference).</li>
+    </ul>
     </td>
     <td width="35%">
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Educationtechnology.png/480px-Educationtechnology.png"/>
@@ -74,6 +75,17 @@
     </td>
   </tr>
 </table>
+
+---
+
+# Anti-AI mitigation strategies
+
+* Written assessments will place greater weight on methods and results.
+* All analyses <u>must</u> be run on the course server.
+  * All user files, modification dates, and command histories are tracked.
+* Your data and workflow on the server should be organized and documented.
+* Your reports must contain at least one figure.
+
 
 ---
 

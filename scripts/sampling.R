@@ -36,3 +36,45 @@ lines(d, lwd=2)
 
 dev.off()
 
+#################
+
+pdf("~/slides/img/importance-sampling.pdf", width=4, height=6)
+# Importance sampling
+set.seed(5)
+x <- rnorm(100)
+d <- density(x, bw=0.1)
+par(mar=c(3,3,1,1), mfrow=c(2,1))
+plot(d, xlim=c(-8, 8), ylim=c(0, 0.8), 
+     main='Uniform', xlab=NA, ylab=NA, bty='n')
+abline(h=0.6, lty=2, col='red', lwd=1.5)
+
+x <- runif(20, min=-8, max=8)
+y <- runif(20, 0, 0.6)
+
+z <- sapply (1:20, function(i) {
+  if (x[i] < min(d$x) | x[i] > max(d$x)) { FALSE } else {
+    # locate closest point
+    j <- min(which(d$x > x[i]))
+    y[i] < d$y[j]
+  }
+})
+
+points(x, y, col='red', pch=ifelse(z, 19, 1))
+
+
+plot(d, xlim=c(-8, 8), ylim=c(0, 0.8), 
+     main='Importance', xlab=NA, ylab=NA, bty='n')
+xx <- seq(-8, 8, 0.1)
+lines(xx, 2*dnorm(xx), col='cadetblue', lwd=1.5, lty=2)
+
+x2 <- rnorm(20)
+y2 <- runif(length(x2), 0, 2*dnorm(x2))
+z2 <- sapply(1:length(x2), function(i) {
+  if (x2[i] < min(d$x) | x2[i] > max(d$x)) { FALSE } else {
+    # locate closest point
+    j <- min(which(d$x > x2[i]))
+    y2[i] < d$y[j]
+  }
+})
+points(x2, y2, col='cadetblue', pch=ifelse(z2, 19, 1))
+dev.off()

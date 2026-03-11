@@ -164,9 +164,9 @@ $$f(\tau_k)=\lambda_k \exp(-\lambda_k \tau_k),\\; \lambda_k = \frac{{k\choose 2}
 | *Caenorhabditis elegans* | 80,000 |
 | *Escherichia coli* | 25,000,000 |
 
-<small><small>
+<small>
 Source: Brian Charlesworth (2009). Effective population size and patterns of molecular evolution and variation.  <a href="https://www.nature.com/articles/nrg2526">Nature Rev Genet 10: 195-205</a>.
-</small></small>
+</small>
 
 ---
 
@@ -207,9 +207,9 @@ $$T_{\textrm{MRCA}} = 2N_e\textrm{ generations} \times g_c \frac{\textrm{years}}
 
 <img src="/img/rsif.2020.0756.svg" width="400px"/>
 
-<small><small>
+<small>
 Image source: Lehtinen <i>et al.</i> (2020) <a href="https://royalsocietypublishing.org/doi/full/10.1098/rsif.2020.0756">J R Soc Interface 18: 20200756</a>.
-</small></small>
+</small>
 
 ---
 
