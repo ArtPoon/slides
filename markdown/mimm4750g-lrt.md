@@ -22,9 +22,9 @@
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/6/68/Overfitted_Data.png" width="300px"/>
 
-<small><small>
+<small>
 Image source: Wikimedia Commons, <a href="https://commons.wikimedia.org/wiki/File:Overfitted_Data.png">Overfitted data</a>
-</small></small>
+</small>
 
 ---
 
@@ -67,9 +67,9 @@ plot(x, dchisq(x, df=1), type='l', ylab='Probability density',
 
 * Hierarchical testing of 24 different substitution models with 4-5 tests ($\alpha=0.01$).
 
-<small><small>
+<small>
 Image credit: Posada and Crandall (1998) <a href="https://academic.oup.com/bioinformatics/article/14/9/817/259559">MODELTEST: testing the model of DNA substitution</a>. Bioinformatics 14: 817-818.
-</small></small>
+</small>
 
 ---
 
@@ -123,12 +123,11 @@ $$w_i = \frac{\exp (-\Delta_i/2)}{\sum_j \exp(-\Delta_j/2)}$$
 <table>
 <tr>
 <td><img src="/img/bModelTest.png" height="250px"></td>
-<td width="300px"><small>
+<td width="300px" style="font-size: 14pt; line-height: 1.3;">
 Output of running bModelTest in BEAST on primate mtDNA data.
 The ModelIndicator variable represents different substitution models.
 JC69 (model 0) was never sampled in 5,000,000 iterations.
-
-</small></td>
+</td>
 </tr>
 </table>
 
@@ -158,9 +157,9 @@ $$P(D|M) = \int_{\theta|M} P(D|M,\theta) P(\theta|M)$$
 | 20 to 150 | Strong |
 | >150 | Very strong |
 
-<small><small>
+<small>
 Source: Kass and Raftery (1995).  Bayes factors.  J Amer Stat Assoc 90(430): 773-795.
-</small></small>
+</small>
 
 ---
 
@@ -168,8 +167,8 @@ Source: Kass and Raftery (1995).  Bayes factors.  J Amer Stat Assoc 90(430): 773
 
 * The exact marginal likelihood is often very difficult integral to solve.
   * Since we are integrating over a probability, we are calculating an expected value, *i.e.*, a mean.
-* Why not average over a relatively small random sample of $P(D|M, \theta)$ instead?
-* MCMC already generates a random sample of $\theta$ (**yay!**), but it's from the <u>posterior</u> distribution $P(\theta,M|D)$, not the prior $P(\theta|M)$.
+* Why not average over a small random sample of $P(D|M,\theta)$?
+* MCMC already generates a random sample of $P(D|M,\theta)$, but it's from the <u>posterior</u> distribution $P(\theta|D,M)$, not the prior $P(\theta|M)$.
 
 <center>
 What if we just ignore this fact for now?
@@ -181,30 +180,22 @@ What if we just ignore this fact for now?
 
 * Instead of integrating, we want to calculate the mean:
 $$E[P(D|\theta)] = \frac{1}{N} \sum_{i=1}^{N} P(D|\theta) P(\theta)$$
-* If we draw points at random from another distribution $g(\theta)$, we can calculate a weighted mean using weights $P(\theta_i) / g(\theta_i)$ and normalize:
-$$E[P(D|\theta)] = \frac{
-  \frac{1}{n}\sum_{i=1}^{N} P(D|\theta_i) P(\theta) g(\theta_i)^{-1}
-}{
-  \frac{1}{n}\sum_{i=1}^{N} P(\theta) g(\theta_i)^{-1}
-}$$
+* If we draw $\theta^{(i)}$ at random from another distribution $g$, we can still calculate this mean by importance sampling:
+$$E_g[P(D|\theta)] = \frac{1}{N} \sum_{i=1}^{N} \frac{P(D|\theta^{(i)}) P(\theta^{(i)})}{g(\theta^{(i)})}$$
 
 ---
 
 # Harmonic mean estimator
 
-* If we are drawing points from the posterior distribution, then $g(\theta) = P(D|\theta) P(\theta)$, which means:
-$$E[P(D|\theta)] = \frac{
-  \frac{1}{n}\sum_{i=1}^{N} \frac{P(D|\theta)P(\theta)}{P(D|\theta) P(\theta)}
-}{
-  \frac{1}{n}\sum_{i=1}^{N} \frac{P(\theta)}{P(D|\theta) P(\theta)}
-} = \frac{1}{\frac{1}{n}\sum_{i=1}^{N} \frac{1}{P(D|\theta)}}$$
+* If we are drawing points from the posterior distribution, then $g(\theta) = P(D|\theta) P(\theta) / P(D)$, which gives us (after some math):
+$$E_{P(\theta|D,M)} \left[\frac{1}{P(D|\theta,M)}\right] = \frac{1}{P(D|M)}$$
 
-* This is the harmonic mean &mdash; the reciprocal of the arithmetic mean of reciprocal values:
+* This is a harmonic mean &mdash; the reciprocal of the arithmetic mean of reciprocal values:
 $$\frac{1}{H[x]} = \frac{1}{N} \sum_{i=1}^{N} \frac{1}{x_i}$$
 
-<small><small>
+<small>
 Derivation from <a href="https://phylo.bio.ku.edu/slides/HolderAustinSteppingstone.pdf">lecture slides</a> by Mark T. Holder, Paul O. Lewis, David L. Swofford, and David Bryant.
-</small></small>
+</small>
 
 ---
 
