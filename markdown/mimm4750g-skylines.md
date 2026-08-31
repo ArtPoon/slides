@@ -53,9 +53,9 @@ $$\frac{dN}{dt} = r N(t) \left(1 - \frac{N(t)}{K}\right) \hspace{2em} N(t) = \fr
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Malthusian_growth_vs_logistic_growth.png" width="350px"/>
 
-<small><small>
+<small>
 Image source: Wikimedia Commons, <a href="https://commons.wikimedia.org/wiki/File:Malthusian_growth_vs_logistic_growth.png">Malthusian growth vs logistic growth</a>
-</small></small>
+</small>
 
 
 ---
@@ -104,9 +104,9 @@ $$f(\tau_k) = \Lambda_k(\tau_k) \exp\left( -\int_0^{\tau_k} \Lambda_k(s) ds  \ri
 </tr>
 </table>
 
-<small><small>
+<small>
 Image source: Nee <i>et al.</i> (1995) Inferring population history from molecular sequences. <a href="https://doi.org/10.1098/rstb.1995.0087">Phil Trans Roy Soc Lond B 349: 25-31</a>.
-</small></small>
+</small>
 
 ---
 
@@ -133,13 +133,15 @@ Image source: Nee <i>et al.</i> (1995) Inferring population history from molecul
 
 <table><tr>
 <td><img src="/img/skyline.png" width="300px"/></td>
-<td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Wienerberg_City_Skyline.jpg/640px-Wienerberg_City_Skyline.jpg" width="400px"/></td>
+<td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Wienerberg_City_Skyline.jpg/1280px-Wienerberg_City_Skyline.jpg" width="400px"/>
+<small>
+Image source: Wikimedia Commons, <a href="https://commons.wikimedia.org/wiki/File:Wienerberg_City_Skyline.jpg">Wienerberg City Skyline</a>.
+</small>
+</td>
 </tr>
 </table>
 
-<small><small>
-Image source: Wikimedia Commons, <a href="https://commons.wikimedia.org/wiki/File:Wienerberg_City_Skyline.jpg">Wienerberg City Skyline</a>.
-</small></small>
+
 
 ---
 
@@ -159,10 +161,9 @@ Image source: Wikimedia Commons, <a href="https://commons.wikimedia.org/wiki/Fil
   </td>
 <td style="vertical-align: middle;" width="40%">
   <img src="/img/classic-skyline.svg"/>
-  <small>
   Classic skyline for a tree simulated under constant $N\mu=1$.
   Branch lengths are measured in expected substitutions ($\mu t$) instead of chronological time $t$.
-  </small>
+
 </td>
 </tr>
 </table>
@@ -177,9 +178,9 @@ Image source: Wikimedia Commons, <a href="https://commons.wikimedia.org/wiki/Fil
 
 <img src="/img/pybus-hiv.png" height="250px"/>
 
-<small><small>
+<small>
 Image source: Pybus <i>et al.</i> (2000). An integrated framework for the inference of viral population history from reconstructed genealogies.  <a href="https://academic.oup.com/genetics/article/155/3/1429/6050940">Genetics 155: 1429-1437</a>.
-</small></small>
+</small>
 
 ---
 
@@ -233,9 +234,9 @@ $$N_{n,k} = \frac{n(n-k)}{2k} \sum_{j=n}^{n-k+1} g_j $$
 </tr>
 </table>
 
-<small><small>
+<small>
 Image source: Drummond <i>et al.</i> (2005).  Bayesian coalescent inference of past population dynamics from molecular sequences. <a href="https://academic.oup.com/mbe/article/22/5/1185/1066885">Mol Biol Evol 22: 1185-1192</a>.
-</small></small>
+</small>
 
 ---
 
@@ -255,9 +256,9 @@ Image source: Drummond <i>et al.</i> (2005).  Bayesian coalescent inference of p
 
 <img src="/img/comas-MTBC.png" width="700px"/>
 
-<small><small>
-Comas <i>et al.</i> 2013. Out-of-Africa migration and Neolithic co-expansion of *Mycobacterium tuberculosis* with modern humans. Nature Genetics 45: 1176-1182.
-</small></small>
+<small>
+Comas <i>et al.</i> 2013. Out-of-Africa migration and Neolithic co-expansion of <i>Mycobacterium tuberculosis</i> with modern humans. Nature Genetics 45: 1176-1182.
+</small>
 
 ---
 

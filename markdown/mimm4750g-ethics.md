@@ -65,11 +65,10 @@
 
 ---
 
-# Data ownership
-
 <table>
   <tr>
     <td>
+      <h1>Data ownership</h1>
       <ul>
         <li>What is data ownership?</li>
         <li>Who owns the data?</li>
@@ -81,18 +80,19 @@
         </ul>
         <li>Ownership is even more ambiguous for virus genomes than human genomes.</li>
       </ul>
+      <small>
+      Image source: <a href="https://commons.wikimedia.org/wiki/File:Henrietta_Lacks.jpg">Wikipedia</a>, published under fair usage policy.
+      </small>
     </td>
     <td width="40%">
-      <img src="https://upload.wikimedia.org/wikipedia/en/d/d7/Henrietta_Lacks_%281920-1951%29.jpg"/>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Henrietta_Lacks.jpg" width="167px"/>
       <small>
-      Henrietta Lacks, an African-American woman whose tumour biopsy was the source of the first immortalized cell line.
-      </small>
-      <small><small>
-      Source: <a href="https://en.wikipedia.org/wiki/File:Henrietta_Lacks_(1920-1951).jpg">Wikipedia</a>, published under fair usage policy.
-      </small></small>
+Henrietta Lacks, an African-American woman whose tumour biopsy was the source of the first immortalized cell line.<br/>
+</small>
     </td>
   </tr>
 </table>
+
 
 ---
 

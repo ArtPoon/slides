@@ -1,7 +1,7 @@
 # MIMM4750G
 ## Markov chain Monte Carlo
 
-![](https://imgs.xkcd.com/comics/technical_analysis.png)
+![](https://imgs.xkcd.com/comics/seashell.png)
 
 ---
 
@@ -39,16 +39,16 @@
   <tr>
   <td>
   <ul>
-    <li><a href="https://en.wikipedia.org/wiki/Stanislaw_Ulam">Stanislaw Ulam</a> was a Polish physicist who, in 1946, was playing solitaire while recovering from brain surgery.</li>
+    <li><a href="https://en.wikipedia.org/wiki/Stanislaw_Ulam">Stanislaw Ulam</a> was a Polish physicist who, in 1946, was playing <a href="https://en.wikipedia.org/wiki/Patience_(game)">solitaire</a> while recovering from brain surgery.</li>
     <li>He reasoned that it would be easier to estimate the probability of winning by playing many times (simulation) than calculating the exact chance.</li>
-    <li>This simulation-based approach was dubbed the <a href="https://en.wikipedia.org/wiki/Monte_Carlo_method">"Monte Carlo method"</a> after the casino.</li>
-    <li>The method later became used in the Manhattan project.</li>
+    <li>This simulation-based approach was dubbed the <a href="https://en.wikipedia.org/wiki/Monte_Carlo_method">"Monte Carlo method"</a> after the <a href="https://en.wikipedia.org/wiki/Monte_Carlo_Casino">casino</a>.</li>
+    <li>The method later became used in the <a href="https://en.wikipedia.org/wiki/Manhattan_Project">Manhattan project</a>.</li>
   </ul>
   </td>
   <td width="35%">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Stanislaw_Ulam.tif/lossy-page1-413px-Stanislaw_Ulam.tif.jpg" alt="Unless otherwise indicated, this information has been authored by an employee or employees of the Los Alamos National Security, LLC (LANS), operator of the Los Alamos National Laboratory under Contract No. DE-AC52-06NA25396 with the U.S. Department of Energy. The U.S. Government has rights to use, reproduce, and distribute this information. The public may copy and use this information without charge, provided that this Notice and any statement of authorship are reproduced on all copies. Neither the Government nor LANS makes any warranty, express or implied, or assumes any liability or responsibility for the use of this information."/>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/STAN_ULAM_HOLDING_THE_FERMIAC.jpg" alt="Stanislaw Ulam holding the Fermiac"/>
     <small>
-    Image credit: <a href="https://www.lanl.gov/resources/web-policies/copyright-legal.php">Los Alamos National Laboratory</a>.
+    Image from MCNP Software Quality: Then and Now. Gregg C. Giesler, <a href="https://www.lanl.gov/resources/web-policies/copyright-legal.php">Los Alamos National Laboratory. LA-UR-00-2532; 16 October 2000</a>.  Public domain.
     </small>
   </td>
   </tr>
@@ -56,7 +56,7 @@
 
 ---
 
-<table>
+<table style="font-size: 18pt">
   <tr>
   <td style="vertical-align: middle;">
   <h1>Monte Carlo integration</h1>
@@ -66,11 +66,12 @@
     <li>Estimate the integral by the proportion of random points between 0 and $M$ (dashed line) below $P(\theta|D)$.</li>
   </ul>
   </td>
-  <td width="40%">
+  <td width="45%">
     <img src="/img/monte-carlo.svg" height="400px"/>
     <small>
-    The curved function represents a posterior distribution function.
+    The curved line represents a hypothetical posterior distribution function.
     Red lines represent posterior probabilities we calculate for specific parameter values.
+    Blue dots are values drawn uniformly at random between 0 and the dashed line.
     </small>
   </td>
   </tr>
@@ -88,16 +89,25 @@
 
 ---
 
-# Importance sampling
+<table style="font-size: 18pt;">
+<tr>
+  <td>
+  <h1>Importance sampling</h1>
+  <ul>
+    <li><a href="https://en.wikipedia.org/wiki/Importance_sampling">Importance sampling</a> draws points from a proposal distribution $q(\theta)$ that focuses our sampling effort.</li>
+    <ul>
+    <li>It is even more difficult to choose the right proposal distribution than to choose a ceiling for uniform sampling!</li>
+    <li>On the other hand, this enables us to incorporate prior knowledge.</li>
+    </ul>
+    <li>Our samples have to be adjusted by the ratio $P(\theta|D)/q(\theta)$</li>
+  </ul>
+  </td>
+  <td width="40%">
+    <img src="/img/importance-sampling.svg" width="100%"/>
+  </td>
+</tr>
+</table>
 
-* [Importance sampling](https://en.wikipedia.org/wiki/Importance_sampling) draws points from a proposal distribution that (hopefully) concentrates our efforts in the more useful regions of $\theta$.
-* Difficult to choose the right proposal distribution!
-
-<img src="/img/importance-sampling.svg" width="800px"/>
-
-<small><small>
-Image credit: Wojciech Jarosz, <a href="https://www.cs.dartmouth.edu/~wjarosz/publications/dissertation/appendixA.pdf">Dissertation Appendix A</a>, and <a href="https://computergraphics.stackexchange.com/a/4994">this StackExchange post</a>.
-</small></small>
 
 ---
 
@@ -169,9 +179,9 @@ Image credit: Wojciech Jarosz, <a href="https://www.cs.dartmouth.edu/~wjarosz/pu
 
 ![](/img/mcmc.png)
 
-<small><small>
+<small>
 Figure from Poon <i>et al.</i> (2018) Retrovirology 15:47.
-</small></small>
+</small>
 
 ---
 
@@ -193,9 +203,9 @@ Figure from Poon <i>et al.</i> (2018) Retrovirology 15:47.
 
 ![](https://upload.wikimedia.org/wikipedia/commons/5/51/Shiprock_wikivoyage_banner.jpg)
 
-<small><small>
-Image credit: Derived from <a href="https://commons.wikimedia.org/wiki/File:2004-05-06_14D_-_Shiprock,_NM.jpg"><i>Shiprock as seen from a distance</i> by user Transity</a>.  Wikimedia Commons (CC-SA 3.0 Unported).
-</small></small>
+<small>
+Image credit: Derived from <a href="https://commons.wikimedia.org/wiki/File:2004-05-06_14D_-_Shiprock,_NM.jpg"><i>Shiprock as seen from a distance</i></a>.  Wikimedia Commons (CC-SA 3.0 Unported).
+</small>
 
 ---
 
@@ -203,9 +213,9 @@ Examples of burn-in and autocorrelation
 <img src="https://bookdown.org/marklhc/notes_bookdown/06_mcmc_files/figure-html/trace-acf-1.png" height="250px"/>
 <img src="https://bookdown.org/marklhc/notes_bookdown/06_mcmc_files/figure-html/trace-acf-2.png" height="250px"/>
 
-<small><small>
+<small>
 Image credit: Mark Lai (2019). <a href="https://bookdown.org/marklhc/notes_bookdown/markov-chain-monte-carlo.html">Course Handouts for Bayesian Data Analysis Class</a>.
-</small></small>
+</small>
 
 ---
 
@@ -218,9 +228,9 @@ Image credit: Mark Lai (2019). <a href="https://bookdown.org/marklhc/notes_bookd
   `$$\hat{N}_{\mathrm{eff}} = \frac{N}{1 + 2\sum_{t=1}^{\infty} \rho_t}$$`
   where $\rho_t$ is the autocorrelation estimate with lag $t$.
 
-<small><small>
+<small>
 Source: Vehtari <i>et al.</i> (2021) Rank-Normalization, Folding, and Localization: An Improved R for Assessing Convergence of MCMC (with Discussion). Bayesian Analysis 16(2): 667-718.
-</small></small>
+</small>
 
 ---
 
