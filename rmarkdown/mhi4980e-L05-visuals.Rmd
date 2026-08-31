@@ -10,9 +10,7 @@ knit: (function(inputFile, encoding) {
       rmarkdown::render(inputFile,
                         encoding=encoding, 
                         output_file=file.path(dirname(inputFile), out_dir, 'mhi4980e-L05-visuals.html')) })
-
 ---
-
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap');
@@ -43,8 +41,19 @@ knitr::knit_hooks$set(webgl = hook_webgl)
   * The intersection of art and science?
 * Important skills for science communication!
 
+---
 
 ## History
+
+A tree diagram (tashj&imacr;r) of the disciplines (al-fun&umacr;n) of human knowledge, from the Na&#7827;m al-sul&umacr;k.
+
+<img src="../img/tashjir-nazm-al-suluk.png" width="800px"/>
+
+<small>
+Copyright Topkapi Sarayi M&uuml;zesi K&uuml;t&uuml;phanesi, Instanbul.
+</small>
+
+---
 
 [Minard's](https://en.wikipedia.org/wiki/Charles_Joseph_Minard) (1896) diagram of the [French invasion of Russia](https://en.wikipedia.org/wiki/French_invasion_of_Russia)
 
@@ -188,17 +197,15 @@ sm(require(corrplot)); corrplot(cor(mtcars))
 slopegraph(co2.emissions)
 ```
 
-## Aesthetics
+## Channels of data visualization
 
-* Where data visualization intersects art!
-* Aesthetics are not entirely subjective -- or at least, there is some consistency.
-* Some components of aesthetics according to Wilke:
+* Some channels of data visualization according to Wilke:
   * position
   * shape
   * size
   * colour
   * line width, type
-
+* Note, Wilke calls these "aesthetics", but I prefer channels.
 
 ## Colour palettes
 

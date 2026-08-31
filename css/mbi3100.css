@@ -87,7 +87,11 @@ body {
   }
 
 .reveal h4 {
-  font-size: 1em; }
+  font-size: 0.8em;
+  line-height: 0;
+  color: #4F2683;
+  font-weight: 900;
+}
 
 .reveal h1 {
   text-shadow: none; }
