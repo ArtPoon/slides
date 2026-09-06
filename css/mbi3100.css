@@ -217,6 +217,18 @@ body {
   line-height: 1.2em;
 }
 
+.reveal pre code.language-seq {
+  display: block;
+  background-color: black;
+  color: white;
+  padding: 5px;
+  overflow: auto;
+  max-height: 450px;
+  word-wrap: normal;
+  font-size: 1.5em;
+  line-height: 1.2em;
+}
+
 .reveal table {
   margin: auto;
   border-collapse: collapse;
