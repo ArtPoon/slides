@@ -12,10 +12,10 @@
 * An [alignment](https://en.wikipedia.org/wiki/Sequence_alignment) is a hypothesis about how residues (nt, aa) in homologous sequences are related to residues in a common ancestor.
 * This is not trivial because of [insertions](https://en.wikipedia.org/wiki/Insertion_(genetics)) and [deletions](https://en.wikipedia.org/wiki/Deletion_(genetics)).
 
-```
-Query  1    CTRPNNTRKSVSITIGPGRASYATG---GQAHC  30
-            ||||||||||  |||||||||||||   |||||
-Sbjct  95   CTRPNNTRKS--ITIGPGRASYATGGIIGQAHC  125
+```seq
+  Query  1    CTRPNNTRKSVSITIGPGRASYATG---GQAHC  30
+              ||||||||||  |||||||||||||   |||||
+  Sbjct  95   CTRPNNTRKS--ITIGPGRASYATGGIIGQAHC  125
 
 ```
 
@@ -62,10 +62,12 @@ Aligned HCV sequences
 # Gap penalties
 
 * We need to penalize the score for gaps, or else an alignment gets gaps for free:
-  ```
-  A-C-G-T   ACGT
-  -A-C-T-   AC-T
-  ```
+
+```seq
+                A-C-G-T       ACGT
+                -A-C-T-       AC-T
+```
+
 * The left option is obviously a terrible alignment!
 * If we use match/mismatch scores of `+1/-1` and a gap penalty of `-1`, then **what are the scores** for these alignments?
 
@@ -115,13 +117,10 @@ with TGP  AG-----CGCCCGGA---T    -----AGCGCCCGGAT---  no TGP
 # Scoring a nucleotide alignment
 
 <br/>
-
-<center>
-<tt>
-ACTGATC<br/>
--C--ACC
-</tt>
-</center>
+```seq
+                           ACTGATC
+                           -C--ACC
+```
 
 * There are two gaps in this example.  If we are using affine scoring (open $-2$ and extend $-1$) then the total gap penalty is: $(-2)+(-2-1) = -5$.
   * If we ignore terminal gaps, then the gap penalty is $-3$.
@@ -134,12 +133,10 @@ ACTGATC<br/>
 
 * Things get a little more interesting with protein sequences:
 
-<center>
-<tt>
--ASGTVQL<br/>
-VASR--QM
-</tt>
-</center>
+```seq
+                         -ASGTVQL
+                         VASR--QM
+```
 
 * Let's use the [BLOSUM62](https://www.ncbi.nlm.nih.gov/IEB/ToolBox/C_DOC/lxr/source/data/BLOSUM62) matrix, a gap open penalty of $-3$ and an extend penalty of $-1$, ignoring terminal gaps.
 * The scores are: 
@@ -185,20 +182,18 @@ for a total global score of 9.
       <ul>
       <li>We start with $F(0,0)=0$.</li>
       <li>Other entries in $F$ are calculated from the entries above, to the left, or diagonally up and left.</li>
-      $$
-      F(i,j)= \max \left\{ 
+`$$F(i,j)= \max \left\{ 
         \begin{array}{l}
           F(i-1,j-1) + s(x_i, y_j),\\
           F(i-1,j)-d,\\
           F(i, j-1)-d\\
         \end{array}
-        \right.
-      $$
+        \right.$$`
       <li>$s(x, y)$ comes from a score matrix, <i>e.g.</i>, BLOSUM</li>
       <li>$d$ is a gap penalty</li>
       </ul>
     </td>
-    <td>
+    <td style="vertical-align: middle;">
       <img src="/img/dynamicprogram.png"/>
     </td>
   </tr>
@@ -339,7 +334,7 @@ Date	, <a href="https://commons.wikimedia.org/wiki/File:Point_Pelee_Boardwalk,_J
 
 * Isolated stretch of mismatched residues in one sequence (HCV reference 4d, DQ516083)
 * Rapid evolution in one lineage unlikely.
-* May represent a [pair of compensatory frameshift mutations](https://academic.oup.com/mbe/article/39/3/msac031/6524633) (but in this case, there was a dropout of `T` calls).
+  * May represent a [pair of compensatory frameshift mutations](https://academic.oup.com/mbe/article/39/3/msac031/6524633) (but in this case, there was a dropout of `T` calls).
 
 ---
 
@@ -361,11 +356,11 @@ Date	, <a href="https://commons.wikimedia.org/wiki/File:Point_Pelee_Boardwalk,_J
 <section data-background="#333" style="color:white">
 
 <h1 style="color:white">Key points</h1>
-
-* Homologous sequences can be aligned by adding gaps that represent insertions or deletions.
-* Optimal alignment is defined by match/mismatch scoring and penalizing gaps.
-* Most alignment programs use a dynamic programming algorithm to find the optimal alignment.
-* Multiple sequence alignment requires a guide tree to determine the order of alignment.
-* Always look at your data!
-
+<ul>
+<li>Homologous sequences can be aligned by adding gaps that represent insertions or deletions.</li>
+<li>Optimal alignment is defined by match/mismatch scoring and penalizing gaps.</li>
+<li>Most alignment programs use a dynamic programming algorithm to find the optimal alignment.</li>
+<li>Multiple sequence alignment requires a guide tree to determine the order of alignment.</li>
+<li>Always look at your data!</li>
+</ul>
 </section>

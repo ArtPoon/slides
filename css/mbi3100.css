@@ -217,7 +217,8 @@ body {
   line-height: 1.2em;
 }
 
-.reveal pre code.language-seq {
+.reveal pre code.language-seq,
+.reveal pre code.lang-seq {
   display: block;
   background-color: black;
   color: white;
