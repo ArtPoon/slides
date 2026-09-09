@@ -465,7 +465,7 @@ Image source: https://www.freecodecamp.org/news/how-pcs-were-advertised-in-the-1
 > Most groups, however, learned to build modular, loosely-coupled systems whose parts could be swapped in and out without retooling the whole system.
 
 <small>
-[Lincoln Stein](https://oicr.on.ca/investigators/lincoln-stein/), [The Perl Journal](https://web.archive.org/web/20070202101624/http://www.bioperl.org/wiki/How_Perl_saved_human_genome) (1996).
+<a href="https://oicr.on.ca/investigators/lincoln-stein/">Lincoln Stein</a>, <a href="https://web.archive.org/web/20070202101624/http://www.bioperl.org/wiki/How_Perl_saved_human_genome">The Perl Journal</a> (1996).
 </small>
 
 ---
