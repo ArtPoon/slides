@@ -108,7 +108,7 @@ An excerpt of a table summarizing infectious disease prevalence in Britain (1965
 | Enteric fever, typhoid | 3 | 1 | 4 | 1 |   |
 | Measles | 3268 | 153 | 37 | 40 | 73 |
 
-British Medical Journal from 1965 ([Graph and Table of Infectious Disease](https://www.ncbi.nlm.nih.gov/pubmed/20790782))
+British Medical Journal from 1965, <a href="https://www.ncbi.nlm.nih.gov/pubmed/20790782">Graph and Table of Infectious Disease</a>.
 
 ---
 
@@ -194,7 +194,7 @@ Measles,3268,153,37,40,73
 | Isoleucine | Ile | I | Valine | Val | V |
 
 <small>
-See [IUPAC-IUB Commission on Biochemical Nomenclature Tentative Rules: A one-letter notation for amino acid sequences](https://www.sciencedirect.com/science/article/pii/0003986168905043).  Arch Biochem Biophys 125 (1968).
+See <a href="https://www.sciencedirect.com/science/article/pii/0003986168905043">IUPAC-IUB Commission on Biochemical Nomenclature Tentative Rules: A one-letter notation for amino acid sequences</a>.  Arch Biochem Biophys 125 (1968).
 </small>
 
 ---
@@ -204,7 +204,9 @@ See [IUPAC-IUB Commission on Biochemical Nomenclature Tentative Rules: A one-let
 * One of the most common file formats for sequence data.
   * Originated from a sequence alignment program ([FAST-All](https://en.wikipedia.org/wiki/FASTA), 1987) that is no longer used.
 * Every sequence record starts with a `>` symbol, followed by the sequence label (header).
-  * The sequence appears on subsequent lines until the next `>`.
+  * No limit to length and content of header line!
+  * A *sequential* FASTA has each sequence on a single line.
+  * An *interleaved* FASTA has a <a href="(https://en.wikipedia.org/wiki/Wrapping_(text)">hard wrap</a> so a sequence appears on multiple lines, *usually* the same length.
 
 ```
 >NC_045512.2 Severe acute respiratory syndrome coronavirus 2 isolate Wuhan-Hu-1, complete genome
@@ -218,7 +220,8 @@ TAATTACTGTCGTTGACAGGACACGAGTAACTCGTCTATCTTCTGCAGGCTGCTTACGGTTTCGTCCGTG
 # Genbank format
 
 * A complex format that contains diverse information.
-  * `LOCUS` was unique identifier that hinted at the organism and gene product, *e.g.*, `GHCAB` = [*Gossypium hirsutum*](https://en.wikipedia.org/wiki/Gossypium_hirsutum) *cab* gene.
+  * `LOCUS` was unique identifier that hinted at the organism and gene product, *e.g.*, `GHCAB` = [*Gossypium hirsutum*](https://en.wikipedia.org/wiki/Gossypium_hirsutum) *cab* gene - now simply repeats the accession number.
+
 ```
 LOCUS       KT001281                 265 bp    DNA     linear   VRL 29-JUL-2015
 DEFINITION  Hepatitis B virus isolate 306 polymerase (P) gene, partial cds.
@@ -309,7 +312,7 @@ Wind turbines and farmland - autumn on Manitoulin Island (Tony Webster, <a href=
 
 * Storing and distributing NGS data created a unique problem for those maintaining pubilc databases of conventional sequences.
 * NCBI created the [Short Read Archive](https://www.ncbi.nlm.nih.gov/sra) (now the *Sequence* Read Archive).
-  * As of April 10, 2019, the NCBI SRA held over 26 petabytes of data - about 6,500 4TB hard drives.
+  * As of February 2023, the NCBI SRA held over 40 petabytes of data - about ten thousand 4TB hard drives.
 * Partnership with [EMBL-EBI](https://www.ebi.ac.uk/) European Nucleotide Archive and the [National Institute of Genetics](http://www.nig.ac.jp/nig/) DNA Data Bank of Japan.
 
 ---
