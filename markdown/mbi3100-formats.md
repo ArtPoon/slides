@@ -1,3 +1,79 @@
+#### MBI 3100A
+## Introduction to Medical Bioinformatics
+
+![](https://imgs.xkcd.com/comics/data_pipeline.png)
+
+---
+
+<center>
+<small>
+We acknowledge the <a href="https://www.anishinabek.ca/">Anishinaabek</a> (Ah-nish-in-a-bek), <a href="https://www.haudenosauneeconfederacy.com/">Haudenosaunee</a> (Ho-den-no-show-nee), L&#363;naap&eacute;ewak (Len-ahpay-wuk) and Attawandaron (Add-a-won-da-run) peoples, whose traditional lands we are gathered upon today.
+</small>
+</center>
+
+<img src="/img/land-ack.jpeg"/>
+
+<small>
+Image source: Native Land Digital, https://native-land.ca/.
+</small>
+
+---
+
+# Course materials
+
+* My slides are available at http://slides.filogeneti.ca/html
+  * Labeled `mbi3100-L0#-*.html`
+  * Released under a [Creative Commons](https://creativecommons.org/) CC-BY-SA-4.0 license
+  * To export a printable PDF, replace `.html#/` with `.html?print-pdf`
+* Some supplementary readings have been uploaded to Brightspace.  
+  * Readings labelled *required* should be reviewed before attempting the unit quiz.
+
+---
+
+# Evaluation
+
+* 30% - Lab assignments
+* 30% - Midterm exam
+  * Mix of short and long answer questions.
+* 30% - Final exam
+  * Not cumulative, questions will be for second half of course only.
+* 10% - Participation and quizzes
+
+---
+
+# "I'm worried about coding"
+
+* This course has no prerequisites in computer science
+* **You will not have to write any of your own code.**
+  * Scripts will be provided for you to run lab assignments.
+* *However*, you will need to become comfortable with the command line interface.
+  * Reviewing the Introduction to UNIX on Brightspace is highly recommended.
+
+---
+
+# Policy on generative AI
+
+* You are permitted to use genAI as a supplementary learning resource, *e.g.*:
+  * practicing UNIX commands in a simulated environment
+  * generating a tutorial and quizzes on a specific topic
+* **However**, it is important to remember that LLMs can generate inaccurate outputs, and that you should always be critical.
+
+* **Do not copy-paste AI-generated code directly into your server terminal.**  This is a security risk and you will get a zero on the assignment.
+
+---
+
+# What is medical bioinformatics?
+
+* Medical bioinformatics is the use of computing and statistics to solve problems in medical sciences.
+  * Automation, high performance computing
+  * Data curation and management
+  * Analysis of complex data (e.g., sequences)
+* Rapid growth driven by the widespread adoption of high-throughput technologies, *e.g.*:
+  * Next-generation sequencing
+  * Single-cell 'omics
+
+---
+
 ## Data formats
 
 ![](https://imgs.xkcd.com/comics/standards.png)
@@ -117,9 +193,9 @@ Measles,3268,153,37,40,73
 | Histidine | His | H | Tyrosine | Tyr | Y |
 | Isoleucine | Ile | I | Valine | Val | V |
 
-<small><small>
+<small>
 See [IUPAC-IUB Commission on Biochemical Nomenclature Tentative Rules: A one-letter notation for amino acid sequences](https://www.sciencedirect.com/science/article/pii/0003986168905043).  Arch Biochem Biophys 125 (1968).
-</small></small>
+</small>
 
 ---
 
@@ -217,9 +293,17 @@ ORIGIN
 * [Deep sequencing](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4119849/) (resequencing)
 * RNA sequencing ([RNA-seq](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2949280/))
 * [Metagenomics](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000667)
+* [Bisulfite sequencing](https://en.wikipedia.org/wiki/Bisulfite_sequencing) (BS-seq), [chromatin immunoprecipitation sequencing](https://en.wikipedia.org/wiki/ChIP_sequencing) (ChIP-seq), [assay for transposase-accessible chromatin](https://en.wikipedia.org/wiki/ATAC-seq) (ATAC-seq), and many more! 
 
 ---
 
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Wind_Turbines_and_Farmland_-_Autumn_on_Manitoulin_Island_-_Ontario_-_Canada_%2853073575988%29.jpg/1280px-Wind_Turbines_and_Farmland_-_Autumn_on_Manitoulin_Island_-_Ontario_-_Canada_%2853073575988%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail" height="500px"/>
+
+<small>
+Wind turbines and farmland - autumn on Manitoulin Island (Tony Webster, <a href="https://commons.wikimedia.org/wiki/File:Wind_Turbines_and_Farmland_-_Autumn_on_Manitoulin_Island_-_Ontario_-_Canada_(53073575988).jpg">CC-BY 2.0</a>)
+</small>
+
+---
 
 # NGS databases
 
@@ -254,14 +338,6 @@ total 2.1G
 -rw-rw-r--  1 art art 103M Mar  6 21:58 SRR6318672_1.fastq
 -rw-rw-r--  1 art art 103M Mar  6 21:58 SRR6318672_2.fastq
 ```
-
----
-
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Wind_Turbines_and_Farmland_-_Autumn_on_Manitoulin_Island_-_Ontario_-_Canada_%2853073575988%29.jpg/2560px-Wind_Turbines_and_Farmland_-_Autumn_on_Manitoulin_Island_-_Ontario_-_Canada_%2853073575988%29.jpg" height="75%"/>
-
-<small>
-Wind turbines and farmland - autumn on Manitoulin Island (Tony Webster, <a href="https://commons.wikimedia.org/wiki/File:Wind_Turbines_and_Farmland_-_Autumn_on_Manitoulin_Island_-_Ontario_-_Canada_(53073575988).jpg">CC-BY 2.0</a>)
-</small>
 
 ---
 
@@ -375,9 +451,9 @@ Bioinformatic pipeline for the <a href="https://insaflu.readthedocs.io/en/latest
 * [Perl](https://www.perl.org/) enabled different groups to rapidly convert outputs to the other group's format.
 <img src="https://cdn-media-1.freecodecamp.org/images/1*UwwXV56KMLJhnSNcLH7iJQ.jpeg" height="200px"/>
 
-<small><small>
+<small>
 Image source: https://www.freecodecamp.org/news/how-pcs-were-advertised-in-the-1990s-cdaee59f2555/
-</small></small>
+</small>
 
 ---
 
@@ -385,9 +461,9 @@ Image source: https://www.freecodecamp.org/news/how-pcs-were-advertised-in-the-1
 
 > Most groups, however, learned to build modular, loosely-coupled systems whose parts could be swapped in and out without retooling the whole system.
 
-<small><small>
+<small>
 [Lincoln Stein](https://oicr.on.ca/investigators/lincoln-stein/), [The Perl Journal](https://web.archive.org/web/20070202101624/http://www.bioperl.org/wiki/How_Perl_saved_human_genome) (1996).
-</small></small>
+</small>
 
 ---
 
@@ -494,11 +570,15 @@ for line in handle:
 <section data-background="#333" style="color:white">
 
 <h1 style="color:white">Key points</h1>
-
-* A file format is a set of rules that a computer can follow to read and write data consistently.
-* Many formats used in bioinformatics originated from programs that are no longer in use.
-  * *e.g.*, PHRED scores are commonly used to store the error probability of a base call.
-* Scripting languages play an important role in enabling scientists to quickly feed data from one program to another (*e.g.*, converting formats) and automating tasks.
-  * Perl was replaced by Python over time.
-
+<ul>
+<li>A file format is a set of rules that a computer can follow to read and write data consistently.</li>
+<li>Many formats used in bioinformatics originated from programs that are no longer in use.</li>
+  <ul>
+  <li> *e.g.*, PHRED scores are commonly used to store the error probability of a base call.</li>
+  </ul>
+<li>Scripting languages play an important role in enabling scientists to quickly feed data from one program to another (*e.g.*, converting formats) and automating tasks.</li>
+  <ul>
+  <li>Perl was replaced by Python over time.</li>
+  </ul>
+</ul>
 </section>

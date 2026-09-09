@@ -18,13 +18,14 @@
 
 # Microbial dark matter
 
-* The vast majority of bacteria and archaea are unculturable (known phyla in grey).
+* The vast majority of bacteria and archaea are unculturable
 
+<small>Right panel: Black triangles are newly-discovered phyla from sequencing</small>
 <img src="/img/nature12352.f1.png" height="400px"/>
 
-<small><small>
+<small>
 Image credit: C Rinke <i>et al.</i> (2013) <a href="https://doi.org/10.1038/nature12352"/>Nature 499: 431</a>.
-</small></small>
+</small>
 
 ---
 
@@ -45,9 +46,9 @@ Image credit: C Rinke <i>et al.</i> (2013) <a href="https://doi.org/10.1038/natu
   </tr>
 </table>
 
-<small><small>
+<small>
 Plot based on a figure from GM Daly <i>et al.</i> (2015) <a href="https://doi.org/10.1371/journal.pone.0129059">PLOS ONE 10: e0129059</a>, extended with new data.
-</small></small>
+</small>
 
 ---
 
@@ -60,9 +61,9 @@ Plot based on a figure from GM Daly <i>et al.</i> (2015) <a href="https://doi.or
 
 <img src="/img/41598_2016_Article_BFsrep28324_Fig1_HTML.png" height="150px"/>
 
-<small><small>
+<small>
 Image credit: P Miyazato <i>et al.</i> (2016) <a href="https://doi.org/10.1038/srep28324">Sci Rep 6: 28324</a>.
-</small></small>
+</small>
 
 ---
 
@@ -73,10 +74,7 @@ Image credit: P Miyazato <i>et al.</i> (2016) <a href="https://doi.org/10.1038/s
   * [Random primers](https://en.wikipedia.org/wiki/Random_hexamer): random hexamers for "universal" amplification.
   * [Rolling circle amplification](https://en.wikipedia.org/wiki/Rolling_circle_replication#Rolling_circle_amplification): circularization of template by ligation, followed by recurring elongation.
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Rolling_circle_amplification_mechanism.jpg/800px-Rolling_circle_amplification_mechanism.jpg" width="500px"/>
-<small><small>
-<a href="https://commons.wikimedia.org/wiki/File:Rolling_circle_amplification_mechanism.jpg">Creative Commons CC-BY-SA 4.0</a>
-</small></small>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Rolling_circle_amplification_mechanism.jpg/1280px-Rolling_circle_amplification_mechanism.jpg" width="500px"/>
 
 ---
 
@@ -94,9 +92,9 @@ ACCTGCACATTGTGCACATGTACCCTAAAACTTAAAGTATAATAATAATAAAATTAaaaa
 cttaaagtataataataataaaattaaaaaaaaatGCTACAGTATGACCCCACTCCTGG
 ```
 
-<small><small>
+<small>
 Example from A Morgulis <i>et al.</i> (2006) <a href="https://doi.org/10.1089/cmb.2006.13.1028">J Comp Biol 13: 1028</a>.
-</small></small>
+</small>
 
 ---
 
@@ -136,9 +134,9 @@ Example from A Morgulis <i>et al.</i> (2006) <a href="https://doi.org/10.1089/cm
 * A *contig* is a contiguous nucleotide sequence produced from overlapping reads.
 * A *scaffold* is an arrangement of contigs based on mate-pairs that span the gap between adjacent contigs.
 
-<small><small>
-Image credit: Ghurye and Pop (2019). [Modern technologies and algorithms for scaffolding assembled genomes](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1006994).  PLOS Comput Biol 15: e1006994.
-</small></small>
+<small>
+Image credit: Ghurye and Pop (2019). <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1006994">Modern technologies and algorithms for scaffolding assembled genomes.</a>  PLOS Comput Biol 15: e1006994.
+</small>
 
 
 ---
@@ -154,9 +152,9 @@ Sort contigs by lengths in decreasing order:
 Locate midpoint along concatenated array of contigs (N50=60):
 <img src="https://i0.wp.com/www.molecularecologist.com/wp-content/uploads/2017/03/Figure1b.jpg" height="100px"/>
 
-<small><small>
+<small>
 Image credit: E Videvall <i>et al.</i> https://www.molecularecologist.com/2017/03/whats-n50/
-</small></small>
+</small>
 
 ---
 
@@ -171,36 +169,46 @@ Image credit: E Videvall <i>et al.</i> https://www.molecularecologist.com/2017/0
 
 # Example: crAssphage
 
-* A previously unidentified bacteriophage (~97kbp circular DNA genome) found in majority of published human faecal metagenomic data.
-  * Majority of proteins encoded by predicted ORFs had no homologous matches in Genbank.
-  * The first virus to be named after bioinformatics software (cross-assembly, crAss).
-
-<table><tr>
-<td><img src="https://sciences.sdsu.edu/wp-content/uploads/2019/07/crAss_phage_edwards.jpg" width="300px"/></td>
-<td><small>Image credit: Robert Edwards, San Diego State University.</small></td>
-</tr></table>
+<table style="font-size: 20pt;">
+<tr>
+  <td>
+  <ul>
+  <li>A previously unidentified bacteriophage (~97kbp circular DNA genome) found in majority of published human faecal metagenomic data.</li>
+  <li>Majority of proteins encoded by predicted ORFs had no homologous matches in Genbank.</li>
+  <li>The first virus to be named after bioinformatics software (cross-assembly, crAss).</li>
+  </td>
+  <td width="30%">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Fmicb-14-1232413-g001-crAssphage.png">
+    <small>
+    TEM image of a crAssphage (FerAss001 alias PhiCrAss001), a phage known to inhabit the gastrointestinal tract (GIT).<br/>
+    <br/>
+    Image credit: Samia S. Alkhalil (CC-BY 4.0). 
+    </small>
+  </td>
+</tr>
+</table>
 
 ---
 
 <table>
 <tr>
-  <td style="font-size: 18pt;">
+  <td style="font-size: 20pt;">
   <h1>Case study: Dandenong virus</h1>
   <ul>
   <li>3 patients died of febrile illness 4-6 weeks after receiving organ transplants from a deceased donor.</li>
   <li>Samples screened for HHV1-8, lyssavirus, IAV, IBV, RSV, picornavirus, adenovirus, human parainfluenza virus, flavivirus, and many more.</li>
   <li>Total RNA from recipient samples was amplified with random primers and processed by NGS.</li>
   </ul>
-  <small><small>
+  <small>
 G Palacios <i>et al.</i> (2008). A New Arenavirus in a Cluster of Fatal Transplant-Associated Diseases. <a href="http://doi.org/10.1056/NEJMoa073785">N Eng J Med 358: 991</a>.
-</small></small>
+</small>
   </d>
   <td width="35%">
     <img src="https://live-production.wcms.abc-cdn.net.au/96b79beab72b0685eb9f6d752d5e511d?src"/>
     <img src="https://live-production.wcms.abc-cdn.net.au/0f3dd15ef7d921ec2b0f932f763fd151?src"/>
-    <small><small>
+    <small>
     Image source: Humyara Mahbub and Olivia Willis for the podcast <a href="https://www.abc.net.au/news/health/2020-10-11/nobody-knew-karens-donor-kidney-was-carrying-a-rare-virus/12743548">Patient Zero</a>. 
-    </small></small>
+    </small>
   </td>
 </tr>
 </table>
@@ -223,18 +231,18 @@ Contigs obtained after subtraction of human DNA and <i>de novo</i> assembly were
 * Students collect soil samples, filter and spread their sample on a plate with bacteria and look for plaques.
 * After sequencing and annotating the genome and obtaining electron microscopy, the student gets to name the new virus*.
 
-<small><small>
+<small>
 &ast; 28,256 names (as of March 23, 2025) including BillDoor, PhatLouie, TinaFeyge, and GuyFagieri (https://phagesdb.org/phages/)
-</small></small>
+</small>
 
 ---
 
 2019 "Baby Pictures"
 ![](https://hhmi.cas.lehigh.edu/sites/hhmi.cas2.lehigh.edu/files/Slide1.JPG)
 
-<small><small>
+<small>
 Image source: Lehigh University, https://hhmi.cas.lehigh.edu/galleries-seaphages
-</small></small>
+</small>
 
 ---
 

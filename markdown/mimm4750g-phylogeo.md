@@ -12,9 +12,9 @@
 * Maximum-likelihood and Bayesian methods tend to be more accurate than maximum parsimony.
   * For example, MP methods are biased when one or more character states (*e.g.*, nucleotides) are predominant*.
 
-<small><small>
+<small>
 *Eyre-Walker, A. (1998). Problems with parsimony in sequences of biased base composition. Journal of Molecular Evolution, 47, 686-690.
-</small></small>
+</small>
 
 ---
 
@@ -50,7 +50,7 @@
       <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Carte_de_France.jpg" height="300px"/>
     </td>
     <td>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Carte_des_regions_naturelles_de_France.JPG/1105px-Carte_des_regions_naturelles_de_France.JPG" height="300px"/>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Carte_des_regions_naturelles_de_France.JPG/960px-Carte_des_regions_naturelles_de_France.JPG" height="300px"/>
     </td>
 
   </tr>
@@ -75,11 +75,11 @@
         <li>Several studies reported an association between atmospheric NO<sub>2</sub> (nitrogen dioxide, an air pollutant) and COVID-19 mortality.</li>
         <li>You can obtain positive, negative, or non-significant associations depending on how you partition the geographic area.</li>
       </ul>
-      <small><small>
+      <small>
       Image credit: Wang and Di (2020) Modifiable areal unit problem and environmental factors of COVID-19 outbreak.  Science of the Total Environment 740: <a href="https://www.sciencedirect.com/science/article/pii/S004896972033504X">139984</a>.<br/>
       <br/>
       Note this journal was recently suspended from Web of Science indexing due to concerns about the quality of published content.
-      </small></small>
+      </small>
     </td>
     <td width="45%">
       <img src="https://ars.els-cdn.com/content/image/1-s2.0-S004896972033504X-gr3_lrg.jpg"/>
@@ -97,9 +97,9 @@
 
 ![](/img/q80k-geo.svg)
 
-<small><small>
+<small>
 McCloskey <i>et al.</i> (2014) Global Origin and Transmission of Hepatitis C Virus Nonstructural Protein 3 Q80K Polymorphism. J Inf Dis 211(8): 1288-1295.
-</small></small>
+</small>
 
 ---
 
@@ -115,13 +115,17 @@ McCloskey <i>et al.</i> (2014) Global Origin and Transmission of Hepatitis C Vir
 <table>
 <tr>
 <td style="vertical-align: middle">
-<h3>Host switches by fungal pathogen <i>Beauveria</i></h3>
+<h1 style="line-height: 1.1">Host switches by fungal pathogen <i>Beauveria</i></h1>
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Beauveria_bassiana_16552.jpg/1280px-Beauveria_bassiana_16552.jpg" width="400px"/>
 
-<small>
-Cicada killed by <i>Beauveria</i> infection.  <a href="https://en.wikipedia.org/wiki/Beauveria#/media/File:Beauveria_bassiana_16552.jpg">Wikimedia Commons</a>.
-
-Right: Kobmoo <i>et al.</i> (2022) Reconstruction of ancestral host association showed host expansion and specialization in local Beauveria species.  Mycological Progress 21: 215-219.
+<small style="font-size: 14pt;">
+Cicada killed by <i>Beauveria</i> infection.  Source: <a href="https://en.wikipedia.org/wiki/Beauveria#/media/File:Beauveria_bassiana_16552.jpg">Wikimedia Commons</a>.
+<br/>
+<br/>
+<b>Right:</b> Reconstruction of ancestral host association showed host expansion and specialization in local Beauveria species.  
+<div style="font-size: 10pt">
+Kobmoo <i>et al.</i> (2022) Mycological Progress 21: 215-219.
+</div>
 </small>
 
 </td>
@@ -154,9 +158,9 @@ Right: Kobmoo <i>et al.</i> (2022) Reconstruction of ancestral host association 
 * This method (stochastic search variable selection, SSVS) makes it feasible to reconstruct the ancestral location among a large number of sites!
   * First applied to phylogeography by Lemey *et al.*, 2009.
 
-<small><small>
+<small>
 Lemey <i>et al.</i> (2009) Bayesian Phylogeography Finds Its Roots.  PLOS Comput Biol 5(9): <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000520">e1000520</a>.
-</small></small>
+</small>
 
 ---
 
@@ -167,9 +171,9 @@ Phylogenies for hemagglutinin (HA) and neuraminidase (NA) genes, coloured by obs
 </div>
 <img src="/img/pcbi.1000520.g001.png">
 
-<small><small>
+<small>
 Image credit: Lemey <i>et al.</i> (2009) Bayesian Phylogeography Finds Its Roots.  PLOS Comput Biol 5(9): <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000520">e1000520</a>.
-</small></small>
+</small>
 
 ---
 
@@ -181,9 +185,9 @@ where $\delta_k=1$ or $0$ turns the $k$-th predictor on and off.
 
 * $X_{ijk}$ is the $k$-th characteristic of sites $i$ and $j$, such as geographic distance or joint population size.
 
-<small><small>
+<small>
 Image credit: Lemey <i>et al.</i> (2014) Unifying viral genetics and human transportation data to predict the global transmission dynamics of human influenza H3N2.  PLOS Pathog 10: <a href="https://journals.plos.org/plospathogens/article?id=10.1371/journal.ppat.1003932">e1003932</a>.
-</small></small>
+</small>
 
 ---
 
@@ -194,9 +198,9 @@ Example: Spread of Ebola among 56 regions of West Africa (Guinea, Sierra Leone, 
 <video data-autoplay data-src="/img/ebola.mp4" type="video/mp4"></video>
 
 
-<small><small>
+<small>
 Image credit: Dudas <i>et al.</i> (2017) Virus genomes reveal factors that spread and sustained the Ebola epidemic.  Nature 544: <a href="https://www.nature.com/articles/nature22040">309-315</a>.
-</small></small>
+</small>
 
 ---
 
@@ -215,9 +219,9 @@ Image credit: Dudas <i>et al.</i> (2017) Virus genomes reveal factors that sprea
 <div style="font-size: 16pt; font-weight: 500">In this example, the dispersal rate is allowed to vary among branches of the tree:</div>
 <img src="/img/msab031f1.jpeg" width="600px"/>
 
-<small><small>
+<small>
 Image credit: Dellcour <i>et al.</i> (2021) Relax, Keep Walking - A Practical Guide to Continuous Phylogeographic Inference with BEAST.  Mol Biol Evol 38: <a href="https://academic.oup.com/mbe/article/38/8/3486/6126413">3486-3493</a>.
-</small></small>
+</small>
 
 ---
 

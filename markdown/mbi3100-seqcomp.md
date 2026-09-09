@@ -204,13 +204,20 @@ Data from Dayhoff M, Schwartz R, Orcutt B. A model of evolutionary change in pro
 
 ---
 
+<img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1f/Sandbanks%2C_Ontario%2C_Canada.jpg/1280px-Sandbanks%2C_Ontario%2C_Canada.jpg" width="85%"/>
+
+<small>
+Image source: Sandbanks in Prince Edward County, Ontario. <a href="https://commons.wikimedia.org/wiki/File:Sandbanks,_Ontario,_Canada.jpg">Shawn M. Kent</a>, CC BY-SA 4.0.
+</small>
+
+---
+
 # BLOSUM
 
 * BLOcks SUbstitution Matrix ([Henikoff and Henikoff 1992](https://www.pnas.org/doi/abs/10.1073/pnas.89.22.10915))
 * Calculated from the (no longer maintained) [BLOCKS database](https://academic.oup.com/nar/article/24/1/197/2359962) of local alignments of highly conserved regions of proteins.
 * PAM is based on mutations mapped to a phylogeny.
-* BLOSUM is based on [odds ratios](https://en.wikipedia.org/wiki/Odds_ratio) of AAs in an alignment.
-
+* BLOSUM is based on the observed frequencies of AAs in an alignment.
 <img src="https://i0.wp.com/drgeraldstein.blog/wp-content/uploads/2015/03/img_0176.jpg?ssl=1" width=300/>
 
 <small>
@@ -225,7 +232,9 @@ Image source: <a href="https://drgeraldstein.blog/2015/03/08/a-man-with-the-key-
   * If all amino acids are distributed at random, then the expected probability of an aligned pair ($a, b$) is $p_a\times p_b$.
 * The observed probability ($q_{a,b}$) is the frequency that two sequences sampled at random contain the aligned pair ($a, b$).
 * A ratio of probabilities is the *odds*.  BLOSUM is based on log-odds:
-  $$s(a,b)= \lambda\log\frac{q_{a,b}}{p_a p_b}$$
+
+  $$s(a,b)= \lambda\log\left(\frac{q_{a,b}}{p_a p_b}\right)$$
+
   where $\lambda$ is used to round $s$ to nice integers.
 
 ---
@@ -237,11 +246,11 @@ Image source: <a href="https://drgeraldstein.blog/2015/03/08/a-man-with-the-key-
 * Given $\lambda = 2.88$, we get:
 $$s(W,W) = 2.88 \times \log\left( \frac{0.0065}{0.013^2} \right) \approx 10.5$$
 * This $s$ value is the highest in the BLOSUM62 matrix!
-  * Though we don't often see the aligned pair (W, W), it happens much more than we expect given W's are so rare (low $p_{\scriptsize W}$).
+  * Ws are rare (low `$p_{\scriptsize W}$`) but when they occur, they are highly conserved (relatively large $q_{\scriptsize W,W}$).
 
-<small><small>
+<small>
 Example from SR Eddy (2004), Nature Biotechnol 22(8):1035.
-</small></small>
+</small>
 
 ---
 
@@ -249,6 +258,7 @@ Example from SR Eddy (2004), Nature Biotechnol 22(8):1035.
 
 * Like PAM, there are several BLOSUM matrices for different levels of evolutionary divergence.
 * Unlike PAM, each BLOSUM matrix is derived from its own alignment, rather than being extrapolated from one data-derived matrix.
+  * Allows some control of the amount of evolutionary divergence
   * Used more sequence data than Dayhoff *et al.*
 * BLOSUM62 derived from a "trusted" alignment of protein segments of <62% identity.
   * Considered to be comparable to PAM250.
@@ -257,10 +267,11 @@ Example from SR Eddy (2004), Nature Biotechnol 22(8):1035.
 
 # Nucleotide score matrices
 
-* Protein sequencing was achieved before nucleotide sequencing &mdash; for decades, most biological sequences were amino acid based.
+* Protein sequencing was achieved before nucleotide sequencing.
 * Protein sequences are more conserved over time.
+  * The majority of nucleotide mutations within protein-coding sequences do not change the amino acid.
+  * Amino acid changes are more likely to be removed by selection.
 * Score matrices also exist for nucleotides: *e.g.*, default matrix for `BLASTN`:
-
 $$
 \begin{pmatrix}
 2 & -3 & -3 & -3\\\\
@@ -269,14 +280,6 @@ $$
 -3 & -3 & -3 & 2\\\\
 \end{pmatrix}
 $$
-
----
-
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Sandbanks%2C_Ontario%2C_Canada.jpg/2560px-Sandbanks%2C_Ontario%2C_Canada.jpg" width="85%"/>
-
-<small>
-Image source: Sandbanks in Prince Edward County, Ontario. <a href="https://commons.wikimedia.org/wiki/File:Sandbanks,_Ontario,_Canada.jpg">Shawn M. Kent</a>, CC BY-SA 4.0.
-</small>
 
 ---
 
@@ -304,13 +307,20 @@ Image source: Sandbanks in Prince Edward County, Ontario. <a href="https://commo
 
 # Types of BLAST queries
 
-* NCBI maintains both nucleotide and protein databases
+* NCBI maintains both Nucleotide and Protein sequence databases
+* `blastn` uses a nucleotide sequence to search the nucleotide database
+* `blastp` uses a protein sequence to search the protein database
+* `blastx` uses a *nucleotide* sequence to search the protein database by translating the query in all six [reading frames](https://en.wikipedia.org/wiki/Reading_frame) (3 forward, 3 reverse).
+* `tblastx` tends to find more distantly related organisms than `blastn` because protein sequences are more conserved.
 
-<img src="https://open.oregonstate.education/app/uploads/sites/6/2016/10/I.7_2_blast_types.png#fixme" width="600px"/>
 
-<small><small>
+---
+
+<img src="https://open.oregonstate.education/app/uploads/sites/6/2016/10/I.7_2_blast_types.png#fixme" width="700px"/>
+
+<small>
 Image source: [A Primer for Computational Biology](https://open.oregonstate.education/computationalbiology/chapter/command-line-blast/) by Shawn T. O'Neil (CC-NC-SA 4.0)
-</small></small>
+</small>
 
 ---
 
@@ -332,13 +342,13 @@ Image source: [A Primer for Computational Biology](https://open.oregonstate.educ
 * We want to include near-matches, so we include hits in the database with a score greater than some threshold $T$.
   * For example, `MHK` has $S=5 + 8 + 2 = 15$
   * `MHF` has $S = 5 + 8 + (-3) = 10$.  If $T=10$, reject `MHF`.
-* Together, the seed from query and a fragment of equal length from subject with $S>T$ form a *high scoring segment pair* (HSP).
+* Together, the seed from query and a fragment of equal length from subject with $S>T$ proceed to the extension steps.
 
 ---
 
 # Gap-free extension
 
-* If we have one or two HSPs, then the BLAST algorithm attempts a "gap-free extension".
+* The BLAST algorithm attempts a "gap-free extension" from one or two seeds.
 ![](/img/gap-free-extension.svg)
 
 * BLAST stops extension when:
@@ -348,10 +358,11 @@ Image source: [A Primer for Computational Biology](https://open.oregonstate.educ
 
 ---
 
-# Finishing the HSP
+# Gapped extension
 
-* If the gap-free extension retains a high enough score, BLAST calculates a *gapped extension* (tolerate indels).
-* Gapped extension (pairwise alignment) is very time consuming.
+* A gap-free extension that retains a high enough score is a high-scoring segment pair (HSP).
+* Next, BLAST calculates a *gapped extension* (tolerate indels).
+  * Gapped extension (pairwise alignment) is very time consuming.
   * Seeding and gap-free extension steps are designed to minimize the number of alignments.
 * Only high scoring gapped extensions are reported.
 * Clearly, *scoring* plays an important role in BLAST searches.
@@ -364,10 +375,10 @@ Image source: [A Primer for Computational Biology](https://open.oregonstate.educ
   <tr>
     <td width="50%">
       <ul>
-        <li>Recall BLAST searches for high-scoring sequence pairs (HSP).</li>
-        <li>The expected number of HSPs with score $\ge S$:
+        <li>The number of HSPs with score $\ge S$ by random chance is modeled as:
           $$E=Kmn e^{-\lambda S}$$
           where $m$, $n$ are sequence lengths.</li>
+        <li>Longer sequences give more chances to match seeds.</li>
         <li>In other words, $E$ is the expected number of false positives!</li>
         <li>$K$ and $\lambda$ are pre-defined parameters that were measured in simulation experiments.</li>
       </ul>
@@ -425,10 +436,14 @@ between Its Spike Protein Insertions and HIV-1.  <a href="https://pubs.acs.org/d
 
 <h1 style="color:white">Key points</h1>
 
-* Dot plots enable us to visually compare two sequences, identify rearrangements.
-* $k$-mers are "words" we extract as features of a sequence that are easier to compare.
-* A score matrix quantifies how likely one residue will be replaced by another.
-  * Sequences with typical differences are more similar.
-* The BLAST algorithm speeds up database searches by eliminating most candidates by k-mer filtering and scoring thresholds.
+<ul>
+<li>Dot plots enable us to visually compare two sequences, identify rearrangements.</li>
+<li>$k$-mers are "words" we extract as features of a sequence that are easier to compare.</li>
+<li>A score matrix quantifies how likely one residue will be replaced by another.</li>
+  <ul>
+  <li>Sequences with typical differences are more similar.</li>
+  </ul>
+<li>The BLAST algorithm speeds up database searches by eliminating most candidates by k-mer filtering and scoring thresholds.</li>
+</ul>
 
 </section>

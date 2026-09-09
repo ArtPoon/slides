@@ -87,7 +87,11 @@ body {
   }
 
 .reveal h4 {
-  font-size: 1em; }
+  font-size: 0.8em;
+  line-height: 0;
+  color: #4F2683;
+  font-weight: 900;
+}
 
 .reveal h1 {
   text-shadow: none; }
@@ -210,6 +214,19 @@ body {
   max-height: 450px;
   word-wrap: normal;
   font-size: 0.9em;
+  line-height: 1.2em;
+}
+
+.reveal pre code.language-seq,
+.reveal pre code.lang-seq {
+  display: block;
+  background-color: black;
+  color: white;
+  padding: 5px;
+  overflow: auto;
+  max-height: 450px;
+  word-wrap: normal;
+  font-size: 1.5em;
   line-height: 1.2em;
 }
 
