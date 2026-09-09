@@ -577,9 +577,9 @@ for line in handle:
 <li>A file format is a set of rules that a computer can follow to read and write data consistently.</li>
 <li>Many formats used in bioinformatics originated from programs that are no longer in use.</li>
   <ul>
-  <li> *e.g.*, PHRED scores are commonly used to store the error probability of a base call.</li>
+  <li> <i>e.g.</i>, PHRED scores are commonly used to store the error probability of a base call.</li>
   </ul>
-<li>Scripting languages play an important role in enabling scientists to quickly feed data from one program to another (*e.g.*, converting formats) and automating tasks.</li>
+<li>Scripting languages play an important role in enabling scientists to quickly feed data from one program to another (<i>e.g.</i>, converting formats) and automating tasks.</li>
   <ul>
   <li>Perl was replaced by Python over time.</li>
   </ul>
