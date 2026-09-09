@@ -62,7 +62,7 @@ $$\frac{\lambda}{\lambda+\mu}$$
 
 * The birth-death model was first used to model the probability that a population would go extinct by chance ([Feller 1939](https://link.springer.com/article/10.1007/BF01602932)). <img src="https://upload.wikimedia.org/wikipedia/commons/2/28/BD-proces.png" width="500px"/>
 
-* Related to the Galton-Watson branching process (a discrete-time model): $X_{t+1} = \sum_{i=1}^{X_t} R_t^{(i)}$
+* Related to the Galton-Watson branching process (a discrete-time model): `$X_{t+1} = \sum_{i=1}^{X_t} R_t^{(i)}$`
   * In the Victorian era, aristocrats were worried that their family names were going extinct.
   * $R_t$ is the random number of children born to one individual in generation $t$.
 
@@ -76,12 +76,12 @@ Image source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:BD-pro
 
 <table>
 <tr>
-  <td style="font-size: 20pt;">
+  <td style="font-size: 22pt;">
     <ul>
       <li>The net diversification rate is $r=\lambda-\mu$.</li>
       <li>The deterministic (expected) number of lineages at time $t$ is simply an exponential growth model:</li>
     </ul>
-    $$N_t = N_0 e^{r t}$$
+    $$N_t = N_0 e^{(\lambda-\mu) t}$$
   </td>
   <td width="50%">
     <img src="https://lukejharmon.github.io/pcm/images/figure10-3.png" height="400px"/>
