@@ -80,7 +80,7 @@ Image credit: H Br&uuml;ssow <i>et al.</i> 2004, Microbiol Mol Biol Rev, [68(3) 
   * can identify regions of horizontal transfer<sup>1</sup> between genomes with divergent GC content.
 
 <small>
-Gao and Zhang (2006) [GC-Profile: a web-based tool for visualizing and analyzing the variation of GC content in genomic sequences](https://academic.oup.com/nar/article/34/suppl_2/W686/2505479).  Nucl Acid Res 34: W686.
+Gao and Zhang (2006) <a href="https://academic.oup.com/nar/article/34/suppl_2/W686/2505479">GC-Profile: a web-based tool for visualizing and analyzing the variation of GC content in genomic sequences.</a>  Nucl Acid Res 34: W686.
 </small>
 
 ---
