@@ -272,14 +272,14 @@ Example from SR Eddy (2004), Nature Biotechnol 22(8):1035.
   * The majority of nucleotide mutations within protein-coding sequences do not change the amino acid.
   * Amino acid changes are more likely to be removed by selection.
 * Score matrices also exist for nucleotides: *e.g.*, default matrix for `BLASTN`:
-$$
-\begin{pmatrix}
-2 & -3 & -3 & -3\\\\
--3 & 2 & -3 & -3\\\\
--3 & -3 & 2 & -3\\\\
--3 & -3 & -3 & 2\\\\
-\end{pmatrix}
-$$
+  $$
+  \begin{pmatrix}
+  2 & -3 & -3 & -3\\\\
+  -3 & 2 & -3 & -3\\\\
+  -3 & -3 & 2 & -3\\\\
+  -3 & -3 & -3 & 2\\\\
+  \end{pmatrix}
+  $$
 
 ---
 
@@ -319,7 +319,7 @@ $$
 <img src="https://open.oregonstate.education/app/uploads/sites/6/2016/10/I.7_2_blast_types.png#fixme" width="700px"/>
 
 <small>
-Image source: [A Primer for Computational Biology](https://open.oregonstate.education/computationalbiology/chapter/command-line-blast/) by Shawn T. O'Neil (CC-NC-SA 4.0)
+Image source: <a href="https://open.oregonstate.education/computationalbiology/chapter/command-line-blast/">A Primer for Computational Biology</a> by Shawn T. O'Neil (CC-NC-SA 4.0)
 </small>
 
 ---
@@ -404,7 +404,7 @@ Image source: [A Primer for Computational Biology](https://open.oregonstate.educ
 <img src="/img/sarscov2-blast.png" height="300px"/>
 
 <small>
-Image credit: R Lu <i>et al.</i> (2020) Genomic characterisation and epidemiology of 2019 novel coronavirus: implications for virus origins and receptor binding. <i>Lancet</i> [395(10224): 565-574](https://www.sciencedirect.com/science/article/pii/S0140673620302518).
+Image credit: R Lu <i>et al.</i> (2020) Genomic characterisation and epidemiology of 2019 novel coronavirus: implications for virus origins and receptor binding. <i>Lancet</i> <a href="https://www.sciencedirect.com/science/article/pii/S0140673620302518">395(10224): 565-574</a>.
 </small>
 
 ---
@@ -414,7 +414,7 @@ Image credit: R Lu <i>et al.</i> (2020) Genomic characterisation and epidemiolog
 * Fueled conspiracy theories that SARS-CoV-2 had been intentionally manufactured in a laboratory.
 
 <small>
-<sup>1</sup> Pradhan <i>et al.</i> (2020). Uncanny similarity of unique inserts in the 2019-nCoV spike protein to HIV-1 gp120 and Gag.  <i>bioRxiv</i> (withdrawn), https://doi.org/10.1101/2020.01.30.927871.
+$^1$ Pradhan <i>et al.</i> (2020). <a href="https://doi.org/10.1101/2020.01.30.927871">Uncanny similarity of unique inserts in the 2019-nCoV spike protein to HIV-1 gp120 and Gag.</a> <i>bioRxiv</i> (withdrawn).
 </small>
 
 ---
