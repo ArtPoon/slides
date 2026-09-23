@@ -116,14 +116,15 @@ with TGP  AG-----CGCCCGGA---T    -----AGCGCCCGGAT---  no TGP
 
 # Scoring a nucleotide alignment
 
-<br/>
+
+* There are two gaps in the following example.  
 ```seq
                            ACTGATC
                            -C--ACC
 ```
-
-* There are two gaps in this example.  If we are using affine scoring (open $-2$ and extend $-1$) then the total gap penalty is: $(-2)+(-2-1) = -5$.
+  * If we are using affine scoring (open $-2$ and extend $-1$) then the total gap penalty is: $(-2)+(-2-1) = -5$.
   * If we ignore terminal gaps, then the gap penalty is $-3$.
+
 * There are three matches ($+3$) and one mismatch ($-1$)
 * The global alignment score is $3-1-5=-3$.
 
@@ -182,13 +183,13 @@ for a total global score of 9.
       <ul>
       <li>We start with $F(0,0)=0$.</li>
       <li>Other entries in $F$ are calculated from the entries above, to the left, or diagonally up and left.</li>
-`$$F(i,j)= \max \left\{ 
+$$F(i,j)= \max \left\{ 
         \begin{array}{l}
           F(i-1,j-1) + s(x_i, y_j),\\
           F(i-1,j)-d,\\
           F(i, j-1)-d\\
         \end{array}
-        \right.$$`
+        \right.$$
       <li>$s(x, y)$ comes from a score matrix, <i>e.g.</i>, BLOSUM</li>
       <li>$d$ is a gap penalty</li>
       </ul>
@@ -228,26 +229,47 @@ The following JavaScript was modified from <a href="https://github.com/drdrsh">M
 
 ---
 
-# Ambiguous alignments
-
-* Sometimes there is more than one alignment with the same maximal score, *e.g.*. 
-```seq
-                  ACGTAACGT   ACGTAACGT
-                  ACGT-ACGT   ACGTA-CGT
-```
-* The only difference in the above example is where we place the `A` - on the left or the right side of the gap.
-* One case where it matters how you place such bases is when you are working with codon (protein-coding) sequences:
-```seq
-                ACG CAA CGT   ACG CAA CGT
-                ACG C-- -GT   ACG --- CGT
-```
-
----
-
 <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Point_Pelee_Boardwalk%2C_January_2018.jpg/1280px-Point_Pelee_Boardwalk%2C_January_2018.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail" height=550px/>
 <small>
 Image source: Point Pelee Boardwalk, January 2018
 Date	, <a href="https://commons.wikimedia.org/wiki/File:Point_Pelee_Boardwalk,_January_2018.jpg">Wikimedia Commons</a>, public domain.
+</small>
+
+---
+
+# Smith-Waterman algorithm
+
+* A variation of the Needleman-Wunsch algorithm that performs local alignment:
+* Has the following key differences from the N-W algorithm:
+  1. The top row and left column of the $F$ matrix contain zeroes (no terminal gap penalty).
+  2. When filling out the rest of the $F$ matrix, any negative value is replaced with zero.
+  3. The traceback begins at the cell in $F$ with the highest score.
+  4. The traceback stops when it reaches a cell with score zero.
+
+---
+
+# Example
+
+* From *Decoding Genomes* (match = $+3$, mismatch = $-1$, gap = $-2$)
+
+<table>
+<tr>
+<td><img src="/img/smith-waterman.png" width="350px"/></td>
+<td width="50%">
+<ul>
+<li>Traceback starts at highest score (6) in position (3,3)</li>
+<li>Two diagonal moves add positions 3 and 2 in both sequences.</li>
+<li>Best S-W alignment is:
+<pre><code class="language-seq">       AT
+       AT
+</code></pre></li>
+</ul>
+</td>
+</tr>
+</table>
+
+<small>
+Image credit: T Stadler <i>et al.</i> <a href="https://decodinggenomes.org">Decoding Genomes</a> (CC BY-SA 4.0). 
 </small>
 
 ---
@@ -342,6 +364,23 @@ Date	, <a href="https://commons.wikimedia.org/wiki/File:Point_Pelee_Boardwalk,_J
 
 * Sometimes an alignment program will struggle with regions where single indels are common.
 * This causes a shuffling effect that is painstakingly difficult to repair manually.
+
+
+---
+
+# Ambiguous alignments
+
+* Sometimes there is more than one alignment with the same maximal score, *e.g.*. 
+```seq
+                  ACGTAACGT   ACGTAACGT
+                  ACGT-ACGT   ACGTA-CGT
+```
+* The only difference in the above example is where we place the `A` - on the left or the right side of the gap.
+* One case where it matters how you place such bases is when you are working with codon (protein-coding) sequences:
+```seq
+                ACG CAA CGT   ACG CAA CGT
+                ACG C-- -GT   ACG --- CGT
+```
 
 ---
 

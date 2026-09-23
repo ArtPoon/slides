@@ -218,7 +218,8 @@ body {
 }
 
 .reveal pre code.language-seq,
-.reveal pre code.lang-seq {
+.reveal pre code.lang-seq,
+.reveal pre code.seq {
   display: block;
   background-color: black;
   color: white;
