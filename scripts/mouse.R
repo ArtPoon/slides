@@ -1,13 +1,17 @@
 setwd('~/slides/data')
 mouse <- read.csv('mouse.csv', sep=' ', comment.char='#', header=F)
 names(mouse) <- c('x', 'y', 'group')
-
+mouse$label <- as.integer(as.factor(mouse$group))
 
 res <- kmeans(mouse[,1:2], centers=3)
 
 require(RColorBrewer)
 pal <- brewer.pal(3, 'Pastel1')
 pal2 <- c('firebrick', 'dodgerblue', 'forestgreen')
+
+# ground truth
+par(mar=c(1,1,1,1))
+plot(mouse$x, mouse$y, bg=pal[mouse$label], pch=21, col='black')
 
 par(mar=c(1,1,1,1))
 plot(mouse$x, mouse$y, bg=pal[res$cluster], pch=21, col='black', 

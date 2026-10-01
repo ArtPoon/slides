@@ -46,9 +46,9 @@ Variable (V) regions along dinoflagellate 18S rRNA sequences.  From J-S Ki 2011.
 
 <table>
   <tr>
-    <td width="60%">
-      <h3 style="font-size: 1em; font-weight: 700;">Measuring diversity</h3>
-      <h1 style="font-size: 1.4em;">Sequence entropy</h1>
+    <td style="font-size: 1.3em;" width="50%">
+      <h3 style="font-weight: 700;">Measuring sequence diversity</h3>
+      <h1>Sequence entropy</h1>
       <ul>
       <li>
         The concept of entropy comes from <a href="https://en.wikipedia.org/wiki/Information_theory">information theory</a>.
@@ -62,10 +62,10 @@ Variable (V) regions along dinoflagellate 18S rRNA sequences.  From J-S Ki 2011.
     </td>
     <td style="vertical-align: middle;">
       <img src="/img/entropy.png"/>
-      <div style="font-size: 14pt;">
+      <div style="font-size: 1em;">
       A plot of entropy for two possible states.
       </div>
-      <pre style="margin: 0; box-shadow: none;">
+      <pre style="margin: 0; box-shadow: none; font-size: 0.8em;">
       <code>
  x <- seq(0, 1, length.out=100)
  y <- -(x&ast;log(x) + (1-x)*log(1-x))
@@ -78,24 +78,25 @@ Variable (V) regions along dinoflagellate 18S rRNA sequences.  From J-S Ki 2011.
 
 ---
 
-### Measuring diversity
+### Measuring sequence diversity
 # Population, sequence-level measures
 
 * The number of [segregating sites](https://en.wikipedia.org/wiki/Segregating_site) (polymorphisms), $S$.
   * Increases with sequence length, sample size.
 * Mean nucleotide or amino acid entropy, $\bar{H} = \sum_{j=1}^L H_j / L $
 
-* Nucleotide diversity ($\pi$): the average number of differences between two randomly sampled sequences
-`$$\pi = \sum_{i=1}^{n-1} \sum_{j=i+1}^{n} \pi_{ij} \Big/ {n \choose 2}$$`
+* [Nucleotide diversity](https://en.wikipedia.org/wiki/Nucleotide_diversity) ($\pi$): the average number of differences between two randomly sampled sequences
+  `$$\pi = \sum_{i=1}^{n-1} \sum_{j=i+1}^{n} \pi_{ij} \Big/ {n \choose 2}$$`
 
 ---
 
+### Measuring sequence diversity
 # Sliding windows
 
 * Site-wise diversity measures can be too noisy to be useful.
 * Averaging diversity by gene requires knowledge of gene coordinates, may be too coarse.
-* A "sliding window" takes the average of a statistic for a given window size and step size.
-<img src="http://1.bp.blogspot.com/-eSp1w_oJsBc/U0NmHgWv76I/AAAAAAAAAzU/XyFsegtRKrU/s1600/Screen+Shot+2014-04-07+at+9.59.13+PM.png" height="200px">
+* A "[sliding window](https://en.wikipedia.org/wiki/Moving_average)" takes the average of a statistic for a given window size and step size.
+<img src="http://1.bp.blogspot.com/-eSp1w_oJsBc/U0NmHgWv76I/AAAAAAAAAzU/XyFsegtRKrU/s1600/Screen+Shot+2014-04-07+at+9.59.13+PM.png" height="250px">
 
 <small>
 Image source: http://coleoguy.blogspot.com/2014/04/sliding-window-analysis.html
@@ -107,7 +108,7 @@ Image source: http://coleoguy.blogspot.com/2014/04/sliding-window-analysis.html
 
 * Another approach to quantify diversity is to use a distance measure (comparing pairs of sequences).
 * A [genetic distance](https://en.wikipedia.org/wiki/Models_of_DNA_evolution) is a function $d(x,y)$ that maps sequences $x$ and $y$ to some non-negative value.
-* A [distance function](https://en.wikipedia.org/wiki/Metric_(mathematics)) $d$ should have the following properties:
+* A <a href="https://en.wikipedia.org/wiki/Metric_(mathematics)">distance function</a> $d$ should have the following properties:
 	* $d(x,y) \ge 0$ for all $x,y\in \Omega$
 	* If $x=y$, then $d(x,y)=0$
 	* $d(x,y) = d(y,x)$ (symmetry)
@@ -117,10 +118,10 @@ Image source: http://coleoguy.blogspot.com/2014/04/sliding-window-analysis.html
 # p-distances
 
 * The simplest distance is to count the number of different residues, <i>i.e.</i>,  the [Hamming distance](https://en.wikipedia.org/wiki/Hamming_distance) (HD):
-```
-GGGTTGCGCTCGTTG
-||| ||| |||| ||  = 3 differences
-GGGATGCACTCGCTG
+```seq
+   GGGTTGCGCTCGTTG
+   ||| ||| |||| ||  = 3 differences
+   GGGATGCACTCGCTG
 ```
 * HD increases with sequence length.
 * We can divide the HD by sequence length.  This gives us the [p-distance](https://www.megasoftware.net/web_help_7/hc_p_distance_nucleotide.htm) (*p* is for *proportional*).
@@ -135,7 +136,7 @@ GGGATGCACTCGCTG
   * Suppose we are tracking the evolution of a sequence `AAAA`
   * A single mutation occurs resulting in `AGAA` ($p=0.25$)
   * As we continue to accumulate mutations, the chance that we mutate a site *that has already undergone a mutation* increases.
-* Multiple hits mask evidence of previous evolution (`A` $\rightarrow$ `G` $\rightarrow$ `A`).
+* Multiple hits mask evidence of previous evolution, *e.g.*, `A` $\rightarrow$ `G` $\rightarrow$ `A`.
 
 ---
 
@@ -256,7 +257,8 @@ Image source: The Grotto, Tobermory (Ontario). <a href="https://commons.wikimedi
 
 ---
 
-# Supervised and unsupervised clustering
+### Clustering methods
+# Supervised and unsupervised
 
 <table>
 <tr>
@@ -278,6 +280,7 @@ Image source: The Grotto, Tobermory (Ontario). <a href="https://commons.wikimedi
 
 ---
 
+### Clustering methods
 # Non-parametric and parametric
 
 * A *non-parametric* clustering method uses the observed distribution of one or more characteristics to cluster the data.
@@ -290,24 +293,24 @@ Image source: The Grotto, Tobermory (Ontario). <a href="https://commons.wikimedi
 
 <table>
   <tr>
-    <td style="vertical-align:middle; font-size: 24px;">      
+    <td style="vertical-align:middle; font-size: 1.4em;">      
       <h1>k-means clustering</h1>
       <ul>
         <li>An unsupervised nonparametric method</li>
         <li>$k$ refers to the number of clusters defined by "means".</li>
         <li>Assign each point to the closest mean, while locating the optimum locations of means.</li>
         <ul>
-        <li>(top) A simulated dataset with three clusters, called <i>mouse</i>.</li>
+        <li>(top) A simulated dataset with three clusters, called <i>mouse</i>.  Coloured by ground truth.  Data includes 10 points of random noise.</li>
         <li>(bottom) A k-means clustering of <i>mouse</i> with $k$ set to the true value.</li>
         </ul>
       </ul>
-      <small>
-      Plots were generated in R using the `mouse` dataset from the <a href="https://github.com/elki-project/elki">ELKI project</a>.
-      </small>
     </td>
     <td width="33%">
       <img src="/img/kmeans-actual.png" width="450px"/>
       <img src="/img/kmeans.png" width="450px"/>
+      <div style="font-size: 0.8em;">
+      Plots were generated in R using the `mouse` dataset from the <a href="https://github.com/elki-project/elki">ELKI project</a>.
+      </div>
     </td>
   </tr>
 </table>
@@ -316,7 +319,7 @@ Image source: The Grotto, Tobermory (Ontario). <a href="https://commons.wikimedi
 
 <table>
   <tr>
-    <td style="vertical-align:middle; font-size: 24px;">
+    <td style="vertical-align:middle; font-size: 1.4em;">
       <h1>Gaussian mixture models</h1>
       <ul>
         <li>An unsupervised parametric method</li>
@@ -324,7 +327,7 @@ Image source: The Grotto, Tobermory (Ontario). <a href="https://commons.wikimedi
         <li>Also find the mean and variance parameters of each Gaussian that maximizes likelihood.</li>
         <li>Method can determine for itself the optimal number of clusters.</li>
         <ul>
-          <li>(bottom) Gaussian mixture model applied to <i>mouse</i> data.</li>
+          <li>(top) Ground truth; (bottom) Gaussian mixture model applied to <i>mouse</i> data.</li>
         </ul>      
         </ul>
     </td>
@@ -341,7 +344,7 @@ Image source: The Grotto, Tobermory (Ontario). <a href="https://commons.wikimedi
 
 * Another class of unsupervised, nonparametric clustering methods.
   * Acts on a distance matrix $d$ relating observations.
-* Hierarchical clustering can be agglomerative or divisive.
+* Hierarchical clustering can be [agglomerative](https://en.wikipedia.org/wiki/Hierarchical_clustering#Agglomerative_clustering_example) or [divisive](https://en.wikipedia.org/wiki/Hierarchical_clustering#Divisive_clustering).
 * An *agglomerative* method starts with every item in its own cluster, and progressively merges clusters that are the most similar.
   * Choosing which clusters to merge is determined by linkage criteria.
 * A *divisive* method starts with all items in one cluster, and progressively splits clusters in two.
@@ -425,7 +428,7 @@ Source: Gene expression data from M Love and R Irizarry, https://github.com/geno
   <tr>
     <td>
       <ul>
-        <li>For example, the elbow method uses the diminishing returns of "unexplained variance" with increasing number of clusters, $k$</li>
+        <li>For example, the <a href="https://en.wikipedia.org/wiki/Elbow_method_(clustering)">elbow method</a> uses the diminishing returns of "unexplained variance" with increasing number of clusters, $k$</li>
         <li>For each $k$, calculate the total within-cluster sum-of-squares (WCSS):</li>
         `$\sum_{i=1}^k \sum_{j\in {C_i}} (x_j - \bar{x}_i)^2$`
         <li>Subjectively choose point where increasing $k$ does not yield a sufficient reduction in total WCSS.</li>
@@ -433,9 +436,9 @@ Source: Gene expression data from M Love and R Irizarry, https://github.com/geno
     </td>
     <td width="40%">
       <img src="/img/elbow-method.svg"/>
-      <small>
+      <div style="font-size: 1em;">
       Plot of total WCSS against number of centers for k-means clustering of mouse dataset in R.
-      </small>
+      </div>
     </td>
   </tr>
 </table>
@@ -455,10 +458,10 @@ Source: Gene expression data from M Love and R Irizarry, https://github.com/geno
       </ul>
     </td>
     <td width="50%">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Heatmap.png/600px-Heatmap.png"/>
-      <small>
-      Image source: <a href="https://commons.wikimedia.org/wiki/File:Heatmap.png">https://commons.wikimedia.org/wiki/File:Heatmap.png</a>, Public Domain.
-      </small>
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/48/Heatmap.png/960px-Heatmap.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail"/>
+      <div style="font-size: 0.8em;">
+      Image source: <a href="https://commons.wikimedia.org/wiki/File:Heatmap.png">https://commons.wikimedia.org/wiki/ File:Heatmap.png</a>, Public Domain.
+      </div>
     </td>
   </tr>
 </table>
