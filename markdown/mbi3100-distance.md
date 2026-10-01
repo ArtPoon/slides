@@ -28,12 +28,13 @@ GGTTGCGCTCGTTGA    GGGATGCACTCGCTG
 <img src="https://media.springernature.com/full/springer-static/image/art%3A10.1007%2Fs10811-011-9730-z/MediaObjects/10811_2011_9730_Fig1_HTML.gif" width="600px"/>
 
 <small>
-Variable (V) regions along dinoflagellate 18S rRNA sequences.  From J-S Ki 2011. [J Applied Pathol 24: 1035-1043](https://link.springer.com/article/10.1007/s10811-011-9730-z).
+Variable (V) regions along dinoflagellate 18S rRNA sequences.  From J-S Ki 2011. <a href="https://link.springer.com/article/10.1007/s10811-011-9730-z"> Applied Pathol 24: 1035-1043</a>.
 </small>
 
 ---
 
-# Several ways to measure sequence diversity.
+### Measuring sequence diversity
+# Examples
 * Fraction of polymorphic sites.
   * Convention is to label a site as [polymorphic](https://en.wikipedia.org/wiki/Gene_polymorphism) if MAF is greater than 1% and less than 5%.
 * Sequence entropy (defined next slide)
@@ -43,12 +44,11 @@ Variable (V) regions along dinoflagellate 18S rRNA sequences.  From J-S Ki 2011.
 
 ---
 
-### Measuring diversity
-# Sequence entropy
-
 <table>
   <tr>
     <td width="60%">
+      <h3 style="font-size: 1em; font-weight: 700;">Measuring diversity</h3>
+      <h1 style="font-size: 1.4em;">Sequence entropy</h1>
       <ul>
       <li>
         The concept of entropy comes from <a href="https://en.wikipedia.org/wiki/Information_theory">information theory</a>.
@@ -60,20 +60,28 @@ Variable (V) regions along dinoflagellate 18S rRNA sequences.  From J-S Ki 2011.
       </li>
       <li>Entropy is highest when residues appear at equal frequency (no information).</li>
     </td>
-    <td>
+    <td style="vertical-align: middle;">
       <img src="/img/entropy.png"/>
-      <small>
+      <div style="font-size: 14pt;">
       A plot of entropy for two possible states.
-      </small>
+      </div>
+      <pre style="margin: 0; box-shadow: none;">
+      <code>
+ x <- seq(0, 1, length.out=100)
+ y <- -(x&ast;log(x) + (1-x)*log(1-x))
+ plot(x, y)
+      </code>
+      </pre>
     </td>
   </tr>
 </table>
 
 ---
 
-# Diversity: Population, sequence-level measures
+### Measuring diversity
+# Population, sequence-level measures
 
-* The number of segregating sites (polymorphisms), $S$.
+* The number of [segregating sites](https://en.wikipedia.org/wiki/Segregating_site) (polymorphisms), $S$.
   * Increases with sequence length, sample size.
 * Mean nucleotide or amino acid entropy, $\bar{H} = \sum_{j=1}^L H_j / L $
 
