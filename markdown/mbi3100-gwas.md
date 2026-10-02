@@ -1,4 +1,4 @@
-# MIMM4750G
+# MBI 3100A
 ## Genome-wide association studies
 ![](https://imgs.xkcd.com/comics/dna.png)
 
