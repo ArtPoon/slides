@@ -85,7 +85,7 @@ Image source: https://commons.wikimedia.org/wiki/File:Cdnaarray.jpg (CC BY SA-3.
 <td width="60%">
 <ul>
 <li><b>Library type:</b> Paired-end reads are preferred for dealing with alternate splicing.</li>
-<li><b>Read length:</b> longer reads better for alternate splicing, but higher error rates</li>
+<li><b>Read length:</b> longer reads better for alternate splicing, but have higher error rates</li>
 <li><b>Sequencing depth versus number of replicates:</b> More reads for a given sample means more depth, detect rare transcripts; but running more samples means replication.  Fixed number of base calls per run.</li>
 </ul>
 </td>
@@ -95,6 +95,27 @@ Image source: https://commons.wikimedia.org/wiki/File:Cdnaarray.jpg (CC BY SA-3.
 
 <small>
 Image credit: https://commons.wikimedia.org/wiki/File:RNA-Seq-alignment.png
+</small>
+
+---
+
+### RNA-seq
+# Sequencing platforms
+
+* Short-read cDNA (*e.g.*, Illumina)
+  * reverse-transcription of RNA from sample extraction into complementary DNA (cDNA)
+  * most common; high-throughput (~100M reads/sample); read lengths 50-500 nt, high accuracy (~0.1%/nt).
+* Long-read cDNA (*e.g.*, PacBio, Nanopore)
+  * reads lengths up to 25K nt, low accuracy (~10%/nt), more expensive, lower throughput (~10M reads/sample).
+* [Direct RNA-seq](https://www.nature.com/articles/s41592-022-01633-w#Sec4) (Nanopore) - no reverse-transcription
+  * sequence poly-A tails, detect [RNA modifications](https://en.wikipedia.org/wiki/RNA_editing), *e.g.*, [m6A](https://en.wikipedia.org/wiki/N6-Methyladenosine), [pseudouridine](https://en.wikipedia.org/wiki/Pseudouridine).
+
+---
+
+<img src="/img/rnaseq-platforms.png" height="500px"/>
+
+<small>
+Image credit: Stark <i>et al.</i> (2019) <a href="https://www.nature.com/articles/s41576-019-0150-2">Nature Rev Genet 20: 631-656</a>.
 </small>
 
 ---
@@ -143,6 +164,7 @@ Image credit: <a href="https://commons.wikimedia.org/wiki/File:DNA_alternative_s
 
 ---
 
+### Workflow
 # Alignment 
 
 * Reads can be mapped to the genome or (if available) the annotated transcriptome.
@@ -153,6 +175,7 @@ Image credit: <a href="https://commons.wikimedia.org/wiki/File:DNA_alternative_s
 
 ---
 
+### Workflow
 # Alignment
 
 * A mapper generally requires the following inputs:
@@ -192,24 +215,41 @@ Source: Deschamps-Francoeur <i>et al.</i> (2020) Comput Struct Biotech J 18: 156
 
 ---
 
+### Multi-mapped reads
 # Example
 55 reads map to exon 1, which appears in both isoform A and B
 ![](/img/multimapping.svg)
 
 ---
 
-# Reference-based assembly
-
-* Identify novel transcripts by examining the alignment of reads to the reference genome.
-  * *e.g.*, Cufflinks (complements TopHat), succeeded by StringTie (HiSat)
+<table>
+<tr>
+  <td style="font-size: 1.3em;">
+    <h3>Workflow: Assembly</h3>
+    <h1>Reference-based assembly</h1>
+    <ul>
+      <li>Identify novel transcripts by examining the alignment of reads to the reference genome.</li>
+      <li><a href="https://cole-trapnell-lab.github.io/cufflinks/">Cufflinks</a> (complements TopHat) builds a graph of reads that overlap in the genome in a compatible way.</li>
+      <li>Each path through the graph merges compatible reads into a potential isoform.</li>
+      <li>Succeeded by <a href="https://ccb.jhu.edu/software/stringtie/">StringTie</a> (HiSat)</li>
+    </ul>
+  </td>
+  <td width="30%">
+  <img src="/img/cufflinks.png">
+  </td>
+</tr>
+</table>
 
 ---
 
+### Workflow: Assembly
 # Reference-free assembly
 
-* If there is no suitable reference genome or transcriptome, then we must generate transcripts by *de novo* assembly of reads.
-  * *e.g.*, Trinity assembles RNA-seq data while accounting for alternative transcripts.
-* Outputs assembled transcripts with estimated abundances.
+* If there is no suitable reference genome, we must generate transcripts by *de novo* assembly of reads.
+  * *e.g.*, [Trinity](https://github.com/trinityrnaseq/trinityrnaseq/wiki) breaks each read into overlapping k-mers, selects the most abundant k-mer as a seed, and removes k-mers with frequency <5% of seed.
+  * Extends the seed in both directions into a linear contig using the most abundant reads with k-1 overlaps.
+  * Removes all used reads from table and restarts with new seed.
+  * Builds a de Bruijn graph from the resulting linear contigs.
 
 ---
 
