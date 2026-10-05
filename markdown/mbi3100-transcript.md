@@ -147,12 +147,85 @@ Image credit: <a href="https://commons.wikimedia.org/wiki/File:DNA_alternative_s
 
 * Reads can be mapped to the genome or (if available) the annotated transcriptome.
 * For genome mapping, we need a "gapped" mapper that can partition a read to different parts of the genome.
-  * *e.g.*, TopHat2 first attempts to map reads within single exons; remaining reads are split for mapping to multiple exons.
-  * Deprecated by HISAT2
+  * *e.g.*, TopHat2 (2013) first attempts to map reads within single exons; remaining reads are split for mapping to multiple exons.
+  * Succeeded by HISAT2 (2016); [STAR](https://pmc.ncbi.nlm.nih.gov/articles/PMC3530905/) (2012) is a similar program claimed to be 50x faster than TopHat.
 * Transcriptome mapping can use a standard mapper (*e.g.*, bowtie2)
+
+---
+
+# Alignment
+
+* A mapper generally requires the following inputs:
+  * FASTQ: single- or paired-end NGS read data
+  * FASTA: reference genome to map reads to
+  * GTF: (Gene Transfer Format) tab-separated file with known gene, transcript and exon annotations of genome; to identify splice sites.
+* Typical outputs:
+  * SAM: tab-separated file of mapped read information
+  * FASTQ file of unmapped reads
 
 ---
 
 # Multi-mapped reads
 
-* A read may map to multiple locations in a reference genome due to duplications or repetitive DNA.
+* A substantial proportion of reads map equally well to multiple locations in the reference.
+  * These are called "multi-mapped reads"
+  * Typically 5% to 40% of reads, depending on species and mapping software.
+* A read may map to multiple locations in a **reference genome** due to duplications or repetitive DNA.
+* A **reference transcriptome** includes all isoforms of an RNA precursor.
+  * Expect higher rate of multi-mapping because isoforms can incorporate the same exons.
+
+---
+
+### Multi-mapped reads
+# Basic methods
+
+1. **Discard multi-mapping reads**: Default method for many popular tools.
+  * Underestimates genes with isoforms; would lose all reads mapped to essential exons.
+2. **Count all mappings**: A read is counted multiple times for every valid alignment.
+  * Over-estimates expression of genes with isoforms.
+3. **Equal splitting**: Fractional counts or random assignments of reads.
+  * Averages out variation in expression.
+
+<small>
+Source: Deschamps-Francoeur <i>et al.</i> (2020) Comput Struct Biotech J 18: 1569-1576.
+</small>
+
+---
+
+# Example
+55 reads map to exon 1, which appears in both isoform A and B
+![](/img/multimapping.svg)
+
+---
+
+# Reference-based assembly
+
+* Identify novel transcripts by examining the alignment of reads to the reference genome.
+  * *e.g.*, Cufflinks (complements TopHat), succeeded by StringTie (HiSat)
+
+---
+
+# Reference-free assembly
+
+* If there is no suitable reference genome or transcriptome, then we must generate transcripts by *de novo* assembly of reads.
+  * *e.g.*, Trinity assembles RNA-seq data while accounting for alternative transcripts.
+* Outputs assembled transcripts with estimated abundances.
+
+---
+
+# Counting mapped reads
+
+* Mapped reads can be counted at the level of:
+  * Gene
+  * Transcript
+  * Exon
+
+
+---
+
+# Normalizations
+
+* Read counts can be at the level of a gene or exon
+* 
+
+
