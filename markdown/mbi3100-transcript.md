@@ -246,26 +246,37 @@ Source: Deschamps-Francoeur <i>et al.</i> (2020) Comput Struct Biotech J 18: 156
 # Reference-free assembly
 
 * If there is no suitable reference genome, we must generate transcripts by *de novo* assembly of reads.
-  * *e.g.*, [Trinity](https://github.com/trinityrnaseq/trinityrnaseq/wiki) breaks each read into overlapping k-mers, selects the most abundant k-mer as a seed, and removes k-mers with frequency <5% of seed.
-  * Extends the seed in both directions into a linear contig using the most abundant reads with k-1 overlaps.
+  * *e.g.*, [Trinity](https://github.com/trinityrnaseq/trinityrnaseq/wiki) breaks each read into overlapping $k$-mers, selects the most abundant $k$-mer as a seed, and removes $k$-mers with frequency <5% of seed.
+  * Extends the seed in both directions into a linear contig using the most abundant reads with $k-1$ overlaps.
   * Removes all used reads from table and restarts with new seed.
   * Builds a de Bruijn graph from the resulting linear contigs.
 
 ---
 
-# Counting mapped reads
+# Alignment-free methods
 
-* Mapped reads can be counted at the level of:
-  * Gene
-  * Transcript
-  * Exon
+* Mapping reads is still computationally expensive - it is faster to find matching k-mers between reads and known transcripts.
+  * *e.g.*, [Sailfish](https://www.cs.cmu.edu/~ckingsf/software/sailfish/) builds a hash index of $k$-mers in the known transcriptome.
+  * Counts the number of times each $k$-mer appears in the set of reads.
+  * Probabilistically estimates the frequency of each transcript based on these counts.
 
+---
+
+# Quantifying expression
+
+* Mapped reads can be counted at the level of genes, transcripts or exons (genomic features).
+* Some assembly programs feature their own counting tools, *e.g.*, StringTie.
+* Programs like [htseq-count](https://htseq.readthedocs.io/en/release_0.11.1/count.html) or [featureCounts](https://subread.sourceforge.net/featureCounts.html) aggregate mapped counts from SAM/BAM output to features in a GFF/GTF file.
+  * featureCounts discards multi-mapped reads
+  * htseq-count behaviour is controlled by the `--nonunique` option.  `none` discards multi-mapped reads; `all` counts all alignments.
 
 ---
 
 # Normalizations
 
-* Read counts can be at the level of a gene or exon
-* 
+* Read counts are not adequate for comparing expression levels between genes or samples.
+  * Differences in transcript length result in different read counts even if expression levels are the same.
+  * Differences in the total number of reads per sample (library depth) can result in differences in read counts between samples.
+
 
 
