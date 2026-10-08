@@ -50,6 +50,8 @@
 Image source: https://commons.wikimedia.org/wiki/File:Cdnaarray.jpg (CC BY SA-3.0 Unported)
 </small>
 
+
+
 ---
 
 # RNA-sequencing
@@ -331,3 +333,209 @@ Source: <a href="https://www.nature.com/articles/ncb3117">Mouse mammary gland da
 
 ---
 
+
+---
+
+# Databases for transcriptomics
+
+* NCBI [Gene Expression Omnibus](https://www.ncbi.nlm.nih.gov/geo/) (GEO)
+  * Database for storing gene expresion data from microarray and sequencing platforms
+  * Holds more than 8.7 million samples (accessed October 8, 2026)
+* NCBI Sequence Read Archive (SRA)
+  * Repository for raw and processed NGS datasets, including RNA-seq
+  * Currently holds about 6.2 million RNA-seq data sets, mostly Illumina (5.9M)
+
+---
+
+# SOFT format
+
+* NCBI GEO uses the [Simple Omnibus Format](https://www.ncbi.nlm.nih.gov/geo/info/soft.html) (SOFT) file format
+* `^` prefix = entity type and identifier &mdash; *e.g.*, `^SAMPLE=GSM1684096`
+* `!` prefix = entity attribute &mdash; *e.g.*, `!Sample_molecule_ch1 = total RNA`
+* `#` prefix = data table header description &mdash; *e.g.*, `VALUE = Quantile normalized`
+* data table row, tab-separated values, enclosed by `!sample_table_begin` and `!sample_table_end`
+
+---
+
+Example of a SOFT file
+
+```
+^SAMPLE = GSM1684096
+!Sample_title = Donor 1 - Influenza treated - 8h
+!Sample_geo_accession = GSM1684096
+!Sample_status = Public on Feb 01 2016
+!Sample_submission_date = May 13 2015
+!Sample_last_update_date = Feb 01 2016
+!Sample_type = RNA
+!Sample_channel_count = 1
+!Sample_source_name_ch1 = Blood pDCs
+!Sample_organism_ch1 = Homo sapiens
+!Sample_taxid_ch1 = 9606
+!Sample_characteristics_ch1 = donor: Donor 1
+!Sample_characteristics_ch1 = agent: Influenza A
+!Sample_characteristics_ch1 = cell type: Primary human pDCs
+!Sample_treatment_protocol_ch1 = pDCs were cultured with or without influenza A virus for 8 h.
+!Sample_growth_protocol_ch1 = Primary human pDCs were cultured in complete RPMI media (10% FBS, 1% penicillin-streptomycin, 1% sodium pyruvate, 1% HEPES buffer solution, 1% non-essential amino acids, 1% glutamate) and IL-3.
+!Sample_molecule_ch1 = total RNA
+!Sample_extract_protocol_ch1 = RNA was extracted using Arcturus® PicoPure® RNA isolation kit in accordance with the prescribed protocol provided with the kit. Quality control was performed with Agilent Bioanalyser.
+!Sample_label_ch1 = biotin
+!Sample_label_protocol_ch1 = Biotinylated cRNA were prepared with the Ambion MessageAmp kit for Illumina arrays
+!Sample_hyb_protocol = Standard Illumina hybridization protocol
+!Sample_scan_protocol = Standard Illumina scanning protocol
+!Sample_description = Donor 1 - Influenza treated - 8h
+!Sample_data_processing = The data were normalized using quantile normalization with Illumina Genome Studio
+!Sample_platform_id = GPL10558
+!Sample_contact_name = Michelle,Ann,Gill
+!Sample_contact_department = Pediatrics
+!Sample_contact_institute = University of Texas Southwestern Medical Center
+!Sample_contact_address = 5323 Harry Hines Blvd
+!Sample_contact_city = Dallas
+!Sample_contact_zip/postal_code = 75390
+!Sample_contact_country = USA
+!Sample_supplementary_file = NONE
+!Sample_series_id = GSE68849
+!Sample_data_row_count = 47321
+#ID_REF = 
+#VALUE = Quantile normalized
+#5455178010_B.Avg_NBEADS = 
+#5455178010_B.BEAD_STDERR = 
+#5455178010_B.Detection Pval = 
+!sample_table_begin
+ID_REF  VALUE   5455178010_B.Avg_NBEADS 5455178010_B.BEAD_STDERR        5455178010_B.Detection Pval
+ILMN_1762337    154.114 19      9.092192        0.005194805
+ILMN_2055271    155.9602        18      11.53286        0.005194805
+ILMN_1736007    100.841 27      5.227269        0.5051948
+ILMN_2383229    91.30001        21      4.664619        0.787013
+ILMN_1806310    94.69127        17      3.953494        0.687013
+ILMN_1779670    92.01579        27      3.527202        0.7675325
+ILMN_1653355    113.9059        19      6.516469        0.1922078
+ILMN_1717783    85.31596        22      4.430592        0.9116883
+ILMN_1705025    99.48608        21      2.776697        0.5415584
+```
+
+---
+
+# MINiML format
+
+* MIAME Notation in Markup Language (pronounced "minimal") is an XML format.
+  * MIAME = [Minimum Information About a Microarray Experiment](https://en.wikipedia.org/wiki/Minimum_information_about_a_microarray_experiment)
+  * XML = eXtended Markup Language, format for hierarchical (nested) data structures
+* MINiML essentially contains the same information as a SOFT file
+
+---
+
+Example of MINiML file:
+
+```
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<MINiML
+   xmlns="http://www.ncbi.nlm.nih.gov/geo/info/MINiML"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.ncbi.nlm.nih.gov/geo/info/MINiML http://www.ncbi.nlm.nih.gov/geo/info/MINiML.xsd"
+   version="0.5.0" >
+
+  <Contributor iid="contrib1">
+    <Person><First>Michelle</First><Middle>Ann</Middle><Last>Gill</Last></Person>
+    <Department>Pediatrics</Department>
+    <Organization>University of Texas Southwestern Medical Center</Organization>
+    <Address>
+      <Line>5323 Harry Hines Blvd</Line>
+      <City>Dallas</City>
+      <Zip-Code>75390</Zip-Code>
+      <Country>USA</Country>
+    </Address>
+  </Contributor>
+
+  <Database iid="GEO">
+    <Name>Gene Expression Omnibus (GEO)</Name>
+    <Public-ID>GEO</Public-ID>
+    <Organization>NCBI NLM NIH</Organization>
+    <Web-Link>http://www.ncbi.nlm.nih.gov/geo</Web-Link>
+    <Email>geo@ncbi.nlm.nih.gov</Email>
+  </Database>
+
+  <Platform iid="GPL10558">
+    <Accession database="GEO">GPL10558</Accession>
+  </Platform>
+
+  <Sample iid="GSM1684096">
+    <Status database="GEO">
+      <Submission-Date>2015-05-13</Submission-Date>
+      <Release-Date>2016-02-01</Release-Date>
+      <Last-Update-Date>2016-02-01</Last-Update-Date>
+    </Status>
+    <Title>Donor 1 - Influenza treated - 8h</Title>
+    <Accession database="GEO">GSM1684096</Accession>
+    <Type>RNA</Type>
+    <Channel-Count>1</Channel-Count>
+    <Channel position="1">
+      <Source>Blood pDCs</Source>
+      <Organism taxid="9606">Homo sapiens</Organism>
+      <Characteristics tag="donor">
+Donor 1
+      </Characteristics>
+      <Characteristics tag="agent">
+Influenza A
+      </Characteristics>
+      <Characteristics tag="cell type">
+Primary human pDCs
+      </Characteristics>
+      <Treatment-Protocol>
+pDCs were cultured with or without influenza A virus for 8 h.
+      </Treatment-Protocol>
+      <Growth-Protocol>
+Primary human pDCs were cultured in complete RPMI media (10% FBS, 1% penicillin-streptomycin, 1% sodium pyruvate, 1% HEPES buffer solution, 1% non-essential amino acids, 1% glutamate) and IL-3.
+      </Growth-Protocol>
+      <Molecule>total RNA</Molecule>
+      <Extract-Protocol>
+RNA was extracted using Arcturus® PicoPure® RNA isolation kit in accordance with the prescribed protocol provided with the kit. Quality control was performed with Agilent Bioanalyser.
+      </Extract-Protocol>
+      <Label>biotin</Label>
+      <Label-Protocol>
+Biotinylated cRNA were prepared with the Ambion MessageAmp kit for Illumina arrays
+      </Label-Protocol>
+    </Channel>
+    <Hybridization-Protocol>
+Standard Illumina hybridization protocol
+    </Hybridization-Protocol>
+    <Scan-Protocol>
+Standard Illumina scanning protocol
+    </Scan-Protocol>
+    <Description>
+Donor 1 - Influenza treated - 8h
+    </Description>
+    <Data-Processing>
+The data were normalized using quantile normalization with Illumina Genome Studio
+    </Data-Processing>
+    <Platform-Ref ref="GPL10558" />
+    <Contact-Ref ref="contrib1" />
+    <Supplementary-Data type="unknown">
+NONE
+    </Supplementary-Data>
+    <Data-Table>
+      <Column position="1">
+        <Name>ID_REF</Name>
+      </Column>
+      <Column position="2">
+        <Name>VALUE</Name>
+        <Description>Quantile normalized</Description>
+      </Column>
+      <Column position="3">
+        <Name>5455178010_B.Avg_NBEADS</Name>
+      </Column>
+      <Column position="4">
+        <Name>5455178010_B.BEAD_STDERR</Name>
+      </Column>
+      <Column position="5">
+        <Name>5455178010_B.Detection Pval</Name>
+      </Column>
+    <Internal-Data rows="47321">
+ILMN_1762337    154.114 19      9.092192        0.005194805
+ILMN_2055271    155.9602        18      11.53286        0.005194805
+ILMN_1736007    100.841 27      5.227269        0.5051948
+ILMN_2383229    91.30001        21      4.664619        0.787013
+ILMN_1806310    94.69127        17      3.953494        0.687013
+ILMN_1779670    92.01579        27      3.527202        0.7675325
+ILMN_1653355    113.9059        19      6.516469        0.1922078
+```
