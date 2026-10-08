@@ -262,9 +262,27 @@ Source: Deschamps-Francoeur <i>et al.</i> (2020) Comput Struct Biotech J 18: 156
 
 ---
 
+<img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/Kettle_Point_%2850027799828%29.jpg/1280px-Kettle_Point_%2850027799828%29.jpg" height="550px"/>
+
+<small>
+Image credit: A little bit of the shoreline at Kettle Point, Ontario on Lake Huron (<a href="https://commons.wikimedia.org/wiki/File:Kettle_Point_(50027799828).jpg">CC BY SA 2.0</a>).
+</small>
+
+---
+
 # Quantifying expression
 
-* Mapped reads can be counted at the level of genes, transcripts or exons (genomic features).
+* How we count reads that overlap all transcripts of a gene can have the greatest impact on our results.
+* Many reads cannot be unambiguously assigned to a specific isoform.
+  * *i.e.*, reads that do not span a splice junction (between exons)
+* Differences in the expression of different isoforms of a gene can be biologically significant.
+  * *e.g.*, two isoforms of the gene ANK2 are differentially regulated in association with autism spectrum disorder ([Gandal *et al.* 2018](https://www.science.org/doi/full/10.1126/science.aat8127))
+
+---
+
+### Quantifying expression
+# Software
+
 * Some assembly programs feature their own counting tools, *e.g.*, StringTie.
 * Programs like [htseq-count](https://htseq.readthedocs.io/en/release_0.11.1/count.html) or [featureCounts](https://subread.sourceforge.net/featureCounts.html) aggregate mapped counts from SAM/BAM output to features in a GFF/GTF file.
   * featureCounts discards multi-mapped reads
@@ -272,11 +290,44 @@ Source: Deschamps-Francoeur <i>et al.</i> (2020) Comput Struct Biotech J 18: 156
 
 ---
 
-# Normalizations
+### Quantifying expression
+# Expression matrix
 
-* Read counts are not adequate for comparing expression levels between genes or samples.
+* Read counts or abundance estimates are usually aggregated into a matrix.
+  * Each row corresponds to a feature (gene or transcript)
+  * Each column represents a sample.
+
+| GeneID | MCL1-DL | MCL1-DK | MCL1-DJ | MCL1-DI | 
+|--------|---------|---------|---------|---------|
+| 100009600 | 20 | 34 | 31 | 23 |
+| 100012 | 0 | 0 | 0 | 0 |
+| 100017 | 555 | 633 | 1000 | 1097 |
+| 100019 | 1092 | 1403 | 1926 | 2268 |
+
+<small>
+Source: <a href="https://www.nature.com/articles/ncb3117">Mouse mammary gland dataset</a>. Doyle, Phipson and Dashnow. <a href="https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/rna-seq-reads-to-counts/tutorial.html#counting">Galaxy Training! RNA-Seq reads to counts</a>
+</small>
+
+---
+
+# Normalization
+
+* Read or transcript counts are not adequate for comparing expression levels between genes or samples.
   * Differences in transcript length result in different read counts even if expression levels are the same.
   * Differences in the total number of reads per sample (library depth) can result in differences in read counts between samples.
 
+---
 
+### Normalization
+
+* In previous mouse example:
+
+| GeneID | Symbol | Description | MCL1-DL | longest transcript |
+|----|----|----|---|---|
+| 100017 | Mdn1 | Nuclear chaperone required for maturation and nuclear export of pre-60S ribosome subunits | 555 | 6,562 nt |
+| 100019 | Ldlrap1 | low-density lipoprotein receptor adaptor protein 1 | 1092 | 18,222 nt |
+
+* Which gene had a higher expression level in subject MCL1-DL?
+
+---
 

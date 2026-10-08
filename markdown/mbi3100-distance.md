@@ -34,11 +34,13 @@ Variable (V) regions along dinoflagellate 18S rRNA sequences.  From J-S Ki 2011.
 ---
 
 ### Measuring sequence diversity
-# Examples
-* Fraction of polymorphic sites.
-  * Convention is to label a site as [polymorphic](https://en.wikipedia.org/wiki/Gene_polymorphism) if MAF is greater than 1% and less than 5%.
-* Sequence entropy (defined next slide)
+# Site-level measures
 * [Minor allele frequency](https://academic.oup.com/aje/article/172/8/869/277182) (MAF): the frequency of the *second*-most common residue
+* Simpson index: probability that two random sequences have the same residue
+  $$
+  \sum_{i=1} p_i^2
+  $$
+* Sequence entropy (defined next slide)
 
 <img src="/img/MAF.png" width="500px"/>
 
@@ -79,9 +81,10 @@ Variable (V) regions along dinoflagellate 18S rRNA sequences.  From J-S Ki 2011.
 ---
 
 ### Measuring sequence diversity
-# Population, sequence-level measures
+# Sequence-level measures
 
 * The number of [segregating sites](https://en.wikipedia.org/wiki/Segregating_site) (polymorphisms), $S$.
+  * Convention in human genomics is to label a site as [polymorphic](https://en.wikipedia.org/wiki/Gene_polymorphism) if MAF is greater than 1% and less than 5%.
   * Increases with sequence length, sample size.
 * Mean nucleotide or amino acid entropy, $\bar{H} = \sum_{j=1}^L H_j / L $
 
