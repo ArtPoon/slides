@@ -473,11 +473,15 @@ Image source: Tsang <i>et al.</i> (2015) Glioma Association and Balancing Select
 <section data-background="#333" style="color:white">
 
 <h1 style="color:white">Key points</h1>
-
-* GWAS is the simultaneous screening of 1,000's of common variants to test for associations between variants and phenotypes (*e.g.*, disease).
-  * Each common variant represents a set of physically linked alleles in the genome (haplotype).
-* The sample population may be structured by ancestry, which can cause false positives.
-  * Structure can be identified by PCA or programs like STRUCTURE.
-* Association tests are usually performed by regression, using a log-link function if the trait is binary.
-
+<ul>
+<li>GWAS is the simultaneous screening of 1,000's of common variants to test for associations between variants and phenotypes (*e.g.*, disease).</li>
+  <ul>
+  <li>Each common variant represents a set of physically linked alleles in the genome (haplotype).</li>
+  </ul>
+<li>The sample population may be structured by ancestry, which can cause false positives.</li>
+  <ul>
+  <li>Structure can be identified by PCA or programs like STRUCTURE.</li>
+  </ul>
+<li>Association tests are usually performed by regression, using a log-link function if the trait is binary.</li>
+</ul>
 </section>
