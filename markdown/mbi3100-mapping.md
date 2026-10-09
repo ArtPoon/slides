@@ -228,7 +228,7 @@ art@Kestrel:~$ bowtie2 -x zika -1 Zika-envelope.n1E4.R1.fastq.gz -2 Zika-envelop
 
 ---
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Tews_Falls%2C_Autumn_-_panoramio.jpg/2560px-Tews_Falls%2C_Autumn_-_panoramio.jpg" width=850/>
+<img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/81/Tews_Falls%2C_Autumn_-_panoramio.jpg/1280px-Tews_Falls%2C_Autumn_-_panoramio.jpg" width=850/>
 
 <small>
 Image source: Tews Falls, Hamilton, Ontario. <a href="https://commons.wikimedia.org/wiki/File:Tews_Falls,_Autumn_-_panoramio.jpg">Eric Marshall (CC BY 3.0 Unported)</a>.
@@ -386,6 +386,23 @@ query       --TACCTAC--TAAC
 
 ---
 
+# Sequencing coverage
+
+* The **depth** of coverage is the average number of times that a nucleotide has been sequenced.
+
+$$
+\text{Coverage} = \frac{\text{Number of reads} \times \text{Read length}}{\text{Genome length}}
+$$
+
+* The **breadth** of coverage is the proportion of nucleotides in a region (genome) that were sequenced at a minimum depth.
+* These quantities are sometimes referred to as "depth" and "coverage", leading to confusion.
+
+<small>
+Reference: Sims <i>et al.</i> (2014) <a href="https://www.nature.com/articles/nrg3642">Nat Rev Genet 15: 121-132</a>.
+</small>
+
+---
+
 # Applications of mapping
 
 * NGS is not just about generating whole genome sequences!
@@ -393,11 +410,11 @@ query       --TACCTAC--TAAC
   * Metagenomics (environmental DNA, microbiomes)
   * Transcriptomics, epigenomics (RNA-seq, ChIP-seq, ATAC-seq)
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Next_generation_sequencing_slide.jpg/800px-Next_generation_sequencing_slide.jpg" width=300/>
+<img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/03/Next_generation_sequencing_slide.jpg/960px-Next_generation_sequencing_slide.jpg" width=300/>
 
-<small><small>
+<small>
 Image source: Illumina HiSeq X10 flowcell. <a href="https://commons.wikimedia.org/wiki/File:Next_generation_sequencing_slide.jpg">Wikimedia Commons</a> (CC BY 3.0).
-</small></small>
+</small>
 
 ---
 
@@ -412,39 +429,15 @@ Image source: Illumina HiSeq X10 flowcell. <a href="https://commons.wikimedia.or
 
 ---
 
-# Metagenomics
-
-* Analysis of samples containing genomes from different species.
-* Early work focused on a single gene shared by all organisms of interest, *e.g.*, [16S rRNA](https://en.wikipedia.org/wiki/16S_ribosomal_RNA) for bacteria.
-  * This is [metabarcoding](https://en.wikipedia.org/wiki/Metabarcoding), although many 16S studies will use the "metagenomics".
-* Metagenomics uses random shearing and shotgun sequencing of all DNA in the sample.
-  * Requires a good database of reference genes/genomes.
-
-<img src="/img/metagenomics.svg" width=500/>
-
----
-
-# Transcriptomics
-
-* Measuring the expression levels of different genes in the genome.
-* This used to be with microarrays, in which a plate is spotted with oligos.
-  * Labeled RNA transcripts bind to oligos by specific base-pairing.
-  * Limited to the number of oligos one can fit on a plate.
-* NGS enables one to directly sequence the RNA transcripts.
-  * Can and quantify alternate splicing of transcripts from the same gene.
-
----
-
 # From sequences to count data
 
 * These methodologies convert sequence data to numbers.
   * Metagenomics measures the relative abundance of species.
   * Transcriptomics measures the relative expression of genes.
-  * Epigenomics measures the relative abundnace of epigenetic modifications.
+  * Epigenomics measures the relative abundance of epigenetic modifications.
   * ChIP-seq measures protein binding (*e.g.*, a transcription factor) to different parts of a genome.
   * ATAC-seq measures relative levels of chromatin accessibility.
   * Deep sequencing measures the relative abundance of mutations.
-
 
 ---
 
@@ -452,9 +445,10 @@ Image source: Illumina HiSeq X10 flowcell. <a href="https://commons.wikimedia.or
 
 <h1 style="color:white">Key points</h1>
 
-* Reference-based mapping is the problem of determining whether a substring occurs in the reference genome, and if so, where.
-* An index is a compact representation of the reference that makes it faster to look up substrings.
-* Mappers can only tolerate a limited amount of divergence from the reference.
-* Mapping outputs are usually written in a tabular format called the Sequence Alignment Map (SAM) format.
-
+<ul>
+<li>Reference-based mapping is the problem of determining whether a substring occurs in the reference genome, and if so, where.</li>
+<li>An index is a compact representation of the reference that makes it faster to look up substrings.</li>
+<li>Mappers can only tolerate a limited amount of divergence from the reference.</li>
+<li>Mapping outputs are usually written in a tabular format called the Sequence Alignment Map (SAM) format.</li>
+</ul>
 </section>

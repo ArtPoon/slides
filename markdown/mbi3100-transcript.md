@@ -122,24 +122,6 @@ Image credit: Stark <i>et al.</i> (2019) <a href="https://www.nature.com/article
 
 ---
 
-### RNA-seq
-# Sequencing coverage
-
-* The **depth** of coverage is the average number of times that a nucleotide has been sequenced.
-
-$$
-\text{Coverage} = \frac{\text{Number of reads} \times \text{Read length}}{\text{Genome length}}
-$$
-
-* The **breadth** of coverage is the proportion of nucleotides in a region (genome) that were sequenced at a minimum depth.
-* These quantities are sometimes referred to as "depth" and "coverage", leading to confusion.
-
-<small>
-Reference: Sims <i>et al.</i> (2014) <a href="https://www.nature.com/articles/nrg3642">Nat Rev Genet 15: 121-132</a>.
-</small>
-
----
-
 # RNA isoforms
 
 * Different RNA transcripts ([isoforms](https://en.wikipedia.org/wiki/Isoform)) can be produced from the same stretch of genomic DNA, due to:
