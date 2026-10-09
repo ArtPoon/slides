@@ -106,9 +106,9 @@ Image credit: https://commons.wikimedia.org/wiki/File:RNA-Seq-alignment.png
 
 * Short-read cDNA (*e.g.*, Illumina)
   * reverse-transcription of RNA from sample extraction into complementary DNA (cDNA)
-  * most common; high-throughput (~100M reads/sample); read lengths 50-500 nt, high accuracy (~0.1%/nt).
+  * most common; high-throughput (&asymp;100M reads/sample); read lengths 50-500 nt, high accuracy (&asymp;0.1%/nt).
 * Long-read cDNA (*e.g.*, PacBio, Nanopore)
-  * reads lengths up to 25K nt, low accuracy (~10%/nt), more expensive, lower throughput (~10M reads/sample).
+  * reads lengths up to 25K nt, low accuracy (&asymp;10%/nt), more expensive, lower throughput (&asymp;10M reads/sample).
 * [Direct RNA-seq](https://www.nature.com/articles/s41592-022-01633-w#Sec4) (Nanopore) - no reverse-transcription
   * sequence poly-A tails, detect [RNA modifications](https://en.wikipedia.org/wiki/RNA_editing), *e.g.*, [m6A](https://en.wikipedia.org/wiki/N6-Methyladenosine), [pseudouridine](https://en.wikipedia.org/wiki/Pseudouridine).
 
@@ -126,11 +126,9 @@ Image credit: Stark <i>et al.</i> (2019) <a href="https://www.nature.com/article
 # Sequencing coverage
 
 * The **depth** of coverage is the average number of times that a nucleotide has been sequenced.
-
 $$
 \text{Coverage} = \frac{\text{Number of reads} \times \text{Read length}}{\text{Genome length}}
 $$
-
 * The **breadth** of coverage is the proportion of nucleotides in a region (genome) that were sequenced at a minimum depth.
 * These quantities are sometimes referred to as "depth" and "coverage", leading to confusion.
 
@@ -314,15 +312,8 @@ Source: <a href="https://www.nature.com/articles/ncb3117">Mouse mammary gland da
 
 # Normalization
 
-* Read or transcript counts are not adequate for comparing expression levels between genes or samples.
-  * Differences in transcript length result in different read counts even if expression levels are the same.
-  * Differences in the total number of reads per sample (library depth) can result in differences in read counts between samples.
-
----
-
-### Normalization
-
-* In previous mouse example:
+* Differences in transcript length result in different read counts even if expression levels are the same.
+* Differences in the total number of reads per sample (library depth) can result in differences in read counts between samples.
 
 | GeneID | Symbol | Description | MCL1-DL | longest transcript |
 |----|----|----|---|---|
@@ -332,6 +323,61 @@ Source: <a href="https://www.nature.com/articles/ncb3117">Mouse mammary gland da
 * Which gene had a higher expression level in subject MCL1-DL?
 
 ---
+
+### Normalization
+# Within-sample normalizations
+
+* An intuitive answer is divide the read count by transcript length
+  * Let $q_i$ be the number of reads mapped to the $i$-th transcript.
+  * Let $l_i$ be the length of the $i$-th transcript.
+* [Transcripts Per Million](https://link.springer.com/article/10.1186/1471-2105-12-323) accounts for differences in transcript lengths and library size:
+$$
+\text{TPM}_i = \frac{q_i/l_i}{\sum_j q_j/l_j} \times 10^6
+$$
+
+---
+
+# Differential expression analysis (DEA)
+
+* The objective of DEA is to identify associations between gene expression and some treatment or environmental factor.
+  * *e.g.*, cell type, cancer, infection status
+* This is accomplished by comparing (normalized) counts from two sets of samples.
+* The [null hypothesis](https://en.wikipedia.org/wiki/Statistical_hypothesis_test#Definition_of_terms) is that both sets of counts are drawn from the same underlying frequency distribution.
+
+---
+
+### Differential expression
+# The Poisson distribution
+
+* The observed read count $Y_{ij}$ for gene $i$ in sample $j$ can be modeled by a Poisson distribution:
+<table>
+<tr>
+<td>
+$$
+P(Y_{ij}|\lambda_{i}) = \frac{\lambda_{i}^{Y_{ij}}\exp(-\lambda_i)}{Y_{ij}!}
+$$
+</td>
+<td><img src="https://upload.wikimedia.org/wikipedia/commons/1/16/Poisson_pmf.svg" height="200px"></td>
+</tr>
+</table>
+where $\lambda_{i}$ is the expected (average) count.
+
+* The number of raindrops that fall on a sidewalk panel in one minute is Poisson distributed.
+
+---
+
+# Negative binomial
+
+* The variance of the Poisson distribution equals the mean, $\lambda_{ij}$.
+  * This is a bad assumption - empirically, the variance of read counts exceeds the mean (the counts are [overdispersed](https://en.wikipedia.org/wiki/Overdispersion)).
+* This is addressed by the negative binomial distribution
+$$
+P(Y_{ij}|\lambda_{i},r) = \frac{\lambda_{i}^{Y_{ij}}}{Y_{ij}!}
+$$
+
+---
+
+# Gene set
 
 
 ---
