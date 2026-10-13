@@ -27,9 +27,8 @@
 
 * Analysis of samples containing genomes from different species.
 * Early work focused on a single gene shared by all organisms of interest, *e.g.*, [16S rRNA](https://en.wikipedia.org/wiki/16S_ribosomal_RNA) for bacteria.
-  * This is [metabarcoding](https://en.wikipedia.org/wiki/Metabarcoding), although many 16S studies will use the "metagenomics".
+  * This is [metabarcoding](https://en.wikipedia.org/wiki/Metabarcoding), although many 16S studies will use the term "metagenomics".
 * Metagenomics uses random shearing and shotgun sequencing of all DNA in the sample.
-  * Requires a good database of reference genes/genomes.
 
 <img src="/img/metagenomics.svg" width=500/>
 

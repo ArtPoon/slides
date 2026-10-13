@@ -176,7 +176,7 @@ Image credit: <a href="https://commons.wikimedia.org/wiki/File:DNA_alternative_s
 
 * A substantial proportion of reads map equally well to multiple locations in the reference.
   * These are called "multi-mapped reads"
-  * Typically 5% to 40% of reads, depending on species and mapping software.
+  * Can range from 5% to 40% of reads, depending on species and mapping software.
 * A read may map to multiple locations in a **reference genome** due to duplications or repetitive DNA.
 * A **reference transcriptome** includes all isoforms of an RNA precursor.
   * Expect higher rate of multi-mapping because isoforms can incorporate the same exons.
@@ -334,17 +334,17 @@ $$
 # The Poisson distribution
 
 * The observed read count $Y_{ij}$ for gene $i$ in sample $j$ can be modeled by a Poisson distribution:
-<table>
-<tr>
-<td>
-$$
-P(Y_{ij}|\lambda_{i}) = \frac{\lambda_{i}^{Y_{ij}}\exp(-\lambda_i)}{Y_{ij}!}
-$$
-</td>
-<td><img src="https://upload.wikimedia.org/wikipedia/commons/1/16/Poisson_pmf.svg" height="200px"></td>
-</tr>
-</table>
-where $\lambda_{i}$ is the expected (average) count.
+
+<div style="display: flex; align-items: center; justify-content: space-around;">
+<div style="flex: 1;">
+`$$P(Y_{ij}|\lambda_{i}) = \frac{\lambda_{i}^{Y_{ij}}\exp(-\lambda_i)}{Y_{ij}!}$$`
+<br/>
+<span style="font-weight: 500;">where $\lambda_{i}$ is the expected (average) count.</span>
+</div>
+<div style="flex: 1.5;">
+<img src="https://upload.wikimedia.org/wikipedia/commons/1/16/Poisson_pmf.svg" height="250px">
+</div>
+</div>
 
 * The number of raindrops that fall on a sidewalk panel in one minute is Poisson distributed.
 
@@ -354,10 +354,14 @@ where $\lambda_{i}$ is the expected (average) count.
 
 * The variance of the Poisson distribution equals the mean, $\lambda_{ij}$.
   * This is a bad assumption - empirically, the variance of read counts exceeds the mean (the counts are [overdispersed](https://en.wikipedia.org/wiki/Overdispersion)).
-* This is addressed by the negative binomial distribution
-$$
+* This is addressed by the [negative binomial distribution](https://en.wikipedia.org/wiki/Negative_binomial_distribution), which can be written as:
+`$$
 P(Y_{ij}|\lambda_{i},r) = \frac{\lambda_{i}^{Y_{ij}}}{Y_{ij}!}
-$$
+\frac{(\theta+Y_{ij}-1)!}{(\theta-1)!}
+\frac{\theta^\theta}{(\lambda_i + \theta)^{\theta+Y_{ij}}}
+$$`
+
+* As $r\rightarrow\infty$, this formula converges to the Poisson distribution.
 
 ---
 
