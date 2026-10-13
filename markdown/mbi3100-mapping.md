@@ -403,6 +403,14 @@ Reference: Sims <i>et al.</i> (2014) <a href="https://www.nature.com/articles/nr
 
 ---
 
+### Sequencing coverage
+# Example
+<br/>
+![](/img/coverage-example.png)
+
+
+---
+
 # Applications of mapping
 
 * NGS is not just about generating whole genome sequences!
