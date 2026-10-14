@@ -356,12 +356,26 @@ $$
   * This is a bad assumption - empirically, the variance of read counts exceeds the mean (the counts are [overdispersed](https://en.wikipedia.org/wiki/Overdispersion)).
 * This is addressed by the [negative binomial distribution](https://en.wikipedia.org/wiki/Negative_binomial_distribution), which can be written as:
 `$$
-P(Y_{ij}|\lambda_{i},r) = \frac{\lambda_{i}^{Y_{ij}}}{Y_{ij}!}
+\begin{aligned}
+P(Y_{ij}|\lambda_{i}, \theta) & =  \frac{\lambda_{i}^{Y_{ij}}}{Y_{ij}!}
 \frac{(\theta+Y_{ij}-1)!}{(\theta-1)!}
-\frac{\theta^\theta}{(\lambda_i + \theta)^{\theta+Y_{ij}}}
+\frac{1}{(\lambda_i + \theta)^{Y_{ij}}}
+\left(1+\frac{\lambda_i}{\theta}\right)^{-\theta}\\[6pt]
+ & \xrightarrow{x \to \infty}  \frac{\lambda_{i}^{Y_{ij}}}{Y_{ij}!} (1) e^{-\lambda_i}\\
+\end{aligned}
 $$`
 
-* As $r\rightarrow\infty$, this formula converges to the Poisson distribution.
+---
+
+![](https://upload.wikimedia.org/wikipedia/commons/e/e2/Negative_binomial.svg)
+
+<div style="font-size: 14pt; font-weight: 500;">
+Negative binomial distribution with different values for the number of successes $r$ $(\theta)$. The mean is 10.
+</div>
+
+<small>
+Image credit: <a href="https://commons.wikimedia.org/wiki/File:Negative_binomial.svg">Fabio Andr&eacute;s Correa Dur&aacute;n</a> (CC-BY-SA 3.0)
+</small>
 
 ---
 
