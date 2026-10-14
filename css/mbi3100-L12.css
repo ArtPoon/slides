@@ -425,6 +425,11 @@ body {
 /*** MathJax overrides ***/
 
 .MathJax_SVG_Display {
-  margin: 0.5 0 0 0 !important;
+  margin: 0 0 10px 0 !important;
+  font-size: 90% !important;
+}
+
+.MathJax_SVG {
+  margin: 1 1 1 1 !important;
   font-size: 90% !important;
 }

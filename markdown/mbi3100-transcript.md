@@ -350,22 +350,27 @@ $$
 
 ---
 
+### Differential expression
 # Negative binomial
 
 * The variance of the Poisson distribution equals the mean, $\lambda_{ij}$.
   * This is a bad assumption - empirically, the variance of read counts exceeds the mean (the counts are [overdispersed](https://en.wikipedia.org/wiki/Overdispersion)).
+  * Overdispersion may be caused by 
 * This is addressed by the [negative binomial distribution](https://en.wikipedia.org/wiki/Negative_binomial_distribution), which can be written as:
 `$$
 \begin{aligned}
-P(Y_{ij}|\lambda_{i}, \theta) & =  \frac{\lambda_{i}^{Y_{ij}}}{Y_{ij}!}
+NB(Y_{ij}|\lambda_{i}, \theta) & =  \frac{\lambda_{i}^{Y_{ij}}}{Y_{ij}!}
 \frac{(\theta+Y_{ij}-1)!}{(\theta-1)!}
 \frac{1}{(\lambda_i + \theta)^{Y_{ij}}}
 \left(1+\frac{\lambda_i}{\theta}\right)^{-\theta}\\[6pt]
- & \xrightarrow{x \to \infty}  \frac{\lambda_{i}^{Y_{ij}}}{Y_{ij}!} (1) e^{-\lambda_i}\\
+ & \xrightarrow{\theta \to \infty}  \frac{\lambda_{i}^{Y_{ij}}}{Y_{ij}!} (1) e^{-\lambda_i}\\
 \end{aligned}
 $$`
 
+
 ---
+
+### Differential expression
 
 ![](https://upload.wikimedia.org/wikipedia/commons/e/e2/Negative_binomial.svg)
 
@@ -379,8 +384,29 @@ Image credit: <a href="https://commons.wikimedia.org/wiki/File:Negative_binomial
 
 ---
 
-# Gene set
+### Differential expression
+# edgeR
 
+* `edgeR` is an R (Bioconductor) package that tests for differential expression.
+* It assumes that read counts are drawn from a negative binomial distribution: 
+`$$Y_{ij} \sim \text{NB}(Y_{ij} | \lambda_i=M_j p_{ik}, \theta_i)$$`
+where `$M_j$` is the library size of the $j$-th sample, and $p_{ik}$ is the relative abundance of gene $i$ in group $k$.
+* For each gene ($i$), `edgeR` tests if `$p_{ik}=p_{il}$` for groups $k$ and $l$.
+
+---
+
+# Bioconductor
+
+<img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e4/Bioconductor_logo_rgb.jpg/960px-Bioconductor_logo_rgb.jpg" height="120px">
+
+* The [Bioconductor](https://bioconductor.org/) (BioC) project (Gentleman *et al.* 2004) is a repository of open-source R packages for bioinformatics.
+  * Primarily focused on gene expression analysis (microarrays and RNA-seq).
+  * Popular packages include `edgeR`, `DESeq2` and `limma`
+* To install Bioconductor:
+```R
+install.packages("BiocManager")
+BiocManager:install()
+```
 
 ---
 
@@ -587,3 +613,18 @@ ILMN_1806310    94.69127        17      3.953494        0.687013
 ILMN_1779670    92.01579        27      3.527202        0.7675325
 ILMN_1653355    113.9059        19      6.516469        0.1922078
 ```
+
+---
+
+<section data-background="#333" style="color:white">
+
+<h1 style="color:white">Key points</h1>
+
+<ul>
+<li>For RNA-seq, mapping reads is complicated by the existence of different RNA isoforms</li>
+  <ul>
+  <li>A read can map to multiple isoforms that share an exon in common.  These multi-mapped reads are often discarded.</li>
+  </ul>
+</ul>
+
+</section>
