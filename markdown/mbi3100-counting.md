@@ -7,11 +7,11 @@
 # Counting reads
 
 * Reference-based mapping algorithms can align reads to:
-  * Different loci in a genome (RNA-seq)
-  * Different genomes (metagenomics)
-* This transforms the primary data type from genetic sequences to numbers:
-  * Differences in gene expression
-  * Relative abundance of species in a community
+  * Different loci in a genome
+  * Different genomes
+* Counting how many reads map to different targets transforms the primary data type from genetic sequences to numbers:
+  * Differences in gene expression, *i.e.*, RNA-seq
+  * Relative abundance of species in a community, *i.e.*, metagenomics
 
 ---
 
@@ -40,12 +40,19 @@
 
 # Pipelines for 16S metabarcoding
 
-1. Quality control: pre-processing and filtering
-2. Cluster sequences into OTUs
-3. Taxonomic assignment
-4. Quantifying abundances
-5. Phylogenetic analysis
+* The development of bioinformatic pipelines like QIIME and mothur greatly promoted 16S metabarcoding.
+* These pipelines generally share the following steps: 
+  1. Quality control: pre-processing and filtering
+  2. Clustering sequences into OTUs
+  3. Taxonomic assignment
+  4. Quantifying abundances
+  5. Phylogenetic analysis
 
+---
+
+# OTUs
+
+* An operational taxonomic unit (OTU) 
 
 ---
 
