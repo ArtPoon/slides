@@ -38,6 +38,14 @@
 
 ---
 
+### Metabarcoding
+# 16S rRNA
+
+* Bacterial genomes carry from one to 15 copies of genes encoding 16S rRNA
+* This gene has variable and conserved regions 
+
+---
+
 # Pipelines for 16S metabarcoding
 
 * The development of bioinformatic pipelines like QIIME and mothur greatly promoted 16S metabarcoding.
