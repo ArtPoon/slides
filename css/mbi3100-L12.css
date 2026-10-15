@@ -202,7 +202,7 @@ body {
 
 .reveal code {
   font-family: monospace;
-  /*background-color: #dde; */
+  /* background-color: #dde; */
   padding: 0 2px 0 2px;
 }
 
@@ -213,7 +213,7 @@ body {
   overflow: auto;
   max-height: 450px;
   word-wrap: normal;
-  font-size: 1.1em;
+  font-size: 1.2em;
   line-height: 1.2em;
 }
 
@@ -430,6 +430,6 @@ body {
 }
 
 .MathJax_SVG {
-  margin: 1 1 1 1 !important;
+  /* color: #00a; */
   font-size: 90% !important;
 }

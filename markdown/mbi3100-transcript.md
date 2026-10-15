@@ -337,7 +337,7 @@ $$
 
 <div style="display: flex; align-items: center; justify-content: space-around;">
 <div style="flex: 1;">
-`$$P(Y_{ij}|\lambda_{i}) = \frac{\lambda_{i}^{Y_{ij}}\exp(-\lambda_i)}{Y_{ij}!}$$`
+$$P(Y_{ij}|\lambda_{i}) = \frac{\lambda_{i}^{Y_{ij}}\exp(-\lambda_i)}{Y_{ij}!}$$
 <br/>
 <span style="font-weight: 500;">where $\lambda_{i}$ is the expected (average) count.</span>
 </div>
@@ -395,6 +395,7 @@ where `$M_j$` is the library size of the $j$-th sample, and $p_{ik}$ is the rela
 
 ---
 
+### Resources
 # Bioconductor
 
 <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e4/Bioconductor_logo_rgb.jpg/960px-Bioconductor_logo_rgb.jpg" height="120px">
@@ -410,6 +411,7 @@ BiocManager:install()
 
 ---
 
+### Resources
 # Databases for transcriptomics
 
 * NCBI [Gene Expression Omnibus](https://www.ncbi.nlm.nih.gov/geo/) (GEO)
@@ -421,6 +423,7 @@ BiocManager:install()
 
 ---
 
+### Resources
 # SOFT format
 
 * NCBI GEO uses the [Simple Omnibus Format](https://www.ncbi.nlm.nih.gov/geo/info/soft.html) (SOFT) file format
@@ -431,6 +434,7 @@ BiocManager:install()
 
 ---
 
+### Resources
 Example of a SOFT file
 
 ```
@@ -489,6 +493,7 @@ ILMN_1705025    99.48608        21      2.776697        0.5415584
 
 ---
 
+### Resources
 # MINiML format
 
 * MIAME Notation in Markup Language (pronounced "minimal") is an XML format.
@@ -498,6 +503,7 @@ ILMN_1705025    99.48608        21      2.776697        0.5415584
 
 ---
 
+### Resources
 Example of MINiML file:
 
 ```
@@ -623,8 +629,11 @@ ILMN_1653355    113.9059        19      6.516469        0.1922078
 <ul>
 <li>For RNA-seq, mapping reads is complicated by the existence of different RNA isoforms</li>
   <ul>
+  <li>A read may need to map across a splice junction (discontinuous in reference genome).</li>
   <li>A read can map to multiple isoforms that share an exon in common.  These multi-mapped reads are often discarded.</li>
   </ul>
+<li>Read counts need to be normalized by differences in transcript length and library size.</li>
+<li>Differential expression analysis tests whether read counts in two sample groups come from the same distribution.</li>
 </ul>
 
 </section>
