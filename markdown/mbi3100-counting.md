@@ -104,13 +104,13 @@ Image credits: Haas <i>et al.</i> 2011, <a href="https://genome.cshlp.org/conten
 
 
 <div style="display: flex; align-items: center; justify-content: space-around;">
-<div style="flex: 1;">
+<div style="flex: 1.2;">
 <ul>
 <li>To calculate distances, the 16S sequences have to be aligned.</li>
-<li>For example, `mothur`:
+<li>For example, <code>mothur</code>:
   <ol>
   <li>uses a k-mer search to identify the best 16S reference for an input sequence</li>
-  <li>performs pairwise global alignment (*e.g.* Needleman-Wunsch) to that reference.</li>
+  <li>performs pairwise global alignment (<i>e.g.</i>, Needleman-Wunsch) to that reference.</li>
   <li>re-inserts gaps from the reference alignment.</li>
   </ol>
 </ul>
@@ -129,11 +129,15 @@ Image credit: deSantis Jr <i>et al.</i> 2006, <a href="https://pmc.ncbi.nlm.nih.
 ### OTU clustering
 # Methods to generate clusters
 
-1. Closed reference clustering - sequences are assigned to the closest 16S reference
+1. **Closed reference clustering** &mdash; sequences are assigned to the closest 16S reference
   * Unclear how to handle ties to multiple references, or sequences that are unrelated to any reference.
-2. *de novo* clustering - *e.g.*, use hierarchical clustering to group sequences without references.
+2. ***de novo* clustering** &mdash; *e.g.*, use hierarchical clustering to group sequences without references.
   * More computationally demanding; not obvious which method to use (*e.g.*, average vs. single linkage).
-3. Open reference clustering - applies *de novo* clustering to sequences that are not assigned by closed reference clustering.
+3. **Open reference clustering** - applies *de novo* clustering to sequences that are not assigned by closed reference clustering.
+
+<small>
+Source: Westcott and Schloss (2017) <a href="https://journals.asm.org/doi/full/10.1128/mspheredirect.00073-17">MSphere 2(2): e00073-17</a>.
+</small>
 
 ---
 
@@ -192,7 +196,20 @@ where $P(y_j)$ is the prior probability of class $y_j$, and $P(x_k|y_j)$ is the 
 # RDP classifier
 
 * The feature space consists of all possible $k$-mers for $k=8$.
-* The classifier was trained on <a href="https://en.wikipedia.org/wiki/Bergey%27s_Manual_of_Systematic_Bacteriology">Bergey's Taxonomic Outline of the Prokaryotes</a> (release 5.0), consisting of 5,014 16S rRNA sequences for 988 genera.
+* The Naive Bayes classifier was trained on <a href="https://en.wikipedia.org/wiki/Bergey%27s_Manual_of_Systematic_Bacteriology">Bergey's Taxonomic Outline of the Prokaryotes</a> (release 5.0), consisting of 5,014 16S rRNA sequences for 988 genera.
+  * Uses a uniform prior on genera, *i.e.*, $P(y_j)$ is constant and drops out of the model.
+* Using a classifier trained on 16S specific to a target region can be more effective than a classifier trained on full-length sequences.
+
+<small>
+Not surprisingly, people have recently tried to improve on the RDP classifier with deep neural networks.  <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1009345#sec018">So far they have failed.</a>
+</small>
+
+---
+
+### Taxonomic assignment
+# Simplified example
+
+
 
 ---
 
