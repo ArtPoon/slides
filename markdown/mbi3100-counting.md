@@ -30,7 +30,7 @@
 # Communities
 
 * [Microbiome](https://en.wikipedia.org/wiki/Microbiome) refers to bacterial communities (some prefer "microbiota" because a [biome](https://en.wikipedia.org/wiki/Biome) is a geographical region with a distinct climate and ecosystem).
-  * 
+  * Only about 1% of all bacteria can be grown in the lab.
 * A [virome](https://en.wikipedia.org/wiki/Virome) refers to all viruses associated with an environment.
   * There is no gene shared by all viruses; most RNA viruses encode [RdRp](https://en.wikipedia.org/wiki/RNA-dependent_RNA_polymerase).
 * [Environmental DNA](https://en.wikipedia.org/wiki/Environmental_DNA) applies metabarcoding to "macro-organisms".
@@ -41,8 +41,10 @@
 ### Metabarcoding
 # 16S rRNA
 
-* Bacterial genomes carry from one to 15 copies of genes encoding 16S rRNA
-* This gene has variable and conserved regions 
+* Bacterial genomes carry from one to 15 copies of genes encoding [16S rRNA](https://en.wikipedia.org/wiki/16S_ribosomal_RNA), a component of the ribosome.
+  * This gene has hypervariable regions flanked by conserved regions.
+  * Sequences covering V1/V2-V3 or V3-V4/V5 are commonly used for metabarcoding.
+<img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Journal.pone.0035647.g002.tif/lossy-page1-1280px-Journal.pone.0035647.g002.tif.jpg" height="250px">
 
 ---
 
@@ -60,7 +62,8 @@
 
 # OTUs
 
-* An operational taxonomic unit (OTU) 
+* An operational taxonomic unit (OTU) is a group of closely-related individuals.
+* Clustering sequences can remove sequencing error
 
 ---
 
