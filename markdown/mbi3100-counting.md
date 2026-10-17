@@ -207,9 +207,80 @@ Not surprisingly, people have recently tried to improve on the RDP classifier wi
 ---
 
 ### Taxonomic assignment
-# Simplified example
+# Simplified example of Naive Bayes classifier
 
+<div style="display: flex; align-items: center; justify-content: space-around; padding-left: 1em; padding-top: 1em;">
 
+<div style="flex:0.4;">
+Training data:<br/><br/>
+
+Genus A: 
+<pre style="font-size: 16pt;">
+ATTA
+ATTG
+ACTA
+</pre>
+Genus B: 
+<pre style="font-size: 16pt;">
+ACCG
+ATCA
+ATTA
+</pre>
+</div>
+
+<div style="flex:1;">
+Count k-mers
+<table>
+<thead>
+<tr><th>k-mer</th><th>A</th><th>B</th></tr>
+</thead>
+<tbody>
+<tr> <td>AC</td> <td>1</td> <td>1</td> </tr>
+<tr> <td>AT</td> <td>2</td> <td>2</td> </tr>
+<tr> <td>CC</td> <td>0</td> <td>1</td> </tr>
+<tr> <td>CT</td> <td>1</td> <td>0</td> </tr>
+<tr> <td>TA</td> <td>2</td> <td>1</td> </tr>
+<tr> <td>TC</td> <td>0</td> <td>1</td> </tr>
+<tr> <td>TG</td> <td>1</td> <td>0</td> </tr>
+<tr> <td>TT</td> <td>2</td> <td>1</td> </tr>
+</tbody>
+</table>
+</div>
+
+<div style="flex:1;">
+Conditional probabilities
+<table>
+<thead>
+<tr><th>k-mer</th><th>A</th><th>B</th></tr>
+</thead>
+<tbody>
+<tr> <td>AC</td> <td>0.11</td> <td>0.11</td> </tr>
+<tr> <td>AT</td> <td>0.22</td> <td>0.22</td> </tr>
+<tr> <td>CC</td> <td>0</td> <td>0.11</td> </tr>
+<tr> <td>CT</td> <td>0.11</td> <td>0</td> </tr>
+<tr> <td>TA</td> <td>0.22</td> <td>0.11</td> </tr>
+<tr> <td>TC</td> <td>0</td> <td>0.11</td> </tr>
+<tr> <td>TG</td> <td>0.11</td> <td>0</td> </tr>
+<tr> <td>TT</td> <td>0.22</td> <td>0.11</td> </tr>
+</tbody>
+</table>
+</div>
+
+<div style="flex:1;">
+New sequence: `ATTA`<br/>
+<br/>
+
+P(`ATTA` | Genus A)
+$=0.22\times 0.22 \times 0.22$
+<br/><br/>
+
+P(`ATTA` | Genus B)
+$=0.22\times 0.11 \times 0.11$
+<br/><br/>
+
+argmax = "Genus A"
+</div>
+</div>
 
 ---
 
