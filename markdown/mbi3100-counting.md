@@ -484,6 +484,54 @@ $$`
 </ul>
 </div>
 
+---
+
+# Multidimensional scaling
+
+* Given a matrix of distances `$d_{ij}$`, classical [MDS](https://en.wikipedia.org/wiki/Multidimensional_scaling) embeds these points in a lower-dimensional space to minimize the stress function:<br/>
+`$$
+S = \sqrt{ \frac{\sum_{i<j}(d_{ij}-\delta_{ij})^2} {\sum_{i<j} d_{ij}^2} }
+$$`
+<br/>
+where $\delta_{ij}$ is the distance between points $i$ and $j$ in the new space.
+  * This is like squashing a marshmallow and toothpick sculpture onto a table.
+* Also known as principal coordinates analysis (PCoA)
+
+<small>
+Source: Bartholomew <i>et al.</i> (2008) <a href="https://www.bristol.ac.uk/cmm/team/fs/aimdss-2nd-ed/downloads.html">Analysis of multivariate social science data.</a>
+</small>
+
+---
+
+### Multidimensional scaling
+# Goodness of fit
+
+* Minimizing the stress function involves an [eigenvalue decomposition](https://en.wikipedia.org/wiki/Eigendecomposition_of_a_matrix) that we will skip over.
+* The user has to specify the dimensionality of the new coordinate space, $k$.
+  * Usually $k=2$ or $k=3$ so the results can be visualized.
+* The [eigenvalues](https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors) roughly represent the amount of variation explained by each dimension: $\lambda_i/\sum_i \max(\lambda_i, 0)$.
+  * Negative eigenvalues imply that classical MDS is a poor approximation, and <a href="https://en.wikipedia.org/wiki/Multidimensional_scaling#Non-metric_multidimensional_scaling_(NMDS)">non-metric MDS</a> is recommended.
+
+---
+
+<div style="display: flex; align-items: center; justify-content: space-around;">
+<div style="flex:1;">
+  <h3>Multidimensional scaling</h3>
+  <h1 style="line-height: 1.2; margin-bottom: 0;">Example: Plastic-specific bacteria in the oceans</h1>
+  <ul style="font-size: 18pt; margin-top: 0pt;">
+  <li>Scales <i>et al.</i> (2021) used 16S rRNA metabarcoding to study biofilms on microplastic and non-plastic particles in the Sargasso, Mediterranean, and Baltic seas.
+  <li>Their classical MDS (PCoA) plot of Bray-Curtis dissimilarities showed that substrate had a greater effect on community than sample location.</li>
+  </ul>
+  <small>
+  Source: Scales <i>et al.</i> (2021) <a href="https://journals.asm.org/doi/10.1128/msphere.00851-20">mSphere 6(3): e00851-20</a>. 
+  </small>
+</div>
+<div style="flex:1;">
+  <img src="/img/msphere.00851-20-f001.gif" height="200px">
+  <img src="/img/msphere.00851-20-f002.gif" height="350px">
+</div>
+</div>
+
 
 ---
 
@@ -509,13 +557,6 @@ Image credit: Gloor <i>et al.</i> (2017) <a href="https://www.frontiersin.org/jo
 
 ---
 
-
-
----
-
-# Batch effects
-
----
-
-# Quality control: PCA
+### Compositional data
+# Transformations
 
