@@ -297,8 +297,10 @@ body {
   border-bottom: none; }
 
 .reveal sup {
-  vertical-align: super; 
-  font-size: 16pt;
+  vertical-align: baseline;
+  position: relative; 
+  top: -0.4em;
+  font-size: 80%;
 }
 
 .reveal sub {

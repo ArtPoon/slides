@@ -473,12 +473,12 @@ $$
 * In this example, the `$d_\text{BC}$` are all the same, and `$d_\text{JS}$` is undefined.
 
 <div style="font-size: 16pt;">
-`$$
+$$
 \begin{split}
 d_{U}(A,B) = \frac{b_2 + b_3}{b_1+b_2+b_3+b_{1,2}} = \frac{0.13 + 0.73}{0.13+0.13+0.73+0.6} = \frac{0.86}{1.59} = 0.54\\[12pt]
 d_{U}(B,C) = \frac{b_1 + b_2}{b_1+b_2+b_3+b_{1,2}} = \frac{0.13 + 0.13}{0.13+0.13+0.73+0.6} = \frac{0.26}{1.59} = 0.164
 \end{split}
-$$`
+$$
 <ul>
 <li style="font-size: 24pt; margin-top: 12pt;">Samples B and C share the more distinct genus 3 in common.</li>
 </ul>
@@ -558,5 +558,84 @@ Image credit: Gloor <i>et al.</i> (2017) <a href="https://www.frontiersin.org/jo
 ---
 
 ### Compositional data
+# Spurious correlations
+
+<div style="display: flex; align-items: center; justify-content: space-around;">
+  <div style="flex: 1.2;">
+    <ul>
+    <li>Spurious correlation arises when the data are constrained by a fixed denominator, <i>e.g.</i>, proportions.</li>
+      <ul style="margin-left: 0;">
+      <li>For example, we can simulate five communities by drawing proportions at random, assuming ten species with a skewed distribution.</li>
+      <li>This results in highly significant correlations, even though there is no difference between samples!</li>
+      </ul>
+    </ul>
+  </div>
+  <div style="flex: 1; margin-left: 1ex;">
+    <img src="/img/pairs.svg" height="350px">
+    <br/>
+    <small>
+    "Pairs" plot where each scatterplot (lower-left) shows the relative frequencies of 10 species in two samples, and Pearson correlation statistics are reported in the upper-right.
+    </small>
+  </div>
+</div>
+
+<!--    # R code
+mx <- gtools::rdirichlet(5, alpha=c(10, 5, 2, 1, 1, 1, 1, 1, 1, 1))
+psych::pairs.panels(t(mx)) 
+-->
+
+---
+
+### Compositional data
 # Transformations
 
+* The centered log-ratio transformation (*clr*, Aitchison 1986) may be used to adjust for this effect.
+* Given a sample $X = \\{x_1, x_2, \ldots, x_N\\}$ where $x_i$ is the count of the $i$-th taxon or OTU, and $N$ is the number of taxa or OTUs.
+* The *clr* for $x_i$ is:
+  $$
+  \log\left(\frac{x_i}{\sqrt[N]{x_1\cdot x_2\cdot \ldots \cdot x_N}}\right) =
+  \log(x_i) - \frac{1}{N}\sum_{j=1}^N \log (x_j)
+  $$
+  where the denominator is the [geometric mean](https://en.wikipedia.org/wiki/Geometric_mean).
+
+---
+
+### Compositional data
+# Centered-log ratio example
+
+<div style="display: flex; align-items: center; justify-content: space-around;">
+  <div style="flex: 1;">
+  Before correction
+  <img src="/img/pairs.svg" height="350px">
+  <small>
+  P-values range from 1.6 &times; 10<sup>&minus;5</sup> to 0.024
+  </small>
+  </div>
+  <div style="flex: 1;">
+  After correction
+  <img src="/img/pairs-clr.svg" height="350px">
+  <small>
+  P-values range from 0.015 to 0.55
+  </small>
+  </div>
+</div>
+
+<!--
+res <- Hmisc::rcorr(t(mx))
+summary(res$P[upper.tri(res$P)])
+-->
+
+---
+
+<section data-background="#333" style="color:white">
+
+<h1 style="color:white">Key points</h1>
+
+<ul>
+<li>Metabarcoding amplifies a single marker gene from different genomes, and involves chimera detection, OTU clustering, and taxonomic assignment.</li>
+<li>A prominent method for taxonomic assignment is a naive Bayes classifier.</li>
+<li>There are several distances used to compare the relative abundances of samples, <i>e.g.,</i> Bray-Curtis.</li>
+<li>These data are compositional and susceptible to false positive correlations.</li>
+</ul>
+
+</section>
