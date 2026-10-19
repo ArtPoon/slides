@@ -365,7 +365,7 @@ Image source: Georgian Bay panorama, <a href="https://commons.wikimedia.org/wiki
 * There are several distances that are used to compare the relative abundances of different samples
   * Let $P_i$ be the *absolute* number of sequences in taxon $i$ in sample $A$.
   * Let $p_i$ is the *relative* abundance of taxon $i$ in sample $A$.
-  $ Let $Q_i$ and $q_i$ be the analogous quantities for sample $B$.
+  * Let $Q_i$ and $q_i$ be the analogous quantities for sample $B$.
 
 | Sample | Genus 1 | Genus 2 | Genus 3 | Total |
 |--------|---------|---------|---------|-------|
@@ -388,22 +388,22 @@ $$d_{\text{BC}} = \frac{\sum_i |p_i - q_i|}{\sum_i (p_i+q_i)}$$
 |--------|---------|---------|---------|-------|
 | A      | 0.8     | 0.16      | 0.04    |   |
 | B      | 0.625      | 0.3125      | 0.0625   |   |
-| $\|p_i-q_i\|$ | 0.175 | 0.1525 | 0.0225 | 0.35 |
+| $\vert p_i-q_i\vert$ | 0.175 | 0.1525 | 0.0225 | 0.35 |
 | $p_i+q_i$ | 1.425 | 0.4725 | 0.1025 | 2.0 |
 
-<br/>
-<div style="text-align: center; font-weight: 500;">
+<div style="text-align: center; font-weight: 500; padding-top: 1ex;">
 $d_{\text{BC}}=0.35/2 = 0.175$
 </div>
 
 ---
 
-# Jenson-Shannon divergence
+# Jensen-Shannon divergence
 
 * The [Kullback-Leibler divergence](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence) is a measure of the difference between two probability distributions:
   $$d_{\text{KL}}(p||q) = \sum_i p_i \log\left(\frac{p_i}{q_i}\right)$$
 
-* The [Jensen-Shannon divergence](https://en.wikipedia.org/wiki/Jensen%E2%80%93Shannon_divergence) is a symmetric version of the KL divergence: $d_{\text{JS}} = \big[d_{\text{KL}}(p||q) + d_{\text{KL}}(q||p)\big]/2$
+* The [Jensen-Shannon divergence](https://en.wikipedia.org/wiki/Jensen%E2%80%93Shannon_divergence) is a symmetric version of the KL divergence: 
+`$d_{\text{JS}} = \big[d_{\text{KL}}(p||q) + d_{\text{KL}}(q||p)\big]/2$`
 
 | Sample | Genus 1 | Genus 2 | Genus 3 | Total |
 |--------|---------|---------|---------|-------|
@@ -412,8 +412,7 @@ $d_{\text{BC}}=0.35/2 = 0.175$
 | $p_i\log(p_i/q_i)$ | 0.197 | $-$0.107 | $-$0.018 | 0.0725 |
 | $q_i\log(q_i/p_i)$  | $-$0.154 | 0.209 | 0.028 | 0.0828 |
 
-<br/>
-<div style="text-align: center; font-weight: 500;">
+<div style="text-align: center; font-weight: 500; padding-top: 1ex;">
 $d_{\text{JS}}=0.35/2 = (0.0725 + 0.0828)/2 = 0.07765$
 </div>
 
@@ -421,15 +420,69 @@ $d_{\text{JS}}=0.35/2 = (0.0725 + 0.0828)/2 = 0.07765$
 
 # UniFrac distance
 
+* Bray-Curtis and Jensen-Shannon do not account for the evolutionary relationships among OTUs / taxa.
+  * Two taxa that are 10% divergent tend to be more ecologically similar than 50% divergent taxa.
 * The UniFrac distance maps all taxa observed in either sample to a phylogenetic tree:
-<img src="https://mothur.s3.us-east-2.amazonaws.com/wiki/unweightedunifracmeasure.jpg" height="150px">
+<div style="display: flex; align-items: center; justify-content: space-around; padding-top: 1ex;">
+<div style="flex: 1.3;">
+<img src="/img/unifrac-trees.svg" height="200px">
+</div>
+<div style="flex: 1; padding-left: 2em; font-size: 18pt;">
+Branches that are ancestral to only one of two samples count towards the distance.
+</div>
 
-* Let $b_i$ be the length of the branch associated with node $i$.  Then:<br/><br/>
+---
+
+### UniFrac
+# Formula
+
+* Let `$b_i$` be the length of the branch associated with node `$i$`.  Then:<br/><br/>
 $$
 d_{U} = \frac{\sum_i b_i |\mathbf{1}(p_i>0) - \mathbf{1}(q_i>0)|}
 {\sum_i b_i \mathbf{1}(p_i+q_i>0)}
 $$
-where $\mathbf{1}(x)$ is an [indicator function](https://en.wikipedia.org/wiki/Indicator_function) that returns 1 if $x$ is True, and 0 otherwise.  Note $p_i$ is the relative abundance of all descendants of node $i$.
+
+* $p_i$ is the relative abundance of all descendants of node $i$.
+* $\mathbf{1}(x)$ is an [indicator function](https://en.wikipedia.org/wiki/Indicator_function) that returns 1 if $x$ is True, and 0 otherwise.  
+  * $|\mathbf{1}(p_i>0) - \mathbf{1}(q_i>0)|$ tests if there is discordant presence/absence between samples.
+  * $\mathbf{1}(p_i+q_i>0)$ tests if descendants of node $i$ are present in either sample.
+
+---
+
+### UniFrac
+# Example
+
+<div style="display: flex; align-items: center; justify-content: space-around;">
+  <div style="flex: 1;">
+    <img src="/img/simple-tree.svg" height="150px">
+  </div>
+  <div style="flex: 1">
+    <table>
+    <thead>
+    <tr><th>Sample</th><th>Genus 1</th><th>Genus 2</th><th>Genus 3</th></tr>
+    </thead>
+    <tbody>
+    <tr><td>A</td><td> 0.5 </td><td> 0.5 </td><td> 0  </td></tr>
+    <tr><td>B  </td><td> 0.5 </td><td> 0 </td><td> 0.5  </td></tr>
+    <tr><td>C  </td><td> 0 </td><td> 0.5 </td><td> 0.5 </td></tr>
+    </tbody>
+    </table>
+  </div>
+</div>
+
+* In this example, the `$d_\text{BC}$` are all the same, and `$d_\text{JS}$` is undefined.
+
+<div style="font-size: 16pt;">
+`$$
+\begin{split}
+d_{U}(A,B) = \frac{b_2 + b_3}{b_1+b_2+b_3+b_{1,2}} = \frac{0.13 + 0.73}{0.13+0.13+0.73+0.6} = \frac{0.86}{1.59} = 0.54\\[12pt]
+d_{U}(B,C) = \frac{b_1 + b_2}{b_1+b_2+b_3+b_{1,2}} = \frac{0.13 + 0.13}{0.13+0.13+0.73+0.6} = \frac{0.26}{1.59} = 0.164
+\end{split}
+$$`
+<ul>
+<li style="font-size: 24pt; margin-top: 12pt;">Samples B and C share the more distinct genus 3 in common.</li>
+</ul>
+</div>
 
 
 ---

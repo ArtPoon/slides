@@ -193,9 +193,9 @@ Try clicking and dragging the root (yellow node) around.
 
 * Preceding algorithms give us branching orders.
 * Branch lengths are calculated under the constraint that all descendants have an equal distance to their ancestor.
-  * The resulting tree is called [ultrametric](https://en.wikipedia.org/wiki/Ultrametric_space)
+  * The resulting tree is called [ultrametric](https://en.wikipedia.org/wiki/Ultrametric_space).
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/UPGMA_Dendrogram_Hierarchical.svg/800px-UPGMA_Dendrogram_Hierarchical.svg.png" height="250px"/>
+<img src="https://upload.wikimedia.org/wikipedia/commons/c/c5/UPGMA_Dendrogram_Hierarchical.svg" height="250px"/>
 
 <small>
 Image source: https://commons.wikimedia.org/wiki/File:UPGMA_Dendrogram_Hierarchical.svg, Creative Commons
@@ -214,7 +214,7 @@ Image source: https://commons.wikimedia.org/wiki/File:UPGMA_Dendrogram_Hierarchi
 
 ---
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/A_view_from_the_Centennial_Ridges_Trail_in_Algonquin_Provincial_Park_%28Ontario%2C_Canada%29.jpg/2560px-A_view_from_the_Centennial_Ridges_Trail_in_Algonquin_Provincial_Park_%28Ontario%2C_Canada%29.jpg" height="550px"/>
+<img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/A_view_from_the_Centennial_Ridges_Trail_in_Algonquin_Provincial_Park_%28Ontario%2C_Canada%29.jpg/3840px-A_view_from_the_Centennial_Ridges_Trail_in_Algonquin_Provincial_Park_%28Ontario%2C_Canada%29.jpg" height="550px"/>
 
 <small>
 Image credit: <a href="https://commons.wikimedia.org/wiki/File:A_view_from_the_Centennial_Ridges_Trail_in_Algonquin_Provincial_Park_(Ontario,_Canada).jpg">A view from the Centennial Ridges Trail in Algonquin Provincial Park</a>, Maksim Sokolov (CC BY-SA 4.0).
