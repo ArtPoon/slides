@@ -181,28 +181,62 @@ Image credit: Abellan-Schneyder <i>et al.</i> 2021, <a href="https://journals.as
 ### Taxonomic assignment
 # Naive Bayes classifier
 
-* `mothur` and QIIME2 both use Naive Bayes classifiers to assign taxonomic labels to OTUs.
-* This model assumes that $K$ features `$\{x_k\}$` are <a href="https://en.wikipedia.org/wiki/Independence_(probability_theory)">mutually independent</a>.
+* `mothur` and `QIIME2` both use implementations of the RDP Naive Bayes classifier to assign taxonomic labels to OTUs ([Wang <i>et al.</i>, 2007](https://journals.asm.org/doi/full/10.1128/aem.00062-07).
+  * The feature space $X$ consists of all possible $k$-mers (for $k=8$).  Let $x_k$ represent a specific $k$-mer.
+  * The classifier attempts to assign each sequence to a genus (the $i$-th class, $y_i$).
+* Assumes that $K$ features `$\{x_k\}$` are <a href="https://en.wikipedia.org/wiki/Independence_(probability_theory)">mutually independent</a>.
   * This is usually not true, hence the model is *naive*.
-* Then the *maximum a posteriori* class is calculated as:
-`$$
-\hat{y} = \underset{y_j}{\operatorname{argmax}} P(y_j) \prod_{k=1}^{K} P(x_k|y_j)
-$$`
-where $P(y_j)$ is the prior probability of class $y_j$, and $P(x_k|y_j)$ is the probability of feature $x_k$ given the object belongs to class $y_j$.
 
 ---
 
 ### Taxonomic assignment
-# RDP classifier
+# Conditional probability
 
-* The feature space consists of all possible $k$-mers for $k=8$.
-* The Naive Bayes classifier was trained on <a href="https://en.wikipedia.org/wiki/Bergey%27s_Manual_of_Systematic_Bacteriology">Bergey's Taxonomic Outline of the Prokaryotes</a> (release 5.0), consisting of 5,014 16S rRNA sequences for 988 genera.
-  * Uses a uniform prior on genera, *i.e.*, $P(y_j)$ is constant and drops out of the model.
-* Using a classifier trained on 16S specific to a target region can be more effective than a classifier trained on full-length sequences.
+* The "Bayes" part of naive Bayes means that we treat both data and hypotheses (classes) as [random variables](https://en.wikipedia.org/wiki/Random_variable).
+<img src="/img/RDP-Venn.svg" height="100px"/>
 
-<small>
-Not surprisingly, people have recently tried to improve on the RDP classifier with deep neural networks.  <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1009345#sec018">So far they have failed.</a>
-</small>
+* The *conditional probability* that $Y=y_k$ given that $X=x_k$ is:
+  
+  $$
+  P(Y=y_i | X = x_k) = \frac{P(Y=y_i, X=x_k)}{P(X=x_k)}
+  $$
+  where $P(Y=y_i, X=x_k)$ is the [*joint probability*](https://en.wikipedia.org/wiki/Joint_probability_distribution) that both are true.
+
+---
+
+### Taxonomic assignment
+# Independence assumption
+
+* What we really want is the probability that $Y=y_i$, given that a sequence consists of some combination of features:
+
+$$
+P(Y | X_1, X_2, \ldots, X_N) = \frac{P(Y, X_1, X_2, \ldots, X_N)}{P(X_1, X_2, \ldots, X_N)}
+$$
+
+* Because we assume that features are independent outcomes, the numerator simplifies to a product:
+
+$$
+\begin{split}
+P(Y, X_1, X_2, \ldots, X_N) & = P(X_1 | X_2, \ldots, X_N, Y) P(X_2, \ldots, X_N, Y)\\\\
+ & = P(X_1 | Y) P(X_2 | X_3 \ldots, X_N, Y) P(X_3 \ldots, X_N, Y)\\\\
+ & = P(X_1 | Y) P(X_2 | Y) \ldots P(X_N | Y) P(Y)
+\end{split}
+$$
+
+
+
+---
+
+### Taxonomic assignment
+# Derivation
+
+* Then the *maximum a posteriori* class is calculated as:
+`$$
+\hat{y} = \underset{y_j}{\operatorname{argmax}} P(Y=y_i) \prod_{j=1}^{N} P(X_j|y_i)
+$$`
+where $P(Y=y_i)$ is the prior probability of class $y_i$, and $P(X_j|y_i)$ is the probability of $j$-th feature given the sequence belongs to class $y_i$.
+  * The [argmax](https://en.wikipedia.org/wiki/Arg_max) operator returns the [argument](https://en.wikipedia.org/wiki/Argument_of_a_function) that maximizes the function.
+* The RDP classifier assumes a uniform prior on genera, *i.e.*, $P(Y)$ is a constant and drops out of the model.
 
 ---
 
@@ -284,35 +318,151 @@ argmax = "Genus A"
 
 ---
 
-# Compositional data
+<div style="display: flex; align-items: center; justify-content: space-around; padding-left: 1em; padding-top: 1em;">
+  <div style="flex:2;">
+  <h3>Taxonomic assignment</h3>
+  <h1>RDP classifier</h1>
 
+  <ul>
+  <li>The RDP classifier was trained on <a href="https://en.wikipedia.org/wiki/Bergey%27s_Manual_of_Systematic_Bacteriology">Bergey's Taxonomic Outline of the Prokaryotes</a> (release 5.0), consisting of 5,014 16S rRNA sequences for 988 genera.</li>
+  <ul>
+  <li>Using a classifier trained on 16S specific to a target region can be more effective than a classifier trained on full-length sequences.</li>
+  </ul>
+  <li>So far, deep neural networks have not improved on the RDP classifier (<a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1009345#sec018">Zhao <i>et al.</i> 2021</a>)</li>
+  </ul>
+  </div>
+  <div style="flex:1;">
+  <img src="/img/zam0160780800001.jpeg">
+  <br/>
+  <small>
+  Image credit: Wang <i>et al.</i> (2007) <a href="https://journals.asm.org/doi/full/10.1128/aem.00062-07">Appl Environ Microbiol 73(16): 5261-7</a>.
+  </small>
+  </div>
+</div>
+
+---
+
+![](https://upload.wikimedia.org/wikipedia/commons/5/56/Owen_Sound_October_14_2010_%288760231245%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original)
+
+<small>
+Image source: Georgian Bay panorama, <a href="https://commons.wikimedia.org/wiki/File:Owen_Sound_October_14_2010_(8760231245).jpg">Northern Lights Graffiti from Owen Sound, Ontario</a> (CC-BY 2.0).
+</small>
+
+---
+
+# Quantifying abundances
+
+* Taxonomic assignment labels each OTU consensus sequence with a genus or higher grouping (family, order).
+  * The total number of sequences in OTUs assigned to the same taxon is a raw estimate of that taxon's abundance in the community.
+* A major issue is that samples have different numbers of OTUs, *e.g.*, due to differences in library size (total number of reads).
+  * This influences the chance of seeing rare taxa in a sample.
+  * One method to correct this is to generate random samples of the same number of OTUs ([rarefaction](https://journals.asm.org/doi/10.1128/msphere.00354-23)).
+
+---
+
+# Comparing samples
+
+* There are several distances that are used to compare the relative abundances of different samples
+  * Let $P_i$ be the *absolute* number of sequences in taxon $i$ in sample $A$.
+  * Let $p_i$ is the *relative* abundance of taxon $i$ in sample $A$.
+  $ Let $Q_i$ and $q_i$ be the analogous quantities for sample $B$.
+
+| Sample | Genus 1 | Genus 2 | Genus 3 | Total |
+|--------|---------|---------|---------|-------|
+| A      | 100     | 20      | 5       | 125   |
+| B      | 20      | 10      | 2       | 32    |
+
+| Sample | Genus 1 | Genus 2 | Genus 3 |
+|--------|---------|---------|---------|
+| A      | 0.8     | 0.16      | 0.04    |
+| B      | 0.625      | 0.3125      | 0.0625   |
+
+---
+
+# Bray-Curtis dissimilarity
+
+* The Bray-Curtis dissimilarity is the sum of differences in the relative abundances between samples, normalized by their sum:<br/><br/>
+$$d_{\text{BC}} = \frac{\sum_i |p_i - q_i|}{\sum_i (p_i+q_i)}$$
+
+| Sample | Genus 1 | Genus 2 | Genus 3 | Total |
+|--------|---------|---------|---------|-------|
+| A      | 0.8     | 0.16      | 0.04    |   |
+| B      | 0.625      | 0.3125      | 0.0625   |   |
+| $\|p_i-q_i\|$ | 0.175 | 0.1525 | 0.0225 | 0.35 |
+| $p_i+q_i$ | 1.425 | 0.4725 | 0.1025 | 2.0 |
+
+<br/>
+<div style="text-align: center; font-weight: 500;">
+$d_{\text{BC}}=0.35/2 = 0.175$
+</div>
+
+---
+
+# Jenson-Shannon divergence
+
+* The [Kullback-Leibler divergence](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence) is a measure of the difference between two probability distributions:
+  $$d_{\text{KL}}(p||q) = \sum_i p_i \log\left(\frac{p_i}{q_i}\right)$$
+
+* The [Jensen-Shannon divergence](https://en.wikipedia.org/wiki/Jensen%E2%80%93Shannon_divergence) is a symmetric version of the KL divergence: $d_{\text{JS}} = \big[d_{\text{KL}}(p||q) + d_{\text{KL}}(q||p)\big]/2$
+
+| Sample | Genus 1 | Genus 2 | Genus 3 | Total |
+|--------|---------|---------|---------|-------|
+| A      | 0.8     | 0.16      | 0.04    |   |
+| B      | 0.625      | 0.3125      | 0.0625   |   |
+| $p_i\log(p_i/q_i)$ | 0.197 | $-$0.107 | $-$0.018 | 0.0725 |
+| $q_i\log(q_i/p_i)$  | $-$0.154 | 0.209 | 0.028 | 0.0828 |
+
+<br/>
+<div style="text-align: center; font-weight: 500;">
+$d_{\text{JS}}=0.35/2 = (0.0725 + 0.0828)/2 = 0.07765$
+</div>
+
+---
+
+# UniFrac distance
+
+* The UniFrac distance maps all taxa observed in either sample to a phylogenetic tree:
+<img src="https://mothur.s3.us-east-2.amazonaws.com/wiki/unweightedunifracmeasure.jpg" height="150px">
+
+* Let $b_i$ be the length of the branch associated with node $i$.  Then:<br/><br/>
+$$
+d_{U} = \frac{\sum_i b_i |\mathbf{1}(p_i>0) - \mathbf{1}(q_i>0)|}
+{\sum_i b_i \mathbf{1}(p_i+q_i>0)}
+$$
+where $\mathbf{1}(x)$ is an [indicator function](https://en.wikipedia.org/wiki/Indicator_function) that returns 1 if $x$ is True, and 0 otherwise.  Note $p_i$ is the relative abundance of all descendants of node $i$.
 
 
 ---
 
+# Compositional data
 
+<div style="display: flex; align-items: center; justify-content: space-around;">
+<div style="flex: 1.3;">
+<ul style="margin-left: 0;">
+<li>Another problem is that the statistical methods that we will want to apply to these data generally assume independent observations.</li>
+  <ul style="margin-left: 0;">
+  <li>Observing a sequence from genus $A$ in a sample takes away a "spot" that would have been occupied by some other genus.</li>
+  </ul>
+<li>This cannot be fixed with rarefaction, which simply reduces the number of spots.</li>
+</ul>
+</div>
+<div style="flex: 1; padding-left: 1ex;">
+<img src="/img/compositional1.png">
+<small>
+Image credit: Gloor <i>et al.</i> (2017) <a href="https://www.frontiersin.org/journals/microbiology/articles/10.3389/fmicb.2017.02224/full">Front Microbiol 8:2224</a>.
+</small>
+</div>
+</div>
+
+---
+
+
+
+---
 
 # Batch effects
 
 ---
 
 # Quality control: PCA
-
----
-
-# Correlation plot
-
-* Pairwise comparisons of all covariates in your study
-
----
-
-# Stacked barplots
-
----
-
-# Heatmaps
-
----
-
-# Taxon set analysis
 
