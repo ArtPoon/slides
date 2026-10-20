@@ -29,12 +29,12 @@
 ### Metagenomics
 # Communities
 
-* [Microbiome](https://en.wikipedia.org/wiki/Microbiome) refers to bacterial communities (some prefer "microbiota" because a [biome](https://en.wikipedia.org/wiki/Biome) is a geographical region with a distinct climate and ecosystem).
+* [Microbiome](https://en.wikipedia.org/wiki/Microbiome) refers to microbial communities (some prefer "microbiota" because a [biome](https://en.wikipedia.org/wiki/Biome) is a geographical region with a distinct climate and ecosystem).
   * Only about 1% of all bacteria can be grown in the lab.
 * A [virome](https://en.wikipedia.org/wiki/Virome) refers to all viruses associated with an environment.
-  * There is no gene shared by all viruses; most RNA viruses encode [RdRp](https://en.wikipedia.org/wiki/RNA-dependent_RNA_polymerase).
-* [Environmental DNA](https://en.wikipedia.org/wiki/Environmental_DNA) applies metabarcoding to "macro-organisms".
-  * No marker that works well for all organisms; *e.g.*, 18S rRNA for protists.
+  * There is no gene shared by all viruses; most RNA viruses encode [RNA-dependent RNA polymerase](https://en.wikipedia.org/wiki/RNA-dependent_RNA_polymerase) (RdRp).
+* [Environmental DNA](https://en.wikipedia.org/wiki/Environmental_DNA) typically refers to metabarcoding for "macro-organisms".
+  * No marker that works well for all plants and animals.
 
 ---
 
@@ -50,8 +50,8 @@
 
 # Pipelines for 16S metabarcoding
 
-* The development of bioinformatic pipelines like [QIIME](https://qiime2.org/) and [mothur](https://mothur.org/) greatly promoted 16S metabarcoding.
-* These pipelines generally share the following steps: 
+* The development of bioinformatic pipelines like [QIIME2](https://qiime2.org/) and [mothur](https://mothur.org/) greatly promoted 16S metabarcoding.
+* These pipelines generally shared the following steps: 
   1. Quality control: chimera detection
   2. Clustering sequences into OTUs
   3. Taxonomic assignment
@@ -91,7 +91,7 @@ Image credits: Haas <i>et al.</i> 2011, <a href="https://genome.cshlp.org/conten
 
 # What are OTUs?
 
-* An [operational taxonomic unit](https://en.wikipedia.org/wiki/Operational_taxonomic_unit) (OTU) is a group of closely-related individuals.
+* An [operational taxonomic unit](https://en.wikipedia.org/wiki/Operational_taxonomic_unit) (OTU) is a sequence that represents a group of related organisms.
   * It is a working definition of a group when it is not feasible to identify known species, genera, etc.
 * Clustering sequences can remove sequencing error by averaging out this variation.
   * Discarding OTUs with only one sequence is also a quality control step.
@@ -158,9 +158,9 @@ Image credit: RC Edgar (2017), <a href="https://academic.oup.com/bioinformatics/
 
 * The [consensus sequence](https://en.wikipedia.org/wiki/Consensus_sequence) of each OTU is classified to a taxonomic group (*e.g.*, genus) based on its similarity to a reference database.
 * There are several 16S reference databases, including:
+  * [GreenGenes](https://ftp.microbio.me/greengenes_release/) - the first 16S database
   * [RDP](https://mothur.org/wiki/rdp_reference_files/) (Ribosomal Database Project)
   * [Silva](https://www.arb-silva.de/) (from Latin for *forest*)
-  * [GreenGenes](https://ftp.microbio.me/greengenes_release/) - default for QIIME
 * These databases are constantly being updated, and using different databases can yield conflicting annotations ([Edgar 2018](https://peerj.com/articles/5030/))
 
 ---
@@ -181,7 +181,7 @@ Image credit: Abellan-Schneyder <i>et al.</i> 2021, <a href="https://journals.as
 ### Taxonomic assignment
 # Naive Bayes classifier
 
-* `mothur` and `QIIME2` both use implementations of the RDP Naive Bayes classifier to assign taxonomic labels to OTUs ([Wang <i>et al.</i>, 2007](https://journals.asm.org/doi/full/10.1128/aem.00062-07).
+* `mothur` and `QIIME2` both have implementations of the RDP Naive Bayes classifier to assign taxonomic labels to OTUs (<a href="https://journals.asm.org/doi/full/10.1128/aem.00062-07">Wang <i>et al.</i>, 2007</a>).
   * The feature space $X$ consists of all possible $k$-mers (for $k=8$).  Let $x_k$ represent a specific $k$-mer.
   * The classifier attempts to assign each sequence to a genus (the $i$-th class, $y_i$).
 * Assumes that $K$ features `$\{x_k\}$` are <a href="https://en.wikipedia.org/wiki/Independence_(probability_theory)">mutually independent</a>.
@@ -325,9 +325,6 @@ argmax = "Genus A"
 
   <ul>
   <li>The RDP classifier was trained on <a href="https://en.wikipedia.org/wiki/Bergey%27s_Manual_of_Systematic_Bacteriology">Bergey's Taxonomic Outline of the Prokaryotes</a> (release 5.0), consisting of 5,014 16S rRNA sequences for 988 genera.</li>
-  <ul>
-  <li>Using a classifier trained on 16S specific to a target region can be more effective than a classifier trained on full-length sequences.</li>
-  </ul>
   <li>So far, deep neural networks have not improved on the RDP classifier (<a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1009345#sec018">Zhao <i>et al.</i> 2021</a>)</li>
   </ul>
   </div>
@@ -354,7 +351,7 @@ Image source: Georgian Bay panorama, <a href="https://commons.wikimedia.org/wiki
 
 * Taxonomic assignment labels each OTU consensus sequence with a genus or higher grouping (family, order).
   * The total number of sequences in OTUs assigned to the same taxon is a raw estimate of that taxon's abundance in the community.
-* A major issue is that samples have different numbers of OTUs, *e.g.*, due to differences in library size (total number of reads).
+* A major issue is that differences in library size (total number of reads) will cause samples to have different numbers of OTUs.
   * This influences the chance of seeing rare taxa in a sample.
   * One method to correct this is to generate random samples of the same number of OTUs ([rarefaction](https://journals.asm.org/doi/10.1128/msphere.00354-23)).
 
@@ -574,15 +571,10 @@ Image credit: Gloor <i>et al.</i> (2017) <a href="https://www.frontiersin.org/jo
     <img src="/img/pairs.svg" height="350px">
     <br/>
     <small>
-    "Pairs" plot where each scatterplot (lower-left) shows the relative frequencies of 10 species in two samples, and Pearson correlation statistics are reported in the upper-right.
+    "Pairs" plot where each scatterplot (lower-left) compares pairs of five species in 200 samples, and Pearson correlation statistics are reported in the upper-right.
     </small>
   </div>
 </div>
-
-<!--    # R code
-mx <- gtools::rdirichlet(5, alpha=c(10, 5, 2, 1, 1, 1, 1, 1, 1, 1))
-psych::pairs.panels(t(mx)) 
--->
 
 ---
 
@@ -607,23 +599,12 @@ psych::pairs.panels(t(mx))
   <div style="flex: 1;">
   Before correction
   <img src="/img/pairs.svg" height="350px">
-  <small>
-  P-values range from 1.6 &times; 10<sup>&minus;5</sup> to 0.024
-  </small>
   </div>
   <div style="flex: 1;">
   After correction
   <img src="/img/pairs-clr.svg" height="350px">
-  <small>
-  P-values range from 0.015 to 0.55
-  </small>
   </div>
 </div>
-
-<!--
-res <- Hmisc::rcorr(t(mx))
-summary(res$P[upper.tri(res$P)])
--->
 
 ---
 
