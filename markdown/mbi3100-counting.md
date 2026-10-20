@@ -562,8 +562,8 @@ Image credit: Gloor <i>et al.</i> (2017) <a href="https://www.frontiersin.org/jo
     <ul>
     <li>Spurious correlation arises when the data are constrained by a fixed denominator, <i>e.g.</i>, proportions.</li>
       <ul style="margin-left: 0;">
-      <li>For example, we can simulate five communities by drawing proportions at random, assuming ten species with a skewed distribution.</li>
-      <li>This results in highly significant correlations, even though there is no difference between samples!</li>
+      <li>For example, we can simulate communities by drawing species abundances at random, with one dominant species.</li>
+      <li>This yields strong positive correlations between relative abundances, even though the absolute abundances are independent!</li>
       </ul>
     </ul>
   </div>
