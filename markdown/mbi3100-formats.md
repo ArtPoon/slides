@@ -217,6 +217,17 @@ TAATTACTGTCGTTGACAGGACACGAGTAACTCGTCTATCTTCTGCAGGCTGCTTACGGTTTCGTCCGTG
 
 ---
 
+# NCBI GenBank
+
+* A collection of open access databases of biological information, including:
+  * Nucleotide - nucleotide sequences
+  * Protein - amino acid sequences
+  * Sequence Read Archive (SRA) - next-generation sequence datasets
+  * Gene Expression Omnibus (GEO) - microarray and RNA-seq datasets
+* Mirrored by other members of the International Nucleotide Sequence Database Collaboration (INSDC): the [European Nucleotide Archive](https://www.ebi.ac.uk/ena/browser/home) and the [DNA Data Bank of Japan](https://www.ddbj.nig.ac.jp/index-e.html)
+
+---
+
 # Genbank format
 
 * A complex format that contains diverse information.
