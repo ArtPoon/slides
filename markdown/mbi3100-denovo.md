@@ -35,7 +35,7 @@
       <ul>
         <li>An international effort (1990-2003) involving 20 research centres in six countries.</li>
         <li>Initially projected to cost $3B USD to sequence 3B nt genome.</li>
-        <li>Transitioned from gel-based Sanger sequencing to automated capillary-based machines producing 1,000 nt per second.</li>
+        <li>Transitioned from gel-based Sanger sequencing to automated <a href="https://en.wikipedia.org/wiki/Capillary_electrophoresis">capillary-based</a> machines producing 1,000 nt per second.</li>
         <li>A private firm (Celera Genomics) announced they would complete the genome first, for only $300M USD, using random whole-genome shotgun sequencing.</li>
       </ul>
     </td>
@@ -110,18 +110,22 @@ Image source: Cory Doctorow, <a href="https://commons.wikimedia.org/wiki/File:Pu
 
 # Finding overlaps
 
-* This requires that we compare every pair of pieces!
-* Quadratic complexity ($O(N^2)$) with the number of reads, which is already a huge number.
-* Made even more difficult if we want to tolerate *inexact* matches (sequencing error or polymorphism)!
-
-<img src="/img/contig2.png" width="500px"/>
+* We can assemble reads by finding overlaps, like the interlocking tabs and indentations of jigsaw pieces.
+* Sequences $X$ and $Y$ overlap if a prefix of $X$ matches exactly to a suffix in $Y$, or vice versa:
+```seq
+                        ACGTGTACGTA
+                   TGCTAACGTG
+```
+* This requires that we compare every pair of sequences!
+  * Quadratic complexity ($O(N^2)$) with the number of reads, which is already a huge number.
+  * Made even more difficult if we want to tolerate *inexact* matches (sequencing error or polymorphism)!
 
 ---
 
 # Efficient overlap detection
 
 * Searching for common [substrings](https://en.wikipedia.org/wiki/Substring) of length $k$ between two strings $(X$ and $Y)$ is time-consuming for large $k$!
-* Instead, see if [suffix](https://en.wikipedia.org/wiki/Suffix) of length $l<k$ in $X$ occurs in $Y$.
+* Instead, see if [suffix](https://en.wikipedia.org/wiki/Suffix) of length $l<k$ in $X$ occurs as a prefix in $Y$.
   * If a match is found, extend to the left to verify if entire $k$-[prefix](https://en.wikipedia.org/wiki/Prefix) of $Y$ matches (below $l=3$, $k\le 6$):
   * Alternatively, search for the $l$-prefix first and then the $k$-suffix.
 
@@ -136,7 +140,7 @@ Image source: Anton Nekrutenko, https://nekrut.github.io/BMMB554/lecture8/
 # Data structures
 
 * The problem of matching substrings can be made more efficient by converting the strings into a specialized data structure.
-* A data structure is a system for storing and retrieving information.
+* A [data structure](https://en.wikipedia.org/wiki/Data_structure) is a system for storing and retrieving information.
   * For example, a linked list is a sequence of nodes that store values and references to the next node:
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Singly-linked-list.svg"/>
@@ -210,7 +214,7 @@ Note we are omitting edges with an overlap length of $3$.
 
 * Why does the graph explode?  It is because of the repeating motif `_turn`.
 <img src="/img/overlap-gnarl.png" width=300/>
-* We can simplify this graph by removing edges that skip one or two nodes in a chain, *i.e.*, transitive edges:
+* We can simplify this graph by removing edges that skip one or two nodes in a chain, *i.e.*, [transitive edges](https://en.wikipedia.org/wiki/Transitive_reduction):
 <img src="/img/transitive-edges.svg" width=500/>
 
 ---
@@ -221,7 +225,7 @@ Note we are omitting edges with an overlap length of $3$.
 * However, the graph still contains a cycle that will induce an endless path ("turns, turns, turns, turns, ...")
 ![](/img/turnsturnsturns.svg)
 
-* We convert the simple paths in the graph into *contigs*:
+* We convert the [simple paths](https://en.wikipedia.org/wiki/Path_(graph_theory)#Walk,_trail,_and_path) in the graph into *contigs*:
 
 ![](/img/graph-to-contigs.svg)
 
@@ -237,7 +241,7 @@ Note we are omitting edges with an overlap length of $3$.
 
 ---
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Long_point_beach_ontario.jpg/2560px-Long_point_beach_ontario.jpg" width=800/>
+<img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/Long_point_beach_ontario.jpg/1280px-Long_point_beach_ontario.jpg" width=800/>
 
 <small>
 Image source:  Long Point Beach, Ontario.  <a href="https://commons.wikimedia.org/wiki/File:Long_point_beach_ontario.jpg">Anthony J, Flickr</a> (CC BY 2.0).
@@ -248,10 +252,10 @@ Image source:  Long Point Beach, Ontario.  <a href="https://commons.wikimedia.or
 # de Bruijn graphs
 
 * Memory efficient, scale better with data size.
-* Assume every possible *k*-mer in the genome is sequenced exactly once
-* A de Bruijn graph connects "words" that differ by a single letter.
-* For each *k*-mer, split it into two (*k*-1)-mers.
-* For example, `puppy` becomes `pupp` and `uppy`.
+* Assume every possible *k*-mer in the genome is sequenced exactly once as a read.
+* A [de Bruijn graph](https://en.wikipedia.org/wiki/De_Bruijn_graph) connects "words" that differ by a single letter.
+* For each *k*-mer read, split it into two (*k*-1)-mers.
+  * For example, `puppy` becomes `pupp` and `uppy`.
 
 ---
 
@@ -294,9 +298,11 @@ Traversing the final graph recovers the original sequence.
 
 # Pros and cons of de Bruijn graphs
 
+* Smaller graph: each read adds an edge, but does not necessarily add a node.
+  * Unlike an overlap graph, where every read is represented by a node.
 * If we start at the node without incoming edges, and follow every edge *exactly once*, we can reconstruct the original string!
-* No mucking about with removing transitive edges.
-* Repeats are still a problem.
+  * No mucking about with removing transitive edges.
+  * Repeats are still a problem.
 * We were assuming that every k-mer appears exactly once - extra copies break the "walk" property of deBruijn graphs.
 
 ---
