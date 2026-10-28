@@ -280,19 +280,47 @@ Image source:  Long Point Beach, Ontario.  <a href="https://commons.wikimedia.or
 
 ---
 
+### de Bruijn graphs
+# Example (1)
+
 * Each pair of k-1 words are automatically connected by an edge
 * Draw an additional edge whenever we encounter the same pair.
 
-<img src="/img/deBruijn1.svg" width="750px"/>
+<img src="/img/deBruijn1.svg" width="700px"/>
 
 ---
+
+### de Bruijn graphs
+# Example (2)
 
 ![](/img/deBruijn2.svg)
 
 ---
 
-Traversing the final graph recovers the original sequence.
+### de Bruijn graphs
+# Example (3)
+
 ![](/img/deBruijn3.svg)
+
+---
+
+<div style="display: flex; align-items: center; justify-content: space-around;">
+  <div style="flex: 1.5;">
+  <h3>de Bruijn graphs</h3>
+  <h1>Recovering the original sequence</h1>
+  <ul>
+  <li>Traversing the final graph recovers the original sequence:</li>
+    <ol>
+    <li>Start at node with no incoming edges.</li>
+    <li>Follow an edge to the next node, appending the 1-suffix letter to our string, and removing the edge as we cross.</li>
+    <li>Continue with step 2 until we reach a node with no outgoing-edges.</li>
+    </ol>
+  </ul>
+  </div>
+  <div style="flex: 1;">
+    <img src="/img/deBruijn4.svg" height="500px">
+  </div>
+</div>
 
 ---
 
