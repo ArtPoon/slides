@@ -308,7 +308,7 @@ Source: Zerbino, Frankish and Flicek (2020) Progress, Challenges, and Surprises 
 
 ---
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Sunset_On_Rock_Lake_-_panoramio.jpg/2560px-Sunset_On_Rock_Lake_-_panoramio.jpg"/>
+<img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Sunset_On_Rock_Lake_-_panoramio.jpg"/>
 
 <small>
 Sunset on Rock Lake in Algonquin Provincial Park, <a href="https://commons.wikimedia.org/wiki/File:Sunset_On_Rock_Lake_-_panoramio.jpg">Eric Raymond Lanning</a> (CC BY 3.0).
@@ -350,7 +350,7 @@ Sunset on Rock Lake in Algonquin Provincial Park, <a href="https://commons.wikim
 # Latent states
 
 * HMMs are "hidden" because they are models of states that cannot be directly observed.
-  * A variable with hidden states is as [latent variable](https://en.wikipedia.org/wiki/Latent_and_observable_variables).
+  * A variable with hidden states is a [latent variable](https://en.wikipedia.org/wiki/Latent_and_observable_variables).
   * Happiness cannot be directly measured, but it exists and can be modeled as a hidden state.
 * An HMM assumes that latent states have different probabilities of *emitting* observable states. 
 
@@ -358,8 +358,8 @@ Sunset on Rock Lake in Algonquin Provincial Park, <a href="https://commons.wikim
 
 # Example
 
-* Imagine we have a machine that drops blue or red balls at random $(p_0=0.5)$ as it moves along a track.
-* Sometimes $(q_{01}=0.2)$ the mechanism gets stuck and it rarely drops blue $(p_1=0.9)$.
+* Imagine we have a machine that drops blue or red balls at random $(p_b=p_r=0.5)$ as it moves along a track.
+* Sometimes $(q_{01}=0.2)$ the mechanism gets stuck and it rarely drops blue $(p_b=0.1, p_r=0.9)$.
   * It also gets unstuck with probability $q_{10}=0.1$.
 * Suppose that the state of the mechanism is hidden to us (it is sealed inside the machine).
   * Can we deduce the hidden state at any time, given the sequence of balls it has dropped?
