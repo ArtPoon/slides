@@ -61,8 +61,9 @@ Finding variants that are a direct biological cause of some disease is very diff
 
 * Declaring a variant as common or rare is population-specific and cannot be generalized across populations.
 * A variant is "common" if it has a minor allele frequency above 5%.
-* With increasing study population sizes, researchers have started to use a *minimum minor allele count*
-  * *e.g.*, at least 100 individuals who carry at least one copy of the minor allele
+* Researchers have started to use a *minimum minor allele count*, *e.g.*, at least 3 individuals who carry at least one copy of the minor allele
+  * With increasing study population sizes, there is a greater chance of observing rare variants.
+  * Reduces sequencing error and focus on more actionable variants.
 
 ---
 
@@ -86,7 +87,7 @@ Finding variants that are a direct biological cause of some disease is very diff
       <h1>SNP arrays</h1>
       <ul>
         <li>Using the common variants identified by HapMap, it became feasible to develop a DNA microarray to simultaneously screen for the presence of over $10^5$ (eventually over $10^6$) SNPs.</li>
-        <li>A DNA microarray contains many microscopic probes, each speciic to a short DNA sequence.</li>
+        <li>A <a href="https://en.wikipedia.org/wiki/DNA_microarray">DNA microarray</a> contains many microscopic probes, each speciic to a short DNA sequence.</li>
         <li>Hybridization to sample DNA is detected by fluorescence.</li>
       </ul>
     </td>
@@ -105,7 +106,7 @@ Finding variants that are a direct biological cause of some disease is very diff
 
 * The commercialization of SNP arrays made it possible for many labs (who could afford the new technology) to perform genome-wide association studies.
   * A commentary published in JAMA in July 2007 noted over 14 articles had already been published that year ([Topol *et al.* 2007](https://jamanetwork.com/journals/jama/article-abstract/207844)).
-* There are presently over 7,300 GWAS studies in the [GWAS Catalog](https://www.ebi.ac.uk/gwas/), studying over 3,300 traits in more than one million people.
+* There are presently over 7,800 GWAS studies in the [GWAS Catalog](https://www.ebi.ac.uk/gwas/), studying over 3,300 traits in more than one million people.
 
 ---
 
@@ -114,7 +115,7 @@ Finding variants that are a direct biological cause of some disease is very diff
 * Genome-wide association studies (GWAS) attempt to identify associations between genotypes and phenotypes.
   * More specifically, GWAS tests for a statistical association between a genetic polymorphism and a phenotype, such as a disease.
 * GWAS usually focuses on SNPs, but any kind of genetic variant can have an association.
-  * *e.g.*, copy-number variants (CNVs).
+  * *e.g.*, <a href="https://en.wikipedia.org/wiki/Copy_number_variation">copy-number variants</a> (CNVs).
   * Any feature that can be annotated at the nucleotide level.
 
 
@@ -123,7 +124,7 @@ Finding variants that are a direct biological cause of some disease is very diff
 # GWAS is not whole-genome
 
 * GWAS generally involves the targeted genotyping of specific, pre-selected variants using microarrays.
-* Whole-exome (WES) and whole-genome sequencing (WGS) studies aim to capture all genetic variation.
+* <a href="https://en.wikipedia.org/wiki/Exome_sequencing">Whole-exome</a> (WES) and <a href="https://en.wikipedia.org/wiki/Whole_genome_sequencing">whole-genome sequencing</a> (WGS) studies aim to capture all genetic variation.
   * Strictly speaking, both WES and WGS studies are *also* GWAS
   * "GWAS" usually refers to studies of common variants assayed by microarrays, and sometimes considered separately from WGS and WES.
 * Currently, GWAS studies are still more common.
@@ -144,7 +145,7 @@ Finding variants that are a direct biological cause of some disease is very diff
 ### Obtaining data
 # Existing cohorts
 * The majority of GWAS are conducted using pre-existing large cohorts with genomic and phenotypic data.
-* The NCBI database of Genotypes and Phenotypes (dbGaP) archives public and controlled-access data from human studies.
+* The NCBI database of Genotypes and Phenotypes ([dbGaP](https://dbgap.ncbi.nlm.nih.gov/home/)) archives public and controlled-access data from human studies.
 * *e.g.*, the [GIANT consortium](https://giant-consortium.web.broadinstitute.org/index.php/GIANT_consortium) (Genetic Investigation of ANthropometric Traits) is the largest GWAS ([5.4 million people as of 2022](https://www.broadinstitute.org/news/largest-genome-wide-association-study-ever-uncovers-nearly-all-genetic-variants-linked-height)) 
   * Recently published results on variants associated with human height.
 
@@ -251,7 +252,7 @@ Source: https://www.broadinstitute.org/medical-and-population-genetics/hapmap-3
 
 ---
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Waterfall_in_Upper_Queen%27s_Park%2C_Stratford%2C_Ontario%2C_2025-08-04_04.jpg/2560px-Waterfall_in_Upper_Queen%27s_Park%2C_Stratford%2C_Ontario%2C_2025-08-04_04.jpg" width="80%"/>
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Waterfall_in_Upper_Queen%27s_Park%2C_Stratford%2C_Ontario%2C_2025-08-04_04.jpg" width="80%"/>
 
 <small>
 Image source: Waterfall in Upper Queen's Park, Stratford, Ontario, 2025-08-04. <a href="https://commons.wikimedia.org/wiki/File:Waterfall_in_Upper_Queen%27s_Park,_Stratford,_Ontario,_2025-08-04_04.jpg">Chris Woodrich</a> CC BY-SA 4.0.
@@ -474,7 +475,7 @@ Image source: Tsang <i>et al.</i> (2015) Glioma Association and Balancing Select
 
 <h1 style="color:white">Key points</h1>
 <ul>
-<li>GWAS is the simultaneous screening of 1,000's of common variants to test for associations between variants and phenotypes (*e.g.*, disease).</li>
+<li>GWAS is the simultaneous screening of 1,000's of common variants to test for associations between variants and phenotypes (<i>e.g.</i>, disease).</li>
   <ul>
   <li>Each common variant represents a set of physically linked alleles in the genome (haplotype).</li>
   </ul>
