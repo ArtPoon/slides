@@ -112,3 +112,60 @@ Image source: Based on Rodriguez-Paredes and Esteller (2011).  <a href="https://
 <small>
 Sources: Pia Campagna <i>et al.</i> (2021) <a href="https://link.springer.com/article/10.1186/s13148-021-01200-8">Clinical Epigenetics 13: 214</a>; Hillary <i>et al.</i> (2023) <a href="https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1004247">PLOS Medicine 20(7): e1004247</a>.
 </small>
+
+---
+
+# Methylation studies
+
+* At a given nucleotide site, a cell is 0%, 50% or 100% methylated.
+  * There are two copies of the DNA sequence in each cell (except sex chromosomes in males).
+* A bulk methylation measurement averages these values across all cells in the sample.
+  * Methylation levels can be highly tissue- and age-specific.
+
+---
+
+# Bisulfite sequencing
+
+* Bisulfite converts cytosine residues to uracil, leaving 5-mC residues unaffected.
+  * C and 5-mC residues can be distinguished at single-nucleotide resolution.
+
+```seq
+                        G G T C A G T G A mC G
+bisulfite conversion          |            |  
+                        G G T U A G T G A mC G
+PCR amplification 
+                        G G T T A G T G A  C G
+```
+
+---
+
+# DNA methylation microarray
+
+* Following bisulfite conversion, sample undergoes amplification and fragmentation.
+* The [Inifinium MethylationEPIC](https://www.illumina.com/products/by-type/microarray-kits/infinium-methylation-epic.html) array covers 850K CpG sites in the human genome.
+  * Each probe consists of a 50-mer attached to a bead that fluoresceses on binding.
+  * Type I probes have methylated and unmethylated probe sequences per CpG.
+  * Type II probes use only one sequence, occupying half as much space as a Type I.
+  * More recent (2022) EPICv2 array covers ~930K CpG sites in the human genome.
+
+---
+
+# Methylation array workflow
+
+1. Import raw IDAT (Intensity DATa) file
+2. Probe and sample level filtering
+  * *e.g.*, cross-reactivity: off-target hybridization of probes to polymorphisms or sex chromosomes.
+3. Normalization: background correction
+4. Visualization: PCA, batch effect screening, outlier removal.
+5. Analysis: Identify differentially methylated probes / regions. Pathway and network analysis.
+
+---
+
+# Whole-genome bisulfite sequencing
+
+* WGBS offers higher resolution but can be very expensive.
+* Following bisulfite treatment, nucleic acids are tagged with unique sequences prior to amplification and NGS library construction.
+  * Tagging provides a means of removing amplification bias.
+* Sequencing enables direct measurement of methylation.
+  * Can detect 5-mC at previously unknown sites.
+  * Sufficient read depth can be difficult to attain.
