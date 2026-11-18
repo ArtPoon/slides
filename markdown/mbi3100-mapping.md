@@ -406,6 +406,7 @@ Reference: Sims <i>et al.</i> (2014) <a href="https://www.nature.com/articles/nr
 ### Sequencing coverage
 # Example
 <br/>
+
 ![](/img/coverage-example.png)
 
 
