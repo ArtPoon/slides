@@ -152,7 +152,7 @@ PCR amplification
 
 # Methylation array workflow
 
-1. Import raw IDAT (Intensity DATa) file
+1. Import raw IDAT (Intensity DATa) file (encrypted XML)
 2. Probe and sample level filtering
   * *e.g.*, cross-reactivity: off-target hybridization of probes to polymorphisms or sex chromosomes.
 3. Normalization: background correction
@@ -169,3 +169,18 @@ PCR amplification
 * Sequencing enables direct measurement of methylation.
   * Can detect 5-mC at previously unknown sites.
   * Sufficient read depth can be difficult to attain.
+* Usual steps: adapter removal, trimming, and mapping to a reference genome.
+
+---
+
+# Deduplication
+
+<img src="/img/deduplication.png" height="200px"/>
+
+* Bisulfite treatment is an additional step that is distinctive of the WGBS workflow.
+  * DNA is denatured and unmethylated Cs are converted into Us, resulting in four distinct strands of DNA:
+* Deduplication removes reads that map to exactly the same position in the reference genome but on different strands.
+
+<small>
+Image source: Morrison <i>et al.</i> (2023) <a href="https://academic.oup.com/bioinformatics/article/doi/10.1093/bioinformatics/btad729/7471870">Bioinformatics 39(12): btad729</a>.
+</small>
