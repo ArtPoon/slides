@@ -139,6 +139,33 @@ PCR amplification
 
 ---
 
+# Whole-genome bisulfite sequencing
+
+* WGBS offers higher resolution but can be very expensive.
+* Following bisulfite treatment, nucleic acids are tagged with unique sequences prior to amplification and NGS library construction.
+  * Tagging provides a means of removing amplification bias.
+* Sequencing enables direct measurement of methylation.
+  * Can detect 5-mC at previously unknown sites.
+  * Sufficient read depth can be difficult to attain.
+* Usual steps: adapter removal, trimming, and mapping to a reference genome.
+
+---
+
+### Whole-genome bisulfite sequencing
+# Deduplication
+
+<img src="/img/deduplication.png" height="200px"/>
+
+* Bisulfite treatment is an additional step that is distinctive of the WGBS workflow.
+  * DNA is denatured and unmethylated Cs are converted into Us, resulting in four distinct strands of DNA:
+* Deduplication removes reads that map to exactly the same position in the reference genome but on different strands.
+
+<small>
+Image source: Morrison <i>et al.</i> (2023) <a href="https://academic.oup.com/bioinformatics/article/doi/10.1093/bioinformatics/btad729/7471870">Bioinformatics 39(12): btad729</a>.
+</small>
+
+---
+
 # DNA methylation microarray
 
 * Following bisulfite conversion, sample undergoes amplification and fragmentation.
@@ -160,27 +187,3 @@ PCR amplification
 5. Analysis: Identify differentially methylated probes / regions. Pathway and network analysis.
 
 ---
-
-# Whole-genome bisulfite sequencing
-
-* WGBS offers higher resolution but can be very expensive.
-* Following bisulfite treatment, nucleic acids are tagged with unique sequences prior to amplification and NGS library construction.
-  * Tagging provides a means of removing amplification bias.
-* Sequencing enables direct measurement of methylation.
-  * Can detect 5-mC at previously unknown sites.
-  * Sufficient read depth can be difficult to attain.
-* Usual steps: adapter removal, trimming, and mapping to a reference genome.
-
----
-
-# Deduplication
-
-<img src="/img/deduplication.png" height="200px"/>
-
-* Bisulfite treatment is an additional step that is distinctive of the WGBS workflow.
-  * DNA is denatured and unmethylated Cs are converted into Us, resulting in four distinct strands of DNA:
-* Deduplication removes reads that map to exactly the same position in the reference genome but on different strands.
-
-<small>
-Image source: Morrison <i>et al.</i> (2023) <a href="https://academic.oup.com/bioinformatics/article/doi/10.1093/bioinformatics/btad729/7471870">Bioinformatics 39(12): btad729</a>.
-</small>
